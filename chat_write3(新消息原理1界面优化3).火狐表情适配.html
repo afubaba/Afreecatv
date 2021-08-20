@@ -1,0 +1,1587 @@
+<!-- 테스트 유람 기 -->
+<!-- Google Chrome for ubuntu 92.0.4515.159（발행판） （x64） -->
+<!-- Google Chrome for ubuntu 94.0.4603.0（개발버전）dev （64 位） -->
+<!-- firefox for ubuntu 91.0 (x64) -->
+<!-- 모든 브라우저 지원 ,호환성 강화 F12 개발 자 모드
+
+	수 동 으로 메 시 지 를 보 내 고 언어 로 메 시 지 를 보 내 는 것 을 지원 합 니 다(!정보 읽 기 나 환경 배 치 를 시작 해 야 언어 명령 을 사용 할 수 있 습 니 다.). 관리자 사용자 나 앵 커 는 채 팅 번역 기능 을 닫 아야 합 니 다.그렇지 않 으 면 대량 정 보 를 보 내 는 데 오류 가 발생 할 수 있 습 니 다. -->
+
+	<!-- 지금 은 오직!시간!방송시작시간,!별/!즐겨찾기:(수장 하 다),!UP/!좋아요 /!좋아: 좋아요 ,id 잠 금 명령 검증,찾 아야 돼!text includes 에 자신의 id 를 써 야 일괄 발송 이 실 행 됩 니 다.(!text:내용,2x2)x 앞 은 횟수 이 고 x 뒤 는 간격 이다. 정보 검색 이나 환경 배 치 를 열 어야 명령 이나 채 팅 을 읽 을 수 있 습 니 다.수 동 설정 도 같은 효과 입 니 다.,더 많은 언어 명령 보완 중,완 선 된 후에 일부 기능 을 다시 엽 니 다.-->
+
+	<!-- 정보 포함 자동 속도 측정,자동 속도 향상,오류 자동 복구 -->
+
+
+	<div id="list_area" class="list_area" style="overflow: scroll;background: rgba(0, 0, 0, 0) none repeat scroll 0% 0%;">
+
+
+		<div id="myDiv" style="border: 1px red solid; overflow: scroll;">         
+			<!-- f12개발 자 모드，구글 브라우저 전용，다른 브라우저에서 자체 테스트-->
+			<!-- 展示信息 -->
+			<div id="showMessageLast"  contenteditable="true" style="display: none;overflow: auto;height: 40%;width: 100%;border:1px black solid;" title="showMessageLast">
+				
+			</div>
+
+
+			<span style="color: yellow;font-size: large;">읽고있는정보:</span>
+			<div id="showMessage"  contenteditable="true"   style="overflow: auto;height: 30px;border:2px red solid;" title="전시 정보"></div>
+
+			<!-- <div id="write_area" contenteditable="true"></div>   -->
+
+			<h3 style="font-size: large;color: yellow;">데이터와정보분석:</h3>
+
+			<!-- 延迟速度(备选方案输入框延迟) -->
+			<!-- <input id="delayInputId" type="text" style="width:15px"></input> -->
+			<select id="delayInputId" style="display:none">
+				<option id="quick" value="quick">快速</option>
+				<option id="meiumSpeed"  value="meiumSpeed">中速</option>
+				<option id="slowSpeed" selected="selected" value="slowSpeed">慢速</option>
+			</select>
+
+			<!-- 延迟时间 -->
+			<input id="delayInputTextId" style="width:50px;font-size: large;color:darkred;" type="text" title="현재 정보 획득 지연 시간(1000 은 1 초)">
+			밀리초
+
+
+			<span id="subscriptId" style="display:none">下标</span>
+			제
+			<input id="nowIndex" style="width:30px" value="1" type="text" title="현재 포인터">
+			조메시지
+
+
+            <br/>
+            최대정보동기화격차수(5/10개):
+            <input id="informationSynchronization" title="최대 10 개 또는 5 개의 정보 동기 화 차 이 를 허용 합 니 다." style="width:30px" value="10" type="text" title="최대정보동기화격차수">
+
+			<!-- 检索消息 -->
+			<button id="retrievalButtonId" onclick="
+	//判断当计时器是否重复
+	if('undefined'!=typeof messageInterval){
+		clearInterval(messageInterval) ;
+	}
+	function getDom(dom) {
+		var dom=document.getElementById(dom);
+		return dom;
+	}
+	//获取当前内容,以配合还原
+	var testInput_last=getDom('testInput');
+	 //    var inputTimes_last=getDom('inputTimes');
+		// var inputFrequency_last=getDom('inputFrequency');
+
+		//备选方案输入框延迟
+		// //获取延迟速度;
+		// if (delayInputId.value=='') {
+		// 	//赋值数据
+		// 	delayInputId.value=1;
+		// 	delayInputId=1;
+		// }
+		// 延迟速度
+		var delayInputId=getDom('delayInputId');
+		var delayInputTextId=getDom('delayInputTextId');
+		delayInputFrequency=getDom('delayInputTextId').value;
+		if (delayInputFrequency=='') {
+			if (delayInputId.value=='slowSpeed') {
+				delayInputFrequency=1000;
+			}else if (delayInputId.value=='meiumSpeed') {
+				delayInputFrequency=500;
+			}else if (delayInputId.value=='quick') {
+				delayInputFrequency=125;
+			}
+			//赋值文本框延迟
+			delayInputTextId.value=delayInputFrequency;
+		}
+		//当前速度
+		// console.log(delayInputId.value);
+		//控制台信息数量
+		var consoleCount =0;
+        var informationSynchronization=getDom('informationSynchronization');
+
+		//统计10秒最大输出
+		var initTime=informationSynchronization.value;
+		//当前次数
+		// var nowTimes=0;
+		//当前秒
+		var nowFrequency=0;
+		//统计次数
+		var inputCount=0;
+		
+		
+
+		//统计消息序号
+		var showMessageLastCount=0;
+
+		//localStorage.setItem('lastname', 'Smith');
+		//localStorage.getItem('astname');          sessionStorage
+
+		//id数
+		var le=document.getElementsByTagName('dt').length;
+
+		//初始化下标
+		var initIndex=getDom('nowIndex').value;
+		messageInterval = setInterval(function () {
+			var idt_last = window.sessionStorage.getItem('idt_last');
+			var text_Last = window.sessionStorage.getItem('text_Last');
+
+			function getDom(dom) {
+				var dom = document.getElementById(dom);
+				return dom;
+			}
+
+        //清理控制台/当前执行次数
+        consoleCount++;
+
+        if (consoleCount > 100) {
+        	console.clear();
+        	consoleCount = 0;
+        }
+
+
+        // 聊天内容获取速度自动加减
+        //最大次数
+        var maxTimes = initTime / delayInputFrequency * 1000;
+        nowFrequency++;
+        if (nowFrequency >= maxTimes) {
+        	if (inputCount > 0) {
+        		if (nowFrequency / inputCount > 2) {
+        			delayInputFrequency = delayInputFrequency * 2;
+        		} else {
+        			delayInputFrequency = delayInputFrequency / 2;
+        		}
+                //限制消息检索计时器范围125
+
+                if (delayInputFrequency >= 50) {
+                	getDom('delayInputTextId').value = delayInputFrequency;
+                }
+                // if (delayInputFrequency<=2000&&delayInputFrequency>=125) {
+                // 	getDom('delayInputTextId').value=delayInputFrequency;
+                // }
+                getDom('retrievalButtonId').click();
+
+            } else {
+            	console.error('没有输出内容');
+            }
+            //初始化
+            nowFrequency = 0;
+            inputCount = 0;
+
+        }
+
+        // document.getElementsByTagName('dt').length>le
+
+        // console.log('有新消息');
+
+        // var nowIndex=document.getElementById('chat_area').childNodes.length-1;
+        // console.log('chat_area-index:'+document.getElementById('chat_area').childNodes.length);
+        // console.log('initIndex:'+initIndex);
+
+
+        //chat_area聊天区域
+        var chat_area = getDom('chat_area');
+        console.log('------------------------------')
+
+        //纠正下标
+        var firstIndex = sessionStorage.getItem('firstIndex');
+        //查找下标所在的chat_area下标1
+        var firstIndexId = document.getElementById('chat_area').children[1].children[0].nextElementSibling.getAttribute('id');
+        if (firstIndex == null) {
+        	sessionStorage.setItem('firstIndex', firstIndexId);
+        }
+        console.log('---------------赋值后----------')
+        firstIndex = sessionStorage.getItem('firstIndex');
+
+        var firstIndex2 = document.getElementById('chat_area').children[1].children[0].nextElementSibling.getAttribute('id');
+        
+
+        var reduceIndex = firstIndex2 - firstIndex;
+        if (firstIndex<0) {
+        	sessionStorage.setItem('firstIndex', 1);
+
+        	getDom('nowIndex').value = 1;
+        }
+        if (firstIndex2<0) {
+        	sessionStorage.setItem('firstIndex', 1);
+
+        	getDom('nowIndex').value = 1;
+        }
+        console.log('firstIndex:' + firstIndex + ',firstIndex2:' + firstIndex2);
+        //如果有变化则做差,并且更新最新的下标
+
+
+
+
+        if (reduceIndex > 0&&initIndex - reduceIndex>0) {
+        	console.log('reduceIndex大于0')
+        	console.log('做差前,reduceIndex:' + reduceIndex + ',initIndex:' + initIndex);
+        	initIndex = initIndex - reduceIndex;
+        	console.log('做差后,reduceIndex:' + reduceIndex + ',initIndex:' + initIndex);
+        	getDom('nowIndex').value = initIndex;
+        	sessionStorage.setItem('firstIndex', firstIndex2);
+        } else if (reduceIndex < 0) {
+        	firstIndexId = document.getElementById('chat_area').children[1].children[0].nextElementSibling.getAttribute('id');
+        	sessionStorage.setItem('firstIndex', firstIndexId);
+        	console.log('reduceIndex小于0');
+        } else {
+            //错误时重置
+            firstIndexId = document.getElementById('chat_area').children[1].children[0].nextElementSibling.getAttribute('id');
+            sessionStorage.setItem('firstIndex', firstIndexId);
+            console.log('遇到错误,重置sessionStorage');
+
+        }
+
+
+        console.log('------------------------------')
+        if (initIndex < chat_area.childElementCount - 1) {
+
+        	initIndex++;
+        	getDom('nowIndex').value = initIndex;
+        }
+
+        //document.getElementById('chat_area').children[2].children[0].nextElementSibling.getAttribute('id');
+        if ('undefined' != chat_area.children[initIndex]) {
+
+
+        	var now_index = chat_area.children[initIndex].children[0].nextElementSibling.getAttribute('id');
+        	var chat_area_Length = document.getElementById('chat_area').childNodes.length - 1;
+        	var last_index = chat_area.children[chat_area_Length].children[0].nextElementSibling.getAttribute('id');
+
+        	console.log('now_index:' + now_index, 'last_index:' + last_index);
+
+
+            //限制消息同步정보 가 일치 하지 않 는 최대 수량,그리고 속 도 를 올 립 니 다.
+
+
+            if (last_index - now_index >= informationSynchronization.value) {
+            	console.log('距离超过10,加速起来');
+                //提速
+                if (delayInputFrequency / 2 >= 500) {
+                	delayInputFrequency = delayInputFrequency / 2
+                }
+
+                getDom('delayInputTextId').value = delayInputFrequency;
+                getDom('retrievalButtonId').click();
+                
+
+            } else {
+            	console.log('距离20以内');
+                // delayInputFrequency
+            }
+
+            var nickName = chat_area.children[initIndex].children[0].lastElementChild.getAttribute('user_nick');
+            //id
+            var idt = chat_area.children[initIndex].children[0].lastElementChild.getAttribute('user_id');
+            //内容
+            // var tex = chat_area.children[initIndex].children[0].nextElementSibling.textContent;
+             var tex = chat_area.children[initIndex].children[0].nextElementSibling.innerHTML;
+            var is_mobile = chat_area.children[initIndex].children[0].lastElementChild.getAttribute('is_mobile');
+            var grade = chat_area.children[initIndex].children[0].lastElementChild.getAttribute('grade');
+
+
+            if (is_mobile == 'false') {
+            	is_mobile = '💻';
+            } else {
+
+            	is_mobile = '📱';
+            }
+            if (grade == 'user') {
+            	grade = '사용자';
+            } else if (grade == 'manager') {
+            	grade = '관리원';
+            } else if (grade == 'bj') {
+            	grade = '앵커';
+            } else if (grade == 'fan') {
+            	grade = '팬';
+            } else if (grade == 'topfan') {
+            	grade = '고급팬';
+            } else if (grade == 'gudok') {
+            	grade = '구독자';
+            } else {
+            	grade = 'loadding';
+            }
+
+
+            // console.log('['+grade+']'+nickName+'('+idt+')'+is_mobile+':'+tex+'(延迟:'+delayInputFrequency+'ms)');
+
+
+            //判断内容ID是否相同
+            if (idt != idt_last || tex != text_Last) {
+            	function getDom(dom) {
+            		var dom = document.getElementById(dom);
+            		return dom;
+            	}
+
+                //添加时间到聊天记录
+                // chat_area.children[initIndex].children[0].nextElementSibling.innerHTML=tex+ getDom('timeFrequencys').value;
+
+
+                window.sessionStorage.setItem('idt_last', idt);
+                window.sessionStorage.setItem('text_Last', tex);
+
+                // var lastddtest=document.getElementById('chat_area').childNodes.item(document.getElementById('chat_area').childNodes.length-1).lastChild.firstChild;
+                // lastddtest.innerHTML=lastddtest.innerHTML+'<span style=\'font-size:large;\'>'+getDom('timeFrequencys').value+'</span>';
+
+                // console.log(lastddtest.innerHTML);
+                //检索m消息=结果
+
+                console.log(initIndex + '.[' + grade + ']' + nickName + '(' + idt + ')' + is_mobile + ':' + tex + '(延迟:' + delayInputFrequency + 'ms)');
+
+                //页面信息展示
+                // document.getElementById('write_area').innerHTML='['+grade+']'+nickName+'('+idt+')'+is_mobile+':'+tex;
+                //记录消息
+                getDom('showMessage').innerHTML = '[' + grade + ']' + nickName + '(' + idt + ')' + is_mobile + ':' + tex;
+                //记录消息拼接时间
+
+                //div
+                getDom('showMessageLast').innerHTML = getDom('showMessageLast').innerHTML + '<hr/>' + getDom('timeFrequencys').value + '[' + grade + ']' + nickName + '(' + idt + ')' + is_mobile + ':<br/>'+ tex;
+                //统计消息序号
+                showMessageLastCount++;
+                // getDom('showMessageLast').value=getDom('showMessageLast').value+showMessageLastCount+')'+getDom('timeFrequencys').value+'['+grade+']'+nickName+'('+idt+')'+is_mobile+':'+tex+'\n';
+
+                //赋值最后一次
+                // idt_last=idt;
+                // text_Last=tex;
+
+
+                //统计10秒最大输出
+                // var initTime=10;
+                //最大次数
+                // var maxTimes=initTime/delayInputFrequency/1000
+                //当前次数
+                // var nowTimes=0;
+                //统计变化
+                inputCount++;
+
+
+                //检索m 内通用发送消息方法
+                //内容
+                var testInput;
+                //次数
+                var inputTimes;
+                //间隔时间
+                var inputFrequency;
+
+                function sendMessage(message) {
+                    //读取默认配置
+                    testInputValue = getDom('testInput').value;
+                    inputTimesValue = getDom('inputTimes').value;
+                    inputFrequencyValue = getDom('inputFrequency').value;
+                    //发送消息
+                    getDom('testInput').value = message;
+                    getDom('inputTimes').value = 1;
+                    getDom('inputFrequency').value = 1;
+                    getDom('send_message').click();
+                    //还原数据
+                    setTimeout(function () {
+                    	getDom('testInput').value = testInputValue;
+                    	getDom('inputTimes').value = inputTimesValue;
+                    	getDom('inputFrequency').value = inputFrequencyValue;
+                    }, 1500);
+
+                }
+
+
+                //终止(停止)命令!멈추다(任何人)
+                if (tex == '!stop' || tex == '!멈추다') {
+                    //终止消息提示
+                    document.getElementById('stopButtonId').click();
+                    // alert('['+grade+']'+nickName+'('+idt+')'+is_mobile+':'+tex'你使用终止命令,终止了任何条件程序');
+                    console.log(idt + ':你使用终止命令,终止了部分程序');
+                    //恢复默认
+                    document.getElementById('environmentButtonId').click();
+                    console.log(idt + ':系统恢复默认配置');
+
+                }
+                //部署环境(仅限管理员(id包含10571237))
+                if (idt.includes('10571237') &amp;&amp; tex == '!en' || tex == '!환경' || tex == '!환경배포' || tex == '!start' || tex == '!시작하다' || tex == '!시작') {
+                	document.getElementById('environmentButtonId').click();
+
+                	getDom('testInput').value = '@' + nickName + ':환경 배치 성공';
+                	getDom('send_message').click();
+
+                	console.log(idt + '部署环境成功');
+
+                }
+                //聊天热度延迟速度
+                if (tex == '!채팅속도' || tex == '!지연속도' || tex == '!속도') {
+                	var timeFrequencys = getDom('delayInputTextId').value;
+
+                	if (timeFrequencys >= 1000) {
+                		timeFrequencys = timeFrequencys / 1000 + 's';
+                	} else {
+                		timeFrequencys = timeFrequencys + 'ms';
+                	}
+                	getDom('testInput').value = '@' + nickName + ':관중:' + getDom('nAllViewer').innerHTML + ',채팅속도:' + timeFrequencys;
+                	getDom('send_message').click();
+
+
+                }
+
+                //查看指定用户数量
+                function getGrups(dom1) {
+                    //function getDom(dom) {
+                    // 	return document.getElementById(dom);
+                    // }
+                    for (var i = 0; i < getDom(dom1).childElementCount; i++) {
+                    	var user_id = getDom(dom1).children.item(i).children.item(0).getAttribute('user_id');
+                    	var user_nick = getDom(dom1).children.item(i).children.item(0).getAttribute('user_nick');
+                    	console.log(user_nick + ':' + user_id);
+                    	text = text + (i + 1) + '.' + user_nick + '(' + user_id + ')';
+                    }
+                }
+
+                if (tex == '!문지기' || tex == '!슈퍼팬') {
+                    //哪个组dom名称
+                    var groupName = '';
+                    var text = '';
+                    // getDom('setbox_viewer').click();
+                    document.getElementById('setbox_viewer').children.item(0).click();
+                    switch (true) {
+                    	case tex == '!manager' || tex == '!문지기':
+                            // 매니저  管理员
+                            groupName = 'lv_ul_manager';
+                            break;
+                            case tex == '!슈퍼팬':
+                            // 구독자 高级粉丝
+                            groupName = 'lv_h3_topfan';
+                            break;
+                            case tex == '!팬':
+                            groupName = 'lv_h3_fan';
+                            break;
+                            case tex == '!서포터':
+                            groupName = 'lv_ul_supporter';
+                            break;
+                            default:
+                            groupName = 'lv_p_bj';
+                            break;
+                        }
+
+
+                        setTimeout(function () {
+                        	getGrups(groupName);
+                        	console.log('text:' + text);
+                        	if (text != '') {
+                        		getDom('testInput').value = text;
+                            //初始化数据
+                            getDom('inputFrequency').value = 1;
+
+                            getDom('send_message').click();
+
+                        } else {
+                        	getDom('testInput').value = tex + ':null';
+                        }
+                        getDom('inputFrequency').value = 1;
+                        // document.getElementById('setbox_viewer').children.item(0).click();
+
+                    }, 3000)
+                    // document.getElementById('setbox_viewer').children.item(0).click();
+
+
+                }
+                if (tex == '!open') {
+
+                	getDom('inputFrequency').value = 6;
+                	document.getElementById('setbox_viewer').children.item(0).click();
+
+                }
+
+
+                //!message:q/m/s  /!소식:천천히/중속/서둘러
+                if (idt.includes('1057123') &amp;&amp; tex.includes('!message:') || tex.includes('!m:')) {
+
+                    //当前速度控制器
+                    var delayInputId = getDom('delayInputId');
+                    //要调节的速度
+                    var speed = tex.substring(tex.indexOf(':') + 1);
+                    //现在的速度
+                    var nowDelayInputId = delayInputId.value;
+                    console.log('speed的值:' + speed);
+                    if (speed == '') {
+                    	console.log('返回当前速度');
+
+                        //发送当前速度
+                        //转换速度英文值为韩语
+                        if (nowDelayInputId == 'slowSpeed') {
+                            // getDom('testInput').value=tex+'천천히';
+                            getDom('write_area').innerHTML = tex + '천천히';
+                            // send_message
+                            getDom('btn_send').click();
+                            //慢速命令
+                        } else if (nowDelayInputId == 'meiumSpeed') {
+                            // getDom('testInput').value=tex+'중속';
+                            getDom('write_area').innerHTML = tex + '중속';
+                            getDom('btn_send').click();
+                            //慢速命令
+                        } else if (nowDelayInputId == 'quick') {
+                            // getDom('testInput').value=tex+'서둘러';
+                            getDom('write_area').innerHTML = tex + '서둘러';
+                            getDom('btn_send').click();
+                        } else {
+                            //发送
+                            getDom('write_area').innerHTML = tex + 'null';
+                            getDom('btn_send').click();
+
+
+                        }
+
+
+                    } else {
+
+                    	if (speed == nowDelayInputId) {
+                    		console.log('当前已经是:' + speed);
+
+
+                    	} else {
+                            //慢速命令
+                            if (speed == 's' || speed == '천천히') {
+                            	delayInputId.value = 'slowSpeed';
+                                //慢速命令
+                            } else if (speed == 'm' || speed == '중속') {
+                            	delayInputId.value = 'meiumSpeed';
+                                //慢速命令
+                            } else if (speed == 'q' || speed == '서둘러') {
+                            	delayInputId.value = 'quick';
+
+                            }
+                            //速度调节
+                            getDom('retrievalButtonId').click();
+                        }
+
+                    }
+                    console.log('进入调速模式');
+
+                }
+                //发送按钮语言
+
+                if (idt.includes('10571237') &amp;&amp; tex == '!보내다' || tex == '!send' || tex == '!发送') {
+
+
+                	getDom('btn_send').click();
+                }
+
+
+                //语言命令(在有新消息的情况下执行)
+                // &amp;&amp;tex='!시간'||tex='!时间'
+                if (idt == '1057123772' &amp;&amp; tex == '!시간') {
+                	var date = new Date();
+                	console.log('시간:' + date);
+                }
+                // !자동시간알림自动报时间启动
+                if (idt.includes('10571237') &amp;&amp; tex == '!자동시간알림') {
+                	console.log('管理员(' + idt + '):' + '보고시간(自动报时)');
+                	document.getElementById('autoTimeId').click();
+
+                }
+                // !보고시간现在手动的时间
+                if (tex == '!보고시간' || tex == '!시간' || tex == '!time') {
+                	console.log('管理员(' + idt + '):' + '보고시간(报告时间)');
+                    //获取1-3的随机数字
+                    // console.log(parseInt(Math.random()*NO/1));
+                    var rdmNo = parseInt(Math.random() * 3 / 1 + 1);
+                    setTimeout(function () {
+                    	document.getElementById('handTimeId').click();
+                    }, rdmNo * 1000);
+
+
+                }
+
+                //!방송시작시간广播开始时间
+                function getSonButtonDom1(dom) {
+                	dom = document.getElementsByClassName(dom).item(0).children[0].lastChild;
+                	return dom;
+                }
+
+                if (tex == '!방송시작시간') {
+                	var detail_view = getSonButtonDom1('detail_view');
+
+                	sendMessage(detail_view.textContent);
+
+
+                }
+
+
+                //收藏或者点赞
+                function getSonButtonDom(dom) {
+                	dom = document.getElementsByClassName(dom).item(0).children[0];
+                	return dom;
+                }
+
+                if (tex == '!별' || tex == '!즐겨찾기' || tex == '!UP' || tex == '!좋아요' || tex == '!좋아') {
+                    //收藏
+                    var bookmarkSonDom;
+                    //点赞
+                    var up_recommend;
+                    switch (true) {
+                    	case tex == '!별' || tex == '!즐겨찾기':
+                    	bookmarkSonDom = getSonButtonDom('bookmark');
+                    	if (bookmarkSonDom.className == '') {
+                    		bookmarkSonDom.click();
+                    		setTimeout(function () {
+                    			bookmarkSonDom = getSonButtonDom('bookmark');
+                    			if (bookmarkSonDom.className == 'on') {
+                    				sendMessage('@' + nickName + ':즐겨찾기 추가 성공');
+                    			} else {
+                    				sendMessage('@' + nickName + ':즐겨찾기 추가 실수');
+                    			}
+                    		}, 1000);
+                    	} else {
+                                //收藏失败,您已经收藏
+                                sendMessage('@' + nickName + ':이미 즐겨찾기');
+                            }
+                            break;
+                            case tex == '!UP' || tex == '!좋아요' || tex == '!좋아':
+                            up_recommend = getSonButtonDom('up_recommend');
+                            if (up_recommend.className == 'on') {
+                                //点赞失败,您已经点赞
+                                sendMessage('@' + nickName + ':이미 좋아요 표시됨');
+
+                            } else if (up_recommend.className == '') {
+                            	up_recommend.click();
+                            	setTimeout(function () {
+                            		up_recommend = getSonButtonDom('up_recommend');
+                            		if (up_recommend.className == 'on') {
+                            			console.log('点赞成功:' + up_recommend.className);
+                            			sendMessage('@' + nickName + ':좋아요 성공');
+                            		} else {
+                            			console.log('点赞失败');
+                            			sendMessage('@' + nickName + ':좋아요 실수');
+                            		}
+                            	}, 1000);
+                            }
+                            break;
+                            default:
+                            break;
+                        }
+                    }
+
+
+                //!멈추다 停止
+                //内容发送!text:😗😗,2x3  !text:😗,2x0.01  !text:/짱좋아//짱좋아/,3x2
+                // !text:/즐거워/,5x5 id 는 이것 을 포함 해야만 명령 을 실행 할 수 있 습 니 다.이 명령 은 관리자 의 채 팅 번역 기능 을 닫 아야 합 니 다.수 동 설정 도 같은 효과 입 니 다.
+                // !text:😗,2x1 명령 권한 이 열 렸 습 니 다.관리자 계 정 이나 앵 커 계 정 은 채 팅 번역 기능 을 닫 아야 합 니 다.
+
+                if (tex.includes('!text:') &amp;&amp; tex.includes('x')) {
+                	function getDom(dom) {
+                		var dom = document.getElementById(dom);
+                		return dom;
+                	}
+
+                	var testInput = getDom('testInput');
+                	var inputTimes = getDom('inputTimes');
+                	var inputFrequency = getDom('inputFrequency');
+                    //固定位置
+                    var text = tex.substring(6, tex.lastIndexOf(','));
+                    var firstNo = tex.substring(tex.lastIndexOf(',') + 1, tex.lastIndexOf('x'));
+                    var lastNo = tex.substring(tex.lastIndexOf('x') + 1);
+
+                    //获取1-3的随机数字
+                    // console.log(parseInt(Math.random()*NO/1));
+                    var rdmNo = parseInt(Math.random() * 3 / 1 + 1);
+
+                    setTimeout(function () {
+                        //发送数据
+                        getDom('testInput').value = text;
+                        getDom('inputTimes').value = firstNo;
+                        getDom('inputFrequency').value = lastNo;
+
+                        var send_message = getDom('send_message');
+                        send_message.click();
+
+                        //数据还原1,1
+                        getDom('testInput').value = testInput_last.value;
+                        // getDom('inputTimes').value=inputTimes_last.value;
+                        // getDom('inputFrequency').value=inputFrequency_last.value;
+                        getDom('inputTimes').value = 1;
+                        getDom('inputFrequency').value = 1;
+
+                    }, rdmNo * 1000);
+
+
+                }
+            }
+            le = document.getElementsByTagName('dt').length;
+        }
+        //获取信息的延迟时间
+    }, delayInputFrequency);
+    " title="즉시 정보 읽 기" style="font-size: large; color: red;">检索m</button>
+
+
+    <hr>
+
+
+
+
+
+
+    <h3 style="font-size: large;color: yellow;">대량정보기능:</h3>
+    <!-- 内容： -->
+    <span id="textId" style="font-size: large; color: red;">内容</span>:
+    <textarea id="testInput" style="resize:none"  ></textarea> 
+    <!-- <input id="testInput" type="text" style="width: 50%;height: 30px;" placeholder=""> -->
+
+
+    <button id="mainFaceButtonId" onclick="
+
+    function getDom(dom) {
+    	dom = document.getElementById(dom);
+    	return dom;
+    }
+
+    var mainFace=document.getElementById('mainFace')
+
+    if (mainFace.style.display=='none') {
+    	mainFace.style.display='block';
+    }else{
+
+    	mainFace.style.display='none';
+    }
+
+    ">😀</button>
+
+
+    <!-- 环境快速部署 -->
+    <button id="environmentButtonId" onclick="
+
+    function getDom(dom){
+    	var dom =document.getElementById(dom);
+    	return dom;
+    }
+		//启动自动时间
+		getDom('autoTimeId').click();
+		//getDom('autoTimeId2').click();
+
+        var isAutoTimeStart= document.getElementsByName('isAutoTimeStart');
+        isAutoTimeStart[0].onchange=function(){
+
+
+            getDom('autoTimeId').style='background-color:#7FFF00;font-size:large;color:yellow';
+            this.style.visibility='hidden';
+            isAutoTimeStart[1].style.visibility='visible';
+
+            getDom('overAutoTime').style='background-color:red'
+            getDom('startAutoTime').style='background-color:#7FFF00;font-size:large';
+        }; isAutoTimeStart[1].onchange=function(){
+         getDom('autoTimeId').style='background-color:#DCDCDC;font-size:default;color:black';
+         this.style.visibility='hidden';
+         isAutoTimeStart[0].style.visibility='visible';
+         getDom('overAutoTime').style='background-color:#7FFF00;font-size:large';
+         getDom('startAutoTime').style='background-color:red';
+     };
+
+
+		//初始化数据
+		getDom('inputTimes').value=1;
+		getDom('inputFrequency').value=1;
+
+		//检索m消息
+		getDom('retrievalButtonId').click();
+
+
+
+		//优化界面
+		//背景图地址
+		var src=document.getElementsByClassName('bj_thumbnail').item(0).children[0].children[0].getAttribute('src');
+		var body =document.getElementsByTagName('body').item(0);
+		body.style='background-image:url('+src+');background-size: 100%;background-repeat: no-repeat;';
+		
+		
+		//background-image:url('+src+');我的div
+		getDom('myDiv').style='visibility:visible;margin:0px;width:100%;height:100%;background-size: 100%;background-repeat: no-repeat;';
+
+		//背景透明
+		var allTags =document.getElementsByTagName('div');
+		for (var i =0;i< allTags.length ; i++) {
+			allTags[i].style.background='none';
+
+		}
+
+		//隐藏显示
+		getDom('actionbox').style='visibility:hidden';
+		getDom('ul1').style='visibility:visible';
+		getDom('ul2').style='visibility:visible';
+        getDom('write_area').style='display:none';
+        getDom('btn_send').style='display:none';
+
+		// getDom('write_area').style='visibility:visible';
+		// getDom('btn_send').style='visibility:visible';
+
+
+		//控制显示
+		getDom('showMessageLast').style.display='block';
+
+		
+
+		//表情特效
+		getDom('mainFace').style='overflow:scroll;width: 300px;height:500px;margin-left:-20%;margin-top:-10%; position: fixed;';
+		var mainFace=document.getElementById('mainFace')
+		var mainFaceChildrens = mainFace.children;
+		for (var i = 0; i < mainFaceChildrens.length; i++) {
+			if (mainFaceChildrens[i].tagName != 'H2') {
+
+				var mainFaceGrandSons = mainFaceChildrens[i].children
+				for (var j = 0; j < mainFaceGrandSons.length; j++) {
+
+					mainFaceGrandSons[j].onclick = function () {
+
+						this.style = 'background-color:white;';
+						this.setAttribute('title', this.textContent)
+						getDom('testInput').value += this.textContent;
+					}
+					mainFaceGrandSons[j].onmouseover = function () {
+						this.style = 'background-color:red;';
+					}
+					mainFaceGrandSons[j].onmouseleave = function () {
+						this.style = 'background-color:white;';
+					}
+
+				}
+			}
+
+		}
+
+
+
+		//Languages语言
+
+		getDom('changeLanguageSelect').value='ko';
+
+		languages={
+			'zh':{'text':'内容','times':'次数','frequency':'间隔时间','handTime':'现在时间','send':'寄出','environment':'Start','stop':'停止','retrievalMessage':'检索信息','subscriptId':'下标','zh_CN':'中文','ko_KR':'韩语','auto_time':'自动报时'},
+			'ko':{'text':'내용','times':'횟수','frequency':'간격시간(s)','handTime':'현재시간','send':'보내다','environment':'Start','stop':'멈추다','retrievalMessage':'메시지검색','subscriptId':'포인터','zh_CN':'중국어','ko_KR':'한국어','auto_time':'자동보고시간'} 
+		}
+
+		getDom('textId').innerHTML=languages.ko.text;
+		getDom('timesId').innerHTML=languages.ko.times;
+		getDom('frequencyId').innerHTML=languages.ko.frequency;
+		getDom('handTimeId').innerHTML=languages.ko.handTime;
+		getDom('sendId').innerHTML=languages.ko.send;
+		getDom('environmentSpanId').innerHTML=languages.ko.environment;
+		getDom('stopButtonId').innerHTML=languages.ko.stop;
+		getDom('retrievalButtonId').innerHTML=languages.ko.retrievalMessage;
+		// getDom('subscriptId').innerHTML=languages.ko.subscriptId;
+		getDom('langChinese').innerHTML=languages.ko.zh_CN;
+		getDom('langKorean').innerHTML=languages.ko.ko_KR;
+		getDom('autoTimeId').innerHTML=languages.ko.auto_time;
+		//切换时间
+		getDom('autoTimeId').click();
+
+
+		
+		//同步内容和输入框区域cols='5'; rows='5'
+		getDom('testInput').style='width:60%;';
+		getDom('testInput').setAttribute('rows','2');
+
+		getDom('btn_send').onclick=function(){
+			getDom('testInput').value='';
+		}
+
+		getDom('write_area').onfocus=function(){
+			getDom('testInput').value=getDom('write_area').textContent;
+			getDom('testInput').focus();
+
+		}
+		getDom('write_area').onblur=function(){
+			getDom('testInput').value=getDom('write_area').textContent;
+			getDom('testInput').focus();
+		}
+		getDom('testInput').onfocus=function(){
+			getDom('write_area').innerHTML=getDom('testInput').value;
+		}
+		getElementById('testInput').onblur=function(){
+			getDom('write_area').innerHTML=getDom('testInput').value;
+		}
+
+
+
+
+		//初始化字体
+		getDom('environmentButtonId').style='font-size:large;color:red';
+		getDom('textId').style='font-size:large;color:red';
+		getDom('retrievalButtonId').style='font-size:large;color:red';
+		// getDom('testInput').setaAttibute('')
+		
+
+		
+		" title="빠 른 설정 환경" style="font-size: large; color: yellow;"><span id="environmentSpanId">Start</span></button>
+
+
+
+
+		<hr/>
+		<br/>
+		<div id="mainFace" style="border: 2px black solid;" >
+
+
+			<h2 id="face-people">人物符号</h2>
+			<div class="emoji-list"><span class="emoji emoji1f600" style="">😀</span><span class="emoji emoji1f601">😁</span><span class="emoji emoji1f602">😂</span><span class="emoji emoji1f603">😃</span><span class="emoji emoji1f604">😄</span><span class="emoji emoji1f605">😅</span><span class="emoji emoji1f606">😆</span><span class="emoji emoji1f609">😉</span><span class="emoji emoji1f60a">😊</span><span class="emoji emoji1f60b">😋</span><span class="emoji emoji1f60e">😎</span><span class="emoji emoji1f60d" style="">😍</span><span class="emoji emoji1f618">😘</span><span class="emoji emoji1f617">😗</span><span class="emoji emoji1f619">😙</span><span class="emoji emoji1f61a">😚</span><span class="emoji emoji263a">☺</span><span class="emoji emoji1f642">🙂</span><span class="emoji emoji1f917">🤗</span><span class="emoji emoji1f607">😇</span><span class="emoji emoji1f914">🤔</span><span class="emoji emoji1f610">😐</span><span class="emoji emoji1f611">😑</span><span class="emoji emoji1f636">😶</span><span class="emoji emoji1f644">🙄</span><span class="emoji emoji1f60f">😏</span><span class="emoji emoji1f623">😣</span><span class="emoji emoji1f625">😥</span><span class="emoji emoji1f62e">😮</span><span class="emoji emoji1f910">🤐</span><span class="emoji emoji1f62f">😯</span><span class="emoji emoji1f62a">😪</span><span class="emoji emoji1f62b">😫</span><span class="emoji emoji1f634">😴</span><span class="emoji emoji1f60c">😌</span><span class="emoji emoji1f913">🤓</span><span class="emoji emoji1f61b">😛</span><span class="emoji emoji1f61c">😜</span><span class="emoji emoji1f61d">😝</span><span class="emoji emoji1f641">🙁</span><span class="emoji emoji1f612">😒</span><span class="emoji emoji1f613">😓</span><span class="emoji emoji1f614">😔</span><span class="emoji emoji1f615">😕</span><span class="emoji emoji1f616">😖</span><span class="emoji emoji1f643">🙃</span><span class="emoji emoji1f637">😷</span><span class="emoji emoji1f912">🤒</span><span class="emoji emoji1f915">🤕</span><span class="emoji emoji1f911">🤑</span><span class="emoji emoji1f632">😲</span><span class="emoji emoji1f61e">😞</span><span class="emoji emoji1f61f">😟</span><span class="emoji emoji1f624">😤</span><span class="emoji emoji1f622">😢</span><span class="emoji emoji1f62d">😭</span><span class="emoji emoji1f626">😦</span><span class="emoji emoji1f627">😧</span><span class="emoji emoji1f628">😨</span><span class="emoji emoji1f629">😩</span><span class="emoji emoji1f62c">😬</span><span class="emoji emoji1f630">😰</span><span class="emoji emoji1f631">😱</span><span class="emoji emoji1f633">😳</span><span class="emoji emoji1f635">😵</span><span class="emoji emoji1f621">😡</span><span class="emoji emoji1f620">😠</span><span class="emoji emoji1f608">😈</span><span class="emoji emoji1f47f">👿</span><span class="emoji emoji1f479">👹</span><span class="emoji emoji1f47a">👺</span><span class="emoji emoji1f480">💀</span><span class="emoji emoji1f47b">👻</span><span class="emoji emoji1f47d">👽</span><span class="emoji emoji1f47e">👾</span><span class="emoji emoji1f916">🤖</span><span class="emoji emoji1f4a9">💩</span><span class="emoji emoji1f63a">😺</span><span class="emoji emoji1f638">😸</span><span class="emoji emoji1f639">😹</span><span class="emoji emoji1f63b">😻</span><span class="emoji emoji1f63c">😼</span><span class="emoji emoji1f63d">😽</span><span class="emoji emoji1f640">🙀</span><span class="emoji emoji1f63f">😿</span><span class="emoji emoji1f63e">😾</span><span class="emoji emoji1f648">🙈</span><span class="emoji emoji1f649">🙉</span><span class="emoji emoji1f64a">🙊</span><span class="emoji emoji1f466">👦</span><span class="emoji emoji1f467">👧</span><span class="emoji emoji1f468">👨</span><span class="emoji emoji1f469">👩</span><span class="emoji emoji1f474">👴</span><span class="emoji emoji1f475">👵</span><span class="emoji emoji1f476">👶</span><span class="emoji emoji1f471">👱</span><span class="emoji emoji1f46e">👮</span><span class="emoji emoji1f472">👲</span><span class="emoji emoji1f473">👳</span><span class="emoji emoji1f477">👷</span><span class="emoji emoji1f478">👸</span><span class="emoji emoji1f482">💂</span><span class="emoji emoji1f575">🕵</span><span class="emoji emoji1f385">🎅</span><span class="emoji emoji1f47c">👼</span><span class="emoji emoji1f46f">👯</span><span class="emoji emoji1f486">💆</span><span class="emoji emoji1f487">💇</span><span class="emoji emoji1f470">👰</span><span class="emoji emoji1f64d">🙍</span><span class="emoji emoji1f64e">🙎</span><span class="emoji emoji1f645">🙅</span><span class="emoji emoji1f646">🙆</span><span class="emoji emoji1f481">💁</span><span class="emoji emoji1f64b">🙋</span><span class="emoji emoji1f647">🙇</span><span class="emoji emoji1f64c">🙌</span><span class="emoji emoji1f64f">🙏</span><span class="emoji emoji1f5e3">🗣</span><span class="emoji emoji1f464">👤</span><span class="emoji emoji1f465">👥</span><span class="emoji emoji1f6b6">🚶</span><span class="emoji emoji1f3c3">🏃</span><span class="emoji emoji1f483">💃</span><span class="emoji emoji1f574">🕴</span><span class="emoji emoji1f46b">👫</span><span class="emoji emoji1f46c">👬</span><span class="emoji emoji1f46d">👭</span><span class="emoji emoji1f48f">💏</span><span class="emoji emoji1f491">💑</span><span class="emoji emoji1f46a">👪</span><span class="emoji emoji1f4aa">💪</span><span class="emoji emoji1f448">👈</span><span class="emoji emoji1f449">👉</span><span class="emoji emoji261d">☝</span><span class="emoji emoji1f446">👆</span><span class="emoji emoji1f595">🖕</span><span class="emoji emoji1f447">👇</span><span class="emoji emoji270c">✌</span><span class="emoji emoji1f596">🖖</span><span class="emoji emoji1f918">🤘</span><span class="emoji emoji1f590">🖐</span><span class="emoji emoji270a">✊</span><span class="emoji emoji270b">✋</span><span class="emoji emoji1f44a">👊</span><span class="emoji emoji1f44c">👌</span><span class="emoji emoji1f44d">👍</span><span class="emoji emoji1f44e">👎</span><span class="emoji emoji1f44b">👋</span><span class="emoji emoji1f44f">👏</span><span class="emoji emoji1f450">👐</span><span class="emoji emoji1f485">💅</span><span class="emoji emoji1f442">👂</span><span class="emoji emoji1f443">👃</span><span class="emoji emoji1f463">👣</span><span class="emoji emoji1f440">👀</span><span class="emoji emoji1f441">👁</span><span class="emoji emoji1f445">👅</span><span class="emoji emoji1f444">👄</span><span class="emoji emoji1f48b">💋</span><span class="emoji emoji1f498">💘</span><span class="emoji emoji2764">❤</span><span class="emoji emoji1f493">💓</span><span class="emoji emoji1f494">💔</span><span class="emoji emoji1f495">💕</span><span class="emoji emoji1f496">💖</span><span class="emoji emoji1f497">💗</span><span class="emoji emoji1f499">💙</span><span class="emoji emoji1f49a">💚</span><span class="emoji emoji1f49b">💛</span><span class="emoji emoji1f49c">💜</span><span class="emoji emoji1f49d">💝</span><span class="emoji emoji1f49e">💞</span><span class="emoji emoji1f49f">💟</span><span class="emoji emoji1f48c">💌</span><span class="emoji emoji1f4a4">💤</span><span class="emoji emoji1f4a2">💢</span><span class="emoji emoji1f4a3">💣</span><span class="emoji emoji1f4a5">💥</span><span class="emoji emoji1f4a6">💦</span><span class="emoji emoji1f4a8">💨</span><span class="emoji emoji1f4ab">💫</span><span class="emoji emoji1f4ac">💬</span><span class="emoji emoji1f5e8">🗨</span><span class="emoji emoji1f5ef">🗯</span><span class="emoji emoji1f4ad">💭</span><span class="emoji emoji1f573">🕳</span><span class="emoji emoji1f453">👓</span><span class="emoji emoji1f576">🕶</span><span class="emoji emoji1f454">👔</span><span class="emoji emoji1f455">👕</span><span class="emoji emoji1f456">👖</span><span class="emoji emoji1f457">👗</span><span class="emoji emoji1f458">👘</span><span class="emoji emoji1f459">👙</span><span class="emoji emoji1f45a">👚</span><span class="emoji emoji1f45b">👛</span><span class="emoji emoji1f45c">👜</span><span class="emoji emoji1f45d">👝</span><span class="emoji emoji1f6cd">🛍</span><span class="emoji emoji1f392">🎒</span><span class="emoji emoji1f45e">👞</span><span class="emoji emoji1f45f">👟</span><span class="emoji emoji1f460">👠</span><span class="emoji emoji1f461">👡</span><span class="emoji emoji1f462">👢</span><span class="emoji emoji1f451">👑</span><span class="emoji emoji1f452">👒</span><span class="emoji emoji1f3a9">🎩</span><span class="emoji emoji1f393">🎓</span><span class="emoji emoji1f4ff">📿</span><span class="emoji emoji1f484">💄</span><span class="emoji emoji1f48d">💍</span><span class="emoji emoji1f48e">💎</span></div>
+
+
+			<h2 id="object">物件符号</h2><div class="emoji-list"><span class="emoji emoji1f507">🔇</span><span class="emoji emoji1f508">🔈</span><span class="emoji emoji1f509">🔉</span><span class="emoji emoji1f50a">🔊</span><span class="emoji emoji1f4e2">📢</span><span class="emoji emoji1f4e3">📣</span><span class="emoji emoji1f4ef">📯</span><span class="emoji emoji1f514">🔔</span><span class="emoji emoji1f515">🔕</span><span class="emoji emoji1f3bc">🎼</span><span class="emoji emoji1f3b5">🎵</span><span class="emoji emoji1f3b6">🎶</span><span class="emoji emoji1f399">🎙</span><span class="emoji emoji1f39a">🎚</span><span class="emoji emoji1f39b">🎛</span><span class="emoji emoji1f3a4">🎤</span><span class="emoji emoji1f3a7">🎧</span><span class="emoji emoji1f3b7">🎷</span><span class="emoji emoji1f3b8">🎸</span><span class="emoji emoji1f3b9">🎹</span><span class="emoji emoji1f3ba">🎺</span><span class="emoji emoji1f3bb">🎻</span><span class="emoji emoji1f4fb">📻</span><span class="emoji emoji1f4f1">📱</span><span class="emoji emoji1f4f2">📲</span><span class="emoji emoji260e">☎</span><span class="emoji emoji1f4de">📞</span><span class="emoji emoji1f4df">📟</span><span class="emoji emoji1f4e0">📠</span><span class="emoji emoji1f50b">🔋</span><span class="emoji emoji1f50c">🔌</span><span class="emoji emoji1f4bb">💻</span><span class="emoji emoji1f5a5">🖥</span><span class="emoji emoji1f5a8">🖨</span><span class="emoji emoji2328">⌨</span><span class="emoji emoji1f5b1">🖱</span><span class="emoji emoji1f5b2">🖲</span><span class="emoji emoji1f4bd">💽</span><span class="emoji emoji1f4be">💾</span><span class="emoji emoji1f4bf">💿</span><span class="emoji emoji1f4c0">📀</span><span class="emoji emoji1f3a5">🎥</span><span class="emoji emoji1f3ac">🎬</span><span class="emoji emoji1f4fd">📽</span><span class="emoji emoji1f4fa">📺</span><span class="emoji emoji1f4f7">📷</span><span class="emoji emoji1f4f8">📸</span><span class="emoji emoji1f4f9">📹</span><span class="emoji emoji1f4fc">📼</span><span class="emoji emoji1f50d">🔍</span><span class="emoji emoji1f50e">🔎</span><span class="emoji emoji1f52c">🔬</span><span class="emoji emoji1f52d">🔭</span><span class="emoji emoji1f4e1">📡</span><span class="emoji emoji1f56f">🕯</span><span class="emoji emoji1f4a1">💡</span><span class="emoji emoji1f526">🔦</span><span class="emoji emoji1f3ee">🏮</span><span class="emoji emoji1f4d4">📔</span><span class="emoji emoji1f4d5">📕</span><span class="emoji emoji1f4d6">📖</span><span class="emoji emoji1f4d7">📗</span><span class="emoji emoji1f4d8">📘</span><span class="emoji emoji1f4d9">📙</span><span class="emoji emoji1f4da">📚</span><span class="emoji emoji1f4d3">📓</span><span class="emoji emoji1f4d2">📒</span><span class="emoji emoji1f4c3">📃</span><span class="emoji emoji1f4dc">📜</span><span class="emoji emoji1f4c4">📄</span><span class="emoji emoji1f4f0">📰</span><span class="emoji emoji1f5de">🗞</span><span class="emoji emoji1f4d1">📑</span><span class="emoji emoji1f516">🔖</span><span class="emoji emoji1f4b0">💰</span><span class="emoji emoji1f4b4">💴</span><span class="emoji emoji1f4b5">💵</span><span class="emoji emoji1f4b6">💶</span><span class="emoji emoji1f4b7">💷</span><span class="emoji emoji1f4b8">💸</span><span class="emoji emoji1f4b3">💳</span><span class="emoji emoji1f4b9">💹</span><span class="emoji emoji2709">✉</span><span class="emoji emoji1f4e7">📧</span><span class="emoji emoji1f4e8">📨</span><span class="emoji emoji1f4e9">📩</span><span class="emoji emoji1f4e4">📤</span><span class="emoji emoji1f4e5">📥</span><span class="emoji emoji1f4e6">📦</span><span class="emoji emoji1f4eb">📫</span><span class="emoji emoji1f4ea">📪</span><span class="emoji emoji1f4ec">📬</span><span class="emoji emoji1f4ed">📭</span><span class="emoji emoji1f4ee">📮</span><span class="emoji emoji1f5f3">🗳</span><span class="emoji emoji270f">✏</span><span class="emoji emoji2712">✒</span><span class="emoji emoji1f58b">🖋</span><span class="emoji emoji1f58a">🖊</span><span class="emoji emoji1f58c">🖌</span><span class="emoji emoji1f58d">🖍</span><span class="emoji emoji1f4dd">📝</span><span class="emoji emoji1f4bc">💼</span><span class="emoji emoji1f4c1">📁</span><span class="emoji emoji1f4c2">📂</span><span class="emoji emoji1f5c2">🗂</span><span class="emoji emoji1f4c5">📅</span><span class="emoji emoji1f4c6">📆</span><span class="emoji emoji1f5d2">🗒</span><span class="emoji emoji1f5d3">🗓</span><span class="emoji emoji1f4c7">📇</span><span class="emoji emoji1f4c8">📈</span><span class="emoji emoji1f4c9">📉</span><span class="emoji emoji1f4ca">📊</span><span class="emoji emoji1f4cb">📋</span><span class="emoji emoji1f4cc">📌</span><span class="emoji emoji1f4cd">📍</span><span class="emoji emoji1f4ce">📎</span><span class="emoji emoji1f587">🖇</span><span class="emoji emoji1f4cf">📏</span><span class="emoji emoji1f4d0">📐</span><span class="emoji emoji2702">✂</span><span class="emoji emoji1f5c3">🗃</span><span class="emoji emoji1f5c4">🗄</span><span class="emoji emoji1f5d1">🗑</span><span class="emoji emoji1f512">🔒</span><span class="emoji emoji1f513">🔓</span><span class="emoji emoji1f50f">🔏</span><span class="emoji emoji1f510">🔐</span><span class="emoji emoji1f511">🔑</span><span class="emoji emoji1f5dd">🗝</span><span class="emoji emoji1f528">🔨</span><span class="emoji emoji1f6e0">🛠</span><span class="emoji emoji1f527">🔧</span><span class="emoji emoji1f529">🔩</span><span class="emoji emoji1f5dc">🗜</span><span class="emoji emoji1f517">🔗</span><span class="emoji emoji1f489">💉</span><span class="emoji emoji1f48a">💊</span><span class="emoji emoji1f5e1">🗡</span><span class="emoji emoji1f52a">🔪</span><span class="emoji emoji1f52b">🔫</span><span class="emoji emoji1f6e1">🛡</span><span class="emoji emoji1f3f9">🏹</span><span class="emoji emoji1f6ac">🚬</span><span class="emoji emoji1f5ff">🗿</span><span class="emoji emoji1f6e2">🛢</span><span class="emoji emoji1f52e">🔮</span></div><h2 id="nature-food">大自然符号</h2><div class="emoji-list"><span class="emoji emoji1f435">🐵</span><span class="emoji emoji1f412">🐒</span><span class="emoji emoji1f436">🐶</span><span class="emoji emoji1f415">🐕</span><span class="emoji emoji1f429">🐩</span><span class="emoji emoji1f43a">🐺</span><span class="emoji emoji1f431">🐱</span><span class="emoji emoji1f408">🐈</span><span class="emoji emoji1f981">🦁</span><span class="emoji emoji1f42f">🐯</span><span class="emoji emoji1f405">🐅</span><span class="emoji emoji1f406">🐆</span><span class="emoji emoji1f434">🐴</span><span class="emoji emoji1f40e">🐎</span><span class="emoji emoji1f984">🦄</span><span class="emoji emoji1f42e">🐮</span><span class="emoji emoji1f402">🐂</span><span class="emoji emoji1f403">🐃</span><span class="emoji emoji1f404">🐄</span><span class="emoji emoji1f437">🐷</span><span class="emoji emoji1f416">🐖</span><span class="emoji emoji1f417">🐗</span><span class="emoji emoji1f43d">🐽</span><span class="emoji emoji1f40f">🐏</span><span class="emoji emoji1f411">🐑</span><span class="emoji emoji1f410">🐐</span><span class="emoji emoji1f42a">🐪</span><span class="emoji emoji1f42b">🐫</span><span class="emoji emoji1f418">🐘</span><span class="emoji emoji1f42d">🐭</span><span class="emoji emoji1f401">🐁</span><span class="emoji emoji1f400">🐀</span><span class="emoji emoji1f439">🐹</span><span class="emoji emoji1f430">🐰</span><span class="emoji emoji1f407">🐇</span><span class="emoji emoji1f43f">🐿</span><span class="emoji emoji1f43b">🐻</span><span class="emoji emoji1f428">🐨</span><span class="emoji emoji1f43c">🐼</span><span class="emoji emoji1f43e">🐾</span><span class="emoji emoji1f983">🦃</span><span class="emoji emoji1f414">🐔</span><span class="emoji emoji1f413">🐓</span><span class="emoji emoji1f423">🐣</span><span class="emoji emoji1f425">🐥</span><span class="emoji emoji1f424">🐤</span><span class="emoji emoji1f426">🐦</span><span class="emoji emoji1f427">🐧</span><span class="emoji emoji1f54a">🕊</span><span class="emoji emoji1f438">🐸</span><span class="emoji emoji1f40a">🐊</span><span class="emoji emoji1f422">🐢</span><span class="emoji emoji1f40d">🐍</span><span class="emoji emoji1f432">🐲</span><span class="emoji emoji1f409">🐉</span><span class="emoji emoji1f433">🐳</span><span class="emoji emoji1f40b">🐋</span><span class="emoji emoji1f42c">🐬</span><span class="emoji emoji1f41f">🐟</span><span class="emoji emoji1f420">🐠</span><span class="emoji emoji1f421">🐡</span><span class="emoji emoji1f419">🐙</span><span class="emoji emoji1f41a">🐚</span><span class="emoji emoji1f980">🦀</span><span class="emoji emoji1f40c">🐌</span><span class="emoji emoji1f41b">🐛</span><span class="emoji emoji1f41c">🐜</span><span class="emoji emoji1f41d">🐝</span><span class="emoji emoji1f41e">🐞</span><span class="emoji emoji1f577">🕷</span><span class="emoji emoji1f578">🕸</span><span class="emoji emoji1f982">🦂</span><span class="emoji emoji1f490">💐</span><span class="emoji emoji1f338">🌸</span><span class="emoji emoji1f4ae">💮</span><span class="emoji emoji1f3f5">🏵</span><span class="emoji emoji1f339">🌹</span><span class="emoji emoji1f33a">🌺</span><span class="emoji emoji1f33b">🌻</span><span class="emoji emoji1f33c">🌼</span><span class="emoji emoji1f337">🌷</span><span class="emoji emoji1f331">🌱</span><span class="emoji emoji1f332">🌲</span><span class="emoji emoji1f333">🌳</span><span class="emoji emoji1f334">🌴</span><span class="emoji emoji1f335">🌵</span><span class="emoji emoji1f33e">🌾</span><span class="emoji emoji1f33f">🌿</span><span class="emoji emoji1f340">🍀</span><span class="emoji emoji1f341">🍁</span><span class="emoji emoji1f342">🍂</span><span class="emoji emoji1f343">🍃</span><span class="emoji emoji1f347">🍇</span><span class="emoji emoji1f348">🍈</span><span class="emoji emoji1f349">🍉</span><span class="emoji emoji1f34a">🍊</span><span class="emoji emoji1f34b">🍋</span><span class="emoji emoji1f34c">🍌</span><span class="emoji emoji1f34d">🍍</span><span class="emoji emoji1f34e">🍎</span><span class="emoji emoji1f34f">🍏</span><span class="emoji emoji1f350">🍐</span><span class="emoji emoji1f351">🍑</span><span class="emoji emoji1f352">🍒</span><span class="emoji emoji1f353">🍓</span><span class="emoji emoji1f345">🍅</span><span class="emoji emoji1f346">🍆</span><span class="emoji emoji1f33d">🌽</span><span class="emoji emoji1f336">🌶</span><span class="emoji emoji1f344">🍄</span><span class="emoji emoji1f330">🌰</span><span class="emoji emoji1f35e">🍞</span><span class="emoji emoji1f9c0">🧀</span><span class="emoji emoji1f356">🍖</span><span class="emoji emoji1f357">🍗</span><span class="emoji emoji1f354">🍔</span><span class="emoji emoji1f35f">🍟</span><span class="emoji emoji1f355">🍕</span><span class="emoji emoji1f32d">🌭</span><span class="emoji emoji1f32e">🌮</span><span class="emoji emoji1f32f">🌯</span><span class="emoji emoji1f37f">🍿</span><span class="emoji emoji1f372">🍲</span><span class="emoji emoji1f371">🍱</span><span class="emoji emoji1f358">🍘</span><span class="emoji emoji1f359">🍙</span><span class="emoji emoji1f35a">🍚</span><span class="emoji emoji1f35b">🍛</span><span class="emoji emoji1f35c">🍜</span><span class="emoji emoji1f35d">🍝</span><span class="emoji emoji1f360">🍠</span><span class="emoji emoji1f362">🍢</span><span class="emoji emoji1f363">🍣</span><span class="emoji emoji1f364">🍤</span><span class="emoji emoji1f365">🍥</span><span class="emoji emoji1f361">🍡</span><span class="emoji emoji1f366">🍦</span><span class="emoji emoji1f367">🍧</span><span class="emoji emoji1f368">🍨</span><span class="emoji emoji1f369">🍩</span><span class="emoji emoji1f36a">🍪</span><span class="emoji emoji1f382">🎂</span><span class="emoji emoji1f370">🍰</span><span class="emoji emoji1f36b">🍫</span><span class="emoji emoji1f36c">🍬</span><span class="emoji emoji1f36d">🍭</span><span class="emoji emoji1f36e">🍮</span><span class="emoji emoji1f36f">🍯</span><span class="emoji emoji1f37c">🍼</span><span class="emoji emoji2615">☕</span><span class="emoji emoji1f375">🍵</span><span class="emoji emoji1f376">🍶</span><span class="emoji emoji1f37e">🍾</span><span class="emoji emoji1f377">🍷</span><span class="emoji emoji1f378">🍸</span><span class="emoji emoji1f379">🍹</span><span class="emoji emoji1f37a">🍺</span><span class="emoji emoji1f37b">🍻</span><span class="emoji emoji1f37d">🍽</span><span class="emoji emoji1f374">🍴</span><span class="emoji emoji1f373">🍳</span><span class="emoji emoji1f3fa">🏺</span></div>
+			<h2 id="travel-activity">地点符号</h2><div class="emoji-list"><span class="emoji emoji1f30d">🌍</span><span class="emoji emoji1f30e">🌎</span><span class="emoji emoji1f30f">🌏</span><span class="emoji emoji1f310">🌐</span><span class="emoji emoji1f5fa">🗺</span><span class="emoji emoji1f3d4">🏔</span><span class="emoji emoji1f30b">🌋</span><span class="emoji emoji1f5fb">🗻</span><span class="emoji emoji1f3d5">🏕</span><span class="emoji emoji1f3d6">🏖</span><span class="emoji emoji1f3dc">🏜</span><span class="emoji emoji1f3dd">🏝</span><span class="emoji emoji1f3de">🏞</span><span class="emoji emoji1f3df">🏟</span><span class="emoji emoji1f3db">🏛</span><span class="emoji emoji1f3d7">🏗</span><span class="emoji emoji1f3d8">🏘</span><span class="emoji emoji1f3d9">🏙</span><span class="emoji emoji1f3da">🏚</span><span class="emoji emoji1f3e0">🏠</span><span class="emoji emoji1f3e1">🏡</span><span class="emoji emoji26ea">⛪</span><span class="emoji emoji1f54b">🕋</span><span class="emoji emoji1f54c">🕌</span><span class="emoji emoji1f54d">🕍</span><span class="emoji emoji1f3e2">🏢</span><span class="emoji emoji1f3e3">🏣</span><span class="emoji emoji1f3e4">🏤</span><span class="emoji emoji1f3e5">🏥</span><span class="emoji emoji1f3e6">🏦</span><span class="emoji emoji1f3e8">🏨</span><span class="emoji emoji1f3e9">🏩</span><span class="emoji emoji1f3ea">🏪</span><span class="emoji emoji1f3eb">🏫</span><span class="emoji emoji1f3ec">🏬</span><span class="emoji emoji1f3ed">🏭</span><span class="emoji emoji1f3ef">🏯</span><span class="emoji emoji1f3f0">🏰</span><span class="emoji emoji1f492">💒</span><span class="emoji emoji1f5fc">🗼</span><span class="emoji emoji1f5fd">🗽</span><span class="emoji emoji1f5fe">🗾</span><span class="emoji emoji26f2">⛲</span><span class="emoji emoji26fa">⛺</span><span class="emoji emoji1f301">🌁</span><span class="emoji emoji1f303">🌃</span><span class="emoji emoji1f304">🌄</span><span class="emoji emoji1f305">🌅</span><span class="emoji emoji1f306">🌆</span><span class="emoji emoji1f307">🌇</span><span class="emoji emoji1f309">🌉</span><span class="emoji emoji2668">♨</span><span class="emoji emoji1f30c">🌌</span><span class="emoji emoji1f3a0">🎠</span><span class="emoji emoji1f3a1">🎡</span><span class="emoji emoji1f3a2">🎢</span><span class="emoji emoji1f488">💈</span><span class="emoji emoji1f3aa">🎪</span><span class="emoji emoji1f3ad">🎭</span><span class="emoji emoji1f5bc">🖼</span><span class="emoji emoji1f3a8">🎨</span><span class="emoji emoji1f3b0">🎰</span><span class="emoji emoji1f682">🚂</span><span class="emoji emoji1f683">🚃</span><span class="emoji emoji1f684">🚄</span><span class="emoji emoji1f685">🚅</span><span class="emoji emoji1f686">🚆</span><span class="emoji emoji1f687">🚇</span><span class="emoji emoji1f688">🚈</span><span class="emoji emoji1f689">🚉</span><span class="emoji emoji1f68a">🚊</span><span class="emoji emoji1f69d">🚝</span><span class="emoji emoji1f69e">🚞</span><span class="emoji emoji1f68b">🚋</span><span class="emoji emoji1f68c">🚌</span><span class="emoji emoji1f68d">🚍</span><span class="emoji emoji1f68e">🚎</span><span class="emoji emoji1f68f">🚏</span><span class="emoji emoji1f690">🚐</span><span class="emoji emoji1f691">🚑</span><span class="emoji emoji1f692">🚒</span><span class="emoji emoji1f693">🚓</span><span class="emoji emoji1f694">🚔</span><span class="emoji emoji1f695">🚕</span><span class="emoji emoji1f696">🚖</span><span class="emoji emoji1f697">🚗</span><span class="emoji emoji1f698">🚘</span><span class="emoji emoji1f699">🚙</span><span class="emoji emoji1f69a">🚚</span><span class="emoji emoji1f69b">🚛</span><span class="emoji emoji1f69c">🚜</span><span class="emoji emoji1f6b2">🚲</span><span class="emoji emoji26fd">⛽</span><span class="emoji emoji1f6e3">🛣</span><span class="emoji emoji1f6e4">🛤</span><span class="emoji emoji1f6a8">🚨</span><span class="emoji emoji1f6a5">🚥</span><span class="emoji emoji1f6a6">🚦</span><span class="emoji emoji1f6a7">🚧</span><span class="emoji emoji2693">⚓</span><span class="emoji emoji26f5">⛵</span><span class="emoji emoji1f6a3">🚣</span><span class="emoji emoji1f6a4">🚤</span><span class="emoji emoji1f6f3">🛳</span><span class="emoji emoji1f6e5">🛥</span><span class="emoji emoji1f6a2">🚢</span><span class="emoji emoji2708">✈</span><span class="emoji emoji1f6e9">🛩</span><span class="emoji emoji1f6eb">🛫</span><span class="emoji emoji1f6ec">🛬</span><span class="emoji emoji1f4ba">💺</span><span class="emoji emoji1f681">🚁</span><span class="emoji emoji1f69f">🚟</span><span class="emoji emoji1f6a0">🚠</span><span class="emoji emoji1f6a1">🚡</span><span class="emoji emoji1f680">🚀</span><span class="emoji emoji1f6f0">🛰</span><span class="emoji emoji1f6ce">🛎</span><span class="emoji emoji1f6aa">🚪</span><span class="emoji emoji1f6cc">🛌</span><span class="emoji emoji1f6cf">🛏</span><span class="emoji emoji1f6cb">🛋</span><span class="emoji emoji1f6bd">🚽</span><span class="emoji emoji1f6bf">🚿</span><span class="emoji emoji1f6c0">🛀</span><span class="emoji emoji1f6c1">🛁</span><span class="emoji emoji231b">⌛</span><span class="emoji emoji23f3">⏳</span><span class="emoji emoji231a">⌚</span><span class="emoji emoji23f0">⏰</span><span class="emoji emoji1f570">🕰</span><span class="emoji emoji1f55b">🕛</span><span class="emoji emoji1f567">🕧</span><span class="emoji emoji1f550">🕐</span><span class="emoji emoji1f55c">🕜</span><span class="emoji emoji1f551">🕑</span><span class="emoji emoji1f55d">🕝</span><span class="emoji emoji1f552">🕒</span><span class="emoji emoji1f55e">🕞</span><span class="emoji emoji1f553">🕓</span><span class="emoji emoji1f55f">🕟</span><span class="emoji emoji1f554">🕔</span><span class="emoji emoji1f560">🕠</span><span class="emoji emoji1f555">🕕</span><span class="emoji emoji1f561">🕡</span><span class="emoji emoji1f556">🕖</span><span class="emoji emoji1f562">🕢</span><span class="emoji emoji1f557">🕗</span><span class="emoji emoji1f563">🕣</span><span class="emoji emoji1f558">🕘</span><span class="emoji emoji1f564">🕤</span><span class="emoji emoji1f559">🕙</span><span class="emoji emoji1f565">🕥</span><span class="emoji emoji1f55a">🕚</span><span class="emoji emoji1f566">🕦</span><span class="emoji emoji1f311">🌑</span><span class="emoji emoji1f312">🌒</span><span class="emoji emoji1f313">🌓</span><span class="emoji emoji1f314">🌔</span><span class="emoji emoji1f315">🌕</span><span class="emoji emoji1f316">🌖</span><span class="emoji emoji1f317">🌗</span><span class="emoji emoji1f318">🌘</span><span class="emoji emoji1f319">🌙</span><span class="emoji emoji1f31a">🌚</span><span class="emoji emoji1f31b">🌛</span><span class="emoji emoji1f31c">🌜</span><span class="emoji emoji1f321">🌡</span><span class="emoji emoji2600">☀</span><span class="emoji emoji1f31d">🌝</span><span class="emoji emoji1f31e">🌞</span><span class="emoji emoji2b50">⭐</span><span class="emoji emoji1f31f">🌟</span><span class="emoji emoji1f320">🌠</span><span class="emoji emoji2601">☁</span><span class="emoji emoji26c5">⛅</span><span class="emoji emoji1f324">🌤</span><span class="emoji emoji1f325">🌥</span><span class="emoji emoji1f326">🌦</span><span class="emoji emoji1f327">🌧</span><span class="emoji emoji1f328">🌨</span><span class="emoji emoji1f329">🌩</span><span class="emoji emoji1f32a">🌪</span><span class="emoji emoji1f32b">🌫</span><span class="emoji emoji1f32c">🌬</span><span class="emoji emoji1f300">🌀</span><span class="emoji emoji1f308">🌈</span><span class="emoji emoji1f302">🌂</span><span class="emoji emoji2614">☔</span><span class="emoji emoji26a1">⚡</span><span class="emoji emoji2744">❄</span><span class="emoji emoji26c4">⛄</span><span class="emoji emoji1f525">🔥</span><span class="emoji emoji1f4a7">💧</span><span class="emoji emoji1f30a">🌊</span><span class="emoji emoji1f383">🎃</span><span class="emoji emoji1f384">🎄</span><span class="emoji emoji1f386">🎆</span><span class="emoji emoji1f387">🎇</span><span class="emoji emoji2728">✨</span><span class="emoji emoji1f388">🎈</span><span class="emoji emoji1f389">🎉</span><span class="emoji emoji1f38a">🎊</span><span class="emoji emoji1f38b">🎋</span><span class="emoji emoji1f38c">🎌</span><span class="emoji emoji1f38d">🎍</span><span class="emoji emoji1f38e">🎎</span><span class="emoji emoji1f38f">🎏</span><span class="emoji emoji1f390">🎐</span><span class="emoji emoji1f391">🎑</span><span class="emoji emoji1f380">🎀</span><span class="emoji emoji1f381">🎁</span><span class="emoji emoji1f396">🎖</span><span class="emoji emoji1f397">🎗</span><span class="emoji emoji1f39e">🎞</span><span class="emoji emoji1f39f">🎟</span><span class="emoji emoji1f3ab">🎫</span><span class="emoji emoji1f3f7">🏷</span><span class="emoji emoji26bd">⚽</span><span class="emoji emoji26be">⚾</span><span class="emoji emoji1f3c0">🏀</span><span class="emoji emoji1f3c8">🏈</span><span class="emoji emoji1f3c9">🏉</span><span class="emoji emoji1f3be">🎾</span><span class="emoji emoji1f3b1">🎱</span><span class="emoji emoji1f3b3">🎳</span><span class="emoji emoji26f3">⛳</span><span class="emoji emoji1f3cc">🏌</span><span class="emoji emoji1f3a3">🎣</span><span class="emoji emoji1f3bd">🎽</span><span class="emoji emoji1f3bf">🎿</span><span class="emoji emoji1f3c2">🏂</span><span class="emoji emoji1f3c4">🏄</span><span class="emoji emoji1f3c7">🏇</span><span class="emoji emoji1f3ca">🏊</span><span class="emoji emoji1f3cb">🏋</span><span class="emoji emoji1f6b4">🚴</span><span class="emoji emoji1f6b5">🚵</span><span class="emoji emoji1f3ce">🏎</span><span class="emoji emoji1f3cd">🏍</span><span class="emoji emoji1f3c5">🏅</span><span class="emoji emoji1f3c6">🏆</span><span class="emoji emoji1f3cf">🏏</span><span class="emoji emoji1f3d0">🏐</span><span class="emoji emoji1f3d1">🏑</span><span class="emoji emoji1f3d2">🏒</span><span class="emoji emoji1f3d3">🏓</span><span class="emoji emoji1f3f8">🏸</span><span class="emoji emoji1f3af">🎯</span><span class="emoji emoji1f3ae">🎮</span><span class="emoji emoji1f579">🕹</span><span class="emoji emoji1f3b2">🎲</span><span class="emoji emoji2660">♠</span><span class="emoji emoji2665">♥</span><span class="emoji emoji2666">♦</span><span class="emoji emoji2663">♣</span><span class="emoji emoji1f0cf">🃏</span><span class="emoji emoji1f004">🀄</span><span class="emoji emoji1f3b4">🎴</span><span class="emoji emojife4e5">󾓥</span><span class="emoji emojife4e6">󾓦</span><span class="emoji emojife4e7">󾓧</span><span class="emoji emojife4e8">󾓨</span><span class="emoji emojife4e9">󾓩</span><span class="emoji emojife4ea">󾓪</span><span class="emoji emojife4eb">󾓫</span><span class="emoji emojife4ec">󾓬</span><span class="emoji emojife4ed">󾓭</span><span class="emoji emojife4ee">󾓮</span></div><h2 id="symbol">特殊符号</h2><div class="emoji-list"><span class="emoji emoji1f3c1">🏁</span><span class="emoji emoji1f3f3">🏳</span><span class="emoji emoji1f3f4">🏴</span><span class="emoji emoji1f6a9">🚩</span><span class="emoji emoji1f3e7">🏧</span><span class="emoji emoji1f6ae">🚮</span><span class="emoji emoji1f6b0">🚰</span><span class="emoji emoji267f">♿</span><span class="emoji emoji1f6b9">🚹</span><span class="emoji emoji1f6ba">🚺</span><span class="emoji emoji1f6bb">🚻</span><span class="emoji emoji1f6bc">🚼</span><span class="emoji emoji1f6be">🚾</span><span class="emoji emoji1f6c2">🛂</span><span class="emoji emoji1f6c3">🛃</span><span class="emoji emoji1f6c4">🛄</span><span class="emoji emoji1f6c5">🛅</span><span class="emoji emoji26a0">⚠</span><span class="emoji emoji1f6b8">🚸</span><span class="emoji emoji26d4">⛔</span><span class="emoji emoji1f6ab">🚫</span><span class="emoji emoji1f6b3">🚳</span><span class="emoji emoji1f6ad">🚭</span><span class="emoji emoji1f6af">🚯</span><span class="emoji emoji1f6b1">🚱</span><span class="emoji emoji1f6b7">🚷</span><span class="emoji emoji2622">☢</span><span class="emoji emoji2623">☣</span><span class="emoji emoji2b06">⬆</span><span class="emoji emoji2197">↗</span><span class="emoji emoji27a1">➡</span><span class="emoji emoji2198">↘</span><span class="emoji emoji2b07">⬇</span><span class="emoji emoji2199">↙</span><span class="emoji emoji2b05">⬅</span><span class="emoji emoji2196">↖</span><span class="emoji emoji2195">↕</span><span class="emoji emoji2194">↔</span><span class="emoji emoji21a9">↩</span><span class="emoji emoji21aa">↪</span><span class="emoji emoji2934">⤴</span><span class="emoji emoji2935">⤵</span><span class="emoji emoji1f503">🔃</span><span class="emoji emoji1f504">🔄</span><span class="emoji emoji1f519">🔙</span><span class="emoji emoji1f51a">🔚</span><span class="emoji emoji1f51b">🔛</span><span class="emoji emoji1f51c">🔜</span><span class="emoji emoji1f51d">🔝</span><span class="emoji emoji1f6d0">🛐</span><span class="emoji emoji269b">⚛</span><span class="emoji emoji1f52f">🔯</span><span class="emoji emoji267b">♻</span><span class="emoji emoji1f4db">📛</span><span class="emoji emoji1f530">🔰</span><span class="emoji emoji1f531">🔱</span><span class="emoji emoji2b55">⭕</span><span class="emoji emoji2705">✅</span><span class="emoji emoji2611">☑</span><span class="emoji emoji2714">✔</span><span class="emoji emoji2716">✖</span><span class="emoji emoji274c">❌</span><span class="emoji emoji274e">❎</span><span class="emoji emoji2795">➕</span><span class="emoji emoji2796">➖</span><span class="emoji emoji2797">➗</span><span class="emoji emoji27b0">➰</span><span class="emoji emoji27bf">➿</span><span class="emoji emoji303d">〽</span><span class="emoji emoji2733">✳</span><span class="emoji emoji2734">✴</span><span class="emoji emoji2747">❇</span><span class="emoji emoji1f4b1">💱</span><span class="emoji emoji1f4b2">💲</span><span class="emoji emoji2753">❓</span><span class="emoji emoji2754">❔</span><span class="emoji emoji2755">❕</span><span class="emoji emoji2757">❗</span><span class="emoji emoji3030">〰</span><span class="emoji emoji2648">♈</span><span class="emoji emoji2649">♉</span><span class="emoji emoji264a">♊</span><span class="emoji emoji264b">♋</span><span class="emoji emoji264c">♌</span><span class="emoji emoji264d">♍</span><span class="emoji emoji264e">♎</span><span class="emoji emoji264f">♏</span><span class="emoji emoji2650">♐</span><span class="emoji emoji2651">♑</span><span class="emoji emoji2652">♒</span><span class="emoji emoji2653">♓</span><span class="emoji emoji26ce">⛎</span><span class="emoji emoji1f500">🔀</span><span class="emoji emoji1f501">🔁</span><span class="emoji emoji1f502">🔂</span><span class="emoji emoji25b6">▶</span><span class="emoji emoji23e9">⏩</span><span class="emoji emoji23ed">⏭</span><span class="emoji emoji23ef">⏯</span><span class="emoji emoji25c0">◀</span><span class="emoji emoji23ea">⏪</span><span class="emoji emoji23ee">⏮</span><span class="emoji emoji1f53c">🔼</span><span class="emoji emoji23eb">⏫</span><span class="emoji emoji1f53d">🔽</span><span class="emoji emoji23ec">⏬</span><span class="emoji emoji23f8">⏸</span><span class="emoji emoji23f9">⏹</span><span class="emoji emoji23fa">⏺</span><span class="emoji emoji23cf">⏏</span><span class="emoji emoji1f3a6">🎦</span><span class="emoji emoji1f505">🔅</span><span class="emoji emoji1f506">🔆</span><span class="emoji emoji1f4f6">📶</span><span class="emoji emoji1f4f5">📵</span><span class="emoji emoji1f4f3">📳</span><span class="emoji emoji1f4f4">📴</span><span class="emoji emoji1f51f">🔟</span><span class="emoji emoji1f4af">💯</span><span class="emoji emoji1f51e">🔞</span><span class="emoji emoji1f520">🔠</span><span class="emoji emoji1f521">🔡</span><span class="emoji emoji1f522">🔢</span><span class="emoji emoji1f523">🔣</span><span class="emoji emoji1f524">🔤</span><span class="emoji emoji1f170">🅰</span><span class="emoji emoji1f18e">🆎</span><span class="emoji emoji1f171">🅱</span><span class="emoji emoji1f191">🆑</span><span class="emoji emoji1f192">🆒</span><span class="emoji emoji1f193">🆓</span><span class="emoji emoji2139">ℹ</span><span class="emoji emoji1f194">🆔</span><span class="emoji emoji24c2">Ⓜ</span><span class="emoji emoji1f195">🆕</span><span class="emoji emoji1f196">🆖</span><span class="emoji emoji1f17e">🅾</span><span class="emoji emoji1f197">🆗</span><span class="emoji emoji1f17f">🅿</span><span class="emoji emoji1f198">🆘</span><span class="emoji emoji1f199">🆙</span><span class="emoji emoji1f19a">🆚</span><span class="emoji emoji1f201">🈁</span><span class="emoji emoji1f202">🈂</span><span class="emoji emoji1f237">🈷</span><span class="emoji emoji1f236">🈶</span><span class="emoji emoji1f22f">🈯</span><span class="emoji emoji1f250">🉐</span><span class="emoji emoji1f239">🈹</span><span class="emoji emoji1f21a">🈚</span><span class="emoji emoji1f232">🈲</span><span class="emoji emoji1f251">🉑</span><span class="emoji emoji1f238">🈸</span><span class="emoji emoji1f234">🈴</span><span class="emoji emoji1f233">🈳</span><span class="emoji emoji3297">㊗</span><span class="emoji emoji3299">㊙</span><span class="emoji emoji1f23a">🈺</span><span class="emoji emoji1f235">🈵</span><span class="emoji emoji25aa">▪</span><span class="emoji emoji25ab">▫</span><span class="emoji emoji25fb">◻</span><span class="emoji emoji25fc">◼</span><span class="emoji emoji25fd">◽</span><span class="emoji emoji25fe">◾</span><span class="emoji emoji2b1b">⬛</span><span class="emoji emoji2b1c">⬜</span><span class="emoji emoji1f536">🔶</span><span class="emoji emoji1f537">🔷</span><span class="emoji emoji1f538">🔸</span><span class="emoji emoji1f539">🔹</span><span class="emoji emoji1f53a">🔺</span><span class="emoji emoji1f53b">🔻</span><span class="emoji emoji1f4a0">💠</span><span class="emoji emoji1f518">🔘</span><span class="emoji emoji1f532">🔲</span><span class="emoji emoji1f533">🔳</span><span class="emoji emoji26aa">⚪</span><span class="emoji emoji26ab">⚫</span><span class="emoji emoji1f534">🔴</span><span class="emoji emoji1f535">🔵</span></div><h2 id="other">隐藏符号</h2><div class="emoji-list"><span class="emoji emoji20e3">⃣</span><span class="emoji emoji23f1">⏱</span><span class="emoji emoji23f2">⏲</span><span class="emoji emoji2602">☂</span><span class="emoji emoji2603">☃</span><span class="emoji emoji2604">☄</span><span class="emoji emoji2618">☘</span><span class="emoji emoji2620">☠</span><span class="emoji emoji2626">☦</span><span class="emoji emoji262a">☪</span><span class="emoji emoji262e">☮</span><span class="emoji emoji262f">☯</span><span class="emoji emoji2638">☸</span><span class="emoji emoji2639">☹</span><span class="emoji emoji2640">♀</span><span class="emoji emoji2642">♂</span><span class="emoji emoji2692">⚒</span><span class="emoji emoji2694">⚔</span><span class="emoji emoji2695">⚕</span><span class="emoji emoji2696">⚖</span><span class="emoji emoji2697">⚗</span><span class="emoji emoji2699">⚙</span><span class="emoji emoji269c">⚜</span><span class="emoji emoji26b0">⚰</span><span class="emoji emoji26b1">⚱</span><span class="emoji emoji26c8">⛈</span><span class="emoji emoji26cf">⛏</span><span class="emoji emoji26d1">⛑</span><span class="emoji emoji26d3">⛓</span><span class="emoji emoji26e9">⛩</span><span class="emoji emoji26f0">⛰</span><span class="emoji emoji26f1">⛱</span><span class="emoji emoji26f4">⛴</span><span class="emoji emoji26f7">⛷</span><span class="emoji emoji26f8">⛸</span><span class="emoji emoji26f9">⛹</span><span class="emoji emoji270d">✍</span><span class="emoji emoji271d">✝</span><span class="emoji emoji2721">✡</span><span class="emoji emoji2763">❣</span><span class="emoji emoji1f1e6">🇦</span><span class="emoji emoji1f1e7">🇧</span><span class="emoji emoji1f1e8">🇨</span><span class="emoji emoji1f1e9">🇩</span><span class="emoji emoji1f1ea">🇪</span><span class="emoji emoji1f1eb">🇫</span><span class="emoji emoji1f1ec">🇬</span><span class="emoji emoji1f1ed">🇭</span><span class="emoji emoji1f1ee">🇮</span><span class="emoji emoji1f1ef">🇯</span><span class="emoji emoji1f1f0">🇰</span><span class="emoji emoji1f1f1">🇱</span><span class="emoji emoji1f1f2">🇲</span><span class="emoji emoji1f1f3">🇳</span><span class="emoji emoji1f1f4">🇴</span><span class="emoji emoji1f1f5">🇵</span><span class="emoji emoji1f1f6">🇶</span><span class="emoji emoji1f1f7">🇷</span><span class="emoji emoji1f1f8">🇸</span><span class="emoji emoji1f1f9">🇹</span><span class="emoji emoji1f1fa">🇺</span><span class="emoji emoji1f1fb">🇻</span><span class="emoji emoji1f1fc">🇼</span><span class="emoji emoji1f1fd">🇽</span><span class="emoji emoji1f1fe">🇾</span><span class="emoji emoji1f1ff">🇿</span><span class="emoji emoji1f3fb">🏻</span><span class="emoji emoji1f3fc">🏼</span><span class="emoji emoji1f3fd">🏽</span><span class="emoji emoji1f3fe">🏾</span><span class="emoji emoji1f3ff">🏿</span><span class="emoji emoji1f549">🕉</span><span class="emoji emoji1f54e">🕎</span><span class="emoji emoji1f57a">🕺</span><span class="emoji emoji1f5a4">🖤</span><span class="emoji emoji1f6d1">🛑</span><span class="emoji emoji1f6d2">🛒</span><span class="emoji emoji1f6f4">🛴</span><span class="emoji emoji1f6f5">🛵</span><span class="emoji emoji1f6f6">🛶</span><span class="emoji emoji1f919">🤙</span><span class="emoji emoji1f91a">🤚</span><span class="emoji emoji1f91b">🤛</span><span class="emoji emoji1f91c">🤜</span><span class="emoji emoji1f91d">🤝</span><span class="emoji emoji1f91e">🤞</span><span class="emoji emoji1f920">🤠</span><span class="emoji emoji1f921">🤡</span><span class="emoji emoji1f922">🤢</span><span class="emoji emoji1f923">🤣</span><span class="emoji emoji1f924">🤤</span><span class="emoji emoji1f925">🤥</span><span class="emoji emoji1f926">🤦</span><span class="emoji emoji1f927">🤧</span><span class="emoji emoji1f930">🤰</span><span class="emoji emoji1f933">🤳</span><span class="emoji emoji1f934">🤴</span><span class="emoji emoji1f935">🤵</span><span class="emoji emoji1f936">🤶</span><span class="emoji emoji1f937">🤷</span><span class="emoji emoji1f938">🤸</span><span class="emoji emoji1f939">🤹</span><span class="emoji emoji1f93a">🤺</span><span class="emoji emoji1f93c">🤼</span><span class="emoji emoji1f93d">🤽</span><span class="emoji emoji1f93e">🤾</span><span class="emoji emoji1f940">🥀</span><span class="emoji emoji1f941">🥁</span><span class="emoji emoji1f942">🥂</span><span class="emoji emoji1f943">🥃</span><span class="emoji emoji1f944">🥄</span><span class="emoji emoji1f945">🥅</span><span class="emoji emoji1f947">🥇</span><span class="emoji emoji1f948">🥈</span><span class="emoji emoji1f949">🥉</span><span class="emoji emoji1f94a">🥊</span><span class="emoji emoji1f94b">🥋</span><span class="emoji emoji1f950">🥐</span><span class="emoji emoji1f951">🥑</span><span class="emoji emoji1f952">🥒</span><span class="emoji emoji1f953">🥓</span><span class="emoji emoji1f954">🥔</span><span class="emoji emoji1f955">🥕</span><span class="emoji emoji1f956">🥖</span><span class="emoji emoji1f957">🥗</span><span class="emoji emoji1f958">🥘</span><span class="emoji emoji1f959">🥙</span><span class="emoji emoji1f95a">🥚</span><span class="emoji emoji1f95b">🥛</span><span class="emoji emoji1f95c">🥜</span><span class="emoji emoji1f95d">🥝</span><span class="emoji emoji1f95e">🥞</span><span class="emoji emoji1f985">🦅</span><span class="emoji emoji1f986">🦆</span><span class="emoji emoji1f987">🦇</span><span class="emoji emoji1f988">🦈</span><span class="emoji emoji1f989">🦉</span><span class="emoji emoji1f98a">🦊</span><span class="emoji emoji1f98b">🦋</span><span class="emoji emoji1f98c">🦌</span><span class="emoji emoji1f98d">🦍</span><span class="emoji emoji1f98e">🦎</span><span class="emoji emoji1f98f">🦏</span><span class="emoji emoji1f990">🦐</span><span class="emoji emoji1f991">🦑</span><span class="emoji emojife82b">󾠫</span><span class="emoji emojife82c">󾠬</span><span class="emoji emojife82e">󾠮</span><span class="emoji emojife82f">󾠯</span><span class="emoji emojife830">󾠰</span><span class="emoji emojife831">󾠱</span><span class="emoji emojife832">󾠲</span><span class="emoji emojife833">󾠳</span><span class="emoji emojife834">󾠴</span><span class="emoji emojife835">󾠵</span><span class="emoji emojife836">󾠶</span><span class="emoji emojife837">󾠷</span>
+
+			</div>
+		</div>
+
+
+
+		<!--보 내기 단추 의 위치,코드 교체-->
+		<!-- 停止计时器 -->
+		<button id="stopButtonId" style="color: red;font-size: large;" onclick="
+		//发送消息计时器
+		if('undefined'!=typeof timeFrequencys1){
+			clearInterval(timeFrequencys1) ;
+		}
+	     //自动提醒时间计时器
+			// if('undefined'!=typeof autoInterval){
+	 	//        clearInterval(autoInterval) ;
+	 	//     }
+	     // 信息计时器
+	     if('undefined'!=typeof messageInterval){
+         clearInterval(messageInterval) ;
+     }
+	     //发送消息计时器
+	     if('undefined'!=typeof thisInterval){
+	     	clearInterval(thisInterval) ;
+	     }
+         alert('stop ok');
+         console.log('stop ok');
+         " title="대량 발송 을 중지 합 니 다.">停止</button>
+
+
+         <!-- 次数： -->
+         <span id="timesId">次数</span>:
+         <input id="inputTimes" type="text" style="width: 15px;" placeholder="">
+         <!-- 间隔时间： -->
+         <span id="frequencyId">间隔时间</span>:
+         <input id="inputFrequency" type="text" style="width: 15px;" placeholder="">
+
+         <!--여 기 는 스스로 수정 할 수 있 습 니 다.항상 1 초 에 두 번,또는 2 초 간격 으로 세 번 사용 합 니 다. -->
+         <!--allRepeatTimes=2/allRepeatTimes 표시 횟수,2 는 최대 두 번 발송,frequency=0.01  f 는 간격 을 나타 낸다.예 를 들 어 1 은 1 초 간격 이다.  -->
+         <button id="send_message" style="color: red;font-size: large;" onclick="testInputValue= document.getElementById('testInput').value,repeatTimes=1,
+         allRepeatTimes= document.getElementById('inputTimes').value,frequency=document.getElementById('inputFrequency').value;
+		//判断当前发送消息是否重复
+		if('undefined'!=typeof thisInterval){
+			clearInterval(thisInterval) ;
+		}
+
+		thisInterval=setInterval(function(){ 
+			/*更正系统*/
+			if (allRepeatTimes==''||frequency=='') {
+				document.getElementById('inputTimes').value=1;
+				document.getElementById('inputFrequency').value=1;
+				allRepeatTimes=1;
+				frequency=1;
+			}
+			allTime = allRepeatTimes * frequency;
+
+	    //拼接单位和时间
+	    if(allTime<60){
+	    	allTime=allTime+'ₛ';
+	    }else if(allTime/60<60){
+	    	allTime=allTime/60+'ₘ';
+	    }else{
+	    	allTime=allTime/60/60+'ₕ';
+	    }
+
+	    //频率
+	    var frequencys = '-';
+	    //次数单位
+	    //var times='ₜₗ';
+	    var times = '';
+
+	    if (frequency < 60) {
+	    	frequencys = times + frequency + 'ₛ';
+
+	    } else if (frequency / 60 < 60) {
+	    	frequencys = times + frequency / 60 + 'ₘ';
+	    } else {
+	    	frequencys = times + frequency / 60 / 60 + 'ₕ';
+	    }
+
+	    //排除一次
+	    if(allRepeatTimes>1){
+	    	//拼接次数、次数频率、单次时间，总共时间₌
+	    	//allTime='₍' +allRepeatTimes+'ₗ'+repeatTimes+'ₓ'+frequencys+'|'+allTime+'₎';
+
+	    	allTime ='₍' + allRepeatTimes + 'ₗ' + repeatTimes + ',' + frequencys+ '₎';
+	    }else{
+	    	allTime='';
+	    }
+	    //拼接次数、次数频率
+		//allTime ='₍' + allRepeatTimes + 'ₗ' + repeatTimes + ',' + frequencys+ '₎';
+
+	    //拼接次数
+	    //allTime=allRepeatTimes+'ₗ'+repeatTimes;
+
+
+	    /*testInputValue입력 값 을 표시 합 니 다.뒤쪽 은 작은 괄호 안의 내용 입 니 다.+뒤의 코드 를 삭제 하면 괄호 와 괄호 안의 내용 을 포함 하지 않 습 니 다,쓰다 document.getElementById('write_area').innerHTML = testInputValue; 이 코드 바 꾸 기*/
+	    document.getElementById('write_area').innerHTML = testInputValue +  allTime.replaceAll('0', '₀').replaceAll('1', '₁')
+	    .replaceAll('2', '₂').replaceAll('3', '₃').replaceAll('4', '₄')
+	    .replaceAll('5', '₅').replaceAll('6', '₆').replaceAll('7', '₇')
+	    .replaceAll('8', '₈').replaceAll('9', '₉').replaceAll(' ', '') ;
+
+
+
+	    <!--js模拟点击事件/아 날로 그 클릭 이벤트-->
+	    document.getElementById('btn_send').click();
+	    repeatTimes++;
+	    <!--반복 횟수, 수 동 설정 가능,3 은 3 번 을 나타 낸다-->
+	    if (repeatTimes > allRepeatTimes) {
+	    	clearInterval(thisInterval);
+	    }
+	    <!--순환 속도 1 초 당,수 동 설정 가능,1000 은 1 초.2000 은2 초-->
+
+	},frequency*1000),
+	//清空输入框	
+	document.getElementById('testInput').value='';
+	//关闭表情
+	document.getElementById('mainFace').style.display='none';
+	" type="button" title="메시지 보 내기 즉시 실행"><span id="sendId">寄出</span></button>
+	
+
+	
+
+	<hr>	    
+	
+
+
+
+	<h3 style="font-size: large;color: yellow;">시간과빠른설정:</h3>
+	<!-- 手动发送时间计时器 -->
+	<button id="getTimeButton" style="font-size: large;color:darkred;" type="button" onclick="
+		//判断当计时器是否重复
+		if('undefined'!=typeof handTimeout){
+			clearInterval(handTimeout) ;
+		}
+		console.log('now times start');
+		date =new Date();
+		fullYear=date.getFullYear();36
+		month=date.getMonth()+1;
+		day=date.getDate();
+
+		hours=date.getHours()+1;
+		minutes=date.getMinutes();
+		seconds=date.getSeconds();
+		//判断如果加一天，才执行减少一天
+		isAddDay=false;
+		var handTimeout=setTimeout(function(){
+			if (hours>=24){
+				hours=0;
+			}
+	        //韩国1点减去一天
+	        if(0<hours<1){
+	        	//韩国12点增加一天
+	        	day++;
+	            //判断如果加一天，才执行减少一天
+	            isAddDay=true;
+	        }
+
+			//判断如果加一天，才执行减少一天
+			if (hours>1&amp;&amp;isAddDay==true) {
+				day--;
+				isAddDay==false;
+			}
+
+	        //当月最大的天数
+	        var monthArrays1=[1,3,5,7,8,10,12]; //31days
+	        var monthArrays2=[4,6,9,11];      //30days
+	        var monthArrays3 = 2;              //28days
+	        maxDays=0;
+	        if (monthArrays3==month){
+	        	maxDays=28;
+	        }else if(monthArrays2.includes(month)){
+	        	maxDays=30;
+	        }else{
+	        	maxDays=31;
+	        }
+
+	        if (day>maxDays){
+	        	
+	        	day=1;
+	        	month++;
+	        }
+	        if (month>12){
+	        	fullYear++;
+	        }
+
+	        var now=fullYear+'-'+month+'-'+day+'\t'+hours+':'+minutes+':'+seconds;
+	        // var nowTimes=now.replaceAll('0','₀').replaceAll('1','₁')
+	        //     .replaceAll('2','₂').replaceAll('3','₃').replaceAll('4','₄')
+	        //     .replaceAll('5','₅').replaceAll('6','₆').replaceAll('7','₇')
+	        //     .replaceAll('8','₈').replaceAll('9','₉');
+	        getNowTime(now,hours,minutes);
+	    },100);
+		function getNowTime(now,hours,minutes) {
+			var oclock;
+			if (hours==12||hours==0&&minutes>=0&&minutes<=29) {
+				oclock='🕛';
+			}else if(hours==12||hours==0&&minutes>=30&&minutes<=59){
+				oclock='🕧';
+			}else if(hours==1||hours==13&&minutes>=0&&minutes<=29){
+				oclock='🕐';
+			}else if(hours==1||hours==13&&minutes>=30&&minutes<=59){
+				oclock='🕜';
+			}else if(hours==2||hours==14&&minutes>=0&&minutes<=29){
+				oclock='🕑';
+			}else if(hours==2||hours==14&&minutes>=30&&minutes<=59){
+				oclock='🕝';
+			}else if(hours==3||hours==15&&minutes>=0&&minutes<=29){
+				oclock='🕒';
+			}else if(hours==3||hours==15&&minutes>=30&&minutes<=59){
+				oclock='🕞';
+			}else if(hours==4||hours==16&&minutes>=0&&minutes<=29){
+				oclock='🕓';
+			}else if(hours==4||hours==16&&minutes>=30&&minutes<=59){
+				oclock='🕟';
+			}else if(hours==5||hours==17&&minutes>=0&&minutes<=29){
+				oclock='🕔';
+			}else if(hours==5||hours==17&&minutes>=30&&minutes<=59){
+				oclock='🕠';
+			}else if(hours==6||hours==18&&minutes>=0&&minutes<=29){
+				oclock='🕕';
+			}else if(hours==6||hours==18&&minutes>=30&&minutes<=59){
+				oclock='🕡';
+			}else if(hours==7||hours==19&&minutes>=0&&minutes<=29){
+				oclock='🕖';
+			}else if(hours==7||hours==19&&minutes>=30&&minutes<=59){
+				oclock='🕢';
+			}else if(hours==8||hours==20&&minutes>=0&&minutes<=29){
+				oclock='🕗';
+			}else if(hours==8||hours==20&&minutes>=30&&minutes<=59){
+				oclock='🕣';
+			}else if(hours==9||hours==21&&minutes>=0&&minutes<=29){
+				oclock='🕘';
+			}else if(hours==9||hours==21&&minutes>=30&&minutes<=59){
+				oclock='🕤';
+			}else if(hours==10||hours==22&&minutes>=0&&minutes<=29){
+				oclock='🕙';
+
+			}else if(hours==10||hours==22&&minutes>=30&&minutes<=59){
+				oclock='🕥';
+			}else if(hours==11||hours==23&&minutes>=0&&minutes<=29){
+				oclock='🕚';
+			}else if(hours==11||hours==23&&minutes>=30&&minutes<=59){
+				oclock='🕦';
+			}else{
+				oclock='한국시간:';	
+			}
+        	// document.getElementById('write_area').innerHTML=nowTimes;
+        	document.getElementById('write_area').innerHTML=oclock+':'+now;
+
+	         //自定义输入框的值
+	        //document.getElementById('testInput').value=now;
+	        //发送框框的值
+	        document.getElementById('btn_send').click();
+	    }
+
+	    " title="현재 시간 가 져 오기 및 발송 시간"><span id="handTimeId">当前时间</span></button>
+     <input id="timeFrequencys" type="text" style="width: 50px">
+     <br/>
+
+     <!-- 自动发送时间计时器 -->
+     <button id="autoTimeId" style="font-size:large;" onclick="
+	//判断当计时器是否重复
+	if('undefined'!=typeof autoInterval){
+		clearInterval(autoInterval) ;
+	}
+    
+
+    function getDomByName(domName){
+     domName=document.getElementsByName(domName);
+     return domName;
+
+ }
+
+ var addHour=0;
+ if (document.getElementById('changeLanguageSelect').value=='ko') {
+  addHour=1;
+}
+//进度条同步
+var initTop=0;
+var showMessageLast= document.getElementById('showMessageLast');
+
+autoInterval=setInterval(function(){
+
+    //进度条同步
+    if (showMessageLast.scrollHeight-initTop>0) {
+        showMessageLast.scrollTop=showMessageLast.scrollHeight;
+        initTop=showMessageLast.scrollHeight;
+    }
+
+    
+    //是否提醒时间
+   var   isAutoTimeStart= getDomByName('isAutoTimeStart');
+	// console.log('now times start');
+	var date =new Date();
+	var fullYear=date.getFullYear();
+	var month=date.getMonth()+1;
+	var day=date.getDate();
+
+	var hours=date.getHours()+addHour;
+	var minutes=date.getMinutes();
+	var seconds=date.getSeconds();
+
+	if (hours>=24){
+		hours=0;
+            //韩国12点增加一天
+            day++;
+        }
+        //韩国1点减去一天
+        // if(hours==1){
+        // 	day--;
+        // }
+
+
+        //当月最大的天数
+        var monthArrays1=[1,3,5,7,8,10,12]; //31days
+        var monthArrays2=[4,6,9,11];      //30days
+        var monthArrays3 = 2;              //28days
+
+
+        maxDays=0;
+        if (monthArrays3==month){
+        	maxDays=28;
+        }else if(monthArrays2.includes(month)){
+        	maxDays=30;
+        }else{
+        	maxDays=31;
+        }
+
+        if (day>maxDays){
+        	day=1;
+        	month++;
+        }
+        if (month>12){
+        	fullYear++;
+        }
+
+        console.log('0:'+isAutoTimeStart[0].checked);
+        console.log('1:'+isAutoTimeStart[1].checked);
+        var now=fullYear+'-'+month+'-'+day+'\t'+hours+':'+minutes+':'+seconds;
+        document.getElementById('timeFrequencys').value=hours+':'+minutes+':'+seconds;
+        if (minutes==29&amp;&amp;seconds==57||minutes==59&amp;&amp;seconds==57&&isAutoTimeStart[0].checked==true&&isAutoTimeStart[1].checked==false) {
+        	var text_information=document.getElementsByClassName('text_information');
+        	var nickName=text_information.item(0).children[0].textContent;
+        	//자동 알림,주석 은 메 시 지 를 보 내지 않 습 니 다.시간 전 문장
+        	document.getElementById('write_area').innerHTML='@'+nickName+':오빠는 당신을 생각 나게/휘파람/';
+        	document.getElementById('btn_send').click();
+        }
+        if (minutes==30&amp;&amp;seconds==0||minutes==0&amp;&amp;seconds==0&&isAutoTimeStart[0].checked==true&&isAutoTimeStart[1].checked==false) {
+        	var oclock;
+        	if (hours==12||hours==0&&minutes==0) {
+        		oclock='🕛';
+        	}else if(hours==12||hours==0&&minutes==30){
+        		oclock='🕧';
+        	}else if(hours==1||hours==13&&minutes==0){
+        		oclock='🕐';
+        	}else if(hours==1||hours==13&&minutes==30){
+        		oclock='🕜';
+        	}else if(hours==2||hours==14&&minutes==0){
+        		oclock='🕑';
+        	}else if(hours==2||hours==14&&minutes==30){
+        		oclock='🕝';
+        	}else if(hours==3||hours==15&&minutes==0){
+        		oclock='🕒';
+        	}else if(hours==3||hours==15&&minutes==30){
+        		oclock='🕞';
+        	}else if(hours==4||hours==16&&minutes==0){
+        		oclock='🕓';
+        	}else if(hours==4||hours==16&&minutes==30){
+        		oclock='🕟';
+        	}else if(hours==5||hours==17&&minutes==0){
+        		oclock='🕔';
+        	}else if(hours==5||hours==17&&minutes==30){
+        		oclock='🕠';
+        	}else if(hours==6||hours==18&&minutes==0){
+        		oclock='🕕';
+        	}else if(hours==6||hours==18&&minutes==30){
+        		oclock='🕡';
+        	}else if(hours==7||hours==19&&minutes==0){
+        		oclock='🕖';
+        	}else if(hours==7||hours==19&&minutes==30){
+        		oclock='🕢';
+        	}else if(hours==8||hours==20&&minutes==0){
+        		oclock='🕗';
+        	}else if(hours==8||hours==20&&minutes==30){
+        		oclock='🕣';
+        	}else if(hours==9||hours==21&&minutes==0){
+        		oclock='🕘';
+        	}else if(hours==9||hours==21&&minutes==30){
+        		oclock='🕤';
+        	}else if(hours==10||hours==22&&minutes==0){
+        		oclock='🕙';
+
+        	}else if(hours==10||hours==22&&minutes==30){
+        		oclock='🕥';
+        	}else if(hours==11||hours==23&&minutes==0){
+        		oclock='🕚';
+        	}else if(hours==11||hours==23&&minutes==30){
+        		oclock='🕦';
+        	}else{
+        		oclock='한국시간';	
+        	}
+
+        	// document.getElementById('write_area').innerHTML=''+now;
+        	//자동 알림,주석 은 메 시 지 를 보 내지 않 습 니 다.자동 알림 시간
+        	document.getElementById('write_area').innerHTML=oclock+':'+now;
+        	document.getElementById('btn_send').click();
+        }
+
+
+        // console.log(now);
+    },1000)" title="자동보고시간(30분정각에힌트)">报时</button>
+
+
+    <span id='startAutoTime'>열다</span>
+    <input type="radio" value='start' name="isAutoTimeStart">
+    <span id='overAutoTime'>닫다</span>
+    <input type="radio" checked="checked"  value='over' name="isAutoTimeStart">
+
+
+
+
+
+
+
+
+
+
+
+    <hr/>
+    <h3 style="font-size: large;color: yellow;">계정기능:</h3>
+
+    <a href="javascript;" onclick="
+
+	     //id
+	     document.getElementById('szUid').value='';
+	     //비밀 번호
+	     document.getElementById('szPassword').value='';
+
+	     setTimeout(function () {
+
+	     	document.getElementsByClassName('btn_login')[0].click();
+	     },1000);
+	     
+
+
+	     ">login</a>
+
+	     login:
+
+	     <a href="javascript;" onclick="document.getElementsByClassName('logout').item(0).click();">exit:</a>
+
+	     change:
+
+	     <hr/>
+	     <h3 style="font-size: large;color: yellow;">스타일정의:</h3>
+
+	     글꼴색상:
+	     <select id="background_color" onchange="
+	     var background_color=document.getElementById('background_color');
+	     var myDiv=document.getElementById('myDiv');
+	     var chat_area=document.getElementById('chat_area');
+	     var chatbox=document.getElementById('chatbox');
+
+	     var color='color:'+background_color.value+';font-size:large';
+	     background_color.style=color;
+	     chat_area.style=color;
+	     myDiv.style=color;
+
+// chatbox
+// chatting_area
+">
+<option  value="red">red</option>
+<option  selected  value="white">white</option>
+<option  value="balck">balck</option>
+<option  value="#7FFF00">Lime</option>
+<option  value="#00FF00">Chartreuse</option>
+<option  value="#FFFF00">yelllow</option>
+
+</select>
+
+<br/>
+
+
+배경그림:
+<select id="background" onchange="
+function getDom(dom){
+	dom = document.getElementById(dom);
+	return dom;
+}
+var background=getDom('background');
+if (background.value=='none') {
+
+}else if (background.value=='transparent') {
+
+	var allTags =document.getElementsByTagName('div');
+	for (var i =0;i< allTags.length ; i++) {
+		allTags[i].style.background='none';
+
+	}
+	getDom('actionbox').style='visibility:hidden';
+	getDom('ul1').style='visibility:visible';
+	getDom('ul2').style='visibility:visible';
+	getDom('write_area').style='visibility:visible';
+	getDom('btn_send').style='visibility:visible';
+
+}
+else if (background.value=='white') {
+	var allTags =document.getElementsByTagName('div');
+	for (var i =0;i< allTags.length ; i++) {
+		allTags[i].style.background='white';
+
+	}
+	getDom('actionbox').style='visibility:visible';
+	getDom('videoLayerCover').style.background='none';
+
+}
+// chatbox
+// chatting_area
+">
+<option  value="none">묵인</option>
+<option  selected="select" value="transparent">투명</option>
+<option value="white">하양</option>
+</select>
+
+<br/>
+언어:
+<!-- 语言支持 -->
+<select id="changeLanguageSelect" onchange="
+function changeLanguages(){
+		//获取任意dom对象
+		function getDom(dom){
+			var dom =document.getElementById(dom);
+			return dom;
+		}
+		//切换时间
+		getDom('autoTimeId').click();
+
+		var changeLanguageSelect=getDom('changeLanguageSelect');	
+		languages={
+			'zh':{'text':'内容','times':'次数','frequency':'间隔时间','handTime':'现在时间','send':'寄出','environment':'环境部署','stop':'停止','retrievalMessage':'检索信息','subscriptId':'下标','zh_CN':'中文','ko_KR':'韩语','auto_time':'自动报时'},
+			'ko':{'text':'내용','times':'횟수','frequency':'간격시간(s)','handTime':'현재시간','send':'보내다','environment':'환경배포','stop':'멈추다','retrievalMessage':'메시지검색','subscriptId':'포인터','zh_CN':'중국어','ko_KR':'한국어','auto_time':'자동보고시간'} 
+		};
+		// function zhLanguages(dom,lang){
+		// 	dom.innerHTML=languages.zh.text;
+		// }
+
+		// function koLanguages(dom,lang){
+		// 	dom.innerHTML=languages.kr.text;
+		// }
+		// environmentSpanId环境
+		if (changeLanguageSelect.value=='zh') {
+			// zhLanguages(textId);
+			getDom('textId').innerHTML=languages.zh.text;
+			getDom('timesId').innerHTML=languages.zh.times;
+			getDom('frequencyId').innerHTML=languages.zh.frequency;
+			getDom('handTimeId').innerHTML=languages.zh.handTime;
+			getDom('sendId').innerHTML=languages.zh.send;
+			getDom('environmentSpanId').innerHTML=languages.zh.environment;
+			getDom('stopButtonId').innerHTML=languages.zh.stop;
+			getDom('retrievalButtonId').innerHTML=languages.zh.retrievalMessage;
+			getDom('langChinese').innerHTML=languages.zh.zh_CN;
+			getDom('langKorean').innerHTML=languages.zh.ko_KR;
+			getDom('autoTimeId').innerHTML=languages.zh.auto_time;
+			
+		// getDom('subscriptId').innerHTML=languages.zh.subscriptId;
+
+	}else if(changeLanguageSelect.value=='ko'){
+
+		getDom('textId').innerHTML=languages.ko.text;
+		getDom('timesId').innerHTML=languages.ko.times;
+		getDom('frequencyId').innerHTML=languages.ko.frequency;
+		getDom('handTimeId').innerHTML=languages.ko.handTime;
+		getDom('sendId').innerHTML=languages.ko.send;
+		getDom('environmentSpanId').innerHTML=languages.ko.environment;
+		getDom('stopButtonId').innerHTML=languages.ko.stop;
+		getDom('retrievalButtonId').innerHTML=languages.ko.retrievalMessage;
+		// getDom('subscriptId').innerHTML=languages.ko.subscriptId;
+		getDom('langChinese').innerHTML=languages.ko.zh_CN;
+		getDom('langKorean').innerHTML=languages.ko.ko_KR;
+		getDom('autoTimeId').innerHTML=languages.ko.auto_time;
+
+	}else{
+
+	}
+
+
+	console.log(languages.ko.text);
+
+
+
+		// 中文
+		// chinese={'text':'内容'};
+		// 韩语
+		// korean ={'text':'内容'}
+
+	}
+	changeLanguages();
+
+	">
+	<option id='langChinese' value="zh">中文</option>
+	<option id='langKorean' selected="" value="ko">韩语</option>
+</select>
+
+<hr/>
+
+<h3 style="font-size: large;color: yellow;">test:</h3>
+
+
+<button onclick="
+
+
+// var szUid=document.getElementById('szUid');
+
+// szUid.value='1057123765';
+// var szPassword=document.getElementById('szPassword');
+// szPassword.value='Fugege970212';
+// var btn_login=document.getElementsByClassName('btn_login').item(0);
+// btn_login.click();
+// document.getElementsByClassName('logout').item(0).click();
+// alert('111');
+
+
+
+console.log('---------------------------');
+
+// document.getElementById('btn_emo').firstChild.click();
+
+
+
+
+
+// if (showMessageLast.scrollHeight-showMessageLast.scrollTop>0) {
+
+// 	showMessageLast.scrollTop=showMessageLast.scrollHeight-showMessageLast.scrollTop
+// }
+// oFooter.setSiteOption('en_US')
+
+">测试</button>
+
+<!-- 开始计时器 -->
+<button onclick="
+var i=1;
+var timeFrequencys= document.getElementById('timeFrequencys').value;
+	      //var timeFrequencys= document.getElementById('inputFrequency').value;
+
+	      if('undefined'!=typeof timeFrequencys1){
+	      	clearInterval(timeFrequencys1) ;
+	      }
+
+	      timeFrequencys1=setInterval(function() {
+
+	      	document.getElementById('timeFrequencys').value=i;
+	         // document.getElementById('inputFrequency').value=i;
+
+	         if (i==timeFrequencys){
+	         	i=0;
+	         	document.getElementById('getTimeButton').click();
+
+	         }
+	         i++;
+	     },1000);
+	     " title="开始">开始
+	 </button>
+
+	 <hr/>
+	 
+
+	</div>
+</div>
