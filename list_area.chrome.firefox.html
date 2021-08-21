@@ -122,8 +122,8 @@
         //自动提速2自动初始化
         var upperLimit=getDom('upperLimit');
         if (upperLimit.value=='') {
-            upperLimit.value=='62.5';
-            getDom('upperLimit').value='62.5';
+            upperLimit.value=='500';
+            getDom('upperLimit').value='500';
         }
 
 
@@ -159,6 +159,9 @@
         			delayInputFrequency = delayInputFrequency / 2;
         		}
                 //限制消息最大速度范围125
+              
+
+                // getDom('upperLimit').value==''?upperLimit.value:getDom('upperLimit').value
 
                 if (delayInputFrequency >= upperLimit.value) {
                 	getDom('delayInputTextId').value = delayInputFrequency;
@@ -255,7 +258,7 @@
             if (last_index - now_index >= informationSynchronization.value) {
             	// console.log('距离超过10,加速起来');
                 //设置提速2上限/最快速度
-                if (delayInputFrequency / 2 >= upperLimit.value) {
+                if (delayInputFrequency / 2 >=upperLimit.value) {
                 	delayInputFrequency = delayInputFrequency / 2
                 }
                 getDom('delayInputTextId').value = delayInputFrequency;
@@ -1248,13 +1251,13 @@ autoInterval=setInterval(function(){
             var text_information='';
             var nickName='';      
             //拼接时间
-            var now='';
+            var  now=fullYear+'-'+month+'-'+day+'\t'+hours+':'+minutes+':'+seconds;
 
             if (minutes==29&amp;&amp;seconds==57||minutes==59&amp;&amp;seconds==57) {
                 //赋值
                 text_information=document.getElementsByClassName('text_information');
                 nickName=text_information.item(0).children[0].textContent;
-                now=fullYear+'-'+month+'-'+day+'\t'+hours+':'+minutes+':'+seconds;
+               
 
 
                 document.getElementById('write_area').innerHTML='@'+nickName+':오빠는 당신을 생각 나게/휘파람/';
