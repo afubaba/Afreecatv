@@ -750,19 +750,21 @@
         var isAutoTimeStart= document.getElementsByName('isAutoTimeStart');
         isAutoTimeStart[0].onchange=function(){
 
-
             getDom('autoTimeId').style='background-color:#7FFF00;font-size:large;color:yellow';
             this.style.visibility='hidden';
             isAutoTimeStart[1].style.visibility='visible';
 
             getDom('overAutoTime').style='background-color:red'
             getDom('startAutoTime').style='background-color:#7FFF00;font-size:large';
+
+            getDom('autoTimeId').click();
         }; isAutoTimeStart[1].onchange=function(){
          getDom('autoTimeId').style='background-color:#DCDCDC;font-size:default;color:black';
          this.style.visibility='hidden';
          isAutoTimeStart[0].style.visibility='visible';
          getDom('overAutoTime').style='background-color:#7FFF00;font-size:large';
          getDom('startAutoTime').style='background-color:red';
+         getDom('autoTimeId').click();
      };
 
 
