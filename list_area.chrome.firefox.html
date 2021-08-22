@@ -13,48 +13,78 @@
 
 	<div id="list_area" class="list_area" style="overflow: scroll;background: rgba(0, 0, 0, 0) none repeat scroll 0% 0%;">
 
+        <style type="text/css" async>
 
-		<div id="myDiv" style="border: 1px red solid; overflow: scroll;">         
-			<!-- f12개발 자 모드，구글 브라우저 전용，다른 브라우저에서 자체 테스트-->
-			<!-- 展示信息 -->
-			<div id="showMessageLast"  contenteditable="true" style="display: none;overflow: auto;height: 40%;width: 100%;border:1px black solid;" title="showMessageLast">
-				
-			</div>
+        .startAll{
+            writing-mode: unset;
+           
+         
+            width: 100%;
+            height: 100%;
+            background-color: green;
+            font-size: 100px;
+        }
+    </style> 
+    <!-- 启动按钮 -->
+   <button id="startAll"  onclick="
 
+        function getDomById(dom) {
+            dom =document.getElementById(dom);
+            return dom;
+        }
+        function startAll(){
+            getDomById('startAll').style.display='none';
+            getDomById('myDiv').style.display='block';
+            getDomById('environmentButtonId').click();
+        }  
+        startAll();      
 
-			<span style="color: yellow;font-size: large;">읽고있는정보:</span>
-			<div id="showMessage"  contenteditable="true"   style="overflow: auto;height: 30px;border:2px red solid;" title="전시 정보"></div>
+        
+   " class="startAll" onclick="startAll()">start</button>
 
-			<!-- <div id="write_area" contenteditable="true"></div>   -->
-
-			<h3 style="font-size: large;color: yellow;">데이터와정보분석:</h3>
-
-			<!-- 延迟速度(备选方案输入框延迟) -->
-			<!-- <input id="delayInputId" type="text" style="width:15px"></input> -->
-			<select id="delayInputId" style="display:none">
-				<option id="quick" value="quick">快速</option>
-				<option id="meiumSpeed"  value="meiumSpeed">中速</option>
-				<option id="slowSpeed" selected="selected" value="slowSpeed">慢速</option>
-			</select>
-            상한선:
-            <input id="upperLimit" style="width:50px;font-size: large;color:darkred;" type="text" title="가장 빠 른 정 보 를 얻 는 속 도 를 나타 낸다.">
-            <!-- 延迟时间 -->
-            <input id="delayInputTextId" style="width:50px;font-size: large;color:darkred;" type="text" title="현재 정보 획득 지연 시간(1000 은 1 초)">
-            밀리초
-
-
-            <span id="subscriptId" style="display:none">下标</span>
-            제
-            <input id="nowIndex" style="width:30px" value="1" type="text" title="현재 포인터">
-            조메시지
+   <div id="myDiv" style="display: none;border: 1px red solid; overflow: scroll;">         
+     <!-- f12개발 자 모드，구글 브라우저 전용，다른 브라우저에서 자체 테스트-->
 
 
-            <br/>
-            최대정보동기화격차수(5/10개):
-            <input id="informationSynchronization" title="최대 10 개 또는 5 개의 정보 동기 화 차 이 를 허용 합 니 다." style="width:30px" value="10" type="text" title="최대정보동기화격차수">
 
-            <!-- 检索消息 -->
-            <button id="retrievalButtonId" onclick="
+     <!-- 展示信息 -->
+     <div id="showMessageLast"  contenteditable="true" style="display: none;overflow: auto;height: 40%;width: 100%;border:1px black solid;" title="showMessageLast">
+
+     </div>
+
+     <span style="color: yellow;font-size: large;">읽고있는정보:</span>
+     <div id="showMessage"  contenteditable="true"   style="overflow: auto;height: 30px;border:2px red solid;" title="전시 정보"></div>
+
+     <!-- <div id="write_area" contenteditable="true"></div>   -->
+
+     <h3 style="font-size: large;color: yellow;">데이터와정보분석:</h3>
+
+     <!-- 延迟速度(备选方案输入框延迟) -->
+     <!-- <input id="delayInputId" type="text" style="width:15px"></input> -->
+     <select id="delayInputId" style="display:none">
+        <option id="quick" value="quick">快速</option>
+        <option id="meiumSpeed"  value="meiumSpeed">中速</option>
+        <option id="slowSpeed" selected="selected" value="slowSpeed">慢速</option>
+    </select>
+    상한선:
+    <input id="upperLimit" style="width:50px;font-size: large;color:darkred;" type="text" title="가장 빠 른 정 보 를 얻 는 속 도 를 나타 낸다.">
+    <!-- 延迟时间 -->
+    <input id="delayInputTextId" style="width:50px;font-size: large;color:darkred;" type="text" title="현재 정보 획득 지연 시간(1000 은 1 초)">
+    밀리초
+
+
+    <span id="subscriptId" style="display:none">下标</span>
+    제
+    <input id="nowIndex" style="width:30px" value="1" type="text" title="현재 포인터">
+    조메시지
+
+
+    <br/>
+    최대정보동기화격차수(5/10개):
+    <input id="informationSynchronization" title="최대 10 개 또는 5 개의 정보 동기 화 차 이 를 허용 합 니 다." style="width:30px" value="10" type="text" title="최대정보동기화격차수">
+
+    <!-- 检索消息 -->
+    <button id="retrievalButtonId" onclick="
 	//判断当计时器是否重复
 	if('undefined'!=typeof messageInterval){
 		clearInterval(messageInterval) ;
@@ -129,11 +159,11 @@
 
 
         messageInterval = setInterval(function () {
-           var idt_last = window.sessionStorage.getItem('idt_last');
-           var text_Last = window.sessionStorage.getItem('text_Last');
+         var idt_last = window.sessionStorage.getItem('idt_last');
+         var text_Last = window.sessionStorage.getItem('text_Last');
 
 
-           function getDom(dom) {
+         function getDom(dom) {
             var dom = document.getElementById(dom);
             return dom;
         }
@@ -159,7 +189,7 @@
         			delayInputFrequency = delayInputFrequency / 2;
         		}
                 //限制消息最大速度范围125
-              
+
 
                 // getDom('upperLimit').value==''?upperLimit.value:getDom('upperLimit').value
 
@@ -764,11 +794,11 @@
 
             // getDom('autoTimeId').click();
         }; isAutoTimeStart[1].onchange=function(){
-         getDom('autoTimeId').style='background-color:#DCDCDC;font-size:default;color:black';
-         this.style.visibility='hidden';
-         isAutoTimeStart[0].style.visibility='visible';
-         getDom('overAutoTime').style='background-color:#7FFF00;font-size:large';
-         getDom('startAutoTime').style='background-color:red';
+           getDom('autoTimeId').style='background-color:#DCDCDC;font-size:default;color:black';
+           this.style.visibility='hidden';
+           isAutoTimeStart[0].style.visibility='visible';
+           getDom('overAutoTime').style='background-color:#7FFF00;font-size:large';
+           getDom('startAutoTime').style='background-color:red';
            // getDom('autoTimeId').click();
        };
 
@@ -816,7 +846,7 @@
 		
 
 		//表情特效
-		getDom('mainFace').style='overflow:scroll;width: 300px;height:500px;margin-left:-20%;margin-top:-10%; position: fixed;';
+		getDom('mainFace').style='overflow:scroll;width: 300px;height:500px;margin-left:-20%;margin-top:-10%; position: fixed;display:none';
 		var mainFace=document.getElementById('mainFace')
 		var mainFaceChildrens = mainFace.children;
 		for (var i = 0; i < mainFaceChildrens.length; i++) {
@@ -850,8 +880,8 @@
 		getDom('changeLanguageSelect').value='ko';
 
 		languages={
-			'zh':{'text':'内容','times':'次数','frequency':'间隔时间','handTime':'现在时间','send':'寄出','environment':'Start','stop':'停止','retrievalMessage':'检索信息','subscriptId':'下标','zh_CN':'中文','ko_KR':'韩语','auto_time':'自动报时'},
-			'ko':{'text':'내용','times':'횟수','frequency':'간격시간(s)','handTime':'현재시간','send':'보내다','environment':'Start','stop':'멈추다','retrievalMessage':'메시지검색','subscriptId':'포인터','zh_CN':'중국어','ko_KR':'한국어','auto_time':'자동보고시간'} 
+			'zh':{'text':'内容','times':'次数','frequency':'间隔时间','handTime':'现在时间','send':'寄出','environment':'기본설정','stop':'停止','retrievalMessage':'检索信息','subscriptId':'下标','zh_CN':'中文','ko_KR':'韩语','auto_time':'自动报时'},
+			'ko':{'text':'내용','times':'횟수','frequency':'간격시간(s)','handTime':'현재시간','send':'보내다','environment':'기본설정','stop':'멈추다','retrievalMessage':'메시지검색','subscriptId':'포인터','zh_CN':'중국어','ko_KR':'한국어','auto_time':'자동보고시간'} 
 		}
 
 		getDom('textId').innerHTML=languages.ko.text;
@@ -906,14 +936,12 @@
 		
 
 		
-		" title="빠 른 설정 환경" style="font-size: large; color: yellow;"><span id="environmentSpanId">Start</span></button>
-
-
+		" title="빠 른 설정 환경" style="font-size: large; color: yellow;"><span id="environmentSpanId">기본설정</span></button>
 
 
 		<hr/>
 		<br/>
-		<div id="mainFace" style="border: 2px black solid;" >
+		<div id="mainFace" >
 
 
 			<h2 id="face-people">人物符号</h2>
@@ -941,28 +969,28 @@
 	 	//     }
 	     // 信息计时器
 	     if('undefined'!=typeof messageInterval){
-         clearInterval(messageInterval) ;
-     }
+           clearInterval(messageInterval) ;
+       }
 	     //发送消息计时器
 	     if('undefined'!=typeof thisInterval){
 	     	clearInterval(thisInterval) ;
 	     }
-         alert('stop ok');
-         console.log('stop ok');
-         " title="대량 발송 을 중지 합 니 다.">停止</button>
+        alert('stop ok');
+        console.log('stop ok');
+        " title="대량 발송 을 중지 합 니 다.">停止</button>
 
 
-         <!-- 次数： -->
-         <span id="timesId">次数</span>:
-         <input id="inputTimes" type="text" style="width: 15px;" placeholder="">
-         <!-- 间隔时间： -->
-         <span id="frequencyId">间隔时间</span>:
-         <input id="inputFrequency" type="text" style="width: 15px;" placeholder="">
+        <!-- 次数： -->
+        <span id="timesId">次数</span>:
+        <input id="inputTimes" type="text" style="width: 15px;" placeholder="">
+        <!-- 间隔时间： -->
+        <span id="frequencyId">间隔时间</span>:
+        <input id="inputFrequency" type="text" style="width: 15px;" placeholder="">
 
-         <!--여 기 는 스스로 수정 할 수 있 습 니 다.항상 1 초 에 두 번,또는 2 초 간격 으로 세 번 사용 합 니 다. -->
-         <!--allRepeatTimes=2/allRepeatTimes 표시 횟수,2 는 최대 두 번 발송,frequency=0.01  f 는 간격 을 나타 낸다.예 를 들 어 1 은 1 초 간격 이다.  -->
-         <button id="send_message" style="color: red;font-size: large;" onclick="testInputValue= document.getElementById('testInput').value,repeatTimes=1,
-         allRepeatTimes= document.getElementById('inputTimes').value,frequency=document.getElementById('inputFrequency').value;
+        <!--여 기 는 스스로 수정 할 수 있 습 니 다.항상 1 초 에 두 번,또는 2 초 간격 으로 세 번 사용 합 니 다. -->
+        <!--allRepeatTimes=2/allRepeatTimes 표시 횟수,2 는 최대 두 번 발송,frequency=0.01  f 는 간격 을 나타 낸다.예 를 들 어 1 은 1 초 간격 이다.  -->
+        <button id="send_message" style="color: red;font-size: large;" onclick="testInputValue= document.getElementById('testInput').value,repeatTimes=1,
+        allRepeatTimes= document.getElementById('inputTimes').value,frequency=document.getElementById('inputFrequency').value;
 		//判断当前发送消息是否重复
 		if('undefined'!=typeof thisInterval){
 			clearInterval(thisInterval) ;
@@ -1179,11 +1207,11 @@
 	    }
 
 	    " title="현재 시간 가 져 오기 및 발송 시간"><span id="handTimeId">当前时间</span></button>
-     <input id="timeFrequencys" type="text" style="width: 50px">
-     <br/>
+       <input id="timeFrequencys" type="text" style="width: 50px">
+       <br/>
 
-     <!-- 自动发送时间计时器 -->
-     <button id="autoTimeId" style="font-size:large;" onclick="
+       <!-- 自动发送时间计时器 -->
+       <button id="autoTimeId" style="font-size:large;" onclick="
 	//判断当计时器是否重复
 	if('undefined'!=typeof autoInterval){
 		clearInterval(autoInterval) ;
@@ -1191,15 +1219,15 @@
 
 
     function getDomByName(domName){
-     domName=document.getElementsByName(domName);
-     return domName;
+       domName=document.getElementsByName(domName);
+       return domName;
 
- }
+   }
 
- var addHour=0;
- if (document.getElementById('changeLanguageSelect').value=='ko') {
-  addHour=1;
-}
+   var addHour=0;
+   if (document.getElementById('changeLanguageSelect').value=='ko') {
+      addHour=1;
+  }
 //进度条同步
 var initTop=0;
 var showMessageLast= document.getElementById('showMessageLast');
@@ -1212,15 +1240,15 @@ autoInterval=setInterval(function(){
     }
     //是否提醒时间
     var isAutoTimeStart= getDomByName('isAutoTimeStart');
-	var date =new Date();
-	var fullYear=date.getFullYear();
-	var month=date.getMonth()+1;
-	var day=date.getDate();
-	var hours=date.getHours()+addHour;
-	var minutes=date.getMinutes();
-	var seconds=date.getSeconds();
-	if (hours>=24){
-		hours=0;
+    var date =new Date();
+    var fullYear=date.getFullYear();
+    var month=date.getMonth()+1;
+    var day=date.getDate();
+    var hours=date.getHours()+addHour;
+    var minutes=date.getMinutes();
+    var seconds=date.getSeconds();
+    if (hours>=24){
+      hours=0;
             //韩国12点增加一天
             day++;
         }
@@ -1257,7 +1285,7 @@ autoInterval=setInterval(function(){
                 //赋值
                 text_information=document.getElementsByClassName('text_information');
                 nickName=text_information.item(0).children[0].textContent;
-               
+
 
 
                 document.getElementById('write_area').innerHTML='@'+nickName+':오빠는 당신을 생각 나게/휘파람/';
@@ -1326,18 +1354,15 @@ autoInterval=setInterval(function(){
 
 
         }else{
-           console.log('关闭自动报告时：'+nickName);
-       }
-   },1000)" title="자동보고시간(30분정각에힌트)">报时</button>
+         console.log('关闭自动报告时：'+nickName);
+     }
+ },1000)" title="자동보고시간(30분정각에힌트)">报时</button>
 
 
-   <span id='startAutoTime'>열다</span>
-   <input type="radio" value='start' name="isAutoTimeStart">
-   <span id='overAutoTime'>닫다</span>
-   <input type="radio" checked="checked"  value='over' name="isAutoTimeStart">
-
-
-
+ <span id='startAutoTime'>열다</span>
+ <input type="radio" value='start' name="isAutoTimeStart">
+ <span id='overAutoTime'>닫다</span>
+ <input type="radio" checked="checked"  value='over' name="isAutoTimeStart">
 
 
 
@@ -1346,10 +1371,13 @@ autoInterval=setInterval(function(){
 
 
 
-   <hr/>
-   <h3 style="font-size: large;color: yellow;">계정기능:</h3>
 
-   <a href="javascript;" onclick="
+
+
+ <hr/>
+ <h3 style="font-size: large;color: yellow;">계정기능:</h3>
+
+ <a href="javascript;" onclick="
 
 	     //id
 	     document.getElementById('szUid').value='';
@@ -1583,7 +1611,6 @@ var timeFrequencys= document.getElementById('timeFrequencys').value;
 	 </button>
 
 	 <hr/>
-	 
 
 	</div>
 </div>
