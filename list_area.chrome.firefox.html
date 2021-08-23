@@ -64,12 +64,23 @@
     }
     function startButtonId(){
 
-       $('#startButtonId,#startDivId').fadeOut(3000);
+      
+        //启动动画效果
+       var src=document.getElementsByClassName('bj_thumbnail').item(0).children[0].children[0].getAttribute('src');
+     
+        $('body').hide(1000).show(3000);
+         $('body').css('background-image','url('+src+')').css('background-repeat','no-repeat').css('background-size','100%');
 
-       $('#myDiv').fadeTo(3000,0.3).fadeTo(2000,0.6).fadeTo(1000,1);
-        // $('#myDiv').fadeIn(3000);
-       $('#environmentButtonId').click();
-       $('#chat_area').css('color','red');
+         $('#player_area').hide().fadeTo(3000,0.3).fadeTo(2000,0.6).fadeTo(1000,1)
+        $('#startButtonId,#startDivId').fadeOut(2000);
+
+         $('#myDiv').fadeTo(1000,0.3).fadeTo(2000,0.6).fadeTo(2500,1);
+
+       setTimeout(function(){
+            $('#environmentButtonId').click();
+       },5000);
+       
+      $('#chat_area').css('color','red');
 
    }  
    startButtonId();      
@@ -820,8 +831,8 @@
     if (mainFace.style.display=='none') {
         // mainFace.style.display='block';
         // mainFacebookFace.style.display='block';
-        $('#mainFace').show(2000);
-        $('#mainFacebookFace').show(1000);
+        $('#mainFace').show(1000);
+        $('#mainFacebookFace').show(500);
      
 
     }else{
@@ -830,8 +841,8 @@
         // mainFacebookFace.style.display='none';
         // $('#mainFace').hide(1000);
         // $('#mainFacebookFace').hide(1000);
-        $('#mainFace').hide(2000);
-         $('#mainFacebookFace').hide(2000);
+        $('#mainFace').hide(1000);
+         $('#mainFacebookFace').hide(1000);
         
     }
 
@@ -894,9 +905,9 @@
         var body =document.getElementsByTagName('body').item(0);
         body.style='background-image:url('+src+');background-size: 100%;background-repeat: no-repeat;';
         
-        
+            // visibility:visible;
         //background-image:url('+src+');我的div
-        getDom('myDiv').style='background-image:url('+src+');visibility:visible;margin:0px;width:100%;height:100%;background-size: 100%;background-repeat: no-repeat;word-break: break-word;';
+        getDom('myDiv').style='background-image:url('+src+');margin:0px;width:100%;height:100%;background-size: 100%;background-repeat: no-repeat;word-break: break-word;';
 
 
         //隐藏显示
