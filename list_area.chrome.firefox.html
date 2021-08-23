@@ -193,8 +193,8 @@
         //自动提速2自动初始化
         var upperLimit=getDom('upperLimit');
         if (upperLimit.value=='') {
-            upperLimit.value=='250';
-            getDom('upperLimit').value='250';
+            upperLimit.value=='50';
+            getDom('upperLimit').value='50';
         }
 
 
@@ -387,8 +387,8 @@
                 texDom.style.font_size='large';
                 texDom.style.backgroundColor='white';
           
-                $(texDom).parent().prev().fadeOut(3000);
-          
+                // $(texDom).parent().prev().fadeOut(3000);
+                $(texDom).parent().prev().hide(3000);
 
                 function getDom(dom) {
                     var dom = document.getElementById(dom);
@@ -405,11 +405,18 @@
                
                 //记录消息
                 getDom('showMessage').innerHTML = '[' + grade + ']' + nickName + '(' + idt + ')' + is_mobile + ':' + tex;
+
+               // $('#showMessage').fadeOut().fadeIn(1000);.fadeToggle(1000)
+               // $('#showMessage').css('background-color','white').fadeOut(1000).fadeIn(1000)
+                // $('#showMessage').hide().show(1000);
                 //记录消息拼接时间
 
                 //div
-                getDom('showMessageLast').innerHTML = getDom('showMessageLast').innerHTML + '<hr/><span style=color:white>' + getDom('timeFrequencys').value + '[' + grade + ']' + nickName + '(' + idt + ')' + is_mobile + ':</span><br/><span style=background-color:white;>'+tex+'</span>';
+                getDom('showMessageLast').innerHTML = getDom('showMessageLast').innerHTML + '<hr/><span style=color:black>' + getDom('timeFrequencys').value + '[' + grade + ']' + nickName + '(' + idt + ')' + is_mobile + ':</span><br/><span style=background-color:white;>'+tex+'</span>';
                 
+                // $('#showMessageLast span:last-child').hide().show(1000);
+                // $('#showMessageLast span:last-child').fedeIn(1000);
+                 // $('#showMessageLast').fedeIn(1000);
 
                
         
@@ -811,12 +818,21 @@
     var mainFacebookFace=document.getElementById('mainFacebookFace');
 
     if (mainFace.style.display=='none') {
-        mainFace.style.display='block';
-        mainFacebookFace.style.display='block';
+        // mainFace.style.display='block';
+        // mainFacebookFace.style.display='block';
+        $('#mainFace').show(2000);
+        $('#mainFacebookFace').show(1000);
+     
+
     }else{
 
-        mainFace.style.display='none';
-        mainFacebookFace.style.display='none';
+        // mainFace.style.display='none';
+        // mainFacebookFace.style.display='none';
+        // $('#mainFace').hide(1000);
+        // $('#mainFacebookFace').hide(1000);
+        $('#mainFace').hide(2000);
+         $('#mainFacebookFace').hide(2000);
+        
     }
 
     ">😀</button>
@@ -864,14 +880,7 @@
 
 
         //优化界面
-        //背景图地址
-        var src=document.getElementsByClassName('bj_thumbnail').item(0).children[0].children[0].getAttribute('src');
-        var body =document.getElementsByTagName('body').item(0);
-        body.style='background-image:url('+src+');background-size: 100%;background-repeat: no-repeat;';
-        
-        
-        //background-image:url('+src+');我的div
-        getDom('myDiv').style='visibility:visible;margin:0px;width:100%;height:100%;background-size: 100%;background-repeat: no-repeat;word-break: break-word;';
+    
 
         //背景透明
         var allTags =document.getElementsByTagName('div');
@@ -879,6 +888,16 @@
             allTags[i].style.background='none';
 
         }
+
+            //背景图地址
+        var src=document.getElementsByClassName('bj_thumbnail').item(0).children[0].children[0].getAttribute('src');
+        var body =document.getElementsByTagName('body').item(0);
+        body.style='background-image:url('+src+');background-size: 100%;background-repeat: no-repeat;';
+        
+        
+        //background-image:url('+src+');我的div
+        getDom('myDiv').style='background-image:url('+src+');visibility:visible;margin:0px;width:100%;height:100%;background-size: 100%;background-repeat: no-repeat;word-break: break-word;';
+
 
         //隐藏显示
         getDom('actionbox').style='visibility:hidden';
@@ -1677,9 +1696,12 @@ if (background.value=='none') {
     getDom('ul2').style='visibility:visible';
     getDom('write_area').style='visibility:visible';
     getDom('btn_send').style='visibility:visible';
+   
 
-}
-else if (background.value=='white') {
+    $('#myDiv').css('background-image', $('body').css('background-image')).css('background-repeat','no-repeat').css('background-size','100%');
+
+
+}else if (background.value=='white') {
     var allTags =document.getElementsByTagName('div');
     for (var i =0;i< allTags.length ; i++) {
         allTags[i].style.background='white';
