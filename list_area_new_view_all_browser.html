@@ -423,8 +423,16 @@
                 //记录消息拼接时间
 
                 //div
-                getDom('showMessageLast').innerHTML = getDom('showMessageLast').innerHTML + '<hr/><span style=color:black>' + getDom('timeFrequencys').value + '[' + grade + ']' + nickName + '(' + idt + ')' + is_mobile + ':</span><br/><span style=background-color:white;>'+tex+'</span>';
-                
+                getDom('showMessageLast').innerHTML = getDom('showMessageLast').innerHTML + '<hr/><span style=color:black>' + getDom('timeFrequencys').value + '[' + grade + ']' + nickName + '(' + idt + ')' + is_mobile + ':</span><br/><span class=showTex style=background-color:white;font-size:large>'+tex+'</span>';
+                        
+              
+                // showMessageLast();
+
+                //     function showMessageLast(){
+                //          // $('#showMessageLast span:last-child').hide().show(2000);
+
+                //            $('#showMessageLast span:last-child').hide().show( $('#delayInputTextId').val());
+                //     }
                 // $('#showMessageLast span:last-child').hide().show(1000);
                 // $('#showMessageLast span:last-child').fedeIn(1000);
                  // $('#showMessageLast').fedeIn(1000);
@@ -915,10 +923,9 @@
          // getDom('chatbox').style='visibility:hidden';
          getDom('chatbox').style='display:none';
       
-
-          getDom('player_area').style.width=parseInt($('body').css('width'))- parseInt($('#myDiv').css('width'))+'px';
-
-
+         //播放器宽度适应
+         let play_width=parseInt($('body').css('width'))- parseInt($('#myDiv').css('width'))-20+'px';
+          getDom('player_area').style.width=play_width;
         // getDom('actionbox').style='visibility:hidden';
         // getDom('ul1').style='visibility:visible';
         // getDom('ul2').style='visibility:visible';
@@ -1684,7 +1691,7 @@ autoInterval=setInterval(function(){
 ">
 <option  value="red">red</option>
 <option  selected  value="white">white</option>
-<option  value="balck">balck</option>
+<option  value="black">black</option>
 <option  value="#7FFF00">Lime</option>
 <option  value="#00FF00">Chartreuse</option>
 <option  value="#FFFF00">yelllow</option>
