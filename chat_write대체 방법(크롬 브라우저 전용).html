@@ -6,20 +6,24 @@
 
 
 <div id="chat_write" class="chat_write">
-                <h3>填写聊天</h3>
-                <div class="ad_toggle">
-                        <span class="blue">
-                            <input id="manage" type="radio" name="managerchat" checked="checked" class="on" data-message-type="1">
-                            <label for="manage" class="on">运营</label>
-                        </span>
-                    <span class="red">
-                            <input id="warning" type="radio" name="managerchat" data-message-type="2">
-                            <label for="warning">警告</label>
-                        </span>
-                </div>
-                <div id="write_area" class="write_area" contenteditable="true" ondragenter="return false;" ondrop="return false;" ondragover="return false;" placeholder="输入聊天内容"></div>
-            <button type="button" id="btn_send" class="btn_send" title="发送" placeholder="输入聊天内容">发送</button>
-        </div>
+
+    <h3>채팅쓰기</h3>
+    <div class="ad_toggle">
+        <span class="blue">
+            <input id="manage" type="radio" name="managerchat" checked="checked" class="on" data-message-type="1">
+            <label for="manage" class="on">운영</label>
+        </span>
+        <span class="red">
+            <input id="warning" type="radio" name="managerchat" data-message-type="2">
+            <label for="warning">경고</label>
+        </span>
+    </div>
+
+    
+    <div id="write_area" class="write_area" contenteditable="true" ondragenter="return false;" ondrop="return false;" ondragover="return false;" placeholder="채팅 입력 (C)"></div> 
+    
+         <button type="button" id="btn_send" class="btn_send" title="보내기" placeholder="채팅 입력 (C)">보내기</button>
+   
 
         <style type="text/css" async>
         *{
