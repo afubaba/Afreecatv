@@ -81,7 +81,7 @@
             $('#environmentButtonId').click();
         },5000);
 
-        $('#chat_area').css('color','red');
+      
 
     }  
     startButtonId();      
@@ -98,7 +98,7 @@
 
 
      <span style="color: black;font-size: large;">읽고있는정보:</span>
-     <div id="showMessage"  contenteditable="true"   style="border: 1px red solid;width: 90%;word-break: break-word; height: 30px;color:red" title="전시 정보"></div>
+     <div id="showMessage"  contenteditable="true"   style="border: 2px black solid;width: 90%;word-break: break-word; height: 50px;color:red" title="전시 정보"></div>
 
      <!-- <div id="write_area" contenteditable="true"></div>   -->
 
@@ -379,10 +379,26 @@
             //判断内容ID是否相同
             if (idt != idt_last || tex != text_Last) {
                 //聊天内容配色
+                
+                let idDom=chat_area.children[initIndex].children[0].lastElementChild;
                 let texDom =chat_area.children[initIndex].children[0].nextElementSibling;
-                texDom.style.color='red';
+
+
+
+                 texDom.style.border='2px black solid';
                 texDom.style.fontSize='large';
                 texDom.style.backgroundColor='white';
+                texDom.style.color='#0000FF';
+                   
+                idDom.style.fontSize='large';
+                // idDom.style.color='#000000';
+
+
+                // idDom.style='font-size:large;color:#00FF00;';
+
+
+                
+
 
                 // $(texDom).parent().prev().fadeOut(3000);
                 // $(texDom).parent().prev().hide(3000);
@@ -401,9 +417,9 @@
 
 
                 //记录消息
-                getDom('showMessage').innerHTML = '[' + grade + ']' + nickName + '(' + idt + ')' + is_mobile + ':<br/>' + tex;
+                getDom('showMessage').innerHTML = '[' + grade + ']' + nickName + '(' + idt + ')' + is_mobile + ':<br/><span style=font-size:large;>' + tex+'</span>';
 
-                $('#showMessage').fadeOut().fadeIn(1000);
+                // $('#showMessage').fadeOut().fadeIn(1000);
                // .fadeToggle(1000)
                // $('#showMessage').css('background-color','white').fadeOut(1000).fadeIn(1000)
                 // $('#showMessage').hide().show(1000);
@@ -879,6 +895,9 @@
              // var chat_area_width=getDom('chat_area').clentWidth;
              var chat_area_width=$('chat_area').width;
              getDom('chat_area').style='height:38%;background-repeat:no-repeat;background-image:url('+src+');background-size: 100%;';
+
+             getDom('showMessage').style.backgroundColor='white';
+
              getDom('actionbox').style='margin:0;padding:0;height:55%;width:'+chat_area_width+';overflow:scroll;visibility:hidden';
 
              getDom('ul1').style='visibility:visible';
@@ -888,7 +907,6 @@
 
             // alert($('#actionbox').css('width'));
             getDom('myDiv').style='margin:0;padding:0;height:80%;width:'+chat_area_width+';word-break: break-word;overflow:scroll;position:fixed;visibility:visible;margin-top:-18%;';
-
 
         //表情特效
         getDom('mainFace').style='overflow:scroll;width: 300px;height:70%;margin-left:-40%;margin-top:-25%; position: fixed;display:none;word-break:break-word';
@@ -1622,15 +1640,15 @@ autoInterval=setInterval(function(){
 
         글꼴색상:
         <select id="background_color" onchange="
-        // var background_color=document.getElementById('background_color');
-        // var myDiv=document.getElementById('myDiv');
-        // var chatbox=document.getElementById('chatbox');
-        // background_color.style.color=background_color.value;
-        // background_color.style.fontSize='large';
-        // chatbox.style.color=background_color.value;
-        // chatbox.style.fontSize='large';
-        // myDiv.style.color=background_color.value;
-        // myDiv.style.fontSize='large';
+        var background_color=document.getElementById('background_color');
+        var myDiv=document.getElementById('myDiv');
+        var chatbox=document.getElementById('chatbox');
+        background_color.style.color=background_color.value;
+        background_color.style.fontSize='large';
+        chatbox.style.color=background_color.value;
+        chatbox.style.fontSize='large';
+        myDiv.style.color=background_color.value;
+        myDiv.style.fontSize='large';
 
 // chatbox
 // chatting_area
