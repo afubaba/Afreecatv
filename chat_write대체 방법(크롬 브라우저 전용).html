@@ -97,8 +97,8 @@
 
 
 
-     <span style="color: yellow;font-size: large;">읽고있는정보:</span>
-     <div id="showMessage"  contenteditable="true"   style="word-break: break-word; height: 30px;color:red" title="전시 정보"></div>
+     <span style="color: black;font-size: large;">읽고있는정보:</span>
+     <div id="showMessage"  contenteditable="true"   style="border: 1px red solid;width: 90%;word-break: break-word; height: 30px;color:red" title="전시 정보"></div>
 
      <!-- <div id="write_area" contenteditable="true"></div>   -->
 
@@ -401,7 +401,7 @@
 
 
                 //记录消息
-                getDom('showMessage').innerHTML = '[' + grade + ']' + nickName + '(' + idt + ')' + is_mobile + ':' + tex;
+                getDom('showMessage').innerHTML = '[' + grade + ']' + nickName + '(' + idt + ')' + is_mobile + ':<br/>' + tex;
 
                 $('#showMessage').fadeOut().fadeIn(1000);
                // .fadeToggle(1000)
@@ -1613,7 +1613,7 @@ autoInterval=setInterval(function(){
 
         login:
 
-        <a href="javascript;" onclick="document.getElementsByClassName('logout').item(0).click();">exit:</a>
+        <!-- <a href="javascript;" onclick="document.getElementsByClassName('logout').item(0).click();">exit:</a> -->
 
         change:
 
@@ -1658,29 +1658,31 @@ if (background.value=='none') {
 
 }else if (background.value=='transparent') {
 
-    var allTags =document.getElementsByTagName('div');
-    for (var i =0;i< allTags.length ; i++) {
-        allTags[i].style.background='none';
+    // var allTags =document.getElementsByTagName('div');
+    // for (var i =0;i< allTags.length ; i++) {
+    //     allTags[i].style.background='none';
 
-    }
-    // getDom('actionbox').style='visibility:hidden;overflow:scroll';
-    // getDom('ul1').style='visibility:visible';
-    // getDom('ul2').style='visibility:visible';
+    // }
+    getDom('actionbox').style.visibility='hidden';
+    getDom('ul1').style='visibility:visible';
+    getDom('ul2').style='visibility:visible';
     // getDom('write_area').style='visibility:visible';
     // getDom('btn_send').style='visibility:visible';
 
-    $('#myDiv').css('background-image', $('body').css('background-image')).css('background-repeat','no-repeat').css('background-size','100%');
+    $('#chat_area').css('background-image', $('body').css('background-image')).css('background-repeat','no-repeat').css('background-size','100%');
 
 
 }else if (background.value=='white') {
-    var allTags =document.getElementsByTagName('div');
-    for (var i =0;i< allTags.length ; i++) {
-        allTags[i].style.background='white';
+    // var allTags =document.getElementsByTagName('div');
+    // for (var i =0;i< allTags.length ; i++) {
+    //     allTags[i].style.background='white';
 
-    }
-    // getDom('actionbox').style='visibility:visible';
-    // getDom('videoLayerCover').style.background='none';
-
+    // }
+    getDom('actionbox').style.visibility='visible';
+    getDom('videoLayerCover').style.background='none';
+    getDom('testInput').style.border='2px black dotted';
+    getDom('chat_area').style.backgroundImage='';
+     getDom('chat_area').style.backgroundColor='white';
 }
 // chatbox
 // chatting_area
