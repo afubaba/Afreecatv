@@ -27,7 +27,7 @@
 
 
     .startButtonId{
-            /*position:relative;*/
+        /*position:relative;*/
         /*水平居中*/
         /*margin: 0 auto;*/
         /*偏移*/*/
@@ -35,19 +35,19 @@
     }
     .startButtonId{
         width: 70%;
-     font-size: 50px;
-     background-color: red;
- }
- body{
-    background: #000000;
-    background: -moz-linear-gradient(top,  #000000 0%, #ffffff 100%);
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#000000), color-stop(100%,#ffffff));
-    background: -webkit-linear-gradient(top,  #000000 0%,#ffffff 100%);
-    background: -o-linear-gradient(top,  #000000 0%,#ffffff 100%);
-    background: -ms-linear-gradient(top,  #000000 0%,#ffffff 100%);
-    background: linear-gradient(to bottom,  #000000 0%,#ffffff 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000000', endColorstr='#ffffff',GradientType=0 );
-}
+        font-size: 50px;
+        background-color: red;
+    }
+    body{
+        background: #000000;
+        background: -moz-linear-gradient(top,  #000000 0%, #ffffff 100%);
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#000000), color-stop(100%,#ffffff));
+        background: -webkit-linear-gradient(top,  #000000 0%,#ffffff 100%);
+        background: -o-linear-gradient(top,  #000000 0%,#ffffff 100%);
+        background: -ms-linear-gradient(top,  #000000 0%,#ffffff 100%);
+        background: linear-gradient(to bottom,  #000000 0%,#ffffff 100%);
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000000', endColorstr='#ffffff',GradientType=0 );
+    }
 
 
 
@@ -81,7 +81,7 @@
             $('#environmentButtonId').click();
         },5000);
 
-      
+
 
     }  
     startButtonId();      
@@ -140,31 +140,27 @@
     }
     //获取当前内容,以配合还原
     var testInput_last=getDom('testInput');
-     //    var inputTimes_last=getDom('inputTimes');
-        // var inputFrequency_last=getDom('inputFrequency');
 
-        //备选方案输入框延迟
-        // //获取延迟速度;
-        // if (delayInputId.value=='') {
-        //  //赋值数据
-        //  delayInputId.value=1;
-        //  delayInputId=1;
-        // }
-        // 延迟速度
+        // 选择框延迟速度dom
         var delayInputId=getDom('delayInputId');
+        //文本框延迟速度dom
         var delayInputTextId=getDom('delayInputTextId');
-        delayInputFrequency=getDom('delayInputTextId').value;
+        //计时器延迟速度value
+        delayInputFrequency=delayInputTextId.value;
+
         if (delayInputFrequency=='') {
-            if (delayInputId.value=='slowSpeed') {
-                delayInputFrequency=1000;
-            }else if (delayInputId.value=='meiumSpeed') {
-                delayInputFrequency=500;
-            }else if (delayInputId.value=='quick') {
-                delayInputFrequency=125;
-            }
-            //赋值文本框延迟
-            delayInputTextId.value=delayInputFrequency;
+           if (delayInputId.value=='slowSpeed') {
+            delayInputFrequency=1000;
+        }else if (delayInputId.value=='meiumSpeed') {
+            delayInputFrequency=500;
+        }else if (delayInputId.value=='quick') {
+            delayInputFrequency=125;
         }
+
+    }
+                   //赋值文本框延迟显示
+        delayInputTextId.value=delayInputFrequency;
+
         //当前速度
         // console.log(delayInputId.value);
         //控制台信息数量
@@ -198,17 +194,14 @@
         }
 
 
-
+        console.log('重启或其开启了messageInterval');
         messageInterval = setInterval(function () {
          var idt_last = window.sessionStorage.getItem('idt_last');
          var text_Last = window.sessionStorage.getItem('text_Last');
-
-
          function getDom(dom) {
             var dom = document.getElementById(dom);
             return dom;
         }
-
         //清理控制台/当前执行次数
         consoleCount++;
 
@@ -216,41 +209,6 @@
             console.clear();
             consoleCount = 0;
         }
-
-
-        // 聊天内容获取速度自动加减
-        //最大次数
-        var maxTimes = initTime / delayInputFrequency * 1000;
-        nowFrequency++;
-        if (nowFrequency >= maxTimes) {
-            if (inputCount > 0) {
-                if (nowFrequency / inputCount > 2) {
-                    delayInputFrequency = delayInputFrequency * 2;
-                } else {
-                    delayInputFrequency = delayInputFrequency / 2;
-                }
-                //限制消息最大速度范围125
-
-
-                // getDom('upperLimit').value==''?upperLimit.value:getDom('upperLimit').value
-
-                if (delayInputFrequency >= upperLimit.value) {
-                    getDom('delayInputTextId').value = delayInputFrequency;
-                }
-                // if (delayInputFrequency<=2000&&delayInputFrequency>=125) {
-                //  getDom('delayInputTextId').value=delayInputFrequency;
-                // }
-                getDom('retrievalButtonId').click();
-
-            } else {
-                console.error('没有输出内容');
-            }
-            //初始化
-            nowFrequency = 0;
-            inputCount = 0;
-
-        }
-
 
 
         //chat_area聊天区域
@@ -385,11 +343,11 @@
 
 
 
-                 texDom.style.border='2px black solid';
+                texDom.style.border='2px black solid';
                 texDom.style.fontSize='large';
                 texDom.style.backgroundColor='white';
                 texDom.style.color='#0000FF';
-                   
+
                 idDom.style.fontSize='large';
                 // idDom.style.color='#000000';
 
@@ -1700,7 +1658,7 @@ if (background.value=='none') {
     getDom('videoLayerCover').style.background='none';
     getDom('testInput').style.border='2px black dotted';
     getDom('chat_area').style.backgroundImage='';
-     getDom('chat_area').style.backgroundColor='white';
+    getDom('chat_area').style.backgroundColor='white';
 }
 // chatbox
 // chatting_area
