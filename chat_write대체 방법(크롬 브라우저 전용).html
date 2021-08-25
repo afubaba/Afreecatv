@@ -984,8 +984,13 @@ mainFacebookFace();
 
         
         //同步内容和输入框区域cols='5'; rows='5'
-        getDom('testInput').style='width:60%;';
+        // getDom('testInput').style.width='60%';
+        // getDom('testInput').style.border='2px red solid';
+         getDom('testInput').style.cssText='width:60%;border:2px red solid;'
+
         getDom('testInput').setAttribute('rows','2');
+
+
 
         getDom('btn_send').onclick=function(){
             getDom('testInput').value='';
