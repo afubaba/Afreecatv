@@ -3,6 +3,108 @@
 <!-- Google Chrome for ubuntu 94.0.4603.0（개발버전）dev （64 位） -->
 <!-- firefox for ubuntu 91.0 (x64) -->
 <!-- 모든 브라우저 지원 ,호환성 강화 F12 개발 자 모드 -->
+<!--// $('body').css('background','transparent');-->
+<!--// $('body').css('opacity',0.2);-->
+<!--// $('body,#chat_area').css('background','rgba(0,0,0,0.5)');-->
+<!--// $('body').css('filter',' blur(0px)');-->
+<!--// $('body').css('filter',' blur(100px)');-->
+
+
+<style type="text/css" async>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+
+    .startButtonId {
+        /*position:relative;*/
+        /*水平居中*/
+        /*margin: 0 auto;*/
+        /*偏移*/
+        /*top: 45%;*/
+    }
+
+    .startButtonId {
+        width: 70%;
+        font-size: 50px;
+        background-color: red;
+    }
+
+    body {
+        background: #000000;
+        background: -moz-linear-gradient(top, #000000 0%, #ffffff 100%);
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #000000), color-stop(100%, #ffffff));
+        background: -webkit-linear-gradient(top, #000000 0%, #ffffff 100%);
+        background: -o-linear-gradient(top, #000000 0%, #ffffff 100%);
+        background: -ms-linear-gradient(top, #000000 0%, #ffffff 100%);
+        background: linear-gradient(to bottom, #000000 0%, #ffffff 100%);
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#000000', endColorstr='#ffffff', GradientType=0);
+    }
+    .showLog {
+        /*display: none;*/
+        position: fixed;
+        border: 2px black solid;
+        width: max-content;
+        height: 50px;
+        font-size: 50px;
+
+
+    }
+
+
+</style>
+
+
+<script id="myScript" type="text/javascript">
+
+    function getDomById(idDom){
+           idDom=document.getElementById(idDom);
+           return idDom;
+    }
+    let body= document.getElementsByTagName('body')[0];
+    let showLogDivDom=document.createElement('div');
+    showLogDivDom.id='showLog';
+    // showLogDivDom.style.border='10px red solid';
+    showLogDivDom.className='showLog';
+    showLogDivDom.innerHTML='testssssssssssss';
+    let webplayer=getDomById('webplayer');
+    body.insertBefore(showLogDivDom,webplayer)
+    // var dom
+    //var backColor;
+    var topValue;
+    var leftValue;
+    test();
+
+
+    $('#showLog').css('background','transparent').css('z-index','20000');
+
+    function test() {
+        // $('#showLog').toggle();
+        var chatBoxHeight = $('#chatbox').css('height');
+        var showLogHeight = $('#showLog').css('height');
+
+        $('#showLog').offset({top: parseInt(chatBoxHeight) / 2, left: $('html').width()})
+        let i = $('html').width();
+        if ('undefined' != typeof showLogTimeout) {
+            clearTimeout(showLogTimeout);
+        }
+        showLogSetTimeout();
+        function showLogSetTimeout() {
+            showLogTimeout = setTimeout(function () {
+                i -= 400;
+                $('#showLog').offset({top: parseInt(chatBoxHeight) / 2, left: i});
+                if (i < -$('#showLog').width()) {
+                    i = $('html').width();
+                }
+                showLogSetTimeout();
+            }, 1000);
+        }
+
+
+    };
+
+</script>
 <div id="chat_write" class="chat_write">
     <h3>채팅쓰기</h3>
     <div class="ad_toggle">
@@ -19,40 +121,6 @@
          ondragover="return false;" placeholder="채팅 입력 (C)"></div>
     <button type="button" id="btn_send" class="btn_send" title="보내기" placeholder="채팅 입력 (C)">보내기</button>
 
-    <style type="text/css" async>
-        * {
-            margin: 0;
-            padding: 0;
-        }
-
-
-        .startButtonId {
-            /*position:relative;*/
-            /*水平居中*/
-            /*margin: 0 auto;*/
-            /*偏移*/
-            /*top: 45%;*/
-        }
-
-        .startButtonId {
-            width: 70%;
-            font-size: 50px;
-            background-color: red;
-        }
-
-        body {
-            background: #000000;
-            background: -moz-linear-gradient(top, #000000 0%, #ffffff 100%);
-            background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #000000), color-stop(100%, #ffffff));
-            background: -webkit-linear-gradient(top, #000000 0%, #ffffff 100%);
-            background: -o-linear-gradient(top, #000000 0%, #ffffff 100%);
-            background: -ms-linear-gradient(top, #000000 0%, #ffffff 100%);
-            background: linear-gradient(to bottom, #000000 0%, #ffffff 100%);
-            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#000000', endColorstr='#ffffff', GradientType=0);
-        }
-
-
-    </style>
 
     <!-- <div id="startDivId" class="startDivId" style="border: 2px blue solid;"> -->
     <!-- 启动按钮 -->
@@ -277,7 +345,6 @@
 
                 //document.getElementById('chat_area').children[2].children[0].nextElementSibling.getAttribute('id');
                 if ('undefined' != chat_area.children[initIndex]) {
-
                     //现在的下标
                     var now_index = chat_area.children[initIndex].children[0].nextElementSibling.getAttribute('id');
                     var chat_area_Length = document.getElementById('chat_area').childNodes.length - 1;
@@ -349,11 +416,11 @@
 
 
 
+
                         texDom.style.border='2px black solid';
                         texDom.style.fontSize='large';
                         texDom.style.backgroundColor='white';
                         texDom.style.color='#0000FF';
-
                         idDom.style.fontSize='large';
                         // idDom.style.color='#000000';
 
@@ -806,6 +873,24 @@
                 var dom =document.getElementById(dom);
                 return dom;
             }
+
+
+            // javascript加载script
+            var head= document.getElementsByTagName('head')[0];
+            var script= document.createElement('script');
+
+
+            script.type= 'text/javascript';
+            script.id='showScript';
+            head.appendChild(script);
+            $('#showScript').html($('#myScript').html());
+
+            //
+
+
+
+
+
                 //启动自动时间
                 getDom('autoTimeId').click();
                 //getDom('autoTimeId2').click();
@@ -852,7 +937,7 @@
 
                     //背景图地址
                     var src=document.getElementsByClassName('bj_thumbnail').item(0).children[0].children[0].getAttribute('src');
-                    var body =document.getElementsByTagName('body').item(0);
+                    let body=document.getElementsByTagName('body');
                     body.style='background-image:url('+src+');background-size: 100%;background-repeat: no-repeat;';
 
 
@@ -1033,69 +1118,15 @@
                 " title="빠 른 설정 환경" style="font-size: large; color: yellow;"><span id="environmentSpanId">기본설정</span>
         </button>
 
-        <button onclick="function test() {
-            $('#showLog').toggle();
-
-            var chatBoxHeight=$('#chatbox').css('height');
-            var showLogHeight=$('#showLog').css('height');
-
-
-
-                 // $('body').css('background','transparent');
-                // $('body').css('opacity',0.2);
-                 // $('body,#chat_area').css('background','rgba(0,0,0,0.5)');
-            // $('body').css('filter',' blur(0px)');
-            // $('body').css('filter',' blur(100px)');
-              $('#showLog').css('background-color','white')
-
-
-             $('#showLog').offset({top:parseInt(chatBoxHeight)/2,left:$('html').width()})
-                let i =$('html').width();
-              if('undefined'!=typeof showLogTimeout)
-                  clearTimeout(showLogTimeout);
-
-            showLogSetTimeout();
-             function showLogSetTimeout(){
-
-             var showLogTimeout=setTimeout(function() {
-                         i-=400;
-                            $('#showLog').offset({top:parseInt(chatBoxHeight)/2,left:i});
-
-
-
-                             if(i< -$('#showLog').width()){
-                                        i=$('html').width();
-                             }
-
-
-                         showLogSetTimeout();
-                    },1000);
-             }
-
-
-
-        };
+        <button onclick="
         test() ;
         " style="color: red ; font-size: large" title="탄창의탄막">탄창의탄막
         </button>
-        <style>
-            .showLog {
-                display: none;
-                position: fixed;
-                border: 2px black solid;
-                width: max-content;
-                height: 50px;
-
-                font-size: 50px;
-
-            }
 
 
-        </style>
-
-        <div id="showLog" class="showLog">
-            testtesttesttesttesttesttest
-        </div>
+<!--        <div id="showLog" class="showLog">-->
+<!--            testtesttesttesttesttesttest-->
+<!--        </div>-->
 
 
         <hr/>
@@ -5517,7 +5548,7 @@
                      // document.getElementById('inputFrequency').value=i;
 
                      if (i==timeFrequencys){
-                        i=0;
+                 i=0;
                         document.getElementById('getTimeButton').click();
 
                     }
@@ -5526,8 +5557,11 @@
                 " title="开始">开始
         </button>
 
+
+        <button onclick="test111()">onclick
+        </button>
+
         <hr/>
 
     </div>
 </div>
-
