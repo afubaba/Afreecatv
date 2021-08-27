@@ -96,15 +96,15 @@
     // $('#showLog2').offset({top: parseInt(chatBoxHeight) / 4, left: htmlWidth});
     // $('#showLog3').offset({left: htmlWidth});
     //是否开启弹幕
-    function barrage(){
-        let $barrageButton =$('#barrageButtonId');
-        let  isBarrage= $barrageButton.attr('data-isBarrage');
-        if (isBarrage=='close'){
-            $barrageButton.attr('data-isBarrage','open');
-            $barrageButton.css('background-color','green').css('font-size','large').css('color','yellow');
-        }else if (isBarrage=='open'){
-            $barrageButton.attr('data-isBarrage','close');
-            $barrageButton.css('background-color','#808080').css('font-size','unset').css('color','white');
+    function barrage() {
+        let $barrageButton = $('#barrageButtonId');
+        let isBarrage = $barrageButton.attr('data-isBarrage');
+        if (isBarrage == 'close') {
+            $barrageButton.attr('data-isBarrage', 'open');
+            $barrageButton.css('background-color', 'green').css('font-size', 'large').css('color', 'yellow');
+        } else if (isBarrage == 'open') {
+            $barrageButton.attr('data-isBarrage', 'close');
+            $barrageButton.css('background-color', '#808080').css('font-size', 'unset').css('color', 'white');
         }
         alert($barrageButton.attr('data-isBarrage'));
 
@@ -114,16 +114,16 @@
 
     // test('111111111');
     function test(text) {
-        let isBarrage =$('#barrageButtonId').attr('data-isBarrage');
+        let isBarrage = $('#barrageButtonId').attr('data-isBarrage');
         //弹幕数组
-        var  showLogArray = [];
-        if (isBarrage=='close'){
+        var showLogArray = [];
+        if (isBarrage == 'close') {
             $('#webplayer').prevAll('div').remove();
             if ('undefined' != typeof showLogTimeout) {
                 clearTimeout(showLogTimeout);
             }
 
-        }else if (isBarrage=='open'){
+        } else if (isBarrage == 'open') {
 
             //设置字体
             $('#background_color').val('#00FF00');
@@ -131,7 +131,7 @@
 
             // $('body').hide(1000).show(2000);
 
-             // $('#chat_area').fadeOut($('#delayInputTextId').val()*2).fadeIn($('#delayInputTextId').val());
+            // $('#chat_area').fadeOut($('#delayInputTextId').val()*2).fadeIn($('#delayInputTextId').val());
 
 
             showLogArray.push(text);
@@ -139,7 +139,7 @@
         }
 
         //只能清理弹幕
-        if ( $('.showLog').length>50){
+        if ($('.showLog').length > 50) {
 
 
             console.log('清理屏幕');
@@ -152,7 +152,6 @@
             // }
 
 
-
             // for (var i=0;i<$('#webplayer').prevAll('div').length;i++){
             //     if ($('#webplayer').prevAll('div')[i].offsetLeft<=($('#webplayer').prevAll('div')[i].length+20)){
             //         $('#webplayer').prevAll('div')[i].remove();
@@ -162,7 +161,6 @@
         }
 
 
-
         //创建dom
         function createShowLogs() {
 
@@ -170,24 +168,23 @@
             let chatBoxHeight = $('#chatbox').height();
             let htmlWidth = $('html').width();
             //每个dom应该的高度
-            let topHeight = chatBoxHeight / 2 /  showLogArray.length;
-              // parseInt(Math.random() * 1000 / 1 + 1);
+            let topHeight = chatBoxHeight / 2 / showLogArray.length;
+            // parseInt(Math.random() * 1000 / 1 + 1);
             //根据数量布局
             for (let i = 0; i < showLogArray.length; i++) {
-                randomNo=parseInt(Math.random() * $('body').height() / 1 + 1)
+                randomNo = parseInt(Math.random() * $('body').height() / 1 + 1)
 
                 createSingleShowLog('showLog' + (randomNo), showLogArray[i]);
                 // $('#showLog' + (i + 1)).offset({top: topHeight * (i + 1),left:htmlWidth});
 
 
-
-                $('#showLog' + (randomNo)).offset({top: randomNo ,left:htmlWidth});
+                $('#showLog' + (randomNo)).offset({top: randomNo, left: htmlWidth});
                 runShowLog('#showLog' + (randomNo));
                 // domArrary.push();
 
 
                 // showLogArray.remove('11');
-                 // showLogArray.remove(showLogArray[i]);
+                // showLogArray.remove(showLogArray[i]);
 
                 // showLogArray. shift();
             }
@@ -196,7 +193,7 @@
             function createSingleShowLog(id, text) {
                 let showLogDivDom = document.createElement('div');
 
-                showLogDivDom.style.color=$('#background_color').val()
+                showLogDivDom.style.color = $('#background_color').val()
                 showLogDivDom.id = id;
                 showLogDivDom.className = 'showLog';
                 showLogDivDom.innerHTML = text;
@@ -213,8 +210,9 @@
             // if ('undefined' != typeof showLogTimeout) {
             //     clearTimeout(showLogTimeout);
             // }    //隐藏所有
-            console.log('run:'+id);
-           showLogSetTimeout(id);
+            console.log('run:' + id);
+            showLogSetTimeout(id);
+
             function showLogSetTimeout(id) {
                 showLogTimeout = setTimeout(function () {
                     i -= 300;
@@ -222,21 +220,21 @@
                     //10秒后自动隐藏
                     setTimeout(function () {
                         $(id).hide();
-                    },7000);
+                    }, 7000);
 
-                    if (i < -$(id).width()*2) {
-                    // if (i <  -$('html').width()) {
+                    if (i < -$(id).width() * 2) {
+                        // if (i <  -$('html').width()) {
 
                         //删除已经显示的
                         // deleteShowLog(id);
 
-                    }else{
+                    } else {
                         //显示
 
-                         showLogSetTimeout(id);
+                        showLogSetTimeout(id);
                     }
                     // $('#delayInputTextId').val()；
-                },  1000);
+                }, 1000);
             }
         }
 
@@ -253,12 +251,11 @@
             if ('undefined' != typeof showLogTimeout) {
                 clearTimeout(showLogTimeout);
             }
-                showLogArray. shift();
+            showLogArray.shift();
             // }
 
             console.log(showLogArray)
         }
-
 
 
     };
@@ -1280,7 +1277,8 @@
                 " title="빠 른 설정 환경" style="font-size: large; color: yellow;"><span id="environmentSpanId">기본설정</span>
         </button>
 
-        <button id="barrageButtonId" data-isBarrage="open" onclick="barrage();" style="color: red ; font-size: large" title="탄창의탄막">탄창의탄막
+        <button id="barrageButtonId" data-isBarrage="open" onclick="barrage();" style="color: red ; font-size: large"
+                title="탄창의탄막">탄창의탄막
         </button>
 
 
