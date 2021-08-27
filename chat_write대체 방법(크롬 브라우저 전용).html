@@ -41,13 +41,16 @@
         background: linear-gradient(to bottom, #000000 0%, #ffffff 100%);
         filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#000000', endColorstr='#ffffff', GradientType=0);
     }
+
     .showLog {
         /*display: none;*/
         position: fixed;
-        border: 2px black solid;
+        /*border: 2px black solid;*/
         width: max-content;
         height: 50px;
-        font-size: 50px;
+        font-size: 40px;
+        z-index: 999;
+        font-weight: bolder;
 
 
     }
@@ -58,48 +61,204 @@
 
 <script id="myScript" type="text/javascript">
 
-    function getDomById(idDom){
-           idDom=document.getElementById(idDom);
-           return idDom;
+    function getDomById(idDom) {
+        idDom = document.getElementById(idDom);
+        return idDom;
     }
-    let body= document.getElementsByTagName('body')[0];
-    let showLogDivDom=document.createElement('div');
-    showLogDivDom.id='showLog';
-    // showLogDivDom.style.border='10px red solid';
-    showLogDivDom.className='showLog';
-    showLogDivDom.innerHTML='testssssssssssss';
-    let webplayer=getDomById('webplayer');
-    body.insertBefore(showLogDivDom,webplayer)
-    // var dom
-    //var backColor;
-    var topValue;
-    var leftValue;
-    test();
+
+    let body = document.getElementsByTagName('body')[0];
 
 
-    $('#showLog').css('background','transparent').css('z-index','20000');
-
-    function test() {
-        // $('#showLog').toggle();
-        var chatBoxHeight = $('#chatbox').css('height');
-        var showLogHeight = $('#showLog').css('height');
-
-        $('#showLog').offset({top: parseInt(chatBoxHeight) / 2, left: $('html').width()})
-        let i = $('html').width();
-        if ('undefined' != typeof showLogTimeout) {
-            clearTimeout(showLogTimeout);
+    // showLogDivDom.id = 'showLog';
+    // showLogDivDom2.id = 'showLog2';
+    // showLogDivDom3.id = 'showLog3';
+    //
+    // showLogDivDom.className = 'showLog';
+    // showLogDivDom2.className = 'showLog';
+    // showLogDivDom3.className = 'showLog';
+    //
+    // showLogDivDom.innerHTML = '111';
+    // showLogDivDom2.innerHTML = '222';
+    // showLogDivDom3.innerHTML = '333';
+    //
+    // let webplayer = getDomById('webplayer');
+    // body.insertBefore(showLogDivDom, webplayer);
+    // body.insertBefore(showLogDivDom2, webplayer);
+    // body.insertBefore(showLogDivDom3, webplayer);
+    //
+    // setTimeout(function () {
+    //     document.getElementById('showLog').style.backgroundColor = 'white';
+    //     document.getElementById('showLog2').style.backgroundColor = 'white';
+    //     document.getElementById('showLog3').style.backgroundColor = 'white' ;
+    // }, 2000);
+    //
+    // $('#showLog').offset({top: parseInt(chatBoxHeight) / 2, left: htmlWidth});
+    // $('#showLog2').offset({top: parseInt(chatBoxHeight) / 4, left: htmlWidth});
+    // $('#showLog3').offset({left: htmlWidth});
+    //是否开启弹幕
+    function barrage(){
+        let $barrageButton =$('#barrageButtonId');
+        let  isBarrage= $barrageButton.attr('data-isBarrage');
+        if (isBarrage=='close'){
+            $barrageButton.attr('data-isBarrage','open');
+            $barrageButton.css('background-color','green').css('font-size','large').css('color','yellow');
+        }else if (isBarrage=='open'){
+            $barrageButton.attr('data-isBarrage','close');
+            $barrageButton.css('background-color','#808080').css('font-size','unset').css('color','white');
         }
-        showLogSetTimeout();
-        function showLogSetTimeout() {
-            showLogTimeout = setTimeout(function () {
-                i -= 400;
-                $('#showLog').offset({top: parseInt(chatBoxHeight) / 2, left: i});
-                if (i < -$('#showLog').width()) {
-                    i = $('html').width();
-                }
-                showLogSetTimeout();
-            }, 1000);
+        alert($barrageButton.attr('data-isBarrage'));
+
+
+    }
+
+
+    // test('111111111');
+    function test(text) {
+        let isBarrage =$('#barrageButtonId').attr('data-isBarrage');
+        //弹幕数组
+        var  showLogArray = [];
+        if (isBarrage=='close'){
+            $('#webplayer').prevAll('div').remove();
+            if ('undefined' != typeof showLogTimeout) {
+                clearTimeout(showLogTimeout);
+            }
+
+        }else if (isBarrage=='open'){
+
+            //设置字体
+            $('#background_color').val('#00FF00');
+            $('#background_color').change();
+
+            // $('body').hide(1000).show(2000);
+
+             // $('#chat_area').fadeOut($('#delayInputTextId').val()*2).fadeIn($('#delayInputTextId').val());
+
+
+            showLogArray.push(text);
+            createShowLogs();
         }
+
+        //只能清理弹幕
+        if ( $('.showLog').length>50){
+
+
+            console.log('清理屏幕');
+            $('#webplayer').prevAll('div').remove();
+            // for (var i=0;i<$('#webplayer').prevAll('div').length;i++){
+            //     if ($('#webplayer').prevAll('div')[i].offsetLeft<=$('body').clientWidth/2){
+            //         $('#webplayer').prevAll('div')[i].remove();
+            //     }
+            //
+            // }
+
+
+
+            // for (var i=0;i<$('#webplayer').prevAll('div').length;i++){
+            //     if ($('#webplayer').prevAll('div')[i].offsetLeft<=($('#webplayer').prevAll('div')[i].length+20)){
+            //         $('#webplayer').prevAll('div')[i].remove();
+            //     }
+            //
+            // }
+        }
+
+
+
+        //创建dom
+        function createShowLogs() {
+
+            let webplayer = getDomById('webplayer');
+            let chatBoxHeight = $('#chatbox').height();
+            let htmlWidth = $('html').width();
+            //每个dom应该的高度
+            let topHeight = chatBoxHeight / 2 /  showLogArray.length;
+              // parseInt(Math.random() * 1000 / 1 + 1);
+            //根据数量布局
+            for (let i = 0; i < showLogArray.length; i++) {
+                randomNo=parseInt(Math.random() * $('body').height() / 1 + 1)
+
+                createSingleShowLog('showLog' + (randomNo), showLogArray[i]);
+                // $('#showLog' + (i + 1)).offset({top: topHeight * (i + 1),left:htmlWidth});
+
+
+
+                $('#showLog' + (randomNo)).offset({top: randomNo ,left:htmlWidth});
+                runShowLog('#showLog' + (randomNo));
+                // domArrary.push();
+
+
+                // showLogArray.remove('11');
+                 // showLogArray.remove(showLogArray[i]);
+
+                // showLogArray. shift();
+            }
+            // runShowLog('#showLog1');
+            //创建单个dom
+            function createSingleShowLog(id, text) {
+                let showLogDivDom = document.createElement('div');
+
+                showLogDivDom.style.color=$('#background_color').val()
+                showLogDivDom.id = id;
+                showLogDivDom.className = 'showLog';
+                showLogDivDom.innerHTML = text;
+                // showLogDivDom.style.backgroundColor='white';
+                body.insertBefore(showLogDivDom, webplayer);
+            }
+
+        }
+
+
+        //运行dom
+        function runShowLog(id) {
+            let i = $('html').width();
+            // if ('undefined' != typeof showLogTimeout) {
+            //     clearTimeout(showLogTimeout);
+            // }    //隐藏所有
+            console.log('run:'+id);
+           showLogSetTimeout(id);
+            function showLogSetTimeout(id) {
+                showLogTimeout = setTimeout(function () {
+                    i -= 300;
+                    $(id).offset({left: i});
+                    //10秒后自动隐藏
+                    setTimeout(function () {
+                        $(id).hide();
+                    },7000);
+
+                    if (i < -$(id).width()*2) {
+                    // if (i <  -$('html').width()) {
+
+                        //删除已经显示的
+                        // deleteShowLog(id);
+
+                    }else{
+                        //显示
+
+                         showLogSetTimeout(id);
+                    }
+                    // $('#delayInputTextId').val()；
+                },  1000);
+            }
+        }
+
+
+        // 销毁dom
+        function deleteShowLog(id) {
+            // console.log(id);
+            $(id).remove();
+            $('body:first-child').remove();
+
+            // $(id).empty();
+            console.log(showLogArray.length);
+            // if(showLogArray.length>1){
+            if ('undefined' != typeof showLogTimeout) {
+                clearTimeout(showLogTimeout);
+            }
+                showLogArray. shift();
+            // }
+
+            console.log(showLogArray)
+        }
+
 
 
     };
@@ -451,7 +610,10 @@
                         getDom('showMessage').innerHTML =showMessageText;
 
                         const showMessageText1=  '[' + grade + ']' + nickName + '(' + idt + ')' + is_mobile + ':'+ tex;
-                         getDom('showLog').innerHTML =showMessageText1;
+
+
+                        test(showMessageText1);
+                         // getDom('showLog').innerHTML =showMessageText1;
                         // $('#showMessage').fadeOut().fadeIn(1000);
                        // .fadeToggle(1000)
                        // $('#showMessage').css('background-color','white').fadeOut(1000).fadeIn(1000)
@@ -1118,15 +1280,13 @@
                 " title="빠 른 설정 환경" style="font-size: large; color: yellow;"><span id="environmentSpanId">기본설정</span>
         </button>
 
-        <button onclick="
-        test() ;
-        " style="color: red ; font-size: large" title="탄창의탄막">탄창의탄막
+        <button id="barrageButtonId" data-isBarrage="open" onclick="barrage();" style="color: red ; font-size: large" title="탄창의탄막">탄창의탄막
         </button>
 
 
-<!--        <div id="showLog" class="showLog">-->
-<!--            testtesttesttesttesttesttest-->
-<!--        </div>-->
+        <!--        <div id="showLog" class="showLog">-->
+        <!--            testtesttesttesttesttesttest-->
+        <!--        </div>-->
 
 
         <hr/>
@@ -5312,7 +5472,7 @@
 
 
                 }else{
-                 console.log('关闭自动报告时：'+nickName);
+                 // console.log('关闭自动报告时：'+nickName);
              }
          },1000)" title="자동보고시간(30분정각에힌트)">报时
         </button>
