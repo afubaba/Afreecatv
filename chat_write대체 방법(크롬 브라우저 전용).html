@@ -52,7 +52,10 @@
         z-index: 999;
         font-weight: bolder;
 
-
+        -webkit-user-select: none;  /* 禁止 DIV 中的文本被鼠标选中 */
+        -moz-user-select: none;     /* 禁止 DIV 中的文本被鼠标选中 */
+        -ms-user-select: none;      /* 禁止 DIV 中的文本被鼠标选中 */
+        user-select: none;             /* 禁止 DIV 中的文本被鼠标选中 */
     }
 
 
@@ -95,8 +98,14 @@
     // $('#showLog').offset({top: parseInt(chatBoxHeight) / 2, left: htmlWidth});
     // $('#showLog2').offset({top: parseInt(chatBoxHeight) / 4, left: htmlWidth});
     // $('#showLog3').offset({left: htmlWidth});
+
+    function init() {
+        $('#barrageButtonId').css('background-color', 'green').css('font-size', 'large').css('color', 'yellow');
+    }
+    init();
     //是否开启弹幕
     function barrage() {
+
         let $barrageButton = $('#barrageButtonId');
         let isBarrage = $barrageButton.attr('data-isBarrage');
         if (isBarrage == 'close') {
@@ -139,7 +148,7 @@
         }
 
         //只能清理弹幕
-        if ($('.showLog').length > 50) {
+        if ($('.showLog').length > 200) {
 
 
             console.log('清理屏幕');
