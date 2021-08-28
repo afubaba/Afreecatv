@@ -47,8 +47,8 @@
         position: fixed;
         /*border: 2px black solid;*/
         width: max-content;
-        height: 50px;
-        font-size: 40px;
+        height: 35px;
+        font-size: 30px;
         z-index: 999;
         font-weight: bolder;
 
@@ -129,8 +129,7 @@
             $barrageButton.css('background-color', '#808080').css('font-size', 'unset').css('color', 'white');
 
         }
-          // alert($barrageButton.attr('data-isBarrage'));
-
+        // alert($barrageButton.attr('data-isBarrage'));
 
 
     }
@@ -151,7 +150,7 @@
                 if ('undefined' != typeof showLogTimeout) {
                     clearTimeout(showLogTimeout);
                 }
-            },10000)
+            }, 10000)
 
 
         } else if (isBarrage == 'open') {
@@ -198,16 +197,33 @@
             //每个dom应该的高度
             let topHeight = chatBoxHeight / 2 / showLogArray.length;
             // parseInt(Math.random() * 1000 / 1 + 1);
+            //body的高度
+            var bodyHeight=$('body').height();
             //根据数量布局
             for (let i = 0; i < showLogArray.length; i++) {
-                randomNo = parseInt(Math.random() * $('body').height() / 1 + 1)
 
-                createSingleShowLog('showLog' + (randomNo), showLogArray[i]);
+                let randomNo;
+
+                function getRandNo() {
+                    randomNo = parseInt(Math.random() * bodyHeight / 1 + 1);
+                    if (document.getElementById('showLog' + randomNo) != null) {
+                        console.log('重复的id：showLog'+randomNo+'正在重新创建');
+                        getRandNo();
+                        // $('#showLog' + randomNo).remove();
+
+                    }
+                    console.log('不存在的id：showLog'+randomNo+'进入下一步');
+                    return randomNo;
+                }
+                //获得一个不重复的id
+                randomNo= getRandNo();
+
+                //清除重复的
+
+                createSingleShowLog('showLog' + randomNo, showLogArray[i]);
                 // $('#showLog' + (i + 1)).offset({top: topHeight * (i + 1),left:htmlWidth});
-
-
-                $('#showLog' + (randomNo)).offset({top: randomNo, left: htmlWidth});
-                runShowLog('#showLog' + (randomNo));
+                $('#showLog' + randomNo).offset({top: randomNo, left: htmlWidth});
+                runShowLog('#showLog' + randomNo);
                 // domArrary.push();
 
 
@@ -246,7 +262,7 @@
             showLogSetTimeout(id);
 
             function showLogSetTimeout(id) {
-                showLogTimeout = setTimeout(function () {
+                var showLogTimeout = setTimeout(function () {
                     //突出显示
                     // $domIdWidth+$chatboxLegt
                     // -$(id).width()
@@ -266,23 +282,16 @@
 
                     $(id).offset({left: i});
                     //10秒后自动隐藏
-                    setTimeout(function () {
-                        $(id).hide();
-                    }, 10000);
+                    // setTimeout(function () {
+                    //     $(id).hide();
+                    // }, 10000);
 
-                    if (i < -$(id).width() * 2) {
-                        // if (i <  -$('html').width()) {
-
-                        //删除已经显示的
-                        // deleteShowLog(id);
-
-                    } else {
-                        //显示
-
+                    if (i > -$(id).width())
                         showLogSetTimeout(id);
-                    }
+                    //删除已经显示的
+                    // deleteShowLog(id);
                     // $('#delayInputTextId').val()；
-                }, $('#delayInputTextId').val());
+                }, 1000);
             }
         }
 
@@ -292,7 +301,6 @@
             // console.log(id);
             $(id).remove();
             $('body:first-child').remove();
-
             // $(id).empty();
             console.log(showLogArray.length);
             // if(showLogArray.length>1){
@@ -309,8 +317,6 @@
     };
 
 
-
-
     //弹窗提示
     function tipBarrage(textContent) {
 
@@ -320,23 +326,24 @@
         let chatBoxHeight = chatbox.height;
         chatBoxHeight = chatBoxHeight / 2;
         createSingleShowLog('tipBarrage', textContent);
+
         function createSingleShowLog(id, text) {
 
-            if (document.getElementById(id)==null){
+            if (document.getElementById(id) == null) {
                 let showLogDivDom = document.createElement('div');
                 showLogDivDom.id = id;
                 showLogDivDom.className = 'showLog';
                 showLogDivDom.innerHTML = text;
                 // const cssText = 'background:blue;height:100%;color:' + $('#background_color').val() + ';position:fixed;top:' + (bodyHeight / 2) + 'px;left:'+$('body').width()+'px';
-                const cssText = 'font-size:888px;opacity:0.3;width: max-content;background:blue;height:'+  $('body').height()+'px;color:' + $('#background_color').val() + ';position:fixed;top:0px;left:'+$('body').width()+'px';
+                const cssText = 'font-size:888px;opacity:0.3;width: max-content;background:blue;height:' + $('body').height() + 'px;color:' + $('#background_color').val() + ';position:fixed;top:0px;left:' + $('body').width() + 'px';
 
 
                 // alert(cssText);
                 showLogDivDom.style = cssText;
                 $(barrageButtonId).after(showLogDivDom);
 
-            }else{
-                $('#'+id).remove();
+            } else {
+                $('#' + id).remove();
                 createSingleShowLog(id, text)
                 // $('#'+id).val(text);
 
@@ -344,23 +351,25 @@
             tipBarrageTimeoutFunction(id);
 
         }
-        let i =$('body').width();
+
+        let i = $('body').width();
+
         function tipBarrageTimeoutFunction(id) {
 
-            if('undefined' != typeof tipBarrageTimeout){
+            if ('undefined' != typeof tipBarrageTimeout) {
                 clearTimeout(tipBarrageTimeout);
                 // $('#'+id).remove();
             }
 
             tipBarrageTimeout = setTimeout(function () {
                 i -= 400;
-                $('#'+id).offset({left: i});
+                $('#' + id).offset({left: i});
                 //10秒后自动隐藏
 
-                if (i < -$('body').width() ) {
-                   clearTimeout(tipBarrageTimeout);
-                    $('#'+id).remove();
-                }else{
+                if (i < -$('body').width()) {
+                    clearTimeout(tipBarrageTimeout);
+                    $('#' + id).remove();
+                } else {
                     tipBarrageTimeoutFunction(id);
                 }
 
