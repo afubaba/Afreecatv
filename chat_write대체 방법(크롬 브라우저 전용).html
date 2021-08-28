@@ -198,7 +198,7 @@
             let topHeight = chatBoxHeight / 2 / showLogArray.length;
             // parseInt(Math.random() * 1000 / 1 + 1);
             //body的高度
-            var bodyHeight=$('body').height();
+            var bodyHeight = $('body').height();
             //根据数量布局
             for (let i = 0; i < showLogArray.length; i++) {
 
@@ -215,8 +215,9 @@
                     // console.log('不存在的id：showLog'+randomNo+'进入下一步');
                     return randomNo;
                 }
+
                 //获得一个不重复的id
-                randomNo= getRandNo();
+                randomNo = getRandNo();
 
                 //清除重复的
 
@@ -258,9 +259,10 @@
 
             //  var $chatboxLegt=$('#chatbox').offset().left;
             // var $domIdWidth= $(id).width();
-           let delayInputTextId= $('#delayInputTextId').val();
+            let delayInputTextId = $('#delayInputTextId').val();
 
             showLogSetTimeout(id);
+
             function showLogSetTimeout(id) {
                 var showLogTimeout = setTimeout(function () {
                     //突出显示
@@ -279,7 +281,7 @@
                     // deleteShowLog(id);
 
 
-                }, delayInputTextId>=1000?1000:delayInputTextId);
+                }, delayInputTextId >= 1000 ? 1000 : delayInputTextId);
             }
         }
 
@@ -323,7 +325,7 @@
                 showLogDivDom.className = 'showLog';
                 showLogDivDom.innerHTML = text;
                 // const cssText = 'background:blue;height:100%;color:' + $('#background_color').val() + ';position:fixed;top:' + (bodyHeight / 2) + 'px;left:'+$('body').width()+'px';
-                const cssText = 'font-size:888px;opacity:0.3;width: max-content;background:blue;height:' + $('body').height() + 'px;color:' + $('#background_color').val() + ';position:fixed;top:0px;left:' + $('body').width() + 'px';
+                const cssText = 'font-size:888px;width: max-content;background:blue;height:' + $('body').height() + 'px;color:red;position:fixed;top:0px;left:' + $('body').width() + 'px';
 
 
                 // alert(cssText);
@@ -381,6 +383,13 @@
                 <label for="warning">경고</label>
             </span>
     </div>
+
+    <!--    <div id="write_area" class="write_area" contenteditable="true" ondragenter="return false;" ondrop="return false;"-->
+    <!--         ondragover="return false;" placeholder="输入聊天内容"></div>-->
+
+    <!--    <button type="button" id="btn_send" class="btn_send" title="发送" placeholder="输入聊天内容">发送</button>-->
+
+
     <div id="write_area" class="write_area" contenteditable="true" ondragenter="return false;" ondrop="return false;"
          ondragover="return false;" placeholder="채팅 입력 (C)"></div>
     <button type="button" id="btn_send" class="btn_send" title="보내기" placeholder="채팅 입력 (C)">보내기</button>
@@ -388,10 +397,37 @@
 
     <!-- <div id="startDivId" class="startDivId" style="border: 2px blue solid;"> -->
     <!-- 启动按钮 -->
-
-
     <button id="startButtonId" class="startButtonId" onclick="
+            // $('#write_area').clone().insertBefore($('#write_area'));
+            //
+            // $('#btn_send').clone().insertBefore($('#btn_send'));
+            //
+            // setTimeout(function() {
+            //  $('.write_area').get(0).remove();
+            //  $('.btn_send').get(0).remove();
+            // },1000)
 
+            // $('#write_area').remove();
+            // var writeDom=document.createElement('div');
+            // writeDom.setAttribute('id','write_area');
+            // writeDom.setAttribute('class','write_area');
+            // writeDom.setAttribute('contenteditable','true');
+            // writeDom.setAttribute('ondragenter','return false;');
+            // writeDom.setAttribute('ondrop','return false;');
+            // writeDom.setAttribute('ondragover','return false;');
+            // writeDom.setAttribute('placeholder','输入聊天内容');
+            // $('#btn_send').before(writeDom);
+
+            // for (var i =0;i< $('script').length;i++){
+            //      $('script:eq('+i+')' ).clone().append($('head'));
+            //
+            // }
+
+
+
+        // $('#write_area').attr('placeholder','11');
+        // $('#btn_send').attr('placeholder','1231').attr('title','12312')
+        // $('#btn_send').innerHTML='12312312';
         function getDomById(dom) {
             dom =document.getElementById(dom);
             return dom;
@@ -399,7 +435,20 @@
         function startButtonId(){
 
 
-            //启动动画效果
+
+
+//         $('#startButtonId').before(' <div id=  write_area   class=  write_area   contenteditable=  true   ondragenter=  return false;   ondrop=  return false;  \n'+
+// '    ondragover=  return false;   placeholder=  输入聊天内容  ></div>');
+//         $('#startButtonId').before(' <button type=  button   id=  btn_send   class=  btn_send   title=  发送   placeholder=  输入聊天内容  >发送</button>');
+
+
+
+
+
+
+
+
+//启动动画效果
             var src=document.getElementsByClassName('bj_thumbnail').item(0).children[0].children[0].getAttribute('src');
 
             $('body').hide(1000).show(3000);
@@ -428,6 +477,7 @@
     <div id="myDiv" style="border: 1px red solid; overflow: scroll;">
         <!-- f12개발 자 모드，구글 브라우저 전용，다른 브라우저에서 자체 테스트-->
         <!--            contenteditable="true"-->
+
         <span style="color: black;font-size: large;">읽고있는정보:</span>
         <div id="showMessage"
              style="border: 2px black solid;width: 90%;word-break: break-word; height: 50px;color:red;user-select: none;-ms-user-select: none;-moz-user-select: none; -webkit-user-select: none; "
@@ -1220,8 +1270,8 @@
 
                          getDom('ul1').style='visibility:visible';
                          getDom('ul2').style='visibility:visible';
-                         getDom('write_area').style='display:none';
-                         getDom('btn_send').style='display:none';
+                         getDom('write_area').style.display='none';
+                         getDom('btn_send').style.display='none';
 
                         // alert($('#actionbox').css('width'));
                         getDom('myDiv').style='margin:0;padding:0;height:80%;width:'+chat_area_width+';word-break: break-word;overflow:scroll;position:fixed;visibility:visible;margin-top:-18%;';
