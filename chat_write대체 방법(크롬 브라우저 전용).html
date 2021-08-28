@@ -207,12 +207,12 @@
                 function getRandNo() {
                     randomNo = parseInt(Math.random() * bodyHeight / 1 + 1);
                     if (document.getElementById('showLog' + randomNo) != null) {
-                        console.log('重复的id：showLog'+randomNo+'正在重新创建');
+                        // console.log('重复的id：showLog'+randomNo+'正在重新创建');
                         getRandNo();
                         // $('#showLog' + randomNo).remove();
 
                     }
-                    console.log('不存在的id：showLog'+randomNo+'进入下一步');
+                    // console.log('不存在的id：showLog'+randomNo+'进入下一步');
                     return randomNo;
                 }
                 //获得一个不重复的id
@@ -258,27 +258,14 @@
 
             //  var $chatboxLegt=$('#chatbox').offset().left;
             // var $domIdWidth= $(id).width();
+           let delayInputTextId= $('#delayInputTextId').val();
 
             showLogSetTimeout(id);
-
             function showLogSetTimeout(id) {
                 var showLogTimeout = setTimeout(function () {
                     //突出显示
-                    // $domIdWidth+$chatboxLegt
-                    // -$(id).width()
-                    // if(i<= $('#videoLayer').offset().left+$('#videoLayer').width()){
-                    //     $(id).css('z-index',999);
-                    // }else{
-                    //     $(id).css('z-index','auto');
-                    // }
-                    //  i -= $('#delayInputTextId').val();
-                    i -= 200;
-                    // if ($('#delayInputTextId').val()>1000){
-                    //     i-=i/2;
-                    // }else{
-                    //     i-=i*2;
-                    // }
 
+                    i -= 200;
 
                     $(id).offset({left: i});
                     //10秒后自动隐藏
@@ -290,8 +277,9 @@
                         showLogSetTimeout(id);
                     //删除已经显示的
                     // deleteShowLog(id);
-                    // $('#delayInputTextId').val()；
-                }, 1000);
+
+
+                }, delayInputTextId>=1000?1000:delayInputTextId);
             }
         }
 
