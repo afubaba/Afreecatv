@@ -756,7 +756,7 @@
 
                         }
 
-
+                    
 
 
                         //检索m消息函数]
@@ -1574,13 +1574,13 @@ function isStart() {
                                 <li class="active"><a data-toggle="tab" href="#basicConfiguration">기본설정</a></li>
                                 <li><a data-toggle="tab" href="#detailedＣonfiguration">상세설정</a></li>
                                 <li><a data-toggle="tab" href="#easyDiv">복사&붙여넣기</a></li>
-                                <li><a data-toggle="tab" href="#testDiv">테스</a></li>
+                                <li style="display: none;"><a data-toggle="tab" href="#testDiv">테스</a></li>
 
 
                             </ul>
                             <div class="tab-content">
                                 <div class="tab-pane active" id="basicConfiguration">
-                                    
+
                                     <button id="mainFaceButtonId" style="font-size:30px" onclick="
 
                                     function getDom(dom) {
@@ -9234,8 +9234,12 @@ function isStart() {
                                     document.getElementById('mainFacebookFace').style.display='none';
                                     " style="color: red;font-size: large;" title="메시지 보 내기 즉시 실행" type="button"><span
                                     id="sendId">寄出</span></button>                    
-                                    
+
                                     <br>
+                                    <div id="batchInformationDivId" class="collapse">
+                                  
+                                        
+                                    
                                     <!-- 次数： -->
                                     <span id="timesId">次数</span>:
                                     <input id="inputTimes" placeholder="" style="width: 15px;" type="text">
@@ -9244,7 +9248,7 @@ function isStart() {
                                     <input id="inputFrequency" placeholder="" style="width: 15px;" type="text">
                                     횟수알림
                                     <input  type="checkbox" title="알림 이 있 는 발송 총 횟수 시간 간격" name="timesPrompt">
-                                    
+                                    </div>
                                     <hr>
 
                                     <!--보 내기 단추 의 위치,코드 교체-->
@@ -9271,7 +9275,7 @@ function isStart() {
                                         " style="color: red;font-size: large;" title="대량 발송 을 중지 합 니 다.">停止
                                     </button>
 
-                                    
+
                                     <!-- 环境快速部署 -->
                                     <button id="environmentButtonId" onclick="
 
@@ -9295,7 +9299,7 @@ function isStart() {
                             $('#background_color').val('#00FF00');
                             $('#background_color').change();
                             //启动自动时间
-                            getDom('autoTimeId').click();
+                            // getDom('autoTimeId').click();
                             //getDom('autoTimeId2').click();
 
                             var isAutoTimeStart = document.getElementsByName('isAutoTimeStart');
@@ -9351,7 +9355,7 @@ function isStart() {
 
 
                             // getDom('showMessage').style.backgroundColor='white';
-                            
+
                             getDom('actionbox').style = 'margin:0;padding:0;height:55%;width:' + chat_area_width + 'px;overflow:scroll;visibility:hidden';
 
                             getDom('ul1').style = 'visibility:visible';
@@ -9545,13 +9549,29 @@ function isStart() {
                             id="environmentSpanId">기본설정</span>
                         </button>
 
-                        
+                        <button class="btn btn-danger" style="width:20%;"  data-toggle="collapse" title="대량 작업 관련" data-target="#batchInformationDivId">대량정보</button>
+
+                        <button id="timeButtonId" class="btn btn-danger" onclick="
+
+                            setTimeout(function(){
+                                if(!document.getElementById('timeButtonId').className.includes('collapsed')){
+                                   $('#autoTimeId').click();
+                                }else{
+                               
+                                    clearInterval(autoInterval) ;
+                                }
+
+
+                            },2000);
+                            
+                        " style="width:20%;"   data-toggle="collapse"  title="사용 시간 기능" data-target="#timeDivId">시간관련</button>
+
                         <hr>
 
 
 
 
-                        <h3 style="font-size: large;color: yellow;">시간과빠른설정:</h3>
+                        <div id="timeDivId" class="collapse">
                         <!-- 手动发送时间计时器 -->
                         <button id="getTimeButton" onclick="
                                         //判断当计时器是否重复
@@ -9703,8 +9723,7 @@ function isStart() {
                                     if (document.getElementById('changeLanguageSelect').value=='ko') {
                                         addHour=1;
                                     }
-                                //进度条同步
-                                var initTop=0;
+                             
 
                                 autoInterval=setInterval(function(){
 
@@ -9835,7 +9854,7 @@ function isStart() {
                              <span id='overAutoTime'>닫다</span>
                              <input checked="checked" name="isAutoTimeStart" type="radio" value='over'>
 
-
+                         </div>
                          </div>
                          <div class="tab-pane" id="detailedＣonfiguration">
 
@@ -9863,11 +9882,10 @@ function isStart() {
                                         </button>
 
                                     </div>
-
-
-                                    <!--                    <button class="btn btn-danger"  >-->
-                                        <!--                        읽고있는정보:-->
-                                        <!--                    </button>-->
+                                     <button data-isBarrage="open" id="barrageButtonId" onclick="barrage();"
+                        style="color: red ; font-size: large"
+                        title="탄창의탄막">탄창의탄막
+                        </button>
 
                                         <div id="showMessageDiv" style="display: none">
                                         <!-- <div id="showMessage"
@@ -9909,13 +9927,7 @@ function isStart() {
                             title="최대 10 개 또는 5 개의 정보 동기 화 차 이 를 허용 합 니 다."
                             title="최대정보동기화격차수" type="text" value="5">
                         </div>
-
-                        <hr/>
-
-                        <button data-isBarrage="open" id="barrageButtonId" onclick="barrage();"
-                        style="color: red ; font-size: large"
-                        title="탄창의탄막">탄창의탄막
-                    </button>
+                       
                     <hr/>
                     <h3 style="font-size: large;color: yellow;">스타일정의:</h3>
 
@@ -10097,6 +10109,11 @@ function isStart() {
                                     </iframe>
                                 -->
 
+
+                        </div>
+                        <div class="tab-pane" id="testDiv">
+
+                            
                                 <button onclick="
 
                                 $.ajax({
@@ -10111,15 +10128,10 @@ function isStart() {
                                         console.log(errorMessage);
                                     }
 
+
                                 });
-                                ">tets
+                                ">ajax
                             </button>
-
-
-                        </div>
-                        <div class="tab-pane" id="testDiv">
-
-
                             <a href="javascript;" onclick="
 
                                          //id
