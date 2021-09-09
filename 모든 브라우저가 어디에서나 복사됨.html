@@ -1,15 +1,11 @@
  <!-- 테스트 유람 기 -->
-                    <!-- Google Chrome for ubuntu 92.0.4515.159（발행판） （x64） -->
-                    <!-- Google Chrome for ubuntu 94.0.4603.0（개발버전）dev （64 位） -->
-                    <!-- firefox for ubuntu 91.0 (x64) -->
-
-                    <!--Chrome이 최신 버전입니다. 버전 92.0.4515.159(공식 빌드) (64비트)-->
-                    <!-- 모든 브라우저 지원 ,호환성 강화 F12 개발 자 모드 -->
-                <!-- 버전:78.0.4093.184
-                Opera가 최신 버전입니다.
-                업데이트 스트림:Stable
-                시스템:Ubuntu 18.04.5 LTS (x86_64; LXDE) -->
-<div class="parentDiv" id="parentDiv">
+ <!-- Google Chrome for ubuntu 92.0.4515.159（발행판） （x64） -->
+ <!-- Google Chrome for ubuntu 94.0.4603.0（개발버전）dev （64 位） -->
+ <!-- firefox for ubuntu 91.0 (x64) -->
+ <!--Chrome이 최신 버전입니다. 버전 92.0.4515.159(공식 빌드) (64비트)-->
+ <!-- 모든 브라우저 지원 ,호환성 강화 F12 개발 자 모드 -->
+ <!-- 버전:78.0.4093.184 Opera가 최신 버전입니다.업데이트 스트림:Stable시스템:Ubuntu 18.04.5 LTS (x86_64; LXDE) -->
+ <div class="parentDiv" id="parentDiv">
 
     <style async type="text/css">
     * {
@@ -267,7 +263,7 @@
             // openWindow('https://play.afreecatv.com/midnight1025/235618475')
             console.log('打开窗口:' + link);
             //navigator游览器对象
-           
+
 
             //创建一个window 0-49
             // eval("if ('undefined' !=typeof "+windowName+") {console.log('已经存在，重新创建');"+windowName+".close();}else{console.log('不存在')}
@@ -288,27 +284,27 @@
                     
             // let ranNO= parseInt(Math.random() * 50 / 1);
             // var winName='myWindow'+ranNO;
-           
 
-                var winName=myWindowName;
-                let ctrWindow=winName+"= createWindow(\'"+link+"\',\'"+winName+"\');";
-                
-                console.log('ctrWindow:'+ctrWindow);
-                eval(ctrWindow);
-                console.log('--run Window--');
+
+            var winName=myWindowName;
+            let ctrWindow=winName+"= createWindow(\'"+link+"\',\'"+winName+"\');";
+
+            console.log('ctrWindow:'+ctrWindow);
+            eval(ctrWindow);
+            console.log('--run Window--');
             // eval(" runWindow("+myWindow+");");
             // console.log(myWindow);
               // runWindow(myWindow);
               eval(" runWindow("+winName+");");
             // try{console.log('11');eval('myWindow2') ;}catch(e){console.log(e)}
             // alert('--运行前--');
-         
 
-                }
-            }
+
+        }
+    }
 
              //创建窗口
-            function createWindow(link,windowName) {
+             function createWindow(link,windowName) {
                 //判断是否存在
                 function isWindowExist(){
 
@@ -410,38 +406,38 @@
                     <title>test</title> -->
 
 
-                   
-
-                <div class="my_test" id="my_test">
 
 
-                    <style async type="text/css">
-                    * {
-                        padding: 0;
-                        margin: 0;
-                    }
+                    <div class="my_test" id="my_test">
 
 
-                    /*父标签*/
-                    /*.startButtonId,*/
-                    .startParentWindow {
-                        /*position:relative;*/
-                        /*水平居中*/
-                        /*margin: 0 auto;*/
-                        /*偏移*/
-                        /*top: 45%;*/
-                        width: 100%;
-                        height: 500px;
-                        font-size: 50px;
-                        background-color: red;
+                        <style async type="text/css">
+                        * {
+                            padding: 0;
+                            margin: 0;
+                        }
 
-                    }
 
-                    .startButtonId{
-                        display:none;
-                    }
+                        /*父标签*/
+                        /*.startButtonId,*/
+                        .startParentWindow {
+                            /*position:relative;*/
+                            /*水平居中*/
+                            /*margin: 0 auto;*/
+                            /*偏移*/
+                            /*top: 45%;*/
+                            width: 100%;
+                            height: 500px;
+                            font-size: 50px;
+                            background-color: red;
 
-                    body {
+                        }
+
+                        .startButtonId{
+                            display:none;
+                        }
+
+                        body {
                             /*background: #000000;
                         background: -moz-linear-gradient(top, #000000 0%, #ffffff 100%);
                         background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #000000), color-stop(100%, #ffffff));
@@ -759,6 +755,8 @@
 
 
                         }
+
+
 
 
                         //检索m消息函数]
@@ -1568,7 +1566,7 @@ function isStart() {
 
 
                     <div id="myDiv" style=" overflow: scroll;">
-                    
+
                         <!--            contenteditable="true"-->
 
                         <div class="tabbable">
@@ -1582,14 +1580,8 @@ function isStart() {
                             </ul>
                             <div class="tab-content">
                                 <div class="tab-pane active" id="basicConfiguration">
-                                    <h3 style="font-size: large;color: yellow;">대량정보기능:</h3>
-                                    <!-- 内容： -->
-                                    <span id="textId" style="font-size: large; color: red;">内容</span>:
-                                    <textarea id="testInput" style="resize:none"></textarea>
-                                    <!-- <input id="testInput" type="text" style="width: 50%;height: 30px;" placeholder=""> -->
-
-
-                                    <button id="mainFaceButtonId" style="font-size:30px" onclick="
+                                    
+                                        <button id="mainFaceButtonId" style="font-size:30px" onclick="
 
                                     function getDom(dom) {
                                         dom = document.getElementById(dom);
@@ -1621,6 +1613,14 @@ function isStart() {
 
                                     ">😀
                                 </button>
+
+                                    <!-- 内容： -->
+                                    <!-- <span id="textId" style="font-size: large; color: red;">内容</span>: -->
+                                    <textarea id="testInput" style="resize:none"></textarea>
+                                    <!-- <input id="testInput" type="text" style="width: 50%;height: 30px;" placeholder=""> -->
+
+
+                                
 
 
 
@@ -9145,8 +9145,109 @@ function isStart() {
                                                                 </div>
                                                             </div>
 
+                                          <!--여 기 는 스스로 수정 할 수 있 습 니 다.항상 1 초 에 두 번,또는 2 초 간격 으로 세 번 사용 합 니 다. -->
+                                    <!--allRepeatTimes=2/allRepeatTimes 표시 횟수,2 는 최대 두 번 발송,frequency=0.01  f 는 간격 을 나타 낸다.예 를 들 어 1 은 1 초 간격 이다.  -->
+                                    <button id="send_message" onclick="testInputValue= document.getElementById('testInput').value,repeatTimes=1,
+                                    allRepeatTimes= document.getElementById('inputTimes').value,frequency=document.getElementById('inputFrequency').value;
+                                        //判断当前发送消息是否重复
+                                        if('undefined'!=typeof thisInterval){
+                                            clearInterval(thisInterval) ;
+                                        }
 
-                                                            <!--보 내기 단추 의 위치,코드 교체-->
+                                        thisInterval=setInterval(function(){
+                                            /*更正系统*/
+                                            if (allRepeatTimes==''||frequency=='') {
+                                                document.getElementById('inputTimes').value=1;
+                                                document.getElementById('inputFrequency').value=1;
+                                                allRepeatTimes=1;
+                                                frequency=1;
+                                            }
+                                            
+                                        //排除一次
+                                        let timesPrompt=document.getElementsByName('timesPrompt');
+                                        let isTimePromptChecked=timesPrompt[0].checked;
+
+                                        if(allRepeatTimes>1&&isTimePromptChecked==true){
+
+                                            allTime = allRepeatTimes * frequency;
+                                            //拼接单位和时间
+                                            if(allTime<60){
+                                                allTime=allTime+'ₛ';
+                                            }else if(allTime/60<60){
+                                                allTime=allTime/60+'ₘ';
+                                            }else{
+                                                allTime=allTime/60/60+'ₕ';
+                                            }
+
+                                            //频率
+                                            var frequencys = '-';
+                                            //次数单位
+                                            //var times='ₜₗ';
+                                            var times = '';
+
+                                            if (frequency < 60) {
+                                                frequencys = times + frequency + 'ₛ';
+
+                                            } else if (frequency / 60 < 60) {
+                                                frequencys = times + frequency / 60 + 'ₘ';
+                                            } else {
+                                                frequencys = times + frequency / 60 / 60 + 'ₕ';
+                                            }
+
+                                            //拼接次数、次数频率、单次时间，总共时间₌
+                                            //allTime='₍' +allRepeatTimes+'ₗ'+repeatTimes+'ₓ'+frequencys+'|'+allTime+'₎';
+
+                                            allTime ='₍' + allRepeatTimes + 'ₗ' + repeatTimes + ',' + frequencys+ '₎';
+                                           allTime= allTime.replaceAll('0', '₀').replaceAll('1', '₁')
+                                        .replaceAll('2', '₂').replaceAll('3', '₃').replaceAll('4', '₄')
+                                        .replaceAll('5', '₅').replaceAll('6', '₆').replaceAll('7', '₇')
+                                        .replaceAll('8', '₈').replaceAll('9', '₉').replaceAll(' ', '') ;
+                                        }else{
+                                            allTime='';
+                                        }
+                                        //拼接次数、次数频率
+                                        //allTime ='₍' + allRepeatTimes + 'ₗ' + repeatTimes + ',' + frequencys+ '₎';
+
+                                        //拼接次数
+                                        //allTime=allRepeatTimes+'ₗ'+repeatTimes;
+
+
+                                        /*testInputValue입력 값 을 표시 합 니 다.뒤쪽 은 작은 괄호 안의 내용 입 니 다.+뒤의 코드 를 삭제 하면 괄호 와 괄호 안의 내용 을 포함 하지 않 습 니 다,쓰다 document.getElementById('write_area').innerHTML = testInputValue; 이 코드 바 꾸 기*/
+                                        document.getElementById('write_area').innerHTML = testInputValue +  allTime;
+
+
+
+                                        <!--js模拟点击事件/아 날로 그 클릭 이벤트-->
+                                        document.getElementById('btn_send').click();
+                                        repeatTimes++;
+                                        <!--반복 횟수, 수 동 설정 가능,3 은 3 번 을 나타 낸다-->
+                                        if (repeatTimes > allRepeatTimes) {
+                                            clearInterval(thisInterval);
+                                        }
+                                        <!--순환 속도 1 초 당,수 동 설정 가능,1000 은 1 초.2000 은2 초-->
+
+                                    },frequency*1000),
+                                    //清空输入框
+                                    document.getElementById('testInput').value='';
+                                    //关闭表情
+                                    document.getElementById('mainFace').style.display='none';
+                                    document.getElementById('mainFacebookFace').style.display='none';
+                                    " style="color: red;font-size: large;" title="메시지 보 내기 즉시 실행" type="button"><span
+                                    id="sendId">寄出</span></button>                    
+                                                             
+                                    <br>
+                                    <!-- 次数： -->
+                                    <span id="timesId">次数</span>:
+                                    <input id="inputTimes" placeholder="" style="width: 15px;" type="text">
+                                    <!-- 间隔时间： -->
+                                    <span id="frequencyId">间隔时间</span>:
+                                    <input id="inputFrequency" placeholder="" style="width: 15px;" type="text">
+                                    횟수알림
+                                    <input  type="checkbox" title="알림 이 있 는 발송 총 횟수 시간 간격" name="timesPrompt">
+                              
+                                    <hr>
+
+                                        <!--보 내기 단추 의 위치,코드 교체-->
                                                             <!-- 停止计时器 -->
                                                             <button id="stopButtonId" onclick="
                                         //发送消息计时器
@@ -9170,101 +9271,9 @@ function isStart() {
                                         " style="color: red;font-size: large;" title="대량 발송 을 중지 합 니 다.">停止
                                     </button>
 
-
-                                    <!-- 次数： -->
-                                    <span id="timesId">次数</span>:
-                                    <input id="inputTimes" placeholder="" style="width: 15px;" type="text">
-                                    <!-- 间隔时间： -->
-                                    <span id="frequencyId">间隔时间</span>:
-                                    <input id="inputFrequency" placeholder="" style="width: 15px;" type="text">
-
-                                    <!--여 기 는 스스로 수정 할 수 있 습 니 다.항상 1 초 에 두 번,또는 2 초 간격 으로 세 번 사용 합 니 다. -->
-                                    <!--allRepeatTimes=2/allRepeatTimes 표시 횟수,2 는 최대 두 번 발송,frequency=0.01  f 는 간격 을 나타 낸다.예 를 들 어 1 은 1 초 간격 이다.  -->
-                                    <button id="send_message" onclick="testInputValue= document.getElementById('testInput').value,repeatTimes=1,
-                                    allRepeatTimes= document.getElementById('inputTimes').value,frequency=document.getElementById('inputFrequency').value;
-                                        //判断当前发送消息是否重复
-                                        if('undefined'!=typeof thisInterval){
-                                            clearInterval(thisInterval) ;
-                                        }
-
-                                        thisInterval=setInterval(function(){
-                                            /*更正系统*/
-                                            if (allRepeatTimes==''||frequency=='') {
-                                                document.getElementById('inputTimes').value=1;
-                                                document.getElementById('inputFrequency').value=1;
-                                                allRepeatTimes=1;
-                                                frequency=1;
-                                            }
-                                            allTime = allRepeatTimes * frequency;
-
-                                        //拼接单位和时间
-                                        if(allTime<60){
-                                            allTime=allTime+'ₛ';
-                                        }else if(allTime/60<60){
-                                            allTime=allTime/60+'ₘ';
-                                        }else{
-                                            allTime=allTime/60/60+'ₕ';
-                                        }
-
-                                        //频率
-                                        var frequencys = '-';
-                                        //次数单位
-                                        //var times='ₜₗ';
-                                        var times = '';
-
-                                        if (frequency < 60) {
-                                            frequencys = times + frequency + 'ₛ';
-
-                                        } else if (frequency / 60 < 60) {
-                                            frequencys = times + frequency / 60 + 'ₘ';
-                                        } else {
-                                            frequencys = times + frequency / 60 / 60 + 'ₕ';
-                                        }
-
-                                        //排除一次
-                                        if(allRepeatTimes>1){
-                                            //拼接次数、次数频率、单次时间，总共时间₌
-                                            //allTime='₍' +allRepeatTimes+'ₗ'+repeatTimes+'ₓ'+frequencys+'|'+allTime+'₎';
-
-                                            allTime ='₍' + allRepeatTimes + 'ₗ' + repeatTimes + ',' + frequencys+ '₎';
-                                        }else{
-                                            allTime='';
-                                        }
-                                        //拼接次数、次数频率
-                                        //allTime ='₍' + allRepeatTimes + 'ₗ' + repeatTimes + ',' + frequencys+ '₎';
-
-                                        //拼接次数
-                                        //allTime=allRepeatTimes+'ₗ'+repeatTimes;
-
-
-                                        /*testInputValue입력 값 을 표시 합 니 다.뒤쪽 은 작은 괄호 안의 내용 입 니 다.+뒤의 코드 를 삭제 하면 괄호 와 괄호 안의 내용 을 포함 하지 않 습 니 다,쓰다 document.getElementById('write_area').innerHTML = testInputValue; 이 코드 바 꾸 기*/
-                                        document.getElementById('write_area').innerHTML = testInputValue +  allTime.replaceAll('0', '₀').replaceAll('1', '₁')
-                                        .replaceAll('2', '₂').replaceAll('3', '₃').replaceAll('4', '₄')
-                                        .replaceAll('5', '₅').replaceAll('6', '₆').replaceAll('7', '₇')
-                                        .replaceAll('8', '₈').replaceAll('9', '₉').replaceAll(' ', '') ;
-
-
-
-                                        <!--js模拟点击事件/아 날로 그 클릭 이벤트-->
-                                        document.getElementById('btn_send').click();
-                                        repeatTimes++;
-                                        <!--반복 횟수, 수 동 설정 가능,3 은 3 번 을 나타 낸다-->
-                                        if (repeatTimes > allRepeatTimes) {
-                                            clearInterval(thisInterval);
-                                        }
-                                        <!--순환 속도 1 초 당,수 동 설정 가능,1000 은 1 초.2000 은2 초-->
-
-                                    },frequency*1000),
-                                    //清空输入框
-                                    document.getElementById('testInput').value='';
-                                    //关闭表情
-                                    document.getElementById('mainFace').style.display='none';
-                                    document.getElementById('mainFacebookFace').style.display='none';
-                                    " style="color: red;font-size: large;" title="메시지 보 내기 즉시 실행" type="button"><span
-                                    id="sendId">寄出</span></button>
-
-
                                     <hr>
+
+
 
 
                                     <h3 style="font-size: large;color: yellow;">시간과빠른설정:</h3>
@@ -9697,7 +9706,7 @@ function isStart() {
 
 
                             // var chat_area_width=getDom('chat_area').clentWidth;
-                            var chat_area_width = $('chat_area').width;
+                            var chat_area_width = $('#chat_area').width();
                             getDom('chat_area').style = 'height:38%;background-repeat:no-repeat;background-image:url(' + src + ');background-size: 100%;';
 
                               //Parent body.backgournd
@@ -9707,8 +9716,8 @@ function isStart() {
 
 
                             // getDom('showMessage').style.backgroundColor='white';
-
-                            getDom('actionbox').style = 'margin:0;padding:0;height:55%;width:' + chat_area_width + ';overflow:scroll;visibility:hidden';
+                       
+                            getDom('actionbox').style = 'margin:0;padding:0;height:55%;width:' + chat_area_width + 'px;overflow:scroll;visibility:hidden';
 
                             getDom('ul1').style = 'visibility:visible';
                             getDom('ul2').style = 'visibility:visible';
@@ -9716,7 +9725,8 @@ function isStart() {
                             getDom('btn_send').style.display = 'none';
 
                             // alert($('#actionbox').css('width'));
-                            getDom('myDiv').style ='margin:0;padding:0;height:80%;width:' + chat_area_width + ';word-break: break-word;overflow:scroll;position:fixed;visibility:visible;margin-top:-18%;';
+
+                            getDom('myDiv').style ='margin:0;padding:0;height:80%;width:' + chat_area_width + 'px;word-break: break-word;overflow:scroll;position:fixed;visibility:visible;margin-top:-18%;';
 
                             //表情特效
                             getDom('mainFace').style = 'overflow:scroll;width: 300px;height:70%;margin-left:-40%;margin-top:-25%; position: fixed;display:none;word-break:break-word';
@@ -9736,26 +9746,26 @@ function isStart() {
                                     for (var j = 0; j < mainFaceGrandSons.length; j++) {
 
                                         mainFaceGrandSons[j].onclick = function () {
-                                           this.style.backgroundColor='white';
-                                           this.setAttribute('title', this.textContent)
-                                           getDom('testInput').value += this.textContent;
-                                       }
-                                       mainFaceGrandSons[j].onmouseover = function () {
-                                           this.style.backgroundColor='red';
-                                       }
-                                       mainFaceGrandSons[j].onmouseleave = function () {
-                                           this.style.backgroundColor='white';
-                                       }
-                                       mainFaceGrandSons[j].style.fontSize='25px';
-                                   }
-                               }
+                                         this.style.backgroundColor='white';
+                                         this.setAttribute('title', this.textContent)
+                                         getDom('testInput').value += this.textContent;
+                                     }
+                                     mainFaceGrandSons[j].onmouseover = function () {
+                                         this.style.backgroundColor='red';
+                                     }
+                                     mainFaceGrandSons[j].onmouseleave = function () {
+                                         this.style.backgroundColor='white';
+                                     }
+                                     mainFaceGrandSons[j].style.fontSize='25px';
+                                 }
+                             }
 
-                           }
+                         }
 
 
-                           var mainFace = document.getElementById('mainFace')
+                         var mainFace = document.getElementById('mainFace')
 
-                           function mainFacebookFace() {
+                         function mainFacebookFace() {
                             function getDomById(dom) {
                                 dom = document.getElementById(dom);
                                 return dom
@@ -9779,13 +9789,13 @@ function isStart() {
                                             grateGrandson[k].innerHTML = grateGrandson[k].getAttribute('data-c');
                                             grateGrandson[k].onclick = function () {
 
-                                               this.style.backgroundColor='white';
-                                               this.setAttribute('title', this.textContent)
-                                               getDomById('testInput').value += this.textContent;
+                                             this.style.backgroundColor='white';
+                                             this.setAttribute('title', this.textContent)
+                                             getDomById('testInput').value += this.textContent;
 
-                                           }
+                                         }
 
-                                           grateGrandson[k].onmouseover = function () {
+                                         grateGrandson[k].onmouseover = function () {
 
                                             this.style.backgroundColor='green';
                                         }
@@ -9842,7 +9852,7 @@ function isStart() {
                                 }
                             }
 
-                            getDom('textId').innerHTML = languages.ko.text;
+                            // getDom('textId').innerHTML = languages.ko.text;
                             getDom('timesId').innerHTML = languages.ko.times;
                             getDom('frequencyId').innerHTML = languages.ko.frequency;
                             getDom('handTimeId').innerHTML = languages.ko.handTime;
@@ -9859,9 +9869,7 @@ function isStart() {
 
 
                             //同步内容和输入框区域cols='5'; rows='5'
-                            // getDom('testInput').style.width='60%';
-                            // getDom('testInput').style.border='2px red solid';
-                            getDom('testInput').style.cssText = 'width:60%;border:2px red solid;font-size:20px'
+                            getDom('testInput').style.cssText = 'width:55%;border:2px red solid;font-size:20px'
 
                             getDom('testInput').setAttribute('rows', '2');
 
@@ -9890,7 +9898,7 @@ function isStart() {
 
                             //初始化字体
                             getDom('environmentButtonId').style = 'font-size:large;color:red';
-                            getDom('textId').style = 'font-size:large;color:red';
+                            // getDom('textId').style = 'font-size:large;color:red';
                             getDom('retrievalButtonId').style = 'font-size:large;color:red';
 
 
@@ -9999,8 +10007,8 @@ function isStart() {
 
                                         var changeLanguageSelect=getDom('changeLanguageSelect');
                                         languages={
-                                            'zh':{'text':'内容','times':'次数','frequency':'间隔时间','handTime':'现在时间','send':'寄出','environment':'环境部署','stop':'停止','retrievalMessage':'检索信息','subscriptId':'下标','zh_CN':'中文','ko_KR':'韩语','auto_time':'自动报时'},
-                                            'ko':{'text':'내용','times':'횟수','frequency':'간격시간(s)','handTime':'현재시간','send':'보내다','environment':'환경배포','stop':'멈추다','retrievalMessage':'메시지검색','subscriptId':'포인터','zh_CN':'중국어','ko_KR':'한국어','auto_time':'자동보고시간'}
+                                            'zh':{'times':'次数','frequency':'间隔时间','handTime':'现在时间','send':'寄出','environment':'环境部署','stop':'停止','retrievalMessage':'检索信息','subscriptId':'下标','zh_CN':'中文','ko_KR':'韩语','auto_time':'自动报时'},
+                                            'ko':{'times':'횟수','frequency':'간격시간(s)','handTime':'현재시간','send':'보내다','environment':'환경배포','stop':'멈추다','retrievalMessage':'메시지검색','subscriptId':'포인터','zh_CN':'중국어','ko_KR':'한국어','auto_time':'자동보고시간'}
                                         };
                                         // function zhLanguages(dom,lang){
                                         //  dom.innerHTML=languages.zh.text;
@@ -10012,7 +10020,7 @@ function isStart() {
                                         // environmentSpanId环境
                                         if (changeLanguageSelect.value=='zh') {
                                             // zhLanguages(textId);
-                                            getDom('textId').innerHTML=languages.zh.text;
+                                            // getDom('textId').innerHTML=languages.zh.text;
                                             getDom('timesId').innerHTML=languages.zh.times;
                                             getDom('frequencyId').innerHTML=languages.zh.frequency;
                                             getDom('handTimeId').innerHTML=languages.zh.handTime;
@@ -10028,7 +10036,7 @@ function isStart() {
 
                                     }else if(changeLanguageSelect.value=='ko'){
 
-                                        getDom('textId').innerHTML=languages.ko.text;
+                                        // getDom('textId').innerHTML=languages.ko.text;
                                         getDom('timesId').innerHTML=languages.ko.times;
                                         getDom('frequencyId').innerHTML=languages.ko.frequency;
                                         getDom('handTimeId').innerHTML=languages.ko.handTime;
@@ -10121,13 +10129,8 @@ function isStart() {
 
                                             document.getElementsByClassName('btn_login')[0].click();
                                         },1000);
-
-
-
                                         ">login</a>
-
                                         login:
-
                                         <a href="javascript;"
                                         onclick="document.getElementsByClassName('logout').item(0).click();">exit:</a>
 
@@ -10194,4 +10197,4 @@ function isStart() {
 </body>
 </html>
 
-    <!-- f12개발 자 모드，구글 브라우저 전용，다른 브라우저에서 자체 테스트-->
+    <!-- f12개발 자 모드，구글 브라우저 전용，다른 브라우저에서 자체 테스트         
