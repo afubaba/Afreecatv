@@ -1581,7 +1581,7 @@ function isStart() {
                             <div class="tab-content">
                                 <div class="tab-pane active" id="basicConfiguration">
                                     
-                                        <button id="mainFaceButtonId" style="font-size:30px" onclick="
+                                    <button id="mainFaceButtonId" style="font-size:30px" onclick="
 
                                     function getDom(dom) {
                                         dom = document.getElementById(dom);
@@ -1614,10 +1614,10 @@ function isStart() {
                                     ">😀
                                 </button>
 
-                                    <!-- 内容： -->
-                                    <!-- <span id="textId" style="font-size: large; color: red;">内容</span>: -->
-                                    <textarea id="testInput" style="resize:none"></textarea>
-                                    <!-- <input id="testInput" type="text" style="width: 50%;height: 30px;" placeholder=""> -->
+                                <!-- 内容： -->
+                                <!-- <span id="textId" style="font-size: large; color: red;">内容</span>: -->
+                                <textarea id="testInput" style="resize:none"></textarea>
+                                <!-- <input id="testInput" type="text" style="width: 50%;height: 30px;" placeholder=""> -->
 
 
                                 
@@ -9145,10 +9145,10 @@ function isStart() {
                                                                 </div>
                                                             </div>
 
-                                          <!--여 기 는 스스로 수정 할 수 있 습 니 다.항상 1 초 에 두 번,또는 2 초 간격 으로 세 번 사용 합 니 다. -->
-                                    <!--allRepeatTimes=2/allRepeatTimes 표시 횟수,2 는 최대 두 번 발송,frequency=0.01  f 는 간격 을 나타 낸다.예 를 들 어 1 은 1 초 간격 이다.  -->
-                                    <button id="send_message" onclick="testInputValue= document.getElementById('testInput').value,repeatTimes=1,
-                                    allRepeatTimes= document.getElementById('inputTimes').value,frequency=document.getElementById('inputFrequency').value;
+                                                            <!--여 기 는 스스로 수정 할 수 있 습 니 다.항상 1 초 에 두 번,또는 2 초 간격 으로 세 번 사용 합 니 다. -->
+                                                            <!--allRepeatTimes=2/allRepeatTimes 표시 횟수,2 는 최대 두 번 발송,frequency=0.01  f 는 간격 을 나타 낸다.예 를 들 어 1 은 1 초 간격 이다.  -->
+                                                            <button id="send_message" onclick="testInputValue= document.getElementById('testInput').value,repeatTimes=1,
+                                                            allRepeatTimes= document.getElementById('inputTimes').value,frequency=document.getElementById('inputFrequency').value;
                                         //判断当前发送消息是否重复
                                         if('undefined'!=typeof thisInterval){
                                             clearInterval(thisInterval) ;
@@ -9198,10 +9198,10 @@ function isStart() {
                                             //allTime='₍' +allRepeatTimes+'ₗ'+repeatTimes+'ₓ'+frequencys+'|'+allTime+'₎';
 
                                             allTime ='₍' + allRepeatTimes + 'ₗ' + repeatTimes + ',' + frequencys+ '₎';
-                                           allTime= allTime.replaceAll('0', '₀').replaceAll('1', '₁')
-                                        .replaceAll('2', '₂').replaceAll('3', '₃').replaceAll('4', '₄')
-                                        .replaceAll('5', '₅').replaceAll('6', '₆').replaceAll('7', '₇')
-                                        .replaceAll('8', '₈').replaceAll('9', '₉').replaceAll(' ', '') ;
+                                            allTime= allTime.replaceAll('0', '₀').replaceAll('1', '₁')
+                                            .replaceAll('2', '₂').replaceAll('3', '₃').replaceAll('4', '₄')
+                                            .replaceAll('5', '₅').replaceAll('6', '₆').replaceAll('7', '₇')
+                                            .replaceAll('8', '₈').replaceAll('9', '₉').replaceAll(' ', '') ;
                                         }else{
                                             allTime='';
                                         }
@@ -9234,7 +9234,7 @@ function isStart() {
                                     document.getElementById('mainFacebookFace').style.display='none';
                                     " style="color: red;font-size: large;" title="메시지 보 내기 즉시 실행" type="button"><span
                                     id="sendId">寄出</span></button>                    
-                                                             
+                                    
                                     <br>
                                     <!-- 次数： -->
                                     <span id="timesId">次数</span>:
@@ -9244,12 +9244,12 @@ function isStart() {
                                     <input id="inputFrequency" placeholder="" style="width: 15px;" type="text">
                                     횟수알림
                                     <input  type="checkbox" title="알림 이 있 는 발송 총 횟수 시간 간격" name="timesPrompt">
-                              
+                                    
                                     <hr>
 
-                                        <!--보 내기 단추 의 위치,코드 교체-->
-                                                            <!-- 停止计时器 -->
-                                                            <button id="stopButtonId" onclick="
+                                    <!--보 내기 단추 의 위치,코드 교체-->
+                                    <!-- 停止计时器 -->
+                                    <button id="stopButtonId" onclick="
                                         //发送消息计时器
                                         if('undefined'!=typeof timeFrequencys1){
                                             clearInterval(timeFrequencys1) ;
@@ -9271,14 +9271,289 @@ function isStart() {
                                         " style="color: red;font-size: large;" title="대량 발송 을 중지 합 니 다.">停止
                                     </button>
 
-                                    <hr>
+                                    
+                                    <!-- 环境快速部署 -->
+                                    <button id="environmentButtonId" onclick="
+
+                                    function getDom(dom) {
+                                        var dom = document.getElementById(dom);
+                                        return dom;
+                                    }
+
+                            // javascript加载script
+                            var head = document.getElementsByTagName('head')[0];
+                            var script = document.createElement('script');
+
+                            //自定义的script
+                            script.type = 'text/javascript';
+                            script.id = 'showScript';
+                            head.appendChild(script);
+                            $('#showScript').html($('#myScript',opener.document).text());
+
+                            //默认字体
+                            //设置字体
+                            $('#background_color').val('#00FF00');
+                            $('#background_color').change();
+                            //启动自动时间
+                            getDom('autoTimeId').click();
+                            //getDom('autoTimeId2').click();
+
+                            var isAutoTimeStart = document.getElementsByName('isAutoTimeStart');
+                            isAutoTimeStart[0].onchange = function () {
+
+                                getDom('autoTimeId').style = 'background-color:#7FFF00;font-size:large;color:yellow';
+                                this.style.visibility = 'hidden';
+                                isAutoTimeStart[1].style.visibility = 'visible';
+
+                                getDom('overAutoTime').style = 'background-color:red'
+                                getDom('startAutoTime').style = 'background-color:#7FFF00;font-size:large';
+
+                                // getDom('autoTimeId').click();
+                            };
+                            isAutoTimeStart[1].onchange = function () {
+                                getDom('autoTimeId').style = 'background-color:#DCDCDC;font-size:default;color:black';
+                                this.style.visibility = 'hidden';
+                                isAutoTimeStart[0].style.visibility = 'visible';
+                                getDom('overAutoTime').style = 'background-color:#7FFF00;font-size:large';
+                                getDom('startAutoTime').style = 'background-color:red';
+                                // getDom('autoTimeId').click();
+                            };
+
+
+                            //初始化数据
+                            getDom('inputTimes').value = 1;
+                            getDom('inputFrequency').value = 1;
+
+                            //检索m消息(环境部署)
+                            // getDom('retrievalButtonId').click();
+                            //优化界面
+                            //背景透明
+                            var allTags = document.getElementsByTagName('div');
+                            for (var i = 0; i < allTags.length; i++) {
+                                allTags[i].style.background = 'none';
+
+                            }
+
+                            //背景图地址
+                            var src = document.getElementsByClassName('bj_thumbnail').item(0).children[0].children[0].getAttribute('src');
+                            let body = document.getElementsByTagName('body');
+                            // body.style = 'background-image:url(' + src + ');background-size: 100%;background-repeat: no-repeat;';
+
+
+                            // var chat_area_width=getDom('chat_area').clentWidth;
+                            var chat_area_width = $('#chat_area').width();
+                            getDom('chat_area').style = 'height:38%;background-repeat:no-repeat;background-image:url(' + src + ');background-size: 100%;';
+
+                              //Parent body.backgournd
+
+                              $('body',parent.document).css('background-Image','url('+src+')').css('background-repeat','no-repeat').css('background-size','100%');
+
+
+
+                            // getDom('showMessage').style.backgroundColor='white';
+                            
+                            getDom('actionbox').style = 'margin:0;padding:0;height:55%;width:' + chat_area_width + 'px;overflow:scroll;visibility:hidden';
+
+                            getDom('ul1').style = 'visibility:visible';
+                            getDom('ul2').style = 'visibility:visible';
+                            getDom('write_area').style.display = 'none';
+                            getDom('btn_send').style.display = 'none';
+
+                            // alert($('#actionbox').css('width'));
+
+                            getDom('myDiv').style ='margin:0;padding:0;height:80%;width:' + chat_area_width + 'px;word-break: break-word;overflow:scroll;position:fixed;visibility:visible;margin-top:-18%;';
+
+                            //表情特效
+                            getDom('mainFace').style = 'overflow:scroll;width: 300px;height:70%;margin-left:-40%;margin-top:-25%; position: fixed;display:none;word-break:break-word';
+
+
+                            //facesboo表情
+
+                            getDom('mainFacebookFace').style = 'overflow:scroll;width: 300px;height:70%;margin-left:-20%;margin-top:-25%; position: fixed;display:none;word-break:break-word';
+
+
+                            var mainFace = document.getElementById('mainFace')
+                            var mainFaceChildrens = mainFace.children;
+                            for (var i = 0; i < mainFaceChildrens.length; i++) {
+                                if (mainFaceChildrens[i].tagName != 'H2') {
+
+                                    var mainFaceGrandSons = mainFaceChildrens[i].children
+                                    for (var j = 0; j < mainFaceGrandSons.length; j++) {
+
+                                        mainFaceGrandSons[j].onclick = function () {
+                                           this.style.backgroundColor='white';
+                                           this.setAttribute('title', this.textContent)
+                                           getDom('testInput').value += this.textContent;
+                                       }
+                                       mainFaceGrandSons[j].onmouseover = function () {
+                                           this.style.backgroundColor='red';
+                                       }
+                                       mainFaceGrandSons[j].onmouseleave = function () {
+                                           this.style.backgroundColor='white';
+                                       }
+                                       mainFaceGrandSons[j].style.fontSize='25px';
+                                   }
+                               }
+
+                           }
+
+
+                           var mainFace = document.getElementById('mainFace')
+
+                           function mainFacebookFace() {
+                            function getDomById(dom) {
+                                dom = document.getElementById(dom);
+                                return dom
+                            }
+
+                            const mainFacebookFace = getDomById('mainFacebookFace');
+                            const mainFacebookFaceChildren = mainFacebookFace.children;
+
+
+                            for (let i = 0; i < mainFacebookFace.childElementCount; i++) {
+
+                                const mainFacebookFaceGrandson = mainFacebookFaceChildren[i].children;
+                                for (let j = 0; j < mainFacebookFaceChildren[i].childElementCount; j++) {
+
+                                    if (mainFacebookFaceGrandson[j].tagName != 'H2') {
+
+                                        const grateGrandson = mainFacebookFaceGrandson[j].children;
+
+                                        for (let k = 0; k < mainFacebookFaceGrandson[j].childElementCount; k++) {
+
+                                            grateGrandson[k].innerHTML = grateGrandson[k].getAttribute('data-c');
+                                            grateGrandson[k].onclick = function () {
+
+                                               this.style.backgroundColor='white';
+                                               this.setAttribute('title', this.textContent)
+                                               getDomById('testInput').value += this.textContent;
+
+                                           }
+
+                                           grateGrandson[k].onmouseover = function () {
+
+                                            this.style.backgroundColor='green';
+                                        }
+                                        grateGrandson[k].onmouseleave = function () {
+                                            this.style.backgroundColor='white';
+                                        }
+
+                                        grateGrandson[k].style.fontSize='25px';
+                                    }
+
+                                }
+
+                            }
+
+
+                        }
+                    }
+
+                    mainFacebookFace();
+
+
+                            //Languages语言
+
+                            getDom('changeLanguageSelect').value = 'ko';
+
+                            languages = {
+                                'zh': {
+                                    'text': '内容',
+                                    'times': '次数',
+                                    'frequency': '间隔时间',
+                                    'handTime': '现在时间',
+                                    'send': '寄出',
+                                    'environment': '기본설정',
+                                    'stop': '停止',
+                                    'retrievalMessage': '检索信息',
+                                    'subscriptId': '下标',
+                                    'zh_CN': '中文',
+                                    'ko_KR': '韩语',
+                                    'auto_time': '自动报时'
+                                },
+                                'ko': {
+                                    'text': '내용',
+                                    'times': '횟수',
+                                    'frequency': '간격시간(s)',
+                                    'handTime': '현재시간',
+                                    'send': '보내다',
+                                    'environment': '기본설정',
+                                    'stop': '멈추다',
+                                    'retrievalMessage': '메시지검색',
+                                    'subscriptId': '포인터',
+                                    'zh_CN': '중국어',
+                                    'ko_KR': '한국어',
+                                    'auto_time': '자동보고시간'
+                                }
+                            }
+
+                            // getDom('textId').innerHTML = languages.ko.text;
+                            getDom('timesId').innerHTML = languages.ko.times;
+                            getDom('frequencyId').innerHTML = languages.ko.frequency;
+                            getDom('handTimeId').innerHTML = languages.ko.handTime;
+                            getDom('sendId').innerHTML = languages.ko.send;
+                            getDom('environmentSpanId').innerHTML = languages.ko.environment;
+                            getDom('stopButtonId').innerHTML = languages.ko.stop;
+                            getDom('retrievalButtonId').innerHTML = languages.ko.retrievalMessage;
+                            // getDom('subscriptId').innerHTML=languages.ko.subscriptId;
+                            getDom('langChinese').innerHTML = languages.ko.zh_CN;
+                            getDom('langKorean').innerHTML = languages.ko.ko_KR;
+                            getDom('autoTimeId').innerHTML = languages.ko.auto_time;
+                            //切换时间
+                            getDom('autoTimeId').click();
+
+
+                            //同步内容和输入框区域cols='5'; rows='5'
+                            getDom('testInput').style.cssText = 'width:55%;border:2px red solid;font-size:20px'
+
+                            getDom('testInput').setAttribute('rows', '2');
+
+
+                            getDom('btn_send').onclick = function () {
+                                getDom('testInput').value = '';
+                            }
+
+                            // 同步输入内容
+                            getDom('write_area').onfocus = function () {
+                                getDom('testInput').value = getDom('write_area').textContent;
+                                getDom('testInput').focus();
+
+                            }
+                            getDom('write_area').onblur = function () {
+                                getDom('testInput').value = getDom('write_area').textContent;
+                                getDom('testInput').focus();
+                            }
+                            getDom('testInput').onfocus = function () {
+                                getDom('write_area').innerHTML = getDom('testInput').value;
+                            }
+                            getElementById('testInput').onblur = function () {
+                                getDom('write_area').innerHTML = getDom('testInput').value;
+                            }
+
+
+                            //初始化字体
+                            getDom('environmentButtonId').style = 'font-size:large;color:red';
+                            // getDom('textId').style = 'font-size:large;color:red';
+                            getDom('retrievalButtonId').style = 'font-size:large;color:red';
 
 
 
 
-                                    <h3 style="font-size: large;color: yellow;">시간과빠른설정:</h3>
-                                    <!-- 手动发送时间计时器 -->
-                                    <button id="getTimeButton" onclick="
+                            // getDom('testInput').setaAttibute('')
+                            " style="font-size: large; color: yellow;"
+                            title="빠 른 설정 환경"><span
+                            id="environmentSpanId">기본설정</span>
+                        </button>
+
+                        
+                        <hr>
+
+
+
+
+                        <h3 style="font-size: large;color: yellow;">시간과빠른설정:</h3>
+                        <!-- 手动发送时间计时器 -->
+                        <button id="getTimeButton" onclick="
                                         //判断当计时器是否重复
                                         if('undefined'!=typeof handTimeout){
                                             clearInterval(handTimeout) ;
@@ -9636,279 +9911,6 @@ function isStart() {
                         </div>
 
                         <hr/>
-
-                        <!-- 环境快速部署 -->
-                        <button id="environmentButtonId" onclick="
-
-                        function getDom(dom) {
-                            var dom = document.getElementById(dom);
-                            return dom;
-                        }
-
-                            // javascript加载script
-                            var head = document.getElementsByTagName('head')[0];
-                            var script = document.createElement('script');
-
-                            //自定义的script
-                            script.type = 'text/javascript';
-                            script.id = 'showScript';
-                            head.appendChild(script);
-                            $('#showScript').html($('#myScript',opener.document).text());
-
-                            //默认字体
-                            //设置字体
-                            $('#background_color').val('#00FF00');
-                            $('#background_color').change();
-                            //启动自动时间
-                            getDom('autoTimeId').click();
-                            //getDom('autoTimeId2').click();
-
-                            var isAutoTimeStart = document.getElementsByName('isAutoTimeStart');
-                            isAutoTimeStart[0].onchange = function () {
-
-                                getDom('autoTimeId').style = 'background-color:#7FFF00;font-size:large;color:yellow';
-                                this.style.visibility = 'hidden';
-                                isAutoTimeStart[1].style.visibility = 'visible';
-
-                                getDom('overAutoTime').style = 'background-color:red'
-                                getDom('startAutoTime').style = 'background-color:#7FFF00;font-size:large';
-
-                                // getDom('autoTimeId').click();
-                            };
-                            isAutoTimeStart[1].onchange = function () {
-                                getDom('autoTimeId').style = 'background-color:#DCDCDC;font-size:default;color:black';
-                                this.style.visibility = 'hidden';
-                                isAutoTimeStart[0].style.visibility = 'visible';
-                                getDom('overAutoTime').style = 'background-color:#7FFF00;font-size:large';
-                                getDom('startAutoTime').style = 'background-color:red';
-                                // getDom('autoTimeId').click();
-                            };
-
-
-                            //初始化数据
-                            getDom('inputTimes').value = 1;
-                            getDom('inputFrequency').value = 1;
-
-                            //检索m消息(环境部署)
-                            // getDom('retrievalButtonId').click();
-                            //优化界面
-                            //背景透明
-                            var allTags = document.getElementsByTagName('div');
-                            for (var i = 0; i < allTags.length; i++) {
-                                allTags[i].style.background = 'none';
-
-                            }
-
-                            //背景图地址
-                            var src = document.getElementsByClassName('bj_thumbnail').item(0).children[0].children[0].getAttribute('src');
-                            let body = document.getElementsByTagName('body');
-                            // body.style = 'background-image:url(' + src + ');background-size: 100%;background-repeat: no-repeat;';
-
-
-                            // var chat_area_width=getDom('chat_area').clentWidth;
-                            var chat_area_width = $('#chat_area').width();
-                            getDom('chat_area').style = 'height:38%;background-repeat:no-repeat;background-image:url(' + src + ');background-size: 100%;';
-
-                              //Parent body.backgournd
-
-                              $('body',parent.document).css('background-Image','url('+src+')').css('background-repeat','no-repeat').css('background-size','100%');
-
-
-
-                            // getDom('showMessage').style.backgroundColor='white';
-                       
-                            getDom('actionbox').style = 'margin:0;padding:0;height:55%;width:' + chat_area_width + 'px;overflow:scroll;visibility:hidden';
-
-                            getDom('ul1').style = 'visibility:visible';
-                            getDom('ul2').style = 'visibility:visible';
-                            getDom('write_area').style.display = 'none';
-                            getDom('btn_send').style.display = 'none';
-
-                            // alert($('#actionbox').css('width'));
-
-                            getDom('myDiv').style ='margin:0;padding:0;height:80%;width:' + chat_area_width + 'px;word-break: break-word;overflow:scroll;position:fixed;visibility:visible;margin-top:-18%;';
-
-                            //表情特效
-                            getDom('mainFace').style = 'overflow:scroll;width: 300px;height:70%;margin-left:-40%;margin-top:-25%; position: fixed;display:none;word-break:break-word';
-
-
-                            //facesboo表情
-
-                            getDom('mainFacebookFace').style = 'overflow:scroll;width: 300px;height:70%;margin-left:-20%;margin-top:-25%; position: fixed;display:none;word-break:break-word';
-
-
-                            var mainFace = document.getElementById('mainFace')
-                            var mainFaceChildrens = mainFace.children;
-                            for (var i = 0; i < mainFaceChildrens.length; i++) {
-                                if (mainFaceChildrens[i].tagName != 'H2') {
-
-                                    var mainFaceGrandSons = mainFaceChildrens[i].children
-                                    for (var j = 0; j < mainFaceGrandSons.length; j++) {
-
-                                        mainFaceGrandSons[j].onclick = function () {
-                                         this.style.backgroundColor='white';
-                                         this.setAttribute('title', this.textContent)
-                                         getDom('testInput').value += this.textContent;
-                                     }
-                                     mainFaceGrandSons[j].onmouseover = function () {
-                                         this.style.backgroundColor='red';
-                                     }
-                                     mainFaceGrandSons[j].onmouseleave = function () {
-                                         this.style.backgroundColor='white';
-                                     }
-                                     mainFaceGrandSons[j].style.fontSize='25px';
-                                 }
-                             }
-
-                         }
-
-
-                         var mainFace = document.getElementById('mainFace')
-
-                         function mainFacebookFace() {
-                            function getDomById(dom) {
-                                dom = document.getElementById(dom);
-                                return dom
-                            }
-
-                            const mainFacebookFace = getDomById('mainFacebookFace');
-                            const mainFacebookFaceChildren = mainFacebookFace.children;
-
-
-                            for (let i = 0; i < mainFacebookFace.childElementCount; i++) {
-
-                                const mainFacebookFaceGrandson = mainFacebookFaceChildren[i].children;
-                                for (let j = 0; j < mainFacebookFaceChildren[i].childElementCount; j++) {
-
-                                    if (mainFacebookFaceGrandson[j].tagName != 'H2') {
-
-                                        const grateGrandson = mainFacebookFaceGrandson[j].children;
-
-                                        for (let k = 0; k < mainFacebookFaceGrandson[j].childElementCount; k++) {
-
-                                            grateGrandson[k].innerHTML = grateGrandson[k].getAttribute('data-c');
-                                            grateGrandson[k].onclick = function () {
-
-                                             this.style.backgroundColor='white';
-                                             this.setAttribute('title', this.textContent)
-                                             getDomById('testInput').value += this.textContent;
-
-                                         }
-
-                                         grateGrandson[k].onmouseover = function () {
-
-                                            this.style.backgroundColor='green';
-                                        }
-                                        grateGrandson[k].onmouseleave = function () {
-                                            this.style.backgroundColor='white';
-                                        }
-
-                                        grateGrandson[k].style.fontSize='25px';
-                                    }
-
-                                }
-
-                            }
-
-
-                        }
-                    }
-
-                    mainFacebookFace();
-
-
-                            //Languages语言
-
-                            getDom('changeLanguageSelect').value = 'ko';
-
-                            languages = {
-                                'zh': {
-                                    'text': '内容',
-                                    'times': '次数',
-                                    'frequency': '间隔时间',
-                                    'handTime': '现在时间',
-                                    'send': '寄出',
-                                    'environment': '기본설정',
-                                    'stop': '停止',
-                                    'retrievalMessage': '检索信息',
-                                    'subscriptId': '下标',
-                                    'zh_CN': '中文',
-                                    'ko_KR': '韩语',
-                                    'auto_time': '自动报时'
-                                },
-                                'ko': {
-                                    'text': '내용',
-                                    'times': '횟수',
-                                    'frequency': '간격시간(s)',
-                                    'handTime': '현재시간',
-                                    'send': '보내다',
-                                    'environment': '기본설정',
-                                    'stop': '멈추다',
-                                    'retrievalMessage': '메시지검색',
-                                    'subscriptId': '포인터',
-                                    'zh_CN': '중국어',
-                                    'ko_KR': '한국어',
-                                    'auto_time': '자동보고시간'
-                                }
-                            }
-
-                            // getDom('textId').innerHTML = languages.ko.text;
-                            getDom('timesId').innerHTML = languages.ko.times;
-                            getDom('frequencyId').innerHTML = languages.ko.frequency;
-                            getDom('handTimeId').innerHTML = languages.ko.handTime;
-                            getDom('sendId').innerHTML = languages.ko.send;
-                            getDom('environmentSpanId').innerHTML = languages.ko.environment;
-                            getDom('stopButtonId').innerHTML = languages.ko.stop;
-                            getDom('retrievalButtonId').innerHTML = languages.ko.retrievalMessage;
-                            // getDom('subscriptId').innerHTML=languages.ko.subscriptId;
-                            getDom('langChinese').innerHTML = languages.ko.zh_CN;
-                            getDom('langKorean').innerHTML = languages.ko.ko_KR;
-                            getDom('autoTimeId').innerHTML = languages.ko.auto_time;
-                            //切换时间
-                            getDom('autoTimeId').click();
-
-
-                            //同步内容和输入框区域cols='5'; rows='5'
-                            getDom('testInput').style.cssText = 'width:55%;border:2px red solid;font-size:20px'
-
-                            getDom('testInput').setAttribute('rows', '2');
-
-
-                            getDom('btn_send').onclick = function () {
-                                getDom('testInput').value = '';
-                            }
-
-                            // 同步输入内容
-                            getDom('write_area').onfocus = function () {
-                                getDom('testInput').value = getDom('write_area').textContent;
-                                getDom('testInput').focus();
-
-                            }
-                            getDom('write_area').onblur = function () {
-                                getDom('testInput').value = getDom('write_area').textContent;
-                                getDom('testInput').focus();
-                            }
-                            getDom('testInput').onfocus = function () {
-                                getDom('write_area').innerHTML = getDom('testInput').value;
-                            }
-                            getElementById('testInput').onblur = function () {
-                                getDom('write_area').innerHTML = getDom('testInput').value;
-                            }
-
-
-                            //初始化字体
-                            getDom('environmentButtonId').style = 'font-size:large;color:red';
-                            // getDom('textId').style = 'font-size:large;color:red';
-                            getDom('retrievalButtonId').style = 'font-size:large;color:red';
-
-
-
-
-                            // getDom('testInput').setaAttibute('')
-                            " style="font-size: large; color: yellow;"
-                            title="빠 른 설정 환경"><span
-                            id="environmentSpanId">기본설정</span>
-                        </button>
 
                         <button data-isBarrage="open" id="barrageButtonId" onclick="barrage();"
                         style="color: red ; font-size: large"
