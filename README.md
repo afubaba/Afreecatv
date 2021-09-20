@@ -16,19 +16,15 @@ ajax.frame.all.html 온라인 방식 로드
 3.$.ajax({
         url:'https://raw.githubusercontent.com/afubaba/Afreecatv/main/ajax.frame.all.html',
         type:'get',
-
         success:function(result,statis){
             console.log(result);
             console.log(statis);
             $("#broadlist_area").html(result);
-   
-
         },
         error:function(error,errorMessage){
             console.log(error);
             console.log(errorMessage);
         }
-
     });
 ------------------------------------------------------------------------------------------------------------------------
 모든 브라우저가 어디에서나 복사됨.html 홈 페이지 에 붙 여 넣 기 내용 을 수 동 으로 복사 합 니 다.
