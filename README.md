@@ -5,6 +5,7 @@ Afreecatv 엔 터 테 인 먼 트 코드
 ajax.frame.all.html 온라인 방식 로드
 
 모든 유람 기 에서 console 컨트롤 러 를 찾 아 다음 세 가지 방식 중 하 나 를 복사 하여 붙 여 넣 습 니 다.온라인 도입
+
 1.$("#list-section").load("https://raw.githubusercontent.com/afubaba/Afreecatv/main/ajax.frame.all.html");
 
 2.$.get("https://raw.githubusercontent.com/afubaba/Afreecatv/main/ajax.frame.all.html", function(result){ $("#list-section").html(result);});
