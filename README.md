@@ -14,10 +14,10 @@ ajax.frame.all.html 온라인 방식 로드
 ------------------------------------------------------------------------------------------------------------------------
 
 1.$("#list-section").load("https://raw.githubusercontent.com/afubaba/Afreecatv/main/ajax.frame.all.html");
-------------------------------------------------------------------------------------------------------------------------
+
 
 2.$.get("https://raw.githubusercontent.com/afubaba/Afreecatv/main/ajax.frame.all.html", function(result){ $("#list-section").html(result);});
-------------------------------------------------------------------------------------------------------------------------
+
 3.$.ajax({
         url:'https://raw.githubusercontent.com/afubaba/Afreecatv/main/ajax.frame.all.html',
         type:'get',
@@ -31,7 +31,7 @@ ajax.frame.all.html 온라인 방식 로드
             console.log(errorMessage);
         }
     });
-------------------------------------------------------------------------------------------------------------------------
+
 
 
 
