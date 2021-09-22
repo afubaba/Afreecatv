@@ -1002,15 +1002,16 @@ function isStart() {
                             var src=document.getElementsByClassName('bj_thumbnail').item(0).children[0].children[0].getAttribute('src');
 
 
-                            //bootstrap
-
-
-                            //createLinkDom(null, 'https://cdn.bootcss.com/bootstrap/2.3.2/css/bootstrap.min.css');
-				https://afubaba.github.io/Afreecatv/css/bootstrap.min.css
+                            
 			 
-			 $('head').append('<link rel=stylesheet type=text/css href=https://afubaba.github.io/Afreecatv/css/bootstrap.min.css >');
-			 
+			 $('head').append('<link rel=stylesheet type=text/css href=https://afubaba.github.io/Afreecatv/css/bootstrap.min.css > <script type=text/javascript src=https://afubaba.github.io/Afreecatv/js/bootstrap.min.js></script>');
 			
+				
+			 
+			  // javascript
+			 
+			 //createLinkDom(null, 'https://cdn.bootcss.com/bootstrap/2.3.2/css/bootstrap.min.css');
+				https://afubaba.github.io/Afreecatv/css/bootstrap.min.css
                             function createLinkDom(id, link) {
                                 let showLogDivDom;
                                 showLogDivDom = document.createElement('link');
@@ -1020,8 +1021,7 @@ function isStart() {
                                 $('head').append(showLogDivDom);
 
                             }
-                              // javascript
-                              createScriptDom(null, 'https://cdn.bootcss.com/bootstrap/2.3.2/js/bootstrap.min.js');
+                             // createScriptDom(null, 'https://cdn.bootcss.com/bootstrap/2.3.2/js/bootstrap.min.js');
                               createScriptDom(null, 'https://code.jquery.com/jquery-1.7.0.min.js');
                               function createScriptDom(id, src) {
                                 let showLogDivDom;
