@@ -5,7 +5,7 @@ console.log("start javascript");
 var backUrl = "";
 
 //子页面地址
-var sonWindowUrl = "http://127.0.0.1:8888/demo/StaticServlet?params=frame.son.html";
+var sonWindowUrl = "https://afubaba.github.io/Afreecatv/frame.son.html";
 
 function getDomById(idDom) {
 	idDom = document.getElementById(idDom);
