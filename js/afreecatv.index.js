@@ -5,7 +5,7 @@ console.log("start javascript");
 var backUrl = "";
 
 //子页面地址
-var sonWindowUrl = "https://afubaba.github.io/Afreecatv/frame.son.html";
+var sonWindowUrl = "https://afubaba.github.io/Afreecatv/afreecatv.son.html";
 
 function getDomById(idDom) {
 	idDom = document.getElementById(idDom);
