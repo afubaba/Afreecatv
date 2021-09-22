@@ -6,14 +6,14 @@
 --
 一.최신 자바스크립트 로딩 방식
 --     
-console콘솔 입력，간소화된 홈페이지
+afreecatv.index.js(console콘솔 입력，간소화된 홈페이지)
 
        $("head").append("<script src='https://afubaba.github.io/Afreecatv/js/afreecatv.index.js'></script>");
        
 
 二.Afreecatv 엔 터 테 인 먼 트 코드
 --
-ajax.frame.all.html 온라인 방식 로드
+ajax.frame.all.html 온라인 방식 로드(console콘솔 입력，간소화된 홈페이지)
 
        1.$("#list-section").load("https://raw.githubusercontent.com/afubaba/Afreecatv/main/ajax.frame.all.html");
 
