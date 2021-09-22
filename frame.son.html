@@ -1005,8 +1005,12 @@ function isStart() {
                             //bootstrap
 
 
-                            createLinkDom(null, 'https://cdn.bootcss.com/bootstrap/2.3.2/css/bootstrap.min.css');
-
+                            //createLinkDom(null, 'https://cdn.bootcss.com/bootstrap/2.3.2/css/bootstrap.min.css');
+				https://afubaba.github.io/Afreecatv/css/bootstrap.min.css
+			 
+			 $('head').append('<link rel=stylesheet type=text/css href=https://afubaba.github.io/Afreecatv/css/bootstrap.min.css >');
+			 
+			
                             function createLinkDom(id, link) {
                                 let showLogDivDom;
                                 showLogDivDom = document.createElement('link');
