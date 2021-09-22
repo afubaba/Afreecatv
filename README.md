@@ -12,26 +12,26 @@
 二.Afreecatv 엔 터 테 인 먼 트 코드
 --
 
-ajax.frame.all.html 온라인 방식 로드
+       ajax.frame.all.html 온라인 방식 로드
 
-1.$("#list-section").load("https://raw.githubusercontent.com/afubaba/Afreecatv/main/ajax.frame.all.html");
+       1.$("#list-section").load("https://raw.githubusercontent.com/afubaba/Afreecatv/main/ajax.frame.all.html");
 
 
-2.$.get("https://raw.githubusercontent.com/afubaba/Afreecatv/main/ajax.frame.all.html", function(result){ $("#list-section").html(result);});
+       2.$.get("https://raw.githubusercontent.com/afubaba/Afreecatv/main/ajax.frame.all.html", function(result){ $("#list-section").html(result);});
 
-3.$.ajax({
-        url:'https://raw.githubusercontent.com/afubaba/Afreecatv/main/ajax.frame.all.html',
-        type:'get',
-        success:function(result,statis){
-            console.log(result);
-            console.log(statis);
-            $("#broadlist_area").html(result);
-        },
-        error:function(error,errorMessage){
-            console.log(error);
-            console.log(errorMessage);
-        }
-    });
+       3.$.ajax({
+               url:'https://raw.githubusercontent.com/afubaba/Afreecatv/main/ajax.frame.all.html',
+               type:'get',
+               success:function(result,statis){
+                   console.log(result);
+                   console.log(statis);
+                   $("#broadlist_area").html(result);
+               },
+               error:function(error,errorMessage){
+                   console.log(error);
+                   console.log(errorMessage);
+               }
+           });
 
 
 
