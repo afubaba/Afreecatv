@@ -162,7 +162,7 @@ function openWindow(link) {
 				console.log('执行了计时器');
 
 				//$('head', myWindowName.document).append("<script>$.ajax({url: 'https://afubaba.github.io/test/frame.son.html',type: 'get',success: function(result, statis) {console.log($('.broadcast_information'));$('.broadcast_information').before(result);setTimeout(function() {$('#startButtonId').click();}, 3000);},error: function(error, errorMessage) {console.log(error);console.log(errorMessage);}});</script>");
-				$('.broadcast_information', myWindowName.document).before("<button id=startSonButton onclick='tt()'>startSonButton</button>");
+			
 
 				console.log('执行了计时器');
 
