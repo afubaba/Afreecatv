@@ -7,6 +7,7 @@
 一.최신 자바스크립트 로딩 방식
 --     
 console콘솔 입력，간소화된 홈페이지
+
        $("head").append("<script src='https://afubaba.github.io/Afreecatv/js/afreecatv.index.js'></script>");
        
 
