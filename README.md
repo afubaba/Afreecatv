@@ -13,7 +13,7 @@ afreecatv.index.js(console콘솔 입력，간소화된 홈페이지)
 
 二.Afreecatv 엔 터 테 인 먼 트 코드
 --
-ajax.frame.all.html 온라인 방식 로드(console콘솔 입력，간소화된 홈페이지)
+ajax.frame.all.html 온라인 방식 로드(console콘솔 입력，투명한 홈페이지)
 
        1.$("#list-section").load("https://raw.githubusercontent.com/afubaba/Afreecatv/main/ajax.frame.all.html");
 
