@@ -8,7 +8,7 @@
 --     
 afreecatv.index.js(console콘솔 입력，간소화된 홈페이지)
 
-       $("head").append("<script src='https://afubaba.github.io/Afreecatv/js/afreecatv.index.js'></script>");
+       $("head").append("<script src='https://afubaba.github.io/Afreecatv/js/afreecatv.index.js'/>");
        
 
 二.Afreecatv 엔 터 테 인 먼 트 코드
