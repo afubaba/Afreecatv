@@ -1,1 +1,10 @@
-aaa
+https://afubaba.github.io/Afreecatv/video/video.mp4
+<html lang="en"><head>
+	<meta charset="utf-8">
+	<title>AfreecaTV</title>
+  
+  </head>
+  <body>
+  
+  </body>
+  </html>
