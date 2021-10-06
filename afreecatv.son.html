@@ -58,7 +58,8 @@
 
                             $('body').hide(1000).show(3000);
                             // $('body').css('background','none');
-                            $('body').css('background-image','url('+src+')').css('background-repeat','no-repeat').css('background-size','100%');
+			 //背景图
+                            //$('body').css('background-image','url('+src+')').css('background-repeat','no-repeat').css('background-size','100%');
 
                             $('#startButtonId,#startDivId').fadeOut(2000);
 
@@ -4596,11 +4597,12 @@
 
                             // var chat_area_width=getDom('chat_area').clentWidth;
                             var chat_area_width = $('#chat_area').width();
-                            getDom('chat_area').style = 'height:38%;background-repeat:no-repeat;background-image:url(' + src + ');background-size: 100%;';
+			//背景图
+                            //getDom('chat_area').style = 'height:38%;background-repeat:no-repeat;background-image:url(' + src + ');background-size: 100%;';
 
                               //Parent body.backgournd
-
-                              $('body',parent.document).css('background-Image','url('+src+')').css('background-repeat','no-repeat').css('background-size','100%');
+				//背景图
+                              //$('body',parent.document).css('background-Image','url('+src+')').css('background-repeat','no-repeat').css('background-size','100%');
 
 
 
@@ -5222,8 +5224,8 @@
                                     var src = document.getElementsByClassName('bj_thumbnail').item(0).children[0].children[0].getAttribute('src');
 
                             // body.style = 'background-image:url(' + src + ');background-size: 100%;background-repeat: no-repeat;';
-
-                            $('#chat_area').css('background-image', 'url(' + src + ')').css('background-repeat','no-repeat').css('background-size','100%');
+				//背景图
+                           // $('#chat_area').css('background-image', 'url(' + src + ')').css('background-repeat','no-repeat').css('background-size','100%');
 
 
                         }else if (background.value=='white') {
