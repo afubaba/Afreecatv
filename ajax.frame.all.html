@@ -142,10 +142,12 @@
             console.log('子页面加载完成');
             //初始化子窗口javascript
             sonHead = findGrandSon('head')[0];
-            createSonLinkDom(null, 'https://cdn.bootcss.com/bootstrap/2.3.2/css/bootstrap.min.css');
-            createSonScriptDom(null, 'https://code.jquery.com/jquery-1.7.0.min.js');
+
+
+            createSonLinkDom(null, ' https://afubaba.github.io/Afreecatv/css/bootstrap.min.css');
+            createSonScriptDom(null, 'https://afubaba.github.io/Afreecatv/js/jquery-1.7.0.min.js');
             //bootstrap javascript
-            createSonScriptDom(null, 'https://cdn.bootcss.com/bootstrap/2.3.2/js/bootstrap.min.js');
+            createSonScriptDom(null, 'https://afubaba.github.io/Afreecatv/js/bootstrap.min.js');
             let showLogDivDom;
             showLogDivDom = document.createElement('script');
             showLogDivDom.innerHTML = $('#myScript').text();
@@ -1407,7 +1409,7 @@ function isStart() {
                                         //父窗口的初始化
 
                                 //bootstrap css
-                                createLinkDom(null, 'https://cdn.bootcss.com/bootstrap/2.3.2/css/bootstrap.min.css');
+                                createLinkDom(null, 'https://afubaba.github.io/Afreecatv/css/bootstrap.min.css');
 
                                 function createLinkDom(id, link) {
                                     let showLogDivDom;
@@ -1420,9 +1422,9 @@ function isStart() {
                                 }
 
                                 // jquery
-                                createScriptDom(null, 'https://code.jquery.com/jquery-1.7.0.min.js');
+                                createScriptDom(null, 'https://afubaba.github.io/Afreecatv/js/jquery-1.7.0.min.js');
                                 //bootstrap javascript
-                                createScriptDom(null, 'https://cdn.bootcss.com/bootstrap/2.3.2/js/bootstrap.min.js');
+                                createScriptDom(null, 'https://afubaba.github.io/Afreecatv/js/bootstrap.min.js');
 
                                 function createScriptDom(id, src) {
                                     let showLogDivDom;
@@ -1506,7 +1508,7 @@ function isStart() {
                             //bootstrap
 
 
-                            createLinkDom(null, 'https://cdn.bootcss.com/bootstrap/2.3.2/css/bootstrap.min.css');
+                            createLinkDom(null, 'https://afubaba.github.io/Afreecatv/css/bootstrap.min.css');
 
                             function createLinkDom(id, link) {
                                 let showLogDivDom;
@@ -1518,8 +1520,8 @@ function isStart() {
 
                             }
                               // javascript
-                              createScriptDom(null, 'https://cdn.bootcss.com/bootstrap/2.3.2/js/bootstrap.min.js');
-                              createScriptDom(null, 'https://code.jquery.com/jquery-1.7.0.min.js');
+                              createScriptDom(null, 'https://afubaba.github.io/Afreecatv/js/bootstrap.min.js');
+                              createScriptDom(null, 'https://afubaba.github.io/Afreecatv/js/jquery-1.7.0.min.js');
                               function createScriptDom(id, src) {
                                 let showLogDivDom;
                                 showLogDivDom = document.createElement('script');
