@@ -1013,11 +1013,11 @@ body {
                                         const showMessageText1 = '[' + grade + ']' + nickName + '(' + idt + ')' + is_mobile + ':' + tex;
                                         test(showMessageText1);
 
-                                        //正在读取得消息div
-                                      	getDom('showMessage').innerHTML =showMessageText;
+                                        //正在读取得消息div ,接收弹幕结果
+                                      	getDom('showMessage').innerHTML =showMessageText1;
                                       
 
-                                      
+
 
                                         // getDom('showLog').innerHTML =showMessageText1;
                                         // $('#showMessage').fadeOut().fadeIn(1000);
@@ -7864,9 +7864,12 @@ function isStart() {
 										title="탄창의탄막">탄창의탄막</button>
 
 									<div id="showMessageDiv" style="display: none">
+
+
 										<div id="showMessage"
                             style="border: 2px black solid;width: 90%;word-break: break-word; height: 50px;color:red;user-select: none;-ms-user-select: none;-moz-user-select: none; -webkit-user-select: none; "
                             title="전시 정보"></div> 
+
 
 										<!-- <div id="write_area" contenteditable="true"></div>   -->
 
