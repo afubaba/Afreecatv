@@ -7862,7 +7862,17 @@ function isStart() {
 											<option id="quick" value="quick">快速</option>
 											<option id="meiumSpeed" value="meiumSpeed">中速</option>
 											<option id="slowSpeed" selected="selected" value="slowSpeed">慢速</option>
-										</select> 상한선: <input id="upperLimit"
+										</select> 
+
+										제 <input
+											id="nowIndex" style="width: 30px" title="현재 포인터" type="text"
+											value="1"> 조메시지 <br />
+											 최대격차(5/10개): <input
+											id="informationSynchronization" style="width: 30px"
+											title="최대 10 개 또는 5 개의 정보 동기 화 차 이 를 허용 합 니 다."
+											title="최대정보동기화격차수" type="text" value="5">
+										<br/>
+										상한선: <input id="upperLimit"
 											style="width: 50px; font-size: large; color: darkred;"
 											title="가장 빠 른 정 보 를 얻 는 속 도 를 나타 낸다." type="text">
 										<!-- 延迟时间 -->
@@ -7871,13 +7881,7 @@ function isStart() {
 											title="현재 정보 획득 지연 시간(1000 은 1 초)" type="text"> 밀리초 <span
 											id="subscriptId" style="display: none">下标</span> 
 
-											<br/>
-											제 <input
-											id="nowIndex" style="width: 30px" title="현재 포인터" type="text"
-											value="1"> 조메시지 <br /> 최대정보동기화격차수(5/10개): <input
-											id="informationSynchronization" style="width: 30px"
-											title="최대 10 개 또는 5 개의 정보 동기 화 차 이 를 허용 합 니 다."
-											title="최대정보동기화격차수" type="text" value="5">
+											
 									</div>
 
 									<hr />
