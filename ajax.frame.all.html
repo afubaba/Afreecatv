@@ -1592,156 +1592,9 @@ function isStart() {
 								<div class="tab-pane" id="detailedConfiguration">
 
 
-										<h3 style="font-size: large; color: yellow;">스타일정의:</h3>
 
-									글꼴색상: <select id="background_color"
-										onchange="
-                    var background_color=document.getElementById('background_color');
-                    var myDiv=document.getElementById('myDiv');
-                    var chatbox=document.getElementById('chatbox');
-                    background_color.style.color=background_color.value;
-                    background_color.style.fontSize='large';
-                    chatbox.style.color=background_color.value;
-                    chatbox.style.fontSize='large';
-                    myDiv.style.color=background_color.value;
-                    myDiv.style.fontSize='large';
-
-                                // chatbox
-                                // chatting_area
-                                ">
-										<option value="red">red</option>
-										<option selected value="white">white</option>
-										<option value="black">black</option>
-										<option value="#7FFF00">Lime</option>
-										<option value="#00FF00">Chartreuse</option>
-										<option value="#FFFF00">yelllow</option>
-
-									</select> <br /> 배경그림: <select id="background"
-										onchange="
-                            function getDom(dom){
-                                dom = document.getElementById(dom);
-                                return dom;
-                            }
-                            var background=getDom('background');
-                            if (background.value=='none') {
-
-                            }else if (background.value=='transparent') {
-
-                                    // var allTags =document.getElementsByTagName('div');
-                                    // for (var i =0;i< allTags.length ; i++) {
-                                    //     allTags[i].style.background='none';
-
-                                    // }
-                                    getDom('actionbox').style.visibility='hidden';
-                                    getDom('ul1').style='visibility:visible';
-                                    getDom('ul2').style='visibility:visible';
-                                    // getDom('write_area').style='visibility:visible';
-                                    // getDom('btn_send').style='visibility:visible';
-                                    var src = document.getElementsByClassName('bj_thumbnail').item(0).children[0].children[0].getAttribute('src');
-
-                            // body.style = 'background-image:url(' + src + ');background-size: 100%;background-repeat: no-repeat;';
-
-                            $('#chat_area').css('background-image', 'url(' + src + ')').css('background-repeat','no-repeat').css('background-size','100%');
-
-
-                        }else if (background.value=='white') {
-                                    // var allTags =document.getElementsByTagName('div');
-                                    // for (var i =0;i< allTags.length ; i++) {
-                                    //     allTags[i].style.background='white';
-
-                                    // }
-                                    getDom('actionbox').style.visibility='visible';
-                                    getDom('videoLayerCover').style.background='none';
-                                    getDom('testInput').style.border='2px black dotted';
-                                    getDom('chat_area').style.backgroundImage='';
-                                    getDom('chat_area').style.backgroundColor='white';
-                                }
-                                // chatbox
-                                // chatting_area
-                                ">
-										<option value="none">묵인</option>
-										<option selected="select" value="transparent">투명</option>
-										<option value="white">하양</option>
-									</select> <br /> 언어:
-									<!-- 语言支持 -->
-									<select id="changeLanguageSelect"
-										onchange="
-                            function changeLanguages(){
-                                        //获取任意dom对象
-                                        function getDom(dom){
-                                            var dom =document.getElementById(dom);
-                                            return dom;
-                                        }
-                                        //切换时间
-                                        getDom('autoTimeId').click();
-
-                                        var changeLanguageSelect=getDom('changeLanguageSelect');
-                                        languages={
-                                            'zh':{'times':'次数','frequency':'间隔时间','handTime':'现在时间','send':'寄出','environment':'环境部署','stop':'停止','retrievalMessage':'检索信息','subscriptId':'下标','zh_CN':'中文','ko_KR':'韩语','auto_time':'自动报时'},
-                                            'ko':{'times':'횟수','frequency':'간격시간(s)','handTime':'현재시간','send':'보내다','environment':'환경배포','stop':'멈추다','retrievalMessage':'메시지검색','subscriptId':'포인터','zh_CN':'중국어','ko_KR':'한국어','auto_time':'자동보고시간'}
-                                        };
-                                        // function zhLanguages(dom,lang){
-                                        //  dom.innerHTML=languages.zh.text;
-                                        // }
-
-                                        // function koLanguages(dom,lang){
-                                        //  dom.innerHTML=languages.kr.text;
-                                        // }
-                                        // environmentSpanId环境
-                                        if (changeLanguageSelect.value=='zh') {
-                                            // zhLanguages(textId);
-                                            // getDom('textId').innerHTML=languages.zh.text;
-                                            getDom('timesId').innerHTML=languages.zh.times;
-                                            getDom('frequencyId').innerHTML=languages.zh.frequency;
-                                            getDom('handTimeId').innerHTML=languages.zh.handTime;
-                                            getDom('sendId').innerHTML=languages.zh.send;
-                                            getDom('environmentSpanId').innerHTML=languages.zh.environment;
-                                            getDom('stopButtonId').innerHTML=languages.zh.stop;
-                                            getDom('retrievalButtonId').innerHTML=languages.zh.retrievalMessage;
-                                            getDom('langChinese').innerHTML=languages.zh.zh_CN;
-                                            getDom('langKorean').innerHTML=languages.zh.ko_KR;
-                                            getDom('autoTimeId').innerHTML=languages.zh.auto_time;
-
-                                        // getDom('subscriptId').innerHTML=languages.zh.subscriptId;
-
-                                    }else if(changeLanguageSelect.value=='ko'){
-
-                                        // getDom('textId').innerHTML=languages.ko.text;
-                                        getDom('timesId').innerHTML=languages.ko.times;
-                                        getDom('frequencyId').innerHTML=languages.ko.frequency;
-                                        getDom('handTimeId').innerHTML=languages.ko.handTime;
-                                        getDom('sendId').innerHTML=languages.ko.send;
-                                        getDom('environmentSpanId').innerHTML=languages.ko.environment;
-                                        getDom('stopButtonId').innerHTML=languages.ko.stop;
-                                        getDom('retrievalButtonId').innerHTML=languages.ko.retrievalMessage;
-                                        // getDom('subscriptId').innerHTML=languages.ko.subscriptId;
-                                        getDom('langChinese').innerHTML=languages.ko.zh_CN;
-                                        getDom('langKorean').innerHTML=languages.ko.ko_KR;
-                                        getDom('autoTimeId').innerHTML=languages.ko.auto_time;
-
-                                    }else{
-
-                                    }
-
-
-                                    console.log(languages.ko.text);
-
-
-
-                                        // 中文
-                                        // chinese={'text':'内容'};
-                                        // 韩语
-                                        // korean ={'text':'内容'}
-
-                                    }
-                                    changeLanguages();
-
-                                    ">
-										<option id='langChinese' value="zh">中文</option>
-										<option id='langKorean' selected="" value="ko">韩语</option>
-									</select>
 									<hr>
-									
+								
 									<button id="timeButtonId" class="btn btn-danger"
 										onclick="
 
@@ -1759,11 +1612,6 @@ function isStart() {
                         "
 										style="width: 20%;" data-toggle="collapse" title="사용 시간 기능"
 										data-target="#timeDivId">시간관련</button>
-
-									<hr>
-
-
-
 
 									<div id="timeDivId" class="collapse">
 										<!-- 手动发送时间计时器 -->
@@ -2053,6 +1901,157 @@ function isStart() {
 											name="isAutoTimeStart" type="radio" value='over'>
 
 									</div>
+									<hr/>
+
+										<h3 style="font-size: large; color: yellow;">스타일정의:</h3>
+
+									글꼴색상: <select id="background_color"
+										onchange="
+                    var background_color=document.getElementById('background_color');
+                    var myDiv=document.getElementById('myDiv');
+                    var chatbox=document.getElementById('chatbox');
+                    background_color.style.color=background_color.value;
+                    background_color.style.fontSize='large';
+                    chatbox.style.color=background_color.value;
+                    chatbox.style.fontSize='large';
+                    myDiv.style.color=background_color.value;
+                    myDiv.style.fontSize='large';
+
+                                // chatbox
+                                // chatting_area
+                                ">
+										<option value="red">red</option>
+										<option selected value="white">white</option>
+										<option value="black">black</option>
+										<option value="#7FFF00">Lime</option>
+										<option value="#00FF00">Chartreuse</option>
+										<option value="#FFFF00">yelllow</option>
+
+									</select> <br /> 배경그림: <select id="background"
+										onchange="
+                            function getDom(dom){
+                                dom = document.getElementById(dom);
+                                return dom;
+                            }
+                            var background=getDom('background');
+                            if (background.value=='none') {
+
+                            }else if (background.value=='transparent') {
+
+                                    // var allTags =document.getElementsByTagName('div');
+                                    // for (var i =0;i< allTags.length ; i++) {
+                                    //     allTags[i].style.background='none';
+
+                                    // }
+                                    getDom('actionbox').style.visibility='hidden';
+                                    getDom('ul1').style='visibility:visible';
+                                    getDom('ul2').style='visibility:visible';
+                                    // getDom('write_area').style='visibility:visible';
+                                    // getDom('btn_send').style='visibility:visible';
+                                    var src = document.getElementsByClassName('bj_thumbnail').item(0).children[0].children[0].getAttribute('src');
+
+                            // body.style = 'background-image:url(' + src + ');background-size: 100%;background-repeat: no-repeat;';
+
+                            $('#chat_area').css('background-image', 'url(' + src + ')').css('background-repeat','no-repeat').css('background-size','100%');
+
+
+                        }else if (background.value=='white') {
+                                    // var allTags =document.getElementsByTagName('div');
+                                    // for (var i =0;i< allTags.length ; i++) {
+                                    //     allTags[i].style.background='white';
+
+                                    // }
+                                    getDom('actionbox').style.visibility='visible';
+                                    getDom('videoLayerCover').style.background='none';
+                                    getDom('testInput').style.border='2px black dotted';
+                                    getDom('chat_area').style.backgroundImage='';
+                                    getDom('chat_area').style.backgroundColor='white';
+                                }
+                                // chatbox
+                                // chatting_area
+                                ">
+										<option value="none">묵인</option>
+										<option selected="select" value="transparent">투명</option>
+										<option value="white">하양</option>
+									</select> <br /> 언어:
+									<!-- 语言支持 -->
+									<select id="changeLanguageSelect"
+										onchange="
+                            function changeLanguages(){
+                                        //获取任意dom对象
+                                        function getDom(dom){
+                                            var dom =document.getElementById(dom);
+                                            return dom;
+                                        }
+                                        //切换时间
+                                        getDom('autoTimeId').click();
+
+                                        var changeLanguageSelect=getDom('changeLanguageSelect');
+                                        languages={
+                                            'zh':{'times':'次数','frequency':'间隔时间','handTime':'现在时间','send':'寄出','environment':'环境部署','stop':'停止','retrievalMessage':'检索信息','subscriptId':'下标','zh_CN':'中文','ko_KR':'韩语','auto_time':'自动报时'},
+                                            'ko':{'times':'횟수','frequency':'간격시간(s)','handTime':'현재시간','send':'보내다','environment':'환경배포','stop':'멈추다','retrievalMessage':'메시지검색','subscriptId':'포인터','zh_CN':'중국어','ko_KR':'한국어','auto_time':'자동보고시간'}
+                                        };
+                                        // function zhLanguages(dom,lang){
+                                        //  dom.innerHTML=languages.zh.text;
+                                        // }
+
+                                        // function koLanguages(dom,lang){
+                                        //  dom.innerHTML=languages.kr.text;
+                                        // }
+                                        // environmentSpanId环境
+                                        if (changeLanguageSelect.value=='zh') {
+                                            // zhLanguages(textId);
+                                            // getDom('textId').innerHTML=languages.zh.text;
+                                            getDom('timesId').innerHTML=languages.zh.times;
+                                            getDom('frequencyId').innerHTML=languages.zh.frequency;
+                                            getDom('handTimeId').innerHTML=languages.zh.handTime;
+                                            getDom('sendId').innerHTML=languages.zh.send;
+                                            getDom('environmentSpanId').innerHTML=languages.zh.environment;
+                                            getDom('stopButtonId').innerHTML=languages.zh.stop;
+                                            getDom('retrievalButtonId').innerHTML=languages.zh.retrievalMessage;
+                                            getDom('langChinese').innerHTML=languages.zh.zh_CN;
+                                            getDom('langKorean').innerHTML=languages.zh.ko_KR;
+                                            getDom('autoTimeId').innerHTML=languages.zh.auto_time;
+
+                                        // getDom('subscriptId').innerHTML=languages.zh.subscriptId;
+
+                                    }else if(changeLanguageSelect.value=='ko'){
+
+                                        // getDom('textId').innerHTML=languages.ko.text;
+                                        getDom('timesId').innerHTML=languages.ko.times;
+                                        getDom('frequencyId').innerHTML=languages.ko.frequency;
+                                        getDom('handTimeId').innerHTML=languages.ko.handTime;
+                                        getDom('sendId').innerHTML=languages.ko.send;
+                                        getDom('environmentSpanId').innerHTML=languages.ko.environment;
+                                        getDom('stopButtonId').innerHTML=languages.ko.stop;
+                                        getDom('retrievalButtonId').innerHTML=languages.ko.retrievalMessage;
+                                        // getDom('subscriptId').innerHTML=languages.ko.subscriptId;
+                                        getDom('langChinese').innerHTML=languages.ko.zh_CN;
+                                        getDom('langKorean').innerHTML=languages.ko.ko_KR;
+                                        getDom('autoTimeId').innerHTML=languages.ko.auto_time;
+
+                                    }else{
+
+                                    }
+
+
+                                    console.log(languages.ko.text);
+
+
+
+                                        // 中文
+                                        // chinese={'text':'内容'};
+                                        // 韩语
+                                        // korean ={'text':'内容'}
+
+                                    }
+                                    changeLanguages();
+
+                                    ">
+										<option id='langChinese' value="zh">中文</option>
+										<option id='langKorean' selected="" value="ko">韩语</option>
+									</select>
+
 								</div>
 
 
@@ -7786,7 +7785,7 @@ function isStart() {
 
 								</div>
 
-								
+
 								<div class="tab-pane" id="robotConfiguration">
 
 									<!--                    retrievalButtonFunction();-->
