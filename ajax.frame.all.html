@@ -1237,7 +1237,7 @@ body {
                                         }
                                         //发送按钮语言
 
-                                        if (idt.includes('1057123') && tex == '!보내다' || tex == '!send' || tex == '!发送') {
+                                        if (tex == '!보내다' || tex == '!send' || tex == '!发送') {
 
                                         	$('#write_area').html($('#showMessage').html());
                                             getDom('btn_send').click();
@@ -1795,11 +1795,11 @@ function isStart() {
                                     var hours=date.getHours()+addHour;
                                     var minutes=date.getMinutes();
                                     var seconds=date.getSeconds();
-                                    if (hours>=24){
-                                        hours=0;
+                                   //  if (hours>=24){
+                                      //   hours=0;
                                             //韩国12点增加一天
-                                            day++;
-                                        }
+                                      //       day++;
+                                     //   }
                                         //当月最大的天数
                                         var monthArrays1=[1,3,5,7,8,10,12]; //31days
                                         var monthArrays2=[4,6,9,11];      //30days
