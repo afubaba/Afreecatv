@@ -1829,15 +1829,13 @@ function isStart() {
                                             //拼接时间
                                             var  now=fullYear+'-'+month+'-'+day+'\t'+hours+':'+minutes+':'+seconds;
 
-                                            if (minutes==29&&seconds==57||minutes==59&&seconds==57) {
-                                                //赋值
-                                                text_information=document.getElementsByClassName('text_information');
-                                                nickName=text_information.item(0).children[0].textContent;
+                                           // if (minutes==29&&seconds==57||minutes==59&&seconds==57) {
+                                                
 
 
 
                                                 
-                                            }
+                                            //}
                                             if (minutes==30&&seconds==0||minutes==0&&seconds==0) {
                                                 var oclock;
                                                 if (hours==12||hours==0&&minutes==0) {
@@ -1893,8 +1891,14 @@ function isStart() {
                                                     oclock='한국시간';
                                                 }
 
+
+                                                //赋值 昵称
+                                                text_information=document.getElementsByClassName('text_information');
+                                                nickName=text_information.item(0).children[0].textContent;
                                                 document.getElementById('write_area').innerHTML='@'+nickName+':오빠는 당신을 생각 나게/휘파람/';
                                                 document.getElementById('btn_send').click();
+
+
                                                 document.getElementById('write_area').innerHTML=oclock+':'+now;
                                                 document.getElementById('btn_send').click();
                                             }
