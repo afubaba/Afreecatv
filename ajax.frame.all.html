@@ -1836,8 +1836,7 @@ function isStart() {
 
 
 
-                                                document.getElementById('write_area').innerHTML='@'+nickName+':오빠는 당신을 생각 나게/휘파람/';
-                                                document.getElementById('btn_send').click();
+                                                
                                             }
                                             if (minutes==30&&seconds==0||minutes==0&&seconds==0) {
                                                 var oclock;
@@ -1894,7 +1893,8 @@ function isStart() {
                                                     oclock='한국시간';
                                                 }
 
-
+                                                document.getElementById('write_area').innerHTML='@'+nickName+':오빠는 당신을 생각 나게/휘파람/';
+                                                document.getElementById('btn_send').click();
                                                 document.getElementById('write_area').innerHTML=oclock+':'+now;
                                                 document.getElementById('btn_send').click();
                                             }
