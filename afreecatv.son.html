@@ -162,13 +162,517 @@ body {
 			<ul class="nav nav-tabs">
 				<li class="active"><a data-toggle="tab"
 					href="#basicConfiguration">기본설정</a></li>
-				<li><a data-toggle="tab" href="#detailedＣonfiguration">상세설정</a></li>
-				<li><a data-toggle="tab" href="#easyDiv">복사&붙여넣기</a></li>
-				<li style="display: none;"><a data-toggle="tab" href="#testDiv">테스</a></li>
+
+
+			    <li><a data-toggle="tab" href="#robotConfiguration">채팅로봇</a></li>
+
+				<li class="active"><a data-toggle="tab"
+									href="#detailedConfiguration">상세설정</a></li>
+
+
+				 <!--隐藏复制粘贴--> 
+				<li style="display: none;"><a data-toggle="tab" href="#easyDiv">복사&붙여넣기</a></li>
+				<li style="display: none;"><a data-toggle="tab"
+									href="#testDiv">테스</a></li>
 
 
 			</ul>
 			<div class="tab-content">
+
+						<div class="tab-pane" id="detailedConfiguration">
+
+
+								
+									<button id="timeButtonId" class="btn btn-danger"
+										onclick="
+
+                            setTimeout(function(){
+                                if(!document.getElementById('timeButtonId').className.includes('collapsed')){
+                                   $('#autoTimeId').click();
+                                }else{
+                               
+                                    clearInterval(autoInterval) ;
+                                }
+
+
+                            },2000);
+                            
+                        "
+										style="width: 100%;" data-toggle="collapse" title="사용 시간 기능"
+										data-target="#timeDivId">시간관련</button>
+
+									<div id="timeDivId" class="collapse">
+										<!-- 手动发送时间计时器 -->
+										<button id="getTimeButton"
+											onclick="
+                                        //判断当计时器是否重复
+                                        if('undefined'!=typeof handTimeout){
+                                            clearInterval(handTimeout) ;
+                                        }
+                                        console.log('now times start');
+                                        date =new Date();
+                                        fullYear=date.getFullYear();
+                                        month=date.getMonth()+1;
+                                        day=date.getDate();
+										//小时+1
+										hours=date.getHours()+1;
+                                        //hours=date.getHours();
+                                        minutes=date.getMinutes();
+                                        seconds=date.getSeconds();
+                                        //判断如果加一天，才执行减少一天
+                                        isAddDay=false;
+                                        var handTimeout=setTimeout(function(){
+                                            if (hours>=24){
+                                                hours=0;
+                                            }
+                                            //韩国1点减去一天
+                                            if(0<hours<1){
+                                                //韩国12点增加一天
+                                                day++;
+                                                //判断如果加一天，才执行减少一天
+                                                isAddDay=true;
+                                            }
+
+                                            //判断如果加一天，才执行减少一天
+                                            if (hours>1&&isAddDay==true) {
+                                                day--;
+                                                isAddDay==false;
+                                            }
+
+                                            //当月最大的天数
+                                            var monthArrays1=[1,3,5,7,8,10,12]; //31days
+                                            var monthArrays2=[4,6,9,11];      //30days
+                                            var monthArrays3 = 2;              //28days
+                                            maxDays=0;
+                                            if (monthArrays3==month){
+                                                maxDays=28;
+                                            }else if(monthArrays2.includes(month)){
+                                                maxDays=30;
+                                            }else{
+                                                maxDays=31;
+                                            }
+
+                                            if (day>maxDays){
+
+                                                day=1;
+                                                month++;
+                                            }
+                                            if (month>12){
+                                                fullYear++;
+                                            }
+
+                                            var now=fullYear+'-'+month+'-'+day+'\t'+hours+':'+minutes+':'+seconds;
+                                            // var nowTimes=now.replaceAll('0','₀').replaceAll('1','₁')
+                                            //     .replaceAll('2','₂').replaceAll('3','₃').replaceAll('4','₄')
+                                            //     .replaceAll('5','₅').replaceAll('6','₆').replaceAll('7','₇')
+                                            //     .replaceAll('8','₈').replaceAll('9','₉');
+                                            getNowTime(now,hours,minutes);
+                                        },100);
+                                        function getNowTime(now,hours,minutes) {
+                                            var oclock;
+                                            if (hours==12||hours==0&&minutes>=0&&minutes<=29) {
+                                                oclock='🕛';
+                                            }else if(hours==12||hours==0&&minutes>=30&&minutes<=59){
+                                                oclock='🕧';
+                                            }else if(hours==1||hours==13&&minutes>=0&&minutes<=29){
+                                                oclock='🕐';
+                                            }else if(hours==1||hours==13&&minutes>=30&&minutes<=59){
+                                                oclock='🕜';
+                                            }else if(hours==2||hours==14&&minutes>=0&&minutes<=29){
+                                                oclock='🕑';
+                                            }else if(hours==2||hours==14&&minutes>=30&&minutes<=59){
+                                                oclock='🕝';
+                                            }else if(hours==3||hours==15&&minutes>=0&&minutes<=29){
+                                                oclock='🕒';
+                                            }else if(hours==3||hours==15&&minutes>=30&&minutes<=59){
+                                                oclock='🕞';
+                                            }else if(hours==4||hours==16&&minutes>=0&&minutes<=29){
+                                                oclock='🕓';
+                                            }else if(hours==4||hours==16&&minutes>=30&&minutes<=59){
+                                                oclock='🕟';
+                                            }else if(hours==5||hours==17&&minutes>=0&&minutes<=29){
+                                                oclock='🕔';
+                                            }else if(hours==5||hours==17&&minutes>=30&&minutes<=59){
+                                                oclock='🕠';
+                                            }else if(hours==6||hours==18&&minutes>=0&&minutes<=29){
+                                                oclock='🕕';
+                                            }else if(hours==6||hours==18&&minutes>=30&&minutes<=59){
+                                                oclock='🕡';
+                                            }else if(hours==7||hours==19&&minutes>=0&&minutes<=29){
+                                                oclock='🕖';
+                                            }else if(hours==7||hours==19&&minutes>=30&&minutes<=59){
+                                                oclock='🕢';
+                                            }else if(hours==8||hours==20&&minutes>=0&&minutes<=29){
+                                                oclock='🕗';
+                                            }else if(hours==8||hours==20&&minutes>=30&&minutes<=59){
+                                                oclock='🕣';
+                                            }else if(hours==9||hours==21&&minutes>=0&&minutes<=29){
+                                                oclock='🕘';
+                                            }else if(hours==9||hours==21&&minutes>=30&&minutes<=59){
+                                                oclock='🕤';
+                                            }else if(hours==10||hours==22&&minutes>=0&&minutes<=29){
+                                                oclock='🕙';
+
+                                            }else if(hours==10||hours==22&&minutes>=30&&minutes<=59){
+                                                oclock='🕥';
+                                            }else if(hours==11||hours==23&&minutes>=0&&minutes<=29){
+                                                oclock='🕚';
+                                            }else if(hours==11||hours==23&&minutes>=30&&minutes<=59){
+                                                oclock='🕦';
+                                            }else{
+                                                oclock='한국시간:';
+                                            }
+                                            // document.getElementById('write_area').innerHTML=nowTimes;
+                                            document.getElementById('write_area').innerHTML=oclock+':'+now;
+
+                                             //自定义输入框的值
+                                            //document.getElementById('testInput').value=now;
+                                            //发送框框的值
+                                            document.getElementById('btn_send').click();
+                                        }
+
+                                        "
+											style="font-size: large; color: darkred;"
+											title="현재 시간 가 져 오기 및 발송 시간" type="button">
+											<span id="handTimeId">当前时间</span>
+										</button>
+										<input id="timeFrequencys" style="width: 50px" type="text">
+										<br />
+
+										<!-- 自动发送时间计时器 -->
+										<button id="autoTimeId"
+											onclick="
+                                    //判断当计时器是否重复
+                                    if('undefined'!=typeof autoInterval){
+                                        clearInterval(autoInterval) ;
+                                    }
+
+
+                                    function getDomByName(domName){
+                                        domName=document.getElementsByName(domName);
+                                        return domName;
+
+                                    }
+
+                                    var addHour=1;
+                                    //if (document.getElementById('changeLanguageSelect').value=='ko') {addHour=1;} 
+                             
+
+                                autoInterval=setInterval(function(){
+
+                                    //是否提醒时间
+                                    var isAutoTimeStart= getDomByName('isAutoTimeStart');
+                                    var date =new Date();
+                                    var fullYear=date.getFullYear();
+                                    var month=date.getMonth()+1;
+                                    var day=date.getDate();
+                                    var hours=date.getHours()+addHour;
+                                    var minutes=date.getMinutes();
+                                    var seconds=date.getSeconds();
+                                     if (hours>=24){
+                                        hours=0;
+                                            //韩国12点增加一天
+                                            day++;
+                                        }
+                                        //当月最大的天数
+                                        var monthArrays1=[1,3,5,7,8,10,12]; //31days
+                                        var monthArrays2=[4,6,9,11];      //30days
+                                        var monthArrays3 = 2;              //28days
+
+                                        maxDays=0;
+                                        if (monthArrays3==month){
+                                            maxDays=28;
+                                        }else if(monthArrays2.includes(month)){
+                                            maxDays=30;
+                                        }else{
+                                            maxDays=31;
+                                        }
+
+                                        if (day>maxDays){
+                                            day=1;
+                                            month++;
+                                        }
+                                        if (month>12){
+                                            fullYear++;
+                                        }
+                                        document.getElementById('timeFrequencys').value=hours+':'+minutes+':'+seconds;
+                                        //开关判断
+                                        if (isAutoTimeStart[0].checked==true&&isAutoTimeStart[1].checked==false) {
+                                            var text_information='';
+                                            var nickName='';
+                                            //拼接时间
+                                            var  now=fullYear+'-'+month+'-'+day+'\t'+hours+':'+minutes+':'+seconds;
+
+                                           // if (minutes==29&&seconds==57||minutes==59&&seconds==57) {
+                                                
+
+
+
+                                                
+                                            //}
+                                            if (minutes==30&&seconds==0||minutes==0&&seconds==0) {
+                                                var oclock;
+                                                if (hours==12||hours==0&&minutes==0) {
+                                                    oclock='🕛';
+                                                }else if(hours==12||hours==0&&minutes==30){
+                                                    oclock='🕧';
+                                                }else if(hours==1||hours==13&&minutes==0){
+                                                    oclock='🕐';
+                                                }else if(hours==1||hours==13&&minutes==30){
+                                                    oclock='🕜';
+                                                }else if(hours==2||hours==14&&minutes==0){
+                                                    oclock='🕑';
+                                                }else if(hours==2||hours==14&&minutes==30){
+                                                    oclock='🕝';
+                                                }else if(hours==3||hours==15&&minutes==0){
+                                                    oclock='🕒';
+                                                }else if(hours==3||hours==15&&minutes==30){
+                                                    oclock='🕞';
+                                                }else if(hours==4||hours==16&&minutes==0){
+                                                    oclock='🕓';
+                                                }else if(hours==4||hours==16&&minutes==30){
+                                                    oclock='🕟';
+                                                }else if(hours==5||hours==17&&minutes==0){
+                                                    oclock='🕔';
+                                                }else if(hours==5||hours==17&&minutes==30){
+                                                    oclock='🕠';
+                                                }else if(hours==6||hours==18&&minutes==0){
+                                                    oclock='🕕';
+                                                }else if(hours==6||hours==18&&minutes==30){
+                                                    oclock='🕡';
+                                                }else if(hours==7||hours==19&&minutes==0){
+                                                    oclock='🕖';
+                                                }else if(hours==7||hours==19&&minutes==30){
+                                                    oclock='🕢';
+                                                }else if(hours==8||hours==20&&minutes==0){
+                                                    oclock='🕗';
+                                                }else if(hours==8||hours==20&&minutes==30){
+                                                    oclock='🕣';
+                                                }else if(hours==9||hours==21&&minutes==0){
+                                                    oclock='🕘';
+                                                }else if(hours==9||hours==21&&minutes==30){
+                                                    oclock='🕤';
+                                                }else if(hours==10||hours==22&&minutes==0){
+                                                    oclock='🕙';
+
+                                                }else if(hours==10||hours==22&&minutes==30){
+                                                    oclock='🕥';
+                                                }else if(hours==11||hours==23&&minutes==0){
+                                                    oclock='🕚';
+                                                }else if(hours==11||hours==23&&minutes==30){
+                                                    oclock='🕦';
+                                                }else{
+                                                    oclock='한국시간';
+                                                }
+
+
+                                                //赋值 昵称
+                                                text_information=document.getElementsByClassName('text_information');
+                                                nickName=text_information.item(0).children[0].textContent;
+                                                document.getElementById('write_area').innerHTML='@'+nickName+':오빠는 당신을 생각 나게/휘파람/';
+                                                document.getElementById('btn_send').click();
+
+
+                                                document.getElementById('write_area').innerHTML=oclock+':'+now;
+                                                document.getElementById('btn_send').click();
+                                            }
+
+
+
+                                        }else{
+                                         // console.log('关闭自动报告时：'+nickName);
+                                     }
+                                 },1000)"
+											style="font-size: large;" title="자동보고시간(30분정각에힌트)">报时
+										</button>
+
+
+										<span id='startAutoTime'>열다</span> <input
+											name="isAutoTimeStart" type="radio" value='start'> <span
+											id='overAutoTime'>닫다</span> <input checked="checked"
+											name="isAutoTimeStart" type="radio" value='over'>
+
+									</div>
+									
+
+
+
+									<button class="btn btn-danger" style="width: 100%;" data-toggle="collapse" title="대량 작업 관련" data-target="#personalizedDivId">개성화</button>
+
+									
+
+									<div id="personalizedDivId" class="collapse">
+										
+
+										<h3 style="font-size: large; color: yellow;">스타일정의:</h3>
+
+									글꼴색상: <select id="background_color"
+										onchange="
+                    var background_color=document.getElementById('background_color');
+                    var myDiv=document.getElementById('myDiv');
+                    var chatbox=document.getElementById('chatbox');
+                    background_color.style.color=background_color.value;
+                    background_color.style.fontSize='large';
+                    chatbox.style.color=background_color.value;
+                    chatbox.style.fontSize='large';
+                    myDiv.style.color=background_color.value;
+                    myDiv.style.fontSize='large';
+
+                                // chatbox
+                                // chatting_area
+                                ">
+										<option value="red">red</option>
+										<option selected value="white">white</option>
+										<option value="black">black</option>
+										<option value="#7FFF00">Lime</option>
+										<option value="#00FF00">Chartreuse</option>
+										<option value="#FFFF00">yelllow</option>
+
+									</select> <br /> 배경그림: <select id="background"
+										onchange="
+                            function getDom(dom){
+                                dom = document.getElementById(dom);
+                                return dom;
+                            }
+                            var background=getDom('background');
+                            if (background.value=='none') {
+
+                            }else if (background.value=='transparent') {
+
+                                    // var allTags =document.getElementsByTagName('div');
+                                    // for (var i =0;i< allTags.length ; i++) {
+                                    //     allTags[i].style.background='none';
+
+                                    // }
+                                    getDom('actionbox').style.visibility='hidden';
+                                    getDom('ul1').style='visibility:visible';
+                                    getDom('ul2').style='visibility:visible';
+                                    // getDom('write_area').style='visibility:visible';
+                                    // getDom('btn_send').style='visibility:visible';
+                                    var src = document.getElementsByClassName('bj_thumbnail').item(0).children[0].children[0].getAttribute('src');
+
+                            // body.style = 'background-image:url(' + src + ');background-size: 100%;background-repeat: no-repeat;';
+
+                            $('#chat_area').css('background-image', 'url(' + src + ')').css('background-repeat','no-repeat').css('background-size','100%');
+
+
+                        }else if (background.value=='white') {
+                                    // var allTags =document.getElementsByTagName('div');
+                                    // for (var i =0;i< allTags.length ; i++) {
+                                    //     allTags[i].style.background='white';
+
+                                    // }
+                                    getDom('actionbox').style.visibility='visible';
+                                    getDom('videoLayerCover').style.background='none';
+                                    getDom('testInput').style.border='2px black dotted';
+                                    getDom('chat_area').style.backgroundImage='';
+                                    getDom('chat_area').style.backgroundColor='white';
+                                }
+                                // chatbox
+                                // chatting_area
+                                ">
+										<option value="none">묵인</option>
+										<option selected="select" value="transparent">투명</option>
+										<option value="white">하양</option>
+									</select> <br /> 언어:
+									<!-- 语言支持 -->
+									<select id="changeLanguageSelect"
+										onchange="
+                            function changeLanguages(){
+                                        //获取任意dom对象
+                                        function getDom(dom){
+                                            var dom =document.getElementById(dom);
+                                            return dom;
+                                        }
+                                        //切换时间
+                                        getDom('autoTimeId').click();
+
+                                        var changeLanguageSelect=getDom('changeLanguageSelect');
+                                        languages={
+                                            'zh':{'times':'次数','frequency':'间隔时间','handTime':'现在时间','send':'寄出','environment':'环境部署','stop':'停止','retrievalMessage':'检索信息','subscriptId':'下标','zh_CN':'中文','ko_KR':'韩语','auto_time':'自动报时'},
+                                            'ko':{'times':'횟수','frequency':'간격시간(s)','handTime':'현재시간','send':'보내다','environment':'환경배포','stop':'멈추다','retrievalMessage':'메시지검색','subscriptId':'포인터','zh_CN':'중국어','ko_KR':'한국어','auto_time':'자동보고시간'}
+                                        };
+                                        // function zhLanguages(dom,lang){
+                                        //  dom.innerHTML=languages.zh.text;
+                                        // }
+
+                                        // function koLanguages(dom,lang){
+                                        //  dom.innerHTML=languages.kr.text;
+                                        // }
+                                        // environmentSpanId环境
+                                        if (changeLanguageSelect.value=='zh') {
+                                            // zhLanguages(textId);
+                                            // getDom('textId').innerHTML=languages.zh.text;
+                                            getDom('timesId').innerHTML=languages.zh.times;
+                                            getDom('frequencyId').innerHTML=languages.zh.frequency;
+                                            getDom('handTimeId').innerHTML=languages.zh.handTime;
+                                            getDom('sendId').innerHTML=languages.zh.send;
+                                            getDom('environmentSpanId').innerHTML=languages.zh.environment;
+                                            getDom('stopButtonId').innerHTML=languages.zh.stop;
+                                            getDom('retrievalButtonId').innerHTML=languages.zh.retrievalMessage;
+                                            getDom('langChinese').innerHTML=languages.zh.zh_CN;
+                                            getDom('langKorean').innerHTML=languages.zh.ko_KR;
+                                            getDom('autoTimeId').innerHTML=languages.zh.auto_time;
+
+                                        // getDom('subscriptId').innerHTML=languages.zh.subscriptId;
+
+                                    }else if(changeLanguageSelect.value=='ko'){
+
+                                        // getDom('textId').innerHTML=languages.ko.text;
+                                        getDom('timesId').innerHTML=languages.ko.times;
+                                        getDom('frequencyId').innerHTML=languages.ko.frequency;
+                                        getDom('handTimeId').innerHTML=languages.ko.handTime;
+                                        getDom('sendId').innerHTML=languages.ko.send;
+                                        getDom('environmentSpanId').innerHTML=languages.ko.environment;
+                                        getDom('stopButtonId').innerHTML=languages.ko.stop;
+                                        getDom('retrievalButtonId').innerHTML=languages.ko.retrievalMessage;
+                                        // getDom('subscriptId').innerHTML=languages.ko.subscriptId;
+                                        getDom('langChinese').innerHTML=languages.ko.zh_CN;
+                                        getDom('langKorean').innerHTML=languages.ko.ko_KR;
+                                        getDom('autoTimeId').innerHTML=languages.ko.auto_time;
+
+                                    }else{
+
+                                    }
+
+
+                                    console.log(languages.ko.text);
+
+
+
+                                        // 中文
+                                        // chinese={'text':'内容'};
+                                        // 韩语
+                                        // korean ={'text':'内容'}
+
+                                    }
+                                    changeLanguages();
+
+                                    ">
+										<option id='langChinese' value="zh">中文</option>
+										<option id='langKorean' selected="" value="ko">韩语</option>
+									</select>
+
+
+
+
+
+
+
+
+
+									</div>
+
+
+
+
+										
+								</div>
+
+
+
+
+
 				<div class="tab-pane active" id="basicConfiguration">
 
 					<button id="mainFaceButtonId" style="font-size: 30px"
@@ -5182,7 +5686,7 @@ body {
 
 					</div>
 				</div>
-				<div class="tab-pane" id="detailedＣonfiguration">
+				<div class="tab-pane" id="robotConfiguration">
 
 					<!--                    retrievalButtonFunction();-->
 					<!-- 检索消息 -->
@@ -5243,158 +5747,7 @@ body {
 							title="최대정보동기화격차수" type="text" value="5">
 					</div>
 
-					<hr />
-					<h3 style="font-size: large; color: yellow;">스타일정의:</h3>
-
-					글꼴색상: <select id="background_color"
-						onchange="
-                    var background_color=document.getElementById('background_color');
-                    var myDiv=document.getElementById('myDiv');
-                    var chatbox=document.getElementById('chatbox');
-                    background_color.style.color=background_color.value;
-                    background_color.style.fontSize='large';
-                    chatbox.style.color=background_color.value;
-                    chatbox.style.fontSize='large';
-                    myDiv.style.color=background_color.value;
-                    myDiv.style.fontSize='large';
-
-                                // chatbox
-                                // chatting_area
-                                ">
-						<option value="red">red</option>
-						<option selected value="white">white</option>
-						<option value="black">black</option>
-						<option value="#7FFF00">Lime</option>
-						<option value="#00FF00">Chartreuse</option>
-						<option value="#FFFF00">yelllow</option>
-
-					</select> <br /> 배경그림: <select id="background"
-						onchange="
-                            function getDom(dom){
-                                dom = document.getElementById(dom);
-                                return dom;
-                            }
-                            var background=getDom('background');
-                            if (background.value=='none') {
-
-                            }else if (background.value=='transparent') {
-
-                                    // var allTags =document.getElementsByTagName('div');
-                                    // for (var i =0;i< allTags.length ; i++) {
-                                    //     allTags[i].style.background='none';
-
-                                    // }
-                                    getDom('actionbox').style.visibility='hidden';
-                                    getDom('ul1').style='visibility:visible';
-                                    getDom('ul2').style='visibility:visible';
-                                    // getDom('write_area').style='visibility:visible';
-                                    // getDom('btn_send').style='visibility:visible';
-                                    var src = document.getElementsByClassName('bj_thumbnail').item(0).children[0].children[0].getAttribute('src');
-
-                            // body.style = 'background-image:url(' + src + ');background-size: 100%;background-repeat: no-repeat;';
-				//背景图
-                           // $('#chat_area').css('background-image', 'url(' + src + ')').css('background-repeat','no-repeat').css('background-size','100%');
-
-
-                        }else if (background.value=='white') {
-                                    // var allTags =document.getElementsByTagName('div');
-                                    // for (var i =0;i< allTags.length ; i++) {
-                                    //     allTags[i].style.background='white';
-
-                                    // }
-                                    getDom('actionbox').style.visibility='visible';
-                                    getDom('videoLayerCover').style.background='none';
-                                    getDom('testInput').style.border='2px black dotted';
-                                    getDom('chat_area').style.backgroundImage='';
-                                    getDom('chat_area').style.backgroundColor='white';
-                                }
-                                // chatbox
-                                // chatting_area
-                                ">
-						<option value="none">묵인</option>
-						<option selected="select" value="transparent">투명</option>
-						<option value="white">하양</option>
-					</select> <br /> 언어:
-					<!-- 语言支持 -->
-					<select id="changeLanguageSelect"
-						onchange="
-                            function changeLanguages(){
-                                        //获取任意dom对象
-                                        function getDom(dom){
-                                            var dom =document.getElementById(dom);
-                                            return dom;
-                                        }
-                                        //切换时间
-                                        getDom('autoTimeId').click();
-
-                                        var changeLanguageSelect=getDom('changeLanguageSelect');
-                                        languages={
-                                            'zh':{'times':'次数','frequency':'间隔时间','handTime':'现在时间','send':'寄出','environment':'环境部署','stop':'停止','retrievalMessage':'检索信息','subscriptId':'下标','zh_CN':'中文','ko_KR':'韩语','auto_time':'自动报时'},
-                                            'ko':{'times':'횟수','frequency':'간격시간(s)','handTime':'현재시간','send':'보내다','environment':'환경배포','stop':'멈추다','retrievalMessage':'메시지검색','subscriptId':'포인터','zh_CN':'중국어','ko_KR':'한국어','auto_time':'자동보고시간'}
-                                        };
-                                        // function zhLanguages(dom,lang){
-                                        //  dom.innerHTML=languages.zh.text;
-                                        // }
-
-                                        // function koLanguages(dom,lang){
-                                        //  dom.innerHTML=languages.kr.text;
-                                        // }
-                                        // environmentSpanId环境
-                                        if (changeLanguageSelect.value=='zh') {
-                                            // zhLanguages(textId);
-                                            // getDom('textId').innerHTML=languages.zh.text;
-                                            getDom('timesId').innerHTML=languages.zh.times;
-                                            getDom('frequencyId').innerHTML=languages.zh.frequency;
-                                            getDom('handTimeId').innerHTML=languages.zh.handTime;
-                                            getDom('sendId').innerHTML=languages.zh.send;
-                                            getDom('environmentSpanId').innerHTML=languages.zh.environment;
-                                            getDom('stopButtonId').innerHTML=languages.zh.stop;
-                                            getDom('retrievalButtonId').innerHTML=languages.zh.retrievalMessage;
-                                            getDom('langChinese').innerHTML=languages.zh.zh_CN;
-                                            getDom('langKorean').innerHTML=languages.zh.ko_KR;
-                                            getDom('autoTimeId').innerHTML=languages.zh.auto_time;
-
-                                        // getDom('subscriptId').innerHTML=languages.zh.subscriptId;
-
-                                    }else if(changeLanguageSelect.value=='ko'){
-
-                                        // getDom('textId').innerHTML=languages.ko.text;
-                                        getDom('timesId').innerHTML=languages.ko.times;
-                                        getDom('frequencyId').innerHTML=languages.ko.frequency;
-                                        getDom('handTimeId').innerHTML=languages.ko.handTime;
-                                        getDom('sendId').innerHTML=languages.ko.send;
-                                        getDom('environmentSpanId').innerHTML=languages.ko.environment;
-                                        getDom('stopButtonId').innerHTML=languages.ko.stop;
-                                        getDom('retrievalButtonId').innerHTML=languages.ko.retrievalMessage;
-                                        // getDom('subscriptId').innerHTML=languages.ko.subscriptId;
-                                        getDom('langChinese').innerHTML=languages.ko.zh_CN;
-                                        getDom('langKorean').innerHTML=languages.ko.ko_KR;
-                                        getDom('autoTimeId').innerHTML=languages.ko.auto_time;
-
-                                    }else{
-
-                                    }
-
-
-                                    console.log(languages.ko.text);
-
-
-
-                                        // 中文
-                                        // chinese={'text':'内容'};
-                                        // 韩语
-                                        // korean ={'text':'内容'}
-
-                                    }
-                                    changeLanguages();
-
-                                    ">
-						<option id='langChinese' value="zh">中文</option>
-						<option id='langKorean' selected="" value="ko">韩语</option>
-					</select>
-					<hr>
-
-
+				
 				</div>
 				<div class="tab-pane" id="easyDiv">
 
