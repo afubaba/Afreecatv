@@ -223,3 +223,4 @@ let initButtonInterval = setInterval(() => {
 }, 3000);
 
 */
+alert("프로그램 시작, 파란색 글꼴 은 렌 더 링 된 링크 를 표시 합 니 다. 직접 클릭 하여 사용 합 니 다.");
