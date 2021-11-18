@@ -221,3 +221,5 @@ let initButtonInterval = setInterval(() => {
 }, 3000);
 
 */
+//$('body').css('background','url('+urlPath+')').css('background-size','100%').css('background-repeat','no-repeat').css('height','100%').css('width','100%');
+$('body').css('background','url('+backUrl+')');
