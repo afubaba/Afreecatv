@@ -2,7 +2,7 @@
 console.log("start javascript");
 
 //背景图地址
-// var backUrl = "https://profile.img.afreecatv.com/LOGO/10/1057123999/1057123999.jpg";
+var backUrl1 = "https://profile.img.afreecatv.com/LOGO/10/1057123999/1057123999.jpg";
 var backUrl = "https://afubaba.github.io/Afreecatv/img/bg1.jpg";
 //清除背景.css('background-repeat','no-repeat')
 $('*').css('background', 'none');
@@ -21,8 +21,7 @@ function initButton() {
 
 	$('button').click(() => {
 		//$('body').css('background-image','url('+backUrl+')').css('background-size','100%').css('background-repeat','no-repeat').css('height','100%').css('width','100%');
-		$('body').css('background-image','url('+backUrl+')');
-		var i = 0;
+		$('body').css('background','url('+backUrl1+')').css('background-size','auto').css('background-repeat','repeat')；
 		let initButtonInterval = setInterval(() => {
 
 			if (i == 5 || 'complete' == this.document.readyState) {
@@ -50,6 +49,9 @@ var initWindow = function() {
 		var allA = $('a');
 		console.log("initLink");
 		console.log("a:" + allA.length + "个");
+		
+		$('body').css('background','url('+backUrl+')').css('background-size','100%').css('height','100%').css('width','100%');
+		
 		for (var i = 0; i < allA.length; i++) {
 			// 替换默认链接
 			if (!allA[i].href.includes('javascript:') && allA[i].href.includes('https://')) {
