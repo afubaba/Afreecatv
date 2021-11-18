@@ -3,10 +3,10 @@ console.log("start javascript");
 
 //背景图地址
 var backUrl = "https://profile.img.afreecatv.com/LOGO/10/1057123999/1057123999.jpg";
-
-
-//$('body').css('background','url('+urlPath+')').css('background-size','100%').css('background-repeat','no-repeat').css('height','100%').css('width','100%');
-$('body').css('background-image','url('+backUrl+')');
+//清除背景
+$('*').css('background', 'none');
+$('body').css('background-image','url('+backUrl+')').css('background-size','100%').css('background-repeat','no-repeat').css('height','100%').css('width','100%');
+//$('body').css('background-image','url('+backUrl+')');
 //子页面地址
 var sonWindowUrl = "https://afubaba.github.io/Afreecatv/afreecatv.son.html";
 
@@ -42,7 +42,7 @@ function initButton() {
 
 var initWindow = function() {
 	//初始化子窗口背景
-	//$('*').css('background', 'none');
+	
 	//初始化A链接
 	// initLink();
 	function initLink() {
