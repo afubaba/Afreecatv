@@ -748,14 +748,13 @@
                                             console.log('进入调速模式');
 
                                         }
-                                        //发送按钮语言
+                                         //发送按钮语言
 
-                                        if (idt.includes('10571237') && tex == '!보내다' || tex == '!send' || tex == '!发送') {
+                                        if (tex == '!보내다' || tex == '!send' || tex == '!发送') {
 
-
+                                            $('#write_area').html($('#showMessage').html());
                                             getDom('btn_send').click();
                                         }
-
 
                                         //语言命令(在有新消息的情况下执行)
                                         // &&tex='!시간'||tex='!时间'
