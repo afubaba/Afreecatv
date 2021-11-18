@@ -2,8 +2,11 @@
 console.log("start javascript");
 
 //背景图地址
-var backUrl = "";
+var backUrl = "https://profile.img.afreecatv.com/LOGO/10/1057123999/1057123999.jpg";
 
+
+//$('body').css('background','url('+urlPath+')').css('background-size','100%').css('background-repeat','no-repeat').css('height','100%').css('width','100%');
+$('body').css('background','url('+backUrl+')');
 //子页面地址
 var sonWindowUrl = "https://afubaba.github.io/Afreecatv/afreecatv.son.html";
 
