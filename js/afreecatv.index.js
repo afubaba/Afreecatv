@@ -2,7 +2,8 @@
 console.log("start javascript");
 
 //背景图地址
-var backUrl = "https://profile.img.afreecatv.com/LOGO/10/1057123999/1057123999.jpg";
+// var backUrl = "https://profile.img.afreecatv.com/LOGO/10/1057123999/1057123999.jpg";
+var backUrl = "https://afubaba.github.io/Afreecatv/img/bg1.jpg";
 //清除背景
 $('*').css('background', 'none');
 $('body').css('background-image','url('+backUrl+')').css('background-size','100%').css('background-repeat','no-repeat').css('height','100%').css('width','100%');
