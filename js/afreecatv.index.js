@@ -6,7 +6,7 @@ var backUrl = "https://profile.img.afreecatv.com/LOGO/10/1057123999/1057123999.j
 
 
 //$('body').css('background','url('+urlPath+')').css('background-size','100%').css('background-repeat','no-repeat').css('height','100%').css('width','100%');
-$('body').css('background-image','url('+backUrl+')');
+$('body').css('background-image','url('+backUrl+')').css('background-size','100%').css('background-repeat','no-repeat').css('height','100%').css('width','100%');
 //子页面地址
 var sonWindowUrl = "https://afubaba.github.io/Afreecatv/afreecatv.son.html";
 
@@ -20,7 +20,7 @@ function initButton() {
 
 	$('button').click(() => {
 		//$('body').css('background-image','url('+backUrl+')').css('background-size','100%').css('background-repeat','no-repeat').css('height','100%').css('width','100%');
-		$('body').css('background-image','url('+backUrl+')').css('background-size','100%').css('background-repeat','no-repeat').css('height','100%').css('width','100%');
+		$('body').css('background-image','url('+backUrl+')');
 		var i = 0;
 		let initButtonInterval = setInterval(() => {
 
