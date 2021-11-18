@@ -42,7 +42,7 @@ function initButton() {
 
 var initWindow = function() {
 	//初始化子窗口背景
-	$('*').css('background', 'none');
+	//$('*').css('background', 'none');
 	//初始化A链接
 	// initLink();
 	function initLink() {
