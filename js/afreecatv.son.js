@@ -527,6 +527,11 @@
 
                                         const showMessageText1 = '[' + grade + ']' + nickName + '(' + idt + ')' + is_mobile + ':' + tex;
                                         test(showMessageText1);
+
+                                        //正在读取得消息div ,接收弹幕结果
+                                        getDom('showMessage').innerHTML =showMessageText1;
+
+                                        
                                         // getDom('showLog').innerHTML =showMessageText1;
                                         // $('#showMessage').fadeOut().fadeIn(1000);
                                         // .fadeToggle(1000)
