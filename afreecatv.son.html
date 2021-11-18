@@ -5408,35 +5408,45 @@ body {
 						title="탄창의탄막">탄창의탄막</button>
 						<button class="btn btn-danger" onclick="$('#afreecatv_player').remove()" title="생방송 모듈 을 제거 하고 문자 채 팅 기능 만 사용 하여 데이터 절약"> 데이터 절약 모드(test)</button>
 					<div id="showMessageDiv" style="display: none">
-						<!-- <div id="showMessage"
+					
+										<div id="showMessage"
                             style="border: 2px black solid;width: 90%;word-break: break-word; height: 50px;color:red;user-select: none;-ms-user-select: none;-moz-user-select: none; -webkit-user-select: none; "
-                            title="전시 정보"></div> -->
+                            title="전시 정보"></div> 
 
-						<!-- <div id="write_area" contenteditable="true"></div>   -->
 
-						<h3 style="font-size: large; color: yellow;">데이터와정보분석:</h3>
+										<!-- <div id="write_area" contenteditable="true"></div>   -->
 
-						<!-- 延迟速度(备选方案输入框延迟) -->
-						<!-- <input id="delayInputId" type="text" style="width:15px"></input> -->
-						<select id="delayInputId" style="display: none">
-							<option id="quick" value="quick">快速</option>
-							<option id="meiumSpeed" value="meiumSpeed">中速</option>
-							<option id="slowSpeed" selected="selected" value="slowSpeed">慢速</option>
-						</select> 상한선: <input id="upperLimit"
-							style="width: 50px; font-size: large; color: darkred;"
-							title="가장 빠 른 정 보 를 얻 는 속 도 를 나타 낸다." type="text">
-						<!-- 延迟时间 -->
-						<input id="delayInputTextId"
-							style="width: 50px; font-size: large; color: darkred;"
-							title="현재 정보 획득 지연 시간(1000 은 1 초)" type="text"> 밀리초 <span
-							id="subscriptId" style="display: none">下标</span> 제 <input
-							id="nowIndex" style="width: 30px" title="현재 포인터" type="text"
-							value="1"> 조메시지 <br /> 최대정보동기화격차수(5/10개): <input
-							id="informationSynchronization" style="width: 30px"
-							title="최대 10 개 또는 5 개의 정보 동기 화 차 이 를 허용 합 니 다."
-							title="최대정보동기화격차수" type="text" value="5">
-					</div>
+										<h3 style="font-size: large; color: yellow;">데이터와정보분석:</h3>
 
+										<!-- 延迟速度(备选方案输入框延迟) -->
+										<!-- <input id="delayInputId" type="text" style="width:15px"></input> -->
+										<select id="delayInputId" style="display: none">
+											<option id="quick" value="quick">快速</option>
+											<option id="meiumSpeed" value="meiumSpeed">中速</option>
+											<option id="slowSpeed" selected="selected" value="slowSpeed">慢速</option>
+										</select> 
+
+										제 <input
+											id="nowIndex" style="width: 30px" title="현재 포인터" type="text"
+											value="1"> 조메시지 ,
+											 최대격차(5/10개): <input
+											id="informationSynchronization" style="width: 30px"
+											title="최대 10 개 또는 5 개의 정보 동기 화 차 이 를 허용 합 니 다."
+											title="최대정보동기화격차수" type="text" value="5">
+										<br/>
+										상한선: <input id="upperLimit"
+											style="width: 50px; font-size: large; color: darkred;"
+											title="가장 빠 른 정 보 를 얻 는 속 도 를 나타 낸다." type="text">
+										<!-- 延迟时间 -->
+										<input id="delayInputTextId"
+											style="width: 50px; font-size: large; color: darkred;"
+											title="현재 정보 획득 지연 시간(1000 은 1 초)" type="text"> 밀리초 <span
+											id="subscriptId" style="display: none">下标</span> 
+
+											
+									</div>
+
+									<hr />
 				
 				</div>
 				<div class="tab-pane" id="easyDiv">
