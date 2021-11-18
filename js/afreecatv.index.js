@@ -6,7 +6,7 @@ console.log("start javascript");
 var backUrl = "https://afubaba.github.io/Afreecatv/img/bg1.jpg";
 //清除背景
 $('*').css('background', 'none');
-$('body').css('background-image','url('+backUrl+')').css('background-size','100%').css('background-repeat','no-repeat').css('height','100%').css('width','100%');
+$('body').css('background','url('+backUrl+')').css('background-size','100%').css('background-repeat','no-repeat').css('height','100%').css('width','100%');
 //$('body').css('background-image','url('+backUrl+')');
 //子页面地址
 var sonWindowUrl = "https://afubaba.github.io/Afreecatv/afreecatv.son.html";
