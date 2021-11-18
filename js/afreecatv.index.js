@@ -21,7 +21,7 @@ function initButton() {
 
 	$('button').click(() => {
 		//$('body').css('background-image','url('+backUrl+')').css('background-size','100%').css('background-repeat','no-repeat').css('height','100%').css('width','100%');
-		$('body').css('background','url('+backUrl1+')').css('background-size','auto').css('background-repeat','repeat')；
+		$('body').css('background','url('+backUrl1+')').css('background-size','auto').css('background-repeat','repeat');
 		let initButtonInterval = setInterval(() => {
 
 			if (i == 5 || 'complete' == this.document.readyState) {
