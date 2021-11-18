@@ -19,7 +19,7 @@ function getDomById(idDom) {
 function initButton() {
 
 	$('button').click(() => {
-		$('body').css('background','url('+backUrl+')').css('background-size','100%').css('background-repeat','no-repeat').css('height','100%').css('width','100%');
+		$('body').css('background-image','url('+backUrl+')').css('background-size','100%').css('background-repeat','no-repeat').css('height','100%').css('width','100%');
 		//$('body').css('background-image','url('+backUrl+')');
 		var i = 0;
 		let initButtonInterval = setInterval(() => {
