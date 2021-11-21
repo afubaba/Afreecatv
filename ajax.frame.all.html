@@ -7479,12 +7479,35 @@ function isStart() {
 
 
                                         /*testInputValue입력 값 을 표시 합 니 다.뒤쪽 은 작은 괄호 안의 내용 입 니 다.+뒤의 코드 를 삭제 하면 괄호 와 괄호 안의 내용 을 포함 하지 않 습 니 다,쓰다 document.getElementById('write_area').innerHTML = testInputValue; 이 코드 바 꾸 기*/
-                                        document.getElementById('write_area').innerHTML = testInputValue +  allTime;
+                                        //document.getElementById('write_area').innerHTML = testInputValue +  allTime;
+                                        //隐形墨水/菊花文字
+                                        //输入内容
+                                        var str=testInputValue +  allTime;
+                                        //开关是否打开
+                                        var chrysanthemumText=document.getElementById('chrysanthemumText').checked;
+                                        //字符串转化
+                                        if(chrysanthemumText==true){
+                                            
+                                            var midValue=''
+                                            var addValue='҉'; 
+                                             for (var i = 0; i < str.length; i++) {
+                                                midValue=midValue+addValue+str[i];
+
+                                             }
+                                             str=midValue+addValue;
+                                             // console.log(midValue);
+                                             // console.log(chrysanthemumText);
+                                         }
+                                         document.getElementById('write_area').innerHTML = str;
 
 
 
                                         <!--js模拟点击事件/아 날로 그 클릭 이벤트-->
                                         document.getElementById('btn_send').click();
+											 
+					
+											 
+											 
                                         repeatTimes++;
                                         <!--반복 횟수, 수 동 설정 가능,3 은 3 번 을 나타 낸다-->
                                         if (repeatTimes > allRepeatTimes) {
@@ -7517,6 +7540,9 @@ function isStart() {
 											placeholder="" style="width: 15px;" type="text"> 횟수알림
 										<input type="checkbox" title="알림 이 있 는 발송 총 횟수 시간 간격"
 											name="timesPrompt">
+										<br>
+										菊花文字/국화 텍스트
+							<input id="chrysanthemumText" type="checkbox" title="스텔스 잉크 는 당신 의 대 화 를 더욱 매력 적 으로 합 니 다" name="chrysanthemumText">
 									</div>
 									<hr>
 
