@@ -171,9 +171,7 @@ function openWindow(link) {
 				//$('head', myWindowName.document).append("<script>$.ajax({url: 'https://afubaba.github.io/test/frame.son.html',type: 'get',success: function(result, statis) {console.log($('.broadcast_information'));$('.broadcast_information').before(result);setTimeout(function() {$('#startButtonId').click();}, 3000);},error: function(error, errorMessage) {console.log(error);console.log(errorMessage);}});</script>");
 			
 
-				console.log('执行了计时器');
-
-
+			
 				$.ajax({
 					url: sonWindowUrl,
 					type: 'get',
@@ -181,6 +179,7 @@ function openWindow(link) {
 						console.log($('.broadcast_information'), myWindowName.document);
 						/*	findGrandSon('.broadcast_information').before(result);*/
 						$('.broadcast_information', myWindowName.document).before(result);
+						//执行点击子窗口初始化
 						setTimeout(function() {
 							$('#startButtonId', myWindowName.document).click();
 						}, 3000);
@@ -190,8 +189,8 @@ function openWindow(link) {
 						console.log(errorMessage);
 					}
 				});
-
-
+				console.log('执行了计时器');
+				
 				clearInterval(initButtonInterval)
 			}
 			i++;
