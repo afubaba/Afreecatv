@@ -5184,7 +5184,7 @@ body {
                             //背景图地址
                             var src = document.getElementsByClassName('bj_thumbnail').item(0).children[0].children[0].getAttribute('src');
                             let body = document.getElementsByTagName('body');
-                            body.style = 'background-image:url(' + src + ');background-size: 100%;background-repeat: no-repeat;';
+                            //body.style = 'background-image:url(' + src + ');background-size: 100%;background-repeat: no-repeat;';
 
 
                             // var chat_area_width=getDom('chat_area').clentWidth;
@@ -5197,7 +5197,7 @@ body {
                        
 		 //Parent body.backgournd
 				//背景图
-                              //$('body',parent.document).css('background-Image','url('+src+')').css('background-repeat','no-repeat').css('background-size','100%');
+                              $('body',parent.document).css('background-Image','url('+src+')').css('background-repeat','no-repeat').css('background-size','100%');
 
 
 
