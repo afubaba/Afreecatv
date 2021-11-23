@@ -350,8 +350,8 @@
                             //自动提速2自动初始化
                             var upperLimit = getDom('upperLimit');
                             if (upperLimit.value == '') {
-                                upperLimit.value == '0.001';
-                                getDom('upperLimit').value = '0.001';
+                                upperLimit.value == '1';
+                                getDom('upperLimit').value = '1';
                             }
                             console.log('重启或其开启了messageInterval');
 
