@@ -518,8 +518,7 @@
                                         //发送内容特效
                                         //$(texDom).fadeOut().fadeIn(1000);
                                         $(texDom).hide().show(1000).hide(1000);
-                                        $(texDom).parent('dl').hide(3000);
-
+                                        setTimeout(function(){$(texDom).parent('dl').hide(3000);},2000);
                                         window.sessionStorage.setItem('idt_last', idt);
                                         window.sessionStorage.setItem('text_Last', tex);
 
