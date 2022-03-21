@@ -582,6 +582,7 @@ init();
                                         var robotChatcheckboxId =document.getElementById("robotChatcheckboxId");
 
                                         if (robotChatcheckboxId.checked) {
+                                            console.log(tex);
                                             //终止(停止)命令!멈추다(任何人)
                                             if (tex == '!stop' || tex == '!멈추다') {
                                             //终止消息提示
