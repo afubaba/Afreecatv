@@ -578,7 +578,7 @@ init();
 
                                         }
                                         //打开关闭机器人聊天功能
-                                        var robotChatcheckboxId =document.getElementById("robotChatcheckboxId").checked;
+                                        var robotChatcheckboxId =document.getElementById("robotChatcheckboxId");
                                         console.log(robotChatcheckboxId.checked);
                                         if (robotChatcheckboxId.checked) {
 
