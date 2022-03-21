@@ -1,18 +1,18 @@
  function getDomById(idDom) {
-                        idDom = document.getElementById(idDom);
-                        return idDom;
-                    }
+    idDom = document.getElementById(idDom);
+    return idDom;
+}
 
-                    let body = document.getElementsByTagName('body')[0];
+let body = document.getElementsByTagName('body')[0];
 
 
-                    function init() {
-                        $('#barrageButtonId').css('background-color', 'green').css('font-size', 'large').css('color', 'yellow');
-                        tipBarrage('start');
+function init() {
+    $('#barrageButtonId').css('background-color', 'green').css('font-size', 'large').css('color', 'yellow');
+    tipBarrage('start');
 
-                    }
+}
 
-                    init();
+init();
 
                         //是否开启弹幕
                         function barrage() {
@@ -274,7 +274,7 @@
 
                         }
 
-                    
+
 
 
                         //检索m消息函数]
@@ -577,10 +577,13 @@
                                             }, 1500);
 
                                         }
+                                        //打开关闭机器人聊天功能
+                                        var robotChatcheckboxId =document.getElementById("robotChatcheckboxId").checked;
+                                        if (robotChatcheckboxId.checked) {
 
 
-                                        //终止(停止)命令!멈추다(任何人)
-                                        if (tex == '!stop' || tex == '!멈추다') {
+                                            //终止(停止)命令!멈추다(任何人)
+                                            if (tex == '!stop' || tex == '!멈추다') {
                                             //终止消息提示
                                             document.getElementById('stopButtonId').click();
                                             // alert('['+grade+']'+nickName+'('+idt+')'+is_mobile+':'+tex'你使用终止命令,终止了任何条件程序');
@@ -590,33 +593,33 @@
                                             console.log(idt + ':系统恢复默认配置');
 
                                         }
-                                        //部署环境(仅限管理员(id包含10571237))
-                                        if (idt.includes('10571237') && tex == '!en' || tex == '!환경' || tex == '!환경배포' || tex == '!start' || tex == '!시작하다' || tex == '!시작') {
-                                            document.getElementById('environmentButtonId').click();
+                                            //部署环境(仅限管理员(id包含10571237))
+                                            if (idt.includes('10571237') && tex == '!en' || tex == '!환경' || tex == '!환경배포' || tex == '!start' || tex == '!시작하다' || tex == '!시작') {
+                                                document.getElementById('environmentButtonId').click();
 
-                                            getDom('testInput').value = '@' + nickName + ':환경 배치 성공';
-                                            getDom('send_message').click();
+                                                getDom('testInput').value = '@' + nickName + ':환경 배치 성공';
+                                                getDom('send_message').click();
 
-                                            console.log(idt + '部署环境成功');
+                                                console.log(idt + '部署环境成功');
 
-                                        }
-                                        //聊天热度延迟速度
-                                        if (tex == '!채팅속도' || tex == '!지연속도' || tex == '!속도') {
-                                            var timeFrequencys = getDom('delayInputTextId').value;
-
-                                            if (timeFrequencys >= 1000) {
-                                                timeFrequencys = timeFrequencys / 1000 + 's';
-                                            } else {
-                                                timeFrequencys = timeFrequencys + 'ms';
                                             }
-                                            getDom('testInput').value = '@' + nickName + ':관중:' + getDom('nAllViewer').innerHTML + ',채팅속도:' + timeFrequencys;
-                                            getDom('send_message').click();
+                                            //聊天热度延迟速度
+                                            if (tex == '!채팅속도' || tex == '!지연속도' || tex == '!속도') {
+                                                var timeFrequencys = getDom('delayInputTextId').value;
+
+                                                if (timeFrequencys >= 1000) {
+                                                    timeFrequencys = timeFrequencys / 1000 + 's';
+                                                } else {
+                                                    timeFrequencys = timeFrequencys + 'ms';
+                                                }
+                                                getDom('testInput').value = '@' + nickName + ':관중:' + getDom('nAllViewer').innerHTML + ',채팅속도:' + timeFrequencys;
+                                                getDom('send_message').click();
 
 
-                                        }
+                                            }
 
-                                        //查看指定用户数量
-                                        function getGrups(dom1) {
+                                            //查看指定用户数量
+                                            function getGrups(dom1) {
                                             //function getDom(dom) {
                                             //  return document.getElementById(dom);
                                             // }
@@ -629,13 +632,13 @@
                                         }
 
                                         if (tex == '!문지기' || tex == '!슈퍼팬') {
-                                            //哪个组dom名称
-                                            var groupName = '';
-                                            var text = '';
-                                            // getDom('setbox_viewer').click();
-                                            document.getElementById('setbox_viewer').children.item(0).click();
-                                            switch (true) {
-                                                case tex == '!manager' || tex == '!문지기':
+                                                //哪个组dom名称
+                                                var groupName = '';
+                                                var text = '';
+                                                // getDom('setbox_viewer').click();
+                                                document.getElementById('setbox_viewer').children.item(0).click();
+                                                switch (true) {
+                                                    case tex == '!manager' || tex == '!문지기':
                                                     // 매니저  管理员
                                                     groupName = 'lv_ul_manager';
                                                     break;
@@ -660,78 +663,78 @@
                                                     console.log('text:' + text);
                                                     if (text != '') {
                                                         getDom('testInput').value = text;
-                                                    //初始化数据
+                                                        //初始化数据
+                                                        getDom('inputFrequency').value = 1;
+
+                                                        getDom('send_message').click();
+
+                                                    } else {
+                                                        getDom('testInput').value = tex + ':null';
+                                                    }
                                                     getDom('inputFrequency').value = 1;
+                                                    // document.getElementById('setbox_viewer').children.item(0).click();
 
-                                                    getDom('send_message').click();
-
-                                                } else {
-                                                    getDom('testInput').value = tex + ':null';
-                                                }
-                                                getDom('inputFrequency').value = 1;
+                                                }, 3000);
                                                 // document.getElementById('setbox_viewer').children.item(0).click();
 
-                                            }, 3000);
-                                            // document.getElementById('setbox_viewer').children.item(0).click();
+
+                                            }
+                                            if (tex == '!open') {
+
+                                                getDom('inputFrequency').value = 6;
+                                                document.getElementById('setbox_viewer').children.item(0).click();
+
+                                            }
 
 
-                                        }
-                                        if (tex == '!open') {
+                                            //!message:q/m/s  /!소식:천천히/중속/서둘러
+                                            if (idt.includes('1057123') && tex.includes('!message:') || tex.includes('!m:')) {
 
-                                            getDom('inputFrequency').value = 6;
-                                            document.getElementById('setbox_viewer').children.item(0).click();
+                                                //当前速度控制器
+                                                var delayInputId = getDom('delayInputId');
+                                                //要调节的速度
+                                                var speed = tex.substring(tex.indexOf(':') + 1);
+                                                //现在的速度
+                                                var nowDelayInputId = delayInputId.value;
+                                                console.log('speed的值:' + speed);
+                                                if (speed == '') {
+                                                    console.log('返回当前速度');
 
-                                        }
-
-
-                                        //!message:q/m/s  /!소식:천천히/중속/서둘러
-                                        if (idt.includes('1057123') && tex.includes('!message:') || tex.includes('!m:')) {
-
-                                            //当前速度控制器
-                                            var delayInputId = getDom('delayInputId');
-                                            //要调节的速度
-                                            var speed = tex.substring(tex.indexOf(':') + 1);
-                                            //现在的速度
-                                            var nowDelayInputId = delayInputId.value;
-                                            console.log('speed的值:' + speed);
-                                            if (speed == '') {
-                                                console.log('返回当前速度');
-
-                                                //发送当前速度
-                                                //转换速度英文值为韩语
-                                                if (nowDelayInputId == 'slowSpeed') {
+                                                    //发送当前速度
+                                                    //转换速度英文值为韩语
+                                                    if (nowDelayInputId == 'slowSpeed') {
                                                     // getDom('testInput').value=tex+'천천히';
                                                     getDom('write_area').innerHTML = tex + '천천히';
-                                                    // send_message
-                                                    getDom('btn_send').click();
-                                                    //慢速命令
-                                                } else if (nowDelayInputId == 'meiumSpeed') {
+                                                        // send_message
+                                                        getDom('btn_send').click();
+                                                        //慢速命令
+                                                    } else if (nowDelayInputId == 'meiumSpeed') {
                                                     // getDom('testInput').value=tex+'중속';
                                                     getDom('write_area').innerHTML = tex + '중속';
                                                     getDom('btn_send').click();
-                                                    //慢速命令
-                                                } else if (nowDelayInputId == 'quick') {
+                                                        //慢速命令
+                                                    } else if (nowDelayInputId == 'quick') {
                                                     // getDom('testInput').value=tex+'서둘러';
                                                     getDom('write_area').innerHTML = tex + '서둘러';
                                                     getDom('btn_send').click();
                                                 } else {
-                                                    //发送
-                                                    getDom('write_area').innerHTML = tex + 'null';
-                                                    getDom('btn_send').click();
+                                                        //发送
+                                                        getDom('write_area').innerHTML = tex + 'null';
+                                                        getDom('btn_send').click();
 
 
-                                                }
-
-
-                                            } else {
-
-                                                if (speed == nowDelayInputId) {
-                                                    console.log('当前已经是:' + speed);
+                                                    }
 
 
                                                 } else {
-                                                    //慢速命令
-                                                    if (speed == 's' || speed == '천천히') {
+
+                                                    if (speed == nowDelayInputId) {
+                                                        console.log('当前已经是:' + speed);
+
+
+                                                    } else {
+                                                     //慢速命令
+                                                     if (speed == 's' || speed == '천천히') {
                                                         delayInputId.value = 'slowSpeed';
                                                         //慢速命令
                                                     } else if (speed == 'm' || speed == '중속') {
@@ -749,29 +752,29 @@
                                             console.log('进入调速模式');
 
                                         }
-                                         //发送按钮语言
+                                            //发送按钮语言
 
-                                        if (tex == '!보내다' || tex == '!send' || tex == '!发送') {
+                                            if (tex == '!보내다' || tex == '!send' || tex == '!发送') {
 
-                                            $('#write_area').html($('#showMessage').html());
-                                            getDom('btn_send').click();
-                                        }
+                                                $('#write_area').html($('#showMessage').html());
+                                                getDom('btn_send').click();
+                                            }
 
-                                        //语言命令(在有新消息的情况下执行)
-                                        // &&tex='!시간'||tex='!时间'
-                                        if (idt == '1057123772' && tex == '!시간') {
-                                            var date = new Date();
-                                            console.log('시간:' + date);
-                                        }
-                                        // !자동시간알림自动报时间启动
-                                        if (idt.includes('10571237') && tex == '!자동시간알림') {
-                                            console.log('管理员(' + idt + '):' + '보고시간(自动报时)');
-                                            document.getElementById('autoTimeId').click();
+                                            //语言命令(在有新消息的情况下执行)
+                                            // &&tex='!시간'||tex='!时间'
+                                            if (idt == '1057123772' && tex == '!시간') {
+                                                var date = new Date();
+                                                console.log('시간:' + date);
+                                            }
+                                            // !자동시간알림自动报时间启动
+                                            if (idt.includes('10571237') && tex == '!자동시간알림') {
+                                                console.log('管理员(' + idt + '):' + '보고시간(自动报时)');
+                                                document.getElementById('autoTimeId').click();
 
-                                        }
-                                        // !보고시간现在手动的时间
-                                        if (tex == '!보고시간' || tex == '!시간' || tex == '!time') {
-                                            console.log('管理员(' + idt + '):' + '보고시간(报告时间)');
+                                            }
+                                            // !보고시간现在手动的时间
+                                            if (tex == '!보고시간' || tex == '!시간' || tex == '!time') {
+                                                console.log('管理员(' + idt + '):' + '보고시간(报告时间)');
                                             //获取1-3的随机数字
                                             // console.log(parseInt(Math.random()*NO/1));
                                             var rdmNo = parseInt(Math.random() * 3 / 1 + 1);
@@ -782,53 +785,53 @@
 
                                         }
 
-                                        //!방송시작시간广播开始时间
-                                        function getSonButtonDom1(dom) {
-                                            dom = document.getElementsByClassName(dom).item(0).children[0].lastChild;
-                                            return dom;
-                                        }
+                                            //!방송시작시간广播开始时间
+                                            function getSonButtonDom1(dom) {
+                                                dom = document.getElementsByClassName(dom).item(0).children[0].lastChild;
+                                                return dom;
+                                            }
 
-                                        if (tex == '!방송시작시간') {
-                                            var detail_view = getSonButtonDom1('detail_view');
+                                            if (tex == '!방송시작시간') {
+                                                var detail_view = getSonButtonDom1('detail_view');
 
-                                            sendMessage(detail_view.textContent);
-
-
-                                        }
+                                                sendMessage(detail_view.textContent);
 
 
-                                        //收藏或者点赞
-                                        function getSonButtonDom(dom) {
-                                            dom = document.getElementsByClassName(dom).item(0).children[0];
-                                            return dom;
-                                        }
+                                            }
 
-                                        if (tex == '!별' || tex == '!즐겨찾기' || tex == '!UP' || tex == '!좋아요' || tex == '!좋아') {
-                                            //收藏
-                                            var bookmarkSonDom;
-                                            //点赞
-                                            var up_recommend;
-                                            switch (true) {
-                                                case tex == '!별' || tex == '!즐겨찾기':
-                                                bookmarkSonDom = getSonButtonDom('bookmark');
-                                                if (bookmarkSonDom.className == '') {
-                                                    bookmarkSonDom.click();
-                                                    setTimeout(function () {
-                                                        bookmarkSonDom = getSonButtonDom('bookmark');
-                                                        if (bookmarkSonDom.className == 'on') {
-                                                            sendMessage('@' + nickName + ':즐겨찾기 추가 성공');
-                                                        } else {
-                                                            sendMessage('@' + nickName + ':즐겨찾기 추가 실수');
+
+                                            //收藏或者点赞
+                                            function getSonButtonDom(dom) {
+                                                dom = document.getElementsByClassName(dom).item(0).children[0];
+                                                return dom;
+                                            }
+
+                                            if (tex == '!별' || tex == '!즐겨찾기' || tex == '!UP' || tex == '!좋아요' || tex == '!좋아') {
+                                                //收藏
+                                                var bookmarkSonDom;
+                                                //点赞
+                                                var up_recommend;
+                                                switch (true) {
+                                                    case tex == '!별' || tex == '!즐겨찾기':
+                                                    bookmarkSonDom = getSonButtonDom('bookmark');
+                                                    if (bookmarkSonDom.className == '') {
+                                                        bookmarkSonDom.click();
+                                                        setTimeout(function () {
+                                                            bookmarkSonDom = getSonButtonDom('bookmark');
+                                                            if (bookmarkSonDom.className == 'on') {
+                                                                sendMessage('@' + nickName + ':즐겨찾기 추가 성공');
+                                                            } else {
+                                                                sendMessage('@' + nickName + ':즐겨찾기 추가 실수');
+                                                            }
+                                                        }, 1000);
+                                                    } else {
+                                                            //收藏失败,您已经收藏
+                                                            sendMessage('@' + nickName + ':이미 즐겨찾기');
                                                         }
-                                                    }, 1000);
-                                                } else {
-                                                        //收藏失败,您已经收藏
-                                                        sendMessage('@' + nickName + ':이미 즐겨찾기');
-                                                    }
-                                                    break;
-                                                    case tex == '!UP' || tex == '!좋아요' || tex == '!좋아':
-                                                    up_recommend = getSonButtonDom('up_recommend');
-                                                    if (up_recommend.className == 'on') {
+                                                        break;
+                                                        case tex == '!UP' || tex == '!좋아요' || tex == '!좋아':
+                                                        up_recommend = getSonButtonDom('up_recommend');
+                                                        if (up_recommend.className == 'on') {
                                                         //点赞失败,您已经点赞
                                                         sendMessage('@' + nickName + ':이미 좋아요 표시됨');
 
@@ -852,20 +855,20 @@
                                             }
 
 
-                                        //!멈추다 停止
-                                        //内容发送!text:😗😗,2x3  !text:😗,2x0.01  !text:/짱좋아//짱좋아/,3x2
-                                        // !text:/즐거워/,5x5 id 는 이것 을 포함 해야만 명령 을 실행 할 수 있 습 니 다.이 명령 은 관리자 의 채 팅 번역 기능 을 닫 아야 합 니 다.수 동 설정 도 같은 효과 입 니 다.
-                                        // !text:😗,2x1 명령 권한 이 열 렸 습 니 다.관리자 계 정 이나 앵 커 계 정 은 채 팅 번역 기능 을 닫 아야 합 니 다.
+                                            //!멈추다 停止
+                                            //内容发送!text:😗😗,2x3  !text:😗,2x0.01  !text:/짱좋아//짱좋아/,3x2
+                                            // !text:/즐거워/,5x5 id 는 이것 을 포함 해야만 명령 을 실행 할 수 있 습 니 다.이 명령 은 관리자 의 채 팅 번역 기능 을 닫 아야 합 니 다.수 동 설정 도 같은 효과 입 니 다.
+                                            // !text:😗,2x1 명령 권한 이 열 렸 습 니 다.관리자 계 정 이나 앵 커 계 정 은 채 팅 번역 기능 을 닫 아야 합 니 다.
 
-                                        if (tex.includes('!text:') && tex.includes('x')) {
-                                            function getDom(dom) {
-                                                var dom = document.getElementById(dom);
-                                                return dom;
-                                            }
+                                            if (tex.includes('!text:') && tex.includes('x')) {
+                                                function getDom(dom) {
+                                                    var dom = document.getElementById(dom);
+                                                    return dom;
+                                                }
 
-                                            var testInput = getDom('testInput');
-                                            var inputTimes = getDom('inputTimes');
-                                            var inputFrequency = getDom('inputFrequency');
+                                                var testInput = getDom('testInput');
+                                                var inputTimes = getDom('inputTimes');
+                                                var inputFrequency = getDom('inputFrequency');
                                             //固定位置
                                             var text = tex.substring(6, tex.lastIndexOf(','));
                                             var firstNo = tex.substring(tex.lastIndexOf(',') + 1, tex.lastIndexOf('x'));
@@ -890,8 +893,9 @@
                                             }, rdmNo * 1000);
                                         }
                                     }
-                                    le = document.getElementsByTagName('dt').length;
                                 }
+                                le = document.getElementsByTagName('dt').length;
+                            }
                                 //获取信息的延迟时间
                             }, delayInputFrequency);
 }
