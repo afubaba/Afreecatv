@@ -161,28 +161,25 @@
                                 //  var $chatboxLegt=$('#chatbox').offset().left;
                                 // var $domIdWidth= $(id).width();
                                 let delayInputTextId = $('#delayInputTextId').val();
-
+                                //弹幕速度时间范围delayInputTextId >= 1000 ? 1000 : delayInputTextId;
+                                let minDelay=500;
+                                let maxDelay=2000;
+                                let showLogDelay=delayInputTextId<minDelay||delayInputTextId>maxDelay?delayInputTextId<minDelay?minDelay:maxDelay : delayInputTextId;
                                 showLogSetTimeout(id);
-
                                 function showLogSetTimeout(id) {
                                     var showLogTimeout = setTimeout(function () {
                                         //突出显示
-
                                         i -= 200;
-
                                         $(id).offset({left: i});
                                         //10秒后自动隐藏
                                         // setTimeout(function () {
                                         //     $(id).hide();
                                         // }, 10000);
-
                                         if (i > -$(id).width())
                                             showLogSetTimeout(id);
                                         //删除已经显示的
                                         // deleteShowLog(id);
-
-
-                                    }, delayInputTextId >= 1000 ? 1000 : delayInputTextId);
+                                    }, showLogDelay);
                                 }
                             }
 
