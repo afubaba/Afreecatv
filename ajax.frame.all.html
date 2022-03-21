@@ -644,7 +644,9 @@ body {
                                 //  var $chatboxLegt=$('#chatbox').offset().left;
                                 // var $domIdWidth= $(id).width();
                                 let delayInputTextId = $('#delayInputTextId').val();
-
+				//showLogSetTimeout延迟时间
+			        let showLogDelay=delayInputTextId >= 1000 ? 1000 : delayInputTextId;
+				console.log(showLogDelay);
                                 showLogSetTimeout(id);
 
                                 function showLogSetTimeout(id) {
@@ -665,7 +667,7 @@ body {
                                         // deleteShowLog(id);
 
 
-                                    }, delayInputTextId >= 1000 ? 1000 : delayInputTextId);
+                                    }, 2000);
                                 }
                             }
 
