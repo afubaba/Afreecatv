@@ -507,16 +507,17 @@
                                         idDom.style.fontSize = 'large';
                                         idDom.style.backgroundColor = 'yellow';
                                         idDom.innerHTML = idDom.textContent + is_mobile;
-                                        $(idDom).hide().show(1000);
+                                        $(idDom).fadeOut().fadeIn(1000);
+                                        
 
                                         let texDom = chat_area.children[initIndex].children[0].nextElementSibling;
                                         // texDom.style.border='2px black solid';
-                                        //发送内容特效
-                                        //$(texDom).hide().show(1000);
-                                        $(texDom).fadeOut().fadeIn(1000)
                                         texDom.style.fontSize = 'large';
                                         texDom.style.backgroundColor = 'white';
                                         texDom.style.color = '#0000FF';
+                                        //发送内容特效
+                                        //$(texDom).fadeOut().fadeIn(1000);
+                                        $(texDom).hide().show(1000);
 
 
                                         window.sessionStorage.setItem('idt_last', idt);
