@@ -579,9 +579,10 @@ init();
                                         }
                                         //打开关闭机器人聊天功能
                                         var robotChatcheckboxId =document.getElementById("robotChatcheckboxId").checked;
+                                        console.log(robotChatcheckboxId.checked);
                                         if (robotChatcheckboxId.checked) {
 
-
+                                            console.log("开启了机器人聊天");
                                             //终止(停止)命令!멈추다(任何人)
                                             if (tex == '!stop' || tex == '!멈추다') {
                                             //终止消息提示
