@@ -510,6 +510,9 @@
 
                                         let texDom = chat_area.children[initIndex].children[0].nextElementSibling;
                                         // texDom.style.border='2px black solid';
+                                        //发送内容特效
+                                        $(texDom).hide().show(1000);
+                                     
                                         texDom.style.fontSize = 'large';
                                         texDom.style.backgroundColor = 'white';
                                         texDom.style.color = '#0000FF';
