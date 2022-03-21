@@ -503,12 +503,12 @@ init();
                                         //聊天内容配色
 
                                         //ｉｄ和内容设置
-                                        let idDom = chat_area.children[initIndex].children[0].lastElementChild;
+                                        var idDom = chat_area.children[initIndex].children[0].lastElementChild;
                                         idDom.style.fontSize = 'large';
                                         idDom.style.backgroundColor = 'yellow';
                                         idDom.innerHTML = idDom.textContent + is_mobile;
                                         
-                                        let texDom = chat_area.children[initIndex].children[0].nextElementSibling;
+                                        var texDom = chat_area.children[initIndex].children[0].nextElementSibling;
                                         // texDom.style.border='2px black solid';
                                         texDom.style.fontSize = 'large';
                                         texDom.style.backgroundColor = 'white';
