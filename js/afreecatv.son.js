@@ -507,6 +507,7 @@
                                         idDom.style.fontSize = 'large';
                                         idDom.style.backgroundColor = 'yellow';
                                         idDom.innerHTML = idDom.textContent + is_mobile;
+                                        $(idDom).hide().show(1000);
 
                                         let texDom = chat_area.children[initIndex].children[0].nextElementSibling;
                                         // texDom.style.border='2px black solid';
