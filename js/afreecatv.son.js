@@ -507,7 +507,7 @@
                                         idDom.style.fontSize = 'large';
                                         idDom.style.backgroundColor = 'yellow';
                                         idDom.innerHTML = idDom.textContent + is_mobile;
-                                        $(idDom).fadeOut().fadeIn(1000).hide(1000);
+                                        $(idDom).fadeOut().fadeIn(1000);
                                         
 
                                         let texDom = chat_area.children[initIndex].children[0].nextElementSibling;
@@ -517,7 +517,7 @@
                                         texDom.style.color = '#0000FF';
                                         //发送内容特效
                                         //$(texDom).fadeOut().fadeIn(1000);
-                                        $(texDom).hide().show(1000).hide(1000);
+                                        $(texDom).hide().show(1000)
                                         setTimeout(function(){$(texDom).parent('dl').hide(3000);},2000);
                                         window.sessionStorage.setItem('idt_last', idt);
                                         window.sessionStorage.setItem('text_Last', tex);
