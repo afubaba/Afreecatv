@@ -507,18 +507,19 @@ init();
                                         idDom.style.fontSize = 'large';
                                         idDom.style.backgroundColor = 'yellow';
                                         idDom.innerHTML = idDom.textContent + is_mobile;
-                                        $(idDom).fadeOut().fadeIn(1000);
                                         
-
                                         let texDom = chat_area.children[initIndex].children[0].nextElementSibling;
                                         // texDom.style.border='2px black solid';
                                         texDom.style.fontSize = 'large';
                                         texDom.style.backgroundColor = 'white';
                                         texDom.style.color = '#0000FF';
-                                        //发送内容特效
-                                        //$(texDom).fadeOut().fadeIn(1000);
-                                        $(texDom).hide().show(1000)
-                                        setTimeout(function(){$(texDom).parent('dl').hide(3000);},2000);
+                                        var chatSportMode=document.getElementById("chatSportMode");
+                                        //聊天内容特效
+                                        if(chatSportMode.checked){
+                                            $(idDom).fadeOut().fadeIn(1000);
+                                            $(texDom).hide().show(1000)
+                                            setTimeout(function(){$(texDom).parent('dl').hide(3000);},2000);
+                                        }
                                         window.sessionStorage.setItem('idt_last', idt);
                                         window.sessionStorage.setItem('text_Last', tex);
 
@@ -579,10 +580,8 @@ init();
                                         }
                                         //打开关闭机器人聊天功能
                                         var robotChatcheckboxId =document.getElementById("robotChatcheckboxId");
-                                        console.log(robotChatcheckboxId.checked);
-                                        if (robotChatcheckboxId.checked) {
 
-                                            console.log("开启了机器人聊天");
+                                        if (robotChatcheckboxId.checked) {
                                             //终止(停止)命令!멈추다(任何人)
                                             if (tex == '!stop' || tex == '!멈추다') {
                                             //终止消息提示
