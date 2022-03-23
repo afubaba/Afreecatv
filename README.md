@@ -3,7 +3,8 @@
 ------------------------------------------------------------------------------------------------------------------------
 ChromeExtension：chrome모든 크롬 내장 유람 플러그인 버전 1.1 발표
 --
-simpleChromeExtension-master.crt 파일:chrome 플러그인，simpleChromeExtension-master.pem:chrome 플러그인 키
+simpleChromeExtension-master.crt 파일:chrome 플러그인
+simpleChromeExtension-master.pem:chrome 플러그인 키
 이 플러그인은 특수효과 외부의 특수효과를 자동으로 영구적으로 보존하고 다음에 유람기를 시작하면 다시 컨트롤러에 입력할 필요가 없습니다. 다운로드한 후 크롬 핵으로 끌어가는 유람기 확장 플러그인을 사용하여 메인 사이트를 직접 방문할 수 있습니다.https://afreecatv.com, 추가 작업 없이 효과를 자동으로 액세스
 
 
