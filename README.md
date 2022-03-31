@@ -3,7 +3,7 @@
 ------------------------------------------------------------------------------------------------------------------------
 ChromeExtension：chrome모든 크롬 내장 유람 플러그인 발표
 --
-simpleChromeExtension-master.crt 파일:chrome 플러그인
+.crt 파일:chrome 플러그인
 --
 v1.1-mv2:이 버전은 Manifest mv2를 사용하여 플러그인으로github 자원에 접근하여(https://github.com/afubaba/Afreecatv) 네트워크 속도가 좋은 클라이언트를 위해 사용합니다
 --
