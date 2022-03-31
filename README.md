@@ -1,7 +1,7 @@
 # Afreecatv.html
 
 ------------------------------------------------------------------------------------------------------------------------
-ChromeExtension：chrome모든 크롬 내장 유람 플러그인 버전 1.1 발표
+ChromeExtension：chrome모든 크롬 내장 유람 플러그인 발표
 --
 simpleChromeExtension-master.crt 파일:chrome 플러그인
 --
