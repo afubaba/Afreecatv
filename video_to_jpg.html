@@ -39,23 +39,7 @@
 
 		</div>
 		<script type="text/javascript">
-			/* console.log($); */
-
-			/* 		getvideoprogress();
-
-		 function getvideoprogress() {
-		 setTimeout(function() {
-		 var vid = document.querySelector("video");
-
-		 var currentTime = vid.currentTime.toFixed(1);
-		 if (currentTime == 1.2) {
-		 //触发
-		 return false;
-		 }
-		 console.log(currentTime);
-		 getvideoprogress();
-		 }, 50);
-		 } */
+		
 
 			document.querySelector('input[type="file"]').addEventListener(
 				'change',
@@ -73,24 +57,17 @@
 
 			var ctx5 = canvas5.getContext("2d");
 			var video = document.querySelector("video");
-			console.log(video);
-			console.log(video.playbackRate);
-
-			/* ctx5.onclick=function(){
-				myFile.click();
-				} */
-
+			
 			myFile.onchange = function() {
 				const thFileName = this.files[0].name;
 				//去掉后缀
 				const fileName = thFileName.substring(0, thFileName
 					.lastIndexOf("."));
-				console.log(fileName);
+				
 
 				//同步路径
 				let screenshotURL = document.querySelector("#screenshotURL");
-				/* console.log([this]); */
-				console.log(this.files);
+				
 				screenshotURL.value = video.src;
 
 				video.onplay = function() {
@@ -106,7 +83,7 @@
 
 					/* var img=document.querySelector("#img");
 					img.src=dataUrl; */
-					console.log(video);
+					
 					let i = 0;
 					let canvasImg;
 					//下载的文件名
@@ -115,7 +92,7 @@
 					//截图频率时间
 					let screenshotFrequencyTime = document
 						.querySelector("#screenshotFrequencyTime");
-					console.log(screenshotFrequencyTime.value);
+					
 					//视频播放速度
 					this.playbackRate = "2";
 					let playbackRate = this.playbackRate;
@@ -129,12 +106,7 @@
 					let im;
 					vInterval = setInterval(
 						function() {
-							/* var currentTime = video.currentTime.toFixed(1);
-							if (currentTime == 1.2) {
-								//触发
-								return false;
-							}
-							console.log(currentTime); */
+							
 							//时长
 							let myBarWidht = video.currentTime / video.duration *
 								100;
@@ -163,7 +135,6 @@
 								$(dm).append(im);
 							}
 							
-							console.log(download.checked);
 							//直接下载
 							
 							if(download.checked){
@@ -187,7 +158,6 @@
 
 			function downLoadFile(fileName, canvasImg) {
 				
-				console.log(fileName);
 				//创建一个a标签 
 				var a = document.createElement('a') //指定下载文件名称 
 				a.href = canvasImg;
