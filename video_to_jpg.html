@@ -4,29 +4,30 @@
 		<meta charset="UTF-8">
 
 		<title>VideoToJpg</title>
-		<!-- <meta http-equiv="Content-Security-Policy"
-			content="script-src 'self' https://afubaba.github.io/Afreecatv/js/jquery1.7.2.min.js 'unsafe-eval' 'unsafe-inline'; object-src 'self'; style-src 'self' 'unsafe-inline'; media-src *"> -->
-		<!-- <script type="text/javascript"
-		src="https://afubaba.github.io/Afreecatv/js/jquery1.7.2.min.js"></script> -->
+		<!-- 设置logo -->
+		<link rel="icon" type="image/png" sizes="48x48" href="logo/favicon.ico" />
 		<!--本地.bootstrap.css -->
 		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
 		<!-- 本地.jquery.js -->
 		<script type="text/javascript" src="js/jquery1.7.2.min.js"></script>
 		<!-- 本地.bootstrap.js -->
 		<script type="text/javascript" src="js/bootstrap.min.js"></script>
-		<link rel="icon" type="image/png" sizes="48x48" href="https://afubaba.github.io/Afreecatv/favicon.ico"/>
-		
+
 	</head>
 	<body style="text-align: center;">
+		<video src="video/video.mp4" controls preload autoplay style="border: 2px red solid;"></video>
 		<canvas id="canvas5" style="border: 2px red solid;">游览器不支持canvas<button>222</button></canvas>
+		URL/PATH
+		<input id="screenshotURL" title="路径或者URL" type="text" value="" />
+
 		<input id="screenshotFrequencyTime" title="截图频率时间" type="text" value="500" />
 		<span style="font: 30px 微软雅黑;">밀리초/회(ms/time)</span>
-		<!-- 	<button>111</button> -->
-		<!-- https://afubaba.github.io/Afreecatv/video/video.mp4 -->
-		<video src="https://afubaba.github.io/Afreecatv/video/video.mp4" controls preload autoplay
-			style="border: 2px red solid;"></video>
+
+		<span style="font: 30px 微软雅黑;">下载</span><input id="download"   type="checkbox" />
+		<span style="font: 30px 微软雅黑;">预览</span><input id="preview" type="checkbox" checked />
+
 		<input id="myFile" style="display: none;" type="file" />
-		
+
 		<!-- <embed id="myPlayer" class="videoPlayer" src="" width="100%"
 		height="100%" autostart=true/false loop=true/false></embed> -->
 		<img id="img" />
@@ -63,7 +64,8 @@
 				'change',
 				function() {
 					document.querySelector('video').src = window.URL
-						.createObjectURL(this.files[0])
+						.createObjectURL(this.files[0]);
+
 				})
 			var canvas5 = document.getElementById("canvas5");
 			var myFile = document.querySelector("#myFile");
@@ -87,7 +89,17 @@
 				const fileName = thFileName.substring(0, thFileName
 					.lastIndexOf("."));
 				console.log(fileName);
+
+				//同步路径
+				let screenshotURL = document.querySelector("#screenshotURL");
+				/* console.log([this]); */
+				console.log(this.files);
+				screenshotURL.value = video.src;
+
 				video.onplay = function() {
+					//溢出已经存在
+					$("#showDiv").children().remove();
+
 					canvas5.width = video.videoWidth;
 					canvas5.height = video.videoHeight;
 					/* document.createElement('img').src=dataUrl; */
@@ -113,8 +125,9 @@
 					//转换成实际速度
 					var nowIntervalFrequency = screenshotFrequencyTime.value * 1 /
 						playbackRate;
-					console.log(playbackRate);
-					console.log(nowIntervalFrequency);
+					//下载预览复选框
+					let preview=document.querySelector("#preview");
+					let download=document.querySelector("#download");
 					//预览图片dom
 					let im;
 					vInterval = setInterval(
@@ -140,19 +153,26 @@
 							canvasImg = canvas5.toDataURL("image/png");
 							i++;
 							fiName = fileName + "(" + i + ")";
-							console.log(fiName);
-
 							//生成预览
-							im = document.createElement("img")
-							im.src = canvasImg;
-							/* console.log(im); */
-							var imgDom = "<div id='" + i +
-								"' style='width:300px;height:300px;border:2px red solid;float:left'></div>"
-							$("#showDiv").append(imgDom);
-							var dm = "#" + i;
-							$(dm).append(im);
-
+							if(preview.checked){
+								
+								im = document.createElement("img")
+								im.src = canvasImg;
+								/* console.log(im); */
+								var imgDom = "<div id='" + i +
+									"' style='width:300px;height:300px;border:2px red solid;float:left'></div>"
+								$("#showDiv").append(imgDom);
+								var dm = "#" + i;
+								$(dm).append(im);
+							}
+							
+							console.log(download.checked);
 							//直接下载
+							downLoadFile(fiName, canvasImg);
+							
+							/* if(download.checked){
+								downLoadFile(fiName_, canvasImg);
+							} */
 							/* downLoadFile(fiName, canvasImg); */
 
 							/* ctx5.font="50px 微软雅黑"
@@ -162,6 +182,7 @@
 
 				}
 				video.onpause = function() {
+
 					$("#myBarValue").html("100%");
 					clearInterval(vInterval);
 				}
@@ -169,6 +190,8 @@
 			};
 
 			function downLoadFile(fileName, canvasImg) {
+				
+				console.log(fileName);
 				//创建一个a标签 
 				var a = document.createElement('a') //指定下载文件名称 
 				a.href = canvasImg;
