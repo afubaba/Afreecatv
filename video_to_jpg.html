@@ -56,6 +56,13 @@
 			}
 
 			var ctx5 = canvas5.getContext("2d");
+			ctx5.font = "40pt Calibri";
+			ctx5.fillStyle="red";
+			console.log(canvas5.width);
+			console.log(canvas5.height);
+			ctx5.fillText("Choose File",0,canvas5.height/2);
+
+
 			var video = document.querySelector("video");
 			
 			myFile.onchange = function() {
