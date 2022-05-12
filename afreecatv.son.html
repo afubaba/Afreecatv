@@ -478,17 +478,13 @@
 
 
 
-					<button class="btn btn-danger" style="width: 100%;" data-toggle="collapse" title="대량 작업 관련"
-						data-target="#personalizedDivId">개성화</button>
-
-
+					<button id="individualization" class="btn btn-danger" style="width: 100%;" data-toggle="collapse"
+						title="대량 작업 관련" data-target="#personalizedDivId">개성화</button>
 
 					<div id="personalizedDivId" class="collapse">
-
-
-						<h3 style="font-size: large; color: yellow;">스타일정의:</h3>
-
-						글꼴색상: <select id="background_color" onchange="
+						<dl class="dl-horizontal">
+							<dt><strong><b><span id="fontColorId">fontColor</span></b></strong>:</a></dt>
+							<dd><select id="background_color" onchange="
                           var background_color=document.getElementById('background_color');
                           var myDiv=document.getElementById('myDiv');
                           var chatbox=document.getElementById('chatbox');
@@ -502,14 +498,16 @@
                                 // chatbox
                                 // chatting_area
                                 ">
-							<option value="red">red</option>
-							<option selected value="white">white</option>
-							<option value="black">black</option>
-							<option value="#7FFF00">Lime</option>
-							<option value="#00FF00">Chartreuse</option>
-							<option value="#FFFF00">yelllow</option>
-
-						</select> <br /> 배경그림: <select id="background" onchange="
+									<option id="fontColorRed" style="color: red;" value="red">red</option>
+									<option id="fontColorWhite" style="color: white;" selected value="white">White
+									</option>
+									<option id="fontColorBlack" style="color: black;" value="black">Black</option>
+									<option id="fontColorLime" style="color: lime;" value="#7FFF00">Lime</option>
+									<option id="fontColorChartreuse" style="color: chartreuse;" value="#00FF00">
+										Chartreuse</option>
+									<option id="fontColorYelllow" style="color: yellow;" value="#FFFF00"><strong>
+											<b><em>yelllow</em></b></strong> </option>
+								</select></dd> <br /> 배경그림: <select id="background" onchange="
                             function getDom(dom){
                                 dom = document.getElementById(dom);
                                 return dom;
@@ -551,12 +549,12 @@
                                 // chatbox
                                 // chatting_area
                                 ">
-							<option value="none">묵인</option>
-							<option selected="select" value="transparent">투명</option>
-							<option value="white">하양</option>
-						</select> <br /> 언어:
-						<!-- 语言支持 -->
-						<select id="changeLanguageSelect" onchange="
+								<option value="none">묵인</option>
+								<option selected="select" value="transparent">투명</option>
+								<option value="white">하양</option>
+							</select> <br /> 언어:
+							<!-- 语言支持 -->
+							<select id="changeLanguageSelect" onchange="
                             function changeLanguages(){
                                         //获取任意dom对象
                                         function getDom(dom){
@@ -628,9 +626,9 @@
                                     changeLanguages();
 
                                     ">
-							<option id='langChinese' value="zh">中文</option>
-							<option id='langKorean' selected="" value="ko">韩语</option>
-						</select>
+								<option id='langChinese' value="zh">中文</option>
+								<option id='langKorean' selected="" value="ko">韩语</option>
+							</select>
 
 
 
@@ -4652,7 +4650,7 @@ allRepeatTimes= document.getElementById('inputTimes').value,frequency=document.g
 					<hr />
 					<button id="clearChatarea" class="btn btn-danger"
 						onclick="$('#chat_area').empty();document.getElementById('nowIndex').value=1;">채팅내용비우기</button>
-					<button class="btn btn-danger" onclick="$('#afreecatv_player').remove()"
+					<button id="closePlayer" class="btn btn-danger" onclick="$('#afreecatv_player').remove()"
 						title="생방송 모듈 을 제거 하고 문자 채 팅 기능 만 사용 하여 데이터 절약"> 데이터 절약 모드(test)</button>
 
 				</div>
