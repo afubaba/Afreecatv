@@ -172,13 +172,8 @@
 
 			</ul>
 			<div class="tab-content">
-
 				<div class="tab-pane" id="detailedConfiguration">
-
-
-
 					<button id="timeButtonId" class="btn btn-danger" onclick="
-
                                      setTimeout(function(){
                                         if(!document.getElementById('timeButtonId').className.includes('collapsed')){
                                            $('#autoTimeId').click();
@@ -186,7 +181,6 @@
 
                                         clearInterval(autoInterval) ;
                                     }
-
 
                                 },2000);
 
@@ -4231,9 +4225,10 @@ allRepeatTimes= document.getElementById('inputTimes').value,frequency=document.g
                                         //输入内容
                                         var str=testInputValue +  allTime;
                                         //开关是否打开
-                                        var chrysanthemumText=document.getElementById('chrysanthemumText').checked;
+                                        var chrysanthemumCheckBox = document.getElementById('chrysanthemumCheckBox').checked;
+                                   
                                         //字符串转化
-                                        if(chrysanthemumText==true){
+                                        if (chrysanthemumCheckBox) {
 
                                             var midValue=''
                                             var addValue='҉'; 
@@ -4278,13 +4273,13 @@ allRepeatTimes= document.getElementById('inputTimes').value,frequency=document.g
 							type="text">
 						<!-- 间隔时间： -->
 						<span id="frequencyId">间隔时间</span>: <input id="inputFrequency" placeholder=""
-							style="width: 15px;" type="text"> 횟수알림 <input type="checkbox" title="알림 이 있 는 발송 총 횟수 시간 간격"
-							name="timesPrompt">
+							style="width: 15px;" type="text"> <span id="showNumberNotifications">횟수알림</span> <input
+							type="checkbox" title="알림 이 있 는 발송 총 횟수 시간 간격" name="timesPrompt">
 						<br>
-						菊花文字/국화 텍스트
-						<input id="chrysanthemumText" type="checkbox"
+						<span id="chrysanthemumText">국화 텍스트</span>
+						<input id="chrysanthemumCheckBox" type="checkbox"
 							title="스텔스 잉크 는 당신 의 대 화 를 더욱 매력 적 으로 합 니 다，문자 만 지원 하고 이모 티 콘 은 지원 되 지 않 습 니 다."
-							name="chrysanthemumText">
+							name="chrysanthemumCheckBox">
 					</div>
 					<hr>
 
