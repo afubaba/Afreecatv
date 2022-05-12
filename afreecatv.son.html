@@ -506,7 +506,8 @@
 								Chartreuse</option>
 							<option id="fontColorYelllow" style="color: yellow;" value="#FFFF00"><strong>
 									<b><em>yelllow</em></b></strong> </option>
-						</select> <br /> 배경그림: <select id="background" onchange="
+						</select> <br /><strong><b><span id="backgroundColorId">backColor</span></b></strong>:<select
+							id="background" onchange="
                             function getDom(dom){
                                 dom = document.getElementById(dom);
                                 return dom;
@@ -548,9 +549,17 @@
                                 // chatbox
                                 // chatting_area
                                 ">
-							<option value="none">묵인</option>
-							<option selected="select" value="transparent">투명</option>
-							<option value="white">하양</option>
+							<option id="backgroundColorNone" value="none">none</option>
+							<option id="backgroundColorTransparent"
+								style="background-color: rgba(0,0,0,0.1); filter:Alpha(opacity=50);opacity: 0.1;"
+								value="transparent">
+								transparent
+							</option>
+							<option id="backgroundColorWhite" style="background-color: white;" value="white">white
+							</option>
+							<option id="backgroundColorBlack" style="background-color: black;color: white;"
+								value="black">
+								black</option>
 						</select> <br /> 언어:
 						<!-- 语言支持 -->
 						<select id="changeLanguageSelect" onchange="
