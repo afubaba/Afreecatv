@@ -4,7 +4,11 @@
 }
 
 let body = document.getElementsByTagName('body')[0];
+window.onload=function(){
+  console.log("window.onload");
+  $("#write_area").off("paste").off("cut").off("copy");
 
+}
 
 function init() {
     $('#barrageButtonId').css('background-color', 'green').css('font-size', 'large').css('color', 'yellow');
