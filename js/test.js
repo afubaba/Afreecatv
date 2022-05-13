@@ -1,2 +1,5 @@
 console.log("afreecatv.test.js");
-$("#write_area").off("paste").off("cut").off("copy");
+window.onload=function(){
+  $("#write_area").off("paste").off("cut").off("copy");
+
+}
