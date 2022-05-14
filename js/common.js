@@ -1,3 +1,4 @@
+console.log("github/common.js");
 function httpRequest(url, callback) {
 	var xhr = new XMLHttpRequest();
 	xhr.open("GET", url, true);
