@@ -1,4 +1,3 @@
-console.log("common.js");
 function httpRequest(url, callback) {
 	var xhr = new XMLHttpRequest();
 	xhr.open("GET", url, true);
@@ -28,7 +27,7 @@ var dynamicLoading = {
 		var head = document.getElementsByTagName('head')[0];
 		var script = document.createElement('script');
 		// script.async = "async";
-		script.defer="defer";
+		script.defer = "defer";
 		script.src = path;
 		script.type = 'text/javascript';
 
