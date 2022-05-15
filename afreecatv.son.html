@@ -1,80 +1,7 @@
 <div class="my_test" id="my_test">
-	<style style="text/css">
-		* {
-			padding: 0;
-			margin: 0;
-		}
-
-		/*父标签*/
-		/*.startButtonId,*/
-		.startParentWindow {
-			/*position:relative;*/
-			/*水平居中*/
-			/*margin: 0 auto;*/
-			/*偏移*/
-			/*top: 45%;*/
-			width: 100%;
-			height: 500px;
-			font-size: 50px;
-			background-color: red;
-		}
-
-		.startButtonId {
-			/* display: none; */
-			width: 100%;
-			height: 500px;
-			font-size: 50px;
-			background-color: red;
-		}
-
-		body {
-			/*background: #000000;
-                        background: -moz-linear-gradient(top, #000000 0%, #ffffff 100%);
-                        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #000000), color-stop(100%, #ffffff));
-                        background: -webkit-linear-gradient(top, #000000 0%, #ffffff 100%);
-                        background: -o-linear-gradient(top, #000000 0%, #ffffff 100%);
-                        background: -ms-linear-gradient(top, #000000 0%, #ffffff 100%);
-                        background: linear-gradient(to bottom, #000000 0%, #ffffff 100%);
-                        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#000000', endColorstr='#ffffff', GradientType=0);*/
-
-		}
-
-		.showLog {
-			/*display: none;*/
-			position: fixed;
-			/*border: 2px black solid;*/
-			width: max-content;
-			height: 35px;
-			font-size: 30px;
-			z-index: 999;
-			font-weight: bolder;
-			-webkit-user-select: none;
-			/* 禁止 DIV 中的文本被鼠标选中 */
-			-moz-user-select: none;
-			/* 禁止 DIV 中的文本被鼠标选中 */
-			-ms-user-select: none;
-			/* 禁止 DIV 中的文本被鼠标选中 */
-			user-select: none;
-			/* 禁止 DIV 中的文本被鼠标选中 */
-		}
-
-		#showMessage {
-			-webkit-user-select: none;
-			/* 禁止 DIV 中的文本被鼠标选中 */
-			-moz-user-select: none;
-			/* 禁止 DIV 中的文本被鼠标选中 */
-			-ms-user-select: none;
-			/* 禁止 DIV 中的文本被鼠标选中 */
-			user-select: none;
-			/* 禁止 DIV 中的文本被鼠标选中 */
-		}
-	</style>
 
 	<script id="myScript" type="text/javascript">
-
 	</script>
-
-
 	<!--    let urlPath='https://stimg-cf.afreecatv.com/LOGO/ac/actret/actret.jpg';
 
      $('body').css('background','url('+urlPath+')').css('background-size','100%').css('background-repeat','no-repeat').css('height','100%').css('width','100%'); -->
@@ -82,80 +9,8 @@
 
 	<!-- <div id="startDivId" class="startDivId" style="border: 2px blue solid;"> -->
 	<!-- 启动按钮 -->
-	<button class="startButtonId" id="startButtonId" onclick="
-         function getDomById(dom) {
-            dom =document.getElementById(dom);
-            return dom;
-        }
-        function startButtonId(){
-
-                            //启动动画效果
-                            var src=document.getElementsByClassName('bj_thumbnail').item(0).children[0].children[0].getAttribute('src');
-
-
-                            
-
-                            $('head').append('<link rel=stylesheet type=text/css href=https://afubaba.github.io/Afreecatv/css/bootstrap.min.css > <script type=text/javascript src=https://afubaba.github.io/Afreecatv/js/bootstrap.min.js></script><script type=text/javascript src=https://afubaba.github.io/Afreecatv/js/jquery1.7.2.min.js></script><link rel=stylesheet type=text/css href=https://afubaba.github.io/Afreecatv/css/afreecatv.son.css><script type=text/javascript src=https://afubaba.github.io/Afreecatv/js/afreecatv.son.js></script>');
-
-
-
-              // javascript
-
-             //createLinkDom(null, 'https://cdn.bootcss.com/bootstrap/2.3.2/css/bootstrap.min.css');
-                https://afubaba.github.io/Afreecatv/css/bootstrap.min.css
-                function createLinkDom(id, link) {
-                    let showLogDivDom;
-                    showLogDivDom = document.createElement('link');
-                    showLogDivDom.rel = 'stylesheet';
-                    showLogDivDom.href = link;
-                    showLogDivDom.type = 'text/css';
-                    $('head').append(showLogDivDom);
-
-                }
-                             // createScriptDom(null, 'https://cdn.bootcss.com/bootstrap/2.3.2/js/bootstrap.min.js');
-                             // createScriptDom(null, 'https://code.jquery.com/jquery-1.7.0.min.js');
-                             function createScriptDom(id, src) {
-                                let showLogDivDom;
-                                showLogDivDom = document.createElement('script');
-                                showLogDivDom.src = src;
-                                showLogDivDom.type = 'text/javascript';
-                                $('head').append(showLogDivDom);
-                            }
-
-
-                            $('body').hide(1000).show(3000);
-                            // $('body').css('background','none');
-             //背景图
-             $('body').css('background-image','url('+src+')').css('background-repeat','no-repeat').css('background-size','100%');
-
-             $('#startButtonId,#startDivId').fadeOut(2000);
-
-
-
-             $('#player_aream,#chatting_area').hide().fadeTo(3000,0.3).fadeTo(2000,0.6).fadeTo(1000,1);
-                            //隐藏启动按钮
-                            // $('#startButtonId').fadeOut(2000);
-
-                            $('#myDiv').fadeTo(1000,0.3).fadeTo(2000,0.6).fadeTo(2500,1);
-
-
-
-                            setTimeout(function(){
-                                $('#environmentButtonId').click();
-
-                            },5000);
-                        }
-
-
-                        //移动
-                        $('#my_test').clone().insertBefore($('#write_area'))
-                        $('.my_test')[0].remove();
-
-                        setTimeout(startButtonId(),1000);
-
-                        " onclick="startAll()">start</button>
-
-
+	<button onclick='testStart();'>test</button>
+	<button class="startButtonId" id="startButtonId" onclick="testStart()">start</button>
 	<div id="myDiv" style="overflow: scroll;">
 
 		<!--            contenteditable="true"-->
@@ -168,541 +23,70 @@
 				<!--隐藏复制粘贴-->
 				<li style="display: none;"><a data-toggle="tab" href="#easyDiv">복사&붙여넣기</a></li>
 				<li style="display: none;"><a data-toggle="tab" href="#testDiv">테스</a></li>
-
-
 			</ul>
 			<div class="tab-content">
 				<div class="tab-pane" id="detailedConfiguration">
-					<button id="timeButtonId" class="btn btn-danger" onclick="
-                                     setTimeout(function(){
-                                        if(!document.getElementById('timeButtonId').className.includes('collapsed')){
-                                           $('#autoTimeId').click();
-                                       }else{
-
-                                        clearInterval(autoInterval) ;
-                                    }
-
-                                },2000);
-
-                                " style="width: 100%;" data-toggle="collapse" title="사용 시간 기능"
+					<button id="timeButtonId" class="btn btn-danger" onclick="timeButtonFunction();"
+						style="width: 100%;" data-toggle="collapse" title="사용 시간 기능"
 						data-target="#timeDivId">시간관련</button>
-
 					<div id="timeDivId" class="collapse">
 						<!-- 手动发送时间计时器 -->
-						<button id="getTimeButton" onclick="
-                                        //判断当计时器是否重复
-                                        if('undefined'!=typeof handTimeout){
-                                            clearInterval(handTimeout) ;
-                                        }
-                                        console.log('now times start');
-                                        date =new Date();
-                                        fullYear=date.getFullYear();
-                                        month=date.getMonth()+1;
-                                        day=date.getDate();
-                                        //小时+1
-                                        hours=date.getHours()+1;
-                                        //hours=date.getHours();
-                                        minutes=date.getMinutes();
-                                        seconds=date.getSeconds();
-                                        //判断如果加一天，才执行减少一天
-                                        isAddDay=false;
-                                        var handTimeout=setTimeout(function(){
-                                            if (hours>=24){
-                                                hours=0;
-                                            }
-                                            //韩国1点减去一天
-                                            if(0<hours<1){
-                                                //韩国12点增加一天
-                                                day++;
-                                                //判断如果加一天，才执行减少一天
-                                                isAddDay=true;
-                                            }
-
-                                            //判断如果加一天，才执行减少一天
-                                            if (hours>1&&isAddDay==true) {
-                                                day--;
-                                                isAddDay==false;
-                                            }
-
-                                            //当月最大的天数
-                                            var monthArrays1=[1,3,5,7,8,10,12]; //31days
-                                            var monthArrays2=[4,6,9,11];      //30days
-                                            var monthArrays3 = 2;              //28days
-                                            maxDays=0;
-                                            if (monthArrays3==month){
-                                                maxDays=28;
-                                            }else if(monthArrays2.includes(month)){
-                                                maxDays=30;
-                                            }else{
-                                                maxDays=31;
-                                            }
-
-                                            if (day>maxDays){
-
-                                                day=1;
-                                                month++;
-                                            }
-                                            if (month>12){
-                                                fullYear++;
-                                            }
-
-                                            var now=fullYear+'-'+month+'-'+day+'\t'+hours+':'+minutes+':'+seconds;
-                                            // var nowTimes=now.replaceAll('0','₀').replaceAll('1','₁')
-                                            //     .replaceAll('2','₂').replaceAll('3','₃').replaceAll('4','₄')
-                                            //     .replaceAll('5','₅').replaceAll('6','₆').replaceAll('7','₇')
-                                            //     .replaceAll('8','₈').replaceAll('9','₉');
-                                            getNowTime(now,hours,minutes);
-                                        },100);
-                                        function getNowTime(now,hours,minutes) {
-                                            var oclock;
-                                            if (hours==12||hours==0&&minutes>=0&&minutes<=29) {
-                                                oclock='🕛';
-                                            }else if(hours==12||hours==0&&minutes>=30&&minutes<=59){
-                                                oclock='🕧';
-                                            }else if(hours==1||hours==13&&minutes>=0&&minutes<=29){
-                                                oclock='🕐';
-                                            }else if(hours==1||hours==13&&minutes>=30&&minutes<=59){
-                                                oclock='🕜';
-                                            }else if(hours==2||hours==14&&minutes>=0&&minutes<=29){
-                                                oclock='🕑';
-                                            }else if(hours==2||hours==14&&minutes>=30&&minutes<=59){
-                                                oclock='🕝';
-                                            }else if(hours==3||hours==15&&minutes>=0&&minutes<=29){
-                                                oclock='🕒';
-                                            }else if(hours==3||hours==15&&minutes>=30&&minutes<=59){
-                                                oclock='🕞';
-                                            }else if(hours==4||hours==16&&minutes>=0&&minutes<=29){
-                                                oclock='🕓';
-                                            }else if(hours==4||hours==16&&minutes>=30&&minutes<=59){
-                                                oclock='🕟';
-                                            }else if(hours==5||hours==17&&minutes>=0&&minutes<=29){
-                                                oclock='🕔';
-                                            }else if(hours==5||hours==17&&minutes>=30&&minutes<=59){
-                                                oclock='🕠';
-                                            }else if(hours==6||hours==18&&minutes>=0&&minutes<=29){
-                                                oclock='🕕';
-                                            }else if(hours==6||hours==18&&minutes>=30&&minutes<=59){
-                                                oclock='🕡';
-                                            }else if(hours==7||hours==19&&minutes>=0&&minutes<=29){
-                                                oclock='🕖';
-                                            }else if(hours==7||hours==19&&minutes>=30&&minutes<=59){
-                                                oclock='🕢';
-                                            }else if(hours==8||hours==20&&minutes>=0&&minutes<=29){
-                                                oclock='🕗';
-                                            }else if(hours==8||hours==20&&minutes>=30&&minutes<=59){
-                                                oclock='🕣';
-                                            }else if(hours==9||hours==21&&minutes>=0&&minutes<=29){
-                                                oclock='🕘';
-                                            }else if(hours==9||hours==21&&minutes>=30&&minutes<=59){
-                                                oclock='🕤';
-                                            }else if(hours==10||hours==22&&minutes>=0&&minutes<=29){
-                                                oclock='🕙';
-
-                                            }else if(hours==10||hours==22&&minutes>=30&&minutes<=59){
-                                                oclock='🕥';
-                                            }else if(hours==11||hours==23&&minutes>=0&&minutes<=29){
-                                                oclock='🕚';
-                                            }else if(hours==11||hours==23&&minutes>=30&&minutes<=59){
-                                                oclock='🕦';
-                                            }else{
-                                                oclock='한국시간:';
-                                            }
-                                            // document.getElementById('write_area').innerHTML=nowTimes;
-                                            document.getElementById('write_area').innerHTML=oclock+':'+now;
-
-                                             //自定义输入框的值
-                                            //document.getElementById('testInput').value=now;
-                                            //发送框框的值
-                                            document.getElementById('btn_send').click();
-                                        }
-
-                                        " style="font-size: large; color: darkred;" title="현재 시간 가 져 오기 및 발송 시간"
-							type="button">
+						<button id="getTimeButton" onclick="getTimeFunction();"
+							style="font-size: large; color: darkred;" title="현재 시간 가 져 오기 및 발송 시간" type="button">
 							<span id="handTimeId">当前时间</span>
 						</button>
-						<input id="timeFrequencys" style="width: 50px" type="text">
+						<div id="timeFrequencys" style="font-size: 2em;color: red;"></div>
 						<br />
 
 						<!-- 自动发送时间计时器 -->
-						<button id="autoTimeId" onclick="
-                                    //判断当计时器是否重复
-                                    if('undefined'!=typeof autoInterval){
-                                        clearInterval(autoInterval) ;
-                                    }
-
-
-                                    function getDomByName(domName){
-                                        domName=document.getElementsByName(domName);
-                                        return domName;
-
-                                    }
-
-                                    var addHour=1;
-                                    //if (document.getElementById('changeLanguageSelect').value=='ko') {addHour=1;} 
-
-
-                                    autoInterval=setInterval(function(){
-
-                                    //是否提醒时间
-                                    var isAutoTimeStart= getDomByName('isAutoTimeStart');
-                                    var date =new Date();
-                                    var fullYear=date.getFullYear();
-                                    var month=date.getMonth()+1;
-                                    var day=date.getDate();
-                                    var hours=date.getHours()+addHour;
-                                    var minutes=date.getMinutes();
-                                    var seconds=date.getSeconds();
-                                    if (hours>=24){
-                                        hours=0;
-                                            //韩国12点增加一天
-                                            day++;
-                                        }
-                                        //当月最大的天数
-                                        var monthArrays1=[1,3,5,7,8,10,12]; //31days
-                                        var monthArrays2=[4,6,9,11];      //30days
-                                        var monthArrays3 = 2;              //28days
-
-                                        maxDays=0;
-                                        if (monthArrays3==month){
-                                            maxDays=28;
-                                        }else if(monthArrays2.includes(month)){
-                                            maxDays=30;
-                                        }else{
-                                            maxDays=31;
-                                        }
-
-                                        if (day>maxDays){
-                                            day=1;
-                                            month++;
-                                        }
-                                        if (month>12){
-                                            fullYear++;
-                                        }
-                                        document.getElementById('timeFrequencys').value=hours+':'+minutes+':'+seconds;
-                                        //开关判断
-                                        if (isAutoTimeStart[0].checked==true&&isAutoTimeStart[1].checked==false) {
-                                            var text_information='';
-                                            var nickName='';
-                                            //拼接时间
-                                            var  now=fullYear+'-'+month+'-'+day+'\t'+hours+':'+minutes+':'+seconds;
-
-                                           // if (minutes==29&&seconds==57||minutes==59&&seconds==57) {
-
-
-
-
-
-                                            //}
-                                            if (minutes==30&&seconds==0||minutes==0&&seconds==0) {
-                                                var oclock;
-                                                if (hours==12||hours==0&&minutes==0) {
-                                                    oclock='🕛';
-                                                }else if(hours==12||hours==0&&minutes==30){
-                                                    oclock='🕧';
-                                                }else if(hours==1||hours==13&&minutes==0){
-                                                    oclock='🕐';
-                                                }else if(hours==1||hours==13&&minutes==30){
-                                                    oclock='🕜';
-                                                }else if(hours==2||hours==14&&minutes==0){
-                                                    oclock='🕑';
-                                                }else if(hours==2||hours==14&&minutes==30){
-                                                    oclock='🕝';
-                                                }else if(hours==3||hours==15&&minutes==0){
-                                                    oclock='🕒';
-                                                }else if(hours==3||hours==15&&minutes==30){
-                                                    oclock='🕞';
-                                                }else if(hours==4||hours==16&&minutes==0){
-                                                    oclock='🕓';
-                                                }else if(hours==4||hours==16&&minutes==30){
-                                                    oclock='🕟';
-                                                }else if(hours==5||hours==17&&minutes==0){
-                                                    oclock='🕔';
-                                                }else if(hours==5||hours==17&&minutes==30){
-                                                    oclock='🕠';
-                                                }else if(hours==6||hours==18&&minutes==0){
-                                                    oclock='🕕';
-                                                }else if(hours==6||hours==18&&minutes==30){
-                                                    oclock='🕡';
-                                                }else if(hours==7||hours==19&&minutes==0){
-                                                    oclock='🕖';
-                                                }else if(hours==7||hours==19&&minutes==30){
-                                                    oclock='🕢';
-                                                }else if(hours==8||hours==20&&minutes==0){
-                                                    oclock='🕗';
-                                                }else if(hours==8||hours==20&&minutes==30){
-                                                    oclock='🕣';
-                                                }else if(hours==9||hours==21&&minutes==0){
-                                                    oclock='🕘';
-                                                }else if(hours==9||hours==21&&minutes==30){
-                                                    oclock='🕤';
-                                                }else if(hours==10||hours==22&&minutes==0){
-                                                    oclock='🕙';
-
-                                                }else if(hours==10||hours==22&&minutes==30){
-                                                    oclock='🕥';
-                                                }else if(hours==11||hours==23&&minutes==0){
-                                                    oclock='🕚';
-                                                }else if(hours==11||hours==23&&minutes==30){
-                                                    oclock='🕦';
-                                                }else{
-                                                    oclock='한국시간';
-                                                }
-
-
-                                                //赋值 昵称
-                                                text_information=document.getElementsByClassName('text_information');
-                                                nickName=text_information.item(0).children[0].textContent;
-                                                document.getElementById('write_area').innerHTML='@'+nickName+':오빠는 당신을 생각 나게/휘파람/';
-                                                document.getElementById('btn_send').click();
-
-
-                                                document.getElementById('write_area').innerHTML=oclock+':'+now;
-                                                document.getElementById('btn_send').click();
-                                            }
-
-
-
-                                        }else{
-                                         // console.log('关闭自动报告时：'+nickName);
-                                     }
-                                 },1000)" style="font-size: large;" title="자동보고시간(30분정각에힌트)">报时
-						</button>
-
-
-						<span id='startAutoTime'>열다</span> <input name="isAutoTimeStart" type="radio" value='start'>
-						<span id='overAutoTime'>닫다</span> <input checked="checked" name="isAutoTimeStart" type="radio"
+						<span id="autoTimeId" onclick="autoTimeFunction();" style="font-size: large;"
+							title="자동보고시간(30분정각에힌트)">报时
+						</span>
+						<span id='startAutoTime'>on</span> <input name="isAutoTimeStart" type="radio" value='start'>
+						<span id='overAutoTime'>off</span> <input checked="checked" name="isAutoTimeStart" type="radio"
 							value='over'>
-
 					</div>
 
 
+					<hr />
+					<button id="clearChatarea" class="btn btn-danger"
+						onclick="$('#chat_area').empty();document.getElementById('nowIndex').value=1;">채팅내용비우기</button>
+					<button id="closePlayer" class="btn btn-danger" onclick="$('#afreecatv_player').remove()"
+						title="생방송 모듈 을 제거 하고 문자 채 팅 기능 만 사용 하여 데이터 절약"> 데이터 절약 모드(test)</button>
 
-
-					<button id="individualization" class="btn btn-danger" style="width: 100%;" data-toggle="collapse"
+					<button style="display: none;" class="btn btn-danger" style="width: 100%;" data-toggle="collapse"
 						title="대량 작업 관련" data-target="#personalizedDivId">개성화</button>
+					<div id="personalizedDivId" style="display: none; class=" collapse">
+						<h3 style="font-size: large; color: yellow;">스타일정의:</h3>
 
-					<div id="personalizedDivId" class="collapse">
-						<strong><b><span id="fontColorId">fontColor</span></b></strong>:</a><select
-							id="background_color" onchange="
-                          var background_color=document.getElementById('background_color');
-                          var myDiv=document.getElementById('myDiv');
-                          var chatbox=document.getElementById('chatbox');
-                          background_color.style.color=background_color.value;
-                          background_color.style.fontSize='large';
-                          chatbox.style.color=background_color.value;
-                          chatbox.style.fontSize='large';
-                          myDiv.style.color=background_color.value;
-                          myDiv.style.fontSize='large';
+						글꼴색상: <select id="background_color" onchange="changeBackColorFunction();">
+							<option value="red">red</option>
+							<option selected value="white">white</option>
+							<option value="black">black</option>
+							<option value="#7FFF00">Lime</option>
+							<option value="#00FF00">Chartreuse</option>
+							<option value="#FFFF00">yelllow</option>
 
-                                // chatbox
-                                // chatting_area
-                                ">
-							<option id="fontColorRed" style="color: red;" value="red">red</option>
-							<option id="fontColorWhite" style="color: white;" selected value="white">White
-							</option>
-							<option id="fontColorBlack" style="color: black;" value="black">Black</option>
-							<option id="fontColorLime" style="color: lime;" value="#7FFF00">Lime</option>
-							<option id="fontColorChartreuse" style="color: chartreuse;" value="#00FF00">
-								Chartreuse</option>
-							<option id="fontColorYelllow" style="color: yellow;" value="#FFFF00"><strong>
-									<b><em>yelllow</em></b></strong> </option>
-						</select> <br /><strong><b><span id="backgroundColorId">backColor</span></b></strong>:<select
-							id="background" onchange="
-                            function getDom(dom){
-                                dom = document.getElementById(dom);
-                                return dom;
-                            }
-                            var background=getDom('background');
-                            if (background.value=='none') {
-
-                            }else if (background.value=='transparent') {
-
-                                    // var allTags =document.getElementsByTagName('div');
-                                    // for (var i =0;i< allTags.length ; i++) {
-                                    //     allTags[i].style.background='none';
-
-                                    // }
-                                    getDom('actionbox').style.visibility='hidden';
-                                    getDom('ul1').style='visibility:visible';
-                                    getDom('ul2').style='visibility:visible';
-                                    // getDom('write_area').style='visibility:visible';
-                                    // getDom('btn_send').style='visibility:visible';
-                                    var src = document.getElementsByClassName('bj_thumbnail').item(0).children[0].children[0].getAttribute('src');
-
-                                    body.style = 'background-image:url(' + src + ');background-size: 100%;background-repeat: no-repeat;';
-
-                                    $('#chat_area').css('background-image', 'url(' + src + ')').css('background-repeat','no-repeat').css('background-size','100%');
-
-
-                                }else if (background.value=='white') {
-                                    // var allTags =document.getElementsByTagName('div');
-                                    // for (var i =0;i< allTags.length ; i++) {
-                                    //     allTags[i].style.background='white';
-
-                                    // }
-                                    getDom('actionbox').style.visibility='visible';
-                                    getDom('videoLayerCover').style.background='none';
-                                    getDom('testInput').style.border='2px black dotted';
-                                    getDom('chat_area').style.backgroundImage='';
-                                    getDom('chat_area').style.backgroundColor='white';
-                                }
-                                // chatbox
-                                // chatting_area
-                                ">
-							<option id="backgroundColorNone" value="none">none</option>
-							<option id="backgroundColorTransparent"
-								style="background-color: rgba(0,0,0,0.1); filter:Alpha(opacity=50);opacity: 0.1;"
-								value="transparent">
-								transparent
-							</option>
-							<option id="backgroundColorWhite" style="background-color: white;" value="white">white
-							</option>
-							<option id="backgroundColorBlack" style="background-color: black;color: white;"
-								value="black">
-								black</option>
+						</select> <br /> 배경그림: <select id="background" onchange="changeBackFunction();">
+							<option value="none">묵인</option>
+							<option selected="select" value="transparent">투명</option>
+							<option value="white">하양</option>
 						</select> <br /> 언어:
 						<!-- 语言支持 -->
-						<select id="changeLanguageSelect" onchange="
-                            function changeLanguages(){
-                                        //获取任意dom对象
-                                        function getDom(dom){
-                                            var dom =document.getElementById(dom);
-                                            return dom;
-                                        }
-                                        //切换时间
-                                        getDom('autoTimeId').click();
-
-                                        var changeLanguageSelect=getDom('changeLanguageSelect');
-                                        languages={
-                                            'zh':{'times':'次数','frequency':'间隔时间','handTime':'现在时间','send':'寄出','environment':'环境部署','stop':'停止','retrievalMessage':'检索信息','subscriptId':'下标','zh_CN':'中文','ko_KR':'韩语','auto_time':'自动报时'},
-                                            'ko':{'times':'횟수','frequency':'간격시간(s)','handTime':'현재시간','send':'보내다','environment':'환경배포','stop':'멈추다','retrievalMessage':'메시지검색','subscriptId':'포인터','zh_CN':'중국어','ko_KR':'한국어','auto_time':'자동보고시간'}
-                                        };
-                                        // function zhLanguages(dom,lang){
-                                        //  dom.innerHTML=languages.zh.text;
-                                        // }
-
-                                        // function koLanguages(dom,lang){
-                                        //  dom.innerHTML=languages.kr.text;
-                                        // }
-                                        // environmentSpanId环境
-                                        if (changeLanguageSelect.value=='zh') {
-                                            // zhLanguages(textId);
-                                            // getDom('textId').innerHTML=languages.zh.text;
-                                            getDom('timesId').innerHTML=languages.zh.times;
-                                            getDom('frequencyId').innerHTML=languages.zh.frequency;
-                                            getDom('handTimeId').innerHTML=languages.zh.handTime;
-                                            getDom('sendId').innerHTML=languages.zh.send;
-                                            getDom('environmentSpanId').innerHTML=languages.zh.environment;
-                                            getDom('stopButtonId').innerHTML=languages.zh.stop;
-                                            getDom('retrievalButtonId').innerHTML=languages.zh.retrievalMessage;
-                                            getDom('langChinese').innerHTML=languages.zh.zh_CN;
-                                            getDom('langKorean').innerHTML=languages.zh.ko_KR;
-                                            getDom('autoTimeId').innerHTML=languages.zh.auto_time;
-
-                                        // getDom('subscriptId').innerHTML=languages.zh.subscriptId;
-
-                                    }else if(changeLanguageSelect.value=='ko'){
-
-                                        // getDom('textId').innerHTML=languages.ko.text;
-                                        getDom('timesId').innerHTML=languages.ko.times;
-                                        getDom('frequencyId').innerHTML=languages.ko.frequency;
-                                        getDom('handTimeId').innerHTML=languages.ko.handTime;
-                                        getDom('sendId').innerHTML=languages.ko.send;
-                                        getDom('environmentSpanId').innerHTML=languages.ko.environment;
-                                        getDom('stopButtonId').innerHTML=languages.ko.stop;
-                                        getDom('retrievalButtonId').innerHTML=languages.ko.retrievalMessage;
-                                        // getDom('subscriptId').innerHTML=languages.ko.subscriptId;
-                                        getDom('langChinese').innerHTML=languages.ko.zh_CN;
-                                        getDom('langKorean').innerHTML=languages.ko.ko_KR;
-                                        getDom('autoTimeId').innerHTML=languages.ko.auto_time;
-
-                                    }else{
-
-                                    }
-
-
-                                    console.log(languages.ko.text);
-
-
-
-                                        // 中文
-                                        // chinese={'text':'内容'};
-                                        // 韩语
-                                        // korean ={'text':'内容'}
-
-                                    }
-                                    changeLanguages();
-
-                                    ">
+						<select id="changeLanguageSelect" onchange="changeLanguagesFunction();">
 							<option id='langChinese' value="zh">中文</option>
 							<option id='langKorean' selected="" value="ko">韩语</option>
 						</select>
 
-
-
-
-
-
-
-
-
 					</div>
-
-
-
-
-
 				</div>
-
-
-
-
-
 				<div class="tab-pane active" id="basicConfiguration">
-
-					<button id="mainFaceButtonId" style="font-size: 30px" onclick="
-
-                         function getDom(dom) {
-                            dom = document.getElementById(dom);
-                            return dom;
-                        }
-
-                        var mainFace=document.getElementById('mainFace');
-                        var mainFacebookFace=document.getElementById('mainFacebookFace');
-                                    //获取输入框焦点
-                                    $('#testInput').focus();
-
-                                    if (mainFace.style.display=='none') {
-                                        // mainFace.style.display='block';
-                                        // mainFacebookFace.style.display='block';
-                                        $('#mainFace').show(1000);
-                                        $('#mainFacebookFace').show(500);
-
-
-                                    }else{
-
-                                        // mainFace.style.display='none';
-                                        // mainFacebookFace.style.display='none';
-                                        // $('#mainFace').hide(1000);
-                                        // $('#mainFacebookFace').hide(1000);
-                                        $('#mainFace').hide(1000);
-                                        $('#mainFacebookFace').hide(1000);
-
-                                    }
-
-                                    ">😀
+					<button id="mainFaceButtonId" style="font-size: 30px" onclick="mainFaceFunction();">😀
 					</button>
-
 					<!-- 内容： -->
 					<!-- <span id="textId" style="font-size: large; color: red;">内容</span>: -->
 					<textarea id="testInput" style="resize: none"></textarea>
 					<!-- <input id="testInput" type="text" style="width: 50%;height: 30px;" placeholder=""> -->
-
-
-
-
-
-
 					<!--        <div id="showLog" class="showLog">-->
 					<!--            testtesttesttesttesttesttest-->
 					<!--        </div>-->
@@ -4158,122 +3542,13 @@
 
 					<!--여 기 는 스스로 수정 할 수 있 습 니 다.항상 1 초 에 두 번,또는 2 초 간격 으로 세 번 사용 합 니 다. -->
 					<!--allRepeatTimes=2/allRepeatTimes 표시 횟수,2 는 최대 두 번 발송,frequency=0.01  f 는 간격 을 나타 낸다.예 를 들 어 1 은 1 초 간격 이다.  -->
-					<button id="send_message" onclick="testInputValue= document.getElementById('testInput').value,repeatTimes=1,
-allRepeatTimes= document.getElementById('inputTimes').value,frequency=document.getElementById('inputFrequency').value;
-                                        //判断当前发送消息是否重复
-                                        if('undefined'!=typeof thisInterval){
-                                            clearInterval(thisInterval) ;
-                                        }
-
-                                        thisInterval=setInterval(function(){
-                                            /*更正系统*/
-                                            if (allRepeatTimes==''||frequency=='') {
-                                                document.getElementById('inputTimes').value=1;
-                                                document.getElementById('inputFrequency').value=1;
-                                                allRepeatTimes=1;
-                                                frequency=1;
-                                            }
-                                            
-                                        //排除一次
-                                        let timesPrompt=document.getElementsByName('timesPrompt');
-                                        let isTimePromptChecked=timesPrompt[0].checked;
-
-                                        if(allRepeatTimes>1&&isTimePromptChecked==true){
-
-                                            allTime = allRepeatTimes * frequency;
-                                            //拼接单位和时间
-                                            if(allTime<60){
-                                                allTime=allTime+'ₛ';
-                                            }else if(allTime/60<60){
-                                                allTime=allTime/60+'ₘ';
-                                            }else{
-                                                allTime=allTime/60/60+'ₕ';
-                                            }
-
-                                            //频率
-                                            var frequencys = '-';
-                                            //次数单位
-                                            //var times='ₜₗ';
-                                            var times = '';
-
-                                            if (frequency < 60) {
-                                                frequencys = times + frequency + 'ₛ';
-
-                                            } else if (frequency / 60 < 60) {
-                                                frequencys = times + frequency / 60 + 'ₘ';
-                                            } else {
-                                                frequencys = times + frequency / 60 / 60 + 'ₕ';
-                                            }
-
-                                            //拼接次数、次数频率、单次时间，总共时间₌
-                                            //allTime='₍' +allRepeatTimes+'ₗ'+repeatTimes+'ₓ'+frequencys+'|'+allTime+'₎';
-
-                                            allTime ='₍' + allRepeatTimes + 'ₗ' + repeatTimes + ',' + frequencys+ '₎';
-                                            allTime= allTime.replaceAll('0', '₀').replaceAll('1', '₁')
-                                            .replaceAll('2', '₂').replaceAll('3', '₃').replaceAll('4', '₄')
-                                            .replaceAll('5', '₅').replaceAll('6', '₆').replaceAll('7', '₇')
-                                            .replaceAll('8', '₈').replaceAll('9', '₉').replaceAll(' ', '') ;
-                                        }else{
-                                            allTime='';
-                                        }
-                                        //拼接次数、次数频率
-                                        //allTime ='₍' + allRepeatTimes + 'ₗ' + repeatTimes + ',' + frequencys+ '₎';
-
-                                        //拼接次数
-                                        //allTime=allRepeatTimes+'ₗ'+repeatTimes;
-
-
-                                        /*testInputValue입력 값 을 표시 합 니 다.뒤쪽 은 작은 괄호 안의 내용 입 니 다.+뒤의 코드 를 삭제 하면 괄호 와 괄호 안의 내용 을 포함 하지 않 습 니 다,쓰다 document.getElementById('write_area').innerHTML = testInputValue; 이 코드 바 꾸 기*/
-                                        
-
-                                       //document.getElementById('write_area').innerHTML = testInputValue +  allTime;
-                                        //隐形墨水/菊花文字
-                                        //输入内容
-                                        var str=testInputValue +  allTime;
-                                        //开关是否打开
-                                        var chrysanthemumCheckBox = document.getElementById('chrysanthemumCheckBox').checked;
-                                   
-                                        //字符串转化
-                                        if (chrysanthemumCheckBox) {
-
-                                            var midValue=''
-                                            var addValue='҉'; 
-                                            for (var i = 0; i < str.length; i++) {
-                                                midValue=midValue+addValue+str[i];
-
-                                            }
-                                            str=midValue+addValue;
-                                             // console.log(midValue);
-                                             // console.log(chrysanthemumText);
-                                         }
-                                         document.getElementById('write_area').innerHTML = str;
-
-
-
-                                        //<!--js模拟点击事件/아 날로 그 클릭 이벤트-->
-                                        document.getElementById('btn_send').click();
-                                        repeatTimes++;
-                                       // <!--반복 횟수, 수 동 설정 가능,3 은 3 번 을 나타 낸다-->
-                                       if (repeatTimes > allRepeatTimes) {
-                                        clearInterval(thisInterval);
-                                    }
-                                        //순환 속도 1 초 당,수 동 설정 가능,1000 은 1 초.2000 은2 초
-
-                                    },frequency*1000),
-                                    //清空输入框
-                                    document.getElementById('testInput').value='';
-                                    //关闭表情
-                                    document.getElementById('mainFace').style.display='none';
-                                    document.getElementById('mainFacebookFace').style.display='none';
-                                    " style="color: red; font-size: large;" title="메시지 보 내기 즉시 실행" type="button">
+					<button id="send_message" onclick="sendMessageFunction();" style="color: red; font-size: large;"
+						title="메시지 보 내기 즉시 실행" type="button">
 						<span id="sendId">寄出</span>
 					</button>
 
 					<br>
 					<div id="batchInformationDivId" class="collapse">
-
-
-
 						<!-- 次数： -->
 						<span id="timesId">次数</span>: <input id="inputTimes" placeholder="" style="width: 15px;"
 							type="text">
@@ -4286,264 +3561,26 @@ allRepeatTimes= document.getElementById('inputTimes').value,frequency=document.g
 						<input id="chrysanthemumCheckBox" type="checkbox"
 							title="스텔스 잉크 는 당신 의 대 화 를 더욱 매력 적 으로 합 니 다，문자 만 지원 하고 이모 티 콘 은 지원 되 지 않 습 니 다."
 							name="chrysanthemumCheckBox">
+						<!-- <input type="range" class="rotateDom" orient="vertical" min="0" max="100" /> -->
 					</div>
 					<hr>
 
 					<!--보 내기 단추 의 위치,코드 교체-->
 					<!-- 停止计时器 -->
-					<button id="stopButtonId" onclick="
-                                        //发送消息计时器
-                                        if('undefined'!=typeof timeFrequencys1){
-                                            clearInterval(timeFrequencys1) ;
-                                        }
-                                         //自动提醒时间计时器
-                                            // if('undefined'!=typeof autoInterval){
-                                        //        clearInterval(autoInterval) ;
-                                        //     }
-                                         // 信息计时器
-                                         if('undefined'!=typeof messageInterval){
-                                            clearInterval(messageInterval) ;
-                                        }
-                                         //发送消息计时器
-                                         if('undefined'!=typeof thisInterval){
-                                            clearInterval(thisInterval) ;
-                                        }
-                                        alert('stop ok');
-                                        console.log('stop ok');
-                                        " style="color: red; font-size: large;" title="대량 발송 을 중지 합 니 다.">停止</button>
+					<button id="stopButtonId" onclick="stopFunction();" style="color: red; font-size: large;"
+						title="대량 발송 을 중지 합 니 다.">停止</button>
 
 
 					<!-- 环境快速部署 -->
-					<button id="environmentButtonId" onclick="
-
-                                        function getDom(dom) {
-                                            var dom = document.getElementById(dom);
-                                            return dom;
-                                        }
-
-                            // javascript加载script
-                            var head = document.getElementsByTagName('head')[0];
-                            var script = document.createElement('script');
-
-                            //自定义的script 
-                            //script.type = 'text/javascript';
-                            //script.id = 'showScript';
-                            //head.appendChild(script);
-                            //最外层窗口opener.document
-                            //$('#showScript').html($('#myScript').text());
-
-                            //默认字体
-                            //设置字体
-                            $('#background_color').val('#00FF00');
-                            $('#background_color').change();
-                            //启动自动时间
-                            // getDom('autoTimeId').click();
-                            //getDom('autoTimeId2').click();
-
-                            var isAutoTimeStart = document.getElementsByName('isAutoTimeStart');
-                            isAutoTimeStart[0].onchange = function () {
-
-                                getDom('autoTimeId').style = 'background-color:#7FFF00;font-size:large;color:yellow';
-                                this.style.visibility = 'hidden';
-                                isAutoTimeStart[1].style.visibility = 'visible';
-
-                                getDom('overAutoTime').style = 'background-color:red'
-                                getDom('startAutoTime').style = 'background-color:#7FFF00;font-size:large';
-
-                                // getDom('autoTimeId').click();
-                            };
-                            isAutoTimeStart[1].onchange = function () {
-                                getDom('autoTimeId').style = 'background-color:#DCDCDC;font-size:default;color:black';
-                                this.style.visibility = 'hidden';
-                                isAutoTimeStart[0].style.visibility = 'visible';
-                                getDom('overAutoTime').style = 'background-color:#7FFF00;font-size:large';
-                                getDom('startAutoTime').style = 'background-color:red';
-                                // getDom('autoTimeId').click();
-                            };
-
-
-                            //初始化数据
-                            getDom('inputTimes').value = 1;
-                            getDom('inputFrequency').value = 1;
-
-                            //检索m消息(环境部署)
-                            // getDom('retrievalButtonId').click();
-                            //优化界面
-                            //背景透明
-                            var allTags = document.getElementsByTagName('div');
-                            for (var i = 0; i < allTags.length; i++) {
-                                allTags[i].style.background = 'none';
-
-                            }
-
-                            //背景图地址
-                            var src = document.getElementsByClassName('bj_thumbnail').item(0).children[0].children[0].getAttribute('src');
-                            let body = document.getElementsByTagName('body');
-                            //body.style = 'background-image:url(' + src + ');background-size: 100%;background-repeat: no-repeat;';
-
-
-                            // var chat_area_width=getDom('chat_area').clentWidth;
-                            var chat_area_width = $('#chat_area').width();
-            //背景图
-            getDom('chat_area').style = 'height:30%;';
-            //getDom('chat_area').style = 'height:38%;background-repeat:no-repeat;background-image:url(' + src + ');background-size: 100%;';
-             //关闭公告
-             $('.chat_notice').removeClass('open');
-
-         //Parent body.backgournd
-                //背景图
-                $('body',parent.document).css('background-Image','url('+src+')').css('background-repeat','no-repeat').css('background-size','100%');
-
-
-
-                            // getDom('showMessage').style.backgroundColor='white';
-
-                            getDom('actionbox').style = 'margin:0;padding:0;height:55%;width:' + chat_area_width + 'px;overflow:scroll;visibility:hidden';
-
-                            getDom('ul1').style = 'visibility:visible';
-                            getDom('ul2').style = 'visibility:visible';
-
-
-                            // alert($('#actionbox').css('width'));
-
-                            getDom('myDiv').style ='margin:0;padding:0;height:80%;width:' + chat_area_width + 'px;word-break: break-word;overflow:scroll;position:fixed;visibility:visible;margin-top:-15%;';
-
-                            //表情特效
-                            getDom('mainFace').style = 'overflow:scroll;width: 300px;height:70%;margin-left:-50%;margin-top:-25%; position: fixed;display:none;word-break:break-word';
-
-
-                            //facesbook表情
-
-                            getDom('mainFacebookFace').style = 'overflow:scroll;width: 300px;height:70%;margin-left:-25%;margin-top:-25%; position: fixed;display:none;word-break:break-word';
-
-
-                            var mainFace = document.getElementById('mainFace')
-                            var mainFaceChildrens = mainFace.children;
-                            for (var i = 0; i < mainFaceChildrens.length; i++) {
-                                if (mainFaceChildrens[i].tagName != 'H2') {
-
-                                    var mainFaceGrandSons = mainFaceChildrens[i].children
-                                    for (var j = 0; j < mainFaceGrandSons.length; j++) {
-
-                                        mainFaceGrandSons[j].onclick = function () {
-                                           this.style.backgroundColor='white';
-                                           this.setAttribute('title', this.textContent)
-                                           getDom('testInput').value += this.textContent;
-                                       }
-                                       mainFaceGrandSons[j].onmouseover = function () {
-                                           this.style.backgroundColor='red';
-                                       }
-                                       mainFaceGrandSons[j].onmouseleave = function () {
-                                           this.style.backgroundColor='white';
-                                       }
-                                       mainFaceGrandSons[j].style.fontSize='25px';
-                                   }
-                               }
-
-                           }
-
-
-                           var mainFace = document.getElementById('mainFace')
-
-                           function mainFacebookFace() {
-                            function getDomById(dom) {
-                                dom = document.getElementById(dom);
-                                return dom
-                            }
-
-                            const mainFacebookFace = getDomById('mainFacebookFace');
-                            const mainFacebookFaceChildren = mainFacebookFace.children;
-
-
-                            for (let i = 0; i < mainFacebookFace.childElementCount; i++) {
-
-                                const mainFacebookFaceGrandson = mainFacebookFaceChildren[i].children;
-                                for (let j = 0; j < mainFacebookFaceChildren[i].childElementCount; j++) {
-
-                                    if (mainFacebookFaceGrandson[j].tagName != 'H2') {
-
-                                        const grateGrandson = mainFacebookFaceGrandson[j].children;
-
-                                        for (let k = 0; k < mainFacebookFaceGrandson[j].childElementCount; k++) {
-
-                                            grateGrandson[k].innerHTML = grateGrandson[k].getAttribute('data-c');
-                                            grateGrandson[k].onclick = function () {
-
-                                               this.style.backgroundColor='white';
-                                               this.setAttribute('title', this.textContent)
-                                               getDomById('testInput').value += this.textContent;
-
-                                           }
-
-                                           grateGrandson[k].onmouseover = function () {
-
-                                            this.style.backgroundColor='green';
-                                        }
-                                        grateGrandson[k].onmouseleave = function () {
-                                            this.style.backgroundColor='white';
-                                        }
-
-                                        grateGrandson[k].style.fontSize='25px';
-                                    }
-
-                                }
-
-                            }
-
-
-                        }
-                    }
-
-                    mainFacebookFace();
-
-                            //切换时间
-                            getDom('autoTimeId').click();
-
-
-                            //同步内容和输入框区域cols='5'; rows='5'
-                            getDom('testInput').style.cssText = 'width:55%;border:2px red solid;font-size:20px'
-
-                            getDom('testInput').setAttribute('rows', '2');
-
-
-                            getDom('btn_send').onclick = function () {
-                                getDom('testInput').value = '';
-                            }
-
-                            // 同步输入内容
-                            getDom('write_area').onfocus = function () {
-                                getDom('testInput').value = getDom('write_area').textContent;
-                                getDom('testInput').focus();
-
-                            }
-                            getDom('write_area').onblur = function () {
-                                getDom('testInput').value = getDom('write_area').textContent;
-                                getDom('testInput').focus();
-                            }
-                            getDom('testInput').onfocus = function () {
-                                getDom('write_area').innerHTML = getDom('testInput').value;
-                            }
-                            getElementById('testInput').onblur = function () {
-                                getDom('write_area').innerHTML = getDom('testInput').value;
-                            }
-
-
-                            //初始化字体
-                            getDom('environmentButtonId').style = 'font-size:large;color:red';
-                            // getDom('textId').style = 'font-size:large;color:red';
-                            getDom('retrievalButtonId').style = 'font-size:large;color:red';
-
-
-
-
-                            // getDom('testInput').setaAttibute('')
-                            " style="font-size: large; color: yellow;" title="빠 른 설정 환경">
+					<button id="environmentButtonId" onclick="environmentFunction();"
+						style="font-size: large; color: yellow;" title="빠 른 설정 환경">
 						<span id="environmentSpanId">기본설정</span>
 					</button>
 
 					<button id="batchSend" class="btn btn-danger" style="width: 40%;" data-toggle="collapse"
 						title="대량 작업 관련" data-target="#batchInformationDivId">대량정보</button>
 
+					<hr />
 				</div>
 				<div class="tab-pane" id="robotConfiguration">
 
@@ -4553,22 +3590,14 @@ allRepeatTimes= document.getElementById('inputTimes').value,frequency=document.g
 						<button class="btn btn-success" id="retrievalButtonId" onclick="retrievalButtonFunction();"
 							style="font-size: large; color: red;" title="즉시 정보 읽 기">检索m
 						</button>
-						<button class="btn" id="stopRetrievalMessage" onclick="
-
-                  $('#stopRetrievalMessage').addClass('bt n-success').hide();
-                  $('#retrievalButtonId').removeClass('btn-success').show();
-
-                  if ('undefined' != typeof messageInterval) {
-                    clearInterval(messageInterval);
-                }
-                $('#showMessageDiv').hide();
-                    //关闭弹幕-同步检索 弹幕状态信息
-                    //  $barrageButton.attr('data-isBarrage');
-                    tipBarrage('关闭消息阅读');
-
-                    " style="display: none;" title="정보 읽 기 중지">정보읽기중지</button>
+						<button class="btn" id="stopRetrievalMessage" onclick="stopRetrievalMessageFunction();"
+							style="display: none;" title="정보 읽 기 중지">정보읽기중지</button>
 
 					</div>
+
+					<!-- <input type="range" class="rotateDom" orient="vertical" min="0" max="50" /> -->
+
+
 					<button data-isBarrage="open" id="barrageButtonId" onclick="barrage();"
 						style="color: red; font-size: large" title="탄창의탄막">탄창의탄막</button>
 					<div id="showMessageDiv" style="display: none">
@@ -4593,25 +3622,20 @@ allRepeatTimes= document.getElementById('inputTimes').value,frequency=document.g
 							<option id="slowSpeed" selected="selected" value="slowSpeed">慢速</option>
 						</select>
 
-						제 <input id="nowIndex" style="width: 30px" title="현재 포인터" type="text" value="1"> 조메시지 ,
+						제 <input id="nowIndex" disabled style="width: 30px" title="현재 포인터" type="text" value="1"> 조메시지 ,
 						최대격차(5/10개): <input id="informationSynchronization" style="width: 30px"
-							title="최대 10 개 또는 5 개의 정보 동기 화 차 이 를 허용 합 니 다." title="최대정보동기화격차수" type="text" value="5">
+							title="최대 10 개 또는 5 개의 정보 동기 화 차 이 를 허용 합 니 다." title="최대정보동기화격차수" type="text" value="1">
 						<br />
 						상한선: <input id="upperLimit" style="width: 50px; font-size: large; color: darkred;"
 							title="가장 빠 른 정 보 를 얻 는 속 도 를 나타 낸다." type="text">
 						<!-- 延迟时间 -->
-						<input id="delayInputTextId" style="width: 50px; font-size: large; color: darkred;"
+						<input id="delayInputTextId" disabled style="width: 50px; font-size: large; color: darkred;"
 							title="현재 정보 획득 지연 시간(1000 은 1 초)" type="text"> 밀리초 <span id="subscriptId"
 							style="display: none">下标</span>
 
-
 					</div>
 
-					<hr />
-					<button id="clearChatarea" class="btn btn-danger"
-						onclick="$('#chat_area').empty();document.getElementById('nowIndex').value=1;">채팅내용비우기</button>
-					<button id="closePlayer" class="btn btn-danger" onclick="$('#afreecatv_player').remove()"
-						title="생방송 모듈 을 제거 하고 문자 채 팅 기능 만 사용 하여 데이터 절약"> 데이터 절약 모드(test)</button>
+
 
 				</div>
 				<div class="tab-pane" id="easyDiv">
@@ -4621,18 +3645,18 @@ allRepeatTimes= document.getElementById('inputTimes').value,frequency=document.g
 					<input id="testInput1" placeholder="" type="text" />
 
 					<button class="btn btn-danger" onclick="testInputValue= document.getElementById('testInput1').value,
-             setTimeout(function(){
-                document.getElementById('write_area').innerHTML=testInputValue+'';
-                document.getElementById('btn_send').click();
+                 setTimeout(function(){
+                  document.getElementById('write_area').innerHTML=testInputValue+'';
+                  document.getElementById('btn_send').click();
                                    // 순환 속도 1 초 당,수 동 설정 가능,1000 은 1 초.2000 은2  초
-                               },150),
-                               document.getElementById('testInput1').value='' " type="button">보내다</button>
+                                 },150),
+                                 document.getElementById('testInput1').value='' " type="button">보내다</button>
 					<!--f5 리 셋 을 종료 할 수 없습니다-->
 					<!--
                                     <iframe id="testIframe" style="overflow:scroll" src="https://www.afreecatv.com/">
 
                                     </iframe>
-                                -->
+                                  -->
 
 
 				</div>
@@ -4641,21 +3665,21 @@ allRepeatTimes= document.getElementById('inputTimes').value,frequency=document.g
 
 					<button onclick="
 
-                             $.ajax({
-                                'url':'https://play.afreecatv.com/smmms2002/235531534',
-                                'type':'get',
-                                'success':function(result,statis){
+                                 $.ajax({
+                                  'url':'https://play.afreecatv.com/smmms2002/235531534',
+                                  'type':'get',
+                                  'success':function(result,statis){
                                     console.log(result);
                                     console.log(statis);
-                                },
-                                'error':function(error,errorMessage){
+                                  },
+                                  'error':function(error,errorMessage){
                                     console.log(error);
                                     console.log(errorMessage);
-                                }
+                                  }
 
 
-                            });
-                            ">ajax
+                                });
+                                ">ajax
 					</button>
 					<a href="javascript;" onclick="
 
@@ -4666,7 +3690,7 @@ allRepeatTimes= document.getElementById('inputTimes').value,frequency=document.g
 
                                          setTimeout(function () {
 
-                                            document.getElementsByClassName('btn_login')[0].click();
+                                          document.getElementsByClassName('btn_login')[0].click();
                                         },1000);
                                         ">login</a>
 					login: <a href="javascript;"
@@ -4698,27 +3722,27 @@ allRepeatTimes= document.getElementById('inputTimes').value,frequency=document.g
 
 					<!-- 开始计时器 -->
 					<button onclick="
-                            var i=1;
-                            var timeFrequencys= document.getElementById('timeFrequencys').value;
+                              var i=1;
+                              var timeFrequencys= document.getElementById('timeFrequencys').value;
                                           //var timeFrequencys= document.getElementById('inputFrequency').value;
 
                                           if('undefined'!=typeof timeFrequencys1){
                                             clearInterval(timeFrequencys1) ;
-                                        }
+                                          }
 
-                                        timeFrequencys1=setInterval(function() {
+                                          timeFrequencys1=setInterval(function() {
 
                                             document.getElementById('timeFrequencys').value=i;
                                              // document.getElementById('inputFrequency').value=i;
 
                                              if (i==timeFrequencys){
-                                                i=0;
-                                                document.getElementById('getTimeButton').click();
+                                              i=0;
+                                              document.getElementById('getTimeButton').click();
 
                                             }
                                             i++;
-                                        },1000);
-                                        " title="开始">开始</button>
+                                          },1000);
+                                          " title="开始">开始</button>
 					<button onclick="test111()">onclick</button>
 					<hr />
 				</div>
