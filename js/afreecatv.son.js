@@ -4,11 +4,6 @@ function getDomById(idDom) {
 }
 //自动启动
 function testStart() {
-	function getDomById(dom) {
-		dom = document.getElementById(dom);
-		return dom;
-	}
-
 	function startButtonId() {
 		//启动动画效果
 		var src = document.getElementsByClassName('bj_thumbnail').item(0).children[0].children[0].getAttribute('src');
