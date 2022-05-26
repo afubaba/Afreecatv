@@ -668,6 +668,20 @@ function environmentFunction() {
 	//停止监听
 	//mutationObserver.disconnect(); 
 	
+	// $(".auto_quality,.low_quality").parent("li").css("display","block");
+	$(".auto_quality,.low_quality").parent("li").css("display","block");
+	let targetNode1 = $('.low_quality').parent("li")[0]
+	let targetNodechange1 = {
+		attributes: true
+	};
+	
+	function callback(mutationsList, observer) {
+		//目标元素发生变化时执行的代码
+		$(".auto_quality,.low_quality").parent("li").css("display","block");
+	}
+	var mutationObserver1 = new MutationObserver(callback);
+	mutationObserver1.observe(targetNode1, targetNodechange1);
+	
 	// $("#basicConfiguration").append($("#write_area").clone(true));
 	//google表情特效
 	getDom('mainFace').style =
