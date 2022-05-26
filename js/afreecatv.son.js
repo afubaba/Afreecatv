@@ -590,11 +590,11 @@ function environmentFunction() {
 	// getDom('retrievalButtonId').click();
 	//优化界面
 	//背景透明
-	var allTags = document.getElementsByTagName('div');
-	for (var i = 0; i < allTags.length; i++) {
-		allTags[i].style.background = 'none';
+	// var allTags = document.getElementsByTagName('div');
+	// for (var i = 0; i < allTags.length; i++) {
+	// 	allTags[i].style.background = 'none';
 
-	}
+	// }
 
 	//背景图地址
 	var src = document.getElementsByClassName('bj_thumbnail').item(0).children[0].children[0].getAttribute('src');
