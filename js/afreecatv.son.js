@@ -485,17 +485,19 @@ function changeLanguagesFunction() {
 	// korean ={'text':'内容'}
 
 }
+function getDom(dom) {
+	dom = document.getElementById(dom);
+	return dom;
+}
 
 function mainFaceFunction() {
-	function getDom(dom) {
-		dom = document.getElementById(dom);
-		return dom;
-	}
 	var mainFace = document.getElementById('mainFace');
 	var mainFacebookFace = document.getElementById('mainFacebookFace');
 	//获取输入框焦点
-	$('#testInput').focus();
-	if (mainFace.style.display == 'none') {
+	// $('#write_area').focus();
+	// console.log($('#emoticonArea').);
+	let isShowMainFace = document.querySelector('#emoticonArea');
+	if (isShowMainFace.className == 'on') {
 		// mainFace.style.display='block';
 		// mainFacebookFace.style.display='block';
 		$('#mainFace').show(1000);
@@ -628,16 +630,40 @@ function environmentFunction() {
 
 	getDom('myDiv').style = 'margin:0;padding:0;height:80%;width:' + chat_area_width +
 		'px;word-break: break-word;overflow:scroll;position:fixed;visibility:visible;margin-top:-15%;';
-
-	//表情特效
+//监听表情显示事件
+	// getDom('emoticonArea').onchange=function(){
+	// 	console.log('变化了');
+	// }
+	//表情按钮事件
+	// getDom('btn_emo').onclick = function() {
+	// 	mainFaceFunction();
+	// }
+	
+	//监听元素
+	let targetNode = $('#emoticonArea')[0]
+	let targetNodechange = {
+		attributes: true
+	};
+	
+	function callback(mutationsList, observer) {
+		//目标元素发生变化时执行的代码
+		mainFaceFunction();
+	}
+	var mutationObserver = new MutationObserver(callback);
+	mutationObserver.observe(targetNode, targetNodechange);
+	//停止监听
+	//mutationObserver.disconnect(); 
+	
+	// $("#basicConfiguration").append($("#write_area").clone(true));
+	//google表情特效
 	getDom('mainFace').style =
-		'overflow:scroll;width: 300px;height:70%;margin-left:-50%;margin-top:-25%; position: fixed;display:none;word-break:break-word';
-
-
+		'overflow:scroll;width: 300px;height:70%;margin-left:-65%;margin-top:-25%; position: fixed;display:none;word-break:break-word';
+	
 	//facesbook表情
-
+	
 	getDom('mainFacebookFace').style =
-		'overflow:scroll;width: 300px;height:70%;margin-left:-25%;margin-top:-25%; position: fixed;display:none;word-break:break-word';
+		'overflow:scroll;width: 300px;height:70%;margin-left:-40%;margin-top:-25%; position: fixed;display:none;word-break:break-word';
+	var mainFace = document.getElementById('mainFace');
 
 
 	var mainFace = document.getElementById('mainFace')
