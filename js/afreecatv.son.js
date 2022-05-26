@@ -532,6 +532,20 @@ function stopFunction() {
 	alert('stop ok');
 	console.log('stop ok');
 }
+
+//聚焦函数
+function setContentEditableSelection(idDom) {
+	var el = getDomById(idDom);
+	var selection = window.getSelection();
+	var range = document.createRange();
+	selection.removeAllRanges();
+	range.selectNodeContents(el);
+	range.collapse(false);
+	selection.addRange(range);
+	el.focus();
+}
+
+
 //环境部署
 function environmentFunction() {
 
@@ -664,8 +678,6 @@ function environmentFunction() {
 	getDom('mainFacebookFace').style =
 		'overflow:scroll;width: 300px;height:70%;margin-left:-40%;margin-top:-25%; position: fixed;display:none;word-break:break-word';
 	var mainFace = document.getElementById('mainFace');
-
-
 	var mainFace = document.getElementById('mainFace')
 	var mainFaceChildrens = mainFace.children;
 	for (var i = 0; i < mainFaceChildrens.length; i++) {
@@ -678,6 +690,7 @@ function environmentFunction() {
 					this.style.backgroundColor = 'white';
 					this.setAttribute('title', this.textContent)
 					getDom('testInput').value += this.textContent;
+					setContentEditableSelection("testInput");
 				}
 				mainFaceGrandSons[j].onmouseover = function() {
 					this.style.backgroundColor = 'red';
@@ -721,6 +734,7 @@ function environmentFunction() {
 							this.style.backgroundColor = 'white';
 							this.setAttribute('title', this.textContent)
 							getDomById('testInput').value += this.textContent;
+							setContentEditableSelection("testInput");
 
 						}
 
@@ -746,53 +760,7 @@ function environmentFunction() {
 	mainFacebookFace();
 
 
-	//Languages语言
-
-	// getDom('changeLanguageSelect').value = 'ko';
-
-	// languages = {
-	// 	'zh': {
-	// 		'text': '内容',
-	// 		'times': '次数',
-	// 		'frequency': '间隔时间',
-	// 		'handTime': '现在时间',
-	// 		'send': '寄出',
-	// 		'environment': '기본설정',
-	// 		'stop': '停止',
-	// 		'retrievalMessage': '检索信息',
-	// 		'subscriptId': '下标',
-	// 		'zh_CN': '中文',
-	// 		'ko_KR': '韩语',
-	// 		'auto_time': '自动报时'
-	// 	},
-	// 	'ko': {
-	// 		'text': '내용',
-	// 		'times': '횟수',
-	// 		'frequency': '간격시간(s)',
-	// 		'handTime': '현재시간',
-	// 		'send': '보내다',
-	// 		'environment': '기본설정',
-	// 		'stop': '멈추다',
-	// 		'retrievalMessage': '메시지검색',
-	// 		'subscriptId': '포인터',
-	// 		'zh_CN': '중국어',
-	// 		'ko_KR': '한국어',
-	// 		'auto_time': '자동보고시간'
-	// 	}
-	// }
-
-	// // getDom('textId').innerHTML = languages.ko.text;
-	// getDom('timesId').innerHTML = languages.ko.times;
-	// getDom('frequencyId').innerHTML = languages.ko.frequency;
-	// getDom('handTimeId').innerHTML = languages.ko.handTime;
-	// getDom('sendId').innerHTML = languages.ko.send;
-	// getDom('environmentSpanId').innerHTML = languages.ko.environment;
-	// getDom('stopButtonId').innerHTML = languages.ko.stop;
-	// getDom('retrievalButtonId').innerHTML = languages.ko.retrievalMessage;
-	// // getDom('subscriptId').innerHTML=languages.ko.subscriptId;
-	// getDom('langChinese').innerHTML = languages.ko.zh_CN;
-	// getDom('langKorean').innerHTML = languages.ko.ko_KR;
-	// getDom('autoTimeId').innerHTML = languages.ko.auto_time;
+	
 
 	//切换时间
 	getDom('autoTimeId').click();
