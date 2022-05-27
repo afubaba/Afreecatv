@@ -675,11 +675,11 @@ function environmentFunction() {
 		attributes: true
 	};
 	
-	function callback(mutationsList, observer) {
+	function callback1(mutationsList, observer) {
 		//目标元素发生变化时执行的代码
 		$(".auto_quality,.low_quality").parent("li").css("display","block");
 	}
-	var mutationObserver1 = new MutationObserver(callback);
+	var mutationObserver1 = new MutationObserver(callback1);
 	mutationObserver1.observe(targetNode1, targetNodechange1);
 	
 	// $("#basicConfiguration").append($("#write_area").clone(true));
