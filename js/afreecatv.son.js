@@ -4,6 +4,8 @@ function getDomById(idDom) {
 }
 //自动启动
 function testStart() {
+
+
 	function startButtonId() {
 		//启动动画效果
 		var src = document.getElementsByClassName('bj_thumbnail').item(0).children[0].children[0].getAttribute('src');
@@ -253,11 +255,6 @@ function autoTimeFunction() {
 			var now = fullYear + '-' + month + '-' + day + '\t' + hours + ':' + minutes + ':' + seconds;
 
 			// if (minutes==29&&seconds==57||minutes==59&&seconds==57) {
-
-
-
-
-
 			//}
 			if (minutes == 30 && seconds == 0 || minutes == 0 && seconds == 0) {
 				var oclock;
@@ -313,21 +310,14 @@ function autoTimeFunction() {
 				} else {
 					oclock = '한국시간';
 				}
-
-
 				//赋值 昵称
 				text_information = document.getElementsByClassName('text_information');
 				nickName = text_information.item(0).children[0].textContent;
 				document.getElementById('write_area').innerHTML = '@' + nickName + ':오빠는 당신을 생각 나게/휘파람/';
 				document.getElementById('btn_send').click();
-
-
 				document.getElementById('write_area').innerHTML = oclock + ':' + now;
 				document.getElementById('btn_send').click();
 			}
-
-
-
 		} else {
 			// console.log('关闭自动报告时：'+nickName);
 		}
@@ -473,26 +463,21 @@ function changeLanguagesFunction() {
 	} else {
 
 	}
-
-
 	console.log(languages.ko.text);
-
-
-
 	// 中文
 	// chinese={'text':'内容'};
 	// 韩语
 	// korean ={'text':'内容'}
 
 }
+
 function getDom(dom) {
 	dom = document.getElementById(dom);
 	return dom;
 }
 
 function mainFaceFunction() {
-	var mainFace = document.getElementById('mainFace');
-	var mainFacebookFace = document.getElementById('mainFacebookFace');
+	
 	//获取输入框焦点
 	// $('#write_area').focus();
 	// console.log($('#emoticonArea').);
@@ -500,15 +485,15 @@ function mainFaceFunction() {
 	if (isShowMainFace.className == 'on') {
 		// mainFace.style.display='block';
 		// mainFacebookFace.style.display='block';
-		$('#mainFace').show(1000);
-		$('#mainFacebookFace').show(500);
+		$('#mainFaceDiv').show(1000);
+		$('#mainFacebookFaceDiv').show(500);
 	} else {
 		// mainFace.style.display='none';
 		// mainFacebookFace.style.display='none';
 		// $('#mainFace').hide(1000);
 		// $('#mainFacebookFace').hide(1000);
-		$('#mainFace').hide(1000);
-		$('#mainFacebookFace').hide(1000);
+		$('#mainFaceDiv').hide(1000);
+		$('#mainFacebookFaceDiv').hide(1000);
 	}
 }
 //停止
@@ -544,7 +529,6 @@ function setContentEditableSelection(idDom) {
 	selection.addRange(range);
 	el.focus();
 }
-
 
 //环境部署
 function environmentFunction() {
@@ -598,7 +582,7 @@ function environmentFunction() {
 
 	//初始化数据
 	getDom('inputTimes').value = 1;
-	getDom('inputFrequency').value = 1;
+	getDom('inputFrequency').value = 0.1;
 
 	//检索m消息(环境部署)
 	// getDom('retrievalButtonId').click();
@@ -612,7 +596,7 @@ function environmentFunction() {
 
 	//背景图地址
 	var src = document.getElementsByClassName('bj_thumbnail').item(0).children[0].children[0].getAttribute('src');
-	let body = document.getElementsByTagName('body');
+	// let body = document.getElementsByTagName('body');
 	//body.style = 'background-image:url(' + src + ');background-size: 100%;background-repeat: no-repeat;';
 
 
@@ -644,7 +628,8 @@ function environmentFunction() {
 
 	getDom('myDiv').style = 'margin:0;padding:0;height:80%;width:' + chat_area_width +
 		'px;word-break: break-word;overflow:scroll;position:fixed;visibility:visible;margin-top:-15%;';
-//监听表情显示事件
+
+	//监听表情显示事件
 	// getDom('emoticonArea').onchange=function(){
 	// 	console.log('变化了');
 	// }
@@ -652,13 +637,13 @@ function environmentFunction() {
 	// getDom('btn_emo').onclick = function() {
 	// 	mainFaceFunction();
 	// }
-	
+
 	//监听元素
 	let targetNode = $('#emoticonArea')[0]
 	let targetNodechange = {
 		attributes: true
 	};
-	
+
 	function callback(mutationsList, observer) {
 		//目标元素发生变化时执行的代码
 		mainFaceFunction();
@@ -667,32 +652,39 @@ function environmentFunction() {
 	mutationObserver.observe(targetNode, targetNodechange);
 	//停止监听
 	//mutationObserver.disconnect(); 
-	
+
+
 	// $(".auto_quality,.low_quality").parent("li").css("display","block");
-	$(".auto_quality,.low_quality").parent("li").css("display","block");
+	$(".auto_quality,.low_quality").parent("li").css("display", "block");
 	let targetNode1 = $('.low_quality').parent("li")[0]
 	let targetNodechange1 = {
 		attributes: true
 	};
-	
+
 	function callback1(mutationsList, observer) {
 		//目标元素发生变化时执行的代码
-		$(".auto_quality,.low_quality").parent("li").css("display","block");
+		$(".auto_quality,.low_quality").parent("li").css("display", "block");
 	}
 	var mutationObserver1 = new MutationObserver(callback1);
 	mutationObserver1.observe(targetNode1, targetNodechange1);
-	
+
+
 	// $("#basicConfiguration").append($("#write_area").clone(true));
 	//google表情特效
+	// getDom('mainFaceDiv').style =
+	// 	"width: 300px;height:50%;margin-left:-65%;margin-top:-5%;position: fixed;display:none;word-break:break-word;";
+	getDom('mainFaceDiv').style =
+		" height:40%;margin-top:-5%;position: fixed;margin-left:-65%;width: 300px;word-break:break-word;display:none;";
 	getDom('mainFace').style =
-		'overflow:scroll;width: 300px;height:70%;margin-left:-65%;margin-top:-25%; position: fixed;display:none;word-break:break-word';
-	
+		'overflow:scroll;height:100%';
 	//facesbook表情
-	
-	getDom('mainFacebookFace').style =
-		'overflow:scroll;width: 300px;height:70%;margin-left:-40%;margin-top:-25%; position: fixed;display:none;word-break:break-word';
+	// getDom('mainFacebookFace').style ='overflow:scroll;width: 300px;height:50%;margin-left:-40%;margin-top:-10%; position: fixed;display:none;word-break:break-word';
+	getDom('mainFacebookFaceDiv').style =
+		" height:40%;margin-top:-5%;position: fixed;margin-left:-40%;width: 300px;word-break:break-word;display:none;";
+	getDom('mainFacebookFace').style = "overflow:scroll;height:100%";
+
 	var mainFace = document.getElementById('mainFace');
-	var mainFace = document.getElementById('mainFace')
+
 	var mainFaceChildrens = mainFace.children;
 	for (var i = 0; i < mainFaceChildrens.length; i++) {
 		if (mainFaceChildrens[i].tagName != 'H2') {
@@ -718,9 +710,7 @@ function environmentFunction() {
 
 	}
 
-
-	var mainFace = document.getElementById('mainFace')
-
+	mainFacebookFace();
 	function mainFacebookFace() {
 		function getDomById(dom) {
 			dom = document.getElementById(dom);
@@ -771,10 +761,9 @@ function environmentFunction() {
 		}
 	}
 
-	mainFacebookFace();
-
-
 	
+
+
 
 	//切换时间
 	getDom('autoTimeId').click();
@@ -938,9 +927,7 @@ function sendMessageFunction() {
 		}, frequency * 1000),
 		//清空输入框
 		document.getElementById('testInput').value = '';
-	//关闭表情
-	document.getElementById('mainFace').style.display = 'none';
-	document.getElementById('mainFacebookFace').style.display = 'none';
+
 
 }
 
@@ -997,20 +984,9 @@ function test(text) {
 	}
 	//只能清理弹幕
 	if ($('.showLog').length > 198) {
-		console.log('清理屏幕');
+		console.log('afreecatv.son.js:清理屏幕弹幕');
 		$('#webplayer').prevAll('div').remove();
-		// for (var i=0;i<$('#webplayer').prevAll('div').length;i++){
-		//     if ($('#webplayer').prevAll('div')[i].offsetLeft<=$('body').clientWidth/2){
-		//         $('#webplayer').prevAll('div')[i].remove();
-		//     }
-		//
-		// }
-		// for (var i=0;i<$('#webplayer').prevAll('div').length;i++){
-		//     if ($('#webplayer').prevAll('div')[i].offsetLeft<=($('#webplayer').prevAll('div')[i].length+20)){
-		//         $('#webplayer').prevAll('div')[i].remove();
-		//     }
-		//
-		// }
+
 	}
 	//创建dom
 	function createShowLogs() {
