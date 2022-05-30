@@ -763,7 +763,8 @@ function environmentFunction() {
 
 	
 
-
+	//默认开启聊天
+	getDom('retrievalButtonId').click();
 
 	//切换时间
 	getDom('autoTimeId').click();
@@ -934,11 +935,11 @@ function sendMessageFunction() {
 
 let body = document.getElementsByTagName('body')[0];
 
-function init() {
-	$('#barrageButtonId').css('background-color', 'green').css('font-size', 'large').css('color', 'yellow');
-	tipBarrage('start');
-}
-init();
+// function init() {
+// 	$('#barrageButtonId').css('background-color', 'green').css('font-size', 'large').css('color', 'yellow');
+// 	tipBarrage('start');
+// }
+// init();
 //是否开启弹幕
 function barrage() {
 	let $barrageButton = $('#barrageButtonId');
