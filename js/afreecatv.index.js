@@ -9,7 +9,7 @@ $('*').css('background', 'none');
 $('body').css('background','url('+backUrl+')').css('background-size','100%').css('height','100%').css('width','100%');
 //$('body').css('background-image','url('+backUrl+')');
 //子页面地址
-var sonWindowUrl = "https://afubaba.github.io/Afreecatv/afreecatv.son.html";
+var sonWindowUrl = "https://afubaba.github.io/Afreecatv/ajax.afreecatv.son.html";
 
 function getDomById(idDom) {
 	idDom = document.getElementById(idDom);
