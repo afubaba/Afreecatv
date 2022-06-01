@@ -1252,8 +1252,8 @@ function retrievalButtonFunction() {
 	//自动提速2自动初始化
 	var upperLimit = getDom('upperLimit');
 	if (upperLimit.value == '') {
-		upperLimit.value == '1';
-		getDom('upperLimit').value = '1';
+		upperLimit.value == '0.001';
+		getDom('upperLimit').value = '0.001';
 	}
 	console.log('重启或其开启了messageInterval');
 
