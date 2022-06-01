@@ -964,8 +964,8 @@ function getRandomColor() {
 	return cr;
 }
 
-
-// test('111111111');
+//全局字体颜色
+var commonFontColor;
 function test(text) {
 	let isBarrage = $('#barrageButtonId').attr('data-isBarrage');
 	//弹幕数组
@@ -1037,7 +1037,7 @@ function test(text) {
 			let showLogDivDom = document.createElement('div');
 
 			//showLogDivDom.style.color = $('#background_color').val()
-			showLogDivDom.style.color = getRandomColor();
+			showLogDivDom.style.color = commonFontColor;
 			showLogDivDom.id = id;
 			showLogDivDom.className = 'showLog';
 			showLogDivDom.innerHTML = text;
@@ -1429,8 +1429,9 @@ function retrievalButtonFunction() {
 				var texDom = chat_area.children[initIndex].children[0].nextElementSibling;
 				// texDom.style.border='2px black solid';
 				texDom.style.fontSize = 'large';
-				texDom.style.backgroundColor = 'white';
-				texDom.style.color = '#0000FF';
+// 				texDom.style.backgroundColor = 'white';
+				commonFontColor = getRandomColor();
+				texDom.style.color = commonFontColor;
 
 				/* 	function httpRequest(url, callback) {
 						var xhr = new XMLHttpRequest();
