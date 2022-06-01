@@ -1077,8 +1077,14 @@ function test(text) {
 				// setTimeout(function () {
 				//     $(id).hide();
 				// }, 10000);
-				if (i > -$(id).width())
+				if (i > -$(id).width()) {
+
 					showLogSetTimeout(id);
+				} else {
+					
+					$(id).remove();
+					
+				}
 				//删除已经显示的
 				// deleteShowLog(id);
 			}, showLogDelay);
@@ -1161,8 +1167,9 @@ function tipBarrage(textContent) {
 			//10秒后自动隐藏
 
 			if (i < -$('body').width()) {
-				clearTimeout(tipBarrageTimeout);
 				$('#' + id).remove();
+				clearTimeout(tipBarrageTimeout);
+				
 			} else {
 				tipBarrageTimeoutFunction(id);
 			}
