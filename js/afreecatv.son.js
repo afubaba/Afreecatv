@@ -360,7 +360,7 @@ function changeBackFunction() {
 		// getDom('btn_send').style='visibility:visible';
 		var src = document.getElementsByClassName('bj_thumbnail').item(0).children[0].children[0].getAttribute('src');
 
-		body.style = 'background-image:url(' + src + ');background-size: 100%;background-repeat: no-repeat;';
+		document.body.style = 'background-image:url(' + src + ');background-size: 100%;background-repeat: no-repeat;';
 
 		$('#chat_area').css('background-image', 'url(' + src + ')').css('background-repeat', 'no-repeat').css(
 			'background-size', '100%');
@@ -596,9 +596,7 @@ function environmentFunction() {
 
 	//背景图地址
 	var src = document.getElementsByClassName('bj_thumbnail').item(0).children[0].children[0].getAttribute('src');
-	// let body = document.getElementsByTagName('body');
-	//body.style = 'background-image:url(' + src + ');background-size: 100%;background-repeat: no-repeat;';
-
+	
 
 	// var chat_area_width=getDom('chat_area').clentWidth;
 	var chat_area_width = $('#chat_area').width();
@@ -932,9 +930,6 @@ function sendMessageFunction() {
 
 }
 
-
-let body = document.getElementsByTagName('body')[0];
-
 // function init() {
 // 	$('#barrageButtonId').css('background-color', 'green').css('font-size', 'large').css('color', 'yellow');
 // 	tipBarrage('start');
@@ -1042,7 +1037,7 @@ function test(text) {
 			showLogDivDom.className = 'showLog';
 			showLogDivDom.innerHTML = text;
 			// showLogDivDom.style.backgroundColor='white';
-			body.insertBefore(showLogDivDom, webplayer);
+			document.body.insertBefore(showLogDivDom, webplayer);
 		}
 
 	}
