@@ -1708,7 +1708,7 @@ function retrievalButtonFunction() {
 					}
 					//发送按钮语言
 
-					if (tex == '!보내다' || tex == '!send' || tex == '!发送') {
+					if (tex == '!보내다' || tex == '!send' || tex == '!发送'||tex == '!보내기') {
 
 						$('#write_area').html($('#showMessage').html());
 						getDom('btn_send').click();
