@@ -1257,7 +1257,7 @@ function retrievalButtonFunction() {
 		upperLimit.value == '0.001';
 		getDom('upperLimit').value = '0.001';
 	}
-	console.log('重启或其开启了messageInterval');
+// 	console.log('重启或其开启了messageInterval');
 
 
 	//显示
