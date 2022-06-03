@@ -1531,7 +1531,7 @@ function retrievalButtonFunction() {
 				//打开关闭机器人聊天功能
 				var robotChatcheckboxId = document.getElementById("robotChatcheckboxId");
 
-				if (robotChatcheckboxId.checked) {
+				if (robotChatcheckboxId.checked && tex.includes("!")) {
 					//终止(停止)命令!멈추다(任何人)
 					if (tex == '!stop' || tex == '!멈추다') {
 						//终止消息提示
