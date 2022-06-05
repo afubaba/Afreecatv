@@ -31,6 +31,17 @@ ajax.frame.all.html 온라인 방식 로드(console콘솔 입력，투명한 홈
                    console.log(errorMessage);
                }
            });
+       4.fetch("https://afubaba.github.io/Afreecatv/ajax.frame.all.html").then((response) => {
+	       if (response.ok) {
+		       response.text().then(function(resolve) {
+			 $("#broadlist_area").html(resolve);
+              })
+	}
+
+       }, (error) => {
+              console.log(error);
+       });
+
 
 ------------------------------------------------------------------------------------------------------------------------
 
