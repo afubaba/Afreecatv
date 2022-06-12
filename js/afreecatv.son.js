@@ -794,7 +794,14 @@ function environmentFunction() {
 	getDom('testInput').onblur = function() {
 		getDom('write_area').innerHTML = getDom('testInput').value;
 	}
-
+	//enter确认键绑定
+	getDom("testInput").onkeydown = function(event) {
+		var e = event || window.event;
+		if (e && e.keyCode == 13) {
+			//处理按回车键后的逻辑
+			sendMessageFunction();
+		}
+	}
 
 	//初始化字体
 	getDom('environmentButtonId').style = 'font-size:large;color:red';
@@ -826,108 +833,111 @@ function stopRetrievalMessageFunction() {
 }
 
 function sendMessageFunction() {
-	testInputValue = document.getElementById('testInput').value, repeatTimes = 1,
-		allRepeatTimes = document.getElementById('inputTimes').value, frequency = document.getElementById(
-			'inputFrequency').value;
+	testInputValue = document.getElementById('testInput').value;
+
+	allRepeatTimes = document.getElementById('inputTimes').value;
+	frequency = document.getElementById('inputFrequency').value;
 	//判断当前发送消息是否重复
 	if ('undefined' != typeof thisInterval) {
 		clearInterval(thisInterval);
 	}
-
+	/*更正系统*/
+	if (allRepeatTimes == '' || frequency == '') {
+		document.getElementById('inputTimes').value = 1;
+		document.getElementById('inputFrequency').value = 1;
+		allRepeatTimes = 1;
+		frequency = 1;
+	}
+	repeatTimes = 1;
+	let str = sendMessageSonFunction(repeatTimes);
+	sendNowFunction(str);
 	thisInterval = setInterval(function() {
-			/*更正系统*/
-			if (allRepeatTimes == '' || frequency == '') {
-				document.getElementById('inputTimes').value = 1;
-				document.getElementById('inputFrequency').value = 1;
-				allRepeatTimes = 1;
-				frequency = 1;
-			}
-
-			//排除一次
-			let timesPrompt = document.getElementsByName('timesPrompt');
-			let isTimePromptChecked = timesPrompt[0].checked;
-
-			if (allRepeatTimes > 1 && isTimePromptChecked == true) {
-
-				allTime = allRepeatTimes * frequency;
-				//拼接单位和时间
-				if (allTime < 60) {
-					allTime = allTime + 'ₛ';
-				} else if (allTime / 60 < 60) {
-					allTime = allTime / 60 + 'ₘ';
-				} else {
-					allTime = allTime / 60 / 60 + 'ₕ';
-				}
-
-				//频率
-				var frequencys = '-';
-				//次数单位
-				//var times='ₜₗ';
-				var times = '';
-
-				if (frequency < 60) {
-					frequencys = times + frequency + 'ₛ';
-
-				} else if (frequency / 60 < 60) {
-					frequencys = times + frequency / 60 + 'ₘ';
-				} else {
-					frequencys = times + frequency / 60 / 60 + 'ₕ';
-				}
-
-				//拼接次数、次数频率、单次时间，总共时间₌
-				//allTime='₍' +allRepeatTimes+'ₗ'+repeatTimes+'ₓ'+frequencys+'|'+allTime+'₎';
-
-				allTime = '₍' + allRepeatTimes + 'ₗ' + repeatTimes + ',' + frequencys + '₎';
-				allTime = allTime.replaceAll('0', '₀').replaceAll('1', '₁')
-					.replaceAll('2', '₂').replaceAll('3', '₃').replaceAll('4', '₄')
-					.replaceAll('5', '₅').replaceAll('6', '₆').replaceAll('7', '₇')
-					.replaceAll('8', '₈').replaceAll('9', '₉').replaceAll(' ', '');
-			} else {
-				allTime = '';
-			}
-			//拼接次数、次数频率
-			//allTime ='₍' + allRepeatTimes + 'ₗ' + repeatTimes + ',' + frequencys+ '₎';
-
-			//拼接次数
-			//allTime=allRepeatTimes+'ₗ'+repeatTimes;
-
-
-			/*testInputValue입력 값 을 표시 합 니 다.뒤쪽 은 작은 괄호 안의 내용 입 니 다.+뒤의 코드 를 삭제 하면 괄호 와 괄호 안의 내용 을 포함 하지 않 습 니 다,쓰다 document.getElementById('write_area').innerHTML = testInputValue; 이 코드 바 꾸 기*/
-
-
-			//document.getElementById('write_area').innerHTML = testInputValue +  allTime;
-			//隐形墨水/菊花文字
-			//输入内容
-			var str = testInputValue + allTime;
-			//开关是否打开
-			var chrysanthemumCheckBox = document.getElementById('chrysanthemumCheckBox').checked;
-			//字符串转化
-			if (chrysanthemumCheckBox) {
-				var midValue = ''
-				var addValue = '҉';
-				for (var i = 0; i < str.length; i++) {
-					midValue = midValue + addValue + str[i];
-				}
-				str = midValue + addValue;
-				// console.log(midValue);
-				// console.log(chrysanthemumCheckBox);
-
-			}
-			document.getElementById('write_area').innerHTML = str;
+			// document.getElementById('write_area').innerHTML = str;
 			//<!--js模拟点击事件/아 날로 그 클릭 이벤트-->
-			document.getElementById('btn_send').click();
+			// document.getElementById('btn_send').click();
 			repeatTimes++;
 			// <!--반복 횟수, 수 동 설정 가능,3 은 3 번 을 나타 낸다-->
 			if (repeatTimes > allRepeatTimes) {
 				clearInterval(thisInterval);
+				return;
 			}
+			str = sendMessageSonFunction(repeatTimes);
+			sendNowFunction(str);
 			//순환 속도 1 초 당,수 동 설정 가능,1000 은 1 초.2000 은2 초
 
 		}, frequency * 1000),
 		//清空输入框
 		document.getElementById('testInput').value = '';
+}
 
 
+//立即发送
+function sendNowFunction(str) {
+	document.getElementById('write_area').innerHTML = str;
+	//<!--js模拟点击事件/아 날로 그 클릭 이벤트-->
+	document.getElementById('btn_send').click();
+}
+
+
+function sendMessageSonFunction(repeatTimes) {
+	//排除一次
+	let timesPrompt = document.getElementsByName('timesPrompt');
+	let isTimePromptChecked = timesPrompt[0].checked;
+	//频率
+	var frequencys = '-';
+	//次数单位
+	//var times='ₜₗ';
+	var times = '';
+
+	if (allRepeatTimes > 1 && isTimePromptChecked == true) {
+		allTime = allRepeatTimes * frequency;
+		//拼接单位和时间
+		if (allTime < 60) {
+			allTime = allTime + 'ₛ';
+		} else if (allTime / 60 < 60) {
+			allTime = allTime / 60 + 'ₘ';
+		} else {
+			allTime = allTime / 60 / 60 + 'ₕ';
+		}
+
+		if (frequency < 60) {
+			frequencys = times + frequency + 'ₛ';
+
+		} else if (frequency / 60 < 60) {
+			frequencys = times + frequency / 60 + 'ₘ';
+		} else {
+			frequencys = times + frequency / 60 / 60 + 'ₕ';
+		}
+		//拼接次数、次数频率、单次时间，总共时间₌
+		//allTime='₍' +allRepeatTimes+'ₗ'+repeatTimes+'ₓ'+frequencys+'|'+allTime+'₎';
+
+		allTime = '₍' + allRepeatTimes + 'ₗ' + repeatTimes + ',' + frequencys + '₎';
+
+		allTime = allTime.replaceAll('0', '₀').replaceAll('1', '₁')
+			.replaceAll('2', '₂').replaceAll('3', '₃').replaceAll('4', '₄')
+			.replaceAll('5', '₅').replaceAll('6', '₆').replaceAll('7', '₇')
+			.replaceAll('8', '₈').replaceAll('9', '₉').replaceAll(' ', '');
+	} else {
+		allTime = '';
+	}
+
+	var str = testInputValue + allTime;
+	//开关是否打开
+	var chrysanthemumCheckBox = document.getElementById('chrysanthemumCheckBox').checked;
+	//字符串转化
+	if (chrysanthemumCheckBox) {
+		var midValue = ''
+		var addValue = '҉';
+		for (var i = 0; i < str.length; i++) {
+			midValue = midValue + addValue + str[i];
+		}
+		str = midValue + addValue;
+		// console.log(midValue);
+		// console.log(chrysanthemumCheckBox);
+
+	}
+
+	return str;
 }
 
 // function init() {
