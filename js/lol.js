@@ -279,13 +279,11 @@ $(document).ready(function(e) {
 	let supValue = setLang.getI18n("lol_support");
 
 
-	$(".selete-item>label>a").get(0).innerText = topValue;
-	$(".selete-item>label>a").get(1).innerText =
-	junValue;
-	$(".selete-item>label>a").get(2).innerText = midValue;
-	$(".selete-item>label>a").get(3)
-	.innerText = adcValue;
-	$(".selete-item>label>a").get(4).innerText = supValue;
+	$(".selete-item>label>a").get(0).innerText = "top";
+	$(".selete-item>label>a").get(1).innerText = "jungle";
+	$(".selete-item>label>a").get(2).innerText = "middle";
+	$(".selete-item>label>a").get(3).innerText = "adc";
+	$(".selete-item>label>a").get(4).innerText = "support";
 
 
 	for (i = 0; i < allHero.length; i++) {
