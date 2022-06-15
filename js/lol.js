@@ -105,44 +105,40 @@ window.addEventListener("message", (event) => {
 // setLang.dataEach()
 let replaceArray = "";
 const imgLength = $("#jSearchHeroDiv").children("li").children().children("img").length;
+var result;
 $.getJSON("locales/ko/messages.json", function(result) {
-	console.log(result.manifest_ext_name)
+	// result=result;
+	// var i = 0;
+	// setInterval(function() {
 
-	let test1 = eval("result.lol_Ahri_title.message");
-	console.log(test1);
+	// 	//英雄名称父
+	// 	let heroParent = $("#jSearchHeroDiv").children("li").children();
+	// 	//英雄名称
+	// 	let heroName = heroParent.children("p")[i];
+	// 	// console.log(heroName);
+	// 	let eachImgSrc = heroParent.children("img")[i].src;
+	// 	// console.log(eachImgSrc);
+	// 	let replaceEachSrc = eachImgSrc.replace("https://afubaba.github.io/Afreecatv/img/lol2/", "");
+	// 	replaceEachSrc = replaceEachSrc.replace(".png", "");
+	// 	//获取国际化英雄名称父辈
 
+	// 	let replaceEachTitleValue = eval("result.lol_" + replaceEachSrc + "_title.message");
+	// 	console.log(replaceEachTitleValue)
+	// 	heroParent[i].title = replaceEachTitleValue;
+	// 	// console.log("lol_" + replaceEachSrc + "_title");
+	// 	//获取国际化英雄名称
+	// 	console.log(replaceEachSrc);
+	// 	let replaceEachSrcValue = eval("result.lol_" + replaceEachSrc + ".message");
+	// 	//填入国际化名称 一键
+	// 	heroName.innerText = replaceEachSrcValue;
+	// 	console.log(replaceEachSrcValue);
+	// 	// console.log(replaceEachSrc + ":" + replaceEachSrcValue + ",title:" +
+	// 	// 	replaceEachTitleValue + ",alt:" +
+	// 	// 	replaceEachTitleValue);
+	// 	// replaceArray = replaceArray + "\"" + replaceEachSrc + "\","
+	// 	i++;
 
-	var i = 0;
-	setInterval(function() {
-
-		//英雄名称父
-		let heroParent = $("#jSearchHeroDiv").children("li").children();
-		//英雄名称
-		let heroName = heroParent.children("p")[i];
-		// console.log(heroName);
-		let eachImgSrc = heroParent.children("img")[i].src;
-		// console.log(eachImgSrc);
-		let replaceEachSrc = eachImgSrc.replace("https://afubaba.github.io/Afreecatv/img/lol2/", "");
-		replaceEachSrc = replaceEachSrc.replace(".png", "");
-		//获取国际化英雄名称父辈
-
-		let replaceEachTitleValue = eval("result.lol_" + replaceEachSrc + "_title.message");
-		console.log(replaceEachTitleValue)
-		heroParent[i].title = replaceEachTitleValue;
-		// console.log("lol_" + replaceEachSrc + "_title");
-		//获取国际化英雄名称
-		console.log(replaceEachSrc);
-		let replaceEachSrcValue = eval("result.lol_" + replaceEachSrc + ".message");
-		//填入国际化名称 一键
-		heroName.innerText = replaceEachSrcValue;
-		console.log(replaceEachSrcValue);
-		// console.log(replaceEachSrc + ":" + replaceEachSrcValue + ",title:" +
-		// 	replaceEachTitleValue + ",alt:" +
-		// 	replaceEachTitleValue);
-		// replaceArray = replaceArray + "\"" + replaceEachSrc + "\","
-		i++;
-
-	}, 500);
+	// }, 500);
 
 	for (let i = 0; i < imgLength; i++) {
 		//英雄名称父
@@ -508,8 +504,34 @@ function showChoice(allHer, GPS) {
 	//alert("idex长度："+index[0]+"allHero"+allHer[index[0]])
 
 	var no = 0;
+	console.log(result);
 	var myInterval = setInterval(function() {
-
+		//英雄名称父
+		let heroParent = $("#jSearchHeroDiv").children("li").children();
+		//英雄名称
+		let heroName = heroParent.children("p")[no];
+		// console.log(heroName);
+		let eachImgSrc = heroParent.children("img")[no].src;
+		// console.log(eachImgSrc);
+		let replaceEachSrc = eachImgSrc.replace("https://afubaba.github.io/Afreecatv/img/lol2/", "");
+		replaceEachSrc = replaceEachSrc.replace(".png", "");
+		//获取国际化英雄名称父辈
+		let replaceEachTitleValue = eval("result.lol_" + replaceEachSrc + "_title.message");
+		console.log(replaceEachTitleValue)
+		heroParent[no].title = replaceEachTitleValue;
+		// console.log("lol_" + replaceEachSrc + "_title");
+		//获取国际化英雄名称
+		console.log(replaceEachSrc);
+		let replaceEachSrcValue = eval("result.lol_" + replaceEachSrc + ".message");
+		//填入国际化名称 一键
+		heroName.innerText = replaceEachSrcValue;
+		console.log(replaceEachSrcValue);
+		// console.log(replaceEachSrc + ":" + replaceEachSrcValue + ",title:" +
+		// 	replaceEachTitleValue + ",alt:" +
+		// 	replaceEachTitleValue);
+		// replaceArray = replaceArray + "\"" + replaceEachSrc + "\","
+		
+		
 		$(".imgtextlist>li").get(index[no]).style = "border:50px yellow solid";
 		$(".imgtextlist>li").css("text-align", "center").css("float", "left")
 		//if (index[no]!=0){
