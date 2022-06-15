@@ -161,13 +161,14 @@ window.onload = function() {
 			let replaceEachSrc = eachImgSrc.replace("https://afubaba.github.io/Afreecatv/img/lol2/", "");
 			replaceEachSrc = replaceEachSrc.replace(".png", "");
 			//获取国际化英雄名称父辈
-			let replaceEachTitleValue = result.("lol_" + replaceEachSrc + "_title");
+			
+			let replaceEachTitleValue = result.eval("lol_" + replaceEachSrc + "_title");
 			// console.log(replaceEachTitleValue)
 			heroParent[i].title = replaceEachTitleValue;
 			// console.log("lol_" + replaceEachSrc + "_title");
 			//获取国际化英雄名称
 			console.log(replaceEachSrc);
-			let replaceEachSrcValue =result.("lol_" + replaceEachSrc);
+			let replaceEachSrcValue =result.eval("lol_" + replaceEachSrc);
 			//填入国际化名称 一键
 			heroName.innerText = replaceEachSrcValue;
 
