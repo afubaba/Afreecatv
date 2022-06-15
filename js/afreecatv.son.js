@@ -477,7 +477,7 @@ function getDom(dom) {
 }
 
 function mainFaceFunction() {
-	
+
 	//获取输入框焦点
 	// $('#write_area').focus();
 	// console.log($('#emoticonArea').);
@@ -596,7 +596,7 @@ function environmentFunction() {
 
 	//背景图地址
 	var src = document.getElementsByClassName('bj_thumbnail').item(0).children[0].children[0].getAttribute('src');
-	
+
 
 	// var chat_area_width=getDom('chat_area').clentWidth;
 	var chat_area_width = $('#chat_area').width();
@@ -694,7 +694,10 @@ function environmentFunction() {
 					this.style.backgroundColor = 'white';
 					this.setAttribute('title', this.textContent)
 					getDom('testInput').value += this.textContent;
-					setContentEditableSelection("testInput");
+					setTimeout(function() {
+						// setContentEditableSelection("testInput")
+						getDom('testInput').focus();
+					}, 100);
 				}
 				mainFaceGrandSons[j].onmouseover = function() {
 					this.style.backgroundColor = 'red';
@@ -709,6 +712,7 @@ function environmentFunction() {
 	}
 
 	mainFacebookFace();
+
 	function mainFacebookFace() {
 		function getDomById(dom) {
 			dom = document.getElementById(dom);
@@ -736,8 +740,10 @@ function environmentFunction() {
 							this.style.backgroundColor = 'white';
 							this.setAttribute('title', this.textContent)
 							getDomById('testInput').value += this.textContent;
-							setContentEditableSelection("testInput");
-
+							setTimeout(function() {
+								// setContentEditableSelection("testInput")
+								getDom('testInput').focus();
+							}, 100);
 						}
 
 						grateGrandson[k].onmouseover = function() {
@@ -759,7 +765,7 @@ function environmentFunction() {
 		}
 	}
 
-	
+
 
 	//默认开启聊天
 	getDom('retrievalButtonId').click();
@@ -781,13 +787,16 @@ function environmentFunction() {
 	// 同步输入内容
 	getDom('write_area').onfocus = function() {
 		getDom('testInput').value = getDom('write_area').textContent;
-		getDom('testInput').focus();
-
+		setTimeout(function() {
+			// setContentEditableSelection("testInput")
+			//Focus延迟启动
+			getDom('testInput').focus();
+		}, 100);
 	}
-	getDom('write_area').onblur = function() {
-		getDom('testInput').value = getDom('write_area').textContent;
-		getDom('testInput').focus();
-	}
+	// 	getDom('write_area').onblur = function() {
+	// 		getDom('testInput').value = getDom('write_area').textContent;
+	// 		getDom('testInput').focus();
+	// 	}
 	getDom('testInput').onfocus = function() {
 		getDom('write_area').innerHTML = getDom('testInput').value;
 	}
@@ -971,6 +980,7 @@ function getRandomColor() {
 
 //全局字体颜色
 var commonFontColor;
+
 function test(text) {
 	let isBarrage = $('#barrageButtonId').attr('data-isBarrage');
 	//弹幕数组
@@ -1086,9 +1096,9 @@ function test(text) {
 
 					showLogSetTimeout(id);
 				} else {
-					
+
 					$(id).remove();
-					
+
 				}
 				//删除已经显示的
 				// deleteShowLog(id);
@@ -1174,7 +1184,7 @@ function tipBarrage(textContent) {
 			if (i < -$('body').width()) {
 				$('#' + id).remove();
 				clearTimeout(tipBarrageTimeout);
-				
+
 			} else {
 				tipBarrageTimeoutFunction(id);
 			}
@@ -1267,7 +1277,7 @@ function retrievalButtonFunction() {
 		upperLimit.value == '0.001';
 		getDom('upperLimit').value = '0.001';
 	}
-// 	console.log('重启或其开启了messageInterval');
+	// 	console.log('重启或其开启了messageInterval');
 
 
 	//显示
@@ -1434,7 +1444,7 @@ function retrievalButtonFunction() {
 				var texDom = chat_area.children[initIndex].children[0].nextElementSibling;
 				// texDom.style.border='2px black solid';
 				texDom.style.fontSize = 'large';
-// 				texDom.style.backgroundColor = 'white';
+				// 				texDom.style.backgroundColor = 'white';
 				commonFontColor = getRandomColor();
 				texDom.style.color = commonFontColor;
 
@@ -1718,7 +1728,7 @@ function retrievalButtonFunction() {
 					}
 					//发送按钮语言
 
-					if (tex == '!보내다' || tex == '!send' || tex == '!发送'||tex == '!보내기') {
+					if (tex == '!보내다' || tex == '!send' || tex == '!发送' || tex == '!보내기') {
 
 						$('#write_area').html($('#showMessage').html());
 						getDom('btn_send').click();
