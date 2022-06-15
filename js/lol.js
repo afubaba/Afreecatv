@@ -3,6 +3,22 @@
 console.log("lol.js");
 
 var souceWindow;
+getResourcesByFench("_locales/ko/messages.json")
+
+function getResourcesByFench(url) {
+	fetch(url).then((response) => {
+		if (response.ok) {
+			response.text().then(function(resolve) {
+				console.log(resolve);
+
+			})
+		}
+
+	}, (error) => {
+		console.log(error);
+	});
+}
+
 
 window.addEventListener("message", (event) => {
 	var origin = event.origin;
@@ -14,33 +30,33 @@ window.addEventListener("message", (event) => {
 	} else {
 		const inteveal = 2500;
 		console.log(event.data);
-		if (event.data ==  "!탑"  || event.data == "!top") {
+		if (event.data == "!탑" || event.data == "!top") {
 			setTimeout(function() {
 				$(".selete-item>label>a").get(0).click();
 			}, inteveal);
 		}
-		if (event.data ==  "!정글"  || event.data == "!jungle" ||event.data == "!jun") {
+		if (event.data == "!정글" || event.data == "!jungle" || event.data == "!jun") {
 			setTimeout(function() {
 				$(".selete-item>label>a").get(1).click();
 			}, inteveal);
 		}
-		if (event.data == "!미드" || event.data == "!middle" ||event.data == "!mid") {
+		if (event.data == "!미드" || event.data == "!middle" || event.data == "!mid") {
 			setTimeout(function() {
 				$(".selete-item>label>a").get(2).click();
 			}, inteveal);
 		}
-		if (event.data ==  "!바텀" || event.data == "!adc" || event.data == "!ad") {
+		if (event.data == "!바텀" || event.data == "!adc" || event.data == "!ad") {
 			setTimeout(function() {
 				$(".selete-item>label>a").get(3).click();
 			}, inteveal);
 		}
 
-		if (event.data =="!서포터" || event.data == "!보조" || event.data == "!sup" || event.data == "!support") {
+		if (event.data == "!서포터" || event.data == "!보조" || event.data == "!sup" || event.data == "!support") {
 			setTimeout(function() {
 				$(".selete-item>label>a").get(4).click();
 			}, inteveal);
 		}
-		if (event.data =="!영웅" || event.data == "!any" || event.data == "!all") {
+		if (event.data == "!영웅" || event.data == "!any" || event.data == "!all") {
 			let randomByAll = document.querySelector("#randomByAll");
 			setTimeout(function() {
 				randomByAll.click();
@@ -456,7 +472,7 @@ function showChoice(allHer, GPS) {
 			no = 0;
 		}
 		let randomNO = rd(index.length);
-		
+
 		if (randomNO == no) {
 			clearInterval(myInterval);
 
@@ -493,7 +509,7 @@ function jj(b, heroLeng) {
 	//$("#jSearchHeroDiv>li").get(147).setAttribute("id","demo");
 	//$(window).scrollTop($('#demo').offset().top);
 	var n = rd(heroLeng);
-	
+
 	var i = 0;
 	if (b == -2) {
 		window.location.reload();
