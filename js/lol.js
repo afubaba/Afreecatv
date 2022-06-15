@@ -60,7 +60,7 @@ window.addEventListener("message", (event) => {
 			let randomByAll = document.querySelector("#randomByAll");
 			setTimeout(function() {
 				randomByAll.click();
-			}, inteveal);
+			}, 3000);
 		}
 		// event.source.postMessage('LOL的消息：', origin);
 		souceWindow = event.source;
@@ -103,12 +103,12 @@ window.addEventListener("message", (event) => {
 // }
 // const dataArray="";
 // setLang.dataEach()
-window.onload=function(){
-	
+window.onload = function() {
+
 }
 let replaceArray = "";
 $.getJSON("locales/ko/messages.json", function(result) {
-	
+
 	var i = 0;
 	let initInterval = setInterval(function() {
 		const imgLength = $("#jSearchHeroDiv").children("li").children().children("img").length;
