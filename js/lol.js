@@ -57,6 +57,16 @@ window.addEventListener("message", (event) => {
 			}, inteveal);
 		}
 		if (event.data == "!영웅" || event.data == "!any" || event.data == "!all") {
+
+			//绑定函数
+			let heroLeng = $("#jSearchHeroDiv").children("li").children().length;
+			console.log(heroLeng);
+			document.querySelector("#randomByAll").onclick = function() {
+				let randoN = rd(heroLeng);
+				console.log("起始位置:", randoN);
+				jj(randoN, heroLeng);
+			}
+			//执行函数
 			let randomByAll = document.querySelector("#randomByAll");
 			setTimeout(function() {
 				randomByAll.click();
@@ -144,6 +154,8 @@ $.getJSON("locales/ko/messages.json", function(result) {
 		}
 	}, 16);
 
+
+
 	for (let i = 0; i < imgLength; i++) {
 		//英雄名称父
 		let heroParent = $("#jSearchHeroDiv").children("li").children();
@@ -173,6 +185,9 @@ $.getJSON("locales/ko/messages.json", function(result) {
 
 	}
 });
+
+
+
 window.onload = function() {
 
 	// const id = chrome.i18n.getMessage("@@extension_id");
@@ -243,15 +258,6 @@ window.onload = function() {
 	function randomByAll() {
 
 	}
-	let heroLeng = $("#jSearchHeroDiv").children("li").children().length;
-	console.log(heroLeng);
-	document.querySelector("#randomByAll").onclick = function() {
-		let randoN = rd(heroLeng);
-		console.log("起始位置:", randoN);
-		jj(randoN, heroLeng);
-	}
-
-
 }
 
 // "lol_test": {
