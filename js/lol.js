@@ -110,8 +110,7 @@ $.getJSON("locales/ko/messages.json", function(result) {
 	
 	let test1 = eval("result.lol_Ahri_title.message");
 	console.log(test1);
-	let test2 = result.eval("lol_Ahri_title.message");
-	console.log(test2);
+	
 	for (let i = 0; i < imgLength; i++) {
 		//英雄名称父
 		let heroParent = $("#jSearchHeroDiv").children("li").children();
@@ -130,7 +129,7 @@ $.getJSON("locales/ko/messages.json", function(result) {
 		// console.log("lol_" + replaceEachSrc + "_title");
 		//获取国际化英雄名称
 		console.log(replaceEachSrc);
-		let replaceEachSrcValue = result.eval("lol_" + replaceEachSrc);
+		let replaceEachSrcValue = eval("result.lol_" + replaceEachSrc);
 		//填入国际化名称 一键
 		heroName.innerText = replaceEachSrcValue;
 
