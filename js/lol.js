@@ -272,11 +272,11 @@ $(document).ready(function(e) {
 	//$(".imgtextlist>li").get(0).style="border:10px red solid"
 
 	//获取18n国际化位置
-	let topValue = setLang.getI18n("lol_top");
-	let junValue = setLang.getI18n("lol_jungle");
-	let midValue = setLang.getI18n("lol_middle");
-	let adcValue = setLang.getI18n("lol_adc");
-	let supValue = setLang.getI18n("lol_support");
+	// let topValue = setLang.getI18n("lol_top");
+	// let junValue = setLang.getI18n("lol_jungle");
+	// let midValue = setLang.getI18n("lol_middle");
+	// let adcValue = setLang.getI18n("lol_adc");
+	// let supValue = setLang.getI18n("lol_support");
 
 
 	$(".selete-item>label>a").get(0).innerText = "top";
@@ -291,10 +291,9 @@ $(document).ready(function(e) {
 			if (allHero[i] == top[j]) {
 				text = $(".commspr-commico-search").get(i).innerHTML
 				if ($(".commspr-commico-search").get(i).innerHTML == "") {
-					$(".commspr-commico-search").get(i).innerHTML = topValue;
+					$(".commspr-commico-search").get(i).innerHTML = "top";
 				} else {
-					$(".commspr-commico-search").get(i).innerHTML = text + "丨" +
-					topValue;
+					$(".commspr-commico-search").get(i).innerHTML = text + "丨top";
 				}
 			}
 		}
@@ -304,11 +303,10 @@ $(document).ready(function(e) {
 				if (allHero[i] == middle[j]) {
 					text = $(".commspr-commico-search").get(i).innerHTML
 					if ($(".commspr-commico-search").get(i).innerHTML == "") {
-						$(".commspr-commico-search").get(i).innerHTML = midValue;
+						$(".commspr-commico-search").get(i).innerHTML = "middle";;
 					} else {
 
-						$(".commspr-commico-search").get(i).innerHTML = text + "丨" +
-						midValue;
+						$(".commspr-commico-search").get(i).innerHTML = text + "丨middle";
 					}
 				}
 			}
@@ -319,11 +317,10 @@ $(document).ready(function(e) {
 				if (allHero[i] == jungle[j]) {
 					text = $(".commspr-commico-search").get(i).innerHTML
 					if ($(".commspr-commico-search").get(i).innerHTML == "") {
-						$(".commspr-commico-search").get(i).innerHTML = junValue;
+						$(".commspr-commico-search").get(i).innerHTML = "jungle";
 					} else {
 
-						$(".commspr-commico-search").get(i).innerHTML = text + "丨" +
-						junValue;
+						$(".commspr-commico-search").get(i).innerHTML = text + "丨jungle";
 					}
 				}
 			}
@@ -334,11 +331,10 @@ $(document).ready(function(e) {
 				if (allHero[i] == adc[j]) {
 					text = $(".commspr-commico-search").get(i).innerHTML
 					if ($(".commspr-commico-search").get(i).innerHTML == "") {
-						$(".commspr-commico-search").get(i).innerHTML = adcValue;
+						$(".commspr-commico-search").get(i).innerHTML = "adc";
 					} else {
 
-						$(".commspr-commico-search").get(i).innerHTML = text + "丨" +
-						adcValue;
+						$(".commspr-commico-search").get(i).innerHTML = text + "丨adc";
 					}
 				}
 			}
@@ -349,11 +345,10 @@ $(document).ready(function(e) {
 				if (allHero[i] == support[j]) {
 					text = $(".commspr-commico-search").get(i).innerHTML
 					if ($(".commspr-commico-search").get(i).innerHTML == "") {
-						$(".commspr-commico-search").get(i).innerHTML = supValue;
+						$(".commspr-commico-search").get(i).innerHTML = "support";
 					} else {
 
-						$(".commspr-commico-search").get(i).innerHTML = text + "丨" +
-						supValue;
+						$(".commspr-commico-search").get(i).innerHTML = text + "丨support"
 					}
 				}
 			}
