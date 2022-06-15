@@ -103,6 +103,9 @@ window.addEventListener("message", (event) => {
 // }
 // const dataArray="";
 // setLang.dataEach()
+window.onload=function(){
+	
+}
 let replaceArray = "";
 $.getJSON("locales/ko/messages.json", function(result) {
 	
@@ -117,7 +120,7 @@ $.getJSON("locales/ko/messages.json", function(result) {
 		// console.log(heroName);
 		let eachImgSrc = heroParent.children("img")[i].src;
 		// console.log(eachImgSrc);
-		let replaceEachSrc = eachImgSrc.replace("https://afubaba.github.io/Afreecatv/img/lol2/", "");
+		let replaceEachSrc = eachImgSrc.replace("https://afubaba.github.io/Afreecatv/img/lol/", "");
 		replaceEachSrc = replaceEachSrc.replace(".png", "");
 		//获取国际化英雄名称父辈
 
