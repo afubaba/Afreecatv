@@ -60,7 +60,7 @@ window.addEventListener("message", (event) => {
 			let randomByAll = document.querySelector("#randomByAll");
 			setTimeout(function() {
 				randomByAll.click();
-			}, 3000);
+			}, 5000);
 		}
 		// event.source.postMessage('LOL的消息：', origin);
 		souceWindow = event.source;
