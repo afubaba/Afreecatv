@@ -58,14 +58,7 @@ window.addEventListener("message", (event) => {
 		}
 		if (event.data == "!영웅" || event.data == "!any" || event.data == "!all") {
 
-			//绑定函数
-			let heroLeng = $("#jSearchHeroDiv").children("li").children().length;
-			console.log(heroLeng);
-			document.querySelector("#randomByAll").onclick = function() {
-				let randoN = rd(heroLeng);
-				console.log("起始位置:", randoN);
-				jj(randoN, heroLeng);
-			}
+
 			//执行函数
 			let randomByAll = document.querySelector("#randomByAll");
 			setTimeout(function() {
@@ -118,6 +111,17 @@ window.onload = function() {
 }
 let replaceArray = "";
 $.getJSON("locales/ko/messages.json", function(result) {
+
+
+
+	//绑定函数
+	let heroLeng = $("#jSearchHeroDiv").children("li").children().length;
+	console.log(heroLeng);
+	document.querySelector("#randomByAll").onclick = function() {
+		let randoN = rd(heroLeng);
+		console.log("起始位置:", randoN);
+		jj(randoN, heroLeng);
+	}
 
 	var i = 0;
 	let initInterval = setInterval(function() {
