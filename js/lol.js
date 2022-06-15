@@ -111,9 +111,10 @@ $.getJSON("locales/ko/messages.json", function(result) {
 	let test1 = eval("result.lol_Ahri_title.message");
 	console.log(test1);
 
-
+	
+	var i=0;
 	setInterval(function() {
-
+		i++;
 		//英雄名称父
 		let heroParent = $("#jSearchHeroDiv").children("li").children();
 		//英雄名称
