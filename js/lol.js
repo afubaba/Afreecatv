@@ -6,7 +6,8 @@ var souceWindow;
 
 $.getJSON("https://afubaba.github.io/Afreecatv/locales/ko/messages.json",function(result){
     console.log(result)
-	console.log(result.manifest_ext_name);
+	eval("var re="+result);
+	console.log(re.manifest_ext_name);
   });
 
 
