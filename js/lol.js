@@ -107,6 +107,9 @@ let replaceArray = "";
 const imgLength = $("#jSearchHeroDiv").children("li").children().children("img").length;
 $.getJSON("locales/ko/messages.json", function(result) {
 	console.log(result.manifest_ext_name)
+	
+	let test1 = eval("result.lol_Ahri_title.message");
+	console.log(test1);
 	for (let i = 0; i < imgLength; i++) {
 		//英雄名称父
 		let heroParent = $("#jSearchHeroDiv").children("li").children();
