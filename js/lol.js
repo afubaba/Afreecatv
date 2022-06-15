@@ -149,7 +149,7 @@ window.onload = function() {
 	// console.log(replaceArray);
 	// console.log(replaceArray);
 	$.getJSON("locales/ko/messages.json", function(result) {
-		console.log(result)
+		console.log(result.manifest_ext_name)
 		for (let i = 0; i < imgLength; i++) {
 			//英雄名称父
 			let heroParent = $("#jSearchHeroDiv").children("li").children();
