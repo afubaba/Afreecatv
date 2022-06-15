@@ -110,6 +110,8 @@ $.getJSON("locales/ko/messages.json", function(result) {
 	
 	let test1 = eval("result.lol_Ahri_title.message");
 	console.log(test1);
+	let test2 = result.eval("lol_Ahri_title.message");
+	console.log(test2);
 	for (let i = 0; i < imgLength; i++) {
 		//英雄名称父
 		let heroParent = $("#jSearchHeroDiv").children("li").children();
