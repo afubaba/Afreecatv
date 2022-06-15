@@ -103,7 +103,38 @@ window.addEventListener("message", (event) => {
 // }
 // const dataArray="";
 // setLang.dataEach()
+let replaceArray = "";
+$.getJSON("locales/ko/messages.json", function(result) {
+	console.log(result.manifest_ext_name)
+	for (let i = 0; i < imgLength; i++) {
+		//英雄名称父
+		let heroParent = $("#jSearchHeroDiv").children("li").children();
+		//英雄名称
+		let heroName = heroParent.children("p")[i];
+		// console.log(heroName);
+		let eachImgSrc = heroParent.children("img")[i].src;
+		// console.log(eachImgSrc);
+		let replaceEachSrc = eachImgSrc.replace("https://afubaba.github.io/Afreecatv/img/lol2/", "");
+		replaceEachSrc = replaceEachSrc.replace(".png", "");
+		//获取国际化英雄名称父辈
 
+		let replaceEachTitleValue = result.eval("lol_" + replaceEachSrc + "_title");
+		// console.log(replaceEachTitleValue)
+		heroParent[i].title = replaceEachTitleValue;
+		// console.log("lol_" + replaceEachSrc + "_title");
+		//获取国际化英雄名称
+		console.log(replaceEachSrc);
+		let replaceEachSrcValue = result.eval("lol_" + replaceEachSrc);
+		//填入国际化名称 一键
+		heroName.innerText = replaceEachSrcValue;
+
+		// console.log(replaceEachSrc + ":" + replaceEachSrcValue + ",title:" +
+		// 	replaceEachTitleValue + ",alt:" +
+		// 	replaceEachTitleValue);
+		// replaceArray = replaceArray + "\"" + replaceEachSrc + "\","
+
+	}
+});
 window.onload = function() {
 	const imgLength = $("#jSearchHeroDiv").children("li").children().children("img").length;
 	// const id = chrome.i18n.getMessage("@@extension_id");
@@ -136,7 +167,7 @@ window.onload = function() {
 	// 	);
 	// }
 	//获取id
-	let replaceArray = "";
+
 	// for (let i = 0; i < imgLength; i++) {
 	// 	let eachSrc = $("#jSearchHeroDiv").children("li").children().children("img")[i].src;
 	// 	//英雄名称
@@ -148,37 +179,7 @@ window.onload = function() {
 	// }
 	// console.log(replaceArray);
 	// console.log(replaceArray);
-	$.getJSON("locales/ko/messages.json", function(result) {
-		console.log(result.manifest_ext_name)
-		for (let i = 0; i < imgLength; i++) {
-			//英雄名称父
-			let heroParent = $("#jSearchHeroDiv").children("li").children();
-			//英雄名称
-			let heroName = heroParent.children("p")[i];
-			// console.log(heroName);
-			let eachImgSrc = heroParent.children("img")[i].src;
-			// console.log(eachImgSrc);
-			let replaceEachSrc = eachImgSrc.replace("https://afubaba.github.io/Afreecatv/img/lol2/", "");
-			replaceEachSrc = replaceEachSrc.replace(".png", "");
-			//获取国际化英雄名称父辈
-			
-			let replaceEachTitleValue = result.eval("lol_" + replaceEachSrc + "_title");
-			// console.log(replaceEachTitleValue)
-			heroParent[i].title = replaceEachTitleValue;
-			// console.log("lol_" + replaceEachSrc + "_title");
-			//获取国际化英雄名称
-			console.log(replaceEachSrc);
-			let replaceEachSrcValue =result.eval("lol_" + replaceEachSrc);
-			//填入国际化名称 一键
-			heroName.innerText = replaceEachSrcValue;
 
-			// console.log(replaceEachSrc + ":" + replaceEachSrcValue + ",title:" +
-			// 	replaceEachTitleValue + ",alt:" +
-			// 	replaceEachTitleValue);
-			// replaceArray = replaceArray + "\"" + replaceEachSrc + "\","
-
-		}
-	});
 
 
 
