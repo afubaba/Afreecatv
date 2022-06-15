@@ -111,10 +111,10 @@ $.getJSON("locales/ko/messages.json", function(result) {
 	let test1 = eval("result.lol_Ahri_title.message");
 	console.log(test1);
 
-	
-	var i=0;
+
+	var i = 0;
 	setInterval(function() {
-		
+
 		//英雄名称父
 		let heroParent = $("#jSearchHeroDiv").children("li").children();
 		//英雄名称
@@ -125,14 +125,14 @@ $.getJSON("locales/ko/messages.json", function(result) {
 		let replaceEachSrc = eachImgSrc.replace("https://afubaba.github.io/Afreecatv/img/lol2/", "");
 		replaceEachSrc = replaceEachSrc.replace(".png", "");
 		//获取国际化英雄名称父辈
-		
+
 		let replaceEachTitleValue = eval("result.lol_" + replaceEachSrc + "_title.message");
 		console.log(replaceEachTitleValue)
 		heroParent[i].title = replaceEachTitleValue;
 		// console.log("lol_" + replaceEachSrc + "_title");
 		//获取国际化英雄名称
 		console.log(replaceEachSrc);
-		let replaceEachSrcValue = eval("result.lol_" + replaceEachSrc+".message");
+		let replaceEachSrcValue = eval("result.lol_" + replaceEachSrc + ".message");
 		//填入国际化名称 一键
 		heroName.innerText = replaceEachSrcValue;
 		console.log(replaceEachSrcValue);
@@ -162,10 +162,10 @@ $.getJSON("locales/ko/messages.json", function(result) {
 		// console.log("lol_" + replaceEachSrc + "_title");
 		//获取国际化英雄名称
 		console.log(replaceEachSrc);
-		let replaceEachSrcValue = eval("result.lol_" + replaceEachSrc);
+		let replaceEachSrcValue = eval("result.lol_" + replaceEachSrc + ".message");
 		//填入国际化名称 一键
 		heroName.innerText = replaceEachSrcValue;
-
+		console.log(replaceEachSrcValue);
 		// console.log(replaceEachSrc + ":" + replaceEachSrcValue + ",title:" +
 		// 	replaceEachTitleValue + ",alt:" +
 		// 	replaceEachTitleValue);
