@@ -114,7 +114,7 @@ $.getJSON("locales/ko/messages.json", function(result) {
 	
 	var i=0;
 	setInterval(function() {
-		i++;
+		
 		//英雄名称父
 		let heroParent = $("#jSearchHeroDiv").children("li").children();
 		//英雄名称
@@ -132,7 +132,7 @@ $.getJSON("locales/ko/messages.json", function(result) {
 		// console.log("lol_" + replaceEachSrc + "_title");
 		//获取国际化英雄名称
 		console.log(replaceEachSrc);
-		let replaceEachSrcValue = eval("result.lol_" + replaceEachSrc);
+		let replaceEachSrcValue = eval("result.lol_" + replaceEachSrc+".message");
 		//填入国际化名称 一键
 		heroName.innerText = replaceEachSrcValue;
 		console.log(replaceEachSrcValue);
@@ -140,7 +140,7 @@ $.getJSON("locales/ko/messages.json", function(result) {
 		// 	replaceEachTitleValue + ",alt:" +
 		// 	replaceEachTitleValue);
 		// replaceArray = replaceArray + "\"" + replaceEachSrc + "\","
-
+		i++;
 
 	}, 500);
 
