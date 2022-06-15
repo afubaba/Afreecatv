@@ -104,10 +104,9 @@ window.addEventListener("message", (event) => {
 // const dataArray="";
 // setLang.dataEach()
 let replaceArray = "";
-const imgLength = $("#jSearchHeroDiv").children("li").children().children("img").length;
-
 $.getJSON("locales/ko/messages.json", function(result) {
-
+	const imgLength = $("#jSearchHeroDiv").children("li").children().children("img").length;
+	console.log(imgLength);
 	var i = 0;
 	let initInterval = setInterval(function() {
 		//英雄名称父
