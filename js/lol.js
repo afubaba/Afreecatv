@@ -125,7 +125,7 @@ $.getJSON("locales/ko/messages.json", function(result) {
 		let replaceEachSrc = eachImgSrc.replace("https://afubaba.github.io/Afreecatv/img/lol2/", "");
 		replaceEachSrc = replaceEachSrc.replace(".png", "");
 		//获取国际化英雄名称父辈
-
+		
 		let replaceEachTitleValue = eval("result.lol_" + replaceEachSrc + "_title.message");
 		console.log(replaceEachTitleValue)
 		heroParent[i].title = replaceEachTitleValue;
@@ -135,7 +135,7 @@ $.getJSON("locales/ko/messages.json", function(result) {
 		let replaceEachSrcValue = eval("result.lol_" + replaceEachSrc);
 		//填入国际化名称 一键
 		heroName.innerText = replaceEachSrcValue;
-
+		console.log(replaceEachSrcValue);
 		// console.log(replaceEachSrc + ":" + replaceEachSrcValue + ",title:" +
 		// 	replaceEachTitleValue + ",alt:" +
 		// 	replaceEachTitleValue);
