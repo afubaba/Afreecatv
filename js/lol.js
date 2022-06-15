@@ -104,6 +104,7 @@ window.addEventListener("message", (event) => {
 // const dataArray="";
 // setLang.dataEach()
 let replaceArray = "";
+const imgLength = $("#jSearchHeroDiv").children("li").children().children("img").length;
 $.getJSON("locales/ko/messages.json", function(result) {
 	console.log(result.manifest_ext_name)
 	for (let i = 0; i < imgLength; i++) {
@@ -136,7 +137,7 @@ $.getJSON("locales/ko/messages.json", function(result) {
 	}
 });
 window.onload = function() {
-	const imgLength = $("#jSearchHeroDiv").children("li").children().children("img").length;
+	
 	// const id = chrome.i18n.getMessage("@@extension_id");
 	// 获取到英雄英文名称  拼接成Message对象
 
