@@ -4,18 +4,6 @@ console.log("lol.js");
 
 var souceWindow;
 
-function detectLanguage(inputText) {
-	chrome.i18n.detectLanguage(inputText, function(result) {
-		var outputLang = "Detected Language: ";
-		var outputPercent = "Language Percentage: ";
-		for (i = 0; i < result.languages.length; i++) {
-			outputLang += result.languages[i].language + " ";
-			outputPercent += result.languages[i].percentage + " ";
-		}
-		// console.log(outputLang + "\n" + outputPercent +
-		// 	"\nReliable: " + result.isReliable);
-	});
-}
 window.addEventListener("message", (event) => {
 	var origin = event.origin;
 	// 通常，onmessage()事件处理程序应当首先检测其中的origin属性，忽略来自未知源的消息
@@ -65,44 +53,44 @@ window.addEventListener("message", (event) => {
 }, false);
 
 //加载的时候语言
-var setLang = {
-	getI18n: function(name) {
-		const rnName = chrome.i18n.getMessage(name);
-		return rnName;
-	},
-	setLanguage: function(idName, prefix) {
-		var rnNameId = prefix + idName;
-		//获取本地化值
-		// console.log(rnNameId);
-		var rnName = this.getI18n(rnNameId);
-		if (rnName != "") {
-			// console.log(rnName);
-			$("#" + idName).html(rnName);
-		} else {
-			console.log("null");
-		}
-		//获取本地化值Title
-		var rmNameTitleValue = rnNameId + "_title";
-		rmNameTitleValue = this.getI18n(rmNameTitleValue);
-		if (rmNameTitleValue != "") {
-			// console.log("title:" + rmNameTitleValue);
-			$("#" + idName).attr("title", rmNameTitleValue);
-			// console.log("alt:" + rmNameTitleValue);
-		}
+// var setLang = {
+// 	getI18n: function(name) {
+// 		const rnName = chrome.i18n.getMessage(name);
+// 		return rnName;
+// 	},
+// 	setLanguage: function(idName, prefix) {
+// 		var rnNameId = prefix + idName;
+// 		//获取本地化值
+// 		// console.log(rnNameId);
+// 		var rnName = this.getI18n(rnNameId);
+// 		if (rnName != "") {
+// 			// console.log(rnName);
+// 			$("#" + idName).html(rnName);
+// 		} else {
+// 			console.log("null");
+// 		}
+// 		//获取本地化值Title
+// 		var rmNameTitleValue = rnNameId + "_title";
+// 		rmNameTitleValue = this.getI18n(rmNameTitleValue);
+// 		if (rmNameTitleValue != "") {
+// 			// console.log("title:" + rmNameTitleValue);
+// 			$("#" + idName).attr("title", rmNameTitleValue);
+// 			// console.log("alt:" + rmNameTitleValue);
+// 		}
 
-	},
-	dataEach: function(dataArray, prefix) {
-		dataArray.forEach(function(idName) {
-			setLang.setLanguage(idName, prefix);
-		});
-	}
-}
+// 	},
+// 	dataEach: function(dataArray, prefix) {
+// 		dataArray.forEach(function(idName) {
+// 			setLang.setLanguage(idName, prefix);
+// 		});
+// 	}
+// }
 // const dataArray="";
 // setLang.dataEach()
 
 window.onload = function() {
 	const imgLength = $("#jSearchHeroDiv").children("li").children().children("img").length;
-	const id = chrome.i18n.getMessage("@@extension_id");
+	// const id = chrome.i18n.getMessage("@@extension_id");
 	// 获取到英雄英文名称  拼接成Message对象
 
 	// for (let i = 0; i < imgLength; i++) {
@@ -145,33 +133,33 @@ window.onload = function() {
 	// console.log(replaceArray);
 	// console.log(replaceArray);
 
-	for (let i = 0; i < imgLength; i++) {
-		//英雄名称父
-		let heroParent = $("#jSearchHeroDiv").children("li").children();
-		//英雄名称
-		let heroName = heroParent.children("p")[i];
-		// console.log(heroName);
-		let eachImgSrc = heroParent.children("img")[i].src;
-		// console.log(eachImgSrc);
-		let replaceEachSrc = eachImgSrc.replace("chrome-extension://" + id + "/img/lol2/",
-			"");
-		replaceEachSrc = replaceEachSrc.replace(".png", "");
-		//获取国际化英雄名称父辈
-		let replaceEachTitleValue = setLang.getI18n("lol_" + replaceEachSrc + "_title");
-		// console.log(replaceEachTitleValue)
-		heroParent[i].title = replaceEachTitleValue;
-		// console.log("lol_" + replaceEachSrc + "_title");
-		//获取国际化英雄名称
-		let replaceEachSrcValue = setLang.getI18n("lol_" + replaceEachSrc);
-		//填入国际化名称 一键
-		heroName.innerText = replaceEachSrcValue;
+	// for (let i = 0; i < imgLength; i++) {
+	// 	//英雄名称父
+	// 	let heroParent = $("#jSearchHeroDiv").children("li").children();
+	// 	//英雄名称
+	// 	let heroName = heroParent.children("p")[i];
+	// 	// console.log(heroName);
+	// 	let eachImgSrc = heroParent.children("img")[i].src;
+	// 	// console.log(eachImgSrc);
+	// 	let replaceEachSrc = eachImgSrc.replace("chrome-extension://" + id + "/img/lol2/",
+	// 		"");
+	// 	replaceEachSrc = replaceEachSrc.replace(".png", "");
+	// 	//获取国际化英雄名称父辈
+	// 	let replaceEachTitleValue = setLang.getI18n("lol_" + replaceEachSrc + "_title");
+	// 	// console.log(replaceEachTitleValue)
+	// 	heroParent[i].title = replaceEachTitleValue;
+	// 	// console.log("lol_" + replaceEachSrc + "_title");
+	// 	//获取国际化英雄名称
+	// 	let replaceEachSrcValue = setLang.getI18n("lol_" + replaceEachSrc);
+	// 	//填入国际化名称 一键
+	// 	heroName.innerText = replaceEachSrcValue;
 
-		// console.log(replaceEachSrc + ":" + replaceEachSrcValue + ",title:" +
-		// 	replaceEachTitleValue + ",alt:" +
-		// 	replaceEachTitleValue);
-		// replaceArray = replaceArray + "\"" + replaceEachSrc + "\","
+	// 	// console.log(replaceEachSrc + ":" + replaceEachSrcValue + ",title:" +
+	// 	// 	replaceEachTitleValue + ",alt:" +
+	// 	// 	replaceEachTitleValue);
+	// 	// replaceArray = replaceArray + "\"" + replaceEachSrc + "\","
 
-	}
+	// }
 
 
 	// const dataArray = ["Aatrox", "Ahri", "Akali", "Alistar", "Amumu", "Anivia", "Annie", "Ashe", "AurelionSol",
