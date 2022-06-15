@@ -3,21 +3,28 @@
 console.log("lol.js");
 
 var souceWindow;
-getResourcesByFench("locales/ko/messages.json")
 
-function getResourcesByFench(url) {
-	fetch(url).then((response) => {
-		if (response.ok) {
-			response.text().then(function(resolve) {
-				console.log(resolve);
+$.getJSON("https://afubaba.github.io/Afreecatv/locales/ko/messages.json",function(result){
+    console.log(result)
+	console.log(result.manifest_ext_name);
+  });
 
-			})
-		}
 
-	}, (error) => {
-		console.log(error);
-	});
-}
+// getResourcesByFench("locales/ko/messages.json")
+
+// function getResourcesByFench(url) {
+// 	fetch(url).then((response) => {
+// 		if (response.ok) {
+// 			response.text().then(function(resolve) {
+// 				 console.log(resolve);
+
+// 			})
+// 		}
+
+// 	}, (error) => {
+// 		console.log(error);
+// 	});
+// }
 
 
 window.addEventListener("message", (event) => {
