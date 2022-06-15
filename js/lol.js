@@ -105,10 +105,11 @@ window.addEventListener("message", (event) => {
 // setLang.dataEach()
 let replaceArray = "";
 $.getJSON("locales/ko/messages.json", function(result) {
-	const imgLength = $("#jSearchHeroDiv").children("li").children().children("img").length;
-	console.log(imgLength);
+	
 	var i = 0;
 	let initInterval = setInterval(function() {
+		const imgLength = $("#jSearchHeroDiv").children("li").children().children("img").length;
+		console.log(imgLength);
 		//英雄名称父
 		let heroParent = $("#jSearchHeroDiv").children("li").children();
 		//英雄名称
