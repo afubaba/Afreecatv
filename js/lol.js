@@ -105,7 +105,7 @@ window.addEventListener("message", (event) => {
 // setLang.dataEach()
 let replaceArray = "";
 const imgLength = $("#jSearchHeroDiv").children("li").children().children("img").length;
-var result;
+
 $.getJSON("locales/ko/messages.json", function(result) {
 	// result=result;
 	// var i = 0;
@@ -487,85 +487,89 @@ $(document).ready(function(e) {
 
 
 function showChoice(allHer, GPS) {
-	var index = new Array();
+	$.getJSON("locales/ko/messages.json", function(result) {
+		var index = new Array();
 
-	for (j = 0; j < GPS.length; j++) {
-		for (i = 0; i < allHer.length; i++) {
-			if (allHer[i] == GPS[j]) {
-				$(".imgtextlist>li").get(i).style = "display:block";
-				/*text.substring(0,text.length);*/
-				/*alert(text.substring(0,text.length))*/
-				index[j] = i;
-			} else {
-				//$(".imgtextlist>li").css("float","left").get(i).style="display:block";
+		for (j = 0; j < GPS.length; j++) {
+			for (i = 0; i < allHer.length; i++) {
+				if (allHer[i] == GPS[j]) {
+					$(".imgtextlist>li").get(i).style = "display:block";
+					/*text.substring(0,text.length);*/
+					/*alert(text.substring(0,text.length))*/
+					index[j] = i;
+				} else {
+					//$(".imgtextlist>li").css("float","left").get(i).style="display:block";
+				}
 			}
 		}
-	}
-	//alert("idex长度："+index[0]+"allHero"+allHer[index[0]])
+		//alert("idex长度："+index[0]+"allHero"+allHer[index[0]])
 
-	var no = 0;
-	console.log(result);
-	var myInterval = setInterval(function() {
-		//英雄名称父
-		let heroParent = $("#jSearchHeroDiv").children("li").children();
-		//英雄名称
-		let heroName = heroParent.children("p")[no];
-		// console.log(heroName);
-		let eachImgSrc = heroParent.children("img")[no].src;
-		// console.log(eachImgSrc);
-		let replaceEachSrc = eachImgSrc.replace("https://afubaba.github.io/Afreecatv/img/lol2/", "");
-		replaceEachSrc = replaceEachSrc.replace(".png", "");
-		//获取国际化英雄名称父辈
-		let replaceEachTitleValue = eval("result.lol_" + replaceEachSrc + "_title.message");
-		console.log(replaceEachTitleValue)
-		heroParent[no].title = replaceEachTitleValue;
-		// console.log("lol_" + replaceEachSrc + "_title");
-		//获取国际化英雄名称
-		console.log(replaceEachSrc);
-		let replaceEachSrcValue = eval("result.lol_" + replaceEachSrc + ".message");
-		//填入国际化名称 一键
-		heroName.innerText = replaceEachSrcValue;
-		console.log(replaceEachSrcValue);
-		// console.log(replaceEachSrc + ":" + replaceEachSrcValue + ",title:" +
-		// 	replaceEachTitleValue + ",alt:" +
-		// 	replaceEachTitleValue);
-		// replaceArray = replaceArray + "\"" + replaceEachSrc + "\","
-		
-		
-		$(".imgtextlist>li").get(index[no]).style = "border:50px yellow solid";
-		$(".imgtextlist>li").css("text-align", "center").css("float", "left")
-		//if (index[no]!=0){
-		//$(".imgtextlist>li").get(index[no-1]).style="border:10px white solid";
+		var no = 0;
 
-		//kong
-		//隐藏显示第一次选择的
-		// $(".imgtextlist>li").get(index[no - 1]).style = "display:none";
-		$(".imgtextlist>li").get(index[no - 1]).style = "border:none";
-		//}
-		if (no >= index.length) {
-			no = 0;
-		}
-		let randomNO = rd(index.length);
-
-		if (randomNO == no) {
-			clearInterval(myInterval);
-
-			console.log("你随机到的" + index[no] + "号英雄：" + allHer[index[no]]);
-
+		var myInterval = setInterval(function() {
+			//英雄名称父
 			let heroParent = $("#jSearchHeroDiv").children("li").children();
 			//英雄名称
-			let heroName = heroParent.children("p")[index[no]].innerText;
-			console.log(heroName);
-			//发信息给
-			souceWindow.postMessage(heroName, "https://play.afreecatv.com");
-			console.log($("img:eq(" + index[no] + ")"));
+			let heroName = heroParent.children("p")[no];
+			// console.log(heroName);
+			let eachImgSrc = heroParent.children("img")[no].src;
+			// console.log(eachImgSrc);
+			let replaceEachSrc = eachImgSrc.replace("https://afubaba.github.io/Afreecatv/img/lol2/",
+			"");
+			replaceEachSrc = replaceEachSrc.replace(".png", "");
+			//获取国际化英雄名称父辈
+			let replaceEachTitleValue = eval("result.lol_" + replaceEachSrc + "_title.message");
+			console.log(replaceEachTitleValue)
+			heroParent[no].title = replaceEachTitleValue;
+			// console.log("lol_" + replaceEachSrc + "_title");
+			//获取国际化英雄名称
+			console.log(replaceEachSrc);
+			let replaceEachSrcValue = eval("result.lol_" + replaceEachSrc + ".message");
+			//填入国际化名称 一键
+			heroName.innerText = replaceEachSrcValue;
+			console.log(replaceEachSrcValue);
+			// console.log(replaceEachSrc + ":" + replaceEachSrcValue + ",title:" +
+			// 	replaceEachTitleValue + ",alt:" +
+			// 	replaceEachTitleValue);
+			// replaceArray = replaceArray + "\"" + replaceEachSrc + "\","
 
-			$("#choiceImg", parent.document).attr("src", "../" + $("img:eq(" +
-				index[no] + ")").attr("src"));
-			window.close();
-		}
-		no++;
-	}, 16)
+
+			$(".imgtextlist>li").get(index[no]).style = "border:50px yellow solid";
+			$(".imgtextlist>li").css("text-align", "center").css("float", "left")
+			//if (index[no]!=0){
+			//$(".imgtextlist>li").get(index[no-1]).style="border:10px white solid";
+
+			//kong
+			//隐藏显示第一次选择的
+			// $(".imgtextlist>li").get(index[no - 1]).style = "display:none";
+			$(".imgtextlist>li").get(index[no - 1]).style = "border:none";
+			//}
+			if (no >= index.length) {
+				no = 0;
+			}
+			let randomNO = rd(index.length);
+
+			if (randomNO == no) {
+				clearInterval(myInterval);
+
+				console.log("你随机到的" + index[no] + "号英雄：" + allHer[index[no]]);
+
+				let heroParent = $("#jSearchHeroDiv").children("li").children();
+				//英雄名称
+				let heroName = heroParent.children("p")[index[no]].innerText;
+				console.log(heroName);
+				//发信息给
+				souceWindow.postMessage(heroName, "https://play.afreecatv.com");
+				console.log($("img:eq(" + index[no] + ")"));
+
+				$("#choiceImg", parent.document).attr("src", "../" + $("img:eq(" +
+					index[no] + ")").attr("src"));
+				window.close();
+			}
+			no++;
+		}, 16)
+
+	});
 
 }
 
