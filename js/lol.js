@@ -4,12 +4,6 @@ console.log("lol.js");
 
 var souceWindow;
 
-$.getJSON("locales/ko/messages.json", function(result) {
-	console.log(result)
-	eval("var re=" + result);
-	console.log(re.manifest_ext_name);
-});
-
 // getResourcesByFench("locales/ko/messages.json")
 // function getResourcesByFench(url) {
 // 	fetch(url).then((response) => {
@@ -154,34 +148,37 @@ window.onload = function() {
 	// }
 	// console.log(replaceArray);
 	// console.log(replaceArray);
+	$.getJSON("locales/ko/messages.json", function(result) {
+		console.log(result)
+	
+	});
+	for (let i = 0; i < imgLength; i++) {
+		//英雄名称父
+		let heroParent = $("#jSearchHeroDiv").children("li").children();
+		//英雄名称
+		let heroName = heroParent.children("p")[i];
+		// console.log(heroName);
+		let eachImgSrc = heroParent.children("img")[i].src;
+		// console.log(eachImgSrc);
+		let replaceEachSrc = eachImgSrc.replace("https://afubaba.github.io/Afreecatv/img/lol2/","");
+		replaceEachSrc = replaceEachSrc.replace(".png", "");
+		//获取国际化英雄名称父辈
+		// let replaceEachTitleValue = setLang.getI18n("lol_" + replaceEachSrc + "_title");
+		// console.log(replaceEachTitleValue)
+		// heroParent[i].title = replaceEachTitleValue;
+		// console.log("lol_" + replaceEachSrc + "_title");
+		//获取国际化英雄名称
+		console.log(replaceEachSrc);
+		// let replaceEachSrcValue = setLang.getI18n("lol_" + replaceEachSrc);
+		//填入国际化名称 一键
+		// heroName.innerText = replaceEachSrcValue;
 
-	// for (let i = 0; i < imgLength; i++) {
-	// 	//英雄名称父
-	// 	let heroParent = $("#jSearchHeroDiv").children("li").children();
-	// 	//英雄名称
-	// 	let heroName = heroParent.children("p")[i];
-	// 	// console.log(heroName);
-	// 	let eachImgSrc = heroParent.children("img")[i].src;
-	// 	// console.log(eachImgSrc);
-	// 	let replaceEachSrc = eachImgSrc.replace("chrome-extension://" + id + "/img/lol2/",
-	// 		"");
-	// 	replaceEachSrc = replaceEachSrc.replace(".png", "");
-	// 	//获取国际化英雄名称父辈
-	// 	let replaceEachTitleValue = setLang.getI18n("lol_" + replaceEachSrc + "_title");
-	// 	// console.log(replaceEachTitleValue)
-	// 	heroParent[i].title = replaceEachTitleValue;
-	// 	// console.log("lol_" + replaceEachSrc + "_title");
-	// 	//获取国际化英雄名称
-	// 	let replaceEachSrcValue = setLang.getI18n("lol_" + replaceEachSrc);
-	// 	//填入国际化名称 一键
-	// 	heroName.innerText = replaceEachSrcValue;
+		// console.log(replaceEachSrc + ":" + replaceEachSrcValue + ",title:" +
+		// 	replaceEachTitleValue + ",alt:" +
+		// 	replaceEachTitleValue);
+		// replaceArray = replaceArray + "\"" + replaceEachSrc + "\","
 
-	// 	// console.log(replaceEachSrc + ":" + replaceEachSrcValue + ",title:" +
-	// 	// 	replaceEachTitleValue + ",alt:" +
-	// 	// 	replaceEachTitleValue);
-	// 	// replaceArray = replaceArray + "\"" + replaceEachSrc + "\","
-
-	// }
+	}
 
 
 	// const dataArray = ["Aatrox", "Ahri", "Akali", "Alistar", "Amumu", "Anivia", "Annie", "Ashe", "AurelionSol",
