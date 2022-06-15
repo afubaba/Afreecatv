@@ -119,8 +119,8 @@ $.getJSON("locales/ko/messages.json", function(result) {
 		replaceEachSrc = replaceEachSrc.replace(".png", "");
 		//获取国际化英雄名称父辈
 
-		let replaceEachTitleValue = result.eval("lol_" + replaceEachSrc + "_title");
-		// console.log(replaceEachTitleValue)
+		let replaceEachTitleValue = result.eval("lol_" + replaceEachSrc + "_title.message");
+		console.log(replaceEachTitleValue)
 		heroParent[i].title = replaceEachTitleValue;
 		// console.log("lol_" + replaceEachSrc + "_title");
 		//获取国际化英雄名称
