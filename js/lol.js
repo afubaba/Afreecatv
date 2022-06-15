@@ -3,7 +3,7 @@
 console.log("lol.js");
 
 var souceWindow;
-getResourcesByFench("_locales/ko/messages.json")
+getResourcesByFench("locales/ko/messages.json")
 
 function getResourcesByFench(url) {
 	fetch(url).then((response) => {
