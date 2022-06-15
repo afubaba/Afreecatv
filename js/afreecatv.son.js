@@ -4,8 +4,6 @@ function getDomById(idDom) {
 }
 //自动启动
 function testStart() {
-
-
 	function startButtonId() {
 		//启动动画效果
 		var src = document.getElementsByClassName('bj_thumbnail').item(0).children[0].children[0].getAttribute('src');
@@ -360,7 +358,7 @@ function changeBackFunction() {
 		// getDom('btn_send').style='visibility:visible';
 		var src = document.getElementsByClassName('bj_thumbnail').item(0).children[0].children[0].getAttribute('src');
 
-		document.body.style = 'background-image:url(' + src + ');background-size: 100%;background-repeat: no-repeat;';
+		body.style = 'background-image:url(' + src + ');background-size: 100%;background-repeat: no-repeat;';
 
 		$('#chat_area').css('background-image', 'url(' + src + ')').css('background-repeat', 'no-repeat').css(
 			'background-size', '100%');
@@ -596,6 +594,8 @@ function environmentFunction() {
 
 	//背景图地址
 	var src = document.getElementsByClassName('bj_thumbnail').item(0).children[0].children[0].getAttribute('src');
+	// let body = document.getElementsByTagName('body');
+	//body.style = 'background-image:url(' + src + ');background-size: 100%;background-repeat: no-repeat;';
 
 
 	// var chat_area_width=getDom('chat_area').clentWidth;
@@ -744,6 +744,7 @@ function environmentFunction() {
 								// setContentEditableSelection("testInput")
 								getDom('testInput').focus();
 							}, 100);
+
 						}
 
 						grateGrandson[k].onmouseover = function() {
@@ -769,7 +770,6 @@ function environmentFunction() {
 
 	//默认开启聊天
 	getDom('retrievalButtonId').click();
-
 	//切换时间
 	getDom('autoTimeId').click();
 
@@ -793,10 +793,10 @@ function environmentFunction() {
 			getDom('testInput').focus();
 		}, 100);
 	}
-	// 	getDom('write_area').onblur = function() {
-	// 		getDom('testInput').value = getDom('write_area').textContent;
-	// 		getDom('testInput').focus();
-	// 	}
+	// getDom('write_area').onblur = function() {
+	// 	getDom('testInput').value = getDom('write_area').textContent;
+	// 	getDom('testInput').focus();
+	// }
 	getDom('testInput').onfocus = function() {
 		getDom('write_area').innerHTML = getDom('testInput').value;
 	}
@@ -820,6 +820,8 @@ function environmentFunction() {
 
 	//官方表情漫画位置优化
 	$(".emoticon_output").css("width", "100px").css("margin-left", "70px").css("background-color", "rgba(0,0,0,0.45");
+
+
 
 
 	// getDom('testInput').setaAttibute('')
@@ -859,8 +861,9 @@ function sendMessageFunction() {
 	}
 	repeatTimes = 1;
 	let str = sendMessageSonFunction(repeatTimes);
-	sendNowFunction(str);
-	thisInterval = setInterval(function() {
+	if (allRepeatTimes > 1) {
+		sendNowFunction(str);
+		thisInterval = setInterval(function() {
 			// document.getElementById('write_area').innerHTML = str;
 			//<!--js模拟点击事件/아 날로 그 클릭 이벤트-->
 			// document.getElementById('btn_send').click();
@@ -873,12 +876,16 @@ function sendMessageFunction() {
 			str = sendMessageSonFunction(repeatTimes);
 			sendNowFunction(str);
 			//순환 속도 1 초 당,수 동 설정 가능,1000 은 1 초.2000 은2 초
+		}, frequency * 1000);
+	} else if (allRepeatTimes == 1) {
+		setTimeout(function() {
+			sendNowFunction(str);
+		}, frequency * 1000);
+	}
 
-		}, frequency * 1000),
-		//清空输入框
-		document.getElementById('testInput').value = '';
+	//清空输入框
+	document.getElementById('testInput').value = '';
 }
-
 
 //立即发送
 function sendNowFunction(str) {
@@ -886,7 +893,6 @@ function sendNowFunction(str) {
 	//<!--js模拟点击事件/아 날로 그 클릭 이벤트-->
 	document.getElementById('btn_send').click();
 }
-
 
 function sendMessageSonFunction(repeatTimes) {
 	//排除一次
@@ -949,6 +955,8 @@ function sendMessageSonFunction(repeatTimes) {
 	return str;
 }
 
+let body = document.getElementsByTagName('body')[0];
+
 // function init() {
 // 	$('#barrageButtonId').css('background-color', 'green').css('font-size', 'large').css('color', 'yellow');
 // 	tipBarrage('start');
@@ -970,7 +978,6 @@ function barrage() {
 	// alert($barrageButton.attr('data-isBarrage'));
 }
 
-
 //获得随机颜色
 function getRandomColor() {
 	const rdColor = ['Red', 'Orange', 'Yellow', 'Green', 'Cyan', 'Blue', 'Purple'];
@@ -980,7 +987,7 @@ function getRandomColor() {
 
 //全局字体颜色
 var commonFontColor;
-
+// test('111111111');
 function test(text) {
 	let isBarrage = $('#barrageButtonId').attr('data-isBarrage');
 	//弹幕数组
@@ -1002,7 +1009,6 @@ function test(text) {
 	if ($('.showLog').length > 198) {
 		console.log('afreecatv.son.js:清理屏幕弹幕');
 		$('#webplayer').prevAll('div').remove();
-
 	}
 	//创建dom
 	function createShowLogs() {
@@ -1051,13 +1057,12 @@ function test(text) {
 		function createSingleShowLog(id, text) {
 			let showLogDivDom = document.createElement('div');
 
-			//showLogDivDom.style.color = $('#background_color').val()
 			showLogDivDom.style.color = commonFontColor;
 			showLogDivDom.id = id;
 			showLogDivDom.className = 'showLog';
 			showLogDivDom.innerHTML = text;
 			// showLogDivDom.style.backgroundColor='white';
-			document.body.insertBefore(showLogDivDom, webplayer);
+			body.insertBefore(showLogDivDom, webplayer);
 		}
 
 	}
@@ -1100,6 +1105,7 @@ function test(text) {
 					$(id).remove();
 
 				}
+
 				//删除已经显示的
 				// deleteShowLog(id);
 			}, showLogDelay);
@@ -1180,11 +1186,9 @@ function tipBarrage(textContent) {
 				left: i
 			});
 			//10秒后自动隐藏
-
 			if (i < -$('body').width()) {
 				$('#' + id).remove();
 				clearTimeout(tipBarrageTimeout);
-
 			} else {
 				tipBarrageTimeoutFunction(id);
 			}
@@ -1196,13 +1200,7 @@ function tipBarrage(textContent) {
 }
 
 //环境部署函数
-function environmentButtonFunction() {
-
-
-}
-
-
-
+function environmentButtonFunction() {}
 
 //检索m消息函数]
 function retrievalButtonFunction() {
@@ -1277,7 +1275,7 @@ function retrievalButtonFunction() {
 		upperLimit.value == '0.001';
 		getDom('upperLimit').value = '0.001';
 	}
-	// 	console.log('重启或其开启了messageInterval');
+	// console.log('重启或其开启了messageInterval');
 
 
 	//显示
@@ -1444,7 +1442,7 @@ function retrievalButtonFunction() {
 				var texDom = chat_area.children[initIndex].children[0].nextElementSibling;
 				// texDom.style.border='2px black solid';
 				texDom.style.fontSize = 'large';
-				// 				texDom.style.backgroundColor = 'white';
+				// texDom.style.backgroundColor = 'white';
 				commonFontColor = getRandomColor();
 				texDom.style.color = commonFontColor;
 
