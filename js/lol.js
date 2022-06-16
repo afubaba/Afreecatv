@@ -110,10 +110,15 @@ window.onload = function() {
 
 }
 let replaceArray = "";
+
+var topValue = "top";
+var junValue = "jungle";
+var midValue = "middle";
+var adcValue = "adc";
+var supValue = "support";
+
+
 $.getJSON("locales/ko/messages.json", function(result) {
-
-
-
 	//绑定函数
 	let heroLeng = $("#jSearchHeroDiv").children("li").children().length;
 	console.log(heroLeng);
@@ -122,6 +127,11 @@ $.getJSON("locales/ko/messages.json", function(result) {
 		console.log("起始位置:", randoN);
 		jj(randoN, heroLeng);
 	}
+	topValue = result.lol_top.message;
+	junValue = result.lol_jungle.message;
+	midValue = result.lol_middle.message;
+	adcValue = result.lol_adc.message;
+	supValue = result.lol_support.message;
 
 	var i = 0;
 	let initInterval = setInterval(function() {
@@ -148,7 +158,7 @@ $.getJSON("locales/ko/messages.json", function(result) {
 		//填入国际化名称 一键
 		heroName.innerText = replaceEachSrcValue;
 		// console.log(replaceEachSrcValue);
-		
+
 		// console.log(replaceEachSrc + ":" + replaceEachSrcValue + ",title:" +
 		// 	replaceEachTitleValue + ",alt:" +
 		// 	replaceEachTitleValue);
@@ -358,21 +368,20 @@ $(document).ready(function(e) {
 	// let supValue = setLang.getI18n("lol_support");
 
 
-	$(".selete-item>label>a").get(0).innerText = "top";
-	$(".selete-item>label>a").get(1).innerText = "jungle";
-	$(".selete-item>label>a").get(2).innerText = "middle";
-	$(".selete-item>label>a").get(3).innerText = "adc";
-	$(".selete-item>label>a").get(4).innerText = "support";
-
+	$(".selete-item>label>a").get(0).innerText = topValue;
+	$(".selete-item>label>a").get(1).innerText = junValue;
+	$(".selete-item>label>a").get(2).innerText = midValue;
+	$(".selete-item>label>a").get(3).innerText = adcValue;
+	$(".selete-item>label>a").get(4).innerText = supValue;
 
 	for (i = 0; i < allHero.length; i++) {
 		for (j = 0; j < top.length; j++) {
 			if (allHero[i] == top[j]) {
 				text = $(".commspr-commico-search").get(i).innerHTML
 				if ($(".commspr-commico-search").get(i).innerHTML == "") {
-					$(".commspr-commico-search").get(i).innerHTML = "top";
+					$(".commspr-commico-search").get(i).innerHTML = topValue;
 				} else {
-					$(".commspr-commico-search").get(i).innerHTML = text + "丨top";
+					$(".commspr-commico-search").get(i).innerHTML = text + "丨" + topValue;
 				}
 			}
 		}
@@ -382,10 +391,10 @@ $(document).ready(function(e) {
 				if (allHero[i] == middle[j]) {
 					text = $(".commspr-commico-search").get(i).innerHTML
 					if ($(".commspr-commico-search").get(i).innerHTML == "") {
-						$(".commspr-commico-search").get(i).innerHTML = "middle";;
+						$(".commspr-commico-search").get(i).innerHTML = midValue;;
 					} else {
 
-						$(".commspr-commico-search").get(i).innerHTML = text + "丨middle";
+						$(".commspr-commico-search").get(i).innerHTML = text + "丨" + midValue;
 					}
 				}
 			}
@@ -396,10 +405,10 @@ $(document).ready(function(e) {
 				if (allHero[i] == jungle[j]) {
 					text = $(".commspr-commico-search").get(i).innerHTML
 					if ($(".commspr-commico-search").get(i).innerHTML == "") {
-						$(".commspr-commico-search").get(i).innerHTML = "jungle";
+						$(".commspr-commico-search").get(i).innerHTML = junValue;
 					} else {
 
-						$(".commspr-commico-search").get(i).innerHTML = text + "丨jungle";
+						$(".commspr-commico-search").get(i).innerHTML = text + "丨" + junValue;
 					}
 				}
 			}
@@ -410,10 +419,10 @@ $(document).ready(function(e) {
 				if (allHero[i] == adc[j]) {
 					text = $(".commspr-commico-search").get(i).innerHTML
 					if ($(".commspr-commico-search").get(i).innerHTML == "") {
-						$(".commspr-commico-search").get(i).innerHTML = "adc";
+						$(".commspr-commico-search").get(i).innerHTML = adcValue;
 					} else {
 
-						$(".commspr-commico-search").get(i).innerHTML = text + "丨adc";
+						$(".commspr-commico-search").get(i).innerHTML = text + "丨" + adcValue;
 					}
 				}
 			}
@@ -424,10 +433,10 @@ $(document).ready(function(e) {
 				if (allHero[i] == support[j]) {
 					text = $(".commspr-commico-search").get(i).innerHTML
 					if ($(".commspr-commico-search").get(i).innerHTML == "") {
-						$(".commspr-commico-search").get(i).innerHTML = "support";
+						$(".commspr-commico-search").get(i).innerHTML = supValue;
 					} else {
 
-						$(".commspr-commico-search").get(i).innerHTML = text + "丨support"
+						$(".commspr-commico-search").get(i).innerHTML = text + "丨" + supValue;
 					}
 				}
 			}
