@@ -126,7 +126,7 @@ $.getJSON("locales/ko/messages.json", function(result) {
 	var i = 0;
 	let initInterval = setInterval(function() {
 		const imgLength = $("#jSearchHeroDiv").children("li").children().children("img").length;
-		console.log(imgLength);
+		// console.log(imgLength);
 		//英雄名称父
 		let heroParent = $("#jSearchHeroDiv").children("li").children();
 		//英雄名称
@@ -139,15 +139,16 @@ $.getJSON("locales/ko/messages.json", function(result) {
 		//获取国际化英雄名称父辈
 
 		let replaceEachTitleValue = eval("result.lol_" + replaceEachSrc + "_title.message");
-		console.log(replaceEachTitleValue)
+		// console.log(replaceEachTitleValue)
 		heroParent[i].title = replaceEachTitleValue;
 		// console.log("lol_" + replaceEachSrc + "_title");
 		//获取国际化英雄名称
-		console.log(replaceEachSrc);
+		// console.log(replaceEachSrc);
 		let replaceEachSrcValue = eval("result.lol_" + replaceEachSrc + ".message");
 		//填入国际化名称 一键
 		heroName.innerText = replaceEachSrcValue;
-		console.log(replaceEachSrcValue);
+		// console.log(replaceEachSrcValue);
+		
 		// console.log(replaceEachSrc + ":" + replaceEachSrcValue + ",title:" +
 		// 	replaceEachTitleValue + ",alt:" +
 		// 	replaceEachTitleValue);
@@ -156,7 +157,7 @@ $.getJSON("locales/ko/messages.json", function(result) {
 		if (i >= imgLength) {
 			clearInterval(initInterval);
 		}
-	}, 16);
+	}, 1);
 
 
 
