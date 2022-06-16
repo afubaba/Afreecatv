@@ -1,5 +1,5 @@
-
-<a href="https://github.com/afubaba/AfreecatvChromeExtensions" target="_blank">구글 플러그인 액세스 발표，최신 플러그인 다운로드 주소</a>
+구글 플러그인 액세스 발표，최신 플러그인 다운로드 주소
+<a href="https://github.com/afubaba/AfreecatvChromeExtensions" target="_blank">플러그인 주소</a>
 --
 <a href="https://afubaba.github.io/Afreecatv/RobotCommand.html" target="_blank">명령 매뉴얼</a>
 --
