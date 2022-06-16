@@ -1,4 +1,6 @@
-구글 플러그인 액세스 발표，최신 플러그인 다운로드 주소：https://github.com/afubaba/AfreecatvChromeExtensions
+
+<a href="https://github.com/afubaba/AfreecatvChromeExtensions" target="_blank">구글 플러그인 액세스 발표，최신 플러그인 다운로드 주소</a>
+<a href="https://afubaba.github.io/Afreecatv/RobotCommand.html" target="_blank">명령 매뉴얼</a>
 --
 #수동 입력 액세스（대부분의 메인스트림급 유람기 콘솔 입력，유람기를 새로 고칠 때 컨트롤러에서 다시 호출해야 합니다,프로그래밍 기초가 있는 사람에게 적합하다）
 모든 유람 기 에서 console 컨트롤 러 를 찾 아 다음 세 가지 방식 중 하 나 를 복사 하여 붙 여 넣 습 니 다.온라인 도입, 홈 페이지 내 방식
