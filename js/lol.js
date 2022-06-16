@@ -157,38 +157,38 @@ $.getJSON("locales/ko/messages.json", function(result) {
 		if (i >= imgLength) {
 			clearInterval(initInterval);
 		}
-	}, 1);
+	}, 16);
 
 
 
-	for (let i = 0; i < imgLength; i++) {
-		//英雄名称父
-		let heroParent = $("#jSearchHeroDiv").children("li").children();
-		//英雄名称
-		let heroName = heroParent.children("p")[i];
-		// console.log(heroName);
-		let eachImgSrc = heroParent.children("img")[i].src;
-		// console.log(eachImgSrc);
-		let replaceEachSrc = eachImgSrc.replace("https://afubaba.github.io/Afreecatv/img/lol2/", "");
-		replaceEachSrc = replaceEachSrc.replace(".png", "");
-		//获取国际化英雄名称父辈
+	// for (let i = 0; i < imgLength; i++) {
+	// 	//英雄名称父
+	// 	let heroParent = $("#jSearchHeroDiv").children("li").children();
+	// 	//英雄名称
+	// 	let heroName = heroParent.children("p")[i];
+	// 	// console.log(heroName);
+	// 	let eachImgSrc = heroParent.children("img")[i].src;
+	// 	// console.log(eachImgSrc);
+	// 	let replaceEachSrc = eachImgSrc.replace("https://afubaba.github.io/Afreecatv/img/lol2/", "");
+	// 	replaceEachSrc = replaceEachSrc.replace(".png", "");
+	// 	//获取国际化英雄名称父辈
 
-		let replaceEachTitleValue = eval("result.lol_" + replaceEachSrc + "_title.message");
-		console.log(replaceEachTitleValue)
-		heroParent[i].title = replaceEachTitleValue;
-		// console.log("lol_" + replaceEachSrc + "_title");
-		//获取国际化英雄名称
-		console.log(replaceEachSrc);
-		let replaceEachSrcValue = eval("result.lol_" + replaceEachSrc + ".message");
-		//填入国际化名称 一键
-		heroName.innerText = replaceEachSrcValue;
-		console.log(replaceEachSrcValue);
-		// console.log(replaceEachSrc + ":" + replaceEachSrcValue + ",title:" +
-		// 	replaceEachTitleValue + ",alt:" +
-		// 	replaceEachTitleValue);
-		// replaceArray = replaceArray + "\"" + replaceEachSrc + "\","
+	// 	let replaceEachTitleValue = eval("result.lol_" + replaceEachSrc + "_title.message");
+	// 	console.log(replaceEachTitleValue)
+	// 	heroParent[i].title = replaceEachTitleValue;
+	// 	// console.log("lol_" + replaceEachSrc + "_title");
+	// 	//获取国际化英雄名称
+	// 	console.log(replaceEachSrc);
+	// 	let replaceEachSrcValue = eval("result.lol_" + replaceEachSrc + ".message");
+	// 	//填入国际化名称 一键
+	// 	heroName.innerText = replaceEachSrcValue;
+	// 	console.log(replaceEachSrcValue);
+	// 	// console.log(replaceEachSrc + ":" + replaceEachSrcValue + ",title:" +
+	// 	// 	replaceEachTitleValue + ",alt:" +
+	// 	// 	replaceEachTitleValue);
+	// 	// replaceArray = replaceArray + "\"" + replaceEachSrc + "\","
 
-	}
+	// }
 });
 
 
