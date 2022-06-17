@@ -1577,27 +1577,7 @@ function retrievalButtonFunction() {
 
 					if (tex == "!reboot" || tex == "!재부팅" || tex == "!reload") {
 						location.reload();
-					} else if (tex == "!탑" || tex == "!정글" || tex == "!미드" || tex == "!바텀" || tex == "!영웅" ||
-						tex ==
-						"!서포터" || tex == "!top" || tex.includes("!mid") ||
-						tex.includes("!jun") || tex.includes("!ad") || tex.includes("!sup") || tex == "!any" ||
-						tex == "!all") {
-						// const LOLURL = chrome.runtime.getURL("LOL.html");
-						const LOLURL = sessionStorage.getItem("randomURL");
-						// winowName = window.open(LOLURL, "windowName");
-						winowName = window.open(LOLURL, "_blank",
-							"left=300,width=1000,height=1000,channelmode=yes,menubar=yes,scrollbars=0");
-						setTimeout(function() {
-							winowName.postMessage(tex, LOLURL);
-							//所有英雄event.data == "!랜덤영웅" || event.data == "!임의의영웅" || event.data == "!임의영웅"
-
-							// winowName.postMessage("!랜덤탑", LOLURL);
-							// winowName.postMessage("!랜덤정글", LOLURL);
-							// winowName.postMessage("!랜덤미드", LOLURL);
-							// winowName.postMessage("!랜덤바텀", LOLURL);
-							// winowName.postMessage("!랜덤서포터", LOLURL);
-						}, 1000);
-					}
+					} 
 					//终止(停止)命令!멈추다(任何人)
 					else if (tex == '!stop' || tex == '!멈추다') {
 						//终止消息提示
