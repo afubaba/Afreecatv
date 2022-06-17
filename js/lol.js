@@ -56,7 +56,7 @@ window.addEventListener("message", (event) => {
 				$(".selete-item>label>a").get(4).click();
 			}, inteveal);
 		}
-		if (event.data == "!영웅" || event.data == "!any" || event.data == "!all") {
+		if (event.data == "!임의" ||event.data == "!모든" || event.data == "!any" || event.data == "!all") {
 
 
 			//执行函数
