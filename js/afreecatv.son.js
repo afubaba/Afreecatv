@@ -1548,46 +1548,7 @@ function retrievalButtonFunction() {
 				}
 				//打开关闭机器人聊天功能
 				var robotChatcheckboxId = document.getElementById("robotChatcheckboxId");
-
 				if (robotChatcheckboxId.checked && tex.includes("!")) {
-					//终止(停止)命令!멈추다(任何人)
-					if (tex == '!stop' || tex == '!멈추다') {
-						//终止消息提示
-						document.getElementById('stopButtonId').click();
-						// alert('['+grade+']'+nickName+'('+idt+')'+is_mobile+':'+tex'你使用终止命令,终止了任何条件程序');
-						console.log(idt + ':你使用终止命令,终止了部分程序');
-						//恢复默认
-						document.getElementById('environmentButtonId').click();
-						console.log(idt + ':系统恢复默认配置');
-
-					}
-					//部署环境(仅限管理员(id包含10571237))
-					if (idt.includes('10571237') && tex == '!en' || tex == '!환경' || tex == '!환경배포' || tex ==
-						'!start' || tex == '!시작하다' || tex == '!시작') {
-						document.getElementById('environmentButtonId').click();
-
-						getDom('testInput').value = '@' + nickName + ':환경 배치 성공';
-						getDom('send_message').click();
-
-						console.log(idt + '部署环境成功');
-
-					}
-					//聊天热度延迟速度
-					if (tex == '!채팅속도' || tex == '!지연속도' || tex == '!속도') {
-						var delayInputTextId = getDom('delayInputTextId').value;
-
-						if (delayInputTextId >= 1000) {
-							delayInputTextId = delayInputTextId / 1000 + 's';
-						} else {
-							delayInputTextId = delayInputTextId + 'ms';
-						}
-						getDom('testInput').value = '@' + nickName + ':관중:' + getDom('nAllViewer').innerHTML +
-							',채팅속도:' + delayInputTextId;
-						getDom('send_message').click();
-
-
-					}
-
 					//查看指定用户数量
 					function getGrups(dom1) {
 						//function getDom(dom) {
@@ -1602,8 +1563,79 @@ function retrievalButtonFunction() {
 							text = text + (i + 1) + '.' + user_nick + '(' + user_id + ')';
 						}
 					}
+					//!방송시작시간广播开始时间
+					function getSonButtonDom1(dom) {
+						dom = document.getElementsByClassName(dom).item(0).children[0].lastChild;
+						return dom;
+					}
 
-					if (tex == '!문지기' || tex == '!슈퍼팬') {
+					//收藏或者点赞
+					function getSonButtonDom(dom) {
+						dom = document.getElementsByClassName(dom).item(0).children[0];
+						return dom;
+					}
+
+					if (tex == "!reboot" || tex == "!재부팅" || tex == "!reload") {
+						location.reload();
+					} else if (tex == "!탑" || tex == "!정글" || tex == "!미드" || tex == "!바텀" || tex == "!영웅" ||
+						tex ==
+						"!서포터" || tex == "!top" || tex.includes("!mid") ||
+						tex.includes("!jun") || tex.includes("!ad") || tex.includes("!sup") || tex == "!any" ||
+						tex == "!all") {
+						// const LOLURL = chrome.runtime.getURL("LOL.html");
+						const LOLURL = sessionStorage.getItem("randomURL");
+						// winowName = window.open(LOLURL, "windowName");
+						winowName = window.open(LOLURL, "_blank",
+							"left=300,width=1000,height=1000,channelmode=yes,menubar=yes,scrollbars=0");
+						setTimeout(function() {
+							winowName.postMessage(tex, LOLURL);
+							//所有英雄event.data == "!랜덤영웅" || event.data == "!임의의영웅" || event.data == "!임의영웅"
+
+							// winowName.postMessage("!랜덤탑", LOLURL);
+							// winowName.postMessage("!랜덤정글", LOLURL);
+							// winowName.postMessage("!랜덤미드", LOLURL);
+							// winowName.postMessage("!랜덤바텀", LOLURL);
+							// winowName.postMessage("!랜덤서포터", LOLURL);
+						}, 1000);
+					}
+					//终止(停止)命令!멈추다(任何人)
+					else if (tex == '!stop' || tex == '!멈추다') {
+						//终止消息提示
+						document.getElementById('stopButtonId').click();
+						// alert('['+grade+']'+nickName+'('+idt+')'+is_mobile+':'+tex'你使用终止命令,终止了任何条件程序');
+						console.log(idt + ':你使用终止命令,终止了部分程序');
+						//恢复默认
+						document.getElementById('environmentButtonId').click();
+						console.log(idt + ':系统恢复默认配置');
+
+					}
+					//部署环境(仅限管理员(id包含10571237))
+					else if (idt.includes('10571237') && tex == '!en' || tex == '!환경' || tex == '!환경배포' ||
+						tex ==
+						'!start' || tex == '!시작하다' || tex == '!시작') {
+						document.getElementById('environmentButtonId').click();
+
+						getDom('testInput').value = '@' + nickName + ':환경 배치 성공';
+						getDom('send_message').click();
+
+						console.log(idt + '部署环境成功');
+
+					}
+					//聊天热度延迟速度
+					else if (tex == '!채팅속도' || tex == '!지연속도' || tex == '!속도') {
+						var delayInputTextId = getDom('delayInputTextId').value;
+
+						if (delayInputTextId >= 1000) {
+							delayInputTextId = delayInputTextId / 1000 + 's';
+						} else {
+							delayInputTextId = delayInputTextId + 'ms';
+						}
+						getDom('testInput').value = '@' + nickName + ':관중:' + getDom('nAllViewer').innerHTML +
+							',채팅속도:' + delayInputTextId;
+						getDom('send_message').click();
+
+
+					} else if (tex == '!문지기' || tex == '!슈퍼팬') {
 						//哪个组dom名称
 						var groupName = '';
 						var text = '';
@@ -1650,17 +1682,14 @@ function retrievalButtonFunction() {
 						// document.getElementById('setbox_viewer').children.item(0).click();
 
 
-					}
-					if (tex == '!open') {
+					} else if (tex == '!open') {
 
 						getDom('inputFrequency').value = 6;
 						document.getElementById('setbox_viewer').children.item(0).click();
 
 					}
-
-
 					//!message:q/m/s  /!소식:천천히/중속/서둘러
-					if (idt.includes('1057123') && tex.includes('!message:') || tex.includes('!m:')) {
+					else if (idt.includes('1057123') && tex.includes('!message:') || tex.includes('!m:')) {
 
 						//当前速度控制器
 						var delayInputId = getDom('delayInputId');
@@ -1725,27 +1754,25 @@ function retrievalButtonFunction() {
 
 					}
 					//发送按钮语言
-
-					if (tex == '!보내다' || tex == '!send' || tex == '!发送' || tex == '!보내기') {
+					else if (tex == '!보내다' || tex == '!send' || tex == '!发送' || tex == '!보내기') {
 
 						$('#write_area').html($('#showMessage').html());
 						getDom('btn_send').click();
 					}
-
 					//语言命令(在有新消息的情况下执行)
 					// &&tex='!시간'||tex='!时间'
-					if (idt == '1057123772' && tex == '!시간') {
+					else if (idt == '1057123772' && tex == '!시간') {
 						var date = new Date();
 						console.log('시간:' + date);
 					}
 					// !자동시간알림自动报时间启动
-					if (idt.includes('10571237') && tex == '!자동시간알림') {
+					else if (idt.includes('10571237') && tex == '!자동시간알림') {
 						console.log('管理员(' + idt + '):' + '보고시간(自动报时)');
 						document.getElementById('autoTimeId').click();
 
 					}
 					// !보고시간现在手动的时间
-					if (tex == '!보고시간' || tex == '!시간' || tex == '!time') {
+					else if (tex == '!보고시간' || tex == '!시간' || tex == '!time') {
 						console.log('管理员(' + idt + '):' + '보고시간(报告时间)');
 						//获取1-3的随机数字
 						// console.log(parseInt(Math.random()*NO/1));
@@ -1755,30 +1782,13 @@ function retrievalButtonFunction() {
 						}, rdmNo * 1000);
 
 
-					}
-
-					//!방송시작시간广播开始时间
-					function getSonButtonDom1(dom) {
-						dom = document.getElementsByClassName(dom).item(0).children[0].lastChild;
-						return dom;
-					}
-
-					if (tex == '!방송시작시간') {
+					} else if (tex == '!방송시작시간') {
 						var detail_view = getSonButtonDom1('detail_view');
 
 						sendMessage(detail_view.textContent);
 
 
-					}
-
-
-					//收藏或者点赞
-					function getSonButtonDom(dom) {
-						dom = document.getElementsByClassName(dom).item(0).children[0];
-						return dom;
-					}
-
-					if (tex == '!별' || tex == '!즐겨찾기' || tex == '!UP' || tex == '!좋아요' || tex == '!좋아') {
+					} else if (tex == '!별' || tex == '!즐겨찾기' || tex == '!UP' || tex == '!좋아요' || tex == '!좋아') {
 						//收藏
 						var bookmarkSonDom;
 						//点赞
@@ -1831,8 +1841,7 @@ function retrievalButtonFunction() {
 					//内容发送!text:😗😗,2x3  !text:😗,2x0.01  !text:/짱좋아//짱좋아/,3x2
 					// !text:/즐거워/,5x5 id 는 이것 을 포함 해야만 명령 을 실행 할 수 있 습 니 다.이 명령 은 관리자 의 채 팅 번역 기능 을 닫 아야 합 니 다.수 동 설정 도 같은 효과 입 니 다.
 					// !text:😗,2x1 명령 권한 이 열 렸 습 니 다.관리자 계 정 이나 앵 커 계 정 은 채 팅 번역 기능 을 닫 아야 합 니 다.
-
-					if (tex.includes('!text:') && tex.includes('x')) {
+					else if (tex.includes('!text:') && tex.includes('x')) {
 						function getDom(dom) {
 							var dom = document.getElementById(dom);
 							return dom;
@@ -1865,6 +1874,8 @@ function retrievalButtonFunction() {
 						}, rdmNo * 1000);
 					}
 				}
+			
+				
 			}
 			le = document.getElementsByTagName('dt').length;
 		}
