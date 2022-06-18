@@ -793,12 +793,28 @@ function environmentFunction() {
 		}
 	}
 	// 同步输入内容
-	getDom('testInput').onfocus = function() {
-		getDom('write_area').innerHTML = getDom('testInput').value;
+
+	// getDom('testInput').onfocus = function() {
+	// 	getDom('write_area').innerHTML = getDom('testInput').value;
+	// }
+	// getDom('testInput').onblur = function() {
+	// 	getDom('write_area').innerHTML = getDom('testInput').value;
+	// }
+	// 同步输入内容
+	getDom('write_area').onfocus = function() {
+		getDom('testInput').value = getDom('write_area').textContent;
+		setTimeout(function() {
+			// setContentEditableSelection("testInput")
+			//Focus延迟启动
+			getDom('testInput').focus();
+		}, 100);
 	}
-	getDom('testInput').onblur = function() {
-		getDom('write_area').innerHTML = getDom('testInput').value;
-	}
+	// getDom('write_area').onblur = function() {
+	// 	getDom('testInput').value = getDom('write_area').textContent;
+	// 	getDom('testInput').focus();
+	// }
+
+
 	//同步输入内容
 	function synchronizeInputText() {
 		if (getDom("write_area").innerHTML != getDom("testInput").value) {
@@ -818,7 +834,6 @@ function environmentFunction() {
 	getDom("testInput").addEventListener('input', function(event) {
 		synchronizeInputText()
 	});
-
 
 	//初始化字体
 	getDom('environmentButtonId').style = 'font-size:large;color:red';
