@@ -911,11 +911,13 @@ function sendMessageFunction() {
 	let str = sendMessageSonFunction(repeatTimes);
 	if (allRepeatTimes > 1) {
 		sendNowFunction(str);
+		
 		thisInterval = setInterval(function() {
 			// document.getElementById('write_area').innerHTML = str;
 			//<!--js模拟点击事件/아 날로 그 클릭 이벤트-->
 			// document.getElementById('btn_send').click();
 			repeatTimes++;
+			tipBarrage(frequency+"秒后发送第"+repeatTimes+"次");
 			// <!--반복 횟수, 수 동 설정 가능,3 은 3 번 을 나타 낸다-->
 			if (repeatTimes > allRepeatTimes) {
 				clearInterval(thisInterval);
