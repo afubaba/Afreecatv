@@ -917,7 +917,7 @@ function sendMessageFunction() {
 			//<!--js模拟点击事件/아 날로 그 클릭 이벤트-->
 			// document.getElementById('btn_send').click();
 			repeatTimes++;
-			tipBarrage("<img src='https://afubaba.github.io/Afreecatv/logo/400x400.jpeg'/><hr><h1 style=''>" +1 + "秒后发送第" + 2 + "次</h1>");
+			tipBarrage("<img src='https://afubaba.github.io/Afreecatv/logo/400x400.jpeg'/><hr><h1 style=''>" +frequency + "秒后发送第" + repeatTimes + "次</h1>");
 			// <!--반복 횟수, 수 동 설정 가능,3 은 3 번 을 나타 낸다-->
 			if (repeatTimes > allRepeatTimes) {
 				clearInterval(thisInterval);
