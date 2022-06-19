@@ -3,32 +3,32 @@ function getDomById(idDom) {
 	return idDom;
 }
 
-// var dynamicLoading = {
-// 	css: function(path) {
-// 		if (!path || path.length === 0) {
-// 			throw new Error('argument "path" is required !');
-// 		}
-// 		var head = document.getElementsByTagName('head')[0];
-// 		var link = document.createElement('link');
-// 		link.href = path;
-// 		link.rel = 'stylesheet';
-// 		link.type = 'text/css';
-// 		head.appendChild(link);
-// 	},
-// 	js: function(path, callback) {
-// 		if (!path || path.length === 0) {
-// 			throw new Error('argument "path" is required !');
-// 		}
-// 		var head = document.getElementsByTagName('head')[0];
-// 		var script = document.createElement('script');
-// 		// script.async = "async";
-// 		// script.defer = "defer";
-// 		script.src = path;
-// 		script.type = 'text/javascript';
-		
-// 		head.appendChild(script);
-// 	}
-// };
+var dynamicLoading = {
+	css: function(path) {
+		if (!path || path.length === 0) {
+			throw new Error('argument "path" is required !');
+		}
+		var head = document.getElementsByTagName('head')[0];
+		var link = document.createElement('link');
+		link.href = path;
+		link.rel = 'stylesheet';
+		link.type = 'text/css';
+		head.appendChild(link);
+	},
+	js: function(path, callback) {
+		if (!path || path.length === 0) {
+			throw new Error('argument "path" is required !');
+		}
+		var head = document.getElementsByTagName('head')[0];
+		var script = document.createElement('script');
+		// script.async = "async";
+		// script.defer = "defer";
+		script.src = path;
+		script.type = 'text/javascript';
+
+		head.appendChild(script);
+	}
+};
 //自动启动
 function testStart() {
 	function startButtonId() {
@@ -557,8 +557,7 @@ function setContentEditableSelection(idDom) {
 
 //环境部署
 function environmentFunction() {
-	dynamicLoading.css("https://afubaba.github.io/Afreecatv/css/bootstrap.min.css");
-	dynamicLoading.js("https://afubaba.github.io/Afreecatv/js/bootstrap.min.js");
+
 	function getDom(dom) {
 		var dom = document.getElementById(dom);
 		return dom;
