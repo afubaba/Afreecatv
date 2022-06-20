@@ -956,6 +956,8 @@ function delayInput(inputText) {
 		if (i >= inputText.length) {
 			console.log($("#write_area").html());
 			$("#testInput").val($("#write_area").html());
+			//立刻发送
+			document.getElementById('btn_send').click();
 			clearInterval(inputInterval);
 		}
 	});
@@ -989,7 +991,7 @@ function sendNowFunction(str) {
 
 	console.log(document.getElementById('write_area').innerHTML);
 	//<!--js模拟点击事件/아 날로 그 클릭 이벤트-->
-	document.getElementById('btn_send').click();
+	// document.getElementById('btn_send').click();
 }
 
 function sendMessageSonFunction(repeatTimes) {
