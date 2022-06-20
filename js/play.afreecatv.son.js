@@ -935,12 +935,13 @@ function sendMessageFunction() {
 			//순환 속도 1 초 당,수 동 설정 가능,1000 은 1 초.2000 은2 초
 		}, frequency * 1000);
 	} else if (allRepeatTimes == 1) {
-		// setTimeout(function() {
+
 		//延时发送
-		delayInput(str, frequency);
-		//立即发送
-		// sendNowFunction(str);
-		// }, frequency * 500);
+		// delayInput(str, frequency);
+		setTimeout(function() {
+			//立即发送
+			sendNowFunction(str);
+		}, frequency * 1000);
 	}
 
 	//清空输入框
