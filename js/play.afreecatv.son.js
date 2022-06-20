@@ -911,19 +911,22 @@ function sendMessageFunction() {
 	let str = sendMessageSonFunction(repeatTimes);
 	if (allRepeatTimes > 1) {
 		sendNowFunction(str);
-
+		console.log(str);
 		thisInterval = setInterval(function() {
 			// document.getElementById('write_area').innerHTML = str;
 			//<!--js模拟点击事件/아 날로 그 클릭 이벤트-->
 			// document.getElementById('btn_send').click();
 			repeatTimes++;
-			tipBarrage("<img src='https://afubaba.github.io/Afreecatv/logo/400x400.jpeg'/><hr><h1 style=''>" +frequency + "秒后发送第" + repeatTimes + "次</h1>");
+
 			// <!--반복 횟수, 수 동 설정 가능,3 은 3 번 을 나타 낸다-->
 			if (repeatTimes > allRepeatTimes) {
 				clearInterval(thisInterval);
 				return;
 			}
+			tipBarrage("<img src='https://afubaba.github.io/Afreecatv/logo/400x400.jpeg'/><hr><h1 style=''>" +
+				frequency + "秒后发送第" + repeatTimes + "次</h1>");
 			str = sendMessageSonFunction(repeatTimes);
+			console.log(str);
 			sendNowFunction(str);
 			//순환 속도 1 초 당,수 동 설정 가능,1000 은 1 초.2000 은2 초
 		}, frequency * 1000);
@@ -936,10 +939,55 @@ function sendMessageFunction() {
 	//清空输入框
 	document.getElementById('testInput').value = '';
 }
+//延时输入内容
+
+function delayInput(inputText) {
+	console.log(inputText.length);
+	if ('undefined' != typeof inputInterval) {
+		clearInterval(inputInterval);
+	}
+	var i = 0;
+	$("#write_area").html("");
+	$("#testInput").html("");
+	var inputInterval = setInterval(function() {
+		console.log(i);
+		$("#write_area").html($("#write_area").html() + inputText[i]);
+		i++;
+		if (i >= inputText.length) {
+			console.log($("#write_area").html());
+			$("#testInput").val($("#write_area").html());
+			clearInterval(inputInterval);
+		}
+	});
+}
+
+// function delayInput(inputText,inputFrequency) {
+// 	console.log(inputText.length);
+// 	if ('undefined' != typeof inputInterval) {
+// 		clearInterval(inputInterval);
+// 	}
+// 	var i = 0;
+// 	$("#write_area").html("");
+// 	$("#testInput").html("");
+// 	var inputInterval = setInterval(function() {
+// 		console.log(i);
+// 		$("#write_area").html($("#write_area").html() + inputText[i]);
+// 		i++;
+// 		if (i >= inputText.length) {
+// 			console.log($("#write_area").html());
+// 			$("#testInput").val($("#write_area").html());
+// 			clearInterval(inputInterval);
+// 		}
+// 	}, inputFrequency);
+// }
 
 //立即发送
 function sendNowFunction(str) {
-	document.getElementById('write_area').innerHTML = str;
+	//延时输入
+	delayInput(str);
+	// document.getElementById('write_area').innerHTML = str;
+
+	console.log(document.getElementById('write_area').innerHTML);
 	//<!--js模拟点击事件/아 날로 그 클릭 이벤트-->
 	document.getElementById('btn_send').click();
 }
