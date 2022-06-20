@@ -939,7 +939,7 @@ function sendMessageFunction() {
 			//延时发送
 			delayInput(str, frequency);
 			//立即发送
-			sendNowFunction(str);
+			// sendNowFunction(str);
 		}, frequency * 1000);
 	}
 
