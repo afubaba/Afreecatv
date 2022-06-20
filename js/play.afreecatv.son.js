@@ -1239,7 +1239,7 @@ function test(text) {
 
 
 //弹窗提示
-function tipBarrage(textContent) {
+async function tipBarrage(textContent) {
 
 	let barrageButtonId = getDomById('barrageButtonId');
 	let bodyHeight = $('body').height();
