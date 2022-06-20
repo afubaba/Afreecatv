@@ -935,7 +935,10 @@ function sendMessageFunction() {
 		}, frequency * 1000);
 	} else if (allRepeatTimes == 1) {
 		setTimeout(function() {
-			sendNowFunction(str);
+			//延时发送
+			delayInput(str);
+			//立即发送
+			// sendNowFunction(str);
 		}, frequency * 1000);
 	}
 
@@ -943,6 +946,7 @@ function sendMessageFunction() {
 	document.getElementById('testInput').value = '';
 }
 //延时输入内容
+
 function delayInput(inputText) {
 	if ('undefined' != typeof inputInterval) {
 		clearInterval(inputInterval);
