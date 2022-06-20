@@ -960,7 +960,10 @@ function delayInput(inputText) {
 		if (i >= inputText.length) {
 			$("#testInput").val($("#write_area").html());
 			//立刻发送
-			document.getElementById('btn_send').click();
+			setTimeout(function(){
+				document.getElementById('btn_send').click();
+			},1000);
+			
 			clearInterval(inputInterval);
 		}
 	});
