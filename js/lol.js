@@ -56,7 +56,7 @@ window.addEventListener("message", (event) => {
 				$(".selete-item>label>a").get(4).click();
 			}, inteveal);
 		}
-		if (event.data == "!임의" ||event.data == "!모든" || event.data == "!any" || event.data == "!all") {
+		if (event.data == "!영웅" || event.data == "!any" || event.data == "!all") {
 
 
 			//执行函数
@@ -145,7 +145,7 @@ $.getJSON("locales/ko/messages.json", function(result) {
 		let eachImgSrc = heroParent.children("img")[i].src;
 		// console.log(eachImgSrc);
 		let replaceEachSrc = eachImgSrc.replace("https://afubaba.github.io/Afreecatv/img/lol/", "");
-		replaceEachSrc = replaceEachSrc.replace(".png", "");
+		replaceEachSrc = replaceEachSrc.replace(".webp", "");
 		//获取国际化英雄名称父辈
 
 		let replaceEachTitleValue = eval("result.lol_" + replaceEachSrc + "_title.message");
