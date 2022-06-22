@@ -711,14 +711,12 @@ function environmentFunction() {
 
 	var mainFace = document.getElementById('mainFace');
 	var mainFaceChildrens = mainFace.children;
-	extensionId = sessionStorage.getItem("randomURL");
-	extensionId = extensionId.substring(0, extensionId.lastIndexOf("/"));
+	
 	for (var i = 0; i < mainFaceChildrens.length; i++) {
 		if (mainFaceChildrens[i].tagName != 'H2') {
 			var mainFaceGrandSons = mainFaceChildrens[i].children
 			for (var j = 0; j < mainFaceGrandSons.length; j++) {
-				$(mainFaceGrandSons[j]).children("img").attr("src", extensionId + $(mainFaceGrandSons[j]).children(
-					"img").attr("src"));
+				
 				mainFaceGrandSons[j].onclick = function() {
 					this.style.backgroundColor = 'white';
 					this.setAttribute('title', this.textContent);
@@ -765,9 +763,7 @@ function environmentFunction() {
 					for (let k = 0; k < mainFacebookFaceGrandson[j].childElementCount; k++) {
 
 						// grateGrandson[k].innerHTML = grateGrandson[k].getAttribute('data-c');
-						$(grateGrandson[k]).children("img").attr("src", extensionId + $(
-							grateGrandson[k]).children(
-							"img").attr("src"));
+						
 						grateGrandson[k].onclick = function() {
 
 							this.style.backgroundColor = 'white';
