@@ -706,24 +706,29 @@ function environmentFunction() {
 	getDom('mainFacebookFaceDiv').style =
 		" height:40%;margin-top:-5%;position: fixed;margin-left:-40%;width: 300px;word-break:break-word;display:none;";
 	getDom('mainFacebookFace').style = "overflow:scroll;height:100%";
+	//设置默认宽度高度
+	$("#mainFaceDiv img,#mainFacebookFaceDiv img").width("30").height("30");
 
 	var mainFace = document.getElementById('mainFace');
-
 	var mainFaceChildrens = mainFace.children;
+	extensionId = sessionStorage.getItem("randomURL");
+	extensionId = extensionId.substring(0, extensionId.lastIndexOf("/"));
 	for (var i = 0; i < mainFaceChildrens.length; i++) {
 		if (mainFaceChildrens[i].tagName != 'H2') {
-
 			var mainFaceGrandSons = mainFaceChildrens[i].children
 			for (var j = 0; j < mainFaceGrandSons.length; j++) {
-
+				$(mainFaceGrandSons[j]).children("img").attr("src", extensionId + $(mainFaceGrandSons[j]).children(
+					"img").attr("src"));
 				mainFaceGrandSons[j].onclick = function() {
 					this.style.backgroundColor = 'white';
-					this.setAttribute('title', this.textContent)
-					getDom('testInput').value += this.textContent;
+					this.setAttribute('title', this.textContent);
+					let altValue = $(this).children("img").attr("alt");
+					getDom('testInput').value += altValue;
 					setTimeout(function() {
 						// setContentEditableSelection("testInput")
-						getDom('testInput').focus();
-					}, 100);
+						getDom('testInput').focus()
+					}, 1000);
+					// setContentEditableSelection("testInput");
 				}
 				mainFaceGrandSons[j].onmouseover = function() {
 					this.style.backgroundColor = 'red';
@@ -731,13 +736,12 @@ function environmentFunction() {
 				mainFaceGrandSons[j].onmouseleave = function() {
 					this.style.backgroundColor = 'white';
 				}
-				mainFaceGrandSons[j].style.fontSize = '25px';
+				mainFaceGrandSons[j].style.fontSize = '15px';
 			}
 		}
 
 	}
 
-	mainFacebookFace();
 
 	function mainFacebookFace() {
 		function getDomById(dom) {
@@ -760,17 +764,22 @@ function environmentFunction() {
 
 					for (let k = 0; k < mainFacebookFaceGrandson[j].childElementCount; k++) {
 
-						grateGrandson[k].innerHTML = grateGrandson[k].getAttribute('data-c');
+						// grateGrandson[k].innerHTML = grateGrandson[k].getAttribute('data-c');
+						$(grateGrandson[k]).children("img").attr("src", extensionId + $(
+							grateGrandson[k]).children(
+							"img").attr("src"));
 						grateGrandson[k].onclick = function() {
 
 							this.style.backgroundColor = 'white';
-							this.setAttribute('title', this.textContent)
-							getDomById('testInput').value += this.textContent;
+							this.setAttribute('title', this.textContent);
+
+							let altValue = $(this).children("img").attr("alt");
+							getDom('testInput').value += altValue;
+							// setContentEditableSelection("testInput");
 							setTimeout(function() {
 								// setContentEditableSelection("testInput")
-								getDom('testInput').focus();
-							}, 100);
-
+								getDom('testInput').focus()
+							}, 1000);
 						}
 
 						grateGrandson[k].onmouseover = function() {
@@ -792,6 +801,7 @@ function environmentFunction() {
 		}
 	}
 
+	mainFacebookFace();
 
 
 	//默认开启聊天
