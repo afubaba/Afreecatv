@@ -711,12 +711,12 @@ function environmentFunction() {
 
 	var mainFace = document.getElementById('mainFace');
 	var mainFaceChildrens = mainFace.children;
-	
+
 	for (var i = 0; i < mainFaceChildrens.length; i++) {
 		if (mainFaceChildrens[i].tagName != 'H2') {
 			var mainFaceGrandSons = mainFaceChildrens[i].children
 			for (var j = 0; j < mainFaceGrandSons.length; j++) {
-				
+
 				mainFaceGrandSons[j].onclick = function() {
 					this.style.backgroundColor = 'white';
 					this.setAttribute('title', this.textContent);
@@ -763,7 +763,7 @@ function environmentFunction() {
 					for (let k = 0; k < mainFacebookFaceGrandson[j].childElementCount; k++) {
 
 						// grateGrandson[k].innerHTML = grateGrandson[k].getAttribute('data-c');
-						
+
 						grateGrandson[k].onclick = function() {
 
 							this.style.backgroundColor = 'white';
@@ -1517,9 +1517,15 @@ function retrievalButtonFunction() {
 
 
 			if (is_mobile == 'false') {
-				is_mobile = '💻';
+				// is_mobile = '💻';
+				//github
+				is_mobile =
+					"<img draggable='false' class='twemoji-everywhere' alt='🖥' src='https://afubaba.github.io/Afreecatv/img/emoji/1f5a5.webp' style='width: 30px; height: 30px;'/>"
 			} else {
-				is_mobile = '📱';
+				// is_mobile = '📱';
+				//github
+				is_mobile =
+					"<img draggable='false' class='twemoji-everywhere' alt='📱' src='https://afubaba.github.io/Afreecatv/img/emoji/1f4f1.webp' style='width: 30px; height: 30px;'>"
 			}
 			if (grade == 'user') {
 				grade = '사용자';
@@ -1555,7 +1561,7 @@ function retrievalButtonFunction() {
 				var idDom = chat_area.children[initIndex].children[0].lastElementChild;
 				idDom.style.fontSize = 'large';
 				idDom.style.backgroundColor = 'yellow';
-				idDom.innerHTML = idDom.textContent + is_mobile;
+				idDom.innerHTML = is_mobile + idDom.textContent;
 
 				var texDom = chat_area.children[initIndex].children[0].nextElementSibling;
 				// texDom.style.border='2px black solid';
@@ -1613,7 +1619,7 @@ function retrievalButtonFunction() {
 				//记录消息
 				// getDom('showMessage').innerHTML =showMessageText;
 
-				const showMessageText1 = '[' + grade + ']' + nickName + '(' + idt + ')' + is_mobile + ':' + tex;
+				const showMessageText1 = is_mobile + '[' + grade + ']' + nickName + '(' + idt + ')' + ':' + tex;
 				test(showMessageText1);
 
 				//正在读取得消息div ,接收弹幕结果
