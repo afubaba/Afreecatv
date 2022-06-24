@@ -843,10 +843,9 @@ function environmentFunction() {
 
 	//官方表情漫画位置优化
 	$(".emoticon_output").css("width", "100px").css("margin-left", "70px").css("background-color", "rgba(0,0,0,0.45");
-
-
-
-
+	
+	//移除<legend>搜索</legend>
+	$("legend")[0].remove();
 	// getDom('testInput').setaAttibute('')
 
 }
