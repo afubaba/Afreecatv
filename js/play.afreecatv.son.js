@@ -819,12 +819,12 @@ function environmentFunction() {
 	}
 	// 同步输入内容
 
-	// getDom('testInput').onfocus = function() {
-	// 	getDom('write_area').innerHTML = getDom('testInput').value;
-	// }
-	// getDom('testInput').onblur = function() {
-	// 	getDom('write_area').innerHTML = getDom('testInput').value;
-	// }
+	getDom('testInput').onfocus = function() {
+		getDom('write_area').innerHTML = getDom('testInput').value;
+	}
+	getDom('testInput').onblur = function() {
+		getDom('write_area').innerHTML = getDom('testInput').value;
+	}
 	// 同步输入内容
 	getDom('write_area').onfocus = function() {
 		getDom('testInput').value = getDom('write_area').textContent;
@@ -869,9 +869,8 @@ function environmentFunction() {
 	//官方表情漫画位置优化
 	$(".emoticon_output").css("width", "100px").css("margin-left", "70px").css("background-color", "rgba(0,0,0,0.45");
 
-
-
-
+	//移除<legend>搜索</legend>
+	$("legend")[0].remove();
 	// getDom('testInput').setaAttibute('')
 
 }
