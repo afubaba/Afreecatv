@@ -692,7 +692,7 @@ function environmentFunction() {
 	var mutationObserver1 = new MutationObserver(callback1);
 	mutationObserver1.observe(targetNode1, targetNodechange1);
 
-// $("#basicConfiguration").append($("#write_area").clone(true));
+	// $("#basicConfiguration").append($("#write_area").clone(true));
 	//google表情特效
 	// getDom('mainFaceDiv').style =
 	// 	"width: 300px;height:50%;margin-left:-65%;margin-top:-5%;position: fixed;display:none;word-break:break-word;";
@@ -710,28 +710,26 @@ function environmentFunction() {
 	//设置默认宽度高度
 	$("#mainFaceDiv img,#mainFacebookFaceDiv img").width("30").height("30");
 
-	extensionId = sessionStorage.getItem("randomURL");
-	extensionId = extensionId.substring(0, extensionId.lastIndexOf("/"));
+	// extensionId = sessionStorage.getItem("randomURL");
+	// extensionId = extensionId.substring(0, extensionId.lastIndexOf("/"));
 
 	var initDataArray = ["#face-people", "#object", "#nature-animal", "#travel-activity", "#symbol", "#other",
 		"#activity", "#flags"
 	]
-	// for (let i = 0; i < initDataArray.length; i++) {
-	// 	$(initDataArray[i] + "-controller")
-	// 		.click(function() {
-	// 			// alert(initDataArray[i]);
-	// 			initMainFace(initDataArray[i]);
-	// 		});
-	// }
-	// initMainFace(initDataArray[0]);
+	for (let i = 0; i < initDataArray.length; i++) {
+		$(initDataArray[i] + "-controller")
+			.click(function() {
+				// alert(initDataArray[i]);
+				initMainFace(initDataArray[i]);
+			});
+	}
+	initMainFace(initDataArray[0]);
 
 	function initMainFace(domId) {
 		//判断是否已经初始化
 		var domSonImg = $(domId).children("img");
 		if (typeof($(domId).attr("data-isInitialized")) == "undefined") {
 			for (var i = 0; i < domSonImg.length; i++) {
-				// data - isInitialized
-				domSonImg[i].setAttribute("src", extensionId + domSonImg[i].getAttribute("src"));
 				domSonImg[i].onclick = function() {
 					this.style.backgroundColor = 'white';
 					this.setAttribute('title', this.alt);
@@ -758,16 +756,16 @@ function environmentFunction() {
 		}
 	}
 
-	
-	function mainFace(){
+
+	function mainFace() {
 		var mainFace = document.getElementById('mainFace');
 		var mainFaceChildrens = mainFace.children;
-		
+
 		for (var i = 0; i < mainFaceChildrens.length; i++) {
 			if (mainFaceChildrens[i].tagName != 'H2') {
 				var mainFaceGrandSons = mainFaceChildrens[i].children
 				for (var j = 0; j < mainFaceGrandSons.length; j++) {
-		
+
 					mainFaceGrandSons[j].onclick = function() {
 						this.style.backgroundColor = 'white';
 						this.setAttribute('title', this.textContent);
@@ -788,10 +786,10 @@ function environmentFunction() {
 					mainFaceGrandSons[j].style.fontSize = '15px';
 				}
 			}
-		
+
 		}
-		
-		
+
+
 	}
 
 	function mainFacebookFace() {
