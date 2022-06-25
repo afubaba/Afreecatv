@@ -2197,28 +2197,29 @@ function retrievalButtonFunction() {
 								//获取信息的延迟时间
 							}, delayInputFrequency);
 						}
+					}
 
-					}, (error) => {
-						console.log(error);
-					});
-			}
+				}, (error) => {
+					console.log(error);
+				});
 		}
+	}
 
-		function isStart() {
-			//渲染特效
-			// $('#retrievalButtonId').toggleClass()
-			$("#retrievalButtonId").toggleClass('btn-success btn-inverse');
-			let showMessageDivClass = $('#showMessageDiv').attr('class');
-			console.log(showMessageDivClass);
-			if (showMessageDivClass.includes('in')) {
-				retrievalButtonFunction();
-				console.log('包含in,执行');
-			} else {
-				if ('undefined' != typeof messageInterval) {
-					clearInterval(messageInterval);
-				}
-
-				console.log('不包含in,不执行');
+	function isStart() {
+		//渲染特效
+		// $('#retrievalButtonId').toggleClass()
+		$("#retrievalButtonId").toggleClass('btn-success btn-inverse');
+		let showMessageDivClass = $('#showMessageDiv').attr('class');
+		console.log(showMessageDivClass);
+		if (showMessageDivClass.includes('in')) {
+			retrievalButtonFunction();
+			console.log('包含in,执行');
+		} else {
+			if ('undefined' != typeof messageInterval) {
+				clearInterval(messageInterval);
 			}
 
+			console.log('不包含in,不执行');
 		}
+
+	}
