@@ -692,54 +692,107 @@ function environmentFunction() {
 	var mutationObserver1 = new MutationObserver(callback1);
 	mutationObserver1.observe(targetNode1, targetNodechange1);
 
-
-	// $("#basicConfiguration").append($("#write_area").clone(true));
+// $("#basicConfiguration").append($("#write_area").clone(true));
 	//google表情特效
 	// getDom('mainFaceDiv').style =
 	// 	"width: 300px;height:50%;margin-left:-65%;margin-top:-5%;position: fixed;display:none;word-break:break-word;";
 	getDom('mainFaceDiv').style =
-		" height:40%;margin-top:-5%;position: fixed;margin-left:-65%;width: 300px;word-break:break-word;display:none;";
-	getDom('mainFace').style =
-		'overflow:scroll;height:100%';
+		"height:40%;margin-top:-7%;position: fixed;margin-left:-65%;width: 45%;word-break:break-word;display:none;";
+	// getDom('mainFace').style ='overflow:scroll;height:100%';
+
+	$("#face-people").parent().css("height", "250px");
+	$("#face-people,#object,#nature-animal,#travel-activity,#symbol,#other,#activity,#flags").css("overflow", "scroll");
 	//facesbook表情
 	// getDom('mainFacebookFace').style ='overflow:scroll;width: 300px;height:50%;margin-left:-40%;margin-top:-10%; position: fixed;display:none;word-break:break-word';
-	getDom('mainFacebookFaceDiv').style =
-		" height:40%;margin-top:-5%;position: fixed;margin-left:-40%;width: 300px;word-break:break-word;display:none;";
-	getDom('mainFacebookFace').style = "overflow:scroll;height:100%";
+	// getDom('mainFacebookFaceDiv').style =
+	// 	" height:40%;margin-top:-5%;position: fixed;margin-left:-40%;width: 300px;word-break:break-word;display:none;";
+	// getDom('mainFacebookFace').style = "overflow:scroll;height:100%";
 	//设置默认宽度高度
 	$("#mainFaceDiv img,#mainFacebookFaceDiv img").width("30").height("30");
 
-	var mainFace = document.getElementById('mainFace');
-	var mainFaceChildrens = mainFace.children;
+	extensionId = sessionStorage.getItem("randomURL");
+	extensionId = extensionId.substring(0, extensionId.lastIndexOf("/"));
 
-	for (var i = 0; i < mainFaceChildrens.length; i++) {
-		if (mainFaceChildrens[i].tagName != 'H2') {
-			var mainFaceGrandSons = mainFaceChildrens[i].children
-			for (var j = 0; j < mainFaceGrandSons.length; j++) {
+	var initDataArray = ["#face-people", "#object", "#nature-animal", "#travel-activity", "#symbol", "#other",
+		"#activity", "#flags"
+	]
+	for (let i = 0; i < initDataArray.length; i++) {
+		$(initDataArray[i] + "-controller")
+			.click(function() {
+				// alert(initDataArray[i]);
+				initMainFace(initDataArray[i]);
+			});
+	}
+	initMainFace(initDataArray[0]);
 
-				mainFaceGrandSons[j].onclick = function() {
+	function initMainFace(domId) {
+		//判断是否已经初始化
+		var domSonImg = $(domId).children("img");
+		if (typeof($(domId).attr("data-isInitialized")) == "undefined") {
+			for (var i = 0; i < domSonImg.length; i++) {
+				// data - isInitialized
+				domSonImg[i].setAttribute("src", extensionId + domSonImg[i].getAttribute("src"));
+				domSonImg[i].onclick = function() {
 					this.style.backgroundColor = 'white';
-					this.setAttribute('title', this.textContent);
-					let altValue = $(this).children("img").attr("alt");
+					this.setAttribute('title', this.alt);
+					let altValue = this.alt;
 					getDom('testInput').value += altValue;
-					setTimeout(function() {
-						// setContentEditableSelection("testInput")
-						getDom('testInput').focus()
-					}, 1000);
-					// setContentEditableSelection("testInput");
+					// setTimeout(function() {
+					// 	getDom('testInput').focus()
+					// }, 1000);
+					setContentEditableSelection("testInput");
 				}
-				mainFaceGrandSons[j].onmouseover = function() {
+				domSonImg[i].onmouseover = function() {
 					this.style.backgroundColor = 'red';
+					this.style.width = "50px";
+					this.style.height = "50px";
 				}
-				mainFaceGrandSons[j].onmouseleave = function() {
+				domSonImg[i].onmouseleave = function() {
 					this.style.backgroundColor = 'white';
-				}
-				mainFaceGrandSons[j].style.fontSize = '15px';
-			}
-		}
 
+					this.style.width = "30px";
+					this.style.height = "30px";
+				}
+			}
+			$(domId).attr("data-isInitialized", "");
+		}
 	}
 
+	
+	function mainFace(){
+		var mainFace = document.getElementById('mainFace');
+		var mainFaceChildrens = mainFace.children;
+		
+		for (var i = 0; i < mainFaceChildrens.length; i++) {
+			if (mainFaceChildrens[i].tagName != 'H2') {
+				var mainFaceGrandSons = mainFaceChildrens[i].children
+				for (var j = 0; j < mainFaceGrandSons.length; j++) {
+		
+					mainFaceGrandSons[j].onclick = function() {
+						this.style.backgroundColor = 'white';
+						this.setAttribute('title', this.textContent);
+						let altValue = $(this).children("img").attr("alt");
+						getDom('testInput').value += altValue;
+						setTimeout(function() {
+							// setContentEditableSelection("testInput")
+							getDom('testInput').focus()
+						}, 1000);
+						// setContentEditableSelection("testInput");
+					}
+					mainFaceGrandSons[j].onmouseover = function() {
+						this.style.backgroundColor = 'red';
+					}
+					mainFaceGrandSons[j].onmouseleave = function() {
+						this.style.backgroundColor = 'white';
+					}
+					mainFaceGrandSons[j].style.fontSize = '15px';
+				}
+			}
+		
+		}
+		
+		
+	}
 
 	function mainFacebookFace() {
 		function getDomById(dom) {
@@ -797,7 +850,7 @@ function environmentFunction() {
 		}
 	}
 
-	mainFacebookFace();
+	// mainFacebookFace();
 
 
 	//默认开启聊天
@@ -878,7 +931,10 @@ function environmentFunction() {
 	//移除<legend>搜索</legend>
 	$("legend")[0].remove();
 	// getDom('testInput').setaAttibute('')
-
+	//移除投票模式
+	if (document.querySelector(".vote_txt")) {
+		document.querySelector(".vote_txt").remove();
+	}
 }
 
 function stopRetrievalMessageFunction() {
