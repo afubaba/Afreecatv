@@ -1380,845 +1380,845 @@ function retrievalButtonFunction() {
 
 	function getResourcesByFench(url) {
 		fetch(url).then((response) => {
-				if (response.ok) {
-					response.json().then(function(resolve) {
-							// tipBarrage('打开消息阅读');
-							//显示信息
-							$('#showMessageDiv').show();
-							$('#retrievalButtonId').addClass('btn-success').hide();
-							$('#stopRetrievalMessage').removeClass('btn-success').show();
+			if (response.ok) {
+				response.json().then(function(resolve) {
+					// tipBarrage('打开消息阅读');
+					//显示信息
+					$('#showMessageDiv').show();
+					$('#retrievalButtonId').addClass('btn-success').hide();
+					$('#stopRetrievalMessage').removeClass('btn-success').show();
 
-							//判断当计时器是否重复
-							if ('undefined' != typeof messageInterval) {
-								clearInterval(messageInterval);
-							}
+					//判断当计时器是否重复
+					if ('undefined' != typeof messageInterval) {
+						clearInterval(messageInterval);
+					}
 
-							function getDom(dom) {
-								var dom = document.getElementById(dom);
-								return dom;
-							}
+					function getDom(dom) {
+						var dom = document.getElementById(dom);
+						return dom;
+					}
 
 
-							//获取当前内容,以配合还原
-							var testInput_last = getDom('testInput');
-							var inputTimes_last = getDom('testInput');
-							var inputFrequency_last = getDom('testInput');
-							// 选择框延迟速度dom
-							var delayInputId = getDom('delayInputId');
-							//文本框延迟速度dom
-							var delayInputTextId = getDom('delayInputTextId');
-							//计时器延迟速度value
-							delayInputFrequency = delayInputTextId.value;
+					//获取当前内容,以配合还原
+					var testInput_last = getDom('testInput');
+					var inputTimes_last = getDom('testInput');
+					var inputFrequency_last = getDom('testInput');
+					// 选择框延迟速度dom
+					var delayInputId = getDom('delayInputId');
+					//文本框延迟速度dom
+					var delayInputTextId = getDom('delayInputTextId');
+					//计时器延迟速度value
+					delayInputFrequency = delayInputTextId.value;
 
-							if (delayInputFrequency == '') {
-								if (delayInputId.value == 'slowSpeed') {
-									delayInputFrequency = 1000;
-								} else if (delayInputId.value == 'meiumSpeed') {
-									delayInputFrequency = 500;
-								} else if (delayInputId.value == 'quick') {
-									delayInputFrequency = 125;
+					if (delayInputFrequency == '') {
+						if (delayInputId.value == 'slowSpeed') {
+							delayInputFrequency = 1000;
+						} else if (delayInputId.value == 'meiumSpeed') {
+							delayInputFrequency = 500;
+						} else if (delayInputId.value == 'quick') {
+							delayInputFrequency = 125;
+						}
+
+					}
+					//赋值文本框延迟显示
+					delayInputTextId.value = delayInputFrequency;
+
+					//当前速度
+					// console.log(delayInputId.value);
+					//控制台信息数量
+					var consoleCount = 0;
+					var informationSynchronization = getDom('informationSynchronization');
+
+					//统计10秒最大输出
+					var initTime = informationSynchronization.value;
+					//当前次数
+					// var nowTimes=0;
+					//当前秒
+					var nowFrequency = 0;
+					//统计次数
+					var inputCount = 0;
+
+
+					//localStorage.setItem('lastname', 'Smith');
+					//localStorage.getItem('astname');          sessionStorage
+
+					//id数
+					var le = document.getElementsByTagName('dt').length;
+
+					//初始化下标
+					var initIndex = getDom('nowIndex').value;
+
+					//自动提速2自动初始化
+					var upperLimit = getDom('upperLimit');
+					if (upperLimit.value == '') {
+						upperLimit.value == '0.001';
+						getDom('upperLimit').value = '0.001';
+					}
+					// console.log('重启或其开启了messageInterval');
+
+
+					//显示
+					messageInterval = setInterval(function() {
+						var idt_last = window.sessionStorage.getItem('idt_last');
+						var text_Last = window.sessionStorage.getItem('text_Last');
+
+						function getDom(dom) {
+							var dom = document.getElementById(dom);
+							return dom;
+						}
+
+						//清理控制台/当前执行次数
+						consoleCount++;
+
+						// if (consoleCount > 100) {
+						// 	console.clear();
+						// 	consoleCount = 0;
+						// }
+
+
+						//chat_area聊天区域
+						var chat_area = getDom('chat_area');
+
+						//纠正下标
+						var firstIndex = sessionStorage.getItem('firstIndex');
+						//查找下标所在的chat_area下标1
+						var firstIndexId = document.getElementById('chat_area').children[1]
+							.children[0].nextElementSibling
+							.getAttribute('id');
+						if (firstIndex == null) {
+							sessionStorage.setItem('firstIndex', firstIndexId);
+						}
+
+						firstIndex = sessionStorage.getItem('firstIndex');
+
+						var firstIndex2 = document.getElementById('chat_area').children[1]
+							.children[0].nextElementSibling
+							.getAttribute('id');
+
+
+						var reduceIndex = firstIndex2 - firstIndex;
+						if (firstIndex < 0) {
+							sessionStorage.setItem('firstIndex', 1);
+
+							getDom('nowIndex').value = 1;
+						}
+						if (firstIndex2 < 0) {
+							sessionStorage.setItem('firstIndex', 1);
+
+							getDom('nowIndex').value = 1;
+						}
+						// console.log('firstIndex:' + firstIndex + ',firstIndex2:' + firstIndex2);
+						//如果有变化则做差,并且更新最新的下标
+
+
+						if (reduceIndex > 0 && initIndex - reduceIndex > 0) {
+							// console.log('reduceIndex大于0')
+							// console.log('做差前,reduceIndex:' + reduceIndex + ',initIndex:' + initIndex);
+							initIndex = initIndex - reduceIndex;
+							// console.log('做差后,reduceIndex:' + reduceIndex + ',initIndex:' + initIndex);
+							getDom('nowIndex').value = initIndex;
+							sessionStorage.setItem('firstIndex', firstIndex2);
+						} else if (reduceIndex < 0) {
+							firstIndexId = document.getElementById('chat_area').children[1]
+								.children[0].nextElementSibling
+								.getAttribute('id');
+							sessionStorage.setItem('firstIndex', firstIndexId);
+							// console.log('reduceIndex小于0');
+						} else {
+							//错误时重置
+							firstIndexId = document.getElementById('chat_area').children[1]
+								.children[0].nextElementSibling
+								.getAttribute('id');
+							sessionStorage.setItem('firstIndex', firstIndexId);
+							// console.log('遇到错误,重置sessionStorage');
+
+						}
+
+						if (initIndex < chat_area.childElementCount - 1) {
+
+							initIndex++;
+							getDom('nowIndex').value = initIndex;
+						}
+
+						//document.getElementById('chat_area').children[2].children[0].nextElementSibling.getAttribute('id');
+						if ('undefined' != chat_area.children[initIndex]) {
+							//现在的下标
+							var now_index = chat_area.children[initIndex].children[0]
+								.nextElementSibling.getAttribute('id');
+							var chat_area_Length = document.getElementById('chat_area')
+								.childNodes.length - 1;
+							var last_index = chat_area.children[chat_area_Length].children[0]
+								.nextElementSibling.getAttribute(
+									'id');
+							//限制消息同步정보 가 일치 하지 않 는 최대 수량,그리고 속 도 를 올 립 니 다.
+							if (last_index - now_index >= informationSynchronization.value) {
+								// console.log('距离超过10,加速起来');
+								//提速2 设置上限/最快速度
+								if (delayInputFrequency / 2 >= upperLimit.value) {
+									delayInputFrequency = delayInputFrequency / 2
 								}
+								getDom('delayInputTextId').value = delayInputFrequency;
+								getDom('retrievalButtonId').click();
+
+
+							} else if (last_index - now_index == 1) {
+
+								delayInputFrequency = delayInputFrequency * 2
+
+								getDom('delayInputTextId').value = delayInputFrequency;
+								getDom('retrievalButtonId').click();
 
 							}
-							//赋值文本框延迟显示
-							delayInputTextId.value = delayInputFrequency;
 
-							//当前速度
-							// console.log(delayInputId.value);
-							//控制台信息数量
-							var consoleCount = 0;
-							var informationSynchronization = getDom('informationSynchronization');
-
-							//统计10秒最大输出
-							var initTime = informationSynchronization.value;
-							//当前次数
-							// var nowTimes=0;
-							//当前秒
-							var nowFrequency = 0;
-							//统计次数
-							var inputCount = 0;
+							var nickName = chat_area.children[initIndex].children[0]
+								.lastElementChild.getAttribute('user_nick');
+							//id
+							var idt = chat_area.children[initIndex].children[0].lastElementChild
+								.getAttribute('user_id');
+							//内容
+							// var tex = chat_area.children[initIndex].children[0].nextElementSibling.textContent;
 
 
-							//localStorage.setItem('lastname', 'Smith');
-							//localStorage.getItem('astname');          sessionStorage
+							var tex = chat_area.children[initIndex].children[0]
+								.nextElementSibling.innerHTML;
+							var is_mobile = chat_area.children[initIndex].children[0]
+								.lastElementChild.getAttribute(
+									'is_mobile');
+							var grade = chat_area.children[initIndex].children[0]
+								.lastElementChild.getAttribute('grade');
 
-							//id数
-							var le = document.getElementsByTagName('dt').length;
 
-							//初始化下标
-							var initIndex = getDom('nowIndex').value;
-
-							//自动提速2自动初始化
-							var upperLimit = getDom('upperLimit');
-							if (upperLimit.value == '') {
-								upperLimit.value == '0.001';
-								getDom('upperLimit').value = '0.001';
+							if (is_mobile == 'false') {
+								// is_mobile = '💻';
+								//github
+								is_mobile =
+									"<img draggable='false' class='twemoji-everywhere' alt='🖥' src='https://afubaba.github.io/Afreecatv/img/emoji/1f5a5.webp' style='width: 30px; height: 30px;'/>"
+							} else {
+								// is_mobile = '📱';
+								//github
+								is_mobile =
+									"<img draggable='false' class='twemoji-everywhere' alt='📱' src='https://afubaba.github.io/Afreecatv/img/emoji/1f4f1.webp' style='width: 30px; height: 30px;'>"
 							}
-							// console.log('重启或其开启了messageInterval');
+							if (grade == 'user') {
+								grade = '사용자';
+							} else if (grade == 'manager') {
+								grade = '관리원';
+							} else if (grade == 'bj') {
+								grade = '앵커';
+							} else if (grade == 'fan') {
+								grade = '팬';
+							} else if (grade == 'topfan') {
+								grade = '고급팬';
+							} else if (grade == 'gudok') {
+								grade = '구독자';
+							} else {
+								grade = 'loadding';
+							}
 
 
-							//显示
-							messageInterval = setInterval(function() {
-								var idt_last = window.sessionStorage.getItem('idt_last');
-								var text_Last = window.sessionStorage.getItem('text_Last');
+							// console.log('['+grade+']'+nickName+'('+idt+')'+is_mobile+':'+tex+'(延迟:'+delayInputFrequency+'ms)');
+
+
+							//判断内容ID是否相同
+							if (idt != idt_last || tex != text_Last) {
 
 								function getDom(dom) {
 									var dom = document.getElementById(dom);
 									return dom;
 								}
 
-								//清理控制台/当前执行次数
-								consoleCount++;
+								//聊天内容配色
 
-								// if (consoleCount > 100) {
-								// 	console.clear();
-								// 	consoleCount = 0;
-								// }
-
-
-								//chat_area聊天区域
-								var chat_area = getDom('chat_area');
-
-								//纠正下标
-								var firstIndex = sessionStorage.getItem('firstIndex');
-								//查找下标所在的chat_area下标1
-								var firstIndexId = document.getElementById('chat_area').children[1]
-									.children[0].nextElementSibling
-									.getAttribute('id');
-								if (firstIndex == null) {
-									sessionStorage.setItem('firstIndex', firstIndexId);
-								}
-
-								firstIndex = sessionStorage.getItem('firstIndex');
-
-								var firstIndex2 = document.getElementById('chat_area').children[1]
-									.children[0].nextElementSibling
-									.getAttribute('id');
-
-
-								var reduceIndex = firstIndex2 - firstIndex;
-								if (firstIndex < 0) {
-									sessionStorage.setItem('firstIndex', 1);
-
-									getDom('nowIndex').value = 1;
-								}
-								if (firstIndex2 < 0) {
-									sessionStorage.setItem('firstIndex', 1);
-
-									getDom('nowIndex').value = 1;
-								}
-								// console.log('firstIndex:' + firstIndex + ',firstIndex2:' + firstIndex2);
-								//如果有变化则做差,并且更新最新的下标
-
-
-								if (reduceIndex > 0 && initIndex - reduceIndex > 0) {
-									// console.log('reduceIndex大于0')
-									// console.log('做差前,reduceIndex:' + reduceIndex + ',initIndex:' + initIndex);
-									initIndex = initIndex - reduceIndex;
-									// console.log('做差后,reduceIndex:' + reduceIndex + ',initIndex:' + initIndex);
-									getDom('nowIndex').value = initIndex;
-									sessionStorage.setItem('firstIndex', firstIndex2);
-								} else if (reduceIndex < 0) {
-									firstIndexId = document.getElementById('chat_area').children[1]
-										.children[0].nextElementSibling
-										.getAttribute('id');
-									sessionStorage.setItem('firstIndex', firstIndexId);
-									// console.log('reduceIndex小于0');
-								} else {
-									//错误时重置
-									firstIndexId = document.getElementById('chat_area').children[1]
-										.children[0].nextElementSibling
-										.getAttribute('id');
-									sessionStorage.setItem('firstIndex', firstIndexId);
-									// console.log('遇到错误,重置sessionStorage');
-
-								}
-
-								if (initIndex < chat_area.childElementCount - 1) {
-
-									initIndex++;
-									getDom('nowIndex').value = initIndex;
-								}
-
-								//document.getElementById('chat_area').children[2].children[0].nextElementSibling.getAttribute('id');
-								if ('undefined' != chat_area.children[initIndex]) {
-									//现在的下标
-									var now_index = chat_area.children[initIndex].children[0]
-										.nextElementSibling.getAttribute('id');
-									var chat_area_Length = document.getElementById('chat_area')
-										.childNodes.length - 1;
-									var last_index = chat_area.children[chat_area_Length].children[0]
-										.nextElementSibling.getAttribute(
-											'id');
-									//限制消息同步정보 가 일치 하지 않 는 최대 수량,그리고 속 도 를 올 립 니 다.
-									if (last_index - now_index >= informationSynchronization.value) {
-										// console.log('距离超过10,加速起来');
-										//提速2 设置上限/最快速度
-										if (delayInputFrequency / 2 >= upperLimit.value) {
-											delayInputFrequency = delayInputFrequency / 2
+								//ｉｄ和内容设置
+								var idDom = chat_area.children[initIndex].children[0]
+									.lastElementChild;
+								idDom.style.fontSize = 'large';
+								idDom.style.backgroundColor = 'yellow';
+								idDom.innerHTML = is_mobile + idDom.textContent;
+								var texDom = chat_area.children[initIndex].children[0]
+									.nextElementSibling;
+								// texDom.style.border='2px black solid';
+								// console.log(idDom.textContent);
+								// if (idDom.textContent.includes("⊂ZZZZZZZZ⊃―")) {
+								var textDomFirstChild = texDom.firstChild;
+								var textDomFirstChildTextContent = textDomFirstChild
+									.textContent;
+								if (textDomFirstChildTextContent.length <= 20) {
+									var flag = false;
+									for (let j = 2; j < 10; j++) {
+										for (let i = 0; i < textDomFirstChildTextContent
+											.length - 1; i++) {
+											let subTextDomContent =
+												textDomFirstChildTextContent.substring(
+													i, i + j);
+											// console.log(subTextDomContent);
+											if (typeof(resolve[subTextDomContent]) !=
+												"undefined") {
+												let reT = textDomFirstChildTextContent
+													.replace(
+														subTextDomContent,
+														"<img width='30' height='30' src='" +
+														resolve[
+															subTextDomContent] +
+														"'/>");
+												textDomFirstChildTextContent = reT;
+												// console.log(reT);
+												flag = true;
+											}
 										}
-										getDom('delayInputTextId').value = delayInputFrequency;
-										getDom('retrievalButtonId').click();
-
-
-									} else if (last_index - now_index == 1) {
-
-										delayInputFrequency = delayInputFrequency * 2
-
-										getDom('delayInputTextId').value = delayInputFrequency;
-										getDom('retrievalButtonId').click();
-
+									}
+									// }
+									if (flag) {
+										texDom.innerHTML = textDomFirstChildTextContent;
 									}
 
-									var nickName = chat_area.children[initIndex].children[0]
-										.lastElementChild.getAttribute('user_nick');
-									//id
-									var idt = chat_area.children[initIndex].children[0].lastElementChild
-										.getAttribute('user_id');
-									//内容
-									// var tex = chat_area.children[initIndex].children[0].nextElementSibling.textContent;
+									// console.log(textDomFirstChildTextContent);
+								}
+								texDom.style.fontSize = 'large';
+								// texDom.style.backgroundColor = 'white';
+								commonFontColor = getRandomColor();
+								texDom.style.color = commonFontColor;
+
+								/* 	function httpRequest(url, callback) {
+										var xhr = new XMLHttpRequest();
+										xhr.open("GET", url, true);
+										xhr.onreadystatechange = function() {
+											if (xhr.readyState == 4) {
+												callback(xhr.responseText);
+											}
+										}
+										xhr.send();
+									} */
+								//type目前能用的类型：
+								// ZH_CN2EN 中文　»　英语
+								// ZH_CN2JA 中文　»　日语
+								// ZH_CN2KR 中文　»　韩语
+								// AUTO 自动识别
+								// httpRequest('https://fanyi.youdao.com/translate?&doctype=json&type=AUTO&i='+texDom, function(result){
+
+								//     console.log(result);
+								// });
+								// $.ajax({
+								//     'url':'https://fanyi.youdao.com/translate?&doctype=json&type=AUTO&i='+texDom,
+								//     'type':'get',
+								//     'contentType':'application/json',
+
+								//     'success':function(result,statis){
+								//         console.log(result);
+								//         console.log(statis);
+								//     },
+								//     'error':function(error,errorMessage){
+								//         console.log(error);
+								//         console.log(errorMessage);
+								//     }});
+
+								var chatSportMode = document.getElementById("chatSportMode");
+								//聊天内容特效
+								if (chatSportMode.checked) {
+									$(idDom).fadeOut().fadeIn(1000);
+									$(texDom).hide().show(1000)
+									setTimeout(function() {
+										$(texDom).parent('dl').hide(3000);
+									}, 2000);
+								}
+								window.sessionStorage.setItem('idt_last', idt);
+								window.sessionStorage.setItem('text_Last', tex);
+
+								// const showMessageText= '[' + grade + ']' + nickName + '(' + idt + ')' + is_mobile + ':<br/><span style=font-size:large;>' + tex+'</span>';
+								//记录消息
+								// getDom('showMessage').innerHTML =showMessageText;
+
+								const showMessageText1 = is_mobile + '[' + grade + ']' +
+									nickName + '(' + idt + ')' + ':' + tex;
+								test(showMessageText1);
+
+								//正在读取得消息div ,接收弹幕结果
+								getDom('showMessage').innerHTML = showMessageText1;
 
 
-									var tex = chat_area.children[initIndex].children[0]
-										.nextElementSibling.innerHTML;
-									var is_mobile = chat_area.children[initIndex].children[0]
-										.lastElementChild.getAttribute(
-											'is_mobile');
-									var grade = chat_area.children[initIndex].children[0]
-										.lastElementChild.getAttribute('grade');
+								// getDom('showLog').innerHTML =showMessageText1;
+								// $('#showMessage').fadeOut().fadeIn(1000);
+								// .fadeToggle(1000)
+								// $('#showMessage').css('background-color','white').fadeOut(1000).fadeIn(1000)
+								// $('#showMessage').hide().show(1000);
+								//记录消息拼接时间
 
 
-									if (is_mobile == 'false') {
-										// is_mobile = '💻';
-										//github
-										is_mobile =
-											"<img draggable='false' class='twemoji-everywhere' alt='🖥' src='https://afubaba.github.io/Afreecatv/img/emoji/1f5a5.webp' style='width: 30px; height: 30px;'/>"
-									} else {
-										// is_mobile = '📱';
-										//github
-										is_mobile =
-											"<img draggable='false' class='twemoji-everywhere' alt='📱' src='https://afubaba.github.io/Afreecatv/img/emoji/1f4f1.webp' style='width: 30px; height: 30px;'>"
+								//统计10秒最大输出
+								// var initTime=10;
+								//最大次数
+								// var maxTimes=initTime/delayInputFrequency/1000
+								//当前次数
+								// var nowTimes=0;
+								//统计变化
+								inputCount++;
+
+
+								//检索m 内通用发送消息方法
+								//内容
+								var testInput;
+								//次数
+								var inputTimes;
+								//间隔时间
+								var inputFrequency;
+
+								function sendMessage(message) {
+									//打开批量功能
+									$('#batchInformationDivId').collapse("show");
+									//读取默认配置
+									testInputValue = getDom('testInput').value;
+									inputTimesValue = getDom('inputTimes').value;
+									inputFrequencyValue = getDom('inputFrequency').value;
+									//发送消息
+									getDom('testInput').value = message;
+									getDom('inputTimes').value = 1;
+									getDom('inputFrequency').value = 0.1;
+									getDom('send_message').click();
+									//还原数据
+									setTimeout(function() {
+										getDom('testInput').value = testInputValue;
+										getDom('inputTimes').value = inputTimesValue;
+										getDom('inputFrequency').value =
+											inputFrequencyValue;
+									}, 1500);
+								}
+
+								function sendMessageCustom(message, times, frequency) {
+									//打开批量功能
+									$('#batchInformationDivId').collapse("show");
+									getDom('testInput').value = message;
+									getDom('inputTimes').value = times;
+									getDom('inputFrequency').value = frequency;
+									getDom('send_message').click();
+								}
+
+								//打开关闭机器人聊天功能
+								var robotChatcheckboxId = document.getElementById(
+									"robotChatcheckboxId");
+								if (robotChatcheckboxId.checked && tex.includes("!")) {
+									//查看指定用户数量
+									function getGrups(dom1) {
+										//function getDom(dom) {
+										//  return document.getElementById(dom);
+										// }
+										for (var i = 0; i < getDom(dom1)
+											.childElementCount; i++) {
+											var user_id = getDom(dom1).children.item(i).children
+												.item(0).getAttribute(
+													'user_id');
+											var user_nick = getDom(dom1).children.item(i)
+												.children.item(0).getAttribute(
+													'user_nick');
+											console.log(user_nick + ':' + user_id);
+											text = text + (i + 1) + '.' + user_nick + '(' +
+												user_id + ')';
+										}
 									}
-									if (grade == 'user') {
-										grade = '사용자';
-									} else if (grade == 'manager') {
-										grade = '관리원';
-									} else if (grade == 'bj') {
-										grade = '앵커';
-									} else if (grade == 'fan') {
-										grade = '팬';
-									} else if (grade == 'topfan') {
-										grade = '고급팬';
-									} else if (grade == 'gudok') {
-										grade = '구독자';
-									} else {
-										grade = 'loadding';
+									//!방송시작시간广播开始时间
+									function getSonButtonDom1(dom) {
+										dom = document.getElementsByClassName(dom).item(0)
+											.children[0].lastChild;
+										return dom;
+									}
+
+									//收藏或者点赞
+									function getSonButtonDom(dom) {
+										dom = document.getElementsByClassName(dom).item(0)
+											.children[0];
+										return dom;
+									}
+
+									if (tex == "!용감해지다") {
+										sendMessageCustom(
+											"'̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀ͯ'",
+											1,
+											3);
+
+									} else if (tex == "!웅기하다") {
+										sendMessageCustom(
+											"'̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀ͯ'",
+											2, 32);
+									} else if (tex == "!극한길이" || tex == "!ultimatelength" ||
+										tex == "!long" || tex == "!极限长度") {
+										let message =
+											"̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚௵";
+										sendMessageCustom(message, 2, 32);
+										// getDom('testInput').value = message;
+										// getDom('inputTimes').value = 2;
+										// getDom('inputFrequency').value = 30;
+										// getDom('send_message').click();
+									} else if (tex == "!reboot" || tex == "!재부팅" || tex ==
+										"!reload") {
+										location.reload();
+									} else if (tex == "!탑" || tex == "!정글" || tex == "!미드" ||
+										tex == "!바텀" || tex == "!임의" ||
+										tex == "!모든" || tex == "!서포터" || tex == "!top" || tex
+										.includes("!mid") || tex.includes(
+											"!jun") || tex
+										.includes("!ad") || tex.includes("!sup") || tex ==
+										"!any" || tex == "!all") {
+										// const LOLURL = chrome.runtime.getURL("LOL.html");
+										const LOLURL =
+											"https://afubaba.github.io/Afreecatv/LOL.html";
+										// winowName = window.open(LOLURL, "windowName");
+										winowName = window.open(
+											"https://afubaba.github.io/Afreecatv/LOL.html",
+											"_blank",
+											"left=300,width=1000,height=1000,channelmode=yes,menubar=yes,scrollbars=0"
+										);
+										setTimeout(function() {
+											winowName.postMessage(tex, LOLURL);
+											//所有英雄event.data == "!랜덤영웅" || event.data == "!임의의영웅" || event.data == "!임의영웅"
+
+											// winowName.postMessage("!랜덤탑", LOLURL);
+											// winowName.postMessage("!랜덤정글", LOLURL);
+											// winowName.postMessage("!랜덤미드", LOLURL);
+											// winowName.postMessage("!랜덤바텀", LOLURL);
+											// winowName.postMessage("!랜덤서포터", LOLURL);
+										}, 1000);
+									}
+									//终止(停止)命令!멈추다(任何人)
+									else if (tex == '!stop' || tex == '!멈추다') {
+										//终止消息提示
+										document.getElementById('stopButtonId').click();
+										// alert('['+grade+']'+nickName+'('+idt+')'+is_mobile+':'+tex'你使用终止命令,终止了任何条件程序');
+										console.log(idt + ':你使用终止命令,终止了部分程序');
+										//恢复默认
+										document.getElementById('environmentButtonId').click();
+										console.log(idt + ':系统恢复默认配置');
+
+									}
+									//部署环境(仅限管理员(id包含10571237))
+									else if (idt.includes('10571237') && tex == '!en' || tex ==
+										'!환경' || tex == '!환경배포' ||
+										tex ==
+										'!start' || tex == '!시작하다' || tex == '!시작') {
+										document.getElementById('environmentButtonId').click();
+
+										getDom('testInput').value = '@' + nickName +
+											':환경 배치 성공';
+										getDom('send_message').click();
+
+										console.log(idt + '部署环境成功');
+
+									}
+									//聊天热度延迟速度
+									else if (tex == '!채팅속도' || tex == '!지연속도' || tex == '!속도') {
+										var delayInputTextId = getDom('delayInputTextId').value;
+
+										if (delayInputTextId >= 1000) {
+											delayInputTextId = delayInputTextId / 1000 + 's';
+										} else {
+											delayInputTextId = delayInputTextId + 'ms';
+										}
+										getDom('testInput').value = '@' + nickName + ':관중:' +
+											getDom('nAllViewer').innerHTML +
+											',채팅속도:' + delayInputTextId;
+										getDom('send_message').click();
+
+
+									} else if (tex == '!문지기' || tex == '!슈퍼팬') {
+										//哪个组dom名称
+										var groupName = '';
+										var text = '';
+										// getDom('setbox_viewer').click();
+										document.getElementById('setbox_viewer').children.item(
+											0).click();
+										switch (true) {
+											case tex == '!manager' || tex == '!문지기':
+												// 매니저  管理员
+												groupName = 'lv_ul_manager';
+												break;
+											case tex == '!슈퍼팬':
+												// 구독자 高级粉丝
+												groupName = 'lv_h3_topfan';
+												break;
+											case tex == '!팬':
+												groupName = 'lv_h3_fan';
+												break;
+											case tex == '!서포터':
+												groupName = 'lv_ul_supporter';
+												break;
+											default:
+												groupName = 'lv_p_bj';
+												break;
+										}
+
+
+										setTimeout(function() {
+											getGrups(groupName);
+											console.log('text:' + text);
+											if (text != '') {
+												getDom('testInput').value = text;
+												//初始化数据
+												getDom('inputFrequency').value = 1;
+
+												getDom('send_message').click();
+
+											} else {
+												getDom('testInput').value = tex +
+													':null';
+											}
+											getDom('inputFrequency').value = 1;
+											// document.getElementById('setbox_viewer').children.item(0).click();
+
+										}, 3000);
+										// document.getElementById('setbox_viewer').children.item(0).click();
+
+
+									} else if (tex == '!open') {
+
+										getDom('inputFrequency').value = 6;
+										document.getElementById('setbox_viewer').children.item(
+											0).click();
+
+									}
+									//!message:q/m/s  /!소식:천천히/중속/서둘러
+									else if (idt.includes('1057123') && tex.includes(
+											'!message:') || tex.includes('!m:')) {
+
+										//当前速度控制器
+										var delayInputId = getDom('delayInputId');
+										//要调节的速度
+										var speed = tex.substring(tex.indexOf(':') + 1);
+										//现在的速度
+										var nowDelayInputId = delayInputId.value;
+										console.log('speed的值:' + speed);
+										if (speed == '') {
+											console.log('返回当前速度');
+
+											//发送当前速度
+											//转换速度英文值为韩语
+											if (nowDelayInputId == 'slowSpeed') {
+												// getDom('testInput').value=tex+'천천히';
+												getDom('write_area').innerHTML = tex + '천천히';
+												// send_message
+												getDom('btn_send').click();
+												//慢速命令
+											} else if (nowDelayInputId == 'meiumSpeed') {
+												// getDom('testInput').value=tex+'중속';
+												getDom('write_area').innerHTML = tex + '중속';
+												getDom('btn_send').click();
+												//慢速命令
+											} else if (nowDelayInputId == 'quick') {
+												// getDom('testInput').value=tex+'서둘러';
+												getDom('write_area').innerHTML = tex + '서둘러';
+												getDom('btn_send').click();
+											} else {
+												//发送
+												getDom('write_area').innerHTML = tex + 'null';
+												getDom('btn_send').click();
+
+
+											}
+
+
+										} else {
+
+											if (speed == nowDelayInputId) {
+												console.log('当前已经是:' + speed);
+
+
+											} else {
+												//慢速命令
+												if (speed == 's' || speed == '천천히') {
+													delayInputId.value = 'slowSpeed';
+													//慢速命令
+												} else if (speed == 'm' || speed == '중속') {
+													delayInputId.value = 'meiumSpeed';
+													//慢速命令
+												} else if (speed == 'q' || speed == '서둘러') {
+													delayInputId.value = 'quick';
+
+												}
+												//速度调节
+												getDom('retrievalButtonId').click();
+											}
+
+										}
+										console.log('进入调速模式');
+
+									}
+									//发送按钮语言
+									else if (tex == '!보내다' || tex == '!send' || tex == '!发送' ||
+										tex == '!보내기') {
+
+										$('#write_area').html($('#showMessage').html());
+										getDom('btn_send').click();
+									}
+									//语言命令(在有新消息的情况下执行)
+									// &&tex='!시간'||tex='!时间'
+									else if (idt == '1057123772' && tex == '!시간') {
+										var date = new Date();
+										console.log('시간:' + date);
+									}
+									// !자동시간알림自动报时间启动
+									else if (idt.includes('10571237') && tex == '!자동시간알림') {
+										console.log('管理员(' + idt + '):' + '보고시간(自动报时)');
+										document.getElementById('autoTimeId').click();
+
+									}
+									// !보고시간现在手动的时间
+									else if (tex == '!보고시간' || tex == '!시간' || tex == '!time') {
+										console.log('管理员(' + idt + '):' + '보고시간(报告时间)');
+										//获取1-3的随机数字
+										// console.log(parseInt(Math.random()*NO/1));
+										var rdmNo = parseInt(Math.random() * 3 / 1 + 1);
+										setTimeout(function() {
+											document.getElementById('handTimeId')
+												.click();
+										}, rdmNo * 1000);
+
+
+									} else if (tex == '!방송시작시간') {
+										var detail_view = getSonButtonDom1('detail_view');
+
+										sendMessage(detail_view.textContent);
+
+
+									} else if (tex == '!별' || tex == '!즐겨찾기' || tex == '!UP' ||
+										tex == '!좋아요' || tex == '!좋아') {
+										//收藏
+										var bookmarkSonDom;
+										//点赞
+										var up_recommend;
+										switch (true) {
+											case tex == '!별' || tex == '!즐겨찾기':
+												bookmarkSonDom = getSonButtonDom('bookmark');
+												if (bookmarkSonDom.className == '') {
+													bookmarkSonDom.click();
+													setTimeout(function() {
+														bookmarkSonDom =
+															getSonButtonDom('bookmark');
+														if (bookmarkSonDom.className ==
+															'on') {
+															sendMessage('@' + nickName +
+																':즐겨찾기 추가 성공');
+														} else {
+															sendMessage('@' + nickName +
+																':즐겨찾기 추가 실수');
+														}
+													}, 1000);
+												} else {
+													//收藏失败,您已经收藏
+													sendMessage('@' + nickName + ':이미 즐겨찾기');
+												}
+												break;
+											case tex == '!UP' || tex == '!좋아요' || tex == '!좋아':
+												up_recommend = getSonButtonDom('up_recommend');
+												if (up_recommend.className == 'on') {
+													//点赞失败,您已经点赞
+													sendMessage('@' + nickName + ':이미 좋아요 표시됨');
+
+												} else if (up_recommend.className == '') {
+													up_recommend.click();
+													setTimeout(function() {
+														up_recommend = getSonButtonDom(
+															'up_recommend');
+														if (up_recommend.className ==
+															'on') {
+															console.log('点赞成功:' +
+																up_recommend
+																.className);
+															sendMessage('@' + nickName +
+																':좋아요 성공');
+														} else {
+															console.log('点赞失败');
+															sendMessage('@' + nickName +
+																':좋아요 실수');
+														}
+													}, 1000);
+												}
+												break;
+											default:
+												break;
+										}
 									}
 
 
-									// console.log('['+grade+']'+nickName+'('+idt+')'+is_mobile+':'+tex+'(延迟:'+delayInputFrequency+'ms)');
-
-
-									//判断内容ID是否相同
-									if (idt != idt_last || tex != text_Last) {
-
+									//!멈추다 停止
+									//内容发送!text:😗😗,2x3  !text:😗,2x0.01  !text:/짱좋아//짱좋아/,3x2
+									// !text:/즐거워/,5x5 id 는 이것 을 포함 해야만 명령 을 실행 할 수 있 습 니 다.이 명령 은 관리자 의 채 팅 번역 기능 을 닫 아야 합 니 다.수 동 설정 도 같은 효과 입 니 다.
+									// !text:😗,2x1 명령 권한 이 열 렸 습 니 다.관리자 계 정 이나 앵 커 계 정 은 채 팅 번역 기능 을 닫 아야 합 니 다.
+									else if (tex.includes('!text:') && tex.includes('x')) {
 										function getDom(dom) {
 											var dom = document.getElementById(dom);
 											return dom;
 										}
 
-										//聊天内容配色
-
-										//ｉｄ和内容设置
-										var idDom = chat_area.children[initIndex].children[0]
-											.lastElementChild;
-										idDom.style.fontSize = 'large';
-										idDom.style.backgroundColor = 'yellow';
-										idDom.innerHTML = is_mobile + idDom.textContent;
-										var texDom = chat_area.children[initIndex].children[0]
-											.nextElementSibling;
-										// texDom.style.border='2px black solid';
-										// console.log(idDom.textContent);
-										// if (idDom.textContent.includes("⊂ZZZZZZZZ⊃―")) {
-										var textDomFirstChild = texDom.firstChild;
-										var textDomFirstChildTextContent = textDomFirstChild
-											.textContent;
-										if (textDomFirstChildTextContent.length <= 20) {
-											var flag = false;
-											for (let j = 2; j < 10; j++) {
-												for (let i = 0; i < textDomFirstChildTextContent
-													.length - 1; i++) {
-													let subTextDomContent =
-														textDomFirstChildTextContent.substring(
-															i, i + j);
-													// console.log(subTextDomContent);
-													if (typeof(resolve[subTextDomContent]) !=
-														"undefined") {
-														let reT = textDomFirstChildTextContent
-															.replace(
-																subTextDomContent,
-																"<img width='30' height='30' src='" +
-																extensionId + resolve[
-																	subTextDomContent] +
-																"'/>");
-														textDomFirstChildTextContent = reT;
-														// console.log(reT);
-														flag = true;
-													}
-												}
-											}
-											// }
-											if (flag) {
-												texDom.innerHTML = textDomFirstChildTextContent;
-											}
-
-											// console.log(textDomFirstChildTextContent);
+										var testInput = getDom('testInput');
+										var inputTimes = getDom('inputTimes');
+										var inputFrequency = getDom('inputFrequency');
+										//获取1-3的随机数字
+										// console.log(parseInt(Math.random()*NO/1));
+										var rdmNo = parseInt(Math.random() * 3 / 1 + 1);
+										var text = "";
+										var firstNo = "";
+										var lastNo = "";
+										if (!tex.includes(",")) {
+											text = tex.substring(tex.indexOf(":") + 1);
+										} else {
+											//固定位置
+											text = tex.substring(6, tex.lastIndexOf(','));
+											firstNo = tex.substring(tex.lastIndexOf(',') + 1,
+												tex.lastIndexOf('x'));
+											lastNo = tex.substring(tex.lastIndexOf('x') + 1);
 										}
-										texDom.style.fontSize = 'large';
-										// texDom.style.backgroundColor = 'white';
-										commonFontColor = getRandomColor();
-										texDom.style.color = commonFontColor;
-
-										/* 	function httpRequest(url, callback) {
-												var xhr = new XMLHttpRequest();
-												xhr.open("GET", url, true);
-												xhr.onreadystatechange = function() {
-													if (xhr.readyState == 4) {
-														callback(xhr.responseText);
-													}
-												}
-												xhr.send();
-											} */
-										//type目前能用的类型：
-										// ZH_CN2EN 中文　»　英语
-										// ZH_CN2JA 中文　»　日语
-										// ZH_CN2KR 中文　»　韩语
-										// AUTO 自动识别
-										// httpRequest('https://fanyi.youdao.com/translate?&doctype=json&type=AUTO&i='+texDom, function(result){
-
-										//     console.log(result);
-										// });
-										// $.ajax({
-										//     'url':'https://fanyi.youdao.com/translate?&doctype=json&type=AUTO&i='+texDom,
-										//     'type':'get',
-										//     'contentType':'application/json',
-
-										//     'success':function(result,statis){
-										//         console.log(result);
-										//         console.log(statis);
-										//     },
-										//     'error':function(error,errorMessage){
-										//         console.log(error);
-										//         console.log(errorMessage);
-										//     }});
-
-										var chatSportMode = document.getElementById("chatSportMode");
-										//聊天内容特效
-										if (chatSportMode.checked) {
-											$(idDom).fadeOut().fadeIn(1000);
-											$(texDom).hide().show(1000)
-											setTimeout(function() {
-												$(texDom).parent('dl').hide(3000);
-											}, 2000);
-										}
-										window.sessionStorage.setItem('idt_last', idt);
-										window.sessionStorage.setItem('text_Last', tex);
-
-										// const showMessageText= '[' + grade + ']' + nickName + '(' + idt + ')' + is_mobile + ':<br/><span style=font-size:large;>' + tex+'</span>';
-										//记录消息
-										// getDom('showMessage').innerHTML =showMessageText;
-
-										const showMessageText1 = is_mobile + '[' + grade + ']' +
-											nickName + '(' + idt + ')' + ':' + tex;
-										test(showMessageText1);
-
-										//正在读取得消息div ,接收弹幕结果
-										getDom('showMessage').innerHTML = showMessageText1;
-
-
-										// getDom('showLog').innerHTML =showMessageText1;
-										// $('#showMessage').fadeOut().fadeIn(1000);
-										// .fadeToggle(1000)
-										// $('#showMessage').css('background-color','white').fadeOut(1000).fadeIn(1000)
-										// $('#showMessage').hide().show(1000);
-										//记录消息拼接时间
-
-
-										//统计10秒最大输出
-										// var initTime=10;
-										//最大次数
-										// var maxTimes=initTime/delayInputFrequency/1000
-										//当前次数
-										// var nowTimes=0;
-										//统计变化
-										inputCount++;
-
-
-										//检索m 内通用发送消息方法
-										//内容
-										var testInput;
-										//次数
-										var inputTimes;
-										//间隔时间
-										var inputFrequency;
-
-										function sendMessage(message) {
-											//打开批量功能
-											$('#batchInformationDivId').collapse("show");
-											//读取默认配置
-											testInputValue = getDom('testInput').value;
-											inputTimesValue = getDom('inputTimes').value;
-											inputFrequencyValue = getDom('inputFrequency').value;
-											//发送消息
-											getDom('testInput').value = message;
-											getDom('inputTimes').value = 1;
-											getDom('inputFrequency').value = 0.1;
-											getDom('send_message').click();
-											//还原数据
-											setTimeout(function() {
-												getDom('testInput').value = testInputValue;
-												getDom('inputTimes').value = inputTimesValue;
-												getDom('inputFrequency').value =
-													inputFrequencyValue;
-											}, 1500);
-										}
-
-										function sendMessageCustom(message, times, frequency) {
-											//打开批量功能
-											$('#batchInformationDivId').collapse("show");
-											getDom('testInput').value = message;
-											getDom('inputTimes').value = times;
-											getDom('inputFrequency').value = frequency;
-											getDom('send_message').click();
-										}
-
-										//打开关闭机器人聊天功能
-										var robotChatcheckboxId = document.getElementById(
-											"robotChatcheckboxId");
-										if (robotChatcheckboxId.checked && tex.includes("!")) {
-											//查看指定用户数量
-											function getGrups(dom1) {
-												//function getDom(dom) {
-												//  return document.getElementById(dom);
-												// }
-												for (var i = 0; i < getDom(dom1)
-													.childElementCount; i++) {
-													var user_id = getDom(dom1).children.item(i).children
-														.item(0).getAttribute(
-															'user_id');
-													var user_nick = getDom(dom1).children.item(i)
-														.children.item(0).getAttribute(
-															'user_nick');
-													console.log(user_nick + ':' + user_id);
-													text = text + (i + 1) + '.' + user_nick + '(' +
-														user_id + ')';
-												}
+										setTimeout(function() {
+											//发送数据
+											if (text != "") {
+												getDom('testInput').value = text;
 											}
-											//!방송시작시간广播开始时间
-											function getSonButtonDom1(dom) {
-												dom = document.getElementsByClassName(dom).item(0)
-													.children[0].lastChild;
-												return dom;
+											if (firstNo != "") {
+												getDom('inputTimes').value = firstNo;
 											}
-
-											//收藏或者点赞
-											function getSonButtonDom(dom) {
-												dom = document.getElementsByClassName(dom).item(0)
-													.children[0];
-												return dom;
+											if (lastNo != "") {
+												getDom('inputFrequency').value = lastNo;
 											}
+											console.log(text);
+											var send_message = getDom('send_message');
+											send_message.click();
+											//数据还原1,1
+											getDom('testInput').value = testInput_last
+												.value;
+											getDom('inputTimes').value = inputTimes_last
+												.value;
+											getDom('inputFrequency').value =
+												inputFrequency_last.value;
 
-											if (tex == "!용감해지다") {
-												sendMessageCustom(
-													"'̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀ͯ'",
-													1,
-													3);
-
-											} else if (tex == "!웅기하다") {
-												sendMessageCustom(
-													"'̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀ͯ'",
-													2, 32);
-											} else if (tex == "!극한길이" || tex == "!ultimatelength" ||
-												tex == "!long" || tex == "!极限长度") {
-												let message =
-													"̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚௵";
-												sendMessageCustom(message, 2, 32);
-												// getDom('testInput').value = message;
-												// getDom('inputTimes').value = 2;
-												// getDom('inputFrequency').value = 30;
-												// getDom('send_message').click();
-											} else if (tex == "!reboot" || tex == "!재부팅" || tex ==
-												"!reload") {
-												location.reload();
-											} else if (tex == "!탑" || tex == "!정글" || tex == "!미드" ||
-												tex == "!바텀" || tex == "!임의" ||
-												tex == "!모든" || tex == "!서포터" || tex == "!top" || tex
-												.includes("!mid") || tex.includes(
-													"!jun") || tex
-												.includes("!ad") || tex.includes("!sup") || tex ==
-												"!any" || tex == "!all") {
-												// const LOLURL = chrome.runtime.getURL("LOL.html");
-												const LOLURL =
-													"https://afubaba.github.io/Afreecatv/LOL.html";
-												// winowName = window.open(LOLURL, "windowName");
-												winowName = window.open(
-													"https://afubaba.github.io/Afreecatv/LOL.html",
-													"_blank",
-													"left=300,width=1000,height=1000,channelmode=yes,menubar=yes,scrollbars=0"
-												);
-												setTimeout(function() {
-													winowName.postMessage(tex, LOLURL);
-													//所有英雄event.data == "!랜덤영웅" || event.data == "!임의의영웅" || event.data == "!임의영웅"
-
-													// winowName.postMessage("!랜덤탑", LOLURL);
-													// winowName.postMessage("!랜덤정글", LOLURL);
-													// winowName.postMessage("!랜덤미드", LOLURL);
-													// winowName.postMessage("!랜덤바텀", LOLURL);
-													// winowName.postMessage("!랜덤서포터", LOLURL);
-												}, 1000);
-											}
-											//终止(停止)命令!멈추다(任何人)
-											else if (tex == '!stop' || tex == '!멈추다') {
-												//终止消息提示
-												document.getElementById('stopButtonId').click();
-												// alert('['+grade+']'+nickName+'('+idt+')'+is_mobile+':'+tex'你使用终止命令,终止了任何条件程序');
-												console.log(idt + ':你使用终止命令,终止了部分程序');
-												//恢复默认
-												document.getElementById('environmentButtonId').click();
-												console.log(idt + ':系统恢复默认配置');
-
-											}
-											//部署环境(仅限管理员(id包含10571237))
-											else if (idt.includes('10571237') && tex == '!en' || tex ==
-												'!환경' || tex == '!환경배포' ||
-												tex ==
-												'!start' || tex == '!시작하다' || tex == '!시작') {
-												document.getElementById('environmentButtonId').click();
-
-												getDom('testInput').value = '@' + nickName +
-													':환경 배치 성공';
-												getDom('send_message').click();
-
-												console.log(idt + '部署环境成功');
-
-											}
-											//聊天热度延迟速度
-											else if (tex == '!채팅속도' || tex == '!지연속도' || tex == '!속도') {
-												var delayInputTextId = getDom('delayInputTextId').value;
-
-												if (delayInputTextId >= 1000) {
-													delayInputTextId = delayInputTextId / 1000 + 's';
-												} else {
-													delayInputTextId = delayInputTextId + 'ms';
-												}
-												getDom('testInput').value = '@' + nickName + ':관중:' +
-													getDom('nAllViewer').innerHTML +
-													',채팅속도:' + delayInputTextId;
-												getDom('send_message').click();
-
-
-											} else if (tex == '!문지기' || tex == '!슈퍼팬') {
-												//哪个组dom名称
-												var groupName = '';
-												var text = '';
-												// getDom('setbox_viewer').click();
-												document.getElementById('setbox_viewer').children.item(
-													0).click();
-												switch (true) {
-													case tex == '!manager' || tex == '!문지기':
-														// 매니저  管理员
-														groupName = 'lv_ul_manager';
-														break;
-													case tex == '!슈퍼팬':
-														// 구독자 高级粉丝
-														groupName = 'lv_h3_topfan';
-														break;
-													case tex == '!팬':
-														groupName = 'lv_h3_fan';
-														break;
-													case tex == '!서포터':
-														groupName = 'lv_ul_supporter';
-														break;
-													default:
-														groupName = 'lv_p_bj';
-														break;
-												}
-
-
-												setTimeout(function() {
-													getGrups(groupName);
-													console.log('text:' + text);
-													if (text != '') {
-														getDom('testInput').value = text;
-														//初始化数据
-														getDom('inputFrequency').value = 1;
-
-														getDom('send_message').click();
-
-													} else {
-														getDom('testInput').value = tex +
-															':null';
-													}
-													getDom('inputFrequency').value = 1;
-													// document.getElementById('setbox_viewer').children.item(0).click();
-
-												}, 3000);
-												// document.getElementById('setbox_viewer').children.item(0).click();
-
-
-											} else if (tex == '!open') {
-
-												getDom('inputFrequency').value = 6;
-												document.getElementById('setbox_viewer').children.item(
-													0).click();
-
-											}
-											//!message:q/m/s  /!소식:천천히/중속/서둘러
-											else if (idt.includes('1057123') && tex.includes(
-													'!message:') || tex.includes('!m:')) {
-
-												//当前速度控制器
-												var delayInputId = getDom('delayInputId');
-												//要调节的速度
-												var speed = tex.substring(tex.indexOf(':') + 1);
-												//现在的速度
-												var nowDelayInputId = delayInputId.value;
-												console.log('speed的值:' + speed);
-												if (speed == '') {
-													console.log('返回当前速度');
-
-													//发送当前速度
-													//转换速度英文值为韩语
-													if (nowDelayInputId == 'slowSpeed') {
-														// getDom('testInput').value=tex+'천천히';
-														getDom('write_area').innerHTML = tex + '천천히';
-														// send_message
-														getDom('btn_send').click();
-														//慢速命令
-													} else if (nowDelayInputId == 'meiumSpeed') {
-														// getDom('testInput').value=tex+'중속';
-														getDom('write_area').innerHTML = tex + '중속';
-														getDom('btn_send').click();
-														//慢速命令
-													} else if (nowDelayInputId == 'quick') {
-														// getDom('testInput').value=tex+'서둘러';
-														getDom('write_area').innerHTML = tex + '서둘러';
-														getDom('btn_send').click();
-													} else {
-														//发送
-														getDom('write_area').innerHTML = tex + 'null';
-														getDom('btn_send').click();
-
-
-													}
-
-
-												} else {
-
-													if (speed == nowDelayInputId) {
-														console.log('当前已经是:' + speed);
-
-
-													} else {
-														//慢速命令
-														if (speed == 's' || speed == '천천히') {
-															delayInputId.value = 'slowSpeed';
-															//慢速命令
-														} else if (speed == 'm' || speed == '중속') {
-															delayInputId.value = 'meiumSpeed';
-															//慢速命令
-														} else if (speed == 'q' || speed == '서둘러') {
-															delayInputId.value = 'quick';
-
-														}
-														//速度调节
-														getDom('retrievalButtonId').click();
-													}
-
-												}
-												console.log('进入调速模式');
-
-											}
-											//发送按钮语言
-											else if (tex == '!보내다' || tex == '!send' || tex == '!发送' ||
-												tex == '!보내기') {
-
-												$('#write_area').html($('#showMessage').html());
-												getDom('btn_send').click();
-											}
-											//语言命令(在有新消息的情况下执行)
-											// &&tex='!시간'||tex='!时间'
-											else if (idt == '1057123772' && tex == '!시간') {
-												var date = new Date();
-												console.log('시간:' + date);
-											}
-											// !자동시간알림自动报时间启动
-											else if (idt.includes('10571237') && tex == '!자동시간알림') {
-												console.log('管理员(' + idt + '):' + '보고시간(自动报时)');
-												document.getElementById('autoTimeId').click();
-
-											}
-											// !보고시간现在手动的时间
-											else if (tex == '!보고시간' || tex == '!시간' || tex == '!time') {
-												console.log('管理员(' + idt + '):' + '보고시간(报告时间)');
-												//获取1-3的随机数字
-												// console.log(parseInt(Math.random()*NO/1));
-												var rdmNo = parseInt(Math.random() * 3 / 1 + 1);
-												setTimeout(function() {
-													document.getElementById('handTimeId')
-														.click();
-												}, rdmNo * 1000);
-
-
-											} else if (tex == '!방송시작시간') {
-												var detail_view = getSonButtonDom1('detail_view');
-
-												sendMessage(detail_view.textContent);
-
-
-											} else if (tex == '!별' || tex == '!즐겨찾기' || tex == '!UP' ||
-												tex == '!좋아요' || tex == '!좋아') {
-												//收藏
-												var bookmarkSonDom;
-												//点赞
-												var up_recommend;
-												switch (true) {
-													case tex == '!별' || tex == '!즐겨찾기':
-														bookmarkSonDom = getSonButtonDom('bookmark');
-														if (bookmarkSonDom.className == '') {
-															bookmarkSonDom.click();
-															setTimeout(function() {
-																bookmarkSonDom =
-																	getSonButtonDom('bookmark');
-																if (bookmarkSonDom.className ==
-																	'on') {
-																	sendMessage('@' + nickName +
-																		':즐겨찾기 추가 성공');
-																} else {
-																	sendMessage('@' + nickName +
-																		':즐겨찾기 추가 실수');
-																}
-															}, 1000);
-														} else {
-															//收藏失败,您已经收藏
-															sendMessage('@' + nickName + ':이미 즐겨찾기');
-														}
-														break;
-													case tex == '!UP' || tex == '!좋아요' || tex == '!좋아':
-														up_recommend = getSonButtonDom('up_recommend');
-														if (up_recommend.className == 'on') {
-															//点赞失败,您已经点赞
-															sendMessage('@' + nickName + ':이미 좋아요 표시됨');
-
-														} else if (up_recommend.className == '') {
-															up_recommend.click();
-															setTimeout(function() {
-																up_recommend = getSonButtonDom(
-																	'up_recommend');
-																if (up_recommend.className ==
-																	'on') {
-																	console.log('点赞成功:' +
-																		up_recommend
-																		.className);
-																	sendMessage('@' + nickName +
-																		':좋아요 성공');
-																} else {
-																	console.log('点赞失败');
-																	sendMessage('@' + nickName +
-																		':좋아요 실수');
-																}
-															}, 1000);
-														}
-														break;
-													default:
-														break;
-												}
-											}
-
-
-											//!멈추다 停止
-											//内容发送!text:😗😗,2x3  !text:😗,2x0.01  !text:/짱좋아//짱좋아/,3x2
-											// !text:/즐거워/,5x5 id 는 이것 을 포함 해야만 명령 을 실행 할 수 있 습 니 다.이 명령 은 관리자 의 채 팅 번역 기능 을 닫 아야 합 니 다.수 동 설정 도 같은 효과 입 니 다.
-											// !text:😗,2x1 명령 권한 이 열 렸 습 니 다.관리자 계 정 이나 앵 커 계 정 은 채 팅 번역 기능 을 닫 아야 합 니 다.
-											else if (tex.includes('!text:') && tex.includes('x')) {
-												function getDom(dom) {
-													var dom = document.getElementById(dom);
-													return dom;
-												}
-
-												var testInput = getDom('testInput');
-												var inputTimes = getDom('inputTimes');
-												var inputFrequency = getDom('inputFrequency');
-												//获取1-3的随机数字
-												// console.log(parseInt(Math.random()*NO/1));
-												var rdmNo = parseInt(Math.random() * 3 / 1 + 1);
-												var text = "";
-												var firstNo = "";
-												var lastNo = "";
-												if (!tex.includes(",")) {
-													text = tex.substring(tex.indexOf(":") + 1);
-												} else {
-													//固定位置
-													text = tex.substring(6, tex.lastIndexOf(','));
-													firstNo = tex.substring(tex.lastIndexOf(',') + 1,
-														tex.lastIndexOf('x'));
-													lastNo = tex.substring(tex.lastIndexOf('x') + 1);
-												}
-												setTimeout(function() {
-													//发送数据
-													if (text != "") {
-														getDom('testInput').value = text;
-													}
-													if (firstNo != "") {
-														getDom('inputTimes').value = firstNo;
-													}
-													if (lastNo != "") {
-														getDom('inputFrequency').value = lastNo;
-													}
-													console.log(text);
-													var send_message = getDom('send_message');
-													send_message.click();
-													//数据还原1,1
-													getDom('testInput').value = testInput_last
-														.value;
-													getDom('inputTimes').value = inputTimes_last
-														.value;
-													getDom('inputFrequency').value =
-														inputFrequency_last.value;
-
-													// getDom('inputTimes').value = 1;
-													// getDom('inputFrequency').value = 1;
-												}, rdmNo * 1000);
-											}
-										}
+											// getDom('inputTimes').value = 1;
+											// getDom('inputFrequency').value = 1;
+										}, rdmNo * 1000);
 									}
-									le = document.getElementsByTagName('dt').length;
 								}
-								//获取信息的延迟时间
-							}, delayInputFrequency);
-						});
-					}
-				}, (error) => {
-					console.log(error);
-			});
-		}
-	}
-
-	function isStart() {
-		//渲染特效
-		// $('#retrievalButtonId').toggleClass()
-		$("#retrievalButtonId").toggleClass('btn-success btn-inverse');
-		let showMessageDivClass = $('#showMessageDiv').attr('class');
-		console.log(showMessageDivClass);
-		if (showMessageDivClass.includes('in')) {
-			retrievalButtonFunction();
-			console.log('包含in,执行');
-		} else {
-			if ('undefined' != typeof messageInterval) {
-				clearInterval(messageInterval);
+							}
+							le = document.getElementsByTagName('dt').length;
+						}
+						//获取信息的延迟时间
+					}, delayInputFrequency);
+				});
 			}
+		}, (error) => {
+			console.log(error);
+		});
+	}
+}
 
-			console.log('不包含in,不执行');
+function isStart() {
+	//渲染特效
+	// $('#retrievalButtonId').toggleClass()
+	$("#retrievalButtonId").toggleClass('btn-success btn-inverse');
+	let showMessageDivClass = $('#showMessageDiv').attr('class');
+	console.log(showMessageDivClass);
+	if (showMessageDivClass.includes('in')) {
+		retrievalButtonFunction();
+		console.log('包含in,执行');
+	} else {
+		if ('undefined' != typeof messageInterval) {
+			clearInterval(messageInterval);
 		}
 
+		console.log('不包含in,不执行');
 	}
+
+}
