@@ -2196,7 +2196,7 @@ function retrievalButtonFunction() {
 								}
 								//获取信息的延迟时间
 							}, delayInputFrequency);
-						}
+						});
 					}
 				}, (error) => {
 					console.log(error);
