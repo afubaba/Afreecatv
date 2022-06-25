@@ -716,14 +716,14 @@ function environmentFunction() {
 	var initDataArray = ["#face-people", "#object", "#nature-animal", "#travel-activity", "#symbol", "#other",
 		"#activity", "#flags"
 	]
-	for (let i = 0; i < initDataArray.length; i++) {
-		$(initDataArray[i] + "-controller")
-			.click(function() {
-				// alert(initDataArray[i]);
-				initMainFace(initDataArray[i]);
-			});
-	}
-	initMainFace(initDataArray[0]);
+	// for (let i = 0; i < initDataArray.length; i++) {
+	// 	$(initDataArray[i] + "-controller")
+	// 		.click(function() {
+	// 			// alert(initDataArray[i]);
+	// 			initMainFace(initDataArray[i]);
+	// 		});
+	// }
+	// initMainFace(initDataArray[0]);
 
 	function initMainFace(domId) {
 		//判断是否已经初始化
