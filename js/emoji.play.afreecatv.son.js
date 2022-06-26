@@ -1617,78 +1617,82 @@ function retrievalButtonFunction() {
 
 
 							// console.log('['+grade+']'+nickName+'('+idt+')'+is_mobile+':'+tex+'(延迟:'+delayInputFrequency+'ms)');
+							//聊天内容配色
+							//ｉｄ和内容设置
+							var idDom = chat_area.children[initIndex].children[0]
+								.lastElementChild;
+							idDom.style.fontSize = 'large';
+							idDom.style.backgroundColor = 'yellow';
+							idDom.innerHTML = is_mobile + idDom.textContent;
+							var texDom = chat_area.children[initIndex].children[0]
+								.nextElementSibling;
+							// texDom.style.border='2px black solid';
+							// console.log(idDom.textContent);
+							// if (idDom.textContent.includes("⊂ZZZZZZZZ⊃―")) {
+							var textDomFirstChild = texDom.firstChild;
+							var textDomFirstChildTextContent = textDomFirstChild
+								.textContent;
+							if (textDomFirstChildTextContent.length <= 20 && texDom
+								.getAttribute("data-isReaded") != "") {
+								var flag = false;
+								for (let j = 2; j < 10; j++) {
+									for (let i = 0; i < textDomFirstChildTextContent
+										.length - 1; i++) {
+										let subTextDomContent =
+											textDomFirstChildTextContent.substring(
+												i, i + j);
+										// console.log(subTextDomContent);
+										if (typeof(resolve[subTextDomContent]) !=
+											"undefined") {
+											let reT = textDomFirstChildTextContent
+												.replace(
+													subTextDomContent,
+													"<img width='30' height='30' src='" +
+													resolve[
+														subTextDomContent] +
+													"'/>");
+											textDomFirstChildTextContent = reT;
+											// console.log(reT);
+											flag = true;
+										}
+									}
+								}
+								// }
+								if (flag) {
+									texDom.innerHTML = textDomFirstChildTextContent;
+									//重新获取内容
+									tex = chat_area.children[initIndex].children[0]
+										.nextElementSibling.innerHTML;
+								}
 
-
+								// console.log(textDomFirstChildTextContent);
+							}
+							texDom.style.fontSize = 'large';
+							// texDom.style.backgroundColor = 'white';
+							commonFontColor = getRandomColor();
+							texDom.style.color = commonFontColor;
 							//判断内容ID是否相同
 							if (idt != idt_last || tex != text_Last) {
+								//已经读
+								// console.log("已经对比");
+								//无论是否成功替换表情，都设置已读
+								texDom.setAttribute("data-isReaded", "")
 
 								function getDom(dom) {
 									var dom = document.getElementById(dom);
 									return dom;
 								}
 
-								//聊天内容配色
-
-								//ｉｄ和内容设置
-								var idDom = chat_area.children[initIndex].children[0]
-									.lastElementChild;
-								idDom.style.fontSize = 'large';
-								idDom.style.backgroundColor = 'yellow';
-								idDom.innerHTML = is_mobile + idDom.textContent;
-								var texDom = chat_area.children[initIndex].children[0]
-									.nextElementSibling;
-								// texDom.style.border='2px black solid';
-								// console.log(idDom.textContent);
-								// if (idDom.textContent.includes("⊂ZZZZZZZZ⊃―")) {
-								var textDomFirstChild = texDom.firstChild;
-								var textDomFirstChildTextContent = textDomFirstChild
-									.textContent;
-								if (textDomFirstChildTextContent.length <= 20) {
-									var flag = false;
-									for (let j = 2; j < 10; j++) {
-										for (let i = 0; i < textDomFirstChildTextContent
-											.length - 1; i++) {
-											let subTextDomContent =
-												textDomFirstChildTextContent.substring(
-													i, i + j);
-											// console.log(subTextDomContent);
-											if (typeof(resolve[subTextDomContent]) !=
-												"undefined") {
-												let reT = textDomFirstChildTextContent
-													.replace(
-														subTextDomContent,
-														"<img width='30' height='30' src='" +
-														resolve[
-															subTextDomContent] +
-														"'/>");
-												textDomFirstChildTextContent = reT;
-												// console.log(reT);
-												flag = true;
-											}
-										}
-									}
-									// }
-									if (flag) {
-										texDom.innerHTML = textDomFirstChildTextContent;
-									}
-
-									// console.log(textDomFirstChildTextContent);
-								}
-								texDom.style.fontSize = 'large';
-								// texDom.style.backgroundColor = 'white';
-								commonFontColor = getRandomColor();
-								texDom.style.color = commonFontColor;
-
 								/* 	function httpRequest(url, callback) {
-										var xhr = new XMLHttpRequest();
-										xhr.open("GET", url, true);
-										xhr.onreadystatechange = function() {
-											if (xhr.readyState == 4) {
-												callback(xhr.responseText);
+											var xhr = new XMLHttpRequest();
+											xhr.open("GET", url, true);
+											xhr.onreadystatechange = function() {
+												if (xhr.readyState == 4) {
+													callback(xhr.responseText);
+												}
 											}
-										}
-										xhr.send();
-									} */
+											xhr.send();
+										} */
 								//type目前能用的类型：
 								// ZH_CN2EN 中文　»　英语
 								// ZH_CN2JA 中文　»　日语
