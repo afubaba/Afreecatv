@@ -700,7 +700,7 @@ function environmentFunction() {
 		"height:40%;margin-top:-7%;position: fixed;margin-left:-65%;width: 45%;word-break:break-word;display:none;";
 	// getDom('mainFace').style ='overflow:scroll;height:100%';
 
-	$("#face-people").parent().css("height", "250px");
+	$("#face-people").parent().css("height", "20em");
 	$("#face-people,#object,#nature-animal,#travel-activity,#symbol,#other,#activity,#flags").css("overflow", "scroll");
 	//facesbook表情
 	// getDom('mainFacebookFace').style ='overflow:scroll;width: 300px;height:50%;margin-left:-40%;margin-top:-10%; position: fixed;display:none;word-break:break-word';
@@ -1676,7 +1676,7 @@ function retrievalButtonFunction() {
 								//已经读
 								// console.log("已经对比");
 								//无论是否成功替换表情，都设置已读
-								texDom.setAttribute("data-isReaded", "")
+								texDom.setAttribute("data-isReaded", "");
 
 								function getDom(dom) {
 									var dom = document.getElementById(dom);
