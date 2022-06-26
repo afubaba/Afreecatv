@@ -649,10 +649,6 @@ function environmentFunction() {
 
 
 	// alert($('#actionbox').css('width'));
-
-	getDom('myDiv').style = 'margin:0;padding:0;height:80%;width:' + chat_area_width +
-		'px;word-break: break-word;overflow:scroll;position:fixed;visibility:visible;margin-top:-15%;';
-
 	//监听表情显示事件
 	// getDom('emoticonArea').onchange=function(){
 	// 	console.log('变化了');
@@ -696,10 +692,12 @@ function environmentFunction() {
 	//google表情特效
 	// getDom('mainFaceDiv').style =
 	// 	"width: 300px;height:50%;margin-left:-65%;margin-top:-5%;position: fixed;display:none;word-break:break-word;";
-	getDom('mainFaceDiv').style =
-		"height:40%;margin-top:-7%;position: fixed;margin-left:-65%;width: 45%;word-break:break-word;display:none;";
+	// getDom('mainFaceDiv').style ="height:40%;margin-top:-7%;position: fixed;margin-left:-65%;width: 45%;word-break:break-word;display:none;";
+	getDom('myDiv').style = 'margin:0;padding:0;height:80%;width:' + chat_area_width +'px;word-break: break-word;overflow:scroll;position:fixed;visibility:visible;margin-top:-15%;';
+	var mainFaceDivRight = $("#chat_area").width() + $("#emoticonArea").width() + ($("body").width() - ($("#webplayer_contents").width() )) / 2
+	getDom('mainFaceDiv').style ="height:40%;position:fixed;right:"+mainFaceDivRight+"px;bottom:0;width: 700px;;word-break:break-word;display:none;";
 	// getDom('mainFace').style ='overflow:scroll;height:100%';
-
+	
 	$("#face-people").parent().css("height", "20em");
 	$("#face-people,#object,#nature-animal,#travel-activity,#symbol,#other,#activity,#flags").css("overflow", "scroll");
 	//facesbook表情
