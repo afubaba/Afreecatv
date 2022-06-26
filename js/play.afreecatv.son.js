@@ -872,7 +872,10 @@ function environmentFunction() {
 	//移除<legend>搜索</legend>
 	$("legend")[0].remove();
 	// getDom('testInput').setaAttibute('')
-
+	//移除投票模式
+	if (document.querySelector(".vote_txt")) {
+		document.querySelector(".vote_txt").remove();
+	}
 }
 
 function stopRetrievalMessageFunction() {

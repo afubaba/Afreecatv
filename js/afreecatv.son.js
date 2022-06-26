@@ -843,11 +843,14 @@ function environmentFunction() {
 
 	//官方表情漫画位置优化
 	$(".emoticon_output").css("width", "100px").css("margin-left", "70px").css("background-color", "rgba(0,0,0,0.45");
-	
+
 	//移除<legend>搜索</legend>
 	$("legend")[0].remove();
 	// getDom('testInput').setaAttibute('')
-
+	//移除投票模式
+	if (document.querySelector(".vote_txt")) {
+		document.querySelector(".vote_txt").remove();
+	}
 }
 
 function stopRetrievalMessageFunction() {
@@ -864,6 +867,7 @@ function stopRetrievalMessageFunction() {
 	//  $barrageButton.attr('data-isBarrage');
 	tipBarrage('关闭消息阅读');
 }
+
 function sendMessageFunction() {
 	testInputValue = document.getElementById('testInput').value;
 
@@ -1663,7 +1667,7 @@ function retrievalButtonFunction() {
 						getDom('send_message').click();
 					} else if (tex == "!reboot" || tex == "!재부팅" || tex == "!reload") {
 						location.reload();
-					} 
+					}
 					//终止(停止)命令!멈추다(任何人)
 					else if (tex == '!stop' || tex == '!멈추다') {
 						//终止消息提示
@@ -1953,8 +1957,8 @@ function retrievalButtonFunction() {
 						}, rdmNo * 1000);
 					}
 				}
-			
-				
+
+
 			}
 			le = document.getElementsByTagName('dt').length;
 		}
