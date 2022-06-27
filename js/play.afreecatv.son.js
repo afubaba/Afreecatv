@@ -642,16 +642,13 @@ function environmentFunction() {
 	// getDom('showMessage').style.backgroundColor='white';
 
 	getDom('actionbox').style = 'margin:0;padding:0;height:55%;width:' + chat_area_width +
-		'px;overflow:scroll;visibility:hidden';
+	'px;overflow:scroll;visibility:hidden';
 
 	getDom('ul1').style = 'visibility:visible';
 	getDom('ul2').style = 'visibility:visible';
 
 
 	// alert($('#actionbox').css('width'));
-
-	getDom('myDiv').style = 'margin:0;padding:0;height:80%;width:' + chat_area_width +
-		'px;word-break: break-word;overflow:scroll;position:fixed;visibility:visible;margin-top:-15%;';
 
 	//监听表情显示事件
 	// getDom('emoticonArea').onchange=function(){
@@ -697,47 +694,101 @@ function environmentFunction() {
 	//google表情特效
 	// getDom('mainFaceDiv').style =
 	// 	"width: 300px;height:50%;margin-left:-65%;margin-top:-5%;position: fixed;display:none;word-break:break-word;";
-	getDom('mainFaceDiv').style =
-		" height:40%;margin-top:-5%;position: fixed;margin-left:-65%;width: 300px;word-break:break-word;display:none;";
-	getDom('mainFace').style =
-		'overflow:scroll;height:100%';
+	// getDom('mainFaceDiv').style ="height:40%;margin-top:-7%;position: fixed;margin-left:-65%;width: 45%;word-break:break-word;display:none;";
+	getDom('myDiv').style = 'margin:0;padding:0;height:80%;width:' + chat_area_width +
+	'px;word-break: break-word;overflow:scroll;position:fixed;visibility:visible;margin-top:-15%;';
+	var mainFaceDivRight = $("#chat_area").width() + $("#emoticonArea").width() + ($("body").width() - ($(
+		"#webplayer_contents").width())) / 2
+	getDom('mainFaceDiv').style = "height:40%;position:fixed;right:" + mainFaceDivRight +
+	"px;bottom:0;width: 700px;;word-break:break-word;display:none;";
+	// getDom('mainFace').style ='overflow:scroll;height:100%';
+
+	$("#face-people").parent().css("height", "20em");
+	$("#face-people,#object,#nature-animal,#travel-activity,#symbol,#other,#activity,#flags").css("overflow", "scroll");
 	//facesbook表情
 	// getDom('mainFacebookFace').style ='overflow:scroll;width: 300px;height:50%;margin-left:-40%;margin-top:-10%; position: fixed;display:none;word-break:break-word';
-	getDom('mainFacebookFaceDiv').style =
-		" height:40%;margin-top:-5%;position: fixed;margin-left:-40%;width: 300px;word-break:break-word;display:none;";
-	getDom('mainFacebookFace').style = "overflow:scroll;height:100%";
+	// getDom('mainFacebookFaceDiv').style =
+	// 	" height:40%;margin-top:-5%;position: fixed;margin-left:-40%;width: 300px;word-break:break-word;display:none;";
+	// getDom('mainFacebookFace').style = "overflow:scroll;height:100%";
+	//设置默认宽度高度
+	$("#mainFaceDiv emoji").css("fontSize","30px");
 
-	var mainFace = document.getElementById('mainFace');
+	var initDataArray = ["#face-people", "#object", "#nature-animal", "#travel-activity", "#symbol", "#other",
+	"#activity", "#flags"
+	]
+	for (let i = 0; i < initDataArray.length; i++) {
+		$(initDataArray[i] + "-controller")
+		.click(function() {
+				// alert(initDataArray[i]);
+				initMainFace(initDataArray[i]);
+			});
+	}
+	initMainFace(initDataArray[0]);
 
-	var mainFaceChildrens = mainFace.children;
-	for (var i = 0; i < mainFaceChildrens.length; i++) {
-		if (mainFaceChildrens[i].tagName != 'H2') {
-
-			var mainFaceGrandSons = mainFaceChildrens[i].children
-			for (var j = 0; j < mainFaceGrandSons.length; j++) {
-
-				mainFaceGrandSons[j].onclick = function() {
+	function initMainFace(domId) {
+		//判断是否已经初始化
+		var domSonImg = $(domId).children("emoji");
+		if (typeof($(domId).attr("data-isInitialized")) == "undefined") {
+			for (var i = 0; i < domSonImg.length; i++) {
+				// data - isInitialized
+				domSonImg[i].onclick = function() {
 					this.style.backgroundColor = 'white';
-					this.setAttribute('title', this.textContent)
-					getDom('testInput').value += this.textContent;
-					setTimeout(function() {
-						// setContentEditableSelection("testInput")
-						getDom('testInput').focus();
-					}, 100);
+					this.setAttribute('title', this.textContent);
+					let altValue = this.textContent;
+					getDom('testInput').value += altValue;
+					// setTimeout(function() {
+					// 	getDom('testInput').focus()
+					// }, 1000);
+					setContentEditableSelection("testInput");
 				}
-				mainFaceGrandSons[j].onmouseover = function() {
+				domSonImg[i].onmouseover = function() {
 					this.style.backgroundColor = 'red';
+					this.style.fontSize = "50px";
+					
 				}
-				mainFaceGrandSons[j].onmouseleave = function() {
+				domSonImg[i].onmouseleave = function() {
 					this.style.backgroundColor = 'white';
+					this.style.fontSize = "30px";
 				}
-				mainFaceGrandSons[j].style.fontSize = '25px';
 			}
+			$(domId).attr("data-isInitialized", "");
 		}
-
 	}
 
-	mainFacebookFace();
+	function mainFace() {
+		var mainFace = document.getElementById('mainFace');
+		var mainFaceChildrens = mainFace.children;
+
+		for (var i = 0; i < mainFaceChildrens.length; i++) {
+			if (mainFaceChildrens[i].tagName != 'H2') {
+				var mainFaceGrandSons = mainFaceChildrens[i].children
+				for (var j = 0; j < mainFaceGrandSons.length; j++) {
+
+					mainFaceGrandSons[j].onclick = function() {
+						this.style.backgroundColor = 'white';
+						this.setAttribute('title', this.textContent);
+						let altValue = $(this).children("img").attr("alt");
+						getDom('testInput').value += altValue;
+						setTimeout(function() {
+							// setContentEditableSelection("testInput")
+							getDom('testInput').focus()
+						}, 1000);
+						// setContentEditableSelection("testInput");
+					}
+					mainFaceGrandSons[j].onmouseover = function() {
+						this.style.backgroundColor = 'red';
+					}
+					mainFaceGrandSons[j].onmouseleave = function() {
+						this.style.backgroundColor = 'white';
+					}
+					mainFaceGrandSons[j].style.fontSize = '15px';
+				}
+			}
+
+		}
+
+
+	}
 
 	function mainFacebookFace() {
 		function getDomById(dom) {
@@ -760,17 +811,20 @@ function environmentFunction() {
 
 					for (let k = 0; k < mainFacebookFaceGrandson[j].childElementCount; k++) {
 
-						grateGrandson[k].innerHTML = grateGrandson[k].getAttribute('data-c');
+						// grateGrandson[k].innerHTML = grateGrandson[k].getAttribute('data-c');
+
 						grateGrandson[k].onclick = function() {
 
 							this.style.backgroundColor = 'white';
-							this.setAttribute('title', this.textContent)
-							getDomById('testInput').value += this.textContent;
+							this.setAttribute('title', this.textContent);
+
+							let altValue = $(this).children("img").attr("alt");
+							getDom('testInput').value += altValue;
+							// setContentEditableSelection("testInput");
 							setTimeout(function() {
 								// setContentEditableSelection("testInput")
-								getDom('testInput').focus();
-							}, 100);
-
+								getDom('testInput').focus()
+							}, 1000);
 						}
 
 						grateGrandson[k].onmouseover = function() {
@@ -792,6 +846,7 @@ function environmentFunction() {
 		}
 	}
 
+	// mainFacebookFace();
 
 
 	//默认开启聊天
@@ -1036,9 +1091,9 @@ function sendMessageSonFunction(repeatTimes) {
 		allTime = '₍' + allRepeatTimes + 'ₗ' + repeatTimes + ',' + frequencys + '₎';
 
 		allTime = allTime.replaceAll('0', '₀').replaceAll('1', '₁')
-			.replaceAll('2', '₂').replaceAll('3', '₃').replaceAll('4', '₄')
-			.replaceAll('5', '₅').replaceAll('6', '₆').replaceAll('7', '₇')
-			.replaceAll('8', '₈').replaceAll('9', '₉').replaceAll(' ', '');
+		.replaceAll('2', '₂').replaceAll('3', '₃').replaceAll('4', '₄')
+		.replaceAll('5', '₅').replaceAll('6', '₆').replaceAll('7', '₇')
+		.replaceAll('8', '₈').replaceAll('9', '₉').replaceAll(' ', '');
 	} else {
 		allTime = '';
 	}
@@ -1190,7 +1245,7 @@ function test(text) {
 		let minDelay = 500;
 		let maxDelay = 2000;
 		let showLogDelay = delayInputTextId < minDelay || delayInputTextId > maxDelay ? delayInputTextId < minDelay ?
-			minDelay : maxDelay : delayInputTextId;
+		minDelay : maxDelay : delayInputTextId;
 		showLogSetTimeout(id);
 
 		function showLogSetTimeout(id) {
@@ -1228,10 +1283,10 @@ function test(text) {
 		// $(id).empty();
 		console.log(showLogArray.length);
 		// if(showLogArray.length>1){
-		if ('undefined' != typeof showLogTimeout) {
-			clearTimeout(showLogTimeout);
-		}
-		showLogArray.shift();
+			if ('undefined' != typeof showLogTimeout) {
+				clearTimeout(showLogTimeout);
+			}
+			showLogArray.shift();
 		// }
 
 		console.log(showLogArray)
@@ -1261,7 +1316,7 @@ async function tipBarrage(textContent) {
 			showLogDivDom.innerHTML = text;
 			// const cssText = 'background:blue;height:100%;color:' + $('#background_color').val() + ';position:fixed;top:' + (bodyHeight / 2) + 'px;left:'+$('body').width()+'px';
 			const cssText = 'font-size:888px;width: max-content;background:white;color:blue;height:' + $('body')
-				.height() + 'px;position:fixed;top:0px;left:' + $('body').width() + 'px';
+			.height() + 'px;position:fixed;top:0px;left:' + $('body').width() + 'px';
 
 
 			// alert(cssText);
@@ -1419,7 +1474,7 @@ function retrievalButtonFunction() {
 		var firstIndex = sessionStorage.getItem('firstIndex');
 		//查找下标所在的chat_area下标1
 		var firstIndexId = document.getElementById('chat_area').children[1].children[0].nextElementSibling
-			.getAttribute('id');
+		.getAttribute('id');
 		if (firstIndex == null) {
 			sessionStorage.setItem('firstIndex', firstIndexId);
 		}
@@ -1427,7 +1482,7 @@ function retrievalButtonFunction() {
 		firstIndex = sessionStorage.getItem('firstIndex');
 
 		var firstIndex2 = document.getElementById('chat_area').children[1].children[0].nextElementSibling
-			.getAttribute('id');
+		.getAttribute('id');
 
 
 		var reduceIndex = firstIndex2 - firstIndex;
@@ -1454,13 +1509,13 @@ function retrievalButtonFunction() {
 			sessionStorage.setItem('firstIndex', firstIndex2);
 		} else if (reduceIndex < 0) {
 			firstIndexId = document.getElementById('chat_area').children[1].children[0].nextElementSibling
-				.getAttribute('id');
+			.getAttribute('id');
 			sessionStorage.setItem('firstIndex', firstIndexId);
 			// console.log('reduceIndex小于0');
 		} else {
 			//错误时重置
 			firstIndexId = document.getElementById('chat_area').children[1].children[0].nextElementSibling
-				.getAttribute('id');
+			.getAttribute('id');
 			sessionStorage.setItem('firstIndex', firstIndexId);
 			// console.log('遇到错误,重置sessionStorage');
 
@@ -1513,7 +1568,7 @@ function retrievalButtonFunction() {
 
 
 			if (is_mobile == 'false') {
-				is_mobile = '💻';
+				is_mobile = '🖥';
 			} else {
 				is_mobile = '📱';
 			}
@@ -1710,7 +1765,7 @@ function retrievalButtonFunction() {
 							2, 32);
 					} else if (tex == "!극한길이" || tex == "!ultimatelength" || tex == "!long" || tex == "!极限长度") {
 						let message =
-							"̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚௵";
+						"̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚௵";
 						sendMessageCustom(message, 2, 32);
 						// getDom('testInput').value = message;
 						// getDom('inputTimes').value = 2;
@@ -1755,12 +1810,12 @@ function retrievalButtonFunction() {
 						'!start' || tex == '!시작하다' || tex == '!시작') {
 						document.getElementById('environmentButtonId').click();
 
-						getDom('testInput').value = '@' + nickName + ':환경 배치 성공';
-						getDom('send_message').click();
+					getDom('testInput').value = '@' + nickName + ':환경 배치 성공';
+					getDom('send_message').click();
 
-						console.log(idt + '部署环境成功');
+					console.log(idt + '部署环境成功');
 
-					}
+				}
 					//聊天热度延迟速度
 					else if (tex == '!채팅속도' || tex == '!지연속도' || tex == '!속도') {
 						var delayInputTextId = getDom('delayInputTextId').value;
@@ -1771,7 +1826,7 @@ function retrievalButtonFunction() {
 							delayInputTextId = delayInputTextId + 'ms';
 						}
 						getDom('testInput').value = '@' + nickName + ':관중:' + getDom('nAllViewer').innerHTML +
-							',채팅속도:' + delayInputTextId;
+						',채팅속도:' + delayInputTextId;
 						getDom('send_message').click();
 
 
@@ -1786,27 +1841,27 @@ function retrievalButtonFunction() {
 								// 매니저  管理员
 								groupName = 'lv_ul_manager';
 								break;
-							case tex == '!슈퍼팬':
+								case tex == '!슈퍼팬':
 								// 구독자 高级粉丝
 								groupName = 'lv_h3_topfan';
 								break;
-							case tex == '!팬':
+								case tex == '!팬':
 								groupName = 'lv_h3_fan';
 								break;
-							case tex == '!서포터':
+								case tex == '!서포터':
 								groupName = 'lv_ul_supporter';
 								break;
-							default:
+								default:
 								groupName = 'lv_p_bj';
 								break;
-						}
+							}
 
 
-						setTimeout(function() {
-							getGrups(groupName);
-							console.log('text:' + text);
-							if (text != '') {
-								getDom('testInput').value = text;
+							setTimeout(function() {
+								getGrups(groupName);
+								console.log('text:' + text);
+								if (text != '') {
+									getDom('testInput').value = text;
 								//初始化数据
 								getDom('inputFrequency').value = 1;
 
@@ -1935,23 +1990,23 @@ function retrievalButtonFunction() {
 						var up_recommend;
 						switch (true) {
 							case tex == '!별' || tex == '!즐겨찾기':
-								bookmarkSonDom = getSonButtonDom('bookmark');
-								if (bookmarkSonDom.className == '') {
-									bookmarkSonDom.click();
-									setTimeout(function() {
-										bookmarkSonDom = getSonButtonDom('bookmark');
-										if (bookmarkSonDom.className == 'on') {
-											sendMessage('@' + nickName + ':즐겨찾기 추가 성공');
-										} else {
-											sendMessage('@' + nickName + ':즐겨찾기 추가 실수');
-										}
-									}, 1000);
-								} else {
+							bookmarkSonDom = getSonButtonDom('bookmark');
+							if (bookmarkSonDom.className == '') {
+								bookmarkSonDom.click();
+								setTimeout(function() {
+									bookmarkSonDom = getSonButtonDom('bookmark');
+									if (bookmarkSonDom.className == 'on') {
+										sendMessage('@' + nickName + ':즐겨찾기 추가 성공');
+									} else {
+										sendMessage('@' + nickName + ':즐겨찾기 추가 실수');
+									}
+								}, 1000);
+							} else {
 									//收藏失败,您已经收藏
 									sendMessage('@' + nickName + ':이미 즐겨찾기');
 								}
 								break;
-							case tex == '!UP' || tex == '!좋아요' || tex == '!좋아':
+								case tex == '!UP' || tex == '!좋아요' || tex == '!좋아':
 								up_recommend = getSonButtonDom('up_recommend');
 								if (up_recommend.className == 'on') {
 									//点赞失败,您已经点赞
@@ -1971,10 +2026,10 @@ function retrievalButtonFunction() {
 									}, 1000);
 								}
 								break;
-							default:
+								default:
 								break;
+							}
 						}
-					}
 
 
 					//!멈추다 停止
