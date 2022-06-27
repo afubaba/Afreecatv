@@ -1480,7 +1480,7 @@ function retrievalButtonFunction() {
 
 
 			if (is_mobile == 'false') {
-				is_mobile = '💻';
+				is_mobile = '🖥';
 			} else {
 
 				is_mobile = '📱';
