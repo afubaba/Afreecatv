@@ -562,18 +562,17 @@ function environmentFunction() {
 		var dom = document.getElementById(dom);
 		return dom;
 	}
-
 	// javascript加载script
 	var head = document.getElementsByTagName('head')[0];
 	var script = document.createElement('script');
-
+	
 	//自定义的script 
 	//script.type = 'text/javascript';
 	//script.id = 'showScript';
 	//head.appendChild(script);
 	//最外层窗口opener.document
 	//$('#showScript').html($('#myScript').text());
-
+	
 	//默认字体
 	//设置字体
 	$('#background_color').val('#00FF00');
@@ -581,17 +580,17 @@ function environmentFunction() {
 	//启动自动时间
 	// getDom('autoTimeId').click();
 	//getDom('autoTimeId2').click();
-
+	
 	var isAutoTimeStart = document.getElementsByName('isAutoTimeStart');
 	isAutoTimeStart[0].onchange = function() {
-
+	
 		getDom('autoTimeId').style = 'background-color:#7FFF00;font-size:large;color:red';
 		this.style.visibility = 'hidden';
 		isAutoTimeStart[1].style.visibility = 'visible';
-
+	
 		getDom('overAutoTime').style = 'background-color:red'
 		getDom('startAutoTime').style = 'background-color:#7FFF00;font-size:large;color:red;';
-
+	
 		// getDom('autoTimeId').click();
 	};
 	isAutoTimeStart[1].onchange = function() {
@@ -602,12 +601,12 @@ function environmentFunction() {
 		getDom('startAutoTime').style = 'background-color:red';
 		// getDom('autoTimeId').click();
 	};
-
-
+	
+	
 	//初始化数据
 	getDom('inputTimes').value = 1;
 	getDom('inputFrequency').value = 0.1;
-
+	
 	//检索m消息(环境部署)
 	// getDom('retrievalButtonId').click();
 	//优化界面
@@ -615,41 +614,24 @@ function environmentFunction() {
 	// var allTags = document.getElementsByTagName('div');
 	// for (var i = 0; i < allTags.length; i++) {
 	// 	allTags[i].style.background = 'none';
-
+	
 	// }
-
+	
 	//背景图地址
 	var src = document.getElementsByClassName('bj_thumbnail').item(0).children[0].children[0].getAttribute('src');
 	// let body = document.getElementsByTagName('body');
 	//body.style = 'background-image:url(' + src + ');background-size: 100%;background-repeat: no-repeat;';
-
-
-	// var chat_area_width=getDom('chat_area').clentWidth;
-	var chat_area_width = $('#chat_area').width();
-	//背景图
-	getDom('chat_area').style = 'height:30%;';
+	
+	
 	//getDom('chat_area').style = 'height:38%;background-repeat:no-repeat;background-image:url(' + src + ');background-size: 100%;';
-	//关闭公告
-	$('.chat_notice').removeClass('open');
-
+	
 	//Parent body.backgournd
 	//背景图
 	$('body', parent.document).css('background-Image', 'url(' + src + ')').css('background-repeat', 'no-repeat').css(
 		'background-size', '100%');
-
-
-
-	// getDom('showMessage').style.backgroundColor='white';
-
-	getDom('actionbox').style = 'margin:0;padding:0;height:55%;width:' + chat_area_width +
-	'px;overflow:scroll;visibility:hidden';
-
-	getDom('ul1').style = 'visibility:visible';
-	getDom('ul2').style = 'visibility:visible';
-
-
+	
 	// alert($('#actionbox').css('width'));
-
+	
 	//监听表情显示事件
 	// getDom('emoticonArea').onchange=function(){
 	// 	console.log('变化了');
@@ -658,50 +640,77 @@ function environmentFunction() {
 	// getDom('btn_emo').onclick = function() {
 	// 	mainFaceFunction();
 	// }
-
+	
 	//监听元素
 	let targetNode = $('#emoticonArea')[0]
 	let targetNodechange = {
 		attributes: true
 	};
-
+	
 	function callback(mutationsList, observer) {
 		//目标元素发生变化时执行的代码
 		mainFaceFunction();
 	}
+	
+	var MutationObserver = window.MutationObserver || window.WebKitMutationObserver || window.MozMutationObserver;
+	
 	var mutationObserver = new MutationObserver(callback);
 	mutationObserver.observe(targetNode, targetNodechange);
 	//停止监听
 	//mutationObserver.disconnect(); 
-
-
+	
 	// $(".auto_quality,.low_quality").parent("li").css("display","block");
 	$(".auto_quality,.low_quality").parent("li").css("display", "block");
 	let targetNode1 = $('.low_quality').parent("li")[0]
 	let targetNodechange1 = {
 		attributes: true
 	};
-
+	
 	function callback1(mutationsList, observer) {
 		//目标元素发生变化时执行的代码
 		$(".auto_quality,.low_quality").parent("li").css("display", "block");
 	}
 	var mutationObserver1 = new MutationObserver(callback1);
 	mutationObserver1.observe(targetNode1, targetNodechange1);
-
-
+	
 	// $("#basicConfiguration").append($("#write_area").clone(true));
 	//google表情特效
 	// getDom('mainFaceDiv').style =
 	// 	"width: 300px;height:50%;margin-left:-65%;margin-top:-5%;position: fixed;display:none;word-break:break-word;";
 	// getDom('mainFaceDiv').style ="height:40%;margin-top:-7%;position: fixed;margin-left:-65%;width: 45%;word-break:break-word;display:none;";
-	getDom('myDiv').style = 'margin:0;padding:0;height:80%;width:' + chat_area_width +
-	'px;word-break: break-word;overflow:scroll;position:fixed;visibility:visible;margin-top:-15%;';
+	
+	var chat_area_width = $('#chat_area').width();
+	getDom('myDiv').style = 'margin:0;height:300px;padding:0;bottom:0;width:' + chat_area_width +
+		'px;word-break: break-word;position:fixed;visibility:visible;margin-top:-15%;';
+	
+	getDom('actionbox').style = "margin:0;padding:0;height:" + ($("body").height() - $("#myDiv").offset()
+			.top + 50) +
+		"px;width:" + chat_area_width +
+		"px;overflow:scroll;visibility:hidden";
+	
+	getDom('ul1').style = 'visibility:visible';
+	getDom('ul2').style = 'visibility:visible';
+	
+	//背景图
+	// setTimeout(function(){
+	getDom('chat_area').style.bottom = $("body").height() - $("#actionbox").offset().top + "px";
+	// 	getDom('chat_area').style.height = $("#actionbox").offset().top -document.getElementsByClassName("chat_area")[0].offsetTop-50 + "px";
+	// 	// getDom('mainFaceDiv').style ="height:40%;position:fixed;right:"+mainFaceDivRight+"px;bottom:0;width: 700px;;word-break:break-word;display:none;";
+	
+	// },1000);
+	
+	
 	var mainFaceDivRight = $("#chat_area").width() + $("#emoticonArea").width() + ($("body").width() - ($(
-		"#webplayer_contents").width())) / 2
-	getDom('mainFaceDiv').style = "height:40%;position:fixed;right:" + mainFaceDivRight +
-	"px;bottom:0;width: 700px;;word-break:break-word;display:none;";
-	// getDom('mainFace').style ='overflow:scroll;height:100%';
+		"#webplayer_contents").width())) / 2;
+	getDom('mainFaceDiv').style = "position:fixed;right:" + mainFaceDivRight +
+		"px;bottom:0;width: 700px;;word-break:break-word;display:none;";
+	window.onresize = function() {
+		getDom('actionbox').style.height = ($("body").height() - $("#myDiv").offset().top + 50) + "px";
+		getDom('chat_area').style.bottom = $("body").height() - $("#actionbox").offset().top + "px";
+		mainFaceDivRight = $("#chat_area").width() + $("#emoticonArea").width() + ($("body").width() - ($(
+			"#webplayer_contents").width())) / 2;
+		getDom('mainFaceDiv').style.right = mainFaceDivRight + "px;";
+	}
 
 	$("#face-people").parent().css("height", "20em");
 	$("#face-people,#object,#nature-animal,#travel-activity,#symbol,#other,#activity,#flags").css("overflow", "scroll");
@@ -856,9 +865,8 @@ function environmentFunction() {
 
 
 	//同步内容和输入框区域cols='5'; rows='5'
-	getDom('testInput').style.cssText = 'width:55%;border:2px red solid;font-size:20px'
-
-	getDom('testInput').setAttribute('rows', '2');
+	// getDom('testInput').style.cssText = 'width:55%;border:2px red solid;font-size:20px'
+	// getDom('testInput').setAttribute('rows', '2');
 
 
 	getDom('btn_send').onclick = function() {
@@ -923,7 +931,8 @@ function environmentFunction() {
 
 	//官方表情漫画位置优化
 	$(".emoticon_output").css("width", "100px").css("margin-left", "70px").css("background-color", "rgba(0,0,0,0.45");
-
+	//关闭公告
+	$('.chat_notice').removeClass('open');
 	//移除<legend>搜索</legend>
 	$("legend")[0].remove();
 	// getDom('testInput').setaAttibute('')
@@ -1604,13 +1613,13 @@ function retrievalButtonFunction() {
 
 				//ｉｄ和内容设置
 				var idDom = chat_area.children[initIndex].children[0].lastElementChild;
-				idDom.style.fontSize = 'large';
+				// idDom.style.fontSize = 'large';
 				idDom.style.backgroundColor = 'yellow';
 				idDom.innerHTML = idDom.textContent + is_mobile;
 
 				var texDom = chat_area.children[initIndex].children[0].nextElementSibling;
 				// texDom.style.border='2px black solid';
-				texDom.style.fontSize = 'large';
+				// texDom.style.fontSize = 'large';
 				// texDom.style.backgroundColor = 'white';
 				commonFontColor = getRandomColor();
 				texDom.style.color = commonFontColor;

@@ -1517,13 +1517,13 @@ function retrievalButtonFunction() {
 
 				//ｉｄ和内容设置
 				var idDom = chat_area.children[initIndex].children[0].lastElementChild;
-				idDom.style.fontSize = 'large';
+				// idDom.style.fontSize = 'large';
 				idDom.style.backgroundColor = 'yellow';
 				idDom.innerHTML = idDom.textContent + is_mobile;
 
 				var texDom = chat_area.children[initIndex].children[0].nextElementSibling;
 				// texDom.style.border='2px black solid';
-				texDom.style.fontSize = 'large';
+				// texDom.style.fontSize = 'large';
 				// texDom.style.backgroundColor = 'white';
 				commonFontColor = getRandomColor();
 				texDom.style.color = commonFontColor;

@@ -1632,7 +1632,7 @@ function retrievalButtonFunction() {
 							//ｉｄ和内容设置
 							var idDom = chat_area.children[initIndex].children[0]
 								.lastElementChild;
-							idDom.style.fontSize = 'large';
+							// idDom.style.fontSize = 'large';
 							idDom.style.backgroundColor = 'yellow';
 							idDom.innerHTML = is_mobile + idDom.textContent;
 							var texDom = chat_area.children[initIndex].children[0]
@@ -1678,7 +1678,7 @@ function retrievalButtonFunction() {
 
 								// console.log(textDomFirstChildTextContent);
 							}
-							texDom.style.fontSize = 'large';
+							// texDom.style.fontSize = 'large';
 							// texDom.style.backgroundColor = 'white';
 							commonFontColor = getRandomColor();
 							texDom.style.color = commonFontColor;
