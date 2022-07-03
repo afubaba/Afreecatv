@@ -2133,33 +2133,37 @@
 						<span id='overAutoTime'>off</span> <input checked="checked" name="isAutoTimeStart" type="radio"
 							value='over'>
 					</div>
-					<hr />
-					<!-- <select id="delayInputId" >
-							<option id="quick" value="quick">快速</option>
-							<option id="meiumSpeed" value="meiumSpeed">中速</option>
-							<option id="slowSpeed" selected="selected" value="slowSpeed">慢速</option>
-						</select> -->
 
-					<span>읽기 방식</span>:
-					<select id="delayInputId">
-						<option id="quick" value="quick" title="속도가 빨라서 정보를 잃어버릴 수 있다">극속</option>
-						<option id="meiumSpeed" value="meiumSpeed" title="읽기 속도가 빠르게 증가하거나 감소하여 저활성 생방송에 적합하다">성능
-						</option>
-						<option id="slowSpeed" selected="selected"
-							title="읽기 속도의 느린 증가와 느린 감소,시청자 분들의 활약도가 높은 생방송에 적합합니다." value="slowSpeed">평형</option>
-					</select>
-					<br />
-					<span id="isRobotChat">로봇채팅</span>
-					<input id="robotChatcheckboxId" checked type="checkbox" name="">
-					<span id="isSportChat">채팅운동모드</span>
-					<input id="chatSportMode" type="checkbox" name="">
-					<br />
+					<button id="robotSetting" class="btn btn-danger" style="width: 100%;" data-toggle="collapse" title="로봇 설정 구성"
+						data-target="#robotDivId">로봇 설정</button>
+					<div id="robotDivId" class="collapse">
+						<!-- <select id="delayInputId" >
+								<option id="quick" value="quick">快速</option>
+								<option id="meiumSpeed" value="meiumSpeed">中速</option>
+								<option id="slowSpeed" selected="selected" value="slowSpeed">慢速</option>
+							</select> -->
+
+						<span>읽기 방식</span>:
+						<select id="delayInputId">
+							<option id="quick" value="quick" title="속도가 빨라서 정보를 잃어버릴 수 있다">극속</option>
+							<option id="meiumSpeed" value="meiumSpeed" title="읽기 속도가 빠르게 증가하거나 감소하여 저활성 생방송에 적합하다">성능
+							</option>
+							<option id="slowSpeed" selected="selected"
+								title="읽기 속도의 느린 증가와 느린 감소,시청자 분들의 활약도가 높은 생방송에 적합합니다." value="slowSpeed">평형</option>
+						</select>
+						<br />
+						<span id="isRobotChat">로봇채팅</span>
+						<input id="robotChatcheckboxId" checked type="checkbox" name="">
+						<span id="isSportChat">채팅운동모드</span>
+						<input id="chatSportMode" type="checkbox" name="">
+					</div>
+
 					<button id="clearChatarea" class="btn btn-danger"
 						onclick="$('#chat_area').empty();document.getElementById('nowIndex').value=1;">채팅내용비우기</button>
 					<button id="closePlayer" class="btn btn-danger" onclick="$('#afreecatv_player').remove()"
 						title="생방송 모듈 을 제거 하고 문자 채 팅 기능 만 사용 하여 데이터 절약"> 데이터 절약 모드(test)</button>
 
-					
+
 					<button style="display: none;" class="btn btn-danger" style="width: 100%;" data-toggle="collapse"
 						title="대량 작업 관련" data-target="#personalizedDivId">개성화</button>
 					<div id="personalizedDivId" style="display: none; class=" collapse">
