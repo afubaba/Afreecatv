@@ -1260,7 +1260,7 @@ function test(text) {
 		function showLogSetTimeout(id) {
 			var showLogTimeout = setTimeout(function() {
 				//突出显示
-				i -= 200;
+				i -= 400;
 				$(id).offset({
 					left: i
 				});
