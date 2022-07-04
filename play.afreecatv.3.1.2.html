@@ -2084,17 +2084,33 @@
 						최신 위치:
 					</span>
 					<input id="lastIndex" disabled title="last index" type="text" value="0">,
-					제 <input id="nowIndex" disabled title="현재 포인터" type="text" value="0"> 조메시지 ,
-					최대격차: <input id="informationSynchronization" style="width: 30px"
-						title="최대 10 개 또는 5 개의 정보 동기 화 차 이 를 허용 합 니 다." title="최대정보동기화격차수" type="text" value="5">
+					현재 위치:<input id="nowIndex" disabled title="현재 포인터" type="text" value="0"> ,
 
-
+					<br />
 					상한선: <input id="upperLimit" style="width: 50px; font-size: large; color: darkred;"
 						title="가장 빠 른 정 보 를 얻 는 속 도 를 나타 낸다." type="text">
 					<!-- 延迟时间 -->
 
 					<input id="delayInputTextId" disabled title="현재 정보 획득 지연 시간(1000 은 1 초)" type="text"> 밀리초 <span
 						id="subscriptId" style="display: none">下标</span>
+					<br />
+					최대격차: <input id="informationSynchronization" style="width: 30px"
+						title="최대 10 개 또는 5 개의 정보 동기 화 차 이 를 허용 합 니 다." title="최대정보동기화격차수" type="text" value="5">
+						
+					<!-- <select id="delayInputId" >
+							<option id="quick" value="quick">快速</option>
+							<option id="meiumSpeed" value="meiumSpeed">中速</option>
+							<option id="slowSpeed" selected="selected" value="slowSpeed">慢速</option>
+						</select> -->
+
+					<span>읽기 방식</span>:
+					<select id="delayInputId">
+						<option id="quick" value="quick" title="속도가 빨라서 정보를 잃어버릴 수 있다">극속</option>
+						<option id="meiumSpeed" value="meiumSpeed" title="읽기 속도가 빠르게 증가하거나 감소하여 저활성 생방송에 적합하다">성능
+						</option>
+						<option id="slowSpeed" selected="selected"
+							title="읽기 속도의 느린 증가와 느린 감소,시청자 분들의 활약도가 높은 생방송에 적합합니다." value="slowSpeed">평형</option>
+					</select>
 					<!-- </div> -->
 
 					<!--                    retrievalButtonFunction();-->
@@ -2134,23 +2150,10 @@
 							value='over'>
 					</div>
 
-					<button id="robotSetting" class="btn btn-danger" style="width: 100%;" data-toggle="collapse" title="로봇 설정 구성"
-						data-target="#robotDivId">로봇 설정</button>
+					<button id="robotSetting" class="btn btn-danger" style="width: 100%;" data-toggle="collapse"
+						title="로봇 설정 구성" data-target="#robotDivId">로봇 설정</button>
 					<div id="robotDivId" class="collapse">
-						<!-- <select id="delayInputId" >
-								<option id="quick" value="quick">快速</option>
-								<option id="meiumSpeed" value="meiumSpeed">中速</option>
-								<option id="slowSpeed" selected="selected" value="slowSpeed">慢速</option>
-							</select> -->
 
-						<span>읽기 방식</span>:
-						<select id="delayInputId">
-							<option id="quick" value="quick" title="속도가 빨라서 정보를 잃어버릴 수 있다">극속</option>
-							<option id="meiumSpeed" value="meiumSpeed" title="읽기 속도가 빠르게 증가하거나 감소하여 저활성 생방송에 적합하다">성능
-							</option>
-							<option id="slowSpeed" selected="selected"
-								title="읽기 속도의 느린 증가와 느린 감소,시청자 분들의 활약도가 높은 생방송에 적합합니다." value="slowSpeed">평형</option>
-						</select>
 						<br />
 						<span id="isRobotChat">로봇채팅</span>
 						<input id="robotChatcheckboxId" checked type="checkbox" name="">
