@@ -7,21 +7,30 @@
 		<link rel="icon" type="image/png" sizes="48x48" href="logo/favicon.ico">
 
 		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
+		<link rel="stylesheet" type="text/css" href="css/prettify.css" />
 
+		<style type="text/css">
+			pre {
+				font-size: 1em;
+			}
+		</style>
 		<script src="js/jquery1.7.2.min.js"></script>
 		<script src="js/bootstrap.min.js"></script>
+		<script src="js/prettify.js"></script>
 	</head>
-	<body style="font-size: 20px;">
+	<body style="font-size: 20px;" onload="prettyPrint()">
 		<h2>명령줄을 사용하려면 메시지 읽기 기능을 켜고 자동 채팅 확인란을 선택해야 합니다</h2>
 		<h3>3.1.x-mv3/3.1.x-mv3-emoji/3.2.x-mv3/3.2.x-mv3-emoji 기본적으로 선택됨,수동으로 사용할 필요 없음</h3>
 		<h3>1.2-mv2/v2.2-mv2기본적으로 선택 안 됨,수동 활성화 필요</h3>
 		<img src="img/RobotCommand.png" />
 		<h4></h4>
 		<div class="alert alert-block"> <a class="close" data-dismiss="alert">×</a>
-			<h4 class="alert-heading">주의사항!</h4>대량 발송이나 채팅 로봇을 사용하면 권한 계정이 여러 번 내용을 발송할 수 있는 권한을 가지고 있는지 확인하십시오. 본 확장은 공식적인 제한을 빙빙 돌려서 하는 것이 아니라 수동 입력만
+			<h4 class="alert-heading">주의사항!</h4>대량 발송이나 채팅 로봇을 사용하면 권한 계정이 여러 번 내용을 발송할 수 있는 권한을 가지고 있는지 확인하십시오. 본 확장은
+			공식적인 제한을 빙빙 돌려서 하는 것이 아니라 수동 입력만
 			시뮬레이션합니다.
 		</div>
-		<pre>
+		<!-- pre-scrollable linenums 滚动条 -->
+		<pre class="prettyprint  ">
 		3.1.x-mv3/3.1.x-mv3-emoji/3.2.x-mv3/3.2.x-mv3-emoji 추가 명령
 			게임 명령：
 			
