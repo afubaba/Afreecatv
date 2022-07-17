@@ -608,7 +608,7 @@ function environmentFunction() {
 	getDom('inputFrequency').value = 0.1;
 
 	//检索m消息(环境部署)
-	// getDom('retrievalButtonId').click();
+	// retrievalButtonFunction();
 	//优化界面
 	//背景透明
 	// var allTags = document.getElementsByTagName('div');
@@ -859,7 +859,7 @@ function environmentFunction() {
 
 
 	//默认开启聊天
-	getDom('retrievalButtonId').click();
+	retrievalButtonFunction();
 	//切换时间
 	getDom('autoTimeId').click();
 
@@ -1282,7 +1282,7 @@ function test(text) {
 
 					showLogSetTimeout(id);
 				} else {
-
+					
 					$(id).remove();
 
 				}
@@ -1573,7 +1573,7 @@ function retrievalButtonFunction() {
 					// delayInputFrequency = delayInputFrequency / 2
 					delayInputFrequency = delayInputFrequency - limit;
 					getDom('delayInputTextId').value = delayInputFrequency;
-					getDom('retrievalButtonId').click();
+					retrievalButtonFunction();
 				}
 				//10秒后重置，如果继续刷新不重置
 				// var restartRetrievalMessageIntervalUp;
@@ -1587,7 +1587,7 @@ function retrievalButtonFunction() {
 				// 			console.log("5秒后距离依然大于5,提速中");
 				// 			delayInputFrequency = delayInputFrequency / 2;
 				// 			getDom('delayInputTextId').value = delayInputFrequency;
-				// 			getDom('retrievalButtonId').click();
+				// 			retrievalButtonFunction();
 				// 		}
 				// 	}, 5000);
 				// 	console.log("restartRetrievalMessageIntervalUp已经存在，清除");
@@ -1602,7 +1602,7 @@ function retrievalButtonFunction() {
 				// delayInputFrequency = parseInt(delayInputFrequency) + limit;
 				getDom('delayInputTextId').value = parseInt(delayInputFrequency) + parseInt(
 					informationSynchronization.value);
-				getDom('retrievalButtonId').click();
+				retrievalButtonFunction();
 
 				// console.log('距离不超过5,降速中');
 				// if ('undefined' == typeof restartRetrievalMessageIntervalDown) {
@@ -1611,7 +1611,7 @@ function retrievalButtonFunction() {
 				// 		console.log("若10秒后依然最新，降低速度2倍");
 				// 		delayInputFrequency = delayInputFrequency * 2
 				// 		getDom('delayInputTextId').value = delayInputFrequency;
-				// 		getDom('retrievalButtonId').click();
+				// 		retrievalButtonFunction();
 				// 	}, 10000);
 				// 	console.log("restartRetrievalMessageIntervalDown已经存在，清除");
 				// }
@@ -1630,14 +1630,14 @@ function retrievalButtonFunction() {
 				if (delayInputFrequency / 2 >= upperLimit.value) {
 					delayInputFrequency = delayInputFrequency / 2
 					getDom('delayInputTextId').value = delayInputFrequency;
-					getDom('retrievalButtonId').click();
+					retrievalButtonFunction();
 				}
 				//追1
 			} else if (limit == 1) {
 				// console.log("降低速度2倍");
 				delayInputFrequency = delayInputFrequency * 2;
 				getDom('delayInputTextId').value = delayInputFrequency;
-				getDom('retrievalButtonId').click();
+				retrievalButtonFunction();
 			}
 
 		} else if (delayInputId.value == 'quick') {
@@ -1651,14 +1651,14 @@ function retrievalButtonFunction() {
 				if (delayInputFrequency / 2 >= upperLimit.value) {
 					delayInputFrequency = delayInputFrequency / 2
 					getDom('delayInputTextId').value = delayInputFrequency;
-					getDom('retrievalButtonId').click();
+					retrievalButtonFunction();
 				}
 				//追1
 			} else if (limit == 1) {
 				// console.log("降低速度2倍");
 				delayInputFrequency = delayInputFrequency * 2;
 				getDom('delayInputTextId').value = delayInputFrequency;
-				getDom('retrievalButtonId').click();
+				retrievalButtonFunction();
 			}
 		}
 
@@ -2066,7 +2066,7 @@ function retrievalButtonFunction() {
 
 								}
 								//速度调节
-								getDom('retrievalButtonId').click();
+								retrievalButtonFunction();
 							}
 
 						}

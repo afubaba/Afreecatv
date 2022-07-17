@@ -608,7 +608,7 @@ function environmentFunction() {
 	getDom('inputFrequency').value = 0.1;
 	
 	//检索m消息(环境部署)
-	// getDom('retrievalButtonId').click();
+	// retrievalButtonFunction();
 	//优化界面
 	//背景透明
 	// var allTags = document.getElementsByTagName('div');
@@ -863,7 +863,7 @@ function environmentFunction() {
 
 
 	//默认开启聊天
-	getDom('retrievalButtonId').click();
+	retrievalButtonFunction();
 	//切换时间
 	getDom('autoTimeId').click();
 
@@ -1569,7 +1569,7 @@ function retrievalButtonFunction() {
 									delayInputFrequency = delayInputFrequency / 2
 								}
 								getDom('delayInputTextId').value = delayInputFrequency;
-								getDom('retrievalButtonId').click();
+								retrievalButtonFunction();
 
 
 							} else if (last_index - now_index == 1) {
@@ -1577,7 +1577,7 @@ function retrievalButtonFunction() {
 								delayInputFrequency = delayInputFrequency * 2
 
 								getDom('delayInputTextId').value = delayInputFrequency;
-								getDom('retrievalButtonId').click();
+								retrievalButtonFunction();
 
 							}
 
@@ -2047,7 +2047,7 @@ function retrievalButtonFunction() {
 
 												}
 												//速度调节
-												getDom('retrievalButtonId').click();
+												retrievalButtonFunction();
 											}
 
 										}
