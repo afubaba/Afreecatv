@@ -2423,8 +2423,8 @@ var isFocus = false;
 
 // 接收消息
 window.addEventListener('message', (e) => {
-    // console.log(e);
-    // console.log(e.data);
+    console.log(e);
+    console.log(e.data);
 
     $("#write_area").html(e.data);
     $("#btn_send").click();

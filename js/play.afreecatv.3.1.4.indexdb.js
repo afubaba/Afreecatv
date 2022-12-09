@@ -308,7 +308,6 @@ var opIndexDB = {
             };
             //读取表名
             let userDataStore = transaction.objectStore(tbName);
-            console.log(userDataStore);
             //数据储存
             userDataStore.get(userData.id).onsuccess = function (event) {
                 // console.log("id为" + id + "的配置是", event.target.result);
