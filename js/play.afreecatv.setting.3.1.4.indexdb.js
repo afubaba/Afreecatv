@@ -633,7 +633,6 @@ var opSettingIndexDB = {
             // "<option value='fan'>粉丝</option>\n" +
             // "<option value='normal'>普通收看者</option>\n" +
             // "<option value='custom'>自定义</option></select>" +
-            console.log(searchData);
             switch (searchData.grade) {
                 case 'loginUser':
                     searchData.grade = 'isLoginUserStart';
@@ -708,10 +707,6 @@ var opSettingIndexDB = {
                     //等级转换数据库等级
                     // let dataString = "data." + searchData.grade;
                     // evil(dataString);
-                    console.log(searchData);
-                    console.log(data);
-                    console.log(data[searchData.grade]);
-
                     if (data.isStart) {
                         if (data.isLoginUserStart && loginId == searchData.idt && searchData.nickName == loginNick) {
                             messageString = "@" + searchData.nickName + ":₍" + searchData.tex + "₎ " + packageResult.searchCommandAuthoritySupport.answerData2;
