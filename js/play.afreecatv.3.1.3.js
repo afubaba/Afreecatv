@@ -2917,21 +2917,21 @@ function retrievalButtonFunction() {
 
                     // 	is_mobile = '📱';
                     // }
-                    if (grade == 'user') {
-                        grade = '사용자';
-                    } else if (grade == 'manager') {
-                        grade = '관리원';
-                    } else if (grade == 'bj') {
-                        grade = '앵커';
-                    } else if (grade == 'fan') {
-                        grade = '팬';
-                    } else if (grade == 'topfan') {
-                        grade = '고급팬';
-                    } else if (grade == 'gudok') {
-                        grade = '구독자';
-                    } else {
-                        grade = 'loadding';
-                    }
+                    // if (grade == 'user') {
+                    //     grade = '사용자';
+                    // } else if (grade == 'manager') {
+                    //     grade = '관리원';
+                    // } else if (grade == 'bj') {
+                    //     grade = '앵커';
+                    // } else if (grade == 'fan') {
+                    //     grade = '팬';
+                    // } else if (grade == 'topfan') {
+                    //     grade = '고급팬';
+                    // } else if (grade == 'gudok') {
+                    //     grade = '구독자';
+                    // } else {
+                    //     grade = 'loadding';
+                    // }
 
 
                     // console.log('['+grade+']'+nickName+'('+idt+')'+is_mobile+':'+tex+'(延迟:'+delayInputFrequency+'ms)');
