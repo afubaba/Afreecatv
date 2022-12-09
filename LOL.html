@@ -1,0 +1,915 @@
+<!DOCTYPE html
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta http-equiv="Content-Security-Policy"
+			content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *">
+		<meta http-equiv="Content-Security-Policy"
+			content="script-src 'self' 'unsafe-eval' 'unsafe-inline'; object-src 'self'; style-src 'self' 'unsafe-inline'; media-src *">
+
+		<title>LOL Shake</title>
+		<!-- 设置logo -->
+		<link rel="icon" type="image/png" sizes="48x48" href="logo/favicon.ico" />
+
+		<link rel="stylesheet" type="text/css" href="libs/bootstrap/2.3.2/css/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="css/lol.css" />
+
+		<script type="text/javascript" src="libs/jquery/1.7.2/jquery.min.js"></script>
+		<script type="text/javascript" src="libs/bootstrap/2.3.2/js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="js/lol.js"></script>
+	</head>
+	<body>
+		<div class="alert alert-block"><a class="close" data-dismiss="alert">×</a>
+			<h4 class="alert-heading">주의사항!</h4>이 자원은3.1.x-mv3/3.1.x-mv3-emoji온라인 버전 github 원격 자원입니다,유람기가 처음 불러올 때 느립니다.
+			모든 영웅의
+			그림이 불러올 때까지 기다린 후 이 페이지를 닫고 명령을 다시 사용하여 시작합니다,더 빠르고 안정적인 오프라인 버전으로 바꾸거나(<a
+				href="https://github.com/afubaba/AfreecatvChromeExtensions" target="_blank">v3.2.x-mv3</a>)
+			시뮬레이션합니다.
+		</div>
+
+		<div class="wraper">
+			<div class="layout mainer">
+				<!--路径导航-->
+				<!--				<div class="website-path">-->
+				<!--					<i class="icon-home"></i> <a href="https://lol.qq.com/main.shtml">英雄联盟首页</a>-->
+				<!--					<i class="icon-arrow-2"></i> <a href="https://lol.qq.com/data/info-heros.shtml#Navi">游戏资料</a> <i-->
+				<!--						class="icon-arrow-2"></i> <a class="here">英雄</a>-->
+				<!--				</div>-->
+				<div class="colbox">
+					<!--					<div id="pageTAB" class="pagetab">-->
+					<!--						<ul class="pagetab-list pagetab-list1">-->
+					<!--							<li class="p-list1"><a class="pagetab-list-lnk"-->
+					<!--									href="https://lol.qq.com/data/info-heros.shtml#Navi">&nbsp;英雄</a></li>-->
+					<!--							<li class="p-list2"><a class="pagetab-list-lnk"-->
+					<!--									href="https://lol.qq.com/data/info-item.shtml#Navi">&nbsp;物品</a></li>-->
+					<!--							<li class="p-list3"><a class="pagetab-list-lnk"-->
+					<!--									href="https://lol.qq.com/data/info-spell.shtml#Navi">&nbsp;召唤师技能</a></li>-->
+					<!--							<li class="p-list4"><a class="pagetab-list-lnk"-->
+					<!--									href="https://lol.qq.com/data/info-rune.shtml#Navi">&nbsp;符文</a></li>-->
+					<!--						</ul>-->
+					<!--					</div>-->
+					<!-- 英雄列表 -->
+					<div class="clearfix info-showbox">
+						<ul id="seleteChecklist" class="selete-checklist">
+							<li class="selete-item current"><span class="ms-radio"><i class="i"></i></span>
+								<button id="randomByAll"><label data-id="">&nbsp;所有英雄</label>
+								</button>
+							</li>
+							<!--							<li class="selete-item"><span class="ms-radio"><i class="i"></i></span><label-->
+							<!--									data-id="Fighter">&nbsp;战士</label></li>-->
+							<!--							<li class="selete-item"><span class="ms-radio"><i class="i"></i></span><label-->
+							<!--									data-id="Mage">&nbsp;法师</label></li>-->
+							<!--							<li class="selete-item"><span class="ms-radio"><i class="i"></i></span><label-->
+							<!--									data-id="Assassin">&nbsp;刺客</label></li>-->
+							<!--							<li class="selete-item"><span class="ms-radio"><i class="i"></i></span><label-->
+							<!--									data-id="Tank">&nbsp;坦克</label></li>-->
+							<!--							<li class="selete-item"><span class="ms-radio"><i class="i"></i></span><label-->
+							<!--									data-id="Marksman">&nbsp;射手</label></li>-->
+							<!--							<li class="selete-item"><span class="ms-radio"><i class="i"></i></span><label-->
+							<!--									data-id="Support">&nbsp;辅助</label></li>-->
+
+							<li class="selete-item"><span class="ms-radio"><i class="i"></i></span><label
+									data-id="Top">&nbsp;<a href="#">上路</a></label></li>
+							<li class="selete-item"><span class="ms-radio"><i class="i"></i></span><label
+									data-id="Jungle">&nbsp;<a href="#">打野</a></label></li>
+							<li class="selete-item"><span class="ms-radio"><i class="i"></i></span><label
+									data-id="Middle">&nbsp;<a href="#">中路</a></label></li>
+							<li class="selete-item"><span class="ms-radio"><i class="i"></i></span><label
+									data-id="Adc">&nbsp;<a href="#">ADC</a></label></li>
+							<li class="selete-item"><span class="ms-radio"><i class="i"></i></span><label
+									data-id="Support">&nbsp;<a href="#">辅助</a></label></li>
+
+						</ul>
+						<div class="searchbox info-searchbox">
+							<!--                    <input id="jSearchHeroInput" class="input-search" type="text" value="请输入您要搜索的英雄名"> <span-->
+							<!--                        class="publicspr tnd btn-search">搜索</span> <span onclick="">开始</span>-->
+							&emsp;
+							<span id="stop"> 停止</span>
+						</div>
+						<ul id="jSearchHeroDiv" class="imgtextlist">
+							<li><a href="https://www.op.gg/champions/Aatrox" title="暗裔剑魔 亚托克斯"> <img
+										src="img/lol/Aatrox.webp" alt="暗裔剑魔 亚托克斯">
+									<p>暗裔剑魔</p>
+									<span class="sbg"><i class="commspr-commico-search"></i></span>
+								</a></li>
+
+							<li><a href="https://www.op.gg/champions/Ahri" title="九尾妖狐 阿狸"><img src="img/lol/Ahri.webp"
+										alt="九尾妖狐 阿狸">
+									<p>九尾妖狐</p>
+									<span class="sbg"><i class="commspr-commico-search"></i></span>
+								</a></li>
+
+							<li><a href="https://www.op.gg/champions/Akali" title="离群之刺 阿卡丽"><img
+										src="img/lol/Akali.webp" alt="离群之刺 阿卡丽">
+									<p>离群之刺</p>
+									<span class="sbg"><i class="commspr-commico-search"></i></span>
+								</a></li>
+
+							<li><a href="https://www.op.gg/champions/Alistar" title="牛头酋长 阿利斯塔"><img
+										src="img/lol/Alistar.webp" alt="牛头酋长 阿利斯塔">
+									<p>牛头酋长</p>
+									<span class="sbg"><i class="commspr-commico-search"></i></span>
+								</a></li>
+							<li><a href="https://www.op.gg/champions/Amumu" title="殇之木乃伊 阿木木"><img
+										src="img/lol/Amumu.webp" alt="殇之木乃伊 阿木木">
+									<p>殇之木乃伊</p>
+									<span class="sbg"><i class="commspr-commico-search"></i></span>
+								</a></li>
+							<li><a href="https://www.op.gg/champions/Anivia" title="冰晶凤凰 艾尼维亚"><img
+										src="img/lol/Anivia.webp" alt="冰晶凤凰 艾尼维亚">
+									<p>冰晶凤凰</p>
+									<span class="sbg"><i class="commspr-commico-search"></i></span>
+								</a></li>
+							<li><a href="https://www.op.gg/champions/Annie" title="黑暗之女 安妮"><img
+										src="img/lol/Annie.webp" alt="黑暗之女 安妮">
+									<p>黑暗之女</p>
+									<span class="sbg"><i class="commspr-commico-search"></i></span>
+								</a></li>
+							<li><a href="https://www.op.gg/champions/Ashe" title="寒冰射手 艾希"><img src="img/lol/Ashe.webp"
+										alt="寒冰射手 艾希">
+									<p>寒冰射手</p>
+									<span class="sbg"><i class="commspr-commico-search"></i></span>
+								</a></li>
+							<li><a href="https://www.op.gg/champions/AurelionSol" title="铸星龙王 奥瑞利安·索尔"><img
+										src="img/lol/AurelionSol.webp" alt="铸星龙王 奥瑞利安·索尔">
+									<p>铸星龙王</p>
+									<span class="sbg"><i class="commspr-commico-search"></i></span>
+								</a>
+							</li>
+							<li><a href="https://www.op.gg/champions/Azir" title="沙漠皇帝 阿兹尔"><img src="img/lol/Azir.webp"
+										alt="沙漠皇帝 阿兹尔">
+									<p>沙漠皇帝</p>
+									<span class="sbg"><i class="commspr-commico-search"></i></span>
+								</a></li>
+							<li><a href="https://www.op.gg/champions/Bard" title="星界游神 巴德"><img src="img/lol/Bard.webp"
+										alt="星界游神 巴德">
+									<p>星界游神</p>
+									<span class="sbg"><i class="commspr-commico-search"></i></span>
+								</a></li>
+							<li><a href="https://www.op.gg/champions/Blitzcrank" title="蒸汽机器人 布里茨"><img
+										src="img/lol/Blitzcrank.webp" alt="蒸汽机器人 布里茨">
+									<p>蒸汽机器人</p>
+									<span class="sbg"><i class="commspr-commico-search"></i></span>
+								</a></li>
+							<li><a href="https://www.op.gg/champions/Brand" title="复仇焰魂 布兰德"><img
+										src="img/lol/Brand.webp" alt="复仇焰魂 布兰德">
+									<p>复仇焰魂</p>
+									<span class="sbg"><i class="commspr-commico-search"></i></span>
+								</a></li>
+							<li><a href="https://www.op.gg/champions/Braum" title="弗雷尔卓德之心 布隆"><img
+										src="img/lol/Braum.webp" alt="弗雷尔卓德之心 布隆">
+									<p>弗雷尔卓德之心</p>
+									<span class="sbg"><i class="commspr-commico-search"></i></span>
+								</a></li>
+							<li><a href="https://www.op.gg/champions/Caitlyn" title="皮城女警 凯特琳"><img
+										src="img/lol/Caitlyn.webp" alt="皮城女警 凯特琳">
+									<p>皮城女警</p>
+									<span class="sbg"><i class="commspr-commico-search"></i></span>
+								</a></li>
+							<li><a href="https://www.op.gg/champions/Camille" title="青钢影 卡蜜尔"><img
+										src="img/lol/Camille.webp" alt="青钢影 卡蜜尔">
+									<p>青钢影</p>
+									<span class="sbg"><i class="commspr-commico-search"></i></span>
+								</a></li>
+							<li><a href="https://www.op.gg/champions/Cassiopeia" title="魔蛇之拥 卡西奥佩娅"><img
+										src="img/lol/Cassiopeia.webp" alt="魔蛇之拥 卡西奥佩娅">
+									<p>魔蛇之拥</p>
+									<span class="sbg"><i class="commspr-commico-search"></i></span>
+								</a></li>
+							<li><a href="https://www.op.gg/champions/Chogath" title="虚空恐惧 科加斯"><img
+										src="img/lol/Chogath.webp" alt="虚空恐惧 科加斯">
+									<p>虚空恐惧</p>
+									<span class="sbg"><i class="commspr-commico-search"></i></span>
+								</a></li>
+							<li><a href="https://www.op.gg/champions/Corki" title="英勇投弹手 库奇"><img
+										src="img/lol/Corki.webp" alt="英勇投弹手 库奇">
+									<p>英勇投弹手</p>
+									<span class="sbg"><i class="commspr-commico-search"></i></span>
+								</a></li>
+							<li><a href="https://www.op.gg/champions/Darius" title="诺克萨斯之手 德莱厄斯"><img
+										src="img/lol/Darius.webp" alt="诺克萨斯之手 德莱厄斯">
+									<p>诺克萨斯之手</p>
+									<span class="sbg"><i class="commspr-commico-search"></i></span>
+								</a></li>
+							<li><a href="https://www.op.gg/champions/Diana" title="皎月女神 黛安娜"><img
+										src="img/lol/Diana.webp" alt="皎月女神 黛安娜">
+									<p>皎月女神</p>
+									<span class="sbg"><i class="commspr-commico-search"></i></span>
+								</a></li>
+							<li><a href="https://www.op.gg/champions/Draven" title="荣耀行刑官 德莱文"><img
+										src="img/lol/Draven.webp" alt="荣耀行刑官 德莱文">
+									<p>荣耀行刑官</p>
+									<span class="sbg"><i class="commspr-commico-search"></i></span>
+								</a></li>
+							<li><a href="https://www.op.gg/champions/DrMundo" title="祖安狂人 蒙多医生"><img
+										src="img/lol/DrMundo.webp" alt="祖安狂人 蒙多医生">
+									<p>祖安狂人</p>
+									<span class="sbg"><i class="commspr-commico-search"></i></span>
+								</a></li>
+							<li><a href="https://www.op.gg/champions/Ekko" title="时间刺客 艾克"><img src="img/lol/Ekko.webp"
+										alt="时间刺客 艾克">
+									<p>时间刺客</p>
+									<span class="sbg"><i class="commspr-commico-search"></i></span>
+								</a></li>
+							<li><a href="https://www.op.gg/champions/Elise" title="蜘蛛女皇 伊莉丝"><img
+										src="img/lol/Elise.webp" alt="蜘蛛女皇 伊莉丝">
+									<p>蜘蛛女皇</p>
+									<span class="sbg"><i class="commspr-commico-search"></i></span>
+								</a></li>
+							<li><a href="https://www.op.gg/champions/Evelynn" title="痛苦之拥 伊芙琳"><img
+										src="img/lol/Evelynn.webp" alt="痛苦之拥 伊芙琳">
+									<p>痛苦之拥</p>
+									<span class="sbg"><i class="commspr-commico-search"></i></span>
+								</a></li>
+							<li><a href="https://www.op.gg/champions/Ezreal" title="探险家 伊泽瑞尔"><img
+										src="img/lol/Ezreal.webp" alt="探险家 伊泽瑞尔">
+									<p>探险家</p>
+									<span class="sbg"><i class="commspr-commico-search"></i></span>
+								</a></li>
+							<li><a href="https://www.op.gg/champions/Fiddlesticks" title="远古恐惧 费德提克"><img
+										src="img/lol/Fiddlesticks.webp" alt="远古恐惧 费德提克">
+									<p>远古恐惧</p>
+									<span class="sbg"><i class="commspr-commico-search"></i></span>
+								</a></li>
+							<li><a href="https://www.op.gg/champions/Fiora" title="无双剑姬 菲奥娜"><img
+										src="img/lol/Fiora.webp" alt="无双剑姬 菲奥娜">
+									<p>无双剑姬</p>
+									<span class="sbg"><i class="commspr-commico-search"></i></span>
+								</a></li>
+							<li><a href="https://www.op.gg/champions/Fizz" title="潮汐海灵 菲兹"><img src="img/lol/Fizz.webp"
+										alt="潮汐海灵 菲兹">
+									<p>潮汐海灵</p>
+									<span class="sbg"><i class="commspr-commico-search"></i></span>
+								</a></li>
+							<li><a href="https://www.op.gg/champions/Galio" title="正义巨像 加里奥"><img
+										src="img/lol/Galio.webp" alt="正义巨像 加里奥">
+									<p>正义巨像</p>
+									<span class="sbg"><i class="commspr-commico-search"></i></span>
+								</a></li>
+							<li><a href="https://www.op.gg/champions/Gangplank" title="海洋之灾 普朗克"><img
+										src="img/lol/Gangplank.webp" alt="海洋之灾 普朗克">
+									<p>海洋之灾</p>
+									<span class="sbg"><i class="commspr-commico-search"></i></span>
+								</a></li>
+							<li><a href="https://www.op.gg/champions/Garen" title="德玛西亚之力 盖伦"><img
+										src="img/lol/Garen.webp" alt="德玛西亚之力 盖伦">
+									<p>德玛西亚之力</p>
+									<span class="sbg"><i class="commspr-commico-search"></i></span>
+								</a></li>
+							<li><a href="https://www.op.gg/champions/Gnar" title="迷失之牙 纳尔"><img src="img/lol/Gnar.webp"
+										alt="迷失之牙 纳尔">
+									<p>迷失之牙</p>
+									<span class="sbg"><i class="commspr-commico-search"></i></span>
+								</a></li>
+							<li><a href="https://www.op.gg/champions/Gragas" title="酒桶 古拉加斯"><img
+										src="img/lol/Gragas.webp" alt="酒桶 古拉加斯">
+									<p>酒桶</p>
+									<span class="sbg"><i class="commspr-commico-search"></i></span>
+								</a></li>
+							<li><a href="https://www.op.gg/champions/Graves" title="法外狂徒 格雷福斯"><img
+										src="img/lol/Graves.webp" alt="法外狂徒 格雷福斯">
+									<p>法外狂徒</p>
+									<span class="sbg"><i class="commspr-commico-search"></i></span>
+								</a></li>
+							<li><a href="https://www.op.gg/champions/Hecarim" title="战争之影 赫卡里姆"><img
+										src="img/lol/Hecarim.webp" alt="战争之影 赫卡里姆">
+									<p>战争之影</p>
+									<span class="sbg"><i class="commspr-commico-search"></i></span>
+								</a></li>
+							<li><a href="https://www.op.gg/champions/Heimerdinger" title="大发明家 黑默丁格"><img
+										src="img/lol/Heimerdinger.webp" alt="大发明家 黑默丁格">
+									<p>大发明家</p>
+									<span class="sbg"><i class="commspr-commico-search"></i></span>
+								</a></li>
+							<li><a href="https://www.op.gg/champions/Illaoi" title="海兽祭司 俄洛伊"><img
+										src="img/lol/Illaoi.webp" alt="海兽祭司 俄洛伊">
+									<p>海兽祭司</p>
+									<span class="sbg"><i class="commspr-commico-search"></i></span>
+								</a></li>
+							<li><a href="https://www.op.gg/champions/Irelia" title="刀锋舞者 艾瑞莉娅"><img
+										src="img/lol/Irelia.webp" alt="刀锋舞者 艾瑞莉娅">
+									<p>刀锋舞者</p>
+									<span class="sbg"><i class="commspr-commico-search"></i></span>
+								</a></li>
+							<li><a href="https://www.op.gg/champions/Ivern" title="翠神 艾翁"><img src="img/lol/Ivern.webp"
+										alt="翠神 艾翁">
+									<p>翠神</p>
+									<span class="sbg"><i class="commspr-commico-search"></i></span>
+								</a></li>
+							<li><a href="https://www.op.gg/champions/Janna" title="风暴之怒 迦娜"><img
+										src="img/lol/Janna.webp" alt="风暴之怒 迦娜">
+									<p>风暴之怒</p>
+									<span class="sbg"><i class="commspr-commico-search"></i></span>
+								</a></li>
+							<li><a href="https://www.op.gg/champions/JarvanIV" title="德玛西亚皇子 嘉文四世"><img
+										src="img/lol/JarvanIV.webp" alt="德玛西亚皇子 嘉文四世">
+									<p>德玛西亚皇子</p>
+									<span class="sbg"><i class="commspr-commico-search"></i></span>
+								</a></li>
+							<li><a href="https://www.op.gg/champions/Jax" title="武器大师 贾克斯"><img src="img/lol/Jax.webp"
+										alt="武器大师 贾克斯">
+									<p>武器大师</p>
+									<span class="sbg"><i class="commspr-commico-search"></i></span>
+								</a></li>
+							<li><a href="https://www.op.gg/champions/Jayce" title="未来守护者 杰斯"><img
+										src="img/lol/Jayce.webp" alt="未来守护者 杰斯">
+									<p>未来守护者</p>
+									<span class="sbg"><i class="commspr-commico-search"></i></span>
+								</a></li>
+							<li><a href="https://www.op.gg/champions/Jhin" title="戏命师 烬"><img src="img/lol/Jhin.webp"
+										alt="戏命师 烬">
+									<p>戏命师</p>
+									<span class="sbg"><i class="commspr-commico-search"></i></span>
+								</a></li>
+							<li><a href="https://www.op.gg/champions/Jinx" title="暴走萝莉 金克丝"><img src="img/lol/Jinx.webp"
+										alt="暴走萝莉 金克丝">
+									<p>暴走萝莉</p>
+									<span class="sbg"><i class="commspr-commico-search"></i></span>
+								</a></li>
+							<li><a href="https://www.op.gg/champions/Kaisa" title="虚空之女 卡莎"><img
+										src="img/lol/Kaisa.webp" alt="虚空之女 卡莎">
+									<p>虚空之女</p>
+									<span class="sbg"><i class="commspr-commico-search"></i></span>
+								</a></li>
+							<li><a href="https://www.op.gg/champions/Kalista" title="复仇之矛 卡莉丝塔"><img
+										src="img/lol/Kalista.webp" alt="复仇之矛 卡莉丝塔">
+									<p>复仇之矛</p>
+									<span class="sbg"><i class="commspr-commico-search"></i></span>
+								</a></li>
+
+							<li><a href="https://www.op.gg/champions/Karma" title="天启者 卡尔玛"><img
+										src="img/lol/Karma.webp" alt="天启者 卡尔玛">
+									<p>天启者</p>
+									<span class="sbg"><i class="commspr-commico-search"></i></span>
+								</a></li>
+							<li><a href="https://www.op.gg/champions/Karthus" title="死亡颂唱者 卡尔萨斯"><img
+										src="img/lol/Karthus.webp" alt="死亡颂唱者 卡尔萨斯">
+									<p>死亡颂唱者</p>
+									<span class="sbg"><i class="commspr-commico-search"></i></span>
+								</a></li>
+							<li><a href="https://www.op.gg/champions/Kassadin" title="虚空行者 卡萨丁"><img
+										src="img/lol/Kassadin.webp" alt="虚空行者 卡萨丁">
+									<p>虚空行者</p>
+									<span class="sbg"><i class="commspr-commico-search"></i></span>
+								</a></li>
+							<li><a href="https://www.op.gg/champions/Katarina" title="不祥之刃 卡特琳娜"><img
+										src="img/lol/Katarina.webp" alt="不祥之刃 卡特琳娜">
+									<p>不祥之刃</p>
+									<span class="sbg"><i class="commspr-commico-search"></i></span>
+								</a></li>
+							<li><a href="https://www.op.gg/champions/Kayle" title="正义天使 凯尔"><img
+										src="img/lol/Kayle.webp" alt="正义天使 凯尔">
+									<p>正义天使</p>
+									<span class="sbg"><i class="commspr-commico-search"></i></span>
+								</a></li>
+							<li><a href="https://www.op.gg/champions/Kayn" title="影流之镰 凯隐"><img src="img/lol/Kayn.webp"
+										alt="影流之镰 凯隐">
+									<p>影流之镰</p>
+									<span class="sbg"><i class="commspr-commico-search"></i></span>
+								</a></li>
+							<li><a href="https://www.op.gg/champions/Kennen" title="狂暴之心 凯南"><img
+										src="img/lol/Kennen.webp" alt="狂暴之心 凯南">
+									<p>狂暴之心</p>
+									<span class="sbg"><i class="commspr-commico-search"></i></span>
+								</a></li>
+							<li><a href="https://www.op.gg/champions/Khazix" title="虚空掠夺者 卡兹克"><img
+										src="img/lol/Khazix.webp" alt="虚空掠夺者 卡兹克">
+									<p>虚空掠夺者</p>
+									<span class="sbg"><i class="commspr-commico-search"></i></span>
+								</a></li>
+							<li><a href="https://www.op.gg/champions/Kindred" title="永猎双子 千珏"><img
+										src="img/lol/Kindred.webp" alt="永猎双子 千珏">
+									<p>永猎双子</p>
+									<span class="sbg"><i class="commspr-commico-search"></i></span>
+								</a></li>
+							<li><a href="https://www.op.gg/champions/Kled" title="暴怒骑士 克烈"><img src="img/lol/Kled.webp"
+										alt="暴怒骑士 克烈">
+									<p>暴怒骑士</p>
+									<span class="sbg"><i class="commspr-commico-search"></i></span>
+								</a></li>
+							<li><a href="https://www.op.gg/champions/KogMaw" title="深渊巨口 克格莫"><img
+										src="img/lol/KogMaw.webp" alt="深渊巨口 克格莫">
+									<p>深渊巨口</p>
+									<span class="sbg"><i class="commspr-commico-search"></i></span>
+								</a></li>
+							<li><a href="https://www.op.gg/champions/Leblanc" title="诡术妖姬 乐芙兰"><img
+										src="img/lol/Leblanc.webp" alt="诡术妖姬 乐芙兰">
+									<p>诡术妖姬</p>
+									<span class="sbg"><i class="commspr-commico-search"></i></span>
+								</a></li>
+							<li><a href="https://www.op.gg/champions/LeeSin" title="盲僧 李青"><img
+										src="img/lol/LeeSin.webp" alt="盲僧 李青">
+									<p>盲僧</p>
+									<span class="sbg"><i class="commspr-commico-search"></i></span>
+								</a></li>
+							<li><a href="https://www.op.gg/champions/Leona" title="曙光女神 蕾欧娜"><img
+										src="img/lol/Leona.webp" alt="曙光女神 蕾欧娜">
+									<p>曙光女神</p>
+									<span class="sbg"><i class="commspr-commico-search"></i></span>
+								</a></li>
+							<li><a href="https://www.op.gg/champions/Lissandra" title="冰霜女巫 丽桑卓"><img
+										src="img/lol/Lissandra.webp" alt="冰霜女巫 丽桑卓">
+									<p>冰霜女巫</p>
+									<span class="sbg"><i class="commspr-commico-search"></i></span>
+								</a></li>
+							<li><a href="https://www.op.gg/champions/Lucian" title="圣枪游侠 卢锡安"><img
+										src="img/lol/Lucian.webp" alt="圣枪游侠 卢锡安">
+									<p>圣枪游侠</p>
+									<span class="sbg"><i class="commspr-commico-search"></i></span>
+								</a></li>
+							<li><a href="https://www.op.gg/champions/Lulu" title="仙灵女巫 璐璐"><img src="img/lol/Lulu.webp"
+										alt="仙灵女巫 璐璐">
+									<p>仙灵女巫</p>
+									<span class="sbg"><i class="commspr-commico-search"></i></span>
+								</a></li>
+							<li><a href="https://www.op.gg/champions/Lux" title="光辉女郎 拉克丝"><img src="img/lol/Lux.webp"
+										alt="光辉女郎 拉克丝">
+									<p>光辉女郎</p>
+									<span class="sbg"><i class="commspr-commico-search"></i></span>
+								</a></li>
+							<li><a href="https://www.op.gg/champions/Malphite" title="熔岩巨兽 墨菲特"><img
+										src="img/lol/Malphite.webp" alt="熔岩巨兽 墨菲特">
+									<p>熔岩巨兽</p>
+									<span class="sbg"><i class="commspr-commico-search"></i></span>
+								</a></li>
+							<li><a href="https://www.op.gg/champions/Malzahar" title="虚空先知 玛尔扎哈"><img
+										src="img/lol/Malzahar.webp" alt="虚空先知 玛尔扎哈">
+									<p>虚空先知</p>
+									<span class="sbg"><i class="commspr-commico-search"></i></span>
+								</a></li>
+							<li><a href="https://www.op.gg/champions/Maokai" title="扭曲树精 茂凯"><img
+										src="img/lol/Maokai.webp" alt="扭曲树精 茂凯">
+									<p>扭曲树精</p>
+									<span class="sbg"><i class="commspr-commico-search"></i></span>
+								</a></li>
+							<li><a href="https://www.op.gg/champions/MasterYi" title="无极剑圣 易"><img
+										src="img/lol/MasterYi.webp" alt="无极剑圣 易">
+									<p>无极剑圣</p>
+									<span class="sbg"><i class="commspr-commico-search"></i></span>
+								</a></li>
+							<li><a href="https://www.op.gg/champions/MissFortune" title="赏金猎人 厄运小姐"><img
+										src="img/lol/MissFortune.webp" alt="赏金猎人 厄运小姐">
+									<p>赏金猎人</p>
+									<span class="sbg"><i class="commspr-commico-search"></i></span>
+								</a></li>
+							<li><a href="https://www.op.gg/champions/MonkeyKing" title="齐天大圣 孙悟空"><img
+										src="img/lol/MonkeyKing.webp" alt="齐天大圣 孙悟空">
+									<p>齐天大圣</p>
+									<span class="sbg"><i class="commspr-commico-search"></i></span>
+								</a></li>
+							<li><a href="https://www.op.gg/champions/Mordekaiser" title="铁铠冥魂 莫德凯撒"><img
+										src="img/lol/Mordekaiser.webp" alt="铁铠冥魂 莫德凯撒">
+									<p>铁铠冥魂</p>
+									<span class="sbg"><i class="commspr-commico-search"></i></span>
+								</a></li>
+							<li><a href="https://www.op.gg/champions/Morgana" title="堕落天使 莫甘娜"><img
+										src="img/lol/Morgana.webp" alt="堕落天使 莫甘娜">
+									<p>堕落天使</p>
+									<span class="sbg"><i class="commspr-commico-search"></i></span>
+								</a></li>
+							<li><a href="https://www.op.gg/champions/Nami" title="唤潮鲛姬 娜美"><img src="img/lol/Nami.webp"
+										alt="唤潮鲛姬 娜美">
+									<p>唤潮鲛姬</p>
+									<span class="sbg"><i class="commspr-commico-search"></i></span>
+								</a></li>
+							<li><a href="https://www.op.gg/champions/Nasus" title="沙漠死神 内瑟斯"><img
+										src="img/lol/Nasus.webp" alt="沙漠死神 内瑟斯">
+									<p>沙漠死神</p>
+									<span class="sbg"><i class="commspr-commico-search"></i></span>
+								</a></li>
+							<li><a href="https://www.op.gg/champions/Nautilus" title="深海泰坦 诺提勒斯"><img
+										src="img/lol/Nautilus.webp" alt="深海泰坦 诺提勒斯">
+									<p>深海泰坦</p>
+									<span class="sbg"><i class="commspr-commico-search"></i></span>
+								</a></li>
+							<li><a href="https://www.op.gg/champions/Neeko" title="万花通灵 妮蔻"><img
+										src="img/lol/Neeko.webp" alt="万花通灵 妮蔻">
+									<p>万花通灵</p>
+									<span class="sbg"><i class="commspr-commico-search"></i></span>
+								</a></li>
+							<li><a href="https://www.op.gg/champions/Nidalee" title="狂野女猎手 奈德丽"><img
+										src="img/lol/Nidalee.webp" alt="狂野女猎手 奈德丽">
+									<p>狂野女猎手</p>
+									<span class="sbg"><i class="commspr-commico-search"></i></span>
+								</a></li>
+							<li><a href="https://www.op.gg/champions/Nocturne" title="永恒梦魇 魔腾"><img
+										src="img/lol/Nocturne.webp" alt="永恒梦魇 魔腾">
+									<p>永恒梦魇</p>
+									<span class="sbg"><i class="commspr-commico-search"></i></span>
+								</a></li>
+							<li><a href="https://www.op.gg/champions/Nunu" title="雪原双子 努努和威朗普"><img
+										src="img/lol/Nunu.webp" alt="雪原双子 努努和威朗普">
+									<p>雪原双子</p>
+									<span class="sbg"><i class="commspr-commico-search"></i></span>
+								</a></li>
+							<li><a href="https://www.op.gg/champions/Olaf" title="狂战士 奥拉夫"><img src="img/lol/Olaf.webp"
+										alt="狂战士 奥拉夫">
+									<p>狂战士</p>
+									<span class="sbg"><i class="commspr-commico-search"></i></span>
+								</a></li>
+							<li><a href="https://www.op.gg/champions/Orianna" title="发条魔灵 奥莉安娜"><img
+										src="img/lol/Orianna.webp" alt="发条魔灵 奥莉安娜">
+									<p>发条魔灵</p>
+									<span class="sbg"><i class="commspr-commico-search"></i></span>
+								</a></li>
+							<li><a href="https://www.op.gg/champions/Ornn" title="山隐之焰 奥恩"><img src="img/lol/Ornn.webp"
+										alt="山隐之焰 奥恩">
+									<p>山隐之焰</p>
+									<span class="sbg"><i class="commspr-commico-search"></i></span>
+								</a></li>
+							<li><a href="https://www.op.gg/champions/Pantheon" title="不屈之枪 潘森"><img
+										src="img/lol/Pantheon.webp" alt="不屈之枪 潘森">
+									<p>不屈之枪</p>
+									<span class="sbg"><i class="commspr-commico-search"></i></span>
+								</a></li>
+							<li><a href="https://www.op.gg/champions/Poppy" title="圣锤之毅 波比"><img
+										src="img/lol/Poppy.webp" alt="圣锤之毅 波比">
+									<p>圣锤之毅</p>
+									<span class="sbg"><i class="commspr-commico-search"></i></span>
+								</a></li>
+							<li><a href="https://www.op.gg/champions/Pyke" title="血港鬼影 派克"><img src="img/lol/Pyke.webp"
+										alt="血港鬼影 派克">
+									<p>血港鬼影</p>
+									<span class="sbg"><i class="commspr-commico-search"></i></span>
+								</a></li>
+							<li><a href="https://www.op.gg/champions/Quinn" title="德玛西亚之翼 奎因"><img
+										src="img/lol/Quinn.webp" alt="德玛西亚之翼 奎因">
+									<p>德玛西亚之翼</p>
+									<span class="sbg"><i class="commspr-commico-search"></i></span>
+								</a></li>
+							<li><a href="https://www.op.gg/champions/Rakan" title="幻翎 洛"><img src="img/lol/Rakan.webp"
+										alt="幻翎 洛">
+									<p>幻翎</p>
+									<span class="sbg"><i class="commspr-commico-search"></i></span>
+								</a></li>
+							<li><a href="https://www.op.gg/champions/Rammus" title="披甲龙龟 拉莫斯"><img
+										src="img/lol/Rammus.webp" alt="披甲龙龟 拉莫斯">
+									<p>披甲龙龟</p>
+									<span class="sbg"><i class="commspr-commico-search"></i></span>
+								</a></li>
+							<li><a href="https://www.op.gg/champions/RekSai" title="虚空遁地兽 雷克塞"><img
+										src="img/lol/RekSai.webp" alt="虚空遁地兽 雷克塞">
+									<p>虚空遁地兽</p>
+									<span class="sbg"><i class="commspr-commico-search"></i></span>
+								</a></li>
+							<li><a href="https://www.op.gg/champions/Renekton" title="荒漠屠夫 雷克顿"><img
+										src="img/lol/Renekton.webp" alt="荒漠屠夫 雷克顿">
+									<p>荒漠屠夫</p>
+									<span class="sbg"><i class="commspr-commico-search"></i></span>
+								</a></li>
+							<li><a href="https://www.op.gg/champions/Rengar" title="傲之追猎者 雷恩加尔"><img
+										src="img/lol/Rengar.webp" alt="傲之追猎者 雷恩加尔">
+									<p>傲之追猎者</p>
+									<span class="sbg"><i class="commspr-commico-search"></i></span>
+								</a></li>
+							<li><a href="https://www.op.gg/champions/Riven" title="放逐之刃 锐雯"><img
+										src="img/lol/Riven.webp" alt="放逐之刃 锐雯">
+									<p>放逐之刃</p>
+									<span class="sbg"><i class="commspr-commico-search"></i></span>
+								</a></li>
+							<li><a href="https://www.op.gg/champions/Rumble" title="机械公敌 兰博"><img
+										src="img/lol/Rumble.webp" alt="机械公敌 兰博">
+									<p>机械公敌</p>
+									<span class="sbg"><i class="commspr-commico-search"></i></span>
+								</a></li>
+							<li><a href="https://www.op.gg/champions/Ryze" title="符文法师 瑞兹"><img src="img/lol/Ryze.webp"
+										alt="符文法师 瑞兹">
+									<p>符文法师</p>
+									<span class="sbg"><i class="commspr-commico-search"></i></span>
+								</a></li>
+							<li><a href="https://www.op.gg/champions/Sejuani" title="北地之怒 瑟庄妮"><img
+										src="img/lol/Sejuani.webp" alt="北地之怒 瑟庄妮">
+									<p>北地之怒</p>
+									<span class="sbg"><i class="commspr-commico-search"></i></span>
+								</a></li>
+							<li><a href="https://www.op.gg/champions/Shaco" title="恶魔小丑 萨科"><img
+										src="img/lol/Shaco.webp" alt="恶魔小丑 萨科">
+									<p>恶魔小丑</p>
+									<span class="sbg"><i class="commspr-commico-search"></i></span>
+								</a></li>
+							<li><a href="https://www.op.gg/champions/Shen" title="暮光之眼 慎"><img src="img/lol/Shen.webp"
+										alt="暮光之眼 慎">
+									<p>暮光之眼</p>
+									<span class="sbg"><i class="commspr-commico-search"></i></span>
+								</a></li>
+							<li><a href="https://www.op.gg/champions/Shyvana" title="龙血武姬 希瓦娜"><img
+										src="img/lol/Shyvana.webp" alt="龙血武姬 希瓦娜">
+									<p>龙血武姬</p>
+									<span class="sbg"><i class="commspr-commico-search"></i></span>
+								</a></li>
+							<li><a href="https://www.op.gg/champions/Singed" title="炼金术士 辛吉德"><img
+										src="img/lol/Singed.webp" alt="炼金术士 辛吉德">
+									<p>炼金术士</p>
+									<span class="sbg"><i class="commspr-commico-search"></i></span>
+								</a></li>
+							<li><a href="https://www.op.gg/champions/Sion" title="亡灵战神 赛恩"><img src="img/lol/Sion.webp"
+										alt="亡灵战神 赛恩">
+									<p>亡灵战神</p>
+									<span class="sbg"><i class="commspr-commico-search"></i></span>
+								</a></li>
+							<li><a href="https://www.op.gg/champions/Sivir" title="战争女神 希维尔"><img
+										src="img/lol/Sivir.webp" alt="战争女神 希维尔">
+									<p>战争女神</p>
+									<span class="sbg"><i class="commspr-commico-search"></i></span>
+								</a></li>
+							<li><a href="https://www.op.gg/champions/Skarner" title="水晶先锋 斯卡纳"><img
+										src="img/lol/Skarner.webp" alt="水晶先锋 斯卡纳">
+									<p>水晶先锋</p>
+									<span class="sbg"><i class="commspr-commico-search"></i></span>
+								</a></li>
+							<li><a href="https://www.op.gg/champions/Sona" title="琴瑟仙女 娑娜"><img src="img/lol/Sona.webp"
+										alt="琴瑟仙女 娑娜">
+									<p>琴瑟仙女</p>
+									<span class="sbg"><i class="commspr-commico-search"></i></span>
+								</a></li>
+							<li><a href="https://www.op.gg/champions/Soraka" title="众星之子 索拉卡"><img
+										src="img/lol/Soraka.webp" alt="众星之子 索拉卡">
+									<p>众星之子</p>
+									<span class="sbg"><i class="commspr-commico-search"></i></span>
+								</a></li>
+							<li><a href="https://www.op.gg/champions/Swain" title="诺克萨斯统领 斯维因"><img
+										src="img/lol/Swain.webp" alt="诺克萨斯统领 斯维因">
+									<p>诺克萨斯统领</p>
+									<span class="sbg"><i class="commspr-commico-search"></i></span>
+								</a></li>
+							<li><a href="https://www.op.gg/champions/Sylas" title="解脱者 塞拉斯"><img
+										src="img/lol/Sylas.webp" alt="解脱者 塞拉斯">
+									<p>解脱者</p>
+									<span class="sbg"><i class="commspr-commico-search"></i></span>
+								</a></li>
+							<li><a href="https://www.op.gg/champions/Syndra" title="暗黑元首 辛德拉"><img
+										src="img/lol/Syndra.webp" alt="暗黑元首 辛德拉">
+									<p>暗黑元首</p>
+									<span class="sbg"><i class="commspr-commico-search"></i></span>
+								</a></li>
+							<li><a href="https://www.op.gg/champions/TahmKench" title="河流之王 塔姆"><img
+										src="img/lol/TahmKench.webp" alt="河流之王 塔姆">
+									<p>河流之王</p>
+									<span class="sbg"><i class="commspr-commico-search"></i></span>
+								</a></li>
+							<li><a href="https://www.op.gg/champions/Taliyah" title="岩雀 塔莉垭"><img
+										src="img/lol/Taliyah.webp" alt="岩雀 塔莉垭">
+									<p>岩雀</p>
+									<span class="sbg"><i class="commspr-commico-search"></i></span>
+								</a></li>
+							<li><a href="https://www.op.gg/champions/Talon" title="刀锋之影 泰隆"><img
+										src="img/lol/Talon.webp" alt="刀锋之影 泰隆">
+									<p>刀锋之影</p>
+									<span class="sbg"><i class="commspr-commico-search"></i></span>
+								</a></li>
+							<li><a href="https://www.op.gg/champions/Taric" title="瓦洛兰之盾 塔里克"><img
+										src="img/lol/Taric.webp" alt="瓦洛兰之盾 塔里克">
+									<p>瓦洛兰之盾</p>
+									<span class="sbg"><i class="commspr-commico-search"></i></span>
+								</a></li>
+							<li><a href="https://www.op.gg/champions/Teemo" title="迅捷斥候 提莫"><img
+										src="img/lol/Teemo.webp" alt="迅捷斥候 提莫">
+									<p>迅捷斥候</p>
+									<span class="sbg"><i class="commspr-commico-search"></i></span>
+								</a></li>
+							<li><a href="https://www.op.gg/champions/Thresh" title="魂锁典狱长 锤石"><img
+										src="img/lol/Thresh.webp" alt="魂锁典狱长 锤石">
+									<p>魂锁典狱长</p>
+									<span class="sbg"><i class="commspr-commico-search"></i></span>
+								</a></li>
+							<li><a href="https://www.op.gg/champions/Tristana" title="麦林炮手 崔丝塔娜"><img
+										src="img/lol/Tristana.webp" alt="麦林炮手 崔丝塔娜">
+									<p>麦林炮手</p>
+									<span class="sbg"><i class="commspr-commico-search"></i></span>
+								</a></li>
+							<li><a href="https://www.op.gg/champions/Trundle" title="巨魔之王 特朗德尔"><img
+										src="img/lol/Trundle.webp" alt="巨魔之王 特朗德尔">
+									<p>巨魔之王</p>
+									<span class="sbg"><i class="commspr-commico-search"></i></span>
+								</a></li>
+							<li><a href="https://www.op.gg/champions/Tryndamere" title="蛮族之王 泰达米尔"><img
+										src="img/lol/Tryndamere.webp" alt="蛮族之王 泰达米尔">
+									<p>蛮族之王</p>
+									<span class="sbg"><i class="commspr-commico-search"></i></span>
+								</a></li>
+							<li><a href="https://www.op.gg/champions/TwistedFate" title="卡牌大师 崔斯特"><img
+										src="img/lol/TwistedFate.webp" alt="卡牌大师 崔斯特">
+									<p>卡牌大师</p>
+									<span class="sbg"><i class="commspr-commico-search"></i></span>
+								</a></li>
+							<li><a href="https://www.op.gg/champions/Twitch" title="瘟疫之源 图奇"><img
+										src="img/lol/Twitch.webp" alt="瘟疫之源 图奇">
+									<p>瘟疫之源</p>
+									<span class="sbg"><i class="commspr-commico-search"></i></span>
+								</a></li>
+							<li><a href="https://www.op.gg/champions/Udyr" title="兽灵行者 乌迪尔"><img src="img/lol/Udyr.webp"
+										alt="兽灵行者 乌迪尔">
+									<p>兽灵行者</p>
+									<span class="sbg"><i class="commspr-commico-search"></i></span>
+								</a></li>
+							<li><a href="https://www.op.gg/champions/Urgot" title="无畏战车 厄加特"><img
+										src="img/lol/Urgot.webp" alt="无畏战车 厄加特">
+									<p>无畏战车</p>
+									<span class="sbg"><i class="commspr-commico-search"></i></span>
+								</a></li>
+							<li><a href="https://www.op.gg/champions/Varus" title="惩戒之箭 韦鲁斯"><img
+										src="img/lol/Varus.webp" alt="惩戒之箭 韦鲁斯">
+									<p>惩戒之箭</p>
+									<span class="sbg"><i class="commspr-commico-search"></i></span>
+								</a></li>
+							<li><a href="https://www.op.gg/champions/Vayne" title="暗夜猎手 薇恩"><img
+										src="img/lol/Vayne.webp" alt="暗夜猎手 薇恩">
+									<p>暗夜猎手</p>
+									<span class="sbg"><i class="commspr-commico-search"></i></span>
+								</a></li>
+							<li><a href="https://www.op.gg/champions/Veigar" title="邪恶小法师 维迦"><img
+										src="img/lol/Veigar.webp" alt="邪恶小法师 维迦">
+									<p>邪恶小法师</p>
+									<span class="sbg"><i class="commspr-commico-search"></i></span>
+								</a></li>
+							<li><a href="https://www.op.gg/champions/Velkoz" title="虚空之眼 维克兹"><img
+										src="img/lol/Velkoz.webp" alt="虚空之眼 维克兹">
+									<p>虚空之眼</p>
+									<span class="sbg"><i class="commspr-commico-search"></i></span>
+								</a></li>
+							<li><a href="https://www.op.gg/champions/Vi" title="皮城执法官 蔚"><img src="img/lol/Vi.webp"
+										alt="皮城执法官 蔚">
+									<p>皮城执法官</p>
+									<span class="sbg"><i class="commspr-commico-search"></i></span>
+								</a></li>
+							<li><a href="https://www.op.gg/champions/Viktor" title="机械先驱 维克托"><img
+										src="img/lol/Viktor.webp" alt="机械先驱 维克托">
+									<p>机械先驱</p>
+									<span class="sbg"><i class="commspr-commico-search"></i></span>
+								</a></li>
+							<li><a href="https://www.op.gg/champions/Vladimir" title="猩红收割者 弗拉基米尔"><img
+										src="img/lol/Vladimir.webp" alt="猩红收割者 弗拉基米尔">
+									<p>猩红收割者</p>
+									<span class="sbg"><i class="commspr-commico-search"></i></span>
+								</a></li>
+							<li><a href="https://www.op.gg/champions/Volibear" title="不灭狂雷 沃利贝尔"><img
+										src="img/lol/Volibear.webp" alt="不灭狂雷 沃利贝尔">
+									<p>不灭狂雷</p>
+									<span class="sbg"><i class="commspr-commico-search"></i></span>
+								</a></li>
+							<li><a href="https://www.op.gg/champions/Warwick" title="祖安怒兽 沃里克"><img
+										src="img/lol/Warwick.webp" alt="祖安怒兽 沃里克">
+									<p>祖安怒兽</p>
+									<span class="sbg"><i class="commspr-commico-search"></i></span>
+								</a></li>
+							<li><a href="https://www.op.gg/champions/Xayah" title="逆羽 霞"><img src="img/lol/Xayah.webp"
+										alt="逆羽 霞">
+									<p>逆羽</p>
+									<span class="sbg"><i class="commspr-commico-search"></i></span>
+								</a></li>
+							<li><a href="https://www.op.gg/champions/Xerath" title="远古巫灵 泽拉斯"><img
+										src="img/lol/Xerath.webp" alt="远古巫灵 泽拉斯">
+									<p>远古巫灵</p>
+									<span class="sbg"><i class="commspr-commico-search"></i></span>
+								</a></li>
+							<li><a href="https://www.op.gg/champions/XinZhao" title="德邦总管 赵信"><img
+										src="img/lol/XinZhao.webp" alt="德邦总管 赵信">
+									<p>德邦总管</p>
+									<span class="sbg"><i class="commspr-commico-search"></i></span>
+								</a></li>
+							<li><a href="https://www.op.gg/champions/Yasuo" title="疾风剑豪 亚索"><img
+										src="img/lol/Yasuo.webp" alt="疾风剑豪 亚索">
+									<p>疾风剑豪</p>
+									<span class="sbg"><i class="commspr-commico-search"></i></span>
+								</a></li>
+							<li><a href="https://www.op.gg/champions/Yorick" title="牧魂人 约里克"><img
+										src="img/lol/Yorick.webp" alt="牧魂人 约里克">
+									<p>牧魂人</p>
+									<span class="sbg"><i class="commspr-commico-search"></i></span>
+								</a></li>
+							<li><a href="https://www.op.gg/champions/Zac" title="生化魔人 扎克"><img src="img/lol/Zac.webp"
+										alt="生化魔人 扎克">
+									<p>生化魔人</p>
+									<span class="sbg"><i class="commspr-commico-search"></i></span>
+								</a></li>
+							<li><a href="https://www.op.gg/champions/Zed" title="影流之主 劫"><img src="img/lol/Zed.webp"
+										alt="影流之主 劫">
+									<p>影流之主</p>
+									<span class="sbg"><i class="commspr-commico-search"></i></span>
+								</a></li>
+							<li><a href="https://www.op.gg/champions/Ziggs" title="爆破鬼才 吉格斯"><img
+										src="img/lol/Ziggs.webp" alt="爆破鬼才 吉格斯">
+									<p>爆破鬼才</p>
+									<span class="sbg"><i class="commspr-commico-search"></i></span>
+								</a></li>
+							<li><a href="https://www.op.gg/champions/Zilean" title="时光守护者 基兰"><img
+										src="img/lol/Zilean.webp" alt="时光守护者 基兰">
+									<p>时光守护者</p>
+									<span class="sbg"><i class="commspr-commico-search"></i></span>
+								</a></li>
+							<li><a href="https://www.op.gg/champions/Zoe" title="暮光星灵 佐伊"><img src="img/lol/Zoe.webp"
+										alt="暮光星灵 佐伊">
+									<p>暮光星灵</p>
+									<span class="sbg"><i class="commspr-commico-search"></i></span>
+								</a></li>
+							<li><a href="https://www.op.gg/champions/Zyra" title="荆棘之兴 婕拉"><img src="img/lol/Zyra.webp"
+										alt="荆棘之兴 婕拉">
+									<p>荆棘之兴</p>
+									<span class="sbg"><i class="commspr-commico-search"></i></span>
+								</a></li>
+							<li><a href="https://www.op.gg/champions/Zyra" title="魔法猫咪 悠米"><img src="img/lol/Yuumi.webp"
+										alt="魔法猫咪 悠米">
+									<p>魔法猫咪</p>
+									<span class="sbg"><i class="commspr-commico-search"></i></span>
+								</a></li>
+							<li><a href="https://www.op.gg/champions/Zyra" title="元素女皇 奇亚娜"><img
+										src="img/lol/Qiyana.webp" alt="元素女皇 奇亚娜">
+									<p>元素女皇</p>
+									<span class="sbg"><i class="commspr-commico-search"></i></span>
+								</a></li>
+							<li><a href="https://www.op.gg/champions/Zyra" title="涤魂圣枪 赛娜"><img src="img/lol/Senna.webp"
+										alt="涤魂圣枪 赛娜">
+									<p>涤魂圣枪</p>
+									<span class="sbg"><i class="commspr-commico-search"></i></span>
+								</a></li>
+							<li><a href="https://www.op.gg/champions/Zyra" title="残月之肃 厄斐琉斯"><img
+										src="img/lol/Aphelios.webp" alt="残月之肃 厄斐琉斯">
+									<p>残月之肃</p>
+									<span class="sbg"><i class="commspr-commico-search"></i></span>
+								</a></li>
+							<li><a href="https://www.op.gg/champions/Sett" title="腕豪 瑟提"><img src="img/lol/Sett.webp"
+										alt="腕豪 瑟提">
+									<p>腕豪</p>
+									<span class="sbg"><i class="commspr-commico-search"></i></span>
+								</a></li>
+							<li><a href="https://www.op.gg/champions/Samira" title="沙漠玫瑰 莎弥拉"><img
+										src="img/lol/Samira.webp" alt="沙漠玫瑰 莎弥拉">
+									<p>沙漠玫瑰</p>
+									<span class="sbg"><i class="commspr-commico-search"></i></span>
+								</a></li>
+							<li><a href="https://www.op.gg/champions/Rell" title="镕铁少女 芮尔"><img src="img/lol/Rell.webp"
+										alt="镕铁少女 芮尔">
+									<p>镕铁少女</p>
+									<span class="sbg"><i class="commspr-commico-search"></i></span>
+								</a></li>
+							<li><a href="https://www.op.gg/champions/Yone" title="封魔剑魂 永恩"><img src="img/lol/Yone.webp"
+										alt="封魔剑魂 永恩">
+									<p>封魔剑魂</p>
+									<span class="sbg"><i class="commspr-commico-search"></i></span>
+								</a></li>
+							<li><a href="https://www.op.gg/champions/Vex" title="愁云使者 薇古丝"><img src="img/lol/Vex.webp"
+										alt="愁云使者 薇古丝">
+									<p>愁云使者</p>
+									<span class="sbg"><i class="commspr-commico-search"></i></span>
+								</a></li>
+							<li><a href="https://www.op.gg/champions/Lillia" title="含羞蓓蕾 莉莉娅"><img
+										src="img/lol/Lillia.webp" alt="含羞蓓蕾 莉莉娅">
+									<p>含羞蓓蕾</p>
+									<span class="sbg"><i class="commspr-commico-search"></i></span>
+								</a></li>
+							<li><a href="https://www.op.gg/champions/Gwen" title="灵罗娃娃 格温"><img src="img/lol/Gwen.webp"
+										alt="灵罗娃娃 格温">
+									<p>灵罗娃娃</p>
+									<span class="sbg"><i class="commspr-commico-search"></i></span>
+								</a></li>
+							<li><a href="https://www.op.gg/champions/renata" title="炼金男爵 烈娜塔 · 戈拉斯克"><img
+										src="img/lol/Renata_Glasc.webp" alt="炼金男爵 烈娜塔 · 戈拉斯克">
+									<p>炼金男爵</p>
+									<span class="sbg"><i class="commspr-commico-search"></i></span>
+								</a></li>
+							<li><a href="https://www.op.gg/champions/Zeri" title="祖安花火 泽丽"><img src="img/lol/Zeri.webp"
+										alt="祖安花火 泽丽">
+									<p>祖安花火</p>
+									<span class="sbg"><i class="commspr-commico-search"></i></span>
+								</a></li>
+							<li><a href="https://www.op.gg/champions/Akshan" title="影哨 阿克尚"><img
+										src="img/lol/Akshan.webp" alt="影哨 阿克尚">
+									<p>影哨</p>
+									<span class="sbg"><i class="commspr-commico-search"></i></span>
+								</a></li>
+							<li><a href="https://www.op.gg/champions/Seraphine" title="星籁歌姬 萨勒芬妮"><img
+										src="img/lol/Seraphine.webp" alt="星籁歌姬 萨勒芬妮">
+									<p>星籁歌姬</p>
+									<span class="sbg"><i class="commspr-commico-search"></i></span>
+								</a></li>
+							<li><a href="https://www.op.gg/champions/Viego" title="破败之王 佛耶戈"><img
+										src="img/lol/Viego.webp" alt="破败之王 佛耶戈">
+									<p>破败之王</p>
+									<span class="sbg"><i class="commspr-commico-search"></i></span>
+								</a></li>
+							<li><a href="https://www.op.gg/champions/belveth" title="虚空女皇·卑尔维斯"><img
+										src="img/lol/Bel_Veth.webp" alt="虚空女皇·卑尔维斯">
+									<p>虚空女皇</p>
+									<span class="sbg"><i class="commspr-commico-search"></i></span>
+								</a></li>
+							<li><a href="https://www.op.gg/champions/nilah" title="不羁之悦 尼菈"><img
+										src="img/lol/Nilah.webp" alt="不羁之悦 尼菈">
+									<p>不羁之悦</p>
+									<span class="sbg"><i class="commspr-commico-search"></i></span>
+								</a></li>
+							<li><a href="https://www.op.gg/champions/ksante" title="纳祖芒荣耀 奎桑提"><img
+										src="img/lol/Ksante.webp" alt="纳祖芒荣耀 奎桑提">
+									<p>纳祖芒荣耀</p>
+									<span class="sbg"><i class="commspr-commico-search"></i></span>
+								</a></li>
+						</ul>
+					</div>
+					<!-- end 英雄列表 -->
+				</div>
+			</div>
+		</div>
+
+
+	</body>
+</html>

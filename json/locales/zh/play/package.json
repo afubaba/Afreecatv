@@ -1,0 +1,158 @@
+{
+  "stopRetrievalMessageFunction": "关闭读取消息",
+  "showTipBarrageFunction": "清理弹幕缓存",
+  "stopBatchSendFunction": "停止发送成功",
+  "sendMessageFunction": {
+    "showTipBarrageFunction": [
+      "秒后",
+      "发送下一次"
+    ]
+  },
+  "barrage": {
+    "showTipBarrageFunction1": "打开弹慕",
+    "showTipBarrageFunction2": "关闭弹慕"
+  },
+  "sendUltimateLengthMessage": {
+    "showTipBarrageFunction1": "这条信息发送完毕需要刷新页面才能再次正常发送信息",
+    "showTipBarrageFunction2": "10秒后刷新页面",
+    "showTipBarrageFunction3": "5秒后刷新页面"
+  },
+  "object": {
+    "showTipBarrageFunction1": [
+      "次,",
+      "后必中奖!"
+    ],
+    "showTipBarrageFunction2": "次重复",
+    "showTipBarrageFunction3": "次重复结束了，没有人中奖！"
+  },
+  "opIndexDB": {
+    "createTable": "indexDB 表创建成功",
+    "insertData": ["日的积分重置了！","月的总积分被重置!","月的总积分已经转到本月!"],
+    "addTable": "个数据添加成功",
+    "updateTable": "个数据更新成功",
+    "deleteTable": "个数据删除成功",
+    "inportDataFunction": "个数据成功导入"
+  },
+  "writeClipBoard": {
+    "swal": {
+      "title": "数据复制成功!",
+      "text": [
+        "请到在其他游览器中打开",
+        "的直播间点击[从剪贴板导入]按钮!"
+      ],
+      "button": "确认"
+    }
+  },
+  "inportFunction": {
+    "swal": {
+      "title": "你确定吗？",
+      "text": [
+        "确认导入",
+        "条数据吗!"
+      ],
+      "buttons": [
+        "取消",
+        "确认"
+      ]
+    },
+    "swal1": {
+      "swal1": {
+        "title": "警告!",
+        "text": [
+          "此表数据只能导入到",
+          "的",
+          "表中!"
+        ],
+        "buttons": [
+          "关闭",
+          "打开"
+        ]
+      },
+      "swal2": "打开成功",
+      "swal3": {
+        "title": "取消提醒!",
+        "text": "取消了操作!"
+      }
+    },
+    "swal2": {
+      "swal1": "添加成功!",
+      "swal2": "取消了操作!"
+    },
+    "swal3": [
+      "异常",
+      "必须导入不同的游览器！"
+    ],
+    "swal4": [
+      "错误",
+      "格式不正确！"
+    ],
+    "importFromClibBoard": "从剪贴板导入"
+  },
+  "chioseFunctionByType": {
+    "clipBoard": "导出剪贴板",
+    "download": "下载文件",
+    "downloadTxt": "个"
+  },
+  "showTableData": {
+    "belongTo": "所属",
+    "tableName": "表名",
+    "browser": "游览器",
+    "tableNumber": "数量"
+  },
+  "getTodayMaxSortData": {
+    "TodayMaxSortDataInterval": [
+      "[",
+      "]成为了 龙王!",
+      "今天聊天次数:"
+    ]
+  },
+  "opSettingIndexDB": {
+    "insertData": {
+      "update": "机器设置保存成功，下次刷新游览器生效",
+      "download": "机器设置同步成功"
+    },
+    "writeCommandAuthorityStatus": "此命令授权已经应用到所有命令授权"
+  },
+  "checkedToggle": {
+    "showTipBarrageFunction1": "禁止所有用户使用此命令",
+    "showTipBarrageFunction2": "授权某些用户成功使用此命令",
+    "showTipBarrageFunction3": "已授权所有用户使用此命令。"
+  },
+  "searchCommandAuthoritySupport": {
+    "answerData1": "此命令没有设置授权任何人使用",
+    "answerData2": "使用的命令满足登录帐户的权限",
+    "answerData3": "使用的命令满足用户角色权限",
+    "answerData4": [
+      " 登录中的账户 ",
+      " BJ ",
+      " 管理员 ",
+      " 热血粉丝 ",
+      " 订阅者 ",
+      " 支持者 ",
+      " 粉丝 ",
+      " 一般使用者 "
+    ],
+    "answerData5": [
+      " 这个命令仅限 ",
+      "."
+    ],
+    "answerData6": "没有开启此命令"
+  },
+  "clearTable": {
+    "swal1": {
+      "title": "确定吗？",
+      "text": [
+        "确认清除",
+        "表统计的全部数据吗？"
+      ],
+      "button": [
+        "取消",
+        "确认"
+      ]
+    }
+  },
+  "refreshPage": {
+    "text1": "正在刷新!",
+    "text2": "创建了一个新的indexdb表单。旧版本标签页面正在更新."
+  }
+}

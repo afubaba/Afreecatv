@@ -1,0 +1,1318 @@
+{
+  "lol_top": {
+    "message": "탑",
+    "description": "上路"
+  },
+  "lol_middle": {
+    "message": "미드",
+    "description": "中路"
+  },
+  "lol_jungle": {
+    "message": "정글",
+    "description": "打野"
+  },
+  "lol_adc": {
+    "message": "바텀",
+    "description": "射手"
+  },
+  "lol_support": {
+    "message": "서포터",
+    "description": "辅助"
+  },
+  "lol_Aatrox": {
+    "message": "아트록스",
+    "description": "暗裔剑魔"
+  },
+  "lol_Aatrox_title": {
+    "message": "暗裔剑魔 亚托克斯",
+    "description": "暗裔剑魔 亚托克斯"
+  },
+  "lol_Ahri": {
+    "message": "아리",
+    "description": "九尾妖狐"
+  },
+  "lol_Ahri_title": {
+    "message": "九尾妖狐 阿狸",
+    "description": "九尾妖狐 阿狸"
+  },
+  "lol_Akali": {
+    "message": "아칼리",
+    "description": "离群之刺"
+  },
+  "lol_Akali_title": {
+    "message": "离群之刺 阿卡丽",
+    "description": "离群之刺 阿卡丽"
+  },
+  "lol_Alistar": {
+    "message": "알리스타",
+    "description": "牛头酋长"
+  },
+  "lol_Alistar_title": {
+    "message": "牛头酋长 阿利斯塔",
+    "description": "牛头酋长 阿利斯塔"
+  },
+  "lol_Amumu": {
+    "message": "아무무",
+    "description": "殇之木乃伊"
+  },
+  "lol_Amumu_title": {
+    "message": "殇之木乃伊 阿木木",
+    "description": "殇之木乃伊 阿木木"
+  },
+  "lol_Anivia": {
+    "message": "애니비아",
+    "description": "冰晶凤凰"
+  },
+  "lol_Anivia_title": {
+    "message": "冰晶凤凰 艾尼维亚",
+    "description": "冰晶凤凰 艾尼维亚"
+  },
+  "lol_Annie": {
+    "message": "애니",
+    "description": "黑暗之女"
+  },
+  "lol_Annie_title": {
+    "message": "黑暗之女 安妮",
+    "description": "黑暗之女 安妮"
+  },
+  "lol_Ashe": {
+    "message": "카타리나",
+    "description": "寒冰射手"
+  },
+  "lol_Ashe_title": {
+    "message": "寒冰射手 艾希",
+    "description": "寒冰射手 艾希"
+  },
+  "lol_AurelionSol": {
+    "message": "아우렐리온 솔",
+    "description": "铸星龙王"
+  },
+  "lol_AurelionSol_title": {
+    "message": "铸星龙王 奥瑞利安·索尔",
+    "description": "铸星龙王 奥瑞利安·索尔"
+  },
+  "lol_Azir": {
+    "message": "아지르",
+    "description": "沙漠皇帝"
+  },
+  "lol_Azir_title": {
+    "message": "沙漠皇帝 阿兹尔",
+    "description": "沙漠皇帝 阿兹尔"
+  },
+  "lol_Bard": {
+    "message": "바드",
+    "description": "星界游神"
+  },
+  "lol_Bard_title": {
+    "message": "星界游神 巴德",
+    "description": "星界游神 巴德"
+  },
+  "lol_Blitzcrank": {
+    "message": "블리츠크랭크",
+    "description": "蒸汽机器人"
+  },
+  "lol_Blitzcrank_title": {
+    "message": "蒸汽机器人 布里茨",
+    "description": "蒸汽机器人 布里茨"
+  },
+  "lol_Brand": {
+    "message": "브랜드",
+    "description": "复仇焰魂"
+  },
+  "lol_Brand_title": {
+    "message": "复仇焰魂 布兰德",
+    "description": "复仇焰魂 布兰德"
+  },
+  "lol_Braum": {
+    "message": "브라움",
+    "description": "弗雷尔卓德之心"
+  },
+  "lol_Braum_title": {
+    "message": "弗雷尔卓德之心 布隆",
+    "description": "弗雷尔卓德之心 布隆"
+  },
+  "lol_Caitlyn": {
+    "message": "케이틀린",
+    "description": "皮城女警"
+  },
+  "lol_Caitlyn_title": {
+    "message": "皮城女警 凯特琳",
+    "description": "皮城女警 凯特琳"
+  },
+  "lol_Camille": {
+    "message": "카밀",
+    "description": "青钢影"
+  },
+  "lol_Camille_title": {
+    "message": "青钢影 卡蜜尔",
+    "description": "青钢影 卡蜜尔"
+  },
+  "lol_Cassiopeia": {
+    "message": "카시오페아",
+    "description": "魔蛇之拥"
+  },
+  "lol_Cassiopeia_title": {
+    "message": "魔蛇之拥 卡西奥佩娅",
+    "description": "魔蛇之拥 卡西奥佩娅"
+  },
+  "lol_Chogath": {
+    "message": "초가스",
+    "description": "虚空恐惧"
+  },
+  "lol_Chogath_title": {
+    "message": "虚空恐惧 科加斯",
+    "description": "虚空恐惧 科加斯"
+  },
+  "lol_Corki": {
+    "message": "코르키",
+    "description": "英勇投弹手"
+  },
+  "lol_Corki_title": {
+    "message": "英勇投弹手 库奇",
+    "description": "英勇投弹手 库奇"
+  },
+  "lol_Darius": {
+    "message": "다리우스",
+    "description": "诺克萨斯之手"
+  },
+  "lol_Darius_title": {
+    "message": "诺克萨斯之手 德莱厄斯",
+    "description": "诺克萨斯之手 德莱厄斯"
+  },
+  "lol_Diana": {
+    "message": "다이애나",
+    "description": "皎月女神"
+  },
+  "lol_Diana_title": {
+    "message": "皎月女神 黛安娜",
+    "description": "皎月女神 黛安娜"
+  },
+  "lol_Draven": {
+    "message": "드레이븐",
+    "description": "荣耀行刑官"
+  },
+  "lol_Draven_title": {
+    "message": "荣耀行刑官 德莱文",
+    "description": "荣耀行刑官 德莱文"
+  },
+  "lol_DrMundo": {
+    "message": "문도 박사",
+    "description": "祖安狂人"
+  },
+  "lol_DrMundo_title": {
+    "message": "祖安狂人 蒙多医生",
+    "description": "祖安狂人 蒙多医生"
+  },
+  "lol_Ekko": {
+    "message": "에코",
+    "description": "时间刺客"
+  },
+  "lol_Ekko_title": {
+    "message": "时间刺客 艾克",
+    "description": "时间刺客 艾克"
+  },
+  "lol_Elise": {
+    "message": "엘리스",
+    "description": "蜘蛛女皇"
+  },
+  "lol_Elise_title": {
+    "message": "蜘蛛女皇 伊莉丝",
+    "description": "蜘蛛女皇 伊莉丝"
+  },
+  "lol_Evelynn": {
+    "message": "이블린",
+    "description": "痛苦之拥"
+  },
+  "lol_Evelynn_title": {
+    "message": "痛苦之拥 伊芙琳",
+    "description": "痛苦之拥 伊芙琳"
+  },
+  "lol_Ezreal": {
+    "message": "이즈리얼",
+    "description": "探险家"
+  },
+  "lol_Ezreal_title": {
+    "message": "探险家 伊泽瑞尔",
+    "description": "探险家 伊泽瑞尔"
+  },
+  "lol_Fiddlesticks": {
+    "message": "피들스틱",
+    "description": "末日使者"
+  },
+  "lol_Fiddlesticks_title": {
+    "message": "远古恐惧 费德提克",
+    "description": "末日使者 费德提克"
+  },
+  "lol_Fiora": {
+    "message": "피오라",
+    "description": "无双剑姬"
+  },
+  "lol_Fiora_title": {
+    "message": "无双剑姬 菲奥娜",
+    "description": "无双剑姬 菲奥娜"
+  },
+  "lol_Fizz": {
+    "message": "피즈",
+    "description": "潮汐海灵"
+  },
+  "lol_Fizz_title": {
+    "message": "潮汐海灵 菲兹",
+    "description": "潮汐海灵 菲兹"
+  },
+  "lol_Galio": {
+    "message": "갈리오",
+    "description": "正义巨像"
+  },
+  "lol_Galio_title": {
+    "message": "正义巨像 加里奥",
+    "description": "正义巨像 加里奥"
+  },
+  "lol_Gangplank": {
+    "message": "갱플랭크",
+    "description": "海洋之灾"
+  },
+  "lol_Gangplank_title": {
+    "message": "海洋之灾 普朗克",
+    "description": "海洋之灾 普朗克"
+  },
+  "lol_Garen": {
+    "message": "가렌",
+    "description": "德玛西亚之力"
+  },
+  "lol_Garen_title": {
+    "message": "德玛西亚之力 盖伦",
+    "description": "德玛西亚之力 盖伦"
+  },
+  "lol_Gnar": {
+    "message": "나르",
+    "description": "迷失之牙"
+  },
+  "lol_Gnar_title": {
+    "message": "迷失之牙 纳尔",
+    "description": "迷失之牙 纳尔"
+  },
+  "lol_Gragas": {
+    "message": "그라가스",
+    "description": "酒桶"
+  },
+  "lol_Gragas_title": {
+    "message": "酒桶 古拉加斯",
+    "description": "酒桶 古拉加斯"
+  },
+  "lol_Graves": {
+    "message": "그레이브즈",
+    "description": "法外狂徒"
+  },
+  "lol_Graves_title": {
+    "message": "法外狂徒 格雷福斯",
+    "description": "法外狂徒 格雷福斯"
+  },
+  "lol_Hecarim": {
+    "message": "헤카림",
+    "description": "战争之影"
+  },
+  "lol_Hecarim_title": {
+    "message": "战争之影 赫卡里姆",
+    "description": "战争之影 赫卡里姆"
+  },
+  "lol_Heimerdinger": {
+    "message": "하이머딩거",
+    "description": "大发明家"
+  },
+  "lol_Heimerdinger_title": {
+    "message": "大发明家 黑默丁格",
+    "description": "大发明家 黑默丁格"
+  },
+  "lol_Illaoi": {
+    "message": "일라오이",
+    "description": "海兽祭司"
+  },
+  "lol_Illaoi_title": {
+    "message": "海兽祭司 俄洛伊",
+    "description": "海兽祭司 俄洛伊"
+  },
+  "lol_Irelia": {
+    "message": "이렐리아",
+    "description": "刀锋舞者"
+  },
+  "lol_Irelia_title": {
+    "message": "刀锋舞者 艾瑞莉娅",
+    "description": "刀锋舞者 艾瑞莉娅"
+  },
+  "lol_Ivern": {
+    "message": "아이번",
+    "description": "翠神"
+  },
+  "lol_Ivern_title": {
+    "message": "翠神 艾翁",
+    "description": "翠神 艾翁"
+  },
+  "lol_Janna": {
+    "message": "잔나",
+    "description": "风暴之怒"
+  },
+  "lol_Janna_title": {
+    "message": "风暴之怒 迦娜",
+    "description": "风暴之怒 迦娜"
+  },
+  "lol_JarvanIV": {
+    "message": "자르반 4세",
+    "description": "德玛西亚皇子"
+  },
+  "lol_JarvanIV_title": {
+    "message": "德玛西亚皇子 嘉文四世",
+    "description": "德玛西亚皇子 嘉文四世"
+  },
+  "lol_Jax": {
+    "message": "잭스",
+    "description": "武器大师"
+  },
+  "lol_Jax_title": {
+    "message": "武器大师 贾克斯",
+    "description": "武器大师 贾克斯"
+  },
+  "lol_Jayce": {
+    "message": "제이스",
+    "description": "未来守护者"
+  },
+  "lol_Jayce_title": {
+    "message": "未来守护者 杰斯",
+    "description": "未来守护者 杰斯"
+  },
+  "lol_Jhin": {
+    "message": "진",
+    "description": "戏命师"
+  },
+  "lol_Jhin_title": {
+    "message": "戏命师 烬",
+    "description": "戏命师 烬"
+  },
+  "lol_Jinx": {
+    "message": "징크스",
+    "description": "暴走萝莉"
+  },
+  "lol_Jinx_title": {
+    "message": "暴走萝莉 金克丝",
+    "description": "暴走萝莉 金克丝"
+  },
+  "lol_Kaisa": {
+    "message": "카이사",
+    "description": "虚空之女"
+  },
+  "lol_Kaisa_title": {
+    "message": "虚空之女 卡莎",
+    "description": "虚空之女 卡莎"
+  },
+  "lol_Kalista": {
+    "message": "칼리스타",
+    "description": "复仇之矛"
+  },
+  "lol_Kalista_title": {
+    "message": "复仇之矛 卡莉丝塔",
+    "description": "复仇之矛 卡莉丝塔"
+  },
+  "lol_Karma": {
+    "message": "카르마",
+    "description": "天启者"
+  },
+  "lol_Karma_title": {
+    "message": "天启者 卡尔玛",
+    "description": "天启者 卡尔玛"
+  },
+  "lol_Karthus": {
+    "message": "카서스",
+    "description": "死亡颂唱者"
+  },
+  "lol_Karthus_title": {
+    "message": "死亡颂唱者 卡尔萨斯",
+    "description": "死亡颂唱者 卡尔萨斯"
+  },
+  "lol_Kassadin": {
+    "message": "카사딘",
+    "description": "虚空行者"
+  },
+  "lol_Kassadin_title": {
+    "message": "虚空行者 卡萨丁",
+    "description": "虚空行者 卡萨丁"
+  },
+  "lol_Katarina": {
+    "message": "카타리나",
+    "description": "不祥之刃"
+  },
+  "lol_Katarina_title": {
+    "message": "不祥之刃 卡特琳娜",
+    "description": "不祥之刃 卡特琳娜"
+  },
+  "lol_Kayle": {
+    "message": "케일",
+    "description": "正义天使"
+  },
+  "lol_Kayle_title": {
+    "message": "正义天使 凯尔",
+    "description": "正义天使 凯尔"
+  },
+  "lol_Kayn": {
+    "message": "케인",
+    "description": "影流之镰"
+  },
+  "lol_Kayn_title": {
+    "message": "影流之镰 凯隐",
+    "description": "影流之镰 凯隐"
+  },
+  "lol_Kennen": {
+    "message": "케넨",
+    "description": "狂暴之心"
+  },
+  "lol_Kennen_title": {
+    "message": "狂暴之心 凯南",
+    "description": "狂暴之心 凯南"
+  },
+  "lol_Khazix": {
+    "message": "카직스",
+    "description": "虚空掠夺者"
+  },
+  "lol_Khazix_title": {
+    "message": "虚空掠夺者 卡兹克",
+    "description": "虚空掠夺者 卡兹克"
+  },
+  "lol_Kindred": {
+    "message": "킨드레드",
+    "description": "永猎双子"
+  },
+  "lol_Kindred_title": {
+    "message": "永猎双子 千珏",
+    "description": "永猎双子 千珏"
+  },
+  "lol_Kled": {
+    "message": "클레드",
+    "description": "暴怒骑士"
+  },
+  "lol_Kled_title": {
+    "message": "暴怒骑士 克烈",
+    "description": "暴怒骑士 克烈"
+  },
+  "lol_KogMaw": {
+    "message": "코그모",
+    "description": "深渊巨口"
+  },
+  "lol_KogMaw_title": {
+    "message": "深渊巨口 克格莫",
+    "description": "深渊巨口 克格莫"
+  },
+  "lol_Leblanc": {
+    "message": "르블랑",
+    "description": "诡术妖姬"
+  },
+  "lol_Leblanc_title": {
+    "message": "诡术妖姬 乐芙兰",
+    "description": "诡术妖姬 乐芙兰"
+  },
+  "lol_LeeSin": {
+    "message": "리 신",
+    "description": "盲僧"
+  },
+  "lol_LeeSin_title": {
+    "message": "盲僧 李青",
+    "description": "盲僧 李青"
+  },
+  "lol_Leona": {
+    "message": "레오나",
+    "description": "曙光女神"
+  },
+  "lol_Leona_title": {
+    "message": "曙光女神 蕾欧娜",
+    "description": "曙光女神 蕾欧娜"
+  },
+  "lol_Lissandra": {
+    "message": "리산드라",
+    "description": "冰霜女巫"
+  },
+  "lol_Lissandra_title": {
+    "message": "冰霜女巫 丽桑卓",
+    "description": "冰霜女巫 丽桑卓"
+  },
+  "lol_Lucian": {
+    "message": "루시안",
+    "description": "圣枪游侠"
+  },
+  "lol_Lucian_title": {
+    "message": "圣枪游侠 卢锡安",
+    "description": "圣枪游侠 卢锡安"
+  },
+  "lol_Lulu": {
+    "message": "룰루",
+    "description": "仙灵女巫"
+  },
+  "lol_Lulu_title": {
+    "message": "仙灵女巫 璐璐",
+    "description": "仙灵女巫 璐璐"
+  },
+  "lol_Lux": {
+    "message": "럭스",
+    "description": "光辉女郎"
+  },
+  "lol_Lux_title": {
+    "message": "光辉女郎 拉克丝",
+    "description": "光辉女郎 拉克丝"
+  },
+  "lol_Malphite": {
+    "message": "말파이트",
+    "description": "熔岩巨兽"
+  },
+  "lol_Malphite_title": {
+    "message": "熔岩巨兽 墨菲特",
+    "description": "熔岩巨兽 墨菲特"
+  },
+  "lol_Malzahar": {
+    "message": "말자하",
+    "description": "虚空先知"
+  },
+  "lol_Malzahar_title": {
+    "message": "虚空先知 玛尔扎哈",
+    "description": "虚空先知 玛尔扎哈"
+  },
+  "lol_Maokai": {
+    "message": "마오카이",
+    "description": "扭曲树精"
+  },
+  "lol_Maokai_title": {
+    "message": "扭曲树精 茂凯",
+    "description": "扭曲树精 茂凯"
+  },
+  "lol_MasterYi": {
+    "message": "마스터 이",
+    "description": "无极剑圣"
+  },
+  "lol_MasterYi_title": {
+    "message": "无极剑圣 易",
+    "description": "无极剑圣 易"
+  },
+  "lol_MissFortune": {
+    "message": "미스 포츈",
+    "description": "赏金猎人"
+  },
+  "lol_MissFortune_title": {
+    "message": "赏金猎人 厄运小姐",
+    "description": "赏金猎人 厄运小姐"
+  },
+  "lol_MonkeyKing": {
+    "message": "오공",
+    "description": "齐天大圣"
+  },
+  "lol_MonkeyKing_title": {
+    "message": "齐天大圣 孙悟空",
+    "description": "齐天大圣 孙悟空"
+  },
+  "lol_Mordekaiser": {
+    "message": "모데카이저",
+    "description": "铁铠冥魂"
+  },
+  "lol_Mordekaiser_title": {
+    "message": "铁铠冥魂 莫德凯撒",
+    "description": "铁铠冥魂 莫德凯撒"
+  },
+  "lol_Morgana": {
+    "message": "모르가나",
+    "description": "堕落天使"
+  },
+  "lol_Morgana_title": {
+    "message": "堕落天使 莫甘娜",
+    "description": "堕落天使 莫甘娜"
+  },
+  "lol_Nami": {
+    "message": "나미",
+    "description": "唤潮鲛姬"
+  },
+  "lol_Nami_title": {
+    "message": "唤潮鲛姬 娜美",
+    "description": "唤潮鲛姬 娜美"
+  },
+  "lol_Nasus": {
+    "message": "나서스",
+    "description": "沙漠死神"
+  },
+  "lol_Nasus_title": {
+    "message": "沙漠死神 内瑟斯",
+    "description": "沙漠死神 内瑟斯"
+  },
+  "lol_Nautilus": {
+    "message": "노틸러스",
+    "description": "深海泰坦"
+  },
+  "lol_Nautilus_title": {
+    "message": "深海泰坦 诺提勒斯",
+    "description": "深海泰坦 诺提勒斯"
+  },
+  "lol_Neeko": {
+    "message": "니코",
+    "description": "万花通灵"
+  },
+  "lol_Neeko_title": {
+    "message": "万花通灵 妮蔻",
+    "description": "万花通灵 妮蔻"
+  },
+  "lol_Nidalee": {
+    "message": "니달리",
+    "description": "狂野女猎手"
+  },
+  "lol_Nidalee_title": {
+    "message": "狂野女猎手 奈德丽",
+    "description": "狂野女猎手 奈德丽"
+  },
+  "lol_Nocturne": {
+    "message": "녹턴",
+    "description": "永恒梦魇"
+  },
+  "lol_Nocturne_title": {
+    "message": "永恒梦魇 魔腾",
+    "description": "永恒梦魇 魔腾"
+  },
+  "lol_Nunu": {
+    "message": "누누와 윌럼프",
+    "description": "雪原双子"
+  },
+  "lol_Nunu_title": {
+    "message": "雪原双子 努努和威朗普",
+    "description": "雪原双子 努努和威朗普"
+  },
+  "lol_Olaf": {
+    "message": "올라프",
+    "description": "狂战士"
+  },
+  "lol_Olaf_title": {
+    "message": "狂战士 奥拉夫",
+    "description": "狂战士 奥拉夫"
+  },
+  "lol_Orianna": {
+    "message": "오리아나",
+    "description": "发条魔灵"
+  },
+  "lol_Orianna_title": {
+    "message": "发条魔灵 奥莉安娜",
+    "description": "发条魔灵 奥莉安娜"
+  },
+  "lol_Ornn": {
+    "message": "오른",
+    "description": "山隐之焰"
+  },
+  "lol_Ornn_title": {
+    "message": "山隐之焰 奥恩",
+    "description": "山隐之焰 奥恩"
+  },
+  "lol_Pantheon": {
+    "message": "판테온",
+    "description": "战争之王"
+  },
+  "lol_Pantheon_title": {
+    "message": "战争之王 潘森",
+    "description": "战争之王 潘森"
+  },
+  "lol_Poppy": {
+    "message": "뽀삐",
+    "description": "圣锤之毅"
+  },
+  "lol_Poppy_title": {
+    "message": "圣锤之毅 波比",
+    "description": "圣锤之毅 波比"
+  },
+  "lol_Pyke": {
+    "message": "파이크",
+    "description": "血港鬼影"
+  },
+  "lol_Pyke_title": {
+    "message": "血港鬼影 派克",
+    "description": "血港鬼影 派克"
+  },
+  "lol_Quinn": {
+    "message": "퀸",
+    "description": "德玛西亚之翼"
+  },
+  "lol_Quinn_title": {
+    "message": "德玛西亚之翼 奎因",
+    "description": "德玛西亚之翼 奎因"
+  },
+  "lol_Rakan": {
+    "message": "라칸",
+    "description": "幻翎"
+  },
+  "lol_Rakan_title": {
+    "message": "幻翎 洛",
+    "description": "幻翎 洛"
+  },
+  "lol_Rammus": {
+    "message": "람머스",
+    "description": "披甲龙龟"
+  },
+  "lol_Rammus_title": {
+    "message": "披甲龙龟 拉莫斯",
+    "description": "披甲龙龟 拉莫斯"
+  },
+  "lol_RekSai": {
+    "message": "렉사이",
+    "description": "虚空遁地兽"
+  },
+  "lol_RekSai_title": {
+    "message": "虚空遁地兽 雷克塞",
+    "description": "虚空遁地兽 雷克塞"
+  },
+  "lol_Renekton": {
+    "message": "레넥톤",
+    "description": "荒漠屠夫"
+  },
+  "lol_Renekton_title": {
+    "message": "荒漠屠夫 雷克顿",
+    "description": "荒漠屠夫 雷克顿"
+  },
+  "lol_Rengar": {
+    "message": "렝가",
+    "description": "傲之追猎者"
+  },
+  "lol_Rengar_title": {
+    "message": "傲之追猎者 雷恩加尔",
+    "description": "傲之追猎者 雷恩加尔"
+  },
+  "lol_Riven": {
+    "message": "리븐",
+    "description": "放逐之刃"
+  },
+  "lol_Riven_title": {
+    "message": "放逐之刃 锐雯",
+    "description": "放逐之刃 锐雯"
+  },
+  "lol_Rumble": {
+    "message": "럼블",
+    "description": "机械公敌"
+  },
+  "lol_Rumble_title": {
+    "message": "机械公敌 兰博",
+    "description": "机械公敌 兰博"
+  },
+  "lol_Ryze": {
+    "message": "라이즈",
+    "description": "符文法师"
+  },
+  "lol_Ryze_title": {
+    "message": "符文法师 瑞兹",
+    "description": "符文法师 瑞兹"
+  },
+  "lol_Sejuani": {
+    "message": "세주아니",
+    "description": "北地之怒"
+  },
+  "lol_Sejuani_title": {
+    "message": "北地之怒 瑟庄妮",
+    "description": "北地之怒 瑟庄妮"
+  },
+  "lol_Shaco": {
+    "message": "샤코",
+    "description": "恶魔小丑"
+  },
+  "lol_Shaco_title": {
+    "message": "恶魔小丑 萨科",
+    "description": "恶魔小丑 萨科"
+  },
+  "lol_Shen": {
+    "message": "쉔",
+    "description": "暮光之眼"
+  },
+  "lol_Shen_title": {
+    "message": "暮光之眼 慎",
+    "description": "暮光之眼 慎"
+  },
+  "lol_Shyvana": {
+    "message": "쉬바나",
+    "description": "龙血武姬"
+  },
+  "lol_Shyvana_title": {
+    "message": "龙血武姬 希瓦娜",
+    "description": "龙血武姬 希瓦娜"
+  },
+  "lol_Singed": {
+    "message": "신지드",
+    "description": "炼金术士"
+  },
+  "lol_Singed_title": {
+    "message": "炼金术士 辛吉德",
+    "description": "炼金术士 辛吉德"
+  },
+  "lol_Sion": {
+    "message": "사이온",
+    "description": "亡灵战神"
+  },
+  "lol_Sion_title": {
+    "message": "亡灵战神 赛恩",
+    "description": "亡灵战神 赛恩"
+  },
+  "lol_Sivir": {
+    "message": "시비르",
+    "description": "战争女神"
+  },
+  "lol_Sivir_title": {
+    "message": "战争女神 希维尔",
+    "description": "战争女神 希维尔"
+  },
+  "lol_Skarner": {
+    "message": "스카너",
+    "description": "水晶先锋"
+  },
+  "lol_Skarner_title": {
+    "message": "水晶先锋 斯卡纳",
+    "description": "水晶先锋 斯卡纳"
+  },
+  "lol_Sona": {
+    "message": "소나",
+    "description": "琴瑟仙女"
+  },
+  "lol_Sona_title": {
+    "message": "琴瑟仙女 娑娜",
+    "description": "琴瑟仙女 娑娜"
+  },
+  "lol_Soraka": {
+    "message": "소라카",
+    "description": "众星之子"
+  },
+  "lol_Soraka_title": {
+    "message": "众星之子 索拉卡",
+    "description": "众星之子 索拉卡"
+  },
+  "lol_Swain": {
+    "message": "스웨인",
+    "description": "诺克萨斯统领"
+  },
+  "lol_Swain_title": {
+    "message": "诺克萨斯统领 斯维因",
+    "description": "诺克萨斯统领 斯维因"
+  },
+  "lol_Sylas": {
+    "message": "사일러스",
+    "description": "解脱者"
+  },
+  "lol_Sylas_title": {
+    "message": "解脱者 塞拉斯",
+    "description": "解脱者 塞拉斯"
+  },
+  "lol_Syndra": {
+    "message": "신드라",
+    "description": "暗黑元首"
+  },
+  "lol_Syndra_title": {
+    "message": "暗黑元首 辛德拉",
+    "description": "暗黑元首 辛德拉"
+  },
+  "lol_TahmKench": {
+    "message": "탐 켄치",
+    "description": "河流之王"
+  },
+  "lol_TahmKench_title": {
+    "message": "河流之王 塔姆",
+    "description": "河流之王 塔姆"
+  },
+  "lol_Taliyah": {
+    "message": "탈리야",
+    "description": "岩雀"
+  },
+  "lol_Taliyah_title": {
+    "message": "岩雀 塔莉垭",
+    "description": "岩雀 塔莉垭"
+  },
+  "lol_Talon": {
+    "message": "탈론",
+    "description": "刀锋之影"
+  },
+  "lol_Talon_title": {
+    "message": "刀锋之影 泰隆",
+    "description": "刀锋之影 泰隆"
+  },
+  "lol_Taric": {
+    "message": "타릭",
+    "description": "瓦洛兰之盾"
+  },
+  "lol_Taric_title": {
+    "message": "瓦洛兰之盾 塔里克",
+    "description": "瓦洛兰之盾 塔里克"
+  },
+  "lol_Teemo": {
+    "message": "티모",
+    "description": "迅捷斥候"
+  },
+  "lol_Teemo_title": {
+    "message": "迅捷斥候 提莫",
+    "description": "迅捷斥候 提莫"
+  },
+  "lol_Thresh": {
+    "message": "쓰레쉬",
+    "description": "魂锁典狱长"
+  },
+  "lol_Thresh_title": {
+    "message": "魂锁典狱长 锤石",
+    "description": "魂锁典狱长 锤石"
+  },
+  "lol_Tristana": {
+    "message": "트리스타나",
+    "description": "麦林炮手"
+  },
+  "lol_Tristana_title": {
+    "message": "麦林炮手 崔丝塔娜",
+    "description": "麦林炮手 崔丝塔娜"
+  },
+  "lol_Trundle": {
+    "message": "트런들",
+    "description": "巨魔之王"
+  },
+  "lol_Trundle_title": {
+    "message": "巨魔之王 特朗德尔",
+    "description": "巨魔之王 特朗德尔"
+  },
+  "lol_Tryndamere": {
+    "message": "트린다미어",
+    "description": "蛮族之王"
+  },
+  "lol_Tryndamere_title": {
+    "message": "蛮族之王 泰达米尔",
+    "description": "蛮族之王 泰达米尔"
+  },
+  "lol_TwistedFate": {
+    "message": "트위스티드 페이트",
+    "description": "卡牌大师"
+  },
+  "lol_TwistedFate_title": {
+    "message": "卡牌大师 崔斯特",
+    "description": "卡牌大师 崔斯特"
+  },
+  "lol_Twitch": {
+    "message": "트위치",
+    "description": "瘟疫之源"
+  },
+  "lol_Twitch_title": {
+    "message": "瘟疫之源 图奇",
+    "description": "瘟疫之源 图奇"
+  },
+  "lol_Udyr": {
+    "message": "우디르",
+    "description": "兽灵行者"
+  },
+  "lol_Udyr_title": {
+    "message": "兽灵行者 乌迪尔",
+    "description": "兽灵行者 乌迪尔"
+  },
+  "lol_Urgot": {
+    "message": "우르곳",
+    "description": "无畏战车"
+  },
+  "lol_Urgot_title": {
+    "message": "无畏战车 厄加特",
+    "description": "无畏战车 厄加特"
+  },
+  "lol_Varus": {
+    "message": "바루스",
+    "description": "惩戒之箭"
+  },
+  "lol_Varus_title": {
+    "message": "惩戒之箭 韦鲁斯",
+    "description": "惩戒之箭 韦鲁斯"
+  },
+  "lol_Vayne": {
+    "message": "베인",
+    "description": "暗夜猎手"
+  },
+  "lol_Vayne_title": {
+    "message": "暗夜猎手 薇恩",
+    "description": "暗夜猎手 薇恩"
+  },
+  "lol_Veigar": {
+    "message": "베이가",
+    "description": "邪恶小法师"
+  },
+  "lol_Veigar_title": {
+    "message": "邪恶小法师 维迦",
+    "description": "邪恶小法师 维迦"
+  },
+  "lol_Velkoz": {
+    "message": "벨코즈",
+    "description": "虚空之眼"
+  },
+  "lol_Velkoz_title": {
+    "message": "虚空之眼 维克兹",
+    "description": "虚空之眼 维克兹"
+  },
+  "lol_Vi": {
+    "message": "바이",
+    "description": "皮城执法官"
+  },
+  "lol_Vi_title": {
+    "message": "皮城执法官 蔚",
+    "description": "皮城执法官 蔚"
+  },
+  "lol_Viktor": {
+    "message": "빅토르",
+    "description": "机械先驱"
+  },
+  "lol_Viktor_title": {
+    "message": "机械先驱 维克托",
+    "description": "机械先驱 维克托"
+  },
+  "lol_Vladimir": {
+    "message": "블라디미르",
+    "description": "猩红收割者"
+  },
+  "lol_Vladimir_title": {
+    "message": "猩红收割者 弗拉基米尔",
+    "description": "猩红收割者 弗拉基米尔"
+  },
+  "lol_Volibear": {
+    "message": "볼리베어",
+    "description": "雷霆咆哮"
+  },
+  "lol_Volibear_title": {
+    "message": "雷霆咆哮 沃利贝尔",
+    "description": "雷霆咆哮 沃利贝尔"
+  },
+  "lol_Warwick": {
+    "message": "워윅",
+    "description": "祖安怒兽"
+  },
+  "lol_Warwick_title": {
+    "message": "祖安怒兽 沃里克",
+    "description": "祖安怒兽 沃里克"
+  },
+  "lol_Xayah": {
+    "message": "자야",
+    "description": "逆羽"
+  },
+  "lol_Xayah_title": {
+    "message": "逆羽 霞",
+    "description": "逆羽 霞"
+  },
+  "lol_Xerath": {
+    "message": "제라스",
+    "description": "远古巫灵"
+  },
+  "lol_Xerath_title": {
+    "message": "远古巫灵 泽拉斯",
+    "description": "远古巫灵 泽拉斯"
+  },
+  "lol_XinZhao": {
+    "message": "신 짜오",
+    "description": "德邦总管"
+  },
+  "lol_XinZhao_title": {
+    "message": "德邦总管 赵信",
+    "description": "德邦总管 赵信"
+  },
+  "lol_Yasuo": {
+    "message": "야스오",
+    "description": "疾风剑豪"
+  },
+  "lol_Yasuo_title": {
+    "message": "疾风剑豪 亚索",
+    "description": "疾风剑豪 亚索"
+  },
+  "lol_Yorick": {
+    "message": "요릭",
+    "description": "牧魂人"
+  },
+  "lol_Yorick_title": {
+    "message": "牧魂人 约里克",
+    "description": "牧魂人 约里克"
+  },
+  "lol_Zac": {
+    "message": "자크",
+    "description": "生化魔人"
+  },
+  "lol_Zac_title": {
+    "message": "生化魔人 扎克",
+    "description": "生化魔人 扎克"
+  },
+  "lol_Zed": {
+    "message": "제드",
+    "description": "影流之主"
+  },
+  "lol_Zed_title": {
+    "message": "影流之主 劫",
+    "description": "影流之主 劫"
+  },
+  "lol_Ziggs": {
+    "message": "직스",
+    "description": "爆破鬼才"
+  },
+  "lol_Ziggs_title": {
+    "message": "爆破鬼才 吉格斯",
+    "description": "爆破鬼才 吉格斯"
+  },
+  "lol_Zilean": {
+    "message": "질리언",
+    "description": "时光守护者"
+  },
+  "lol_Zilean_title": {
+    "message": "时光守护者 基兰",
+    "description": "时光守护者 基兰"
+  },
+  "lol_Zoe": {
+    "message": "조이",
+    "description": "暮光星灵"
+  },
+  "lol_Zoe_title": {
+    "message": "暮光星灵 佐伊",
+    "description": "暮光星灵 佐伊"
+  },
+  "lol_Zyra": {
+    "message": "자이라",
+    "description": "荆棘之兴"
+  },
+  "lol_Zyra_title": {
+    "message": "荆棘之兴 婕拉",
+    "description": "荆棘之兴 婕拉"
+  },
+  "lol_Yuumi": {
+    "message": "유미",
+    "description": "魔法猫咪"
+  },
+  "lol_Yuumi_title": {
+    "message": "魔法猫咪 悠米",
+    "description": "魔法猫咪 悠米"
+  },
+  "lol_Qiyana": {
+    "message": "키아나",
+    "description": "元素女皇"
+  },
+  "lol_Qiyana_title": {
+    "message": "元素女皇 奇亚娜",
+    "description": "元素女皇 奇亚娜"
+  },
+  "lol_Senna": {
+    "message": "세나",
+    "description": "涤魂圣枪"
+  },
+  "lol_Senna_title": {
+    "message": "涤魂圣枪 赛娜",
+    "description": "涤魂圣枪 赛娜"
+  },
+  "lol_Aphelios": {
+    "message": "아펠리오스",
+    "description": "残月之肃"
+  },
+  "lol_Aphelios_title": {
+    "message": "残月之肃 厄斐琉斯",
+    "description": "残月之肃 厄斐琉斯"
+  },
+  "lol_Sett": {
+    "message": "세트",
+    "description": "腕豪"
+  },
+  "lol_Sett_title": {
+    "message": "腕豪 瑟提",
+    "description": "腕豪 瑟提"
+  },
+  "lol_Samira": {
+    "message": "사미라",
+    "description": "莎弥拉"
+  },
+  "lol_Samira_title": {
+    "message": "沙漠玫瑰 莎弥拉",
+    "description": "沙漠玫瑰 莎弥拉"
+  },
+  "lol_Rell": {
+    "message": "렐",
+    "description": "芮尔"
+  },
+  "lol_Rell_title": {
+    "message": "镕铁少女 芮尔",
+    "description": "镕铁少女 芮尔"
+  },
+  "lol_Yone": {
+    "message": "요네",
+    "description": "永恩"
+  },
+  "lol_Yone_title": {
+    "message": "封魔剑魂 永恩",
+    "description": "封魔剑魂 永恩"
+  },
+  "lol_Vex": {
+    "message": "벡스",
+    "description": "薇古丝"
+  },
+  "lol_Vex_title": {
+    "message": "愁云使者 薇古丝",
+    "description": "愁云使者 薇古丝"
+  },
+  "lol_Lillia": {
+    "message": "릴리아",
+    "description": "莉莉娅"
+  },
+  "lol_Lillia_title": {
+    "message": "含羞蓓蕾 莉莉娅",
+    "description": "含羞蓓蕾 莉莉娅"
+  },
+  "lol_Gwen": {
+    "message": "그웬",
+    "description": "格温"
+  },
+  "lol_Gwen_title": {
+    "message": "灵罗娃娃 格温",
+    "description": "灵罗娃娃 格温"
+  },
+  "lol_Renata_Glasc": {
+    "message": " 레나타·글라스크",
+    "description": "烈娜塔 · 戈拉斯克"
+  },
+  "lol_Renata_Glasc_title": {
+    "message": "烈娜塔 · 戈拉斯克",
+    "description": "烈娜塔 · 戈拉斯克"
+  },
+  "lol_Zeri": {
+    "message": "제리",
+    "description": "泽丽"
+  },
+  "lol_Zeri_title": {
+    "message": "祖安花火 泽丽",
+    "description": "祖安花火 泽丽"
+  },
+  "lol_Akshan": {
+    "message": "아크샨",
+    "description": "阿克尚"
+  },
+  "lol_Akshan_title": {
+    "message": "影哨 阿克尚",
+    "description": "影哨 阿克尚"
+  },
+  "lol_Seraphine": {
+    "message": "세라핀",
+    "description": "萨勒芬妮"
+  },
+  "lol_Seraphine_title": {
+    "message": "星籁歌姬 萨勒芬妮",
+    "description": "星籁歌姬 萨勒芬妮"
+  },
+  "lol_Viego": {
+    "message": "비에고",
+    "description": "佛耶戈"
+  },
+  "lol_Viego_title": {
+    "message": "破败之王 佛耶戈",
+    "description": "破败之王 佛耶戈"
+  },
+  "lol_Bel_Veth": {
+    "message": "벨베스",
+    "description": "卑尔维斯"
+  },
+  "lol_Bel_Veth_title": {
+    "message": "虚空女皇·卑尔维斯",
+    "description": "虚空女皇·卑尔维斯"
+  },
+  "lol_Nilah": {
+    "message": "닐라",
+    "description": "不羁之悦 尼菈"
+  },
+  "lol_Nilah_title": {
+    "message": "不羁之悦 尼菈",
+    "description": "不羁之悦 尼菈"
+  },
+  "lol_Ksante": {
+    "message": "크산테",
+    "description": "纳祖芒荣耀 奎桑提"
+  },
+  "lol_Ksante_title": {
+    "message": "纳祖芒荣耀 奎桑提",
+    "description": "纳祖芒荣耀 奎桑提"
+  }
+}

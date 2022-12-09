@@ -1,0 +1,1474 @@
+{
+	"extName": {
+		"message": "一个国际化扩展",
+		"description": "Extension Name"
+	},
+	"manifest_ext_name": {
+		"message": "Afreecatv 特效",
+		"description": "拓展名"
+	},
+	"manifest_description": {
+		"message": "Afreecatv 特效扩展",
+		"description": "拓展介绍"
+	},
+	"error": {
+		"message": "Error: $details$",
+		"description": "Generic error template. Expects error parameter to be passed in.",
+		"placeholders": {
+			"details": {
+				"content": "$1",
+				"example": "Failed to fetch RSS feed."
+			}
+		}
+	},
+
+	// 功能
+
+	// "individualization": {
+	// 	"message": "个性化",
+	// 	"description": "个性化"
+	// }
+	// "individualization": {
+	// 	"message": "个性化 $details$,",
+	// 	"description": "个性化",
+	// 	"placeholders": {
+	// 		"details": {
+	// 			"content": "$1",
+	// 			"example": "Failed to fetch RSS feed."
+	// 		}
+	// 	}
+	// },
+
+
+	// options.html
+
+	"options_timeButtonId": {
+		"message": "时间相关",
+		"description": "时间相关"
+	},
+	"options_individualization": {
+		"message": "个性化",
+		"description": "个性化"
+	},
+
+
+	"options_fontColorId": {
+		"message": "字体颜色",
+		"description": "字体颜色"
+	},
+	"options_fontColorRed": {
+		"message": "红色",
+		"description": "字体颜色"
+	},
+	"options_fontColorWhite": {
+		"message": "白色",
+		"description": "字体颜色"
+	},
+	"options_fontColorBlack": {
+		"message": "黑色",
+		"description": "字体颜色"
+	},
+	"options_fontColorLime": {
+		"message": "石灰色",
+		"description": "字体颜色"
+	},
+	"options_fontColorChartreuse": {
+		"message": "黄绿色",
+		"description": "字体颜色"
+	},
+	"options_fontColorYelllow": {
+		"message": "黄色",
+		"description": "字体颜色"
+	},
+
+	"options_backgroundColorId": {
+		"message": "背景颜色",
+		"description": "背景颜色"
+	},
+	"options_backgroundColorNone": {
+		"message": "默认",
+		"description": "背景颜色"
+	},
+	"options_backgroundColorTransparent": {
+		"message": "透明色",
+		"description": "背景颜色"
+	},
+	"options_backgroundColorWhite": {
+		"message": "白色",
+		"description": "背景颜色"
+	},
+	"options_backgroundColorBlack": {
+		"message": "黑色",
+		"description": "背景颜色"
+	},
+
+
+	//play.afreecatv.popup.html
+	
+	"play_afreecatv_popup_lang": {
+		"message": "语言",
+		"description": "语言"
+	},
+
+	"play_afreecatv_popup_clearChatarea": {
+		"message": "清空聊天",
+		"description": "清空聊天"
+	},
+	"play_afreecatv_popup_clearChatarea_title": {
+		"message": "清空聊天区域内容",
+		"description": "清空聊天悬浮提示"
+	},
+	//按钮提示
+	"play_afreecatv_popup_clearChatarea_confirm_tip": {
+		"message": "确认清空聊天区域记录？清空后不可恢复!",
+		"description": "清空聊天区域记录按钮提示文字"
+	},
+
+
+	"play_afreecatv_popup_closePlayer": {
+		"message": "关闭播放器(test)",
+		"description": "关闭播放器"
+	},
+	"play_afreecatv_popup_closePlayer_title": {
+		"message": "删除直播画面，仅使用文字聊天功能节省数据",
+		"description": "关闭播放器鼠标悬浮提示"
+	},
+	//按钮提示
+	"play_afreecatv_popup_closePlayer_confirm_tip": {
+		"message": "确认关闭播放器吗？关闭后需要刷新页面才能恢复画面！",
+		"description": "关闭播放器点击按钮提示文字"
+	},
+
+
+	//play_afreecatv.js
+	"play_afreecatv_startTip": {
+		"message": "按时享受",
+		"description": "按时享受"
+	},
+	"play_afreecatv_basicMenu": {
+		"message": "首选项",
+		"description": "首选项"
+	},
+	"play_afreecatv_rootMenu": {
+		"message": "智能机器人",
+		"description": "智能机器人"
+	},
+	"play_afreecatv_timesId": {
+		"message": "次数",
+		"description": "次数"
+	},
+	"play_afreecatv_frequencyId": {
+		"message": "间隔时间",
+		"description": "间隔时间"
+	},
+	"play_afreecatv_detailedMenu": {
+		"message": "详细设置",
+		"description": "详细设置"
+	},
+	"play_afreecatv_batchSend": {
+		"message": "批量功能",
+		"description": "批量功能"
+	},
+	"play_afreecatv_environmentSpanId": {
+		"message": "恢复默认配置",
+		"description": "恢复默认配置"
+	},
+	"play_afreecatv_showNumberNotifications": {
+		"message": "显示次数",
+		"description": "显示次数"
+	},
+
+	"play_afreecatv_chrysanthemumText": {
+		"message": "菊花文字",
+		"description": "菊花文字"
+	},
+	"play_afreecatv_barrageButtonId": {
+		"message": "弹幕显示",
+		"description": "弹幕显示"
+	},
+	"play_afreecatv_clearChatarea": {
+		"message": "清空消息",
+		"description": "清空消息"
+	},
+	"play_afreecatv_closePlayer": {
+		"message": "关闭播放器(测试)",
+		"description": "清空消息"
+	},
+	"play_afreecatv_sendId": {
+		"message": "发送",
+		"description": "发送"
+	},
+	"play_afreecatv_stopButtonId": {
+		"message": "停止",
+		"description": "停止"
+	},
+	"play_afreecatv_isRobotChat": {
+		"message": "自动聊天",
+		"description": "机器人聊天"
+	},
+	"play_afreecatv_isSportChat": {
+		"message": "聊天运动",
+		"description": "聊天运动"
+	},
+	"play_afreecatv_retrievalButtonId": {
+		"message": "读聊天内容",
+		"description": "读聊天内容"
+	},
+	"play_afreecatv_stopRetrievalMessage": {
+		"message": "停止读取消息",
+		"description": "停止读取消息"
+	},
+	"play_afreecatv_handTimeId": {
+		"message": "发送当前时间",
+		"description": "发送当前时间"
+	},
+	"play_afreecatv_handTimeId_title": {
+		"message": "立刻发送当前时间",
+		"description": "发送当前时间提示"
+	},
+	"play_afreecatv_autoTimeId": {
+		"message": "自动报时",
+		"description": "自动报时"
+	},
+	"play_afreecatv_autoTimeId_title": {
+		"message": "自动报时(30分钟整点提醒)",
+		"description": "自动报时提示"
+	},
+
+	"play_afreecatv_startAutoTime": {
+		"message": "开启",
+		"description": "开关"
+	},
+	"play_afreecatv_overAutoTime": {
+		"message": "关闭",
+		"description": "开关"
+	},
+
+	// bj.afreecatv.js
+	"bj_afreecatv_openAll_tip": {
+		"message": "要打开Instagram的所有预览照片吗？展开过程无法控制滚动条，直到完全显示所有Instagram预览",
+		"description": "展开全部提示"
+	},
+	"bj_afreecatv_openAll": {
+		"message": "展开全部",
+		"description": "展开全部"
+	}
+}
+//lol.html  位置
+// "lol_position": {
+// 	"message": "暗裔剑魔",
+// 	"description": "暗裔剑魔"
+// },
+// 	"lol_top": {
+// 		"message": "上路",
+// 		"description": "上路"
+// 	},
+// 	"lol_middle": {
+// 		"message": "中路",
+// 		"description": "中路"
+// 	},
+// 	"lol_jungle": {
+// 		"message": "打野",
+// 		"description": "打野"
+// 	},
+// 	"lol_adc": {
+// 		"message": "射手",
+// 		"description": "射手"
+// 	},
+// 	"lol_support": {
+// 		"message": "辅助",
+// 		"description": "暗裔剑魔"
+// 	},
+// 	//lol.html  英雄信息
+// 	"lol_Aatrox": {
+// 		"message": "暗裔剑魔",
+// 		"description": "暗裔剑魔"
+// 	},
+// 	"lol_Aatrox_title": {
+// 		"message": "暗裔剑魔 亚托克斯",
+// 		"description": "暗裔剑魔 亚托克斯"
+// 	},
+// 	"lol_Ahri": {
+// 		"message": "九尾妖狐",
+// 		"description": "九尾妖狐"
+// 	},
+// 	"lol_Ahri_title": {
+// 		"message": "九尾妖狐 阿狸",
+// 		"description": "九尾妖狐 阿狸"
+// 	},
+// 	"lol_Akali": {
+// 		"message": "离群之刺",
+// 		"description": "离群之刺"
+// 	},
+// 	"lol_Akali_title": {
+// 		"message": "离群之刺 阿卡丽",
+// 		"description": "离群之刺 阿卡丽"
+// 	},
+// 	"lol_Alistar": {
+// 		"message": "牛头酋长",
+// 		"description": "牛头酋长"
+// 	},
+// 	"lol_Alistar_title": {
+// 		"message": "牛头酋长 阿利斯塔",
+// 		"description": "牛头酋长 阿利斯塔"
+// 	},
+// 	"lol_Amumu": {
+// 		"message": "殇之木乃伊",
+// 		"description": "殇之木乃伊"
+// 	},
+// 	"lol_Amumu_title": {
+// 		"message": "殇之木乃伊 阿木木",
+// 		"description": "殇之木乃伊 阿木木"
+// 	},
+// 	"lol_Anivia": {
+// 		"message": "冰晶凤凰",
+// 		"description": "冰晶凤凰"
+// 	},
+// 	"lol_Anivia_title": {
+// 		"message": "冰晶凤凰 艾尼维亚",
+// 		"description": "冰晶凤凰 艾尼维亚"
+// 	},
+// 	"lol_Annie": {
+// 		"message": "黑暗之女",
+// 		"description": "黑暗之女"
+// 	},
+// 	"lol_Annie_title": {
+// 		"message": "黑暗之女 安妮",
+// 		"description": "黑暗之女 安妮"
+// 	},
+// 	"lol_Ashe": {
+// 		"message": "寒冰射手",
+// 		"description": "寒冰射手"
+// 	},
+// 	"lol_Ashe_title": {
+// 		"message": "寒冰射手 艾希",
+// 		"description": "寒冰射手 艾希"
+// 	},
+// 	"lol_AurelionSol": {
+// 		"message": "铸星龙王",
+// 		"description": "铸星龙王"
+// 	},
+// 	"lol_AurelionSol_title": {
+// 		"message": "铸星龙王 奥瑞利安·索尔",
+// 		"description": "铸星龙王 奥瑞利安·索尔"
+// 	},
+// 	"lol_Azir": {
+// 		"message": "沙漠皇帝",
+// 		"description": "沙漠皇帝"
+// 	},
+// 	"lol_Azir_title": {
+// 		"message": "沙漠皇帝 阿兹尔",
+// 		"description": "沙漠皇帝 阿兹尔"
+// 	},
+// 	"lol_Bard": {
+// 		"message": "星界游神",
+// 		"description": "星界游神"
+// 	},
+// 	"lol_Bard_title": {
+// 		"message": "星界游神 巴德",
+// 		"description": "星界游神 巴德"
+// 	},
+// 	"lol_Blitzcrank": {
+// 		"message": "蒸汽机器人",
+// 		"description": "蒸汽机器人"
+// 	},
+// 	"lol_Blitzcrank_title": {
+// 		"message": "蒸汽机器人 布里茨",
+// 		"description": "蒸汽机器人 布里茨"
+// 	},
+// 	"lol_Brand": {
+// 		"message": "复仇焰魂",
+// 		"description": "复仇焰魂"
+// 	},
+// 	"lol_Brand_title": {
+// 		"message": "复仇焰魂 布兰德",
+// 		"description": "复仇焰魂 布兰德"
+// 	},
+// 	"lol_Braum": {
+// 		"message": "弗雷尔卓德之心",
+// 		"description": "弗雷尔卓德之心"
+// 	},
+// 	"lol_Braum_title": {
+// 		"message": "弗雷尔卓德之心 布隆",
+// 		"description": "弗雷尔卓德之心 布隆"
+// 	},
+// 	"lol_Caitlyn": {
+// 		"message": "皮城女警",
+// 		"description": "皮城女警"
+// 	},
+// 	"lol_Caitlyn_title": {
+// 		"message": "皮城女警 凯特琳",
+// 		"description": "皮城女警 凯特琳"
+// 	},
+// 	"lol_Camille": {
+// 		"message": "青钢影",
+// 		"description": "青钢影"
+// 	},
+// 	"lol_Camille_title": {
+// 		"message": "青钢影 卡蜜尔",
+// 		"description": "青钢影 卡蜜尔"
+// 	},
+// 	"lol_Cassiopeia": {
+// 		"message": "魔蛇之拥",
+// 		"description": "魔蛇之拥"
+// 	},
+// 	"lol_Cassiopeia_title": {
+// 		"message": "魔蛇之拥 卡西奥佩娅",
+// 		"description": "魔蛇之拥 卡西奥佩娅"
+// 	},
+// 	"lol_Chogath": {
+// 		"message": "虚空恐惧",
+// 		"description": "虚空恐惧"
+// 	},
+// 	"lol_Chogath_title": {
+// 		"message": "虚空恐惧 科加斯",
+// 		"description": "虚空恐惧 科加斯"
+// 	},
+// 	"lol_Corki": {
+// 		"message": "英勇投弹手",
+// 		"description": "英勇投弹手"
+// 	},
+// 	"lol_Corki_title": {
+// 		"message": "英勇投弹手 库奇",
+// 		"description": "英勇投弹手 库奇"
+// 	},
+// 	"lol_Darius": {
+// 		"message": "诺克萨斯之手",
+// 		"description": "诺克萨斯之手"
+// 	},
+// 	"lol_Darius_title": {
+// 		"message": "诺克萨斯之手 德莱厄斯",
+// 		"description": "诺克萨斯之手 德莱厄斯"
+// 	},
+// 	"lol_Diana": {
+// 		"message": "皎月女神",
+// 		"description": "皎月女神"
+// 	},
+// 	"lol_Diana_title": {
+// 		"message": "皎月女神 黛安娜",
+// 		"description": "皎月女神 黛安娜"
+// 	},
+// 	"lol_Draven": {
+// 		"message": "荣耀行刑官",
+// 		"description": "荣耀行刑官"
+// 	},
+// 	"lol_Draven_title": {
+// 		"message": "荣耀行刑官 德莱文",
+// 		"description": "荣耀行刑官 德莱文"
+// 	},
+// 	"lol_DrMundo": {
+// 		"message": "祖安狂人",
+// 		"description": "祖安狂人"
+// 	},
+// 	"lol_DrMundo_title": {
+// 		"message": "祖安狂人 蒙多医生",
+// 		"description": "祖安狂人 蒙多医生"
+// 	},
+// 	"lol_Ekko": {
+// 		"message": "时间刺客",
+// 		"description": "时间刺客"
+// 	},
+// 	"lol_Ekko_title": {
+// 		"message": "时间刺客 艾克",
+// 		"description": "时间刺客 艾克"
+// 	},
+// 	"lol_Elise": {
+// 		"message": "蜘蛛女皇",
+// 		"description": "蜘蛛女皇"
+// 	},
+// 	"lol_Elise_title": {
+// 		"message": "蜘蛛女皇 伊莉丝",
+// 		"description": "蜘蛛女皇 伊莉丝"
+// 	},
+// 	"lol_Evelynn": {
+// 		"message": "痛苦之拥",
+// 		"description": "痛苦之拥"
+// 	},
+// 	"lol_Evelynn_title": {
+// 		"message": "痛苦之拥 伊芙琳",
+// 		"description": "痛苦之拥 伊芙琳"
+// 	},
+// 	"lol_Ezreal": {
+// 		"message": "探险家",
+// 		"description": "探险家"
+// 	},
+// 	"lol_Ezreal_title": {
+// 		"message": "探险家 伊泽瑞尔",
+// 		"description": "探险家 伊泽瑞尔"
+// 	},
+// 	"lol_Fiddlesticks": {
+// 		"message": "末日使者",
+// 		"description": "末日使者"
+// 	},
+// 	"lol_Fiddlesticks_title": {
+// 		"message": "末日使者 费德提克",
+// 		"description": "末日使者 费德提克"
+// 	},
+// 	"lol_Fiora": {
+// 		"message": "无双剑姬",
+// 		"description": "无双剑姬"
+// 	},
+// 	"lol_Fiora_title": {
+// 		"message": "无双剑姬 菲奥娜",
+// 		"description": "无双剑姬 菲奥娜"
+// 	},
+// 	"lol_Fizz": {
+// 		"message": "潮汐海灵",
+// 		"description": "潮汐海灵"
+// 	},
+// 	"lol_Fizz_title": {
+// 		"message": "潮汐海灵 菲兹",
+// 		"description": "潮汐海灵 菲兹"
+// 	},
+// 	"lol_Galio": {
+// 		"message": "正义巨像",
+// 		"description": "正义巨像"
+// 	},
+// 	"lol_Galio_title": {
+// 		"message": "正义巨像 加里奥",
+// 		"description": "正义巨像 加里奥"
+// 	},
+// 	"lol_Gangplank": {
+// 		"message": "海洋之灾",
+// 		"description": "海洋之灾"
+// 	},
+// 	"lol_Gangplank_title": {
+// 		"message": "海洋之灾 普朗克",
+// 		"description": "海洋之灾 普朗克"
+// 	},
+// 	"lol_Garen": {
+// 		"message": "德玛西亚之力",
+// 		"description": "德玛西亚之力"
+// 	},
+// 	"lol_Garen_title": {
+// 		"message": "德玛西亚之力 盖伦",
+// 		"description": "德玛西亚之力 盖伦"
+// 	},
+// 	"lol_Gnar": {
+// 		"message": "迷失之牙",
+// 		"description": "迷失之牙"
+// 	},
+// 	"lol_Gnar_title": {
+// 		"message": "迷失之牙 纳尔",
+// 		"description": "迷失之牙 纳尔"
+// 	},
+// 	"lol_Gragas": {
+// 		"message": "酒桶",
+// 		"description": "酒桶"
+// 	},
+// 	"lol_Gragas_title": {
+// 		"message": "酒桶 古拉加斯",
+// 		"description": "酒桶 古拉加斯"
+// 	},
+// 	"lol_Graves": {
+// 		"message": "法外狂徒",
+// 		"description": "法外狂徒"
+// 	},
+// 	"lol_Graves_title": {
+// 		"message": "法外狂徒 格雷福斯",
+// 		"description": "法外狂徒 格雷福斯"
+// 	},
+// 	"lol_Hecarim": {
+// 		"message": "战争之影",
+// 		"description": "战争之影"
+// 	},
+// 	"lol_Hecarim_title": {
+// 		"message": "战争之影 赫卡里姆",
+// 		"description": "战争之影 赫卡里姆"
+// 	},
+// 	"lol_Heimerdinger": {
+// 		"message": "大发明家",
+// 		"description": "大发明家"
+// 	},
+// 	"lol_Heimerdinger_title": {
+// 		"message": "大发明家 黑默丁格",
+// 		"description": "大发明家 黑默丁格"
+// 	},
+// 	"lol_Illaoi": {
+// 		"message": "海兽祭司",
+// 		"description": "海兽祭司"
+// 	},
+// 	"lol_Illaoi_title": {
+// 		"message": "海兽祭司 俄洛伊",
+// 		"description": "海兽祭司 俄洛伊"
+// 	},
+// 	"lol_Irelia": {
+// 		"message": "刀锋舞者",
+// 		"description": "刀锋舞者"
+// 	},
+// 	"lol_Irelia_title": {
+// 		"message": "刀锋舞者 艾瑞莉娅",
+// 		"description": "刀锋舞者 艾瑞莉娅"
+// 	},
+// 	"lol_Ivern": {
+// 		"message": "翠神",
+// 		"description": "翠神"
+// 	},
+// 	"lol_Ivern_title": {
+// 		"message": "翠神 艾翁",
+// 		"description": "翠神 艾翁"
+// 	},
+// 	"lol_Janna": {
+// 		"message": "风暴之怒",
+// 		"description": "风暴之怒"
+// 	},
+// 	"lol_Janna_title": {
+// 		"message": "风暴之怒 迦娜",
+// 		"description": "风暴之怒 迦娜"
+// 	},
+// 	"lol_JarvanIV": {
+// 		"message": "德玛西亚皇子",
+// 		"description": "德玛西亚皇子"
+// 	},
+// 	"lol_JarvanIV_title": {
+// 		"message": "德玛西亚皇子 嘉文四世",
+// 		"description": "德玛西亚皇子 嘉文四世"
+// 	},
+// 	"lol_Jax": {
+// 		"message": "武器大师",
+// 		"description": "武器大师"
+// 	},
+// 	"lol_Jax_title": {
+// 		"message": "武器大师 贾克斯",
+// 		"description": "武器大师 贾克斯"
+// 	},
+// 	"lol_Jayce": {
+// 		"message": "未来守护者",
+// 		"description": "未来守护者"
+// 	},
+// 	"lol_Jayce_title": {
+// 		"message": "未来守护者 杰斯",
+// 		"description": "未来守护者 杰斯"
+// 	},
+// 	"lol_Jhin": {
+// 		"message": "戏命师",
+// 		"description": "戏命师"
+// 	},
+// 	"lol_Jhin_title": {
+// 		"message": "戏命师 烬",
+// 		"description": "戏命师 烬"
+// 	},
+// 	"lol_Jinx": {
+// 		"message": "暴走萝莉",
+// 		"description": "暴走萝莉"
+// 	},
+// 	"lol_Jinx_title": {
+// 		"message": "暴走萝莉 金克丝",
+// 		"description": "暴走萝莉 金克丝"
+// 	},
+// 	"lol_Kaisa": {
+// 		"message": "虚空之女",
+// 		"description": "虚空之女"
+// 	},
+// 	"lol_Kaisa_title": {
+// 		"message": "虚空之女 卡莎",
+// 		"description": "虚空之女 卡莎"
+// 	},
+// 	"lol_Kalista": {
+// 		"message": "复仇之矛",
+// 		"description": "复仇之矛"
+// 	},
+// 	"lol_Kalista_title": {
+// 		"message": "复仇之矛 卡莉丝塔",
+// 		"description": "复仇之矛 卡莉丝塔"
+// 	},
+// 	"lol_Karma": {
+// 		"message": "天启者",
+// 		"description": "天启者"
+// 	},
+// 	"lol_Karma_title": {
+// 		"message": "天启者 卡尔玛",
+// 		"description": "天启者 卡尔玛"
+// 	},
+// 	"lol_Karthus": {
+// 		"message": "死亡颂唱者",
+// 		"description": "死亡颂唱者"
+// 	},
+// 	"lol_Karthus_title": {
+// 		"message": "死亡颂唱者 卡尔萨斯",
+// 		"description": "死亡颂唱者 卡尔萨斯"
+// 	},
+// 	"lol_Kassadin": {
+// 		"message": "虚空行者",
+// 		"description": "虚空行者"
+// 	},
+// 	"lol_Kassadin_title": {
+// 		"message": "虚空行者 卡萨丁",
+// 		"description": "虚空行者 卡萨丁"
+// 	},
+// 	"lol_Katarina": {
+// 		"message": "不祥之刃",
+// 		"description": "不祥之刃"
+// 	},
+// 	"lol_Katarina_title": {
+// 		"message": "不祥之刃 卡特琳娜",
+// 		"description": "不祥之刃 卡特琳娜"
+// 	},
+// 	"lol_Kayle": {
+// 		"message": "正义天使",
+// 		"description": "正义天使"
+// 	},
+// 	"lol_Kayle_title": {
+// 		"message": "正义天使 凯尔",
+// 		"description": "正义天使 凯尔"
+// 	},
+// 	"lol_Kayn": {
+// 		"message": "影流之镰",
+// 		"description": "影流之镰"
+// 	},
+// 	"lol_Kayn_title": {
+// 		"message": "影流之镰 凯隐",
+// 		"description": "影流之镰 凯隐"
+// 	},
+// 	"lol_Kennen": {
+// 		"message": "狂暴之心",
+// 		"description": "狂暴之心"
+// 	},
+// 	"lol_Kennen_title": {
+// 		"message": "狂暴之心 凯南",
+// 		"description": "狂暴之心 凯南"
+// 	},
+// 	"lol_Khazix": {
+// 		"message": "虚空掠夺者",
+// 		"description": "虚空掠夺者"
+// 	},
+// 	"lol_Khazix_title": {
+// 		"message": "虚空掠夺者 卡兹克",
+// 		"description": "虚空掠夺者 卡兹克"
+// 	},
+// 	"lol_Kindred": {
+// 		"message": "永猎双子",
+// 		"description": "永猎双子"
+// 	},
+// 	"lol_Kindred_title": {
+// 		"message": "永猎双子 千珏",
+// 		"description": "永猎双子 千珏"
+// 	},
+// 	"lol_Kled": {
+// 		"message": "暴怒骑士",
+// 		"description": "暴怒骑士"
+// 	},
+// 	"lol_Kled_title": {
+// 		"message": "暴怒骑士 克烈",
+// 		"description": "暴怒骑士 克烈"
+// 	},
+// 	"lol_KogMaw": {
+// 		"message": "深渊巨口",
+// 		"description": "深渊巨口"
+// 	},
+// 	"lol_KogMaw_title": {
+// 		"message": "深渊巨口 克格莫",
+// 		"description": "深渊巨口 克格莫"
+// 	},
+// 	"lol_Leblanc": {
+// 		"message": "诡术妖姬",
+// 		"description": "诡术妖姬"
+// 	},
+// 	"lol_Leblanc_title": {
+// 		"message": "诡术妖姬 乐芙兰",
+// 		"description": "诡术妖姬 乐芙兰"
+// 	},
+// 	"lol_LeeSin": {
+// 		"message": "盲僧",
+// 		"description": "盲僧"
+// 	},
+// 	"lol_LeeSin_title": {
+// 		"message": "盲僧 李青",
+// 		"description": "盲僧 李青"
+// 	},
+// 	"lol_Leona": {
+// 		"message": "曙光女神",
+// 		"description": "曙光女神"
+// 	},
+// 	"lol_Leona_title": {
+// 		"message": "曙光女神 蕾欧娜",
+// 		"description": "曙光女神 蕾欧娜"
+// 	},
+// 	"lol_Lissandra": {
+// 		"message": "冰霜女巫",
+// 		"description": "冰霜女巫"
+// 	},
+// 	"lol_Lissandra_title": {
+// 		"message": "冰霜女巫 丽桑卓",
+// 		"description": "冰霜女巫 丽桑卓"
+// 	},
+// 	"lol_Lucian": {
+// 		"message": "圣枪游侠",
+// 		"description": "圣枪游侠"
+// 	},
+// 	"lol_Lucian_title": {
+// 		"message": "圣枪游侠 卢锡安",
+// 		"description": "圣枪游侠 卢锡安"
+// 	},
+// 	"lol_Lulu": {
+// 		"message": "仙灵女巫",
+// 		"description": "仙灵女巫"
+// 	},
+// 	"lol_Lulu_title": {
+// 		"message": "仙灵女巫 璐璐",
+// 		"description": "仙灵女巫 璐璐"
+// 	},
+// 	"lol_Lux": {
+// 		"message": "光辉女郎",
+// 		"description": "光辉女郎"
+// 	},
+// 	"lol_Lux_title": {
+// 		"message": "光辉女郎 拉克丝",
+// 		"description": "光辉女郎 拉克丝"
+// 	},
+// 	"lol_Malphite": {
+// 		"message": "熔岩巨兽",
+// 		"description": "熔岩巨兽"
+// 	},
+// 	"lol_Malphite_title": {
+// 		"message": "熔岩巨兽 墨菲特",
+// 		"description": "熔岩巨兽 墨菲特"
+// 	},
+// 	"lol_Malzahar": {
+// 		"message": "虚空先知",
+// 		"description": "虚空先知"
+// 	},
+// 	"lol_Malzahar_title": {
+// 		"message": "虚空先知 玛尔扎哈",
+// 		"description": "虚空先知 玛尔扎哈"
+// 	},
+// 	"lol_Maokai": {
+// 		"message": "扭曲树精",
+// 		"description": "扭曲树精"
+// 	},
+// 	"lol_Maokai_title": {
+// 		"message": "扭曲树精 茂凯",
+// 		"description": "扭曲树精 茂凯"
+// 	},
+// 	"lol_MasterYi": {
+// 		"message": "无极剑圣",
+// 		"description": "无极剑圣"
+// 	},
+// 	"lol_MasterYi_title": {
+// 		"message": "无极剑圣 易",
+// 		"description": "无极剑圣 易"
+// 	},
+// 	"lol_MissFortune": {
+// 		"message": "赏金猎人",
+// 		"description": "赏金猎人"
+// 	},
+// 	"lol_MissFortune_title": {
+// 		"message": "赏金猎人 厄运小姐",
+// 		"description": "赏金猎人 厄运小姐"
+// 	},
+// 	"lol_MonkeyKing": {
+// 		"message": "齐天大圣",
+// 		"description": "齐天大圣"
+// 	},
+// 	"lol_MonkeyKing_title": {
+// 		"message": "齐天大圣 孙悟空",
+// 		"description": "齐天大圣 孙悟空"
+// 	},
+// 	"lol_Mordekaiser": {
+// 		"message": "铁铠冥魂",
+// 		"description": "铁铠冥魂"
+// 	},
+// 	"lol_Mordekaiser_title": {
+// 		"message": "铁铠冥魂 莫德凯撒",
+// 		"description": "铁铠冥魂 莫德凯撒"
+// 	},
+// 	"lol_Morgana": {
+// 		"message": "堕落天使",
+// 		"description": "堕落天使"
+// 	},
+// 	"lol_Morgana_title": {
+// 		"message": "堕落天使 莫甘娜",
+// 		"description": "堕落天使 莫甘娜"
+// 	},
+// 	"lol_Nami": {
+// 		"message": "唤潮鲛姬",
+// 		"description": "唤潮鲛姬"
+// 	},
+// 	"lol_Nami_title": {
+// 		"message": "唤潮鲛姬 娜美",
+// 		"description": "唤潮鲛姬 娜美"
+// 	},
+// 	"lol_Nasus": {
+// 		"message": "沙漠死神",
+// 		"description": "沙漠死神"
+// 	},
+// 	"lol_Nasus_title": {
+// 		"message": "沙漠死神 内瑟斯",
+// 		"description": "沙漠死神 内瑟斯"
+// 	},
+// 	"lol_Nautilus": {
+// 		"message": "深海泰坦",
+// 		"description": "深海泰坦"
+// 	},
+// 	"lol_Nautilus_title": {
+// 		"message": "深海泰坦 诺提勒斯",
+// 		"description": "深海泰坦 诺提勒斯"
+// 	},
+// 	"lol_Neeko": {
+// 		"message": "万花通灵",
+// 		"description": "万花通灵"
+// 	},
+// 	"lol_Neeko_title": {
+// 		"message": "万花通灵 妮蔻",
+// 		"description": "万花通灵 妮蔻"
+// 	},
+// 	"lol_Nidalee": {
+// 		"message": "狂野女猎手",
+// 		"description": "狂野女猎手"
+// 	},
+// 	"lol_Nidalee_title": {
+// 		"message": "狂野女猎手 奈德丽",
+// 		"description": "狂野女猎手 奈德丽"
+// 	},
+// 	"lol_Nocturne": {
+// 		"message": "永恒梦魇",
+// 		"description": "永恒梦魇"
+// 	},
+// 	"lol_Nocturne_title": {
+// 		"message": "永恒梦魇 魔腾",
+// 		"description": "永恒梦魇 魔腾"
+// 	},
+// 	"lol_Nunu": {
+// 		"message": "雪原双子",
+// 		"description": "雪原双子"
+// 	},
+// 	"lol_Nunu_title": {
+// 		"message": "雪原双子 努努和威朗普",
+// 		"description": "雪原双子 努努和威朗普"
+// 	},
+// 	"lol_Olaf": {
+// 		"message": "狂战士",
+// 		"description": "狂战士"
+// 	},
+// 	"lol_Olaf_title": {
+// 		"message": "狂战士 奥拉夫",
+// 		"description": "狂战士 奥拉夫"
+// 	},
+// 	"lol_Orianna": {
+// 		"message": "发条魔灵",
+// 		"description": "发条魔灵"
+// 	},
+// 	"lol_Orianna_title": {
+// 		"message": "发条魔灵 奥莉安娜",
+// 		"description": "发条魔灵 奥莉安娜"
+// 	},
+// 	"lol_Ornn": {
+// 		"message": "山隐之焰",
+// 		"description": "山隐之焰"
+// 	},
+// 	"lol_Ornn_title": {
+// 		"message": "山隐之焰 奥恩",
+// 		"description": "山隐之焰 奥恩"
+// 	},
+// 	"lol_Pantheon": {
+// 		"message": "战争之王",
+// 		"description": "战争之王"
+// 	},
+// 	"lol_Pantheon_title": {
+// 		"message": "战争之王 潘森",
+// 		"description": "战争之王 潘森"
+// 	},
+// 	"lol_Poppy": {
+// 		"message": "圣锤之毅",
+// 		"description": "圣锤之毅"
+// 	},
+// 	"lol_Poppy_title": {
+// 		"message": "圣锤之毅 波比",
+// 		"description": "圣锤之毅 波比"
+// 	},
+// 	"lol_Pyke": {
+// 		"message": "血港鬼影",
+// 		"description": "血港鬼影"
+// 	},
+// 	"lol_Pyke_title": {
+// 		"message": "血港鬼影 派克",
+// 		"description": "血港鬼影 派克"
+// 	},
+// 	"lol_Quinn": {
+// 		"message": "德玛西亚之翼",
+// 		"description": "德玛西亚之翼"
+// 	},
+// 	"lol_Quinn_title": {
+// 		"message": "德玛西亚之翼 奎因",
+// 		"description": "德玛西亚之翼 奎因"
+// 	},
+// 	"lol_Rakan": {
+// 		"message": "幻翎",
+// 		"description": "幻翎"
+// 	},
+// 	"lol_Rakan_title": {
+// 		"message": "幻翎 洛",
+// 		"description": "幻翎 洛"
+// 	},
+// 	"lol_Rammus": {
+// 		"message": "披甲龙龟",
+// 		"description": "披甲龙龟"
+// 	},
+// 	"lol_Rammus_title": {
+// 		"message": "披甲龙龟 拉莫斯",
+// 		"description": "披甲龙龟 拉莫斯"
+// 	},
+// 	"lol_RekSai": {
+// 		"message": "虚空遁地兽",
+// 		"description": "虚空遁地兽"
+// 	},
+// 	"lol_RekSai_title": {
+// 		"message": "虚空遁地兽 雷克塞",
+// 		"description": "虚空遁地兽 雷克塞"
+// 	},
+// 	"lol_Renekton": {
+// 		"message": "荒漠屠夫",
+// 		"description": "荒漠屠夫"
+// 	},
+// 	"lol_Renekton_title": {
+// 		"message": "荒漠屠夫 雷克顿",
+// 		"description": "荒漠屠夫 雷克顿"
+// 	},
+// 	"lol_Rengar": {
+// 		"message": "傲之追猎者",
+// 		"description": "傲之追猎者"
+// 	},
+// 	"lol_Rengar_title": {
+// 		"message": "傲之追猎者 雷恩加尔",
+// 		"description": "傲之追猎者 雷恩加尔"
+// 	},
+// 	"lol_Riven": {
+// 		"message": "放逐之刃",
+// 		"description": "放逐之刃"
+// 	},
+// 	"lol_Riven_title": {
+// 		"message": "放逐之刃 锐雯",
+// 		"description": "放逐之刃 锐雯"
+// 	},
+// 	"lol_Rumble": {
+// 		"message": "机械公敌",
+// 		"description": "机械公敌"
+// 	},
+// 	"lol_Rumble_title": {
+// 		"message": "机械公敌 兰博",
+// 		"description": "机械公敌 兰博"
+// 	},
+// 	"lol_Ryze": {
+// 		"message": "符文法师",
+// 		"description": "符文法师"
+// 	},
+// 	"lol_Ryze_title": {
+// 		"message": "符文法师 瑞兹",
+// 		"description": "符文法师 瑞兹"
+// 	},
+// 	"lol_Sejuani": {
+// 		"message": "北地之怒",
+// 		"description": "北地之怒"
+// 	},
+// 	"lol_Sejuani_title": {
+// 		"message": "北地之怒 瑟庄妮",
+// 		"description": "北地之怒 瑟庄妮"
+// 	},
+// 	"lol_Shaco": {
+// 		"message": "恶魔小丑",
+// 		"description": "恶魔小丑"
+// 	},
+// 	"lol_Shaco_title": {
+// 		"message": "恶魔小丑 萨科",
+// 		"description": "恶魔小丑 萨科"
+// 	},
+// 	"lol_Shen": {
+// 		"message": "暮光之眼",
+// 		"description": "暮光之眼"
+// 	},
+// 	"lol_Shen_title": {
+// 		"message": "暮光之眼 慎",
+// 		"description": "暮光之眼 慎"
+// 	},
+// 	"lol_Shyvana": {
+// 		"message": "龙血武姬",
+// 		"description": "龙血武姬"
+// 	},
+// 	"lol_Shyvana_title": {
+// 		"message": "龙血武姬 希瓦娜",
+// 		"description": "龙血武姬 希瓦娜"
+// 	},
+// 	"lol_Singed": {
+// 		"message": "炼金术士",
+// 		"description": "炼金术士"
+// 	},
+// 	"lol_Singed_title": {
+// 		"message": "炼金术士 辛吉德",
+// 		"description": "炼金术士 辛吉德"
+// 	},
+// 	"lol_Sion": {
+// 		"message": "亡灵战神",
+// 		"description": "亡灵战神"
+// 	},
+// 	"lol_Sion_title": {
+// 		"message": "亡灵战神 赛恩",
+// 		"description": "亡灵战神 赛恩"
+// 	},
+// 	"lol_Sivir": {
+// 		"message": "战争女神",
+// 		"description": "战争女神"
+// 	},
+// 	"lol_Sivir_title": {
+// 		"message": "战争女神 希维尔",
+// 		"description": "战争女神 希维尔"
+// 	},
+// 	"lol_Skarner": {
+// 		"message": "水晶先锋",
+// 		"description": "水晶先锋"
+// 	},
+// 	"lol_Skarner_title": {
+// 		"message": "水晶先锋 斯卡纳",
+// 		"description": "水晶先锋 斯卡纳"
+// 	},
+// 	"lol_Sona": {
+// 		"message": "琴瑟仙女",
+// 		"description": "琴瑟仙女"
+// 	},
+// 	"lol_Sona_title": {
+// 		"message": "琴瑟仙女 娑娜",
+// 		"description": "琴瑟仙女 娑娜"
+// 	},
+// 	"lol_Soraka": {
+// 		"message": "众星之子",
+// 		"description": "众星之子"
+// 	},
+// 	"lol_Soraka_title": {
+// 		"message": "众星之子 索拉卡",
+// 		"description": "众星之子 索拉卡"
+// 	},
+// 	"lol_Swain": {
+// 		"message": "诺克萨斯统领",
+// 		"description": "诺克萨斯统领"
+// 	},
+// 	"lol_Swain_title": {
+// 		"message": "诺克萨斯统领 斯维因",
+// 		"description": "诺克萨斯统领 斯维因"
+// 	},
+// 	"lol_Sylas": {
+// 		"message": "解脱者",
+// 		"description": "解脱者"
+// 	},
+// 	"lol_Sylas_title": {
+// 		"message": "解脱者 塞拉斯",
+// 		"description": "解脱者 塞拉斯"
+// 	},
+// 	"lol_Syndra": {
+// 		"message": "暗黑元首",
+// 		"description": "暗黑元首"
+// 	},
+// 	"lol_Syndra_title": {
+// 		"message": "暗黑元首 辛德拉",
+// 		"description": "暗黑元首 辛德拉"
+// 	},
+// 	"lol_TahmKench": {
+// 		"message": "河流之王",
+// 		"description": "河流之王"
+// 	},
+// 	"lol_TahmKench_title": {
+// 		"message": "河流之王 塔姆",
+// 		"description": "河流之王 塔姆"
+// 	},
+// 	"lol_Taliyah": {
+// 		"message": "岩雀",
+// 		"description": "岩雀"
+// 	},
+// 	"lol_Taliyah_title": {
+// 		"message": "岩雀 塔莉垭",
+// 		"description": "岩雀 塔莉垭"
+// 	},
+// 	"lol_Talon": {
+// 		"message": "刀锋之影",
+// 		"description": "刀锋之影"
+// 	},
+// 	"lol_Talon_title": {
+// 		"message": "刀锋之影 泰隆",
+// 		"description": "刀锋之影 泰隆"
+// 	},
+// 	"lol_Taric": {
+// 		"message": "瓦洛兰之盾",
+// 		"description": "瓦洛兰之盾"
+// 	},
+// 	"lol_Taric_title": {
+// 		"message": "瓦洛兰之盾 塔里克",
+// 		"description": "瓦洛兰之盾 塔里克"
+// 	},
+// 	"lol_Teemo": {
+// 		"message": "迅捷斥候",
+// 		"description": "迅捷斥候"
+// 	},
+// 	"lol_Teemo_title": {
+// 		"message": "迅捷斥候 提莫",
+// 		"description": "迅捷斥候 提莫"
+// 	},
+// 	"lol_Thresh": {
+// 		"message": "魂锁典狱长",
+// 		"description": "魂锁典狱长"
+// 	},
+// 	"lol_Thresh_title": {
+// 		"message": "魂锁典狱长 锤石",
+// 		"description": "魂锁典狱长 锤石"
+// 	},
+// 	"lol_Tristana": {
+// 		"message": "麦林炮手",
+// 		"description": "麦林炮手"
+// 	},
+// 	"lol_Tristana_title": {
+// 		"message": "麦林炮手 崔丝塔娜",
+// 		"description": "麦林炮手 崔丝塔娜"
+// 	},
+// 	"lol_Trundle": {
+// 		"message": "巨魔之王",
+// 		"description": "巨魔之王"
+// 	},
+// 	"lol_Trundle_title": {
+// 		"message": "巨魔之王 特朗德尔",
+// 		"description": "巨魔之王 特朗德尔"
+// 	},
+// 	"lol_Tryndamere": {
+// 		"message": "蛮族之王",
+// 		"description": "蛮族之王"
+// 	},
+// 	"lol_Tryndamere_title": {
+// 		"message": "蛮族之王 泰达米尔",
+// 		"description": "蛮族之王 泰达米尔"
+// 	},
+// 	"lol_TwistedFate": {
+// 		"message": "卡牌大师",
+// 		"description": "卡牌大师"
+// 	},
+// 	"lol_TwistedFate_title": {
+// 		"message": "卡牌大师 崔斯特",
+// 		"description": "卡牌大师 崔斯特"
+// 	},
+// 	"lol_Twitch": {
+// 		"message": "瘟疫之源",
+// 		"description": "瘟疫之源"
+// 	},
+// 	"lol_Twitch_title": {
+// 		"message": "瘟疫之源 图奇",
+// 		"description": "瘟疫之源 图奇"
+// 	},
+// 	"lol_Udyr": {
+// 		"message": "兽灵行者",
+// 		"description": "兽灵行者"
+// 	},
+// 	"lol_Udyr_title": {
+// 		"message": "兽灵行者 乌迪尔",
+// 		"description": "兽灵行者 乌迪尔"
+// 	},
+// 	"lol_Urgot": {
+// 		"message": "无畏战车",
+// 		"description": "无畏战车"
+// 	},
+// 	"lol_Urgot_title": {
+// 		"message": "无畏战车 厄加特",
+// 		"description": "无畏战车 厄加特"
+// 	},
+// 	"lol_Varus": {
+// 		"message": "惩戒之箭",
+// 		"description": "惩戒之箭"
+// 	},
+// 	"lol_Varus_title": {
+// 		"message": "惩戒之箭 韦鲁斯",
+// 		"description": "惩戒之箭 韦鲁斯"
+// 	},
+// 	"lol_Vayne": {
+// 		"message": "暗夜猎手",
+// 		"description": "暗夜猎手"
+// 	},
+// 	"lol_Vayne_title": {
+// 		"message": "暗夜猎手 薇恩",
+// 		"description": "暗夜猎手 薇恩"
+// 	},
+// 	"lol_Veigar": {
+// 		"message": "邪恶小法师",
+// 		"description": "邪恶小法师"
+// 	},
+// 	"lol_Veigar_title": {
+// 		"message": "邪恶小法师 维迦",
+// 		"description": "邪恶小法师 维迦"
+// 	},
+// 	"lol_Velkoz": {
+// 		"message": "虚空之眼",
+// 		"description": "虚空之眼"
+// 	},
+// 	"lol_Velkoz_title": {
+// 		"message": "虚空之眼 维克兹",
+// 		"description": "虚空之眼 维克兹"
+// 	},
+// 	"lol_Vi": {
+// 		"message": "皮城执法官",
+// 		"description": "皮城执法官"
+// 	},
+// 	"lol_Vi_title": {
+// 		"message": "皮城执法官 蔚",
+// 		"description": "皮城执法官 蔚"
+// 	},
+// 	"lol_Viktor": {
+// 		"message": "机械先驱",
+// 		"description": "机械先驱"
+// 	},
+// 	"lol_Viktor_title": {
+// 		"message": "机械先驱 维克托",
+// 		"description": "机械先驱 维克托"
+// 	},
+// 	"lol_Vladimir": {
+// 		"message": "猩红收割者",
+// 		"description": "猩红收割者"
+// 	},
+// 	"lol_Vladimir_title": {
+// 		"message": "猩红收割者 弗拉基米尔",
+// 		"description": "猩红收割者 弗拉基米尔"
+// 	},
+// 	"lol_Volibear": {
+// 		"message": "雷霆咆哮",
+// 		"description": "雷霆咆哮"
+// 	},
+// 	"lol_Volibear_title": {
+// 		"message": "雷霆咆哮 沃利贝尔",
+// 		"description": "雷霆咆哮 沃利贝尔"
+// 	},
+// 	"lol_Warwick": {
+// 		"message": "祖安怒兽",
+// 		"description": "祖安怒兽"
+// 	},
+// 	"lol_Warwick_title": {
+// 		"message": "祖安怒兽 沃里克",
+// 		"description": "祖安怒兽 沃里克"
+// 	},
+// 	"lol_Xayah": {
+// 		"message": "逆羽",
+// 		"description": "逆羽"
+// 	},
+// 	"lol_Xayah_title": {
+// 		"message": "逆羽 霞",
+// 		"description": "逆羽 霞"
+// 	},
+// 	"lol_Xerath": {
+// 		"message": "远古巫灵",
+// 		"description": "远古巫灵"
+// 	},
+// 	"lol_Xerath_title": {
+// 		"message": "远古巫灵 泽拉斯",
+// 		"description": "远古巫灵 泽拉斯"
+// 	},
+// 	"lol_XinZhao": {
+// 		"message": "德邦总管",
+// 		"description": "德邦总管"
+// 	},
+// 	"lol_XinZhao_title": {
+// 		"message": "德邦总管 赵信",
+// 		"description": "德邦总管 赵信"
+// 	},
+// 	"lol_Yasuo": {
+// 		"message": "疾风剑豪",
+// 		"description": "疾风剑豪"
+// 	},
+// 	"lol_Yasuo_title": {
+// 		"message": "疾风剑豪 亚索",
+// 		"description": "疾风剑豪 亚索"
+// 	},
+// 	"lol_Yorick": {
+// 		"message": "牧魂人",
+// 		"description": "牧魂人"
+// 	},
+// 	"lol_Yorick_title": {
+// 		"message": "牧魂人 约里克",
+// 		"description": "牧魂人 约里克"
+// 	},
+// 	"lol_Zac": {
+// 		"message": "生化魔人",
+// 		"description": "生化魔人"
+// 	},
+// 	"lol_Zac_title": {
+// 		"message": "生化魔人 扎克",
+// 		"description": "生化魔人 扎克"
+// 	},
+// 	"lol_Zed": {
+// 		"message": "影流之主",
+// 		"description": "影流之主"
+// 	},
+// 	"lol_Zed_title": {
+// 		"message": "影流之主 劫",
+// 		"description": "影流之主 劫"
+// 	},
+// 	"lol_Ziggs": {
+// 		"message": "爆破鬼才",
+// 		"description": "爆破鬼才"
+// 	},
+// 	"lol_Ziggs_title": {
+// 		"message": "爆破鬼才 吉格斯",
+// 		"description": "爆破鬼才 吉格斯"
+// 	},
+// 	"lol_Zilean": {
+// 		"message": "时光守护者",
+// 		"description": "时光守护者"
+// 	},
+// 	"lol_Zilean_title": {
+// 		"message": "时光守护者 基兰",
+// 		"description": "时光守护者 基兰"
+// 	},
+// 	"lol_Zoe": {
+// 		"message": "暮光星灵",
+// 		"description": "暮光星灵"
+// 	},
+// 	"lol_Zoe_title": {
+// 		"message": "暮光星灵 佐伊",
+// 		"description": "暮光星灵 佐伊"
+// 	},
+// 	"lol_Zyra": {
+// 		"message": "荆棘之兴",
+// 		"description": "荆棘之兴"
+// 	},
+// 	"lol_Zyra_title": {
+// 		"message": "荆棘之兴 婕拉",
+// 		"description": "荆棘之兴 婕拉"
+// 	},
+// 	"lol_Yuumi": {
+// 		"message": "魔法猫咪",
+// 		"description": "魔法猫咪"
+// 	},
+// 	"lol_Yuumi_title": {
+// 		"message": "魔法猫咪 悠米",
+// 		"description": "魔法猫咪 悠米"
+// 	},
+// 	"lol_Qiyana": {
+// 		"message": "元素女皇",
+// 		"description": "元素女皇"
+// 	},
+// 	"lol_Qiyana_title": {
+// 		"message": "元素女皇 奇亚娜",
+// 		"description": "元素女皇 奇亚娜"
+// 	},
+// 	"lol_Senna": {
+// 		"message": "涤魂圣枪",
+// 		"description": "涤魂圣枪"
+// 	},
+// 	"lol_Senna_title": {
+// 		"message": "涤魂圣枪 赛娜",
+// 		"description": "涤魂圣枪 赛娜"
+// 	},
+// 	"lol_Aphelios": {
+// 		"message": "残月之肃",
+// 		"description": "残月之肃"
+// 	},
+// 	"lol_Aphelios_title": {
+// 		"message": "残月之肃 厄斐琉斯",
+// 		"description": "残月之肃 厄斐琉斯"
+// 	},
+// 	"lol_Sett": {
+// 		"message": "腕豪",
+// 		"description": "腕豪"
+// 	},
+// 	"lol_Sett_title": {
+// 		"message": "腕豪 瑟提",
+// 		"description": "腕豪 瑟提"
+// 	},
+//"lol_Nilah": {
+//		"message": "尼菈",
+//		"description": "不羁之悦 尼菈"
+//	},
+//	"lol_Nilah_title": {
+//		"message": "不羁之悦 尼菈",
+//		"description": "不羁之悦 尼菈"
+//	}

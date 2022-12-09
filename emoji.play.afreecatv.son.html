@@ -1,0 +1,2391 @@
+<meta http-equiv="Access-Control-Allow-Origin" content="*">
+<div class="my_test" id="my_test">
+	<script id="myScript" type="text/javascript">
+	</script>
+	<!--    let urlPath='https://stimg-cf.afreecatv.com/LOGO/ac/actret/actret.jpg';
+
+     $('body').css('background','url('+urlPath+')').css('background-size','100%').css('background-repeat','no-repeat').css('height','100%').css('width','100%'); -->
+
+
+	<!-- <div id="startDivId" class="startDivId" style="border: 2px blue solid;"> -->
+	<!-- 启动按钮 -->
+	<button onclick='testStart();'>test</button>
+	<button class="startButtonId" id="startButtonId" onclick="testStart()">start</button>
+
+
+	<div id="myDiv" style="overflow: scroll;">
+
+		<!--            contenteditable="true"-->
+		<div id="mainFaceDiv">
+			<h1 style="width: 100%; text-align: center; color: yellow; font-size: large;">
+				google emoji</h1>
+			<div id="mainFace">
+				<div class="tabbable">
+					<ul class="nav nav-tabs">
+						<li class="active" id="face-people-controller"><a href="#face-people" data-toggle="tab">
+								<!-- <h2>人物符号</h2> -->
+								사람들이 기호
+							</a></li>
+						<li id="object-controller"><a href="#object" data-toggle="tab">
+								<!-- <h2>物件符号</h2> -->
+								개체 기호
+							</a></li>
+						<li id="nature-animal-controller"><a href="#nature-animal" data-toggle="tab">
+								<!-- <h2>动物大自然</h2> -->
+								동물 및 자연
+							</a></li>
+						<li id="travel-activity-controller"><a href="#travel-activity" data-toggle="tab">
+								<!-- <h2>地点符号</h2> -->
+								장소 기호
+						<li id="symbol-controller"><a href="#symbol" data-toggle="tab">
+								<!-- <h2>特殊符号</h2> -->
+								특수 기호
+							</a></li>
+						<li id="other-controller"><a href="#other" data-toggle="tab">
+								<!-- <h2>隐藏符号</h2> -->
+								숨겨진 기호
+							</a></li>
+						<li id="activity-controller"><a href="#activity" data-toggle="tab">
+								<!-- <h2>活动</h2> -->
+								활동
+							</a></li>
+						<li id="flags-controller"><a href="#flags" data-toggle="tab">
+								<!-- <h2>旗帜</h2> -->
+								깃발
+							</a></li>
+					</ul>
+					<div class="tab-content">
+						<div class="tab-pane active" id="face-people">
+							<img alt='🥰' src='https://afubaba.github.io/Afreecatv/img/emoji/1f970.webp' /><img alt='🥲'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f972.webp' /><img alt='🤪'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f92a.webp' /><img alt='🥸'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f978.webp' /><img alt='🧐'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f9d0.webp' /><img alt='🥳'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f973.webp' /><img alt='🤨'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f928.webp' /><img alt='🤫'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f92b.webp' /><img alt='🤭'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f92d.webp' /><img alt='🤬'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f92c.webp' /><img alt='🥺'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f97a.webp' /><img alt='🥱'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f971.webp' /><img alt='🤩'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f929.webp' /><img alt='🥴'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f974.webp' /><img alt='🤯'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f92f.webp' /><img alt='🤮'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f92e.webp' /><img alt='🥵'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f975.webp' /><img alt='🥶'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f976.webp' /><img alt='🤲'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f932.webp' /><img alt='🤟'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f91f.webp' /><img alt='🤌'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f90c.webp' /><img alt='🤏'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f90f.webp' /><img alt='🦾'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f9be.webp' /><img alt='🦵'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f9b5.webp' /><img alt='🦿'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f9bf.webp' /><img alt='🦶'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f9b6.webp' /><img alt='🦷'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f9b7.webp' /><img alt='🦻'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f9bb.webp' /><img alt='🧠'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f9e0.webp' /><img alt='🫀'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1fac0.webp' /><img alt='🫁'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1fac1.webp' /><img alt='🦴'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f9b4.webp' /><img alt='🫂'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1fac2.webp' /><img alt='🧒'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f9d2.webp' /><img alt='🧑'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f9d1.webp' /><img alt='👩‍🦱'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f469-200d-1f9b1.webp' /><img
+								alt='🧑‍🦱'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f9d1-200d-1f9b1.webp' /><img
+								alt='👨‍🦱'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f468-200d-1f9b1.webp' /><img
+								alt='👩‍🦰'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f469-200d-1f9b0.webp' /><img
+								alt='🧑‍🦰'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f9d1-200d-1f9b0.webp' /><img
+								alt='👨‍🦰'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f468-200d-1f9b0.webp' /><img
+								alt='👱‍♀️'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f471-200d-2640-fe0f.webp' /><img
+								alt='👱‍♂️'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f471-200d-2642-fe0f.webp' /><img
+								alt='👩‍🦳'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f469-200d-1f9b3.webp' /><img
+								alt='👨‍🦳'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f468-200d-1f9b3.webp' /><img
+								alt='👩‍🦲'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f469-200d-1f9b2.webp' /><img
+								alt='👨‍🦲'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f468-200d-1f9b2.webp' /><img
+								alt='🧔' src='https://afubaba.github.io/Afreecatv/img/emoji/1f9d4.webp' /><img alt='🧓'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f9d3.webp' /><img alt='👳‍♀️'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f473-200d-2640-fe0f.webp' /><img
+								alt='👳‍♂️'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f473-200d-2642-fe0f.webp' /><img
+								alt='🧕' src='https://afubaba.github.io/Afreecatv/img/emoji/1f9d5.webp' /><img alt='🤱'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f931.webp' /><img alt='👩‍🍼'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f469-200d-1f37c.webp' /><img
+								alt='🧑‍🍼'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f9d1-200d-1f37c.webp' /><img
+								alt='👨‍🍼'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f468-200d-1f37c.webp' /><img
+								alt='🙇‍♀️'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f647-200d-2640-fe0f.webp' /><img
+								alt='🙇‍♂️'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f647-200d-2642-fe0f.webp' /><img
+								alt='💁‍♀️'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f481-200d-2640-fe0f.webp' /><img
+								alt='💁‍♂️'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f481-200d-2642-fe0f.webp' /><img
+								alt='🙅‍♀️'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f645-200d-2640-fe0f.webp' /><img
+								alt='🙅‍♂️'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f645-200d-2642-fe0f.webp' /><img
+								alt='🙆‍♀️'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f646-200d-2640-fe0f.webp' /><img
+								alt='🙆‍♂️'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f646-200d-2642-fe0f.webp' /><img
+								alt='🤷‍♀️'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f937-200d-2640-fe0f.webp' /><img
+								alt='🤷‍♂️'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f937-200d-2642-fe0f.webp' /><img
+								alt='🙋‍♀️'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f64b-200d-2640-fe0f.webp' /><img
+								alt='🙋‍♂️'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f64b-200d-2642-fe0f.webp' /><img
+								alt='🤦‍♀️'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f926-200d-2640-fe0f.webp' /><img
+								alt='🤦‍♂️'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f926-200d-2642-fe0f.webp' /><img
+								alt='🧏‍♀️'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f9cf-200d-2640-fe0f.webp' /><img
+								alt='🧏' src='https://afubaba.github.io/Afreecatv/img/emoji/1f9cf.webp' /><img
+								alt='🧏‍♂️'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f9cf-200d-2642-fe0f.webp' /><img
+								alt='🙎‍♀️'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f64e-200d-2640-fe0f.webp' /><img
+								alt='🙎‍♂️'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f64e-200d-2642-fe0f.webp' /><img
+								alt='🙍‍♀️'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f64d-200d-2640-fe0f.webp' /><img
+								alt='🙍‍♂️'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f64d-200d-2642-fe0f.webp' /><img
+								alt='👩‍❤️‍👨'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f469-200d-2764-fe0f-200d-1f468.webp' /><img
+								alt='👩‍❤️‍👩'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f469-200d-2764-fe0f-200d-1f469.webp' /><img
+								alt='👨‍❤️‍👨'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f468-200d-2764-fe0f-200d-1f468.webp' /><img
+								alt='👩‍❤️‍💋‍👨'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f469-200d-2764-fe0f-200d-1f48b-200d-1f468.webp' /><img
+								alt='👩‍❤️‍💋‍👩'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f469-200d-2764-fe0f-200d-1f48b-200d-1f469.webp' /><img
+								alt='👨‍❤️‍💋‍👨'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f468-200d-2764-fe0f-200d-1f48b-200d-1f468.webp' /><img
+								alt='🧡' src='https://afubaba.github.io/Afreecatv/img/emoji/1f9e1.webp' /><img alt='🤎'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f90e.webp' /><img alt='🤍'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f90d.webp' /><img alt='😀'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f600.webp' /><img alt='😁'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f601.webp' /><img alt='😂'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f602.webp' /><img alt='😃'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f603.webp' /><img alt='😄'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f604.webp' /><img alt='😅'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f605.webp' /><img alt='😆'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f606.webp' /><img alt='😉'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f609.webp' /><img alt='😊'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f60a.webp' /><img alt='😋'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f60b.webp' /><img alt='😎'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f60e.webp' /><img alt='😍'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f60d.webp' /><img alt='😘'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f618.webp' /><img alt='😗'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f617.webp' /><img alt='😙'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f619.webp' /><img alt='😚'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f61a.webp' /><img alt='☺'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/263a.webp' /><img alt='🙂'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f642.webp' /><img alt='🤗'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f917.webp' /><img alt='😇'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f607.webp' /><img alt='🤔'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f914.webp' /><img alt='😐'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f610.webp' /><img alt='😑'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f611.webp' /><img alt='😶'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f636.webp' /><img alt='🙄'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f644.webp' /><img alt='😏'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f60f.webp' /><img alt='😣'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f623.webp' /><img alt='😥'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f625.webp' /><img alt='😮'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f62e.webp' /><img alt='🤐'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f910.webp' /><img alt='😯'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f62f.webp' /><img alt='😪'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f62a.webp' /><img alt='😫'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f62b.webp' /><img alt='😴'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f634.webp' /><img alt='😌'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f60c.webp' /><img alt='🤓'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f913.webp' /><img alt='😛'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f61b.webp' /><img alt='😜'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f61c.webp' /><img alt='😝'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f61d.webp' /><img alt='🙁'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f641.webp' /><img alt='😒'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f612.webp' /><img alt='😓'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f613.webp' /><img alt='😔'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f614.webp' /><img alt='😕'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f615.webp' /><img alt='😖'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f616.webp' /><img alt='🙃'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f643.webp' /><img alt='😷'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f637.webp' /><img alt='🤒'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f912.webp' /><img alt='🤕'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f915.webp' /><img alt='🤑'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f911.webp' /><img alt='😲'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f632.webp' /><img alt='😞'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f61e.webp' /><img alt='😟'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f61f.webp' /><img alt='😤'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f624.webp' /><img alt='😢'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f622.webp' /><img alt='😭'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f62d.webp' /><img alt='😦'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f626.webp' /><img alt='😧'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f627.webp' /><img alt='😨'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f628.webp' /><img alt='😩'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f629.webp' /><img alt='😬'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f62c.webp' /><img alt='😰'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f630.webp' /><img alt='😱'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f631.webp' /><img alt='😳'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f633.webp' /><img alt='😵'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f635.webp' /><img alt='😡'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f621.webp' /><img alt='😠'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f620.webp' /><img alt='😈'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f608.webp' /><img alt='👿'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f47f.webp' /><img alt='👹'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f479.webp' /><img alt='👺'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f47a.webp' /><img alt='💀'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f480.webp' /><img alt='👻'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f47b.webp' /><img alt='👽'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f47d.webp' /><img alt='👾'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f47e.webp' /><img alt='🤖'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f916.webp' /><img alt='💩'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f4a9.webp' /><img alt='😺'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f63a.webp' /><img alt='😸'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f638.webp' /><img alt='😹'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f639.webp' /><img alt='😻'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f63b.webp' /><img alt='😼'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f63c.webp' /><img alt='😽'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f63d.webp' /><img alt='🙀'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f640.webp' /><img alt='😿'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f63f.webp' /><img alt='😾'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f63e.webp' /><img alt='🙈'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f648.webp' /><img alt='🙉'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f649.webp' /><img alt='🙊'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f64a.webp' /><img alt='👦'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f466.webp' /><img alt='👧'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f467.webp' /><img alt='👨'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f468.webp' /><img alt='👩'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f469.webp' /><img alt='👴'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f474.webp' /><img alt='👵'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f475.webp' /><img alt='👶'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f476.webp' /><img alt='👱'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f471.webp' /><img alt='👮'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f46e.webp' /><img alt='👲'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f472.webp' /><img alt='👳'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f473.webp' /><img alt='👷'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f477.webp' /><img alt='👸'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f478.webp' /><img alt='💂'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f482.webp' /><img alt='🕵'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f575.webp' /><img alt='🎅'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f385.webp' /><img alt='👼'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f47c.webp' /><img alt='👯'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f46f.webp' /><img alt='💆'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f486.webp' /><img alt='💇'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f487.webp' /><img alt='👰'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f470.webp' /><img alt='🙍'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f64d.webp' /><img alt='🙎'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f64e.webp' /><img alt='🙅'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f645.webp' /><img alt='🙆'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f646.webp' /><img alt='💁'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f481.webp' /><img alt='🙋'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f64b.webp' /><img alt='🙇'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f647.webp' /><img alt='🙌'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f64c.webp' /><img alt='🙏'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f64f.webp' /><img alt='🗣'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f5e3.webp' /><img alt='👤'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f464.webp' /><img alt='👥'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f465.webp' /><img alt='🚶'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f6b6.webp' /><img alt='🏃'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f3c3.webp' /><img alt='💃'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f483.webp' /><img alt='🕴'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f574.webp' /><img alt='👫'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f46b.webp' /><img alt='👬'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f46c.webp' /><img alt='👭'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f46d.webp' /><img alt='💏'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f48f.webp' /><img alt='💑'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f491.webp' /><img alt='👪'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f46a.webp' /><img alt='💪'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f4aa.webp' /><img alt='👈'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f448.webp' /><img alt='👉'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f449.webp' /><img alt='☝'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/261d.webp' /><img alt='👆'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f446.webp' /><img alt='🖕'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f595.webp' /><img alt='👇'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f447.webp' /><img alt='✌'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/270c.webp' /><img alt='🖖'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f596.webp' /><img alt='🤘'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f918.webp' /><img alt='🖐'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f590.webp' /><img alt='✊'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/270a.webp' /><img alt='✋'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/270b.webp' /><img alt='👊'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f44a.webp' /><img alt='👌'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f44c.webp' /><img alt='👍'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f44d.webp' /><img alt='👎'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f44e.webp' /><img alt='👋'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f44b.webp' /><img alt='👏'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f44f.webp' /><img alt='👐'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f450.webp' /><img alt='💅'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f485.webp' /><img alt='👂'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f442.webp' /><img alt='👃'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f443.webp' /><img alt='👣'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f463.webp' /><img alt='👀'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f440.webp' /><img alt='👁'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f441.webp' /><img alt='👅'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f445.webp' /><img alt='👄'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f444.webp' /><img alt='💋'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f48b.webp' /><img alt='💘'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f498.webp' /><img alt='❤'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/2764.webp' /><img alt='💓'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f493.webp' /><img alt='💔'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f494.webp' /><img alt='💕'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f495.webp' /><img alt='💖'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f496.webp' /><img alt='💗'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f497.webp' /><img alt='💙'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f499.webp' /><img alt='💚'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f49a.webp' /><img alt='💛'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f49b.webp' /><img alt='💜'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f49c.webp' /><img alt='💝'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f49d.webp' /><img alt='💞'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f49e.webp' /><img alt='💟'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f49f.webp' /><img alt='💌'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f48c.webp' /><img alt='💤'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f4a4.webp' /><img alt='💢'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f4a2.webp' /><img alt='💣'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f4a3.webp' /><img alt='💥'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f4a5.webp' /><img alt='💦'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f4a6.webp' /><img alt='💨'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f4a8.webp' /><img alt='💫'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f4ab.webp' /><img alt='💬'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f4ac.webp' /><img alt='🗨'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f5e8.webp' /><img alt='🗯'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f5ef.webp' /><img alt='💭'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f4ad.webp' /><img alt='🕳'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f573.webp' /><img alt='👓'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f453.webp' /><img alt='🕶'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f576.webp' /><img alt='👔'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f454.webp' /><img alt='👕'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f455.webp' /><img alt='👖'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f456.webp' /><img alt='👗'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f457.webp' /><img alt='👘'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f458.webp' /><img alt='👙'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f459.webp' /><img alt='👚'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f45a.webp' /><img alt='👛'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f45b.webp' /><img alt='👜'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f45c.webp' /><img alt='👝'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f45d.webp' /><img alt='🛍'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f6cd.webp' /><img alt='🎒'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f392.webp' /><img alt='👞'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f45e.webp' /><img alt='👟'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f45f.webp' /><img alt='👠'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f460.webp' /><img alt='👡'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f461.webp' /><img alt='👢'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f462.webp' /><img alt='👑'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f451.webp' /><img alt='👒'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f452.webp' /><img alt='🎩'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f3a9.webp' /><img alt='🎓'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f393.webp' /><img alt='📿'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f4ff.webp' /><img alt='💄'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f484.webp' /><img alt='💍'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f48d.webp' /><img alt='💎'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f48e.webp' />
+						</div>
+						<div class="tab-pane" id="object">
+							<img alt='🧮' src='https://afubaba.github.io/Afreecatv/img/emoji/1f9ee.webp' /><img alt='🧯'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f9ef.webp' /><img alt='🪙'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1fa99.webp' /><img alt='🧾'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f9fe.webp' /><img alt='🦯'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f9af.webp' /><img alt='🧰'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f9f0.webp' /><img alt='🪛'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1fa9b.webp' /><img alt='🪓'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1fa93.webp' /><img alt='🪚'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1fa9a.webp' /><img alt='🪝'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1fa9d.webp' /><img alt='🪜'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1fa9c.webp' /><img alt='🧱'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f9f1.webp' /><img alt='🪨'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1faa8.webp' /><img alt='🪵'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1fab5.webp' /><img alt='🧨'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f9e8.webp' /><img alt='🪦'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1faa6.webp' /><img alt='🪄'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1fa84.webp' /><img alt='🧿'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f9ff.webp' /><img alt='🧲'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f9f2.webp' /><img alt='🧪'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f9ea.webp' /><img alt='🧫'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f9eb.webp' /><img alt='🧬'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f9ec.webp' /><img alt='🩸'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1fa78.webp' /><img alt='🩹'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1fa79.webp' /><img alt='🩺'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1fa7a.webp' /><img alt='🪠'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1faa0.webp' /><img alt='🪥'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1faa5.webp' /><img alt='🪒'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1fa92.webp' /><img alt='🧴'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f9f4.webp' /><img alt='🧻'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f9fb.webp' /><img alt='🧼'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f9fc.webp' /><img alt='🧽'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f9fd.webp' /><img alt='🧹'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f9f9.webp' /><img alt='🧺'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f9fa.webp' /><img alt='🪣'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1faa3.webp' /><img alt='🪤'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1faa4.webp' /><img alt='🪑'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1fa91.webp' /><img alt='🪞'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1fa9e.webp' /><img alt='🪟'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1fa9f.webp' /><img alt='🧳'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f9f3.webp' /><img alt='🧭'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f9ed.webp' /><img alt='🧧'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f9e7.webp' /><img alt='🪅'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1fa85.webp' /><img alt='🪆'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1fa86.webp' /><img alt='🪔'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1fa94.webp' /><img alt='🪧'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1faa7.webp' /><img alt='🧷'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f9f7.webp' /><img alt='🪡'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1faa1.webp' /><img alt='🧵'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f9f5.webp' /><img alt='🧶'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f9f6.webp' /><img alt='🪢'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1faa2.webp' /><img alt='🥼'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f97c.webp' /><img alt='🦺'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f9ba.webp' /><img alt='🧥'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f9e5.webp' /><img alt='🥻'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f97b.webp' /><img alt='🩱'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1fa71.webp' /><img alt='🩲'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1fa72.webp' /><img alt='🩳'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1fa73.webp' /><img alt='🧦'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f9e6.webp' /><img alt='🩴'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1fa74.webp' /><img alt='🥿'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f97f.webp' /><img alt='🩰'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1fa70.webp' /><img alt='🥾'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f97e.webp' /><img alt='🧢'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f9e2.webp' /><img alt='🪖'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1fa96.webp' /><img alt='🥽'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f97d.webp' /><img alt='🧣'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f9e3.webp' /><img alt='🧤'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f9e4.webp' /><img alt='🔇'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f507.webp' /><img alt='🔈'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f508.webp' /><img alt='🔉'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f509.webp' /><img alt='🔊'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f50a.webp' /><img alt='📢'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f4e2.webp' /><img alt='📣'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f4e3.webp' /><img alt='📯'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f4ef.webp' /><img alt='🔔'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f514.webp' /><img alt='🔕'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f515.webp' /><img alt='🎼'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f3bc.webp' /><img alt='🎵'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f3b5.webp' /><img alt='🎶'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f3b6.webp' /><img alt='🎙'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f399.webp' /><img alt='🎚'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f39a.webp' /><img alt='🎛'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f39b.webp' /><img alt='🎤'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f3a4.webp' /><img alt='🎧'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f3a7.webp' /><img alt='🎷'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f3b7.webp' /><img alt='🎸'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f3b8.webp' /><img alt='🎹'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f3b9.webp' /><img alt='🎺'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f3ba.webp' /><img alt='🎻'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f3bb.webp' /><img alt='📻'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f4fb.webp' /><img alt='📱'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f4f1.webp' /><img alt='📲'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f4f2.webp' /><img alt='☎'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/260e.webp' /><img alt='📞'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f4de.webp' /><img alt='📟'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f4df.webp' /><img alt='📠'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f4e0.webp' /><img alt='🔋'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f50b.webp' /><img alt='🔌'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f50c.webp' /><img alt='💻'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f4bb.webp' /><img alt='🖥'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f5a5.webp' /><img alt='🖨'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f5a8.webp' /><img alt='⌨'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/2328.webp' /><img alt='🖱'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f5b1.webp' /><img alt='🖲'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f5b2.webp' /><img alt='💽'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f4bd.webp' /><img alt='💾'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f4be.webp' /><img alt='💿'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f4bf.webp' /><img alt='📀'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f4c0.webp' /><img alt='🎥'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f3a5.webp' /><img alt='🎬'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f3ac.webp' /><img alt='📽'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f4fd.webp' /><img alt='📺'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f4fa.webp' /><img alt='📷'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f4f7.webp' /><img alt='📸'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f4f8.webp' /><img alt='📹'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f4f9.webp' /><img alt='📼'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f4fc.webp' /><img alt='🔍'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f50d.webp' /><img alt='🔎'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f50e.webp' /><img alt='🔬'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f52c.webp' /><img alt='🔭'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f52d.webp' /><img alt='📡'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f4e1.webp' /><img alt='🕯'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f56f.webp' /><img alt='💡'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f4a1.webp' /><img alt='🔦'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f526.webp' /><img alt='🏮'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f3ee.webp' /><img alt='📔'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f4d4.webp' /><img alt='📕'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f4d5.webp' /><img alt='📖'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f4d6.webp' /><img alt='📗'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f4d7.webp' /><img alt='📘'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f4d8.webp' /><img alt='📙'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f4d9.webp' /><img alt='📚'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f4da.webp' /><img alt='📓'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f4d3.webp' /><img alt='📒'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f4d2.webp' /><img alt='📃'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f4c3.webp' /><img alt='📜'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f4dc.webp' /><img alt='📄'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f4c4.webp' /><img alt='📰'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f4f0.webp' /><img alt='🗞'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f5de.webp' /><img alt='📑'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f4d1.webp' /><img alt='🔖'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f516.webp' /><img alt='💰'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f4b0.webp' /><img alt='💴'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f4b4.webp' /><img alt='💵'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f4b5.webp' /><img alt='💶'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f4b6.webp' /><img alt='💷'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f4b7.webp' /><img alt='💸'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f4b8.webp' /><img alt='💳'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f4b3.webp' /><img alt='💹'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f4b9.webp' /><img alt='✉'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/2709.webp' /><img alt='📧'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f4e7.webp' /><img alt='📨'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f4e8.webp' /><img alt='📩'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f4e9.webp' /><img alt='📤'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f4e4.webp' /><img alt='📥'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f4e5.webp' /><img alt='📦'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f4e6.webp' /><img alt='📫'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f4eb.webp' /><img alt='📪'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f4ea.webp' /><img alt='📬'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f4ec.webp' /><img alt='📭'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f4ed.webp' /><img alt='📮'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f4ee.webp' /><img alt='🗳'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f5f3.webp' /><img alt='✏'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/270f.webp' /><img alt='✒'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/2712.webp' /><img alt='🖋'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f58b.webp' /><img alt='🖊'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f58a.webp' /><img alt='🖌'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f58c.webp' /><img alt='🖍'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f58d.webp' /><img alt='📝'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f4dd.webp' /><img alt='💼'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f4bc.webp' /><img alt='📁'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f4c1.webp' /><img alt='📂'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f4c2.webp' /><img alt='🗂'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f5c2.webp' /><img alt='📅'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f4c5.webp' /><img alt='📆'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f4c6.webp' /><img alt='🗒'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f5d2.webp' /><img alt='🗓'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f5d3.webp' /><img alt='📇'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f4c7.webp' /><img alt='📈'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f4c8.webp' /><img alt='📉'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f4c9.webp' /><img alt='📊'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f4ca.webp' /><img alt='📋'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f4cb.webp' /><img alt='📌'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f4cc.webp' /><img alt='📍'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f4cd.webp' /><img alt='📎'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f4ce.webp' /><img alt='🖇'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f587.webp' /><img alt='📏'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f4cf.webp' /><img alt='📐'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f4d0.webp' /><img alt='✂'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/2702.webp' /><img alt='🗃'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f5c3.webp' /><img alt='🗄'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f5c4.webp' /><img alt='🗑'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f5d1.webp' /><img alt='🔒'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f512.webp' /><img alt='🔓'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f513.webp' /><img alt='🔏'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f50f.webp' /><img alt='🔐'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f510.webp' /><img alt='🔑'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f511.webp' /><img alt='🗝'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f5dd.webp' /><img alt='🔨'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f528.webp' /><img alt='🛠'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f6e0.webp' /><img alt='🔧'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f527.webp' /><img alt='🔩'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f529.webp' /><img alt='🗜'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f5dc.webp' /><img alt='🔗'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f517.webp' /><img alt='💉'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f489.webp' /><img alt='💊'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f48a.webp' /><img alt='🗡'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f5e1.webp' /><img alt='🔪'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f52a.webp' /><img alt='🔫'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f52b.webp' /><img alt='🛡'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f6e1.webp' /><img alt='🏹'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f3f9.webp' /><img alt='🚬'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f6ac.webp' /><img alt='🗿'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f5ff.webp' /><img alt='🛢'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f6e2.webp' /><img alt='🔮'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f52e.webp' />
+						</div>
+						<div id="nature-animal" class="tab-pane">
+							<img alt='🫐' src='https://afubaba.github.io/Afreecatv/img/emoji/1fad0.webp' /><img alt='🥭'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f96d.webp' /><img alt='🥥'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f965.webp' /><img alt='🫒'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1fad2.webp' /><img alt='🫑'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1fad1.webp' /><img alt='🥬'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f96c.webp' /><img alt='🥦'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f966.webp' /><img alt='🧄'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f9c4.webp' /><img alt='🧅'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f9c5.webp' /><img alt='🫓'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1fad3.webp' /><img alt='🥨'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f968.webp' /><img alt='🥯'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f96f.webp' /><img alt='🧇'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f9c7.webp' /><img alt='🥩'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f969.webp' /><img alt='🥪'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f96a.webp' /><img alt='🫔'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1fad4.webp' /><img alt='🧆'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f9c6.webp' /><img alt='🫕'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1fad5.webp' /><img alt='🥫'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f96b.webp' /><img alt='🧂'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f9c2.webp' /><img alt='🧈'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f9c8.webp' /><img alt='🥟'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f95f.webp' /><img alt='🧁'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f9c1.webp' /><img alt='🥧'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f967.webp' /><img alt='🥠'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f960.webp' /><img alt='🥮'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f96e.webp' /><img alt='🫖'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1fad6.webp' /><img alt='🥣'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f963.webp' /><img alt='🥤'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f964.webp' /><img alt='🧋'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f9cb.webp' /><img alt='🧃'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f9c3.webp' /><img alt='🧉'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f9c9.webp' /><img alt='🧊'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f9ca.webp' /><img alt='🥢'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f962.webp' /><img alt='🥡'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f961.webp' /><img alt='🧸'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f9f8.webp' /><img alt='🐻'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f43b.webp' /><img alt='❄'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/2744.webp' /><img alt='🦧'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f9a7.webp' /><img alt='🦝'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f99d.webp' /><img alt='🦓'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f993.webp' /><img alt='🦒'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f992.webp' /><img alt='🦘'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f998.webp' /><img alt='🦥'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f9a5.webp' /><img alt='🦦'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f9a6.webp' /><img alt='🦫'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f9ab.webp' /><img alt='🪲'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1fab2.webp' /><img alt='🦗'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f997.webp' /><img alt='🪳'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1fab3.webp' /><img alt='🦟'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f99f.webp' /><img alt='🪰'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1fab0.webp' /><img alt='🪱'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1fab1.webp' /><img alt='🦠'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f9a0.webp' /><img alt='🦞'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f99e.webp' /><img alt='🦪'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f9aa.webp' /><img alt='🦭'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f9ad.webp' /><img alt='🦬'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f9ac.webp' /><img alt='🦙'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f999.webp' /><img alt='🦛'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f99b.webp' /><img alt='🦣'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f9a3.webp' /><img alt='🦢'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f9a2.webp' /><img alt='🦩'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f9a9.webp' /><img alt='🦚'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f99a.webp' /><img alt='🦜'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f99c.webp' /><img alt='🦤'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f9a4.webp' /><img alt='🪶'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1fab6.webp' /><img alt='🦮'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f9ae.webp' /><img alt='🐕‍🦺'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f415-200d-1f9ba.webp' /><img
+								alt='🐈‍⬛'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f408-200d-2b1b.webp' /><img alt='🦨'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f9a8.webp' /><img alt='🦡'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f9a1.webp' /><img alt='🦔'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f994.webp' /><img alt='🦕'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f995.webp' /><img alt='🦖'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f996.webp' /><img alt='🪴'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1fab4.webp' /><img alt='🪐'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1fa90.webp' /><img alt='🐵'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f435.webp' /><img alt='🐒'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f412.webp' /><img alt='🐶'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f436.webp' /><img alt='🐕'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f415.webp' /><img alt='🐩'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f429.webp' /><img alt='🐺'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f43a.webp' /><img alt='🐱'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f431.webp' /><img alt='🐈'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f408.webp' /><img alt='🦁'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f981.webp' /><img alt='🐯'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f42f.webp' /><img alt='🐅'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f405.webp' /><img alt='🐆'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f406.webp' /><img alt='🐴'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f434.webp' /><img alt='🐎'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f40e.webp' /><img alt='🦄'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f984.webp' /><img alt='🐮'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f42e.webp' /><img alt='🐂'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f402.webp' /><img alt='🐃'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f403.webp' /><img alt='🐄'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f404.webp' /><img alt='🐷'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f437.webp' /><img alt='🐖'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f416.webp' /><img alt='🐗'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f417.webp' /><img alt='🐽'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f43d.webp' /><img alt='🐏'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f40f.webp' /><img alt='🐑'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f411.webp' /><img alt='🐐'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f410.webp' /><img alt='🐪'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f42a.webp' /><img alt='🐫'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f42b.webp' /><img alt='🐘'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f418.webp' /><img alt='🐭'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f42d.webp' /><img alt='🐁'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f401.webp' /><img alt='🐀'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f400.webp' /><img alt='🐹'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f439.webp' /><img alt='🐰'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f430.webp' /><img alt='🐇'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f407.webp' /><img alt='🐿'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f43f.webp' /><img alt='🐻'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f43b.webp' /><img alt='🐨'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f428.webp' /><img alt='🐼'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f43c.webp' /><img alt='🐾'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f43e.webp' /><img alt='🦃'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f983.webp' /><img alt='🐔'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f414.webp' /><img alt='🐓'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f413.webp' /><img alt='🐣'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f423.webp' /><img alt='🐥'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f425.webp' /><img alt='🐤'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f424.webp' /><img alt='🐦'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f426.webp' /><img alt='🐧'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f427.webp' /><img alt='🕊'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f54a.webp' /><img alt='🐸'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f438.webp' /><img alt='🐊'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f40a.webp' /><img alt='🐢'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f422.webp' /><img alt='🐍'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f40d.webp' /><img alt='🐲'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f432.webp' /><img alt='🐉'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f409.webp' /><img alt='🐳'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f433.webp' /><img alt='🐋'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f40b.webp' /><img alt='🐬'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f42c.webp' /><img alt='🐟'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f41f.webp' /><img alt='🐠'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f420.webp' /><img alt='🐡'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f421.webp' /><img alt='🐙'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f419.webp' /><img alt='🐚'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f41a.webp' /><img alt='🦀'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f980.webp' /><img alt='🐌'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f40c.webp' /><img alt='🐛'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f41b.webp' /><img alt='🐜'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f41c.webp' /><img alt='🐝'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f41d.webp' /><img alt='🐞'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f41e.webp' /><img alt='🕷'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f577.webp' /><img alt='🕸'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f578.webp' /><img alt='🦂'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f982.webp' /><img alt='💐'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f490.webp' /><img alt='🌸'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f338.webp' /><img alt='💮'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f4ae.webp' /><img alt='🏵'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f3f5.webp' /><img alt='🌹'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f339.webp' /><img alt='🌺'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f33a.webp' /><img alt='🌻'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f33b.webp' /><img alt='🌼'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f33c.webp' /><img alt='🌷'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f337.webp' /><img alt='🌱'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f331.webp' /><img alt='🌲'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f332.webp' /><img alt='🌳'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f333.webp' /><img alt='🌴'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f334.webp' /><img alt='🌵'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f335.webp' /><img alt='🌾'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f33e.webp' /><img alt='🌿'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f33f.webp' /><img alt='🍀'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f340.webp' /><img alt='🍁'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f341.webp' /><img alt='🍂'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f342.webp' /><img alt='🍃'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f343.webp' /><img alt='🍇'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f347.webp' /><img alt='🍈'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f348.webp' /><img alt='🍉'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f349.webp' /><img alt='🍊'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f34a.webp' /><img alt='🍋'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f34b.webp' /><img alt='🍌'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f34c.webp' /><img alt='🍍'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f34d.webp' /><img alt='🍎'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f34e.webp' /><img alt='🍏'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f34f.webp' /><img alt='🍐'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f350.webp' /><img alt='🍑'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f351.webp' /><img alt='🍒'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f352.webp' /><img alt='🍓'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f353.webp' /><img alt='🍅'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f345.webp' /><img alt='🍆'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f346.webp' /><img alt='🌽'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f33d.webp' /><img alt='🌶'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f336.webp' /><img alt='🍄'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f344.webp' /><img alt='🌰'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f330.webp' /><img alt='🍞'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f35e.webp' /><img alt='🧀'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f9c0.webp' /><img alt='🍖'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f356.webp' /><img alt='🍗'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f357.webp' /><img alt='🍔'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f354.webp' /><img alt='🍟'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f35f.webp' /><img alt='🍕'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f355.webp' /><img alt='🌭'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f32d.webp' /><img alt='🌮'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f32e.webp' /><img alt='🌯'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f32f.webp' /><img alt='🍿'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f37f.webp' /><img alt='🍲'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f372.webp' /><img alt='🍱'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f371.webp' /><img alt='🍘'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f358.webp' /><img alt='🍙'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f359.webp' /><img alt='🍚'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f35a.webp' /><img alt='🍛'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f35b.webp' /><img alt='🍜'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f35c.webp' /><img alt='🍝'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f35d.webp' /><img alt='🍠'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f360.webp' /><img alt='🍢'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f362.webp' /><img alt='🍣'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f363.webp' /><img alt='🍤'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f364.webp' /><img alt='🍥'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f365.webp' /><img alt='🍡'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f361.webp' /><img alt='🍦'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f366.webp' /><img alt='🍧'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f367.webp' /><img alt='🍨'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f368.webp' /><img alt='🍩'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f369.webp' /><img alt='🍪'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f36a.webp' /><img alt='🎂'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f382.webp' /><img alt='🍰'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f370.webp' /><img alt='🍫'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f36b.webp' /><img alt='🍬'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f36c.webp' /><img alt='🍭'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f36d.webp' /><img alt='🍮'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f36e.webp' /><img alt='🍯'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f36f.webp' /><img alt='🍼'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f37c.webp' /><img alt='☕'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/2615.webp' /><img alt='🍵'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f375.webp' /><img alt='🍶'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f376.webp' /><img alt='🍾'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f37e.webp' /><img alt='🍷'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f377.webp' /><img alt='🍸'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f378.webp' /><img alt='🍹'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f379.webp' /><img alt='🍺'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f37a.webp' /><img alt='🍻'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f37b.webp' /><img alt='🍽'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f37d.webp' /><img alt='🍴'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f374.webp' /><img alt='🍳'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f373.webp' /><img alt='🏺'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f3fa.webp' />
+						</div>
+						<div id="travel-activity" class="tab-pane">
+							<img alt='🛺' src='https://afubaba.github.io/Afreecatv/img/emoji/1f6fa.webp' /><img alt='🛻'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f6fb.webp' /><img alt='🦼'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f9bc.webp' /><img alt='🦽'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f9bd.webp' /><img alt='🛹'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f6f9.webp' /><img alt='🛼'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f6fc.webp' /><img alt='🪂'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1fa82.webp' /><img alt='🛸'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f6f8.webp' /><img alt='🛖'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f6d6.webp' /><img alt='🛕'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f6d5.webp' /><img alt='🌍'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f30d.webp' /><img alt='🌎'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f30e.webp' /><img alt='🌏'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f30f.webp' /><img alt='🌐'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f310.webp' /><img alt='🗺'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f5fa.webp' /><img alt='🏔'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f3d4.webp' /><img alt='🌋'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f30b.webp' /><img alt='🗻'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f5fb.webp' /><img alt='🏕'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f3d5.webp' /><img alt='🏖'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f3d6.webp' /><img alt='🏜'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f3dc.webp' /><img alt='🏝'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f3dd.webp' /><img alt='🏞'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f3de.webp' /><img alt='🏟'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f3df.webp' /><img alt='🏛'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f3db.webp' /><img alt='🏗'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f3d7.webp' /><img alt='🏘'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f3d8.webp' /><img alt='🏙'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f3d9.webp' /><img alt='🏚'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f3da.webp' /><img alt='🏠'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f3e0.webp' /><img alt='🏡'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f3e1.webp' /><img alt='⛪'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/26ea.webp' /><img alt='🕋'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f54b.webp' /><img alt='🕌'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f54c.webp' /><img alt='🕍'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f54d.webp' /><img alt='🏢'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f3e2.webp' /><img alt='🏣'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f3e3.webp' /><img alt='🏤'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f3e4.webp' /><img alt='🏥'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f3e5.webp' /><img alt='🏦'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f3e6.webp' /><img alt='🏨'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f3e8.webp' /><img alt='🏩'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f3e9.webp' /><img alt='🏪'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f3ea.webp' /><img alt='🏫'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f3eb.webp' /><img alt='🏬'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f3ec.webp' /><img alt='🏭'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f3ed.webp' /><img alt='🏯'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f3ef.webp' /><img alt='🏰'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f3f0.webp' /><img alt='💒'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f492.webp' /><img alt='🗼'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f5fc.webp' /><img alt='🗽'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f5fd.webp' /><img alt='🗾'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f5fe.webp' /><img alt='⛲'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/26f2.webp' /><img alt='⛺'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/26fa.webp' /><img alt='🌁'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f301.webp' /><img alt='🌃'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f303.webp' /><img alt='🌄'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f304.webp' /><img alt='🌅'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f305.webp' /><img alt='🌆'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f306.webp' /><img alt='🌇'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f307.webp' /><img alt='🌉'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f309.webp' /><img alt='♨'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/2668.webp' /><img alt='🌌'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f30c.webp' /><img alt='🎠'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f3a0.webp' /><img alt='🎡'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f3a1.webp' /><img alt='🎢'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f3a2.webp' /><img alt='💈'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f488.webp' /><img alt='🎪'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f3aa.webp' /><img alt='🎭'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f3ad.webp' /><img alt='🖼'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f5bc.webp' /><img alt='🎨'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f3a8.webp' /><img alt='🎰'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f3b0.webp' /><img alt='🚂'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f682.webp' /><img alt='🚃'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f683.webp' /><img alt='🚄'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f684.webp' /><img alt='🚅'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f685.webp' /><img alt='🚆'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f686.webp' /><img alt='🚇'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f687.webp' /><img alt='🚈'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f688.webp' /><img alt='🚉'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f689.webp' /><img alt='🚊'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f68a.webp' /><img alt='🚝'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f69d.webp' /><img alt='🚞'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f69e.webp' /><img alt='🚋'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f68b.webp' /><img alt='🚌'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f68c.webp' /><img alt='🚍'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f68d.webp' /><img alt='🚎'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f68e.webp' /><img alt='🚏'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f68f.webp' /><img alt='🚐'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f690.webp' /><img alt='🚑'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f691.webp' /><img alt='🚒'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f692.webp' /><img alt='🚓'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f693.webp' /><img alt='🚔'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f694.webp' /><img alt='🚕'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f695.webp' /><img alt='🚖'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f696.webp' /><img alt='🚗'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f697.webp' /><img alt='🚘'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f698.webp' /><img alt='🚙'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f699.webp' /><img alt='🚚'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f69a.webp' /><img alt='🚛'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f69b.webp' /><img alt='🚜'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f69c.webp' /><img alt='🚲'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f6b2.webp' /><img alt='⛽'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/26fd.webp' /><img alt='🛣'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f6e3.webp' /><img alt='🛤'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f6e4.webp' /><img alt='🚨'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f6a8.webp' /><img alt='🚥'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f6a5.webp' /><img alt='🚦'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f6a6.webp' /><img alt='🚧'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f6a7.webp' /><img alt='⚓'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/2693.webp' /><img alt='⛵'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/26f5.webp' /><img alt='🚣'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f6a3.webp' /><img alt='🚤'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f6a4.webp' /><img alt='🛳'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f6f3.webp' /><img alt='🛥'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f6e5.webp' /><img alt='🚢'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f6a2.webp' /><img alt='✈'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/2708.webp' /><img alt='🛩'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f6e9.webp' /><img alt='🛫'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f6eb.webp' /><img alt='🛬'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f6ec.webp' /><img alt='💺'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f4ba.webp' /><img alt='🚁'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f681.webp' /><img alt='🚟'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f69f.webp' /><img alt='🚠'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f6a0.webp' /><img alt='🚡'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f6a1.webp' /><img alt='🚀'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f680.webp' /><img alt='🛰'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f6f0.webp' /><img alt='🛎'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f6ce.webp' /><img alt='🚪'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f6aa.webp' /><img alt='🛌'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f6cc.webp' /><img alt='🛏'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f6cf.webp' /><img alt='🛋'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f6cb.webp' /><img alt='🚽'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f6bd.webp' /><img alt='🚿'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f6bf.webp' /><img alt='🛀'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f6c0.webp' /><img alt='🛁'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f6c1.webp' /><img alt='⌛'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/231b.webp' /><img alt='⏳'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/23f3.webp' /><img alt='⌚'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/231a.webp' /><img alt='⏰'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/23f0.webp' /><img alt='🕰'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f570.webp' /><img alt='🕛'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f55b.webp' /><img alt='🕧'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f567.webp' /><img alt='🕐'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f550.webp' /><img alt='🕜'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f55c.webp' /><img alt='🕑'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f551.webp' /><img alt='🕝'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f55d.webp' /><img alt='🕒'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f552.webp' /><img alt='🕞'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f55e.webp' /><img alt='🕓'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f553.webp' /><img alt='🕟'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f55f.webp' /><img alt='🕔'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f554.webp' /><img alt='🕠'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f560.webp' /><img alt='🕕'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f555.webp' /><img alt='🕡'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f561.webp' /><img alt='🕖'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f556.webp' /><img alt='🕢'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f562.webp' /><img alt='🕗'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f557.webp' /><img alt='🕣'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f563.webp' /><img alt='🕘'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f558.webp' /><img alt='🕤'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f564.webp' /><img alt='🕙'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f559.webp' /><img alt='🕥'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f565.webp' /><img alt='🕚'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f55a.webp' /><img alt='🕦'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f566.webp' /><img alt='🌑'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f311.webp' /><img alt='🌒'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f312.webp' /><img alt='🌓'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f313.webp' /><img alt='🌔'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f314.webp' /><img alt='🌕'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f315.webp' /><img alt='🌖'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f316.webp' /><img alt='🌗'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f317.webp' /><img alt='🌘'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f318.webp' /><img alt='🌙'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f319.webp' /><img alt='🌚'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f31a.webp' /><img alt='🌛'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f31b.webp' /><img alt='🌜'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f31c.webp' /><img alt='🌡'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f321.webp' /><img alt='☀'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/2600.webp' /><img alt='🌝'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f31d.webp' /><img alt='🌞'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f31e.webp' /><img alt='⭐'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/2b50.webp' /><img alt='🌟'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f31f.webp' /><img alt='🌠'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f320.webp' /><img alt='☁'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/2601.webp' /><img alt='⛅'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/26c5.webp' /><img alt='🌤'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f324.webp' /><img alt='🌥'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f325.webp' /><img alt='🌦'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f326.webp' /><img alt='🌧'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f327.webp' /><img alt='🌨'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f328.webp' /><img alt='🌩'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f329.webp' /><img alt='🌪'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f32a.webp' /><img alt='🌫'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f32b.webp' /><img alt='🌬'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f32c.webp' /><img alt='🌀'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f300.webp' /><img alt='🌈'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f308.webp' /><img alt='🌂'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f302.webp' /><img alt='☔'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/2614.webp' /><img alt='⚡'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/26a1.webp' /><img alt='❄'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/2744.webp' /><img alt='⛄'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/26c4.webp' /><img alt='🔥'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f525.webp' /><img alt='💧'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f4a7.webp' /><img alt='🌊'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f30a.webp' /><img alt='🎃'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f383.webp' /><img alt='🎄'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f384.webp' /><img alt='🎆'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f386.webp' /><img alt='🎇'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f387.webp' /><img alt='✨'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/2728.webp' /><img alt='🎈'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f388.webp' /><img alt='🎉'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f389.webp' /><img alt='🎊'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f38a.webp' /><img alt='🎋'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f38b.webp' /><img alt='🎌'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f38c.webp' /><img alt='🎍'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f38d.webp' /><img alt='🎎'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f38e.webp' /><img alt='🎏'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f38f.webp' /><img alt='🎐'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f390.webp' /><img alt='🎑'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f391.webp' /><img alt='🎀'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f380.webp' /><img alt='🎁'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f381.webp' /><img alt='🎖'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f396.webp' /><img alt='🎗'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f397.webp' /><img alt='🎞'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f39e.webp' /><img alt='🎟'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f39f.webp' /><img alt='🎫'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f3ab.webp' /><img alt='🏷'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f3f7.webp' /><img alt='⚽'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/26bd.webp' /><img alt='⚾'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/26be.webp' /><img alt='🏀'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f3c0.webp' /><img alt='🏈'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f3c8.webp' /><img alt='🏉'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f3c9.webp' /><img alt='🎾'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f3be.webp' /><img alt='🎱'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f3b1.webp' /><img alt='🎳'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f3b3.webp' /><img alt='⛳'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/26f3.webp' /><img alt='🏌'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f3cc.webp' /><img alt='🎣'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f3a3.webp' /><img alt='🎽'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f3bd.webp' /><img alt='🎿'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f3bf.webp' /><img alt='🏂'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f3c2.webp' /><img alt='🏄'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f3c4.webp' /><img alt='🏇'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f3c7.webp' /><img alt='🏊'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f3ca.webp' /><img alt='🏋'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f3cb.webp' /><img alt='🚴'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f6b4.webp' /><img alt='🚵'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f6b5.webp' /><img alt='🏎'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f3ce.webp' /><img alt='🏍'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f3cd.webp' /><img alt='🏅'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f3c5.webp' /><img alt='🏆'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f3c6.webp' /><img alt='🏏'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f3cf.webp' /><img alt='🏐'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f3d0.webp' /><img alt='🏑'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f3d1.webp' /><img alt='🏒'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f3d2.webp' /><img alt='🏓'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f3d3.webp' /><img alt='🏸'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f3f8.webp' /><img alt='🎯'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f3af.webp' /><img alt='🎮'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f3ae.webp' /><img alt='🕹'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f579.webp' /><img alt='🎲'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f3b2.webp' /><img alt='♠'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/2660.webp' /><img alt='♥'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/2665.webp' /><img alt='♦'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/2666.webp' /><img alt='♣'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/2663.webp' /><img alt='🃏'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f0cf.webp' /><img alt='🀄'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f004.webp' /><img alt='🎴'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f3b4.webp' />
+						</div>
+						<div id="symbol" class="tab-pane">
+							<img alt='💛' src='https://afubaba.github.io/Afreecatv/img/emoji/1f49b.webp' /><img alt='💙'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f499.webp' /><img alt='🖤'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f5a4.webp' /><img alt='❣'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/2763.webp' /><img alt='💞'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f49e.webp' /><img alt='💗'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f497.webp' /><img alt='💘'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f498.webp' /><img alt='💟'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f49f.webp' /><img alt='‼'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/203c.webp' /><img alt='⁉'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/2049.webp' /><img alt='♾'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/267e.webp' /><img alt='🛗'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f6d7.webp' /><img alt='⚧'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/26a7.webp' /><img alt='0⃣'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/30-20e3.webp' /><img alt='1⃣'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/31-20e3.webp' /><img alt='2⃣'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/32-20e3.webp' /><img alt='3⃣'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/33-20e3.webp' /><img alt='4⃣'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/34-20e3.webp' /><img alt='5⃣'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/35-20e3.webp' /><img alt='6⃣'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/36-20e3.webp' /><img alt='7⃣'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/37-20e3.webp' /><img alt='8⃣'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/38-20e3.webp' /><img alt='9⃣'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/39-20e3.webp' /><img alt='#⃣'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/23-20e3.webp' /><img alt='*⃣'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/2a-20e3.webp' /><img alt='🟠'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f7e0.webp' /><img alt='🟡'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f7e1.webp' /><img alt='🟢'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f7e2.webp' /><img alt='🟣'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f7e3.webp' /><img alt='🟤'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f7e4.webp' /><img alt='🟥'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f7e5.webp' /><img alt='🟧'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f7e7.webp' /><img alt='🟨'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f7e8.webp' /><img alt='🟩'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f7e9.webp' /><img alt='🟦'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f7e6.webp' /><img alt='🟪'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f7ea.webp' /><img alt='🟫'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f7eb.webp' /><img alt='👁‍🗨'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f441-200d-1f5e8.webp' /><img
+								alt='🏁' src='https://afubaba.github.io/Afreecatv/img/emoji/1f3c1.webp' /><img alt='🏳'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f3f3.webp' /><img alt='🏴'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f3f4.webp' /><img alt='🚩'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f6a9.webp' /><img alt='🏧'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f3e7.webp' /><img alt='🚮'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f6ae.webp' /><img alt='🚰'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f6b0.webp' /><img alt='♿'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/267f.webp' /><img alt='🚹'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f6b9.webp' /><img alt='🚺'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f6ba.webp' /><img alt='🚻'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f6bb.webp' /><img alt='🚼'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f6bc.webp' /><img alt='🚾'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f6be.webp' /><img alt='🛂'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f6c2.webp' /><img alt='🛃'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f6c3.webp' /><img alt='🛄'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f6c4.webp' /><img alt='🛅'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f6c5.webp' /><img alt='⚠'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/26a0.webp' /><img alt='🚸'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f6b8.webp' /><img alt='⛔'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/26d4.webp' /><img alt='🚫'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f6ab.webp' /><img alt='🚳'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f6b3.webp' /><img alt='🚭'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f6ad.webp' /><img alt='🚯'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f6af.webp' /><img alt='🚱'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f6b1.webp' /><img alt='🚷'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f6b7.webp' /><img alt='☢'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/2622.webp' /><img alt='☣'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/2623.webp' /><img alt='⬆'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/2b06.webp' /><img alt='↗'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/2197.webp' /><img alt='➡'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/27a1.webp' /><img alt='↘'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/2198.webp' /><img alt='⬇'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/2b07.webp' /><img alt='↙'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/2199.webp' /><img alt='⬅'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/2b05.webp' /><img alt='↖'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/2196.webp' /><img alt='↕'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/2195.webp' /><img alt='↔'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/2194.webp' /><img alt='↩'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/21a9.webp' /><img alt='↪'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/21aa.webp' /><img alt='⤴'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/2934.webp' /><img alt='⤵'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/2935.webp' /><img alt='🔃'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f503.webp' /><img alt='🔄'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f504.webp' /><img alt='🔙'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f519.webp' /><img alt='🔚'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f51a.webp' /><img alt='🔛'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f51b.webp' /><img alt='🔜'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f51c.webp' /><img alt='🔝'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f51d.webp' /><img alt='🛐'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f6d0.webp' /><img alt='⚛'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/269b.webp' /><img alt='🔯'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f52f.webp' /><img alt='♻'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/267b.webp' /><img alt='📛'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f4db.webp' /><img alt='🔰'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f530.webp' /><img alt='🔱'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f531.webp' /><img alt='⭕'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/2b55.webp' /><img alt='✅'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/2705.webp' /><img alt='☑'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/2611.webp' /><img alt='✔'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/2714.webp' /><img alt='✖'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/2716.webp' /><img alt='❌'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/274c.webp' /><img alt='❎'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/274e.webp' /><img alt='➕'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/2795.webp' /><img alt='➖'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/2796.webp' /><img alt='➗'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/2797.webp' /><img alt='➰'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/27b0.webp' /><img alt='➿'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/27bf.webp' /><img alt='〽'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/303d.webp' /><img alt='✳'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/2733.webp' /><img alt='✴'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/2734.webp' /><img alt='❇'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/2747.webp' /><img alt='💱'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f4b1.webp' /><img alt='💲'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f4b2.webp' /><img alt='❓'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/2753.webp' /><img alt='❔'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/2754.webp' /><img alt='❕'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/2755.webp' /><img alt='❗'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/2757.webp' /><img alt='〰'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/3030.webp' /><img alt='♈'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/2648.webp' /><img alt='♉'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/2649.webp' /><img alt='♊'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/264a.webp' /><img alt='♋'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/264b.webp' /><img alt='♌'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/264c.webp' /><img alt='♍'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/264d.webp' /><img alt='♎'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/264e.webp' /><img alt='♏'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/264f.webp' /><img alt='♐'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/2650.webp' /><img alt='♑'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/2651.webp' /><img alt='♒'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/2652.webp' /><img alt='♓'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/2653.webp' /><img alt='⛎'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/26ce.webp' /><img alt='🔀'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f500.webp' /><img alt='🔁'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f501.webp' /><img alt='🔂'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f502.webp' /><img alt='▶'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/25b6.webp' /><img alt='⏩'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/23e9.webp' /><img alt='⏭'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/23ed.webp' /><img alt='⏯'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/23ef.webp' /><img alt='◀'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/25c0.webp' /><img alt='⏪'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/23ea.webp' /><img alt='⏮'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/23ee.webp' /><img alt='🔼'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f53c.webp' /><img alt='⏫'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/23eb.webp' /><img alt='🔽'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f53d.webp' /><img alt='⏬'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/23ec.webp' /><img alt='⏸'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/23f8.webp' /><img alt='⏹'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/23f9.webp' /><img alt='⏺'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/23fa.webp' /><img alt='⏏'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/23cf.webp' /><img alt='🎦'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f3a6.webp' /><img alt='🔅'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f505.webp' /><img alt='🔆'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f506.webp' /><img alt='📶'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f4f6.webp' /><img alt='📵'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f4f5.webp' /><img alt='📳'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f4f3.webp' /><img alt='📴'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f4f4.webp' /><img alt='🔟'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f51f.webp' /><img alt='💯'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f4af.webp' /><img alt='🔞'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f51e.webp' /><img alt='🔠'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f520.webp' /><img alt='🔡'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f521.webp' /><img alt='🔢'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f522.webp' /><img alt='🔣'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f523.webp' /><img alt='🔤'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f524.webp' /><img alt='🅰'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f170.webp' /><img alt='🆎'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f18e.webp' /><img alt='🅱'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f171.webp' /><img alt='🆑'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f191.webp' /><img alt='🆒'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f192.webp' /><img alt='🆓'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f193.webp' /><img alt='ℹ'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/2139.webp' /><img alt='🆔'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f194.webp' /><img alt='Ⓜ'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/24c2.webp' /><img alt='🆕'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f195.webp' /><img alt='🆖'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f196.webp' /><img alt='🅾'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f17e.webp' /><img alt='🆗'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f197.webp' /><img alt='🅿'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f17f.webp' /><img alt='🆘'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f198.webp' /><img alt='🆙'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f199.webp' /><img alt='🆚'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f19a.webp' /><img alt='🈁'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f201.webp' /><img alt='🈂'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f202.webp' /><img alt='🈷'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f237.webp' /><img alt='🈶'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f236.webp' /><img alt='🈯'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f22f.webp' /><img alt='🉐'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f250.webp' /><img alt='🈹'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f239.webp' /><img alt='🈚'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f21a.webp' /><img alt='🈲'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f232.webp' /><img alt='🉑'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f251.webp' /><img alt='🈸'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f238.webp' /><img alt='🈴'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f234.webp' /><img alt='🈳'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f233.webp' /><img alt='㊗'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/3297.webp' /><img alt='㊙'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/3299.webp' /><img alt='🈺'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f23a.webp' /><img alt='🈵'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f235.webp' /><img alt='▪'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/25aa.webp' /><img alt='▫'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/25ab.webp' /><img alt='◻'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/25fb.webp' /><img alt='◼'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/25fc.webp' /><img alt='◽'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/25fd.webp' /><img alt='◾'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/25fe.webp' /><img alt='⬛'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/2b1b.webp' /><img alt='⬜'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/2b1c.webp' /><img alt='🔶'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f536.webp' /><img alt='🔷'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f537.webp' /><img alt='🔸'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f538.webp' /><img alt='🔹'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f539.webp' /><img alt='🔺'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f53a.webp' /><img alt='🔻'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f53b.webp' /><img alt='💠'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f4a0.webp' /><img alt='🔘'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f518.webp' /><img alt='🔲'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f532.webp' /><img alt='🔳'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f533.webp' /><img alt='⚪'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/26aa.webp' /><img alt='⚫'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/26ab.webp' /><img alt='🔴'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f534.webp' /><img alt='🔵'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f535.webp' />
+						</div>
+						<div id="other" class="tab-pane">
+							<img alt='⏱' src='https://afubaba.github.io/Afreecatv/img/emoji/23f1.webp' /><img alt='⏲'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/23f2.webp' /><img alt='☂'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/2602.webp' /><img alt='☃'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/2603.webp' /><img alt='☄'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/2604.webp' /><img alt='☘'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/2618.webp' /><img alt='☠'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/2620.webp' /><img alt='☦'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/2626.webp' /><img alt='☪'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/262a.webp' /><img alt='☮'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/262e.webp' /><img alt='☯'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/262f.webp' /><img alt='☸'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/2638.webp' /><img alt='☹'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/2639.webp' /><img alt='♀'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/2640.webp' /><img alt='♂'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/2642.webp' /><img alt='⚒'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/2692.webp' /><img alt='⚔'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/2694.webp' /><img alt='⚕'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/2695.webp' /><img alt='⚖'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/2696.webp' /><img alt='⚗'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/2697.webp' /><img alt='⚙'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/2699.webp' /><img alt='⚜'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/269c.webp' /><img alt='⚰'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/26b0.webp' /><img alt='⚱'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/26b1.webp' /><img alt='⛈'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/26c8.webp' /><img alt='⛏'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/26cf.webp' /><img alt='⛑'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/26d1.webp' /><img alt='⛓'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/26d3.webp' /><img alt='⛩'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/26e9.webp' /><img alt='⛰'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/26f0.webp' /><img alt='⛱'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/26f1.webp' /><img alt='⛴'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/26f4.webp' /><img alt='⛷'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/26f7.webp' /><img alt='⛸'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/26f8.webp' /><img alt='⛹'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/26f9.webp' /><img alt='✍'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/270d.webp' /><img alt='✝'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/271d.webp' /><img alt='✡'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/2721.webp' /><img alt='❣'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/2763.webp' /><img alt='🇦'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f1e6.webp' /><img alt='🇧'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f1e7.webp' /><img alt='🇨'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f1e8.webp' /><img alt='🇩'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f1e9.webp' /><img alt='🇪'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f1ea.webp' /><img alt='🇫'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f1eb.webp' /><img alt='🇬'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f1ec.webp' /><img alt='🇭'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f1ed.webp' /><img alt='🇮'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f1ee.webp' /><img alt='🇯'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f1ef.webp' /><img alt='🇰'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f1f0.webp' /><img alt='🇱'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f1f1.webp' /><img alt='🇲'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f1f2.webp' /><img alt='🇳'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f1f3.webp' /><img alt='🇴'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f1f4.webp' /><img alt='🇵'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f1f5.webp' /><img alt='🇶'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f1f6.webp' /><img alt='🇷'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f1f7.webp' /><img alt='🇸'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f1f8.webp' /><img alt='🇹'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f1f9.webp' /><img alt='🇺'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f1fa.webp' /><img alt='🇻'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f1fb.webp' /><img alt='🇼'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f1fc.webp' /><img alt='🇽'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f1fd.webp' /><img alt='🇾'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f1fe.webp' /><img alt='🇿'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f1ff.webp' /><img alt='🏻'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f3fb.webp' /><img alt='🏼'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f3fc.webp' /><img alt='🏽'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f3fd.webp' /><img alt='🏾'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f3fe.webp' /><img alt='🏿'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f3ff.webp' /><img alt='🕉'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f549.webp' /><img alt='🕎'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f54e.webp' /><img alt='🕺'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f57a.webp' /><img alt='🖤'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f5a4.webp' /><img alt='🛑'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f6d1.webp' /><img alt='🛒'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f6d2.webp' /><img alt='🛴'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f6f4.webp' /><img alt='🛵'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f6f5.webp' /><img alt='🛶'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f6f6.webp' /><img alt='🤙'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f919.webp' /><img alt='🤚'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f91a.webp' /><img alt='🤛'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f91b.webp' /><img alt='🤜'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f91c.webp' /><img alt='🤝'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f91d.webp' /><img alt='🤞'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f91e.webp' /><img alt='🤠'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f920.webp' /><img alt='🤡'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f921.webp' /><img alt='🤢'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f922.webp' /><img alt='🤣'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f923.webp' /><img alt='🤤'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f924.webp' /><img alt='🤥'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f925.webp' /><img alt='🤦'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f926.webp' /><img alt='🤧'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f927.webp' /><img alt='🤰'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f930.webp' /><img alt='🤳'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f933.webp' /><img alt='🤴'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f934.webp' /><img alt='🤵'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f935.webp' /><img alt='🤶'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f936.webp' /><img alt='🤷'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f937.webp' /><img alt='🤸'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f938.webp' /><img alt='🤹'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f939.webp' /><img alt='🤺'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f93a.webp' /><img alt='🤼'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f93c.webp' /><img alt='🤽'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f93d.webp' /><img alt='🤾'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f93e.webp' /><img alt='🥀'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f940.webp' /><img alt='🥁'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f941.webp' /><img alt='🥂'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f942.webp' /><img alt='🥃'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f943.webp' /><img alt='🥄'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f944.webp' /><img alt='🥅'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f945.webp' /><img alt='🥇'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f947.webp' /><img alt='🥈'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f948.webp' /><img alt='🥉'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f949.webp' /><img alt='🥊'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f94a.webp' /><img alt='🥋'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f94b.webp' /><img alt='🥐'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f950.webp' /><img alt='🥑'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f951.webp' /><img alt='🥒'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f952.webp' /><img alt='🥓'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f953.webp' /><img alt='🥔'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f954.webp' /><img alt='🥕'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f955.webp' /><img alt='🥖'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f956.webp' /><img alt='🥗'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f957.webp' /><img alt='🥘'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f958.webp' /><img alt='🥙'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f959.webp' /><img alt='🥚'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f95a.webp' /><img alt='🥛'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f95b.webp' /><img alt='🥜'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f95c.webp' /><img alt='🥝'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f95d.webp' /><img alt='🥞'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f95e.webp' /><img alt='🦅'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f985.webp' /><img alt='🦆'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f986.webp' /><img alt='🦇'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f987.webp' /><img alt='🦈'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f988.webp' /><img alt='🦉'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f989.webp' /><img alt='🦊'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f98a.webp' /><img alt='🦋'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f98b.webp' /><img alt='🦌'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f98c.webp' /><img alt='🦍'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f98d.webp' /><img alt='🦎'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f98e.webp' /><img alt='🦏'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f98f.webp' /><img alt='🦐'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f990.webp' /><img alt='🦑'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f991.webp' />
+						</div>
+						<div id="activity" class="tab-pane">
+							<img alt='🥎' src='https://afubaba.github.io/Afreecatv/img/emoji/1f94e.webp' />
+							<img alt='🥏' src='https://afubaba.github.io/Afreecatv/img/emoji/1f94f.webp' /><img alt='🪃'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1fa83.webp' /><img alt='🥍'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f94d.webp' /><img alt='🥌'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f94c.webp' /><img alt='🤿'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f93f.webp' /><img alt='🛷'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f6f7.webp' /><img alt='🏋'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f3cb.webp' /><img alt='♀'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/2640.webp' /><img alt='🏋'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f3cb.webp' /><img alt='♂'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/2642.webp' /><img alt='🤼'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f93c.webp' /><img alt='♀'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/2640.webp' /><img alt='🤼'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f93c.webp' /><img alt='♂'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/2642.webp' /><img alt='🤸'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f938.webp' /><img alt='♀'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/2640.webp' /><img alt='🤸'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f938.webp' /><img alt='♂'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/2642.webp' /><img alt='⛹'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/26f9.webp' /><img alt='♀'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/2640.webp' /><img alt='⛹'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/26f9.webp' /><img alt='♂'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/2642.webp' /><img alt='🤾'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f93e.webp' /><img alt='♀'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/2640.webp' /><img alt='🤾'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f93e.webp' /><img alt='♂'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/2642.webp' /><img alt='🧗'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f9d7.webp' /><img alt='♀'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/2640.webp' /><img alt='🧗'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f9d7.webp' /><img alt='🧗'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f9d7.webp' /><img alt='♂'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/2642.webp' /><img alt='🏌'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f3cc.webp' /><img alt='♀'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/2640.webp' /><img alt='🏌'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f3cc.webp' /><img alt='♂'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/2642.webp' /><img alt='🧘'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f9d8.webp' /><img alt='♀'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/2640.webp' /><img alt='🧘'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f9d8.webp' /><img alt='🧘'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f9d8.webp' /><img alt='♂'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/2642.webp' /><img alt='🧖'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f9d6.webp' /><img alt='♀'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/2640.webp' /><img alt='🧖'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f9d6.webp' /><img alt='🧖'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f9d6.webp' /><img alt='♂'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/2642.webp' /><img alt='🏄'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f3c4.webp' /><img alt='♀'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/2640.webp' /><img alt='🏄'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f3c4.webp' /><img alt='♂'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/2642.webp' /><img alt='🏊'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f3ca.webp' /><img alt='♀'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/2640.webp' /><img alt='🏊'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f3ca.webp' /><img alt='♂'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/2642.webp' /><img alt='🤽'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f93d.webp' /><img alt='♀'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/2640.webp' /><img alt='🤽'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f93d.webp' /><img alt='♂'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/2642.webp' /><img alt='🚣'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f6a3.webp' /><img alt='♀'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/2640.webp' /><img alt='🚣'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f6a3.webp' /><img alt='♂'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/2642.webp' /><img alt='🚴'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f6b4.webp' /><img alt='♀'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/2640.webp' /><img alt='🚴'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f6b4.webp' /><img alt='♂'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/2642.webp' /><img alt='🚵'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f6b5.webp' /><img alt='♀'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/2640.webp' /><img alt='🚵'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f6b5.webp' /><img alt='♂'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/2642.webp' /><img alt='🤹'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f939.webp' /><img alt='♀'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/2640.webp' /><img alt='🤹'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f939.webp' /><img alt='♂'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/2642.webp' /><img alt='🪗'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1fa97.webp' /><img alt='🪘'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1fa98.webp' /><img alt='🪕'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1fa95.webp' /><img alt='🧩'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f9e9.webp' /><img alt='🪀'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1fa80.webp' /><img alt='🪁'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1fa81.webp' /><img alt='👮'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f46e.webp' /><img alt='♀'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/2640.webp' /><img alt='👮'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f46e.webp' /><img alt='♂'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/2642.webp' /><img alt='👩‍🚒'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f469-200d-1f692.webp' /><img
+								alt='🧑‍🚒'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f9d1-200d-1f692.webp' /><img
+								alt='👨‍🚒'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f468-200d-1f692.webp' /><img
+								alt='👷' src='https://afubaba.github.io/Afreecatv/img/emoji/1f477.webp' /><img alt='♀'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/2640.webp' /><img alt='👷'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f477.webp' /><img alt='♂'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/2642.webp' /><img alt='👩‍🏭'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f469-200d-1f3ed.webp' /><img
+								alt='🧑‍🏭'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f9d1-200d-1f3ed.webp' /><img
+								alt='👨‍🏭'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f468-200d-1f3ed.webp' /><img
+								alt='👩‍🔧'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f469-200d-1f527.webp' /><img
+								alt='🧑‍🔧'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f9d1-200d-1f527.webp' /><img
+								alt='👨‍🔧'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f468-200d-1f527.webp' /><img
+								alt='👩‍🌾'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f469-200d-1f33e.webp' /><img
+								alt='🧑‍🌾'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f9d1-200d-1f33e.webp' /><img
+								alt='👨‍🌾'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f468-200d-1f33e.webp' /><img
+								alt='👩‍🍳'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f469-200d-1f373.webp' /><img
+								alt='🧑‍🍳'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f9d1-200d-1f373.webp' /><img
+								alt='👨‍🍳'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f468-200d-1f373.webp' /><img
+								alt='👩‍🎤'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f469-200d-1f3a4.webp' /><img
+								alt='🧑‍🎤'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f9d1-200d-1f3a4.webp' /><img
+								alt='👨‍🎤'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f468-200d-1f3a4.webp' /><img
+								alt='👩‍🎨'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f469-200d-1f3a8.webp' /><img
+								alt='🧑‍🎨'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f9d1-200d-1f3a8.webp' /><img
+								alt='👨‍🎨'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f468-200d-1f3a8.webp' /><img
+								alt='👩‍🏫'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f469-200d-1f3eb.webp' /><img
+								alt='🧑‍🏫'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f9d1-200d-1f3eb.webp' /><img
+								alt='👨‍🏫'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f468-200d-1f3eb.webp' /><img
+								alt='👩‍🎓'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f469-200d-1f393.webp' /><img
+								alt='🧑‍🎓'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f9d1-200d-1f393.webp' /><img
+								alt='👨‍🎓'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f468-200d-1f393.webp' /><img
+								alt='👩‍💼'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f469-200d-1f4bc.webp' /><img
+								alt='🧑‍💼'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f9d1-200d-1f4bc.webp' /><img
+								alt='👨‍💼'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f468-200d-1f4bc.webp' /><img
+								alt='👩‍💻'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f469-200d-1f4bb.webp' /><img
+								alt='🧑‍💻'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f9d1-200d-1f4bb.webp' /><img
+								alt='👨‍💻'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f468-200d-1f4bb.webp' /><img
+								alt='👩‍🔬'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f469-200d-1f52c.webp' /><img
+								alt='🧑‍🔬'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f9d1-200d-1f52c.webp' /><img
+								alt='👨‍🔬'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f468-200d-1f52c.webp' /><img
+								alt='👩‍🚀'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f469-200d-1f680.webp' /><img
+								alt='🧑‍🚀'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f9d1-200d-1f680.webp' /><img
+								alt='👨‍🚀'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f468-200d-1f680.webp' /><img
+								alt='👩' src='https://afubaba.github.io/Afreecatv/img/emoji/1f469.webp' /><img alt='⚕'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/2695.webp' /><img alt='🧑'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f9d1.webp' /><img alt='⚕'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/2695.webp' /><img alt='👨'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f468.webp' /><img alt='⚕'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/2695.webp' /><img alt='👩'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f469.webp' /><img alt='⚖'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/2696.webp' /><img alt='🧑'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f9d1.webp' /><img alt='⚖'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/2696.webp' /><img alt='👨'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f468.webp' /><img alt='⚖'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/2696.webp' /><img alt='👩'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f469.webp' /><img alt='✈'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/2708.webp' /><img alt='🧑'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f9d1.webp' /><img alt='✈'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/2708.webp' /><img alt='👨'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f468.webp' /><img alt='✈'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/2708.webp' /><img alt='🥷'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f977.webp' /><img alt='🧑‍🎄'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f9d1-200d-1f384.webp' /><img
+								alt='👰' src='https://afubaba.github.io/Afreecatv/img/emoji/1f470.webp' /><img alt='♀'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/2640.webp' /><img alt='👰'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f470.webp' /><img alt='♂'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/2642.webp' /><img alt='🤵'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f935.webp' /><img alt='♀'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/2640.webp' /><img alt='🤵'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f935.webp' /><img alt='♂'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/2642.webp' /><img alt='🕴'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f574.webp' /><img alt='♀'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/2640.webp' /><img alt='🕴'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f574.webp' /><img alt='♂'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/2642.webp' /><img alt='🦸'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f9b8.webp' /><img alt='♀'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/2640.webp' /><img alt='🦸'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f9b8.webp' /><img alt='🦸'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f9b8.webp' /><img alt='♂'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/2642.webp' /><img alt='🦹'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f9b9.webp' /><img alt='♀'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/2640.webp' /><img alt='🦹'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f9b9.webp' /><img alt='🦹'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f9b9.webp' /><img alt='♂'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/2642.webp' /><img alt='🧙'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f9d9.webp' /><img alt='♀'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/2640.webp' /><img alt='🧙'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f9d9.webp' /><img alt='🧙'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f9d9.webp' /><img alt='♂'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/2642.webp' /><img alt='🧝'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f9dd.webp' /><img alt='♀'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/2640.webp' /><img alt='🧝'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f9dd.webp' /><img alt='🧝'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f9dd.webp' /><img alt='♂'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/2642.webp' /><img alt='🧚'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f9da.webp' /><img alt='♀'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/2640.webp' /><img alt='🧚'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f9da.webp' /><img alt='🧚'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f9da.webp' /><img alt='♂'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/2642.webp' /><img alt='🧞'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f9de.webp' /><img alt='♀'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/2640.webp' /><img alt='🧞'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f9de.webp' /><img alt='🧞'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f9de.webp' /><img alt='♂'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/2642.webp' /><img alt='🧜'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f9dc.webp' /><img alt='♀'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/2640.webp' /><img alt='🧜'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f9dc.webp' /><img alt='🧜'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f9dc.webp' /><img alt='♂'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/2642.webp' /><img alt='🧛'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f9db.webp' /><img alt='♀'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/2640.webp' /><img alt='🧛'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f9db.webp' /><img alt='🧛'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f9db.webp' /><img alt='♂'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/2642.webp' /><img alt='🧟'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f9df.webp' /><img alt='♀'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/2640.webp' /><img alt='🧟'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f9df.webp' /><img alt='🧟'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f9df.webp' /><img alt='♂'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/2642.webp' /><img alt='💇'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f487.webp' /><img alt='♀'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/2640.webp' /><img alt='💇'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f487.webp' /><img alt='♂'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/2642.webp' /><img alt='💆'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f486.webp' /><img alt='♀'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/2640.webp' /><img alt='💆'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f486.webp' /><img alt='♂'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/2642.webp' /><img alt='👯'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f46f.webp' /><img alt='♀'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/2640.webp' /><img alt='👯'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f46f.webp' /><img alt='♂'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/2642.webp' /><img alt='🧎'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f9ce.webp' /><img alt='♀'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/2640.webp' /><img alt='🧎'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f9ce.webp' /><img alt='🧎'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f9ce.webp' /><img alt='♂'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/2642.webp' /><img alt='🧍'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f9cd.webp' /><img alt='♀'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/2640.webp' /><img alt='🧍'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f9cd.webp' /><img alt='🧍'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f9cd.webp' /><img alt='♂'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/2642.webp' /><img alt='🚶'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f6b6.webp' /><img alt='♀'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/2640.webp' /><img alt='🚶'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f6b6.webp' /><img alt='♂'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/2642.webp' /><img alt='👩‍🦯'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f469-200d-1f9af.webp' /><img
+								alt='🧑‍🦯'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f9d1-200d-1f9af.webp' /><img
+								alt='👨‍🦯'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f468-200d-1f9af.webp' /><img
+								alt='🏃' src='https://afubaba.github.io/Afreecatv/img/emoji/1f3c3.webp' /><img alt='♀'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/2640.webp' /><img alt='🏃'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f3c3.webp' /><img alt='♂'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/2642.webp' /><img alt='👩‍🦼'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f469-200d-1f9bc.webp' /><img
+								alt='🧑‍🦼'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f9d1-200d-1f9bc.webp' /><img
+								alt='👨‍🦼'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f468-200d-1f9bc.webp' /><img
+								alt='👩‍🦽'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f469-200d-1f9bd.webp' /><img
+								alt='🧑‍🦽'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f9d1-200d-1f9bd.webp' /><img
+								alt='👨‍🦽'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f468-200d-1f9bd.webp' /><img
+								alt='🧑‍🤝‍🧑'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f9d1-200d-1f91d-200d-1f9d1.webp' /><img
+								alt='👨‍👩‍👧'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f468-200d-1f469-200d-1f467.webp' /><img
+								alt='👨‍👩‍👧‍👦'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f468-200d-1f469-200d-1f467-200d-1f466.webp' /><img
+								alt='👨‍👩‍👦‍👦'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f468-200d-1f469-200d-1f466-200d-1f466.webp' /><img
+								alt='👨‍👩‍👧‍👧'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f468-200d-1f469-200d-1f467-200d-1f467.webp' /><img
+								alt='👩‍👩‍👦'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f469-200d-1f469-200d-1f466.webp' /><img
+								alt='👩‍👩‍👧'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f469-200d-1f469-200d-1f467.webp' /><img
+								alt='👩‍👩‍👧‍👦'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f469-200d-1f469-200d-1f467-200d-1f466.webp' /><img
+								alt='👩‍👩‍👦‍👦'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f469-200d-1f469-200d-1f466-200d-1f466.webp' /><img
+								alt='👩‍👩‍👧‍👧'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f469-200d-1f469-200d-1f467-200d-1f467.webp' /><img
+								alt='👨‍👨‍👦'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f468-200d-1f468-200d-1f466.webp' /><img
+								alt='👨‍👨‍👧'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f468-200d-1f468-200d-1f467.webp' /><img
+								alt='👨‍👨‍👧‍👦'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f468-200d-1f468-200d-1f467-200d-1f466.webp' /><img
+								alt='👨‍👨‍👦‍👦'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f468-200d-1f468-200d-1f466-200d-1f466.webp' /><img
+								alt='👨‍👨‍👧‍👧'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f468-200d-1f468-200d-1f467-200d-1f467.webp' /><img
+								alt='👩‍👦'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f469-200d-1f466.webp' /><img
+								alt='👩‍👧'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f469-200d-1f467.webp' /><img
+								alt='👩‍👧‍👦'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f469-200d-1f467-200d-1f466.webp' /><img
+								alt='👩‍👦‍👦'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f469-200d-1f466-200d-1f466.webp' /><img
+								alt='👩‍👧‍👧'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f469-200d-1f467-200d-1f467.webp' /><img
+								alt='👨‍👦'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f468-200d-1f466.webp' /><img
+								alt='👨‍👧'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f468-200d-1f467.webp' /><img
+								alt='👨‍👧‍👦'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f468-200d-1f467-200d-1f466.webp' /><img
+								alt='👨‍👦‍👦'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f468-200d-1f466-200d-1f466.webp' /><img
+								alt='👨‍👧‍👧'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f468-200d-1f467-200d-1f467.webp' />
+						</div>
+						<div id="flags" class="tab-pane">
+							<img alt='🏴' src='https://afubaba.github.io/Afreecatv/img/emoji/1f3f4.webp' /><img alt='☠'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/2620.webp' /><img alt='🏳'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f3f3.webp' /><img alt='🌈'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f308.webp' /><img alt='🏳'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f3f3.webp' /><img alt='⚧'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/26a7.webp' /><img alt='🇦🇨'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f1e6-1f1e8.webp' /><img alt='🇦🇩'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f1e6-1f1e9.webp' /><img alt='🇦🇪'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f1e6-1f1ea.webp' /><img alt='🇦🇫'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f1e6-1f1eb.webp' /><img alt='🇦🇬'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f1e6-1f1ec.webp' /><img alt='🇦🇮'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f1e6-1f1ee.webp' /><img alt='🇦🇱'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f1e6-1f1f1.webp' /><img alt='🇦🇲'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f1e6-1f1f2.webp' /><img alt='🇦🇴'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f1e6-1f1f4.webp' /><img alt='🇦🇶'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f1e6-1f1f6.webp' /><img alt='🇦🇷'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f1e6-1f1f7.webp' /><img alt='🇦🇸'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f1e6-1f1f8.webp' /><img alt='🇦🇹'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f1e6-1f1f9.webp' /><img alt='🇦🇺'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f1e6-1f1fa.webp' /><img alt='🇦🇼'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f1e6-1f1fc.webp' /><img alt='🇦🇽'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f1e6-1f1fd.webp' /><img alt='🇦🇿'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f1e6-1f1ff.webp' /><img alt='🇧🇦'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f1e7-1f1e6.webp' /><img alt='🇧🇧'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f1e7-1f1e7.webp' /><img alt='🇧🇩'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f1e7-1f1e9.webp' /><img alt='🇧🇪'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f1e7-1f1ea.webp' /><img alt='🇧🇫'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f1e7-1f1eb.webp' /><img alt='🇧🇬'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f1e7-1f1ec.webp' /><img alt='🇧🇭'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f1e7-1f1ed.webp' /><img alt='🇧🇮'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f1e7-1f1ee.webp' /><img alt='🇧🇯'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f1e7-1f1ef.webp' /><img alt='🇧🇱'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f1e7-1f1f1.webp' /><img alt='🇧🇲'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f1e7-1f1f2.webp' /><img alt='🇧🇳'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f1e7-1f1f3.webp' /><img alt='🇧🇴'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f1e7-1f1f4.webp' /><img alt='🇧🇶'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f1e7-1f1f6.webp' /><img alt='🇧🇷'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f1e7-1f1f7.webp' /><img alt='🇧🇸'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f1e7-1f1f8.webp' /><img alt='🇧🇹'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f1e7-1f1f9.webp' /><img alt='🇧🇼'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f1e7-1f1fc.webp' /><img alt='🇧🇾'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f1e7-1f1fe.webp' /><img alt='🇧🇿'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f1e7-1f1ff.webp' /><img alt='🇨🇦'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f1e8-1f1e6.webp' /><img alt='🇨🇨'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f1e8-1f1e8.webp' /><img alt='🇨🇩'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f1e8-1f1e9.webp' /><img alt='🇨🇫'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f1e8-1f1eb.webp' /><img alt='🇨🇬'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f1e8-1f1ec.webp' /><img alt='🇨🇭'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f1e8-1f1ed.webp' /><img alt='🇨🇮'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f1e8-1f1ee.webp' /><img alt='🇨🇰'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f1e8-1f1f0.webp' /><img alt='🇨🇱'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f1e8-1f1f1.webp' /><img alt='🇨🇲'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f1e8-1f1f2.webp' /><img alt='🇨🇳'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f1e8-1f1f3.webp' /><img alt='🇨🇴'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f1e8-1f1f4.webp' /><img alt='🇨🇷'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f1e8-1f1f7.webp' /><img alt='🇨🇺'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f1e8-1f1fa.webp' /><img alt='🇨🇻'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f1e8-1f1fb.webp' /><img alt='🇨🇼'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f1e8-1f1fc.webp' /><img alt='🇨🇽'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f1e8-1f1fd.webp' /><img alt='🇨🇾'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f1e8-1f1fe.webp' /><img alt='🇨🇿'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f1e8-1f1ff.webp' /><img alt='🇩🇪'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f1e9-1f1ea.webp' /><img alt='🇩🇯'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f1e9-1f1ef.webp' /><img alt='🇩🇰'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f1e9-1f1f0.webp' /><img alt='🇩🇲'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f1e9-1f1f2.webp' /><img alt='🇩🇴'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f1e9-1f1f4.webp' /><img alt='🇩🇿'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f1e9-1f1ff.webp' /><img alt='🇪🇨'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f1ea-1f1e8.webp' /><img
+								alt='🏴󠁧󠁢󠁥󠁮󠁧󠁿'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f3f4-e0067-e0062-e0065-e006e-e0067-e007f.webp' /><img
+								alt='🇪🇪' src='https://afubaba.github.io/Afreecatv/img/emoji/1f1ea-1f1ea.webp' /><img
+								alt='🇪🇬' src='https://afubaba.github.io/Afreecatv/img/emoji/1f1ea-1f1ec.webp' /><img
+								alt='🇪🇭' src='https://afubaba.github.io/Afreecatv/img/emoji/1f1ea-1f1ed.webp' /><img
+								alt='🇪🇷' src='https://afubaba.github.io/Afreecatv/img/emoji/1f1ea-1f1f7.webp' /><img
+								alt='🇪🇸' src='https://afubaba.github.io/Afreecatv/img/emoji/1f1ea-1f1f8.webp' /><img
+								alt='🇪🇹' src='https://afubaba.github.io/Afreecatv/img/emoji/1f1ea-1f1f9.webp' /><img
+								alt='🇪🇺' src='https://afubaba.github.io/Afreecatv/img/emoji/1f1ea-1f1fa.webp' /><img
+								alt='🇫🇮' src='https://afubaba.github.io/Afreecatv/img/emoji/1f1eb-1f1ee.webp' /><img
+								alt='🇫🇯' src='https://afubaba.github.io/Afreecatv/img/emoji/1f1eb-1f1ef.webp' /><img
+								alt='🇫🇰' src='https://afubaba.github.io/Afreecatv/img/emoji/1f1eb-1f1f0.webp' /><img
+								alt='🇫🇲' src='https://afubaba.github.io/Afreecatv/img/emoji/1f1eb-1f1f2.webp' /><img
+								alt='🇫🇴' src='https://afubaba.github.io/Afreecatv/img/emoji/1f1eb-1f1f4.webp' /><img
+								alt='🇫🇷' src='https://afubaba.github.io/Afreecatv/img/emoji/1f1eb-1f1f7.webp' /><img
+								alt='🇬🇦' src='https://afubaba.github.io/Afreecatv/img/emoji/1f1ec-1f1e6.webp' /><img
+								alt='🇬🇧' src='https://afubaba.github.io/Afreecatv/img/emoji/1f1ec-1f1e7.webp' /><img
+								alt='🇬🇩' src='https://afubaba.github.io/Afreecatv/img/emoji/1f1ec-1f1e9.webp' /><img
+								alt='🇬🇪' src='https://afubaba.github.io/Afreecatv/img/emoji/1f1ec-1f1ea.webp' /><img
+								alt='🇬🇫' src='https://afubaba.github.io/Afreecatv/img/emoji/1f1ec-1f1eb.webp' /><img
+								alt='🇬🇬' src='https://afubaba.github.io/Afreecatv/img/emoji/1f1ec-1f1ec.webp' /><img
+								alt='🇬🇭' src='https://afubaba.github.io/Afreecatv/img/emoji/1f1ec-1f1ed.webp' /><img
+								alt='🇬🇮' src='https://afubaba.github.io/Afreecatv/img/emoji/1f1ec-1f1ee.webp' /><img
+								alt='🇬🇱' src='https://afubaba.github.io/Afreecatv/img/emoji/1f1ec-1f1f1.webp' /><img
+								alt='🇬🇲' src='https://afubaba.github.io/Afreecatv/img/emoji/1f1ec-1f1f2.webp' /><img
+								alt='🇬🇳' src='https://afubaba.github.io/Afreecatv/img/emoji/1f1ec-1f1f3.webp' /><img
+								alt='🇬🇵' src='https://afubaba.github.io/Afreecatv/img/emoji/1f1ec-1f1f5.webp' /><img
+								alt='🇬🇶' src='https://afubaba.github.io/Afreecatv/img/emoji/1f1ec-1f1f6.webp' /><img
+								alt='🇬🇷' src='https://afubaba.github.io/Afreecatv/img/emoji/1f1ec-1f1f7.webp' /><img
+								alt='🇬🇸' src='https://afubaba.github.io/Afreecatv/img/emoji/1f1ec-1f1f8.webp' /><img
+								alt='🇬🇹' src='https://afubaba.github.io/Afreecatv/img/emoji/1f1ec-1f1f9.webp' /><img
+								alt='🇬🇺' src='https://afubaba.github.io/Afreecatv/img/emoji/1f1ec-1f1fa.webp' /><img
+								alt='🇬🇼' src='https://afubaba.github.io/Afreecatv/img/emoji/1f1ec-1f1fc.webp' /><img
+								alt='🇬🇾' src='https://afubaba.github.io/Afreecatv/img/emoji/1f1ec-1f1fe.webp' /><img
+								alt='🇭🇰' src='https://afubaba.github.io/Afreecatv/img/emoji/1f1ed-1f1f0.webp' /><img
+								alt='🇭🇳' src='https://afubaba.github.io/Afreecatv/img/emoji/1f1ed-1f1f3.webp' /><img
+								alt='🇭🇷' src='https://afubaba.github.io/Afreecatv/img/emoji/1f1ed-1f1f7.webp' /><img
+								alt='🇭🇹' src='https://afubaba.github.io/Afreecatv/img/emoji/1f1ed-1f1f9.webp' /><img
+								alt='🇭🇺' src='https://afubaba.github.io/Afreecatv/img/emoji/1f1ed-1f1fa.webp' /><img
+								alt='🇮🇨' src='https://afubaba.github.io/Afreecatv/img/emoji/1f1ee-1f1e8.webp' /><img
+								alt='🇮🇩' src='https://afubaba.github.io/Afreecatv/img/emoji/1f1ee-1f1e9.webp' /><img
+								alt='🇮🇪' src='https://afubaba.github.io/Afreecatv/img/emoji/1f1ee-1f1ea.webp' /><img
+								alt='🇮🇱' src='https://afubaba.github.io/Afreecatv/img/emoji/1f1ee-1f1f1.webp' /><img
+								alt='🇮🇲' src='https://afubaba.github.io/Afreecatv/img/emoji/1f1ee-1f1f2.webp' /><img
+								alt='🇮🇳' src='https://afubaba.github.io/Afreecatv/img/emoji/1f1ee-1f1f3.webp' /><img
+								alt='🇮🇴' src='https://afubaba.github.io/Afreecatv/img/emoji/1f1ee-1f1f4.webp' /><img
+								alt='🇮🇶' src='https://afubaba.github.io/Afreecatv/img/emoji/1f1ee-1f1f6.webp' /><img
+								alt='🇮🇷' src='https://afubaba.github.io/Afreecatv/img/emoji/1f1ee-1f1f7.webp' /><img
+								alt='🇮🇸' src='https://afubaba.github.io/Afreecatv/img/emoji/1f1ee-1f1f8.webp' /><img
+								alt='🇮🇹' src='https://afubaba.github.io/Afreecatv/img/emoji/1f1ee-1f1f9.webp' /><img
+								alt='🇯🇪' src='https://afubaba.github.io/Afreecatv/img/emoji/1f1ef-1f1ea.webp' /><img
+								alt='🇯🇲' src='https://afubaba.github.io/Afreecatv/img/emoji/1f1ef-1f1f2.webp' /><img
+								alt='🇯🇴' src='https://afubaba.github.io/Afreecatv/img/emoji/1f1ef-1f1f4.webp' /><img
+								alt='🇯🇵' src='https://afubaba.github.io/Afreecatv/img/emoji/1f1ef-1f1f5.webp' /><img
+								alt='🇰🇪' src='https://afubaba.github.io/Afreecatv/img/emoji/1f1f0-1f1ea.webp' /><img
+								alt='🇰🇬' src='https://afubaba.github.io/Afreecatv/img/emoji/1f1f0-1f1ec.webp' /><img
+								alt='🇰🇭' src='https://afubaba.github.io/Afreecatv/img/emoji/1f1f0-1f1ed.webp' /><img
+								alt='🇰🇮' src='https://afubaba.github.io/Afreecatv/img/emoji/1f1f0-1f1ee.webp' /><img
+								alt='🇰🇲' src='https://afubaba.github.io/Afreecatv/img/emoji/1f1f0-1f1f2.webp' /><img
+								alt='🇰🇳' src='https://afubaba.github.io/Afreecatv/img/emoji/1f1f0-1f1f3.webp' /><img
+								alt='🇰🇵' src='https://afubaba.github.io/Afreecatv/img/emoji/1f1f0-1f1f5.webp' /><img
+								alt='🇰🇷' src='https://afubaba.github.io/Afreecatv/img/emoji/1f1f0-1f1f7.webp' /><img
+								alt='🇰🇼' src='https://afubaba.github.io/Afreecatv/img/emoji/1f1f0-1f1fc.webp' /><img
+								alt='🇰🇾' src='https://afubaba.github.io/Afreecatv/img/emoji/1f1f0-1f1fe.webp' /><img
+								alt='🇰🇿' src='https://afubaba.github.io/Afreecatv/img/emoji/1f1f0-1f1ff.webp' /><img
+								alt='🇱🇦' src='https://afubaba.github.io/Afreecatv/img/emoji/1f1f1-1f1e6.webp' /><img
+								alt='🇱🇧' src='https://afubaba.github.io/Afreecatv/img/emoji/1f1f1-1f1e7.webp' /><img
+								alt='🇱🇨' src='https://afubaba.github.io/Afreecatv/img/emoji/1f1f1-1f1e8.webp' /><img
+								alt='🇱🇮' src='https://afubaba.github.io/Afreecatv/img/emoji/1f1f1-1f1ee.webp' /><img
+								alt='🇱🇰' src='https://afubaba.github.io/Afreecatv/img/emoji/1f1f1-1f1f0.webp' /><img
+								alt='🇱🇷' src='https://afubaba.github.io/Afreecatv/img/emoji/1f1f1-1f1f7.webp' /><img
+								alt='🇱🇸' src='https://afubaba.github.io/Afreecatv/img/emoji/1f1f1-1f1f8.webp' /><img
+								alt='🇱🇹' src='https://afubaba.github.io/Afreecatv/img/emoji/1f1f1-1f1f9.webp' /><img
+								alt='🇱🇺' src='https://afubaba.github.io/Afreecatv/img/emoji/1f1f1-1f1fa.webp' /><img
+								alt='🇱🇻' src='https://afubaba.github.io/Afreecatv/img/emoji/1f1f1-1f1fb.webp' /><img
+								alt='🇱🇾' src='https://afubaba.github.io/Afreecatv/img/emoji/1f1f1-1f1fe.webp' /><img
+								alt='🇲🇦' src='https://afubaba.github.io/Afreecatv/img/emoji/1f1f2-1f1e6.webp' /><img
+								alt='🇲🇨' src='https://afubaba.github.io/Afreecatv/img/emoji/1f1f2-1f1e8.webp' /><img
+								alt='🇲🇩' src='https://afubaba.github.io/Afreecatv/img/emoji/1f1f2-1f1e9.webp' /><img
+								alt='🇲🇪' src='https://afubaba.github.io/Afreecatv/img/emoji/1f1f2-1f1ea.webp' /><img
+								alt='🇲🇬' src='https://afubaba.github.io/Afreecatv/img/emoji/1f1f2-1f1ec.webp' /><img
+								alt='🇲🇭' src='https://afubaba.github.io/Afreecatv/img/emoji/1f1f2-1f1ed.webp' /><img
+								alt='🇲🇰' src='https://afubaba.github.io/Afreecatv/img/emoji/1f1f2-1f1f0.webp' /><img
+								alt='🇲🇱' src='https://afubaba.github.io/Afreecatv/img/emoji/1f1f2-1f1f1.webp' /><img
+								alt='🇲🇲' src='https://afubaba.github.io/Afreecatv/img/emoji/1f1f2-1f1f2.webp' /><img
+								alt='🇲🇳' src='https://afubaba.github.io/Afreecatv/img/emoji/1f1f2-1f1f3.webp' /><img
+								alt='🇲🇴' src='https://afubaba.github.io/Afreecatv/img/emoji/1f1f2-1f1f4.webp' /><img
+								alt='🇲🇵' src='https://afubaba.github.io/Afreecatv/img/emoji/1f1f2-1f1f5.webp' /><img
+								alt='🇲🇶' src='https://afubaba.github.io/Afreecatv/img/emoji/1f1f2-1f1f6.webp' /><img
+								alt='🇲🇷' src='https://afubaba.github.io/Afreecatv/img/emoji/1f1f2-1f1f7.webp' /><img
+								alt='🇲🇸' src='https://afubaba.github.io/Afreecatv/img/emoji/1f1f2-1f1f8.webp' /><img
+								alt='🇲🇹' src='https://afubaba.github.io/Afreecatv/img/emoji/1f1f2-1f1f9.webp' /><img
+								alt='🇲🇺' src='https://afubaba.github.io/Afreecatv/img/emoji/1f1f2-1f1fa.webp' /><img
+								alt='🇲🇻' src='https://afubaba.github.io/Afreecatv/img/emoji/1f1f2-1f1fb.webp' /><img
+								alt='🇲🇼' src='https://afubaba.github.io/Afreecatv/img/emoji/1f1f2-1f1fc.webp' /><img
+								alt='🇲🇽' src='https://afubaba.github.io/Afreecatv/img/emoji/1f1f2-1f1fd.webp' /><img
+								alt='🇲🇾' src='https://afubaba.github.io/Afreecatv/img/emoji/1f1f2-1f1fe.webp' /><img
+								alt='🇲🇿' src='https://afubaba.github.io/Afreecatv/img/emoji/1f1f2-1f1ff.webp' /><img
+								alt='🇳🇦' src='https://afubaba.github.io/Afreecatv/img/emoji/1f1f3-1f1e6.webp' /><img
+								alt='🇳🇨' src='https://afubaba.github.io/Afreecatv/img/emoji/1f1f3-1f1e8.webp' /><img
+								alt='🇳🇪' src='https://afubaba.github.io/Afreecatv/img/emoji/1f1f3-1f1ea.webp' /><img
+								alt='🇳🇫' src='https://afubaba.github.io/Afreecatv/img/emoji/1f1f3-1f1eb.webp' /><img
+								alt='🇳🇬' src='https://afubaba.github.io/Afreecatv/img/emoji/1f1f3-1f1ec.webp' /><img
+								alt='🇳🇮' src='https://afubaba.github.io/Afreecatv/img/emoji/1f1f3-1f1ee.webp' /><img
+								alt='🇳🇱' src='https://afubaba.github.io/Afreecatv/img/emoji/1f1f3-1f1f1.webp' /><img
+								alt='🇳🇴' src='https://afubaba.github.io/Afreecatv/img/emoji/1f1f3-1f1f4.webp' /><img
+								alt='🇳🇵' src='https://afubaba.github.io/Afreecatv/img/emoji/1f1f3-1f1f5.webp' /><img
+								alt='🇳🇷' src='https://afubaba.github.io/Afreecatv/img/emoji/1f1f3-1f1f7.webp' /><img
+								alt='🇳🇺' src='https://afubaba.github.io/Afreecatv/img/emoji/1f1f3-1f1fa.webp' /><img
+								alt='🇳🇿' src='https://afubaba.github.io/Afreecatv/img/emoji/1f1f3-1f1ff.webp' /><img
+								alt='🇴🇲' src='https://afubaba.github.io/Afreecatv/img/emoji/1f1f4-1f1f2.webp' /><img
+								alt='🇵🇦' src='https://afubaba.github.io/Afreecatv/img/emoji/1f1f5-1f1e6.webp' /><img
+								alt='🇵🇪' src='https://afubaba.github.io/Afreecatv/img/emoji/1f1f5-1f1ea.webp' /><img
+								alt='🇵🇫' src='https://afubaba.github.io/Afreecatv/img/emoji/1f1f5-1f1eb.webp' /><img
+								alt='🇵🇬' src='https://afubaba.github.io/Afreecatv/img/emoji/1f1f5-1f1ec.webp' /><img
+								alt='🇵🇭' src='https://afubaba.github.io/Afreecatv/img/emoji/1f1f5-1f1ed.webp' /><img
+								alt='🇵🇰' src='https://afubaba.github.io/Afreecatv/img/emoji/1f1f5-1f1f0.webp' /><img
+								alt='🇵🇱' src='https://afubaba.github.io/Afreecatv/img/emoji/1f1f5-1f1f1.webp' /><img
+								alt='🇵🇲' src='https://afubaba.github.io/Afreecatv/img/emoji/1f1f5-1f1f2.webp' /><img
+								alt='🇵🇳' src='https://afubaba.github.io/Afreecatv/img/emoji/1f1f5-1f1f3.webp' /><img
+								alt='🇵🇷' src='https://afubaba.github.io/Afreecatv/img/emoji/1f1f5-1f1f7.webp' /><img
+								alt='🇵🇸' src='https://afubaba.github.io/Afreecatv/img/emoji/1f1f5-1f1f8.webp' /><img
+								alt='🇵🇹' src='https://afubaba.github.io/Afreecatv/img/emoji/1f1f5-1f1f9.webp' /><img
+								alt='🇵🇼' src='https://afubaba.github.io/Afreecatv/img/emoji/1f1f5-1f1fc.webp' /><img
+								alt='🇵🇾' src='https://afubaba.github.io/Afreecatv/img/emoji/1f1f5-1f1fe.webp' /><img
+								alt='🇶🇦' src='https://afubaba.github.io/Afreecatv/img/emoji/1f1f6-1f1e6.webp' /><img
+								alt='🇷🇪' src='https://afubaba.github.io/Afreecatv/img/emoji/1f1f7-1f1ea.webp' /><img
+								alt='🇷🇴' src='https://afubaba.github.io/Afreecatv/img/emoji/1f1f7-1f1f4.webp' /><img
+								alt='🇷🇸' src='https://afubaba.github.io/Afreecatv/img/emoji/1f1f7-1f1f8.webp' /><img
+								alt='🇷🇺' src='https://afubaba.github.io/Afreecatv/img/emoji/1f1f7-1f1fa.webp' /><img
+								alt='🇷🇼' src='https://afubaba.github.io/Afreecatv/img/emoji/1f1f7-1f1fc.webp' /><img
+								alt='🇸🇦' src='https://afubaba.github.io/Afreecatv/img/emoji/1f1f8-1f1e6.webp' /><img
+								alt='🏴󠁧󠁢󠁳󠁣󠁴󠁿'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f3f4-e0067-e0062-e0073-e0063-e0074-e007f.webp' /><img
+								alt='🇸🇧' src='https://afubaba.github.io/Afreecatv/img/emoji/1f1f8-1f1e7.webp' /><img
+								alt='🇸🇨' src='https://afubaba.github.io/Afreecatv/img/emoji/1f1f8-1f1e8.webp' /><img
+								alt='🇸🇩' src='https://afubaba.github.io/Afreecatv/img/emoji/1f1f8-1f1e9.webp' /><img
+								alt='🇸🇪' src='https://afubaba.github.io/Afreecatv/img/emoji/1f1f8-1f1ea.webp' /><img
+								alt='🇸🇬' src='https://afubaba.github.io/Afreecatv/img/emoji/1f1f8-1f1ec.webp' /><img
+								alt='🇸🇭' src='https://afubaba.github.io/Afreecatv/img/emoji/1f1f8-1f1ed.webp' /><img
+								alt='🇸🇮' src='https://afubaba.github.io/Afreecatv/img/emoji/1f1f8-1f1ee.webp' /><img
+								alt='🇸🇰' src='https://afubaba.github.io/Afreecatv/img/emoji/1f1f8-1f1f0.webp' /><img
+								alt='🇸🇱' src='https://afubaba.github.io/Afreecatv/img/emoji/1f1f8-1f1f1.webp' /><img
+								alt='🇸🇲' src='https://afubaba.github.io/Afreecatv/img/emoji/1f1f8-1f1f2.webp' /><img
+								alt='🇸🇳' src='https://afubaba.github.io/Afreecatv/img/emoji/1f1f8-1f1f3.webp' /><img
+								alt='🇸🇴' src='https://afubaba.github.io/Afreecatv/img/emoji/1f1f8-1f1f4.webp' /><img
+								alt='🇸🇷' src='https://afubaba.github.io/Afreecatv/img/emoji/1f1f8-1f1f7.webp' /><img
+								alt='🇸🇸' src='https://afubaba.github.io/Afreecatv/img/emoji/1f1f8-1f1f8.webp' /><img
+								alt='🇸🇹' src='https://afubaba.github.io/Afreecatv/img/emoji/1f1f8-1f1f9.webp' /><img
+								alt='🇸🇻' src='https://afubaba.github.io/Afreecatv/img/emoji/1f1f8-1f1fb.webp' /><img
+								alt='🇸🇽' src='https://afubaba.github.io/Afreecatv/img/emoji/1f1f8-1f1fd.webp' /><img
+								alt='🇸🇾' src='https://afubaba.github.io/Afreecatv/img/emoji/1f1f8-1f1fe.webp' /><img
+								alt='🇸🇿' src='https://afubaba.github.io/Afreecatv/img/emoji/1f1f8-1f1ff.webp' /><img
+								alt='🇹🇦' src='https://afubaba.github.io/Afreecatv/img/emoji/1f1f9-1f1e6.webp' /><img
+								alt='🇹🇨' src='https://afubaba.github.io/Afreecatv/img/emoji/1f1f9-1f1e8.webp' /><img
+								alt='🇹🇩' src='https://afubaba.github.io/Afreecatv/img/emoji/1f1f9-1f1e9.webp' /><img
+								alt='🇹🇫' src='https://afubaba.github.io/Afreecatv/img/emoji/1f1f9-1f1eb.webp' /><img
+								alt='🇹🇬' src='https://afubaba.github.io/Afreecatv/img/emoji/1f1f9-1f1ec.webp' /><img
+								alt='🇹🇭' src='https://afubaba.github.io/Afreecatv/img/emoji/1f1f9-1f1ed.webp' /><img
+								alt='🇹🇯' src='https://afubaba.github.io/Afreecatv/img/emoji/1f1f9-1f1ef.webp' /><img
+								alt='🇹🇰' src='https://afubaba.github.io/Afreecatv/img/emoji/1f1f9-1f1f0.webp' /><img
+								alt='🇹🇱' src='https://afubaba.github.io/Afreecatv/img/emoji/1f1f9-1f1f1.webp' /><img
+								alt='🇹🇲' src='https://afubaba.github.io/Afreecatv/img/emoji/1f1f9-1f1f2.webp' /><img
+								alt='🇹🇳' src='https://afubaba.github.io/Afreecatv/img/emoji/1f1f9-1f1f3.webp' /><img
+								alt='🇹🇴' src='https://afubaba.github.io/Afreecatv/img/emoji/1f1f9-1f1f4.webp' /><img
+								alt='🇹🇷' src='https://afubaba.github.io/Afreecatv/img/emoji/1f1f9-1f1f7.webp' /><img
+								alt='🇹🇹' src='https://afubaba.github.io/Afreecatv/img/emoji/1f1f9-1f1f9.webp' /><img
+								alt='🇹🇻' src='https://afubaba.github.io/Afreecatv/img/emoji/1f1f9-1f1fb.webp' /><img
+								alt='🇹🇿' src='https://afubaba.github.io/Afreecatv/img/emoji/1f1f9-1f1ff.webp' /><img
+								alt='🇺🇦' src='https://afubaba.github.io/Afreecatv/img/emoji/1f1fa-1f1e6.webp' /><img
+								alt='🇺🇬' src='https://afubaba.github.io/Afreecatv/img/emoji/1f1fa-1f1ec.webp' /><img
+								alt='🇺🇳' src='https://afubaba.github.io/Afreecatv/img/emoji/1f1fa-1f1f3.webp' /><img
+								alt='🇺🇸' src='https://afubaba.github.io/Afreecatv/img/emoji/1f1fa-1f1f8.webp' /><img
+								alt='🇺🇾' src='https://afubaba.github.io/Afreecatv/img/emoji/1f1fa-1f1fe.webp' /><img
+								alt='🇺🇿' src='https://afubaba.github.io/Afreecatv/img/emoji/1f1fa-1f1ff.webp' /><img
+								alt='🇻🇦' src='https://afubaba.github.io/Afreecatv/img/emoji/1f1fb-1f1e6.webp' /><img
+								alt='🇻🇨' src='https://afubaba.github.io/Afreecatv/img/emoji/1f1fb-1f1e8.webp' /><img
+								alt='🇻🇪' src='https://afubaba.github.io/Afreecatv/img/emoji/1f1fb-1f1ea.webp' /><img
+								alt='🇻🇬' src='https://afubaba.github.io/Afreecatv/img/emoji/1f1fb-1f1ec.webp' /><img
+								alt='🇻🇮' src='https://afubaba.github.io/Afreecatv/img/emoji/1f1fb-1f1ee.webp' /><img
+								alt='🇻🇳' src='https://afubaba.github.io/Afreecatv/img/emoji/1f1fb-1f1f3.webp' /><img
+								alt='🇻🇺' src='https://afubaba.github.io/Afreecatv/img/emoji/1f1fb-1f1fa.webp' /><img
+								alt='🏴󠁧󠁢󠁷󠁬󠁳󠁿'
+								src='https://afubaba.github.io/Afreecatv/img/emoji/1f3f4-e0067-e0062-e0077-e006c-e0073-e007f.webp' /><img
+								alt='🇼🇫' src='https://afubaba.github.io/Afreecatv/img/emoji/1f1fc-1f1eb.webp' /><img
+								alt='🇼🇸' src='https://afubaba.github.io/Afreecatv/img/emoji/1f1fc-1f1f8.webp' /><img
+								alt='🇽🇰' src='https://afubaba.github.io/Afreecatv/img/emoji/1f1fd-1f1f0.webp' /><img
+								alt='🇾🇪' src='https://afubaba.github.io/Afreecatv/img/emoji/1f1fe-1f1ea.webp' /><img
+								alt='🇾🇹' src='https://afubaba.github.io/Afreecatv/img/emoji/1f1fe-1f1f9.webp' /><img
+								alt='🇿🇦' src='https://afubaba.github.io/Afreecatv/img/emoji/1f1ff-1f1e6.webp' /><img
+								alt='🇿🇲' src='https://afubaba.github.io/Afreecatv/img/emoji/1f1ff-1f1f2.webp' /><img
+								alt='🇿🇼' src='https://afubaba.github.io/Afreecatv/img/emoji/1f1ff-1f1fc.webp' />
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="tabbable">
+			<ul class="nav nav-tabs">
+				<li class="active"><a id="basicMenu" data-toggle="tab" href="#basicConfiguration">기본설정</a></li>
+
+
+				<li><a id="rootMenu" data-toggle="tab" href="#robotConfiguration">지능채팅로봇</a></li>
+
+				<li><a id="detailedMenu" data-toggle="tab" href="#detailedConfiguration">상세설정</a></li>
+
+
+				<!--隐藏复制粘贴-->
+				<li style="display: none;"><a data-toggle="tab" href="#easyDiv">복사&붙여넣기</a></li>
+				<li style="display: none;"><a data-toggle="tab" href="#testDiv">테스</a></li>
+
+
+			</ul>
+			<div class="tab-content">
+				<div class="tab-pane" id="detailedConfiguration">
+					<button id="timeButtonId" class="btn btn-danger" onclick="timeButtonFunction();"
+						style="width: 100%;" data-toggle="collapse" title="사용 시간 기능"
+						data-target="#timeDivId">시간관련</button>
+					<div id="timeDivId" class="collapse">
+						<!-- 手动发送时间计时器 -->
+						<button id="getTimeButton" onclick="getTimeFunction();"
+							style="font-size: large; color: darkred;" title="현재 시간 가 져 오기 및 발송 시간" type="button">
+							<span id="handTimeId">当前时间</span>
+						</button>
+						<div id="timeFrequencys" style="font-size: 2em;color: red;"></div>
+						<br />
+
+						<!-- 自动发送时间计时器 -->
+						<span id="autoTimeId" onclick="autoTimeFunction();" style="font-size: large;"
+							title="자동보고시간(30분정각에힌트)">报时
+						</span>
+						<span id='startAutoTime'>on</span> <input name="isAutoTimeStart" type="radio" value='start'>
+						<span id='overAutoTime'>off</span> <input checked="checked" name="isAutoTimeStart" type="radio"
+							value='over'>
+					</div>
+
+					<button style="display: none;" class="btn btn-danger" style="width: 100%;" data-toggle="collapse"
+						title="대량 작업 관련" data-target="#personalizedDivId">개성화</button>
+					<div id="personalizedDivId" style="display: none; class=" collapse">
+						<h3 style="font-size: large; color: yellow;">스타일정의:</h3>
+
+						글꼴색상: <select id="background_color" onchange="changeBackColorFunction();">
+							<option value="red">red</option>
+							<option selected value="white">white</option>
+							<option value="black">black</option>
+							<option value="#7FFF00">Lime</option>
+							<option value="#00FF00">Chartreuse</option>
+							<option value="#FFFF00">yelllow</option>
+
+						</select> <br /> 배경그림: <select id="background" onchange="changeBackFunction();">
+							<option value="none">묵인</option>
+							<option selected="select" value="transparent">투명</option>
+							<option value="white">하양</option>
+						</select> <br /> 언어:
+						<!-- 语言支持 -->
+						<select id="changeLanguageSelect" onchange="changeLanguagesFunction();">
+							<option id='langChinese' value="zh">中文</option>
+							<option id='langKorean' selected="" value="ko">韩语</option>
+						</select>
+
+					</div>
+				</div>
+				<div class="tab-pane active" id="basicConfiguration">
+					<!-- 	<button id="mainFaceButtonId" style="font-size: 30px" onclick="mainFaceFunction();">😀
+					</button> -->
+					<!-- 内容： -->
+					<!-- <span id="textId" style="font-size: large; color: red;">内容</span>: -->
+					<textarea id="testInput" rows="2"></textarea>
+					<!-- <input id="testInput" type="text" style="width: 50%;height: 30px;" placeholder=""> -->
+					<!--        <div id="showLog" class="showLog">-->
+					<!--            testtesttesttesttesttesttest-->
+					<!--        </div>-->
+
+
+					<!--여 기 는 스스로 수정 할 수 있 습 니 다.항상 1 초 에 두 번,또는 2 초 간격 으로 세 번 사용 합 니 다. -->
+					<!--allRepeatTimes=2/allRepeatTimes 표시 횟수,2 는 최대 두 번 발송,frequency=0.01  f 는 간격 을 나타 낸다.예 를 들 어 1 은 1 초 간격 이다.  -->
+					<button id="send_message" onclick="sendMessageFunction();" style="color: red; font-size: large;"
+						title="메시지 보 내기 즉시 실행" type="button">
+						<span id="sendId">寄出</span>
+					</button>
+
+					<br>
+					<div id="batchInformationDivId" class="collapse">
+						<!-- 次数： -->
+						<span id="timesId">次数</span>: <input id="inputTimes" placeholder="" style="width: 15px;"
+							type="text">
+						<!-- 间隔时间： -->
+						<span id="frequencyId">间隔时间</span>: <input id="inputFrequency" placeholder=""
+							style="width: 15px;" type="text"> <span id="showNumberNotifications">횟수알림</span> <input
+							type="checkbox" title="알림 이 있 는 발송 총 횟수 시간 간격" name="timesPrompt">
+						<br>
+						<span id="chrysanthemumText">국화 텍스트</span>
+						<input id="chrysanthemumCheckBox" type="checkbox"
+							title="스텔스 잉크 는 당신 의 대 화 를 더욱 매력 적 으로 합 니 다，문자 만 지원 하고 이모 티 콘 은 지원 되 지 않 습 니 다."
+							name="chrysanthemumCheckBox">
+						<!-- <input type="range" class="rotateDom" orient="vertical" min="0" max="100" /> -->
+					</div>
+					<hr>
+
+					<!--보 내기 단추 의 위치,코드 교체-->
+					<!-- 停止计时器 -->
+					<button id="stopButtonId" onclick="stopFunction();" style="color: red; font-size: large;"
+						title="대량 발송 을 중지 합 니 다.">停止</button>
+
+
+					<!-- 环境快速部署 -->
+					<button id="environmentButtonId" onclick="environmentFunction();"
+						style="font-size: large; color: yellow;" title="빠 른 설정 환경">
+						<span id="environmentSpanId">기본설정</span>
+					</button>
+
+					<button id="batchSend" class="btn btn-danger" style="width: 40%;" data-toggle="collapse"
+						title="대량 작업 관련" data-target="#batchInformationDivId">대량정보</button>
+
+					<hr />
+				</div>
+				<div class="tab-pane" id="robotConfiguration">
+
+					<!--                    retrievalButtonFunction();-->
+					<!-- 检索消息 -->
+					<div class="btn-group">
+						<button class="btn btn-success" id="retrievalButtonId" onclick="retrievalButtonFunction();"
+							style="font-size: large; color: red;" title="즉시 정보 읽 기">检索m
+						</button>
+						<button class="btn" id="stopRetrievalMessage" onclick="stopRetrievalMessageFunction();"
+							style="display: none;" title="정보 읽 기 중지">정보읽기중지</button>
+					</div>
+
+					<!-- <input type="range" class="rotateDom" orient="vertical" min="0" max="50" /> -->
+
+					<a href="https://afubaba.github.io/Afreecatv/RobotCommand.html" class="btn" target="_blank">명령
+						매뉴얼</a>
+					<button data-isBarrage="close" id="barrageButtonId" onclick="barrage();"
+						style="color: red; font-size: large" title="탄창의탄막">탄창의탄막</button>
+					<div id="showMessageDiv" style="display: none">
+						<span id="isRobotChat">로봇채팅</span>
+						<input id="robotChatcheckboxId" checked type="checkbox" name="">
+						<span id="isSportChat">채팅운동모드</span>
+						<input id="chatSportMode" type="checkbox" name="">
+						<div id="showMessage"
+							style="border: 2px black solid;width: 90%;word-break: break-word; height: 50px;color:red;user-select: none;-ms-user-select: none;-moz-user-select: none; -webkit-user-select: none; "
+							title="전시 정보"></div>
+
+
+						<!-- <div id="write_area" contenteditable="true"></div>   -->
+
+						<h3 style="font-size: large; color: yellow;">데이터와정보분석:</h3>
+
+						<!-- 延迟速度(备选方案输入框延迟) -->
+						<!-- <input id="delayInputId" type="text" style="width:15px"></input> -->
+						<select id="delayInputId" style="display: none">
+							<option id="quick" value="quick">快速</option>
+							<option id="meiumSpeed" value="meiumSpeed">中速</option>
+							<option id="slowSpeed" selected="selected" value="slowSpeed">慢速</option>
+						</select>
+
+						제 <input id="nowIndex" disabled style="width: 30px" title="현재 포인터" type="text" value="1"> 조메시지 ,
+						최대격차: <input id="informationSynchronization" style="width: 30px"
+							title="최대 10 개 또는 5 개의 정보 동기 화 차 이 를 허용 합 니 다." title="최대정보동기화격차수" type="text" value="5">
+						<br />
+						상한선: <input id="upperLimit" style="width: 50px; font-size: large; color: darkred;"
+							title="가장 빠 른 정 보 를 얻 는 속 도 를 나타 낸다." type="text">
+						<!-- 延迟时间 -->
+						<input id="delayInputTextId" disabled style="width: 50px; font-size: large; color: darkred;"
+							title="현재 정보 획득 지연 시간(1000 은 1 초)" type="text"> 밀리초 <span id="subscriptId"
+							style="display: none">下标</span>
+
+					</div>
+
+					<hr />
+
+
+				</div>
+				<div class="tab-pane" id="easyDiv">
+
+					<!--구 글 유람 기-->
+					<!--녹색 복사 불가 해결  复制/模拟发送-->
+					<input id="testInput1" placeholder="" type="text" />
+
+					<button class="btn btn-danger" onclick="testInputValue= document.getElementById('testInput1').value,
+                 setTimeout(function(){
+                  document.getElementById('write_area').innerHTML=testInputValue+'';
+                  document.getElementById('btn_send').click();
+                                   // 순환 속도 1 초 당,수 동 설정 가능,1000 은 1 초.2000 은2  초
+                                 },150),
+                                 document.getElementById('testInput1').value='' " type="button">보내다</button>
+					<!--f5 리 셋 을 종료 할 수 없습니다-->
+					<!--
+                                    <iframe id="testIframe" style="overflow:scroll" src="https://www.afreecatv.com/">
+
+                                    </iframe>
+                                  -->
+
+
+				</div>
+				<div class="tab-pane" id="testDiv">
+
+
+					<button onclick="
+
+                                 $.ajax({
+                                  'url':'https://play.afreecatv.com/smmms2002/235531534',
+                                  'type':'get',
+                                  'success':function(result,statis){
+                                    console.log(result);
+                                    console.log(statis);
+                                  },
+                                  'error':function(error,errorMessage){
+                                    console.log(error);
+                                    console.log(errorMessage);
+                                  }
+
+
+                                });
+                                ">ajax
+					</button>
+					<a href="javascript;" onclick="
+
+                                         //id
+                                         document.getElementById('szUid').value='';
+                                         //비밀 번호
+                                         document.getElementById('szPassword').value='';
+
+                                         setTimeout(function () {
+
+                                          document.getElementsByClassName('btn_login')[0].click();
+                                        },1000);
+                                        ">login</a>
+					login: <a href="javascript;"
+						onclick="document.getElementsByClassName('logout').item(0).click();">exit:</a>
+
+					change:
+
+					<hr />
+
+					<h3 style="font-size: large; color: yellow;">test:</h3>
+
+
+					<button onclick="
+
+
+                                // var szUid=document.getElementById('szUid');
+
+                                // szUid.value='1057123999';
+                                // var szPassword=document.getElementById('szPassword');
+                                // szPassword.value='';
+                                // var btn_login=document.getElementsByClassName('btn_login').item(0);
+                                // btn_login.click();
+                                // document.getElementsByClassName('logout').item(0).click();
+                                // alert('111');
+                                console.log('---------------------------');
+                                // document.getElementById('btn_emo').firstChild.click();
+                                ">测试
+					</button>
+
+					<!-- 开始计时器 -->
+					<button onclick="
+                              var i=1;
+                              var timeFrequencys= document.getElementById('timeFrequencys').value;
+                                          //var timeFrequencys= document.getElementById('inputFrequency').value;
+
+                                          if('undefined'!=typeof timeFrequencys1){
+                                            clearInterval(timeFrequencys1) ;
+                                          }
+
+                                          timeFrequencys1=setInterval(function() {
+
+                                            document.getElementById('timeFrequencys').value=i;
+                                             // document.getElementById('inputFrequency').value=i;
+
+                                             if (i==timeFrequencys){
+                                              i=0;
+                                              document.getElementById('getTimeButton').click();
+
+                                            }
+                                            i++;
+                                          },1000);
+                                          " title="开始">开始</button>
+					<button onclick="test111()">onclick</button>
+					<hr />
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

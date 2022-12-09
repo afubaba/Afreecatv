@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+
+		<title>VideoToJpg</title>
+		<!-- 设置logo -->
+		<link rel="icon" type="image/png" sizes="48x48" href="favicon.ico" />
+		<!--本地.bootstrap.css -->
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
+		<!-- 本地.jquery.js -->
+		<script type="text/javascript" src="js/jquery1.7.2.min.js"></script>
+		<!-- 本地.bootstrap.js -->
+		<script type="text/javascript" src="js/bootstrap.min.js"></script>
+
+	</head>
+	<body style="text-align: center;">
+		<video src="video/video.mp4" controls preload autoplay style="display:none;"></video>
+		<canvas id="canvas5" style="border: 2px red solid;">游览器不支持canvas<button>222</button></canvas>
+		URL/PATH
+		<input id="screenshotURL" title="路径或者URL" type="text" value="" />
+
+		<input id="screenshotFrequencyTime" title="截图频率时间" type="text" value="500" />
+		<span style="font: 30px 微软雅黑;">밀리초/회(ms/time)</span>
+
+		<span style="font: 30px 微软雅黑;">下载</span><input id="download"   type="checkbox" />
+		<span style="font: 30px 微软雅黑;">预览</span><input id="preview" type="checkbox" checked />
+
+		<input id="myFile" style="display: none;" type="file" />
+
+		<!-- <embed id="myPlayer" class="videoPlayer" src="" width="100%"
+		height="100%" autostart=true/false loop=true/false></embed> -->
+		<img id="img" />
+		<div class="progress progress-striped active" style="height: 3em">
+			<div id="myBar" class="bar"></div>
+			<h2 id="myBarValue"></h2>
+		</div>
+		<div id="showDiv" style="border: 2px red solid; width: 100%; height: 1000px; overflow: scroll;">
+
+		</div>
+		<script type="text/javascript">
+		
+
+			document.querySelector('input[type="file"]').addEventListener(
+				'change',
+				function() {
+					document.querySelector('video').src = window.URL
+						.createObjectURL(this.files[0]);
+
+				})
+			var canvas5 = document.getElementById("canvas5");
+			var myFile = document.querySelector("#myFile");
+
+			canvas5.onclick = function() {
+				myFile.click();
+			}
+
+			var ctx5 = canvas5.getContext("2d");
+			ctx5.font = "40pt Calibri";
+			ctx5.fillStyle="red";
+			
+			ctx5.fillText("Choose File",0,canvas5.height/2);
+
+
+			var video = document.querySelector("video");
+			
+			myFile.onchange = function() {
+				const thFileName = this.files[0].name;
+				//去掉后缀
+				const fileName = thFileName.substring(0, thFileName
+					.lastIndexOf("."));
+				
+
+				//同步路径
+				let screenshotURL = document.querySelector("#screenshotURL");
+				
+				screenshotURL.value = video.src;
+
+				video.onplay = function() {
+					//溢出已经存在
+					$("#showDiv").children().remove();
+
+					canvas5.width = video.videoWidth;
+					canvas5.height = video.videoHeight;
+					/* document.createElement('img').src=dataUrl; */
+
+					//csdn 源码样式搜索select 取消全部2,3块代码
+					/* document.body.innerHTML=document.getElementsByTagName("pre")[0].innerHTML  */
+
+					/* var img=document.querySelector("#img");
+					img.src=dataUrl; */
+					
+					let i = 0;
+					let canvasImg;
+					//下载的文件名
+					let fiName;
+
+					//截图频率时间
+					let screenshotFrequencyTime = document
+						.querySelector("#screenshotFrequencyTime");
+					
+					//视频播放速度
+					this.playbackRate = "2";
+					let playbackRate = this.playbackRate;
+					//转换成实际速度
+					var nowIntervalFrequency = screenshotFrequencyTime.value * 1 /
+						playbackRate;
+					//下载预览复选框
+					let preview=document.querySelector("#preview");
+					let download=document.querySelector("#download");
+					//预览图片dom
+					let im;
+					vInterval = setInterval(
+						function() {
+							
+							//时长
+							let myBarWidht = video.currentTime / video.duration *
+								100;
+							myBarWidht = myBarWidht.toFixed(2);
+							$("#myBarValue").html(myBarWidht + "%");
+							$("#myBar").css("width", myBarWidht + "%");
+
+							ctx5.clearRect(0, 0, video.videoWidth,
+								video.videoHeight);
+							/* ctx5.fillRect(0, 150, 400, 400); */
+							ctx5.drawImage(video, 0, 0, video.videoWidth,
+								video.videoHeight);
+							canvasImg = canvas5.toDataURL("image/png");
+							i++;
+							fiName = fileName + "(" + i + ")";
+							//生成预览
+							if(preview.checked){
+								
+								im = document.createElement("img")
+								im.src = canvasImg;
+								/* console.log(im); */
+								var imgDom = "<div id='" + i +
+									"' style='width:300px;height:300px;border:2px red solid;float:left'></div>"
+								$("#showDiv").append(imgDom);
+								var dm = "#" + i;
+								$(dm).append(im);
+							}
+							
+							//直接下载
+							
+							if(download.checked){
+								downLoadFile(fiName, canvasImg);
+							}
+							/* downLoadFile(fiName, canvasImg); */
+
+							/* ctx5.font="50px 微软雅黑"
+							ctx5.strokeStyle="#999";
+							ctx5.strokeText("nihao",50,50); */
+						}, nowIntervalFrequency);
+
+				}
+				video.onpause = function() {
+
+					$("#myBarValue").html("100%");
+					clearInterval(vInterval);
+				}
+
+			};
+
+			function downLoadFile(fileName, canvasImg) {
+				
+				//创建一个a标签 
+				var a = document.createElement('a') //指定下载文件名称 
+				a.href = canvasImg;
+				a.download = fileName;
+				//a 标签 需要点击触发。所以强制给他分派一个点击事件 //创建一个鼠标事件
+				let event = document.createEvent("MouseEvents") // 初始化鼠标事件
+				event.initMouseEvent("click", true, false, window, 0, 0, 0, 0, 0,
+					false, false, false, false, 0, null) // 指定元素对象触发事件 
+				a.dispatchEvent(event)
+			}
+		</script>
+
+	</body>
+</html>

@@ -1,0 +1,146 @@
+{
+  "stopRetrievalMessageFunction": "읽기 메시지 닫기",
+  "showTipBarrageFunction": "탄막의 캐시 정리",
+  "stopBatchSendFunction": "보내기 중지 성공",
+  "sendMessageFunction": {
+    "showTipBarrageFunction": [
+      "초 후",
+      "번째 메시지 보내기!"
+    ]
+  },
+  "barrage": {
+    "showTipBarrageFunction1": "탄막을 열다",
+    "showTipBarrageFunction2": "탄막을 닫다"
+  },
+  "sendUltimateLengthMessage": {
+    "showTipBarrageFunction1": "메시지를 보낸 후 페이지를 새로 고쳐야 메시지를 정상적으로 보낼 수 있습니다",
+    "showTipBarrageFunction2": "10초 후 페이지 새로 고침",
+    "showTipBarrageFunction3": "5초 후 페이지 새로 고침"
+  },
+  "object": {
+    "showTipBarrageFunction1": [
+      "번,",
+      "회 후 반드시 당첨!"
+    ],
+    "showTipBarrageFunction2": "번째 순환",
+    "showTipBarrageFunction3": "번째 순환이 끝났습니다. 아무도 뽑히지 않았습니다."
+  },
+  "opIndexDB": {
+    "createTable": "indexDB 테이블 만들기 성공",
+    "insertData": ",오늘의 포인트 리셋되었습니다!",
+    "addTable": "개 데이터 추가에 성공.",
+    "updateTable": "개 데이터 업데이트 성공.",
+    "deleteTable": "개의 데이터 삭제 성공.",
+    "inportDataFunction": "개의 데이터 가져오기 성공"
+  },
+  "writeClipBoard": {
+    "swal": {
+      "title": " 데이터 복제 성공!",
+      "text": [
+        "다른 유람기에서 ",
+        "의 방송을 켜고 [클립보드에서 가져오기] 버튼을 눌러주세요!"
+      ],
+      "button": "확인"
+    }
+  },
+  "inportFunction": {
+    "swal": {
+      "title": "확실해?",
+      "text": [
+        "가져오기 확인",
+        "막대 데이터인가요!"
+      ],
+      "buttons": [
+        "취소",
+        "확인"
+      ]
+    },
+    "swal1": {
+      "swal1": {
+        "title": "경고!",
+        "text": [
+          "이 테이블 데이터는",
+          "의",
+          "테이블로!"
+        ],
+        "buttons": [
+          "닫기",
+          "열기"
+        ]
+      },
+      "swal2": [
+        "열기",
+        "성공"
+      ],
+      "swal3": {
+        "title": "알림 취소!",
+        "text": "작업이 취소되었습니다."
+      }
+    },
+    "swal2": {
+      "swal1": "추가 성공!",
+      "swal2": " 작업이 취소되었습니다."
+    },
+    "swal3": [
+      "이상",
+      "다른 유람기를 가져와야 합니다!"
+    ],
+    "swal4": [
+      "오류",
+      "형식이 잘못되었습니다!"
+    ],
+    "importFromClibBoard": "클립보드에서 가져오기"
+  },
+  "chioseFunctionByType": {
+    "clipBoard": "클립보드 내보내기",
+    "download": "파일 다운로드",
+    "downloadTxt": "개"
+  },
+  "showTableData": {
+    "belongTo": "소속",
+    "tableName": "테이블 이름",
+    "browser": "유람기",
+    "tableNumber": "수량"
+  },
+  "getTodayMaxSortData": {
+    "TodayMaxSortDataInterval": [
+      "용왕이가 [",
+      "]가 됐어요.",
+      "오늘 채팅 횟수: "
+    ]
+  },
+  "opSettingIndexDB": {
+    "insertData": {
+      "update": "기계 설정 저장 성공, 다음 갱신 네트워크 유람기 유효",
+      "download": "로봇 설정 동기화 성공"
+    },
+    "writeCommandAuthorityStatus": "이 명령 승인 방식을 모든 명령 승인에 적용했습니다."
+  },
+  "checkedToggle": {
+    "showTipBarrageFunction1": "모든 사용자가 이 명령을 사용하지 못하게 했습니다.",
+    "showTipBarrageFunction2": "일부 사용자에게 이 명령을 성공적으로 사용하도록 권한 부여",
+    "showTipBarrageFunction3": "모든 사용자가 이 명령을 사용할 수 있도록 승인했습니다."
+  },
+  "searchCommandAuthoritySupport": {
+    "answerData1": "이 명령이 실행되지 않았습니다.",
+    "answerData2": "명령을 사용하여 로그인 중인 계정 권한 충족",
+    "answerData3": "명령을 사용하여 사용자 역할 권한 충족"
+  },
+  "clearTable": {
+    "swal1": {
+      "title": "확실합니까?",
+      "text": [
+        "지우기 확인",
+        "표 통계의 모든 데이터입니까?"
+      ],
+      "button": [
+        "취소",
+        "확인"
+      ]
+    }
+  },
+  "refreshPage": {
+    "text1": "새로 고침 중!",
+    "text2": "새 indexdb 양식이 만들어졌습니다.이전 버전 탭 페이지가 업데이트 중입니다."
+  }
+}
