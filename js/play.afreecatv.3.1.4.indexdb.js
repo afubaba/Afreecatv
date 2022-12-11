@@ -199,26 +199,20 @@ var opIndexDB = {
                     // console.log("id为" + id + "的配置是", event.target.result);
                     // seData(event.target.result);
                     let resultData = event.target.result;
-                    if (!resultData) {
-                        // console.log("insert");
-                        userData.chatPoints = 1;
-                        userData.gamePoints = 0;
-                        userData.allPoints = 1;
-                        userData.date = todayDate;
-                        // console.log(userData);
-                        var db_op_req = userDataStore.add(userData);
-                        db_op_req.onsuccess = function () {
-                            // console.log("存好了");
-                        }
-                    } else {
-                        resultData.allPoints++;
+                    // console.log(userData);
+                    // console.log("increase:" + increase);
+                    let increase=userData.increase;
+                    let increaseBit = userData.increaseBit;
+                    if (resultData) {
+                        // resultData.allPoints++;
+                        resultData.allPoints+=increase;
                         // console.log("update");
                         // data.userNick = data.userNick != userData.userNick ? data.userNick : userData.userNick;
                         //判断时期字符串是否相等
                         if (resultData.date == todayDate) {
-                            resultData.chatPoints++;
+                            // resultData.chatPoints++;
+                            resultData.chatPoints+=increase;
                         } else {
-
                             let toDate = new Date(todayDate);
                             let resuDate = new Date(resultData.date);
                             // console.log("toMonth"+toDate.getMonth()+":"+"resuDate"+resuDate.getMonth());
@@ -227,13 +221,14 @@ var opIndexDB = {
                                 // console.log("同一个月");
                                 //判断日
                                 if (toDate.getDate() == resuDate.getDate()) {
-                                    resultData.chatPoints++;
+                                    // resultData.chatPoints++;
+                                    resultData.chatPoints+=increase;
                                 } else {
                                     // 昵称是否相同
                                     if (resultData.userNick != userData.userNick) {
                                         resultData.userNick = userData.userNick;
                                     }
-                                    resultData.chatPoints = 1;
+                                    resultData.chatPoints = increase;
                                     resultData.gamePoints = 0;
                                     // userData.userNick
                                     showTipBarrageFunction(userData.userNick + " " + (resuDate.getDate()) + packageResult.opIndexDB.insertData[0]);
@@ -243,10 +238,10 @@ var opIndexDB = {
                                 let $resetTotalPointsEveryMonth = $("#resetTotalPointsEveryMonth");
                                 let resetTotalPointsEveryMonthChecked = $resetTotalPointsEveryMonth.prop("checked");
                                 let logString = userData.userNick + " " + (resuDate.getMonth() + 1);
-                                resultData.chatPoints = 1;
+                                resultData.chatPoints = increase;
                                 resultData.gamePoints = 0;
                                 if (resetTotalPointsEveryMonthChecked) {
-                                    resultData.allPoints = 1;
+                                    resultData.allPoints = increase;
                                     showTipBarrageFunction(logString + packageResult.opIndexDB.insertData[1]);
                                 } else {
                                     showTipBarrageFunction(logString + packageResult.opIndexDB.insertData[2]);
@@ -254,11 +249,23 @@ var opIndexDB = {
                             }
                             resultData.date = todayDate;
                         }
-                        //增加一点
-                        // resultData.allPoints++;
+                        resultData.chatPoints = roundFun(resultData.chatPoints, increaseBit);
+                        resultData.gamePoints = roundFun(resultData.gamePoints, increaseBit);
+                        resultData.allPoints = roundFun(resultData.allPoints, increaseBit);
                         userDataStore.put(resultData).onsuccess = function (event) {
                             // console.log('更新', event.target.result);
                         };
+                    } else {
+                        // console.log("insert");
+                        userData.chatPoints = roundFun(increase,increaseBit);
+                        userData.gamePoints = 0;
+                        userData.allPoints = roundFun(increase,increaseBit);
+                        userData.date = todayDate;
+                        // console.log(userData);
+                        var db_op_req = userDataStore.add(userData);
+                        db_op_req.onsuccess = function () {
+                            // console.log("存好了");
+                        }
                     }
                     // return event.target.result;
                 };

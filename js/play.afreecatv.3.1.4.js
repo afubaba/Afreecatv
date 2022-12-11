@@ -2707,10 +2707,14 @@ function retrievalButtonFunction() {
                                         user_Id = user_Id.replaceAll("(" + index + ")", "");
                                     }
                                 }
+                                let calcAddData=calculateAddPoints(tex);
                                 uData = {
                                     id: user_Id,
-                                    userNick: user_Nick
+                                    userNick: user_Nick,
+                                    increase:calcAddData.increase,
+                                    increaseBit:calcAddData.increaseBit
                                 }
+
                                 // console.log(uData);
                                 if (uData.id && uData.userNick) {
                                     if (localStorageType == "indexdb") {
@@ -2947,9 +2951,14 @@ function retrievalButtonFunction() {
 
                     //判断内容ID是否相同
                     if (idt != idt_last || tex != text_Last) {
+                        let calcAddData=calculateAddPoints(tex);
                         userData = {
                             "id": idt,
-                            "userNick": nickName
+                            "userNick": nickName,
+                            "increase":calcAddData.increase,
+                            "increaseBit":calcAddData.increaseBit,
+                            //  "grade":grade,
+                            // "text":tex
                         };
                         /* 	function httpRequest(url, callback) {
 						            var xhr = new XMLHttpRequest();
@@ -3003,8 +3012,6 @@ function retrievalButtonFunction() {
                                     Reflect.deleteProperty(userData, "id");
                                     // console.log(userData);
                                     opWebsql.insertData(userData, idDom);
-                                    //查询
-                                    ;
                                 }
                                 !isUpdate && getTodayMaxSortData(idDom, idt);
                                 // opIndexDB.getDB();
@@ -4710,7 +4717,42 @@ function openUserList() {
     $(".list_participant").removeClass("off").addClass("on");
 }
 
-function getRandom(no) {
-    randomNo = parseInt(Math.random() * (no) / 1 + 1);
-    return randomNo;
+function calculateAddPoints(userText){
+
+    // console.log(accordingNumberWordsValueLocalStorage);
+    //增加的分数
+    let increase;
+    //保留后几位
+    let increaseBit;
+    // console.log(accordingNumberWords.checked);
+    //按照字数
+    if (accordingNumberWords.checked) {
+        if (userText != null) {
+            userText = userText.replaceAll(" ", "");
+            //去除空格 判断null
+            if (userText.length <= 30) {
+                // increase = roundFun(userText.length/15, 2);
+                // increase = userText.length / 15;
+                increase = userText.length / accordingNumberWordsValueLocalStorage;
+            } else {
+                // increase = 2;
+                increase =30/accordingNumberWordsValueLocalStorage;
+
+            }
+            // console.log("userTextLength:" + userText.length);
+        } else {
+            //表情等
+            increase = 0.25*30/accordingNumberWordsValueLocalStorage;
+        }
+        increaseBit=2;
+    } else{
+        //按照条数
+        increase = 1;
+        increaseBit=0;
+    }
+    let calcAddData={
+        "increase":increase,
+        "increaseBit":increaseBit
+    }
+    return calcAddData;
 }

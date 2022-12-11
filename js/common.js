@@ -581,3 +581,43 @@ function evil(fn) {
     var Fn = Function;  //一个变量指向Function，防止有些前端编译工具报错
     return new Fn("return " + fn)();
 }
+
+
+
+function getRandom(no) {
+    randomNo = parseInt(Math.random() * (no) / 1 + 1);
+    return randomNo;
+}
+
+
+// Javascript的数字类型是以64位的IEEE 754格式存储的。
+
+function toDecimal(x) {
+    var val = Number(x)
+    if(!isNaN(parseFloat(val))) {
+        val = val.toFixed(1);//把 Number 四舍五入为指定小数位数的数字。
+    }
+    return  val;
+}
+
+//保留小数点后面几位
+function roundFun(value, n) {
+    return Math.round(value*Math.pow(10,n))/Math.pow(10,n);
+}
+
+// 四舍六入五考虑，五后非零就进一，五后为零看奇偶，五前为偶应舍去，五前为奇要进一。
+// toFixed()
+
+//保留n位小数并格式化输出（不足的部分补0）
+var fomatFloat = function(value, n) {
+    var f = Math.round(value*Math.pow(10,n))/Math.pow(10,n);
+    var s = f.toString();
+    var rs = s.indexOf('.');
+    if (rs < 0) {
+        s += '.';
+    }
+    for(var i = s.length - s.indexOf('.'); i <= n; i++){
+        s += "0";
+    }
+    return s;
+}

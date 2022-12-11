@@ -69,8 +69,9 @@ var opSettingIndexDB = {
                         // console.log(settData);
 
                         // console.log("-------over--------");
+
                         // id
-                        let setArr = ["chatPointsMaxChangeMode", "chatPointsMode", "chatSportMode", "delayInputId", "isBarrage", "isHalfHourPrompt", "isResetTotalPointsEveryMonth", "isStart", "pictureIntetgralMode", "robotChatCommondCheckboxId"];
+                        let setArr = ["chatPointsMaxChangeMode", "chatPointsMode", "chatSportMode","accordingNumberWords", "delayInputId", "isBarrage", "isHalfHourPrompt", "isResetTotalPointsEveryMonth", "isStart", "pictureIntetgralMode", "robotChatCommondCheckboxId"];
                         for (let i = 0; i < setArr.length; i++) {
                             if (setArr[i] in settData) {
                                 data[setArr[i]] = settData[setArr[i]];
@@ -89,14 +90,14 @@ var opSettingIndexDB = {
                         // console.log(data);
                         robotChatCommondCheckboxId.checked = data.robotChatCommondCheckboxId;
                         chatSportMode.checked = data.chatSportMode;
+                        accordingNumberWords.checked = data.accordingNumberWords;
+
                         pictureIntetgralMode.checked = data.pictureIntetgralMode;
-
                         chatPointsMode.checked = data.chatPointsMode;
-
 
                         chatPointsMaxChangeMode.checked = data.chatPointsMaxChangeMode;
 
-                        let domArray = [robotChatCommondCheckboxId, chatSportMode, pictureIntetgralMode,
+                        let domArray = [robotChatCommondCheckboxId, chatSportMode,accordingNumberWords, pictureIntetgralMode,
                             chatPointsMode, chatPointsMaxChangeMode
                         ];
                         getLabelStatus(domArray);
@@ -159,7 +160,7 @@ var opSettingIndexDB = {
                         );
 
                         if (data.isResetTotalPointsEveryMonth) {
-                            resetTotalPointsEveryMonth.checked=true;
+                            resetTotalPointsEveryMonth.checked = true;
                             $("#resetTotalPointsEveryMonth").parent().addClass("label-success");
                         }
 
@@ -438,6 +439,7 @@ var opSettingIndexDB = {
                     userDataStore2.add(customUpdateData).onsuccess = function (event) {
                         // console.log(event.target.result);
                         //开关状态写入
+
                     }
                 } else {
                     //存在 同步
@@ -706,7 +708,8 @@ var opSettingIndexDB = {
                     var loginNick = $(".userInfo .btn-login").text();
                     //等级转换数据库等级
                     // let dataString = "data." + searchData.grade;
-                    // evil(dataString);
+                    // eval(dataString)
+
                     if (data.isStart) {
                         if (data.isLoginUserStart && loginId == searchData.idt && searchData.nickName == loginNick) {
                             messageString = "@" + searchData.nickName + ":₍" + searchData.tex + "₎ " + packageResult.searchCommandAuthoritySupport.answerData2;
@@ -777,21 +780,22 @@ var opSettingIndexDB = {
                             }
                         }
                         //授权成功增加1游戏积分
-                        if(answerData.isAuthority){
+                        if (answerData.isAuthority) {
                             let addUserData = {
                                 id: searchData.idt,
                                 userNick: searchData.nickName,
                                 gamePoints: 0.5
                             }
-                            if (localStorageType=="indexdb"){
+                            if (localStorageType == "indexdb") {
                                 opIndexDB.addData(addUserData);
 
-                            }else if(localStorageType=="websql"){
+                            } else if (localStorageType == "websql") {
                                 opWebsql.addData(addUserData);
-                            }else {
+                            } else {
 
                             }
                         }
+
 
                     } else {
                         messageString = "(" + searchData.tex + ")이 명령은 켜져 있지 않습니다.";
@@ -818,6 +822,8 @@ var opSettingIndexDB = {
 var chatSportMode = getDomById("chatSportMode");
 var robotChatCommondCheckboxId = getDomById("robotChatCommondCheckboxId");
 var chatPointsMode = getDomById("chatPointsMode");
+var accordingNumberWords = getDomById("accordingNumberWords");
+
 var pictureIntetgralMode = getDomById("pictureIntetgralMode");
 
 var chatPointsMaxChangeMode = getDomById("chatPointsMaxChangeMode");
@@ -829,6 +835,7 @@ let $halfHourPrompt = $("#halfHourPrompt");
 var settData = {
     id: "robotConfiguration",
     chatSportMode: chatSportMode.checked,
+    accordingNumberWords:accordingNumberWords.checked,
     chatPointsMode: chatPointsMode.checked,
     pictureIntetgralMode: pictureIntetgralMode.checked,
     chatPointsMaxChangeMode: chatPointsMaxChangeMode.checked,
@@ -837,9 +844,9 @@ var settData = {
     isStart: false,
     isBarrage: false,
     isHalfHourPrompt: $halfHourPrompt.prop("checked"),
-    isResetTotalPointsEveryMonth:resetTotalPointsEveryMonth.checked
+    isResetTotalPointsEveryMonth: resetTotalPointsEveryMonth.checked
 };
-$("#resetTotalPointsEveryMonth,#timesPromptInput,#chrysanthemumCheckBox,#chatPointsMode,#pictureIntetgralMode,#chatPointsMaxChangeMode,#chatSportMode,#robotChatCommondCheckboxId")
+$("#resetTotalPointsEveryMonth,#timesPromptInput,#chrysanthemumCheckBox,#chatPointsMode,#pictureIntetgralMode,#chatPointsMaxChangeMode,#chatSportMode,#accordingNumberWords,#robotChatCommondCheckboxId")
     .change(function () {
         if (this.checked) {
             $(this).parent("label").addClass("label-success");
@@ -860,7 +867,7 @@ function getLabelStatus(domArray) {
 }
 
 //上传状态
-$("#resetTotalPointsEveryMonth,#pictureIntetgralMode,#halfHourPrompt,#chatPointsMaxChangeMode,#chatPointsMode,#chatSportMode,#robotChatCommondCheckboxId,#delayInputId")
+$("#resetTotalPointsEveryMonth,#pictureIntetgralMode,#halfHourPrompt,#chatPointsMaxChangeMode,#chatPointsMode,#chatSportMode,#accordingNumberWords,#robotChatCommondCheckboxId,#delayInputId")
     .change(
         function () {
             //每月重置积分选项
@@ -888,9 +895,10 @@ $("#resetTotalPointsEveryMonth,#pictureIntetgralMode,#halfHourPrompt,#chatPoints
             // if(chatSportMode.checked){
             //     // $("#clear_chat").click();
             // }
-
-
             settData.chatSportMode = chatSportMode.checked;
+
+            settData.accordingNumberWords=accordingNumberWords.checked;
+
             pictureIntetgralMode = getDomById("pictureIntetgralMode");
             settData.pictureIntetgralMode = pictureIntetgralMode.checked;
 
@@ -1421,4 +1429,38 @@ $("#promptOfIsStart,#promptOfAuthorizationFailure").change(function () {
 
     localStorage.setItem("promptOfIsStart", $("#promptOfIsStart").prop("checked"));
     localStorage.setItem("promptOfAuthorizationFailure", $("#promptOfAuthorizationFailure").prop("checked"));
+});
+
+
+var $accordingNumberWordsValue= $("#accordingNumberWordsValue");
+var accordingNumberWordsValueLocalStorage = localStorage.getItem("accordingNumberWordsValue");
+if (accordingNumberWordsValueLocalStorage == null || accordingNumberWordsValueLocalStorage == "undefined") {
+    localStorage.setItem("accordingNumberWordsValue", 15);
+    $accordingNumberWordsValue.val(15);
+    accordingNumberWordsValueLocalStorage=15;
+}else{
+    $accordingNumberWordsValue.val(accordingNumberWordsValueLocalStorage);
+}
+$accordingNumberWordsValue.change(() => {
+    if($accordingNumberWordsValue.val()<5){
+        $accordingNumberWordsValue.val(5)
+    }
+    if($accordingNumberWordsValue.val()>30){
+        $accordingNumberWordsValue.val(30)
+    }
+
+    // console.log("修改值:"+$accordingNumberWordsValue.val());
+    localStorage.setItem("accordingNumberWordsValue", $accordingNumberWordsValue.val());
+    accordingNumberWordsValueLocalStorage=$accordingNumberWordsValue.val();
+});
+
+$("#accordingNumberWords").change(function () {
+
+    if($("#accordingNumberWords").prop("checked")){
+        // $accordingNumberWordsValue.show();
+        $accordingNumberWordsValue.css("visibility","visible");
+    }else{
+        // $accordingNumberWordsValue.hide();
+        $accordingNumberWordsValue.css("visibility","hidden");
+    }
 });

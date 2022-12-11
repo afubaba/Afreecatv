@@ -477,17 +477,26 @@ var opWebsql = {
             // tx.executeSql(sql);
 
             // sql = "SELECT chatPoints,allPoints,date FROM " + tbNm + " WHERE id='" + uId + "'";
-            sql = "SELECT date FROM " + tbNm + " WHERE id=?";
+            sql = "SELECT * FROM " + tbNm + " WHERE id=?";
             sqlDataArray = [uId];
             // console.log(sqlDataArray);
             // db.transaction(function(tx) {});
             tx.executeSql(sql, sqlDataArray, function (tx, results) {
                 // console.log(results);
-                var resultRows = results.rows;
+                let resultRows = results.rows;
                 // console.log(resultRows.length);
+                // console.log(userData);
+                let increase = userData.increase;
+                let increaseBit = userData.increaseBit;
+                //重置的increase;
+                let resetPoints=roundFun(increase, increaseBit);
                 if (resultRows.length == 1) {
                     // console.log("update");
                     let resultData = resultRows[0];
+                    let addChatPoints = roundFun(resultData.chatPoints + increase, increaseBit);
+                    let addGamePoints = roundFun(resultData.gamePoints + increase, increaseBit);
+                    let addAllPoints = roundFun(resultData.allPoints + increase, increaseBit);
+                    // console.log(resultData);
                     // console.log(data);
                     // db.transaction(function(tx) {
                     // var sql="UPDATE " + tbNm + " SET fontColor='nice' ,  backColor='good'";
@@ -508,28 +517,29 @@ var opWebsql = {
                     // }
                     //月份字符串
                     if (resultData.date == todayDate) {
-                        sqlDataArray = [uId];
+                        sqlDataArray = [addChatPoints, addAllPoints, uId];
                         // sql = "UPDATE " + tbNm +
                         //     " SET chatPoints=chatPoints+1,allPoints=allPoints+1,date=" +
                         //     today + " WHERE id=?";
-                        sql = "UPDATE " + tbNm + " SET chatPoints=chatPoints+1,allPoints=allPoints+1 WHERE id=?";
+                        sql = "UPDATE " + tbNm + " SET chatPoints=?,allPoints=? WHERE id=?";
                     } else {
                         let toDate = new Date(todayDate);
                         let resuDate = new Date(resultData.date);
-                        sqlDataArray = [todayDate, uId];
                         //判断月份
                         if (toDate.getMonth() == resuDate.getMonth()) {
                             //判断日
                             if (toDate.getDate() == resuDate.getDate()) {
+                                sqlDataArray = [addChatPoints, addAllPoints, todayDate, uId];
                                 //     " SET chatPoints=chatPoints+1,allPoints=allPoints+1,date=" +
                                 //     today + " WHERE id=?";
-                                sql = "UPDATE " + tbNm + " SET chatPoints=chatPoints+1,allPoints=allPoints+1,date=? WHERE id=?";
+                                sql = "UPDATE " + tbNm + " SET chatPoints=?,allPoints=?,date=? WHERE id=?";
                             } else {
                                 if (resultData.userNick == uNick) {
-                                    sql = "UPDATE " + tbNm + " SET chatPoints=1,gamePoints=0,allPoints=allPoints+1,date=? WHERE id=?;";
+                                    sqlDataArray = [resetPoints, addAllPoints, todayDate, uId];
+                                    sql = "UPDATE " + tbNm + " SET chatPoints=?,gamePoints=0,allPoints=?,date=? WHERE id=?;";
                                 } else {
-                                    sqlDataArray = [uNick, todayDate, uId];
-                                    sql = "UPDATE " + tbNm + " SET userNick=?,chatPoints=1,gamePoints=0,allPoints=allPoints+1,date=? WHERE id=?;";
+                                    sqlDataArray = [uNick, resetPoints, addAllPoints, todayDate, uId];
+                                    sql = "UPDATE " + tbNm + " SET userNick=?,chatPoints=?,gamePoints=0,allPoints=?,date=? WHERE id=?;";
                                 }
                                 showTipBarrageFunction(uNick + " " + (resuDate.getDate()) + packageResult.opIndexDB.insertData[0]);
                                 // console.log("今日积分清零");
@@ -540,11 +550,14 @@ var opWebsql = {
                             let $resetTotalPointsEveryMonth = $("#resetTotalPointsEveryMonth");
                             let resetTotalPointsEveryMonthChecked = $resetTotalPointsEveryMonth.prop("checked");
                             let logString = uNick + " " + (resuDate.getMonth() + 1);
+
                             if (resetTotalPointsEveryMonthChecked) {
-                                sql = "UPDATE " + tbNm + " SET chatPoints=1,gamePoints = 0,allPoints=1,date=? WHERE id=?;";
+                                sqlDataArray = [resetPoints, resetPoints, todayDate, uId];
+                                sql = "UPDATE " + tbNm + " SET chatPoints=?,gamePoints = 0,allPoints=?,date=? WHERE id=?;";
                                 showTipBarrageFunction(logString + packageResult.opIndexDB.insertData[1]);
                             } else {
-                                sql = "UPDATE " + tbNm + " SET chatPoints=1,gamePoints = 0,allPoints=allPoints+1,date=? WHERE id=?;";
+                                sqlDataArray = [resetPoints, addAllPoints, todayDate, uId];
+                                sql = "UPDATE " + tbNm + " SET chatPoints=?,gamePoints = 0,allPoints=?,date=? WHERE id=?;";
                                 showTipBarrageFunction(logString + packageResult.opIndexDB.insertData[2]);
                             }
                         }
@@ -553,6 +566,7 @@ var opWebsql = {
                         // console.log(results);
                         // console.log(results.rowsAffected);
                     });
+
                     // if (today == new Date(resultData.date).getDate()) {
                     // sql = "UPDATE " + tbNm + " SET chatPoints=" +
                     // 	upChatPoints + ",userNick='" + uNick + "',allPoints=" +
@@ -653,9 +667,10 @@ var opWebsql = {
                     // 	"','" + uNick + "',1,1,2,'" + todayDate + "');";
                     // sql = 'INSERT INTO ' + tbNm + " VALUES ('" + uId +
                     // 	"','" + uNick + "',1,0,1,'" + todayDate + "');";
-                    sql = 'INSERT INTO ' + tbNm + " VALUES (?,?,1,0,1,?);";
+                    sql = 'INSERT INTO ' + tbNm + " VALUES (?,?,?,0,?,?);";
                     // console.log(sql);
-                    sqlDataArray = [uId, uNick, todayDate];
+                    sqlDataArray = [uId, uNick, resetPoints,resetPoints, todayDate];
+
                     tx.executeSql(sql, sqlDataArray);
 
                 }
