@@ -2084,8 +2084,8 @@
                 </div>
 
                 <!-- ace:<input id="todayChatPointsAce" type="text"> -->
-                <span id="everyPage">페이지당 몇 개</span>:<input id="everyPageValue" type="text"/>
-                <span id="allPage">총 수량</span>:<input disabled id="allPageValue" type="text" value="0"/>
+                <span id="everyPage">페이지당 몇 개</span>:<input id="everyPageValue" type="number" min="1"/>
+                <span id="allPage">총 수량</span>:<input disabled id="allPageValue" type="number" min="0.001" value="0"/>
 
                 <!-- <br/> -->
                 <!-- 储存方式 -->
@@ -2105,6 +2105,12 @@
                     <span id="isChatPoints" title="1회 채팅 통계 1 포인트,만화 이모티콘,선물은 제외,데이터는 본 유람기에만 저장됩니다">채팅 포인트 통계</span>
                     <!-- checked -->
                     <input checked id="chatPointsMode" class="switch" type="checkbox">
+                </label>
+                <label for="accordingNumberWords" class="label">
+                    <span id="isAccordingNumberWords" title="开启根据字数统计，15个字增加1积分，关闭则一条聊天增加1积分">根据字数统计</span>
+                    <!-- checked -->
+                    <input checked id="accordingNumberWords" class="switch" type="checkbox">
+                    <input id="accordingNumberWordsValue" type="number" style="width: 30px;" max="30" min="5" placeholder="15" />
                 </label>
 
                 <label for="pictureIntetgralMode" class="label">
@@ -2246,7 +2252,11 @@
                     </button> -->
                     <!-- 内容： -->
                     <!-- <span id="textId" style="font-size: large; color: red;">内容</span>: -->
-                    <textarea id="testInput" rows="2"></textarea>
+<!--                    <textarea id="testInput" rows="2"></textarea>-->
+
+                    <textarea autocomplete="on" class="noScroll" cols="25" data-provide="typeahead" id="testInput"
+                              rows="3" wrap="hard"></textarea>
+
                     <!-- <input id="testInput" type="text" style="width: 50%;height: 30px;" placeholder=""> -->
                     <!--        <div id="showLog" class="showLog">-->
                     <!--            testtesttesttesttesttesttest-->
@@ -2266,9 +2276,9 @@
                     <br>
                     <div class="collapse" id="batchInformationDivId">
                         <!-- 次数： -->
-                        <span id="timesId">次数</span>: <input id="inputTimes" placeholder="" type="text">
+                        <span id="timesId">次数</span>: <input id="inputTimes" placeholder="" type="number" min="1">
                         <!-- 间隔时间： -->
-                        <span id="frequencyId">间隔时间</span>: <input id="inputFrequency" placeholder="" type="text">
+                        <span id="frequencyId">间隔时间</span>: <input id="inputFrequency" placeholder="" type="number" min="0.001">
                         <br>
                         <label for="timesPromptInput" class="label">
                             <span id="showNumberNotifications">횟수알림</span>
@@ -2326,22 +2336,22 @@
 							최신 위치:
 						</span>
 
-                        <input disabled id="lastIndex" title="last index" type="text" value="0">/
-                        <!-- 현재 위치: --><input disabled id="nowIndex" title="현재 포인터" type="text" value="0">
+                        <input disabled id="lastIndex" title="last index" type="number" value="0">/
+                        <!-- 현재 위치: --><input disabled id="nowIndex" title="현재 포인터" type="number" value="0">
 
                         <br/>
 
                         <div style="display: none">
                             <!--						延迟极限毫秒-->
-                            상한선: <input id="upperLimit" title="가장 빠 른 정 보 를 얻 는 속 도 를 나타 낸다." type="text">
+                            상한선: <input id="upperLimit" title="가장 빠 른 정 보 를 얻 는 속 도 를 나타 낸다." type="number" min="0.001">
                             최대격차: <input id="informationSynchronization" title="최대 10 개 또는 5 개의 정보 동기 화 차 이 를 허용 합 니 다."
-                                         title="최대정보동기화격차수" type="text" value="5">
+                                         title="최대정보동기화격차수" type="number" min="0.001" value="5">
 
                         </div>
 
                         <span id="chatSpeedSpan"></span>
                         <!-- 延迟时间 -->
-                        <input disabled id="delayInputTextId" title="현재 정보 획득 지연 시간(1000 은 1 초)" type="text"> ms
+                        <input disabled id="delayInputTextId" title="현재 정보 획득 지연 시간(1000 은 1 초)" type="number" min="0.001"> ms
 
                         <!-- <select id="delayInputId" >
                             <option id="quick" value="quick">快速</option>
