@@ -30,7 +30,8 @@
     "insertData": ["日的积分重置了！","月的总积分被重置!","月的总积分已经转到本月!"],
     "addTable": "个数据添加成功",
     "updateTable": "个数据更新成功",
-    "deleteTable": "个数据删除成功",
+    "deleteTable": "删除表成功",
+    "clearTable": "个数据清理成功",
     "inportDataFunction": "个数据成功导入"
   },
   "writeClipBoard": {
@@ -130,7 +131,7 @@
       " 订阅者 ",
       " 支持者 ",
       " 粉丝 ",
-      " 一般使用者 "
+      " 观众 "
     ],
     "answerData5": [
       " 这个命令仅限 ",

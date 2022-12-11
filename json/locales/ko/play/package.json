@@ -30,7 +30,8 @@
     "insertData": ["일의 포인트가 리셋되었습니다!","월의 총 포인트가 리셋되었습니다!","월의 총 포인트는 이미 이달로 이월되었다"],
     "addTable": "개 데이터 추가에 성공.",
     "updateTable": "개 데이터 업데이트 성공.",
-    "deleteTable": "개의 데이터 삭제 성공.",
+    "deleteTable": "테이블 삭제 성공.",
+    "clearTable": "개의 데이터 정리 성공.",
     "inportDataFunction": "개의 데이터 가져오기 성공"
   },
   "writeClipBoard": {
@@ -132,7 +133,7 @@
       " 구독자 ",
       " 서포터 ",
       " 팬 ",
-      " 일반 참여자 "
+      " 관객 "
     ],
     "answerData5": [
       " 이 권한은 ",

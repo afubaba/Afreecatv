@@ -2020,22 +2020,19 @@
                 <table class="table table-striped">
                     <thead id="myTableHead">
                     <tr>
-                        <th id='myTable_number'>번호</th>
-                        <th id='myTable_id'>id</th>
-                        <th id='myTable_nick'>닉네임</th>
+                        <th id='myTable_number'></th>
+                        <th id='myTable_user'></th>
+                        <!--                        <th id='myTable_nick'></th>-->
+                        <th id='myTable_grade'></th>
                         <!-- <i class="icon-chevron-up"/> -->
                         <th>
-                            <button id="chatPoints" onclick="todayChatPointsSort('chatPoints')">오늘 채팅
-                                포인트
-                            </button>
+                            <button id="chatPoints" onclick="todayChatPointsSort('chatPoints')"></button>
                         </th>
                         <th>
-                            <button id="gamePoints" onclick="todayChatPointsSort('gamePoints')">오늘 게임
-                                포인트
-                            </button>
+                            <button id="gamePoints" onclick="todayChatPointsSort('gamePoints')"></button>
                         </th>
                         <th>
-                            <button id="allPoints" onclick="todayChatPointsSort('allPoints')">채팅 총 포인트</button>
+                            <button id="allPoints" onclick="todayChatPointsSort('allPoints')"></button>
                         </th>
                         <th id='myTable_date'>날짜</th>
                     </tr>
@@ -2107,11 +2104,12 @@
                     <input checked id="chatPointsMode" class="switch" type="checkbox">
                 </label>
                 <label for="accordingNumberWords" class="label">
-                    <span id="isAccordingNumberWords" title="开启根据字数统计，15个字增加1积分，关闭则一条聊天增加1积分">根据字数统计</span>
+                    <span id="isAccordingNumberWords"></span>
                     <!-- checked -->
                     <input checked id="accordingNumberWords" class="switch" type="checkbox">
                     <input id="accordingNumberWordsValue" type="number" style="width: 30px;" max="30" min="5" placeholder="15" />
                 </label>
+
 
                 <label for="pictureIntetgralMode" class="label">
                     <span id="isPictureIntetgral" title="1회  그림 통계 1 포인트,  선물은 제외,데이터는 본 유람기에만 저장됩니다">그림 포인트</span>
