@@ -619,7 +619,7 @@ var opIndexDB = {
                                 //     "</th><th>" + d.userNick + "</th><th>" + convertGrade(d.grade)+ "</th><th>" + d.chatPoints +
                                 //     "</th><th>" + d.gamePoints + "</th><th>" + d.allPoints +
                                 //     "</th><th>" + d.date + "</th></tr>");
-                                $("#myTable tbody").append("<tr><th>" + i +
+                                $("#myTable tbody").append("<tr><th>" + (i + 1) +
                                     "</th><th>" + d.userNick + "(" + d.id + ")</th><th>" + convertGrade(d.grade) + "</th><th>" + d.chatPoints +
                                     "</th><th>" + d.gamePoints + "</th><th>" + d.allPoints +
                                     "</th><th>" + d.date + "</th></tr>");

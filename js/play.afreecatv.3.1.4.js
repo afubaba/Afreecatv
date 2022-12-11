@@ -4757,7 +4757,6 @@ function openUserList() {
 }
 
 function calculateAddPoints(userText){
-
     // console.log(accordingNumberWordsValueLocalStorage);
     //增加的分数
     let increase;
@@ -4769,13 +4768,13 @@ function calculateAddPoints(userText){
         if (userText != null) {
             userText = userText.replaceAll(" ", "");
             //去除空格 判断null
-            if (userText.length <= 30) {
+            if (userText.length <= 15) {
                 // increase = roundFun(userText.length/15, 2);
                 // increase = userText.length / 15;
                 increase = userText.length / accordingNumberWordsValueLocalStorage;
             } else {
                 // increase = 2;
-                increase =30/accordingNumberWordsValueLocalStorage;
+                increase =15/accordingNumberWordsValueLocalStorage;
 
             }
             // console.log("userTextLength:" + userText.length);
@@ -4786,6 +4785,13 @@ function calculateAddPoints(userText){
         increaseBit=2;
     } else{
         //按照条数
+        // if(userText!=null){
+        //     // 信息
+        //     increase = 1;
+        // }else{
+        //     //表情
+        //     increase = 0.5;
+        // }
         increase = 1;
         increaseBit=0;
     }
@@ -4793,5 +4799,6 @@ function calculateAddPoints(userText){
         "increase":increase,
         "increaseBit":increaseBit
     }
+    // console.log(calcAddData);
     return calcAddData;
 }
