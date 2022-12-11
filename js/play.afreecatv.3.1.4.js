@@ -196,21 +196,60 @@ function testStart() {
 function loadDatabase(localStorageType) {
     if (localStorageType == "indexdb") {
         opWebsql.exportDataFunction(function (dataArray) {
-            opIndexDB.inportDataFunction(dataArray, function (i) {
+            // console.log(dataArray);
+
+            if(dataArray.length==0){
                 //删除表格
                 opWebsql.deleteTable();
-            });
+            }else{
+                opIndexDB.inportDataFunction(dataArray, function (i) {
+                    //删除表格
+                    opWebsql.deleteTable();
+                    //清除表格数据
+                    // opWebsql.clearTable();
+
+                });
+            }
+
         });
     } else if (localStorageType == "websql") {
         opIndexDB.exportDataFunction(function (dataArray) {
             // console.log(dataArray);
-            opWebsql.inportDataFunction(dataArray, function (i) {
+            //不存在创造表格
+            // opWebsql.createTable(tbName);
+            if(dataArray.length==0){
                 //删除表格
-                opIndexDB.deleteTable();
-            });
+                // opIndexDB.deleteTable();
+            }else{
+                opWebsql.inportDataFunction(dataArray, function (i) {
+                    //清除表格数据
+                    opIndexDB.clearTable();
+                    //删除表格
+                    // opIndexDB.deleteTable();
+                });
+            }
         });
     }
 }
+
+// function loadDatabase(localStorageType) {
+//     if (localStorageType == "indexdb") {
+//         opWebsql.exportDataFunction(function (dataArray) {
+//             opIndexDB.inportDataFunction(dataArray, function (i) {
+//                 //删除表格
+//                 opWebsql.deleteTable();
+//             });
+//         });
+//     } else if (localStorageType == "websql") {
+//         opIndexDB.exportDataFunction(function (dataArray) {
+//             // console.log(dataArray);
+//             opWebsql.inportDataFunction(dataArray, function (i) {
+//                 //删除表格
+//                 opIndexDB.deleteTable();
+//             });
+//         });
+//     }
+// }
 
 //数据库图标状态
 function dbIconStatus($storeWays, lst) {
@@ -2709,10 +2748,11 @@ function retrievalButtonFunction() {
                                 }
                                 let calcAddData=calculateAddPoints(tex);
                                 uData = {
-                                    id: user_Id,
-                                    userNick: user_Nick,
-                                    increase:calcAddData.increase,
-                                    increaseBit:calcAddData.increaseBit
+                                    "id": user_Id,
+                                    "userNick": user_Nick,
+                                    "increase":calcAddData.increase,
+                                    "increaseBit":calcAddData.increaseBit,
+                                    "grade": $idDom.attr("grade")
                                 }
 
                                 // console.log(uData);
@@ -2728,7 +2768,6 @@ function retrievalButtonFunction() {
                                         // console.log(userData);
                                         opWebsql.insertData(uData, null);
                                         //查询
-                                        ;
                                     }
 
                                 }
@@ -2957,7 +2996,7 @@ function retrievalButtonFunction() {
                             "userNick": nickName,
                             "increase":calcAddData.increase,
                             "increaseBit":calcAddData.increaseBit,
-                            //  "grade":grade,
+                            "grade":grade
                             // "text":tex
                         };
                         /* 	function httpRequest(url, callback) {

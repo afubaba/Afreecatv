@@ -648,6 +648,8 @@ var opSettingIndexDB = {
                 case 'topfan':
                     searchData.grade = 'isTopfanStart';
                     break;
+                case 'supporter':
+                    searchData.grade = 'isSupporterStart';
                 case 'gudok':
                     searchData.grade = 'isSubscriptionStart';
                     break;
@@ -814,6 +816,46 @@ var opSettingIndexDB = {
             }
         }
     }
+}
+
+function convertGrade(grade){
+    let dataGrade;
+    switch (grade) {
+        case 'bj':
+            // dataGrade = '主播';
+            dataGrade =packageResult.searchCommandAuthoritySupport.answerData4[1];
+            break;
+        case 'manager':
+            // dataGrade = '管理员';
+            dataGrade =packageResult.searchCommandAuthoritySupport.answerData4[2];
+            break;
+        case 'topfan':
+            // dataGrade = '热血粉丝';
+            dataGrade =packageResult.searchCommandAuthoritySupport.answerData4[3];
+            break;
+        case 'gudok':
+            // dataGrade = '订阅者';
+            dataGrade =packageResult.searchCommandAuthoritySupport.answerData4[4];
+            break;
+        case 'supporter':
+            dataGrade =packageResult.searchCommandAuthoritySupport.answerData4[5];
+            break;
+        case 'fan':
+            // dataGrade= '粉丝';
+            dataGrade =packageResult.searchCommandAuthoritySupport.answerData4[6];
+            break;
+        case 'user':
+            // dataGrade = '普通用户';
+            dataGrade =packageResult.searchCommandAuthoritySupport.answerData4[7];
+            break;
+        // default:
+        //     dataGrade = 'lodding';
+        //     break;
+        default:
+            dataGrade =  grade;
+            break;
+    }
+    return dataGrade;
 }
 
 // basicConfiguration

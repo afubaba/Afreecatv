@@ -31,26 +31,55 @@ var opWebsql = {
     createTable: function (tbNm) {
         this.getDB();
         db.transaction(function (tx) {
-            sql = 'CREATE TABLE IF NOT EXISTS ' + tbNm +
-                ' (id unique,userNick ,chatPoints,gamePoints,allPoints,date)';
-            //console.log(sql);
+
+            // sql="DROP TABLE IF EXISTS " + tbName;
+            // console.log(sql);
+            // tx.executeSql(sql, [], function (tx, results) {
+            //     // console.log(results.rowsAffected);
+            //
+            // });
+
+            sql = 'CREATE TABLE IF NOT EXISTS ' + tbNm +' (id unique,userNick,grade ,chatPoints,gamePoints,allPoints,date)';
+            // console.log(sql);
             tx.executeSql(sql, [], function (tx, results) {
                 // console.log(results.rowsAffected);
             });
+
         });
     },
     deleteTable: function () {
         this.getDB();
         db.transaction(function (tx) {
-            var searchSql = "delete from " + tbName;
-            var dataArea = [];
+            // let searchSql = "delete from " + tbName;
+            let deleteSql = "DROP TABLE IF EXISTS " + tbName;
+            let dataArea = [];
+            tx.executeSql(deleteSql, dataArea, function (tx, results) {
+                // console.log('Rows affacted: ' + results.rowsAffected);
+                //清空表格
+                // $("#myTable tbody").children().detach();
+                // opWebsql.searchData(tbName);
+                showTipBarrageFunction("websql:" + packageResult.opIndexDB.deleteTable);
+            }, function (tx, error) {
+                console.log('Error: ' + error.message);
+                // showTipBarrageFunction("删除失败");
+            });
+        });
+
+    },
+    clearTable: function () {
+        this.getDB();
+        db.transaction(function (tx) {
+            let searchSql = "delete from " + tbName;
+            // var sql="DROP TABLE"+tbName;
+
+            let dataArea = [];
             tx.executeSql(searchSql, dataArea, function (tx, results) {
                 // console.log('Rows affacted: ' + results.rowsAffected);
                 //清空表格
                 // $("#myTable tbody").children().detach();
                 // opWebsql.searchData(tbName);
                 showTipBarrageFunction("websql:" + results.rowsAffected + packageResult
-                    .opIndexDB.deleteTable);
+                    .opIndexDB.clearTable);
             }, function (tx, error) {
                 // console.log('Error: ' + error.message);
                 showTipBarrageFunction("삭제 실패");
@@ -121,9 +150,13 @@ var opWebsql = {
 
                 for (d of data) {
                     // console.log(i)
-                    $("#myTable tbody").append("<tr><th>" + i + "</th><th>" + d
-                            .id +
-                        "</th><th>" + d.userNick + "</th><th>" + d.chatPoints +
+                    // $("#myTable tbody").append("<tr><th>" + i + "</th><th>" + d
+                    //         .id +
+                    //     "</th><th>" + d.userNick + "</th><th>" + d.chatPoints +
+                    //     "</th><th>" + d.gamePoints + "</th><th>" + d.allPoints +
+                    //     "</th><th>" + d.date + "</th></tr>");
+                    $("#myTable tbody").append("<tr><th>" + i +
+                        "</th><th>" + d.userNick + "(" + d.id + ")</th><th>" + convertGrade(d.grade) + "</th><th>" + d.chatPoints +
                         "</th><th>" + d.gamePoints + "</th><th>" + d.allPoints +
                         "</th><th>" + d.date + "</th></tr>");
                     i++;
@@ -268,13 +301,20 @@ var opWebsql = {
             tx.executeSql(sql, sqlDataArray, function (tx, results) {
                 // console.log(results.rowsAffected);
                 data = results.rows[0];
+                // $("#todayChatPointsAce>th:eq(0)").text("용왕");
+                // $("#todayChatPointsAce>th:eq(1)").text(data.id);
+                // $("#todayChatPointsAce>th:eq(2)").text(data.userNick);
+                // $("#todayChatPointsAce>th:eq(3)").text(data.maxChatPoint);
+                // $("#todayChatPointsAce>th:eq(4)").text(data.gamePoints);
+                // $("#todayChatPointsAce>th:eq(5)").text(data.allPoints);
+                // $("#todayChatPointsAce>th:eq(6)").text(todayDate);
                 $("#todayChatPointsAce>th:eq(0)").text("용왕");
-                $("#todayChatPointsAce>th:eq(1)").text(data.id);
-                $("#todayChatPointsAce>th:eq(2)").text(data.userNick);
-                $("#todayChatPointsAce>th:eq(3)").text(data.maxChatPoint);
+                $("#todayChatPointsAce>th:eq(1)").text(data.userNick + "{" + data.id + "}");
+                $("#todayChatPointsAce>th:eq(2)").text(convertGrade(data.grade));
+                $("#todayChatPointsAce>th:eq(3)").text(data.chatPoints);
                 $("#todayChatPointsAce>th:eq(4)").text(data.gamePoints);
                 $("#todayChatPointsAce>th:eq(5)").text(data.allPoints);
-                $("#todayChatPointsAce>th:eq(6)").text(todayDate);
+                $("#todayChatPointsAce>th:eq(6)").text(data.date);
                 // console.log(data);
                 var chatPointsMaxChangeMode = getDomById("chatPointsMaxChangeMode");
 
@@ -489,7 +529,7 @@ var opWebsql = {
                 let increase = userData.increase;
                 let increaseBit = userData.increaseBit;
                 //重置的increase;
-                let resetPoints=roundFun(increase, increaseBit);
+                let resetPoints = roundFun(increase, increaseBit);
                 if (resultRows.length == 1) {
                     // console.log("update");
                     let resultData = resultRows[0];
@@ -522,8 +562,11 @@ var opWebsql = {
                         //     " SET chatPoints=chatPoints+1,allPoints=allPoints+1,date=" +
                         //     today + " WHERE id=?";
                         sql = "UPDATE " + tbNm + " SET chatPoints=?,allPoints=? WHERE id=?";
+                        //测试数据
+                        // sql = "UPDATE " + tbNm + " SET userNick='等待测试',grade='载入中。。。',chatPoints=?,allPoints=? WHERE id=?";
                     } else {
                         let toDate = new Date(todayDate);
+                        // toDate.setDate(1);
                         let resuDate = new Date(resultData.date);
                         //判断月份
                         if (toDate.getMonth() == resuDate.getMonth()) {
@@ -534,13 +577,26 @@ var opWebsql = {
                                 //     today + " WHERE id=?";
                                 sql = "UPDATE " + tbNm + " SET chatPoints=?,allPoints=?,date=? WHERE id=?";
                             } else {
+                                //判断昵称是否不一致
+                                let userNickSqlString;
+                                sqlDataArray = [resetPoints, addAllPoints, todayDate, uId];
                                 if (resultData.userNick == uNick) {
-                                    sqlDataArray = [resetPoints, addAllPoints, todayDate, uId];
-                                    sql = "UPDATE " + tbNm + " SET chatPoints=?,gamePoints=0,allPoints=?,date=? WHERE id=?;";
+                                    userNickSqlString="";
                                 } else {
-                                    sqlDataArray = [uNick, resetPoints, addAllPoints, todayDate, uId];
-                                    sql = "UPDATE " + tbNm + " SET userNick=?,chatPoints=?,gamePoints=0,allPoints=?,date=? WHERE id=?;";
+                                    userNickSqlString="userNick=?,"
+                                    sqlDataArray.unshift(uNick);
                                 }
+                                //判断等级是否不一致
+                                let gradeSqlString;
+                                if (resultData.grade == userData.grade) {
+                                    gradeSqlString="";
+                                } else {
+                                    gradeSqlString="grade=?,"
+                                    sqlDataArray.unshift(userData.grade);
+                                }
+                                sql = "UPDATE " + tbNm + " SET "+gradeSqlString+userNickSqlString+"chatPoints=?,gamePoints=0,allPoints=?,date=? WHERE id=?;";
+                                // console.log(sql);
+                                // console.log(sqlDataArray);
                                 showTipBarrageFunction(uNick + " " + (resuDate.getDate()) + packageResult.opIndexDB.insertData[0]);
                                 // console.log("今日积分清零");
                                 // sql = "UPDATE " + tbNm + " SET chatPoints=1,date=? WHERE id='" + uId + "';";
@@ -551,15 +607,39 @@ var opWebsql = {
                             let resetTotalPointsEveryMonthChecked = $resetTotalPointsEveryMonth.prop("checked");
                             let logString = uNick + " " + (resuDate.getMonth() + 1);
 
+                            // let gradeSqlString;
+
                             if (resetTotalPointsEveryMonthChecked) {
                                 sqlDataArray = [resetPoints, resetPoints, todayDate, uId];
                                 sql = "UPDATE " + tbNm + " SET chatPoints=?,gamePoints = 0,allPoints=?,date=? WHERE id=?;";
+
+                                // if (resultData.grade == userData.grade) {
+                                //     gradeSqlString="";
+                                // } else {
+                                //     gradeSqlString="grade=?,"
+                                //     sqlDataArray.unshift(userData.grade);
+                                //     //测试数据
+                                //     // sqlDataArray.unshift("等待测试");
+                                // }
+                                // sql = "UPDATE " + tbNm + " SET "+gradeSqlString+"chatPoints=?,gamePoints = 0,allPoints=?,date=? WHERE id=?;";
                                 showTipBarrageFunction(logString + packageResult.opIndexDB.insertData[1]);
                             } else {
                                 sqlDataArray = [resetPoints, addAllPoints, todayDate, uId];
                                 sql = "UPDATE " + tbNm + " SET chatPoints=?,gamePoints = 0,allPoints=?,date=? WHERE id=?;";
+
+                                // if (resultData.grade == userData.grade) {
+                                //     gradeSqlString="";
+                                // } else {
+                                //     gradeSqlString="grade=?,"
+                                //     sqlDataArray.unshift(userData.grade);
+                                //     //测试数据
+                                //     // sqlDataArray.unshift("等待测试");
+                                // }
+                                // sql = "UPDATE " + tbNm + " SET "+gradeSqlString+"chatPoints=?,gamePoints = 0,allPoints=?,date=? WHERE id=?;";
                                 showTipBarrageFunction(logString + packageResult.opIndexDB.insertData[2]);
                             }
+
+
                         }
                     }
                     tx.executeSql(sql, sqlDataArray, function (tx, results) {
@@ -667,9 +747,12 @@ var opWebsql = {
                     // 	"','" + uNick + "',1,1,2,'" + todayDate + "');";
                     // sql = 'INSERT INTO ' + tbNm + " VALUES ('" + uId +
                     // 	"','" + uNick + "',1,0,1,'" + todayDate + "');";
-                    sql = 'INSERT INTO ' + tbNm + " VALUES (?,?,?,0,?,?);";
+                    sql = 'INSERT INTO ' + tbNm + " VALUES (?,?,?,?,0,?,?);";
                     // console.log(sql);
-                    sqlDataArray = [uId, uNick, resetPoints,resetPoints, todayDate];
+
+                    sqlDataArray = [uId, uNick, userData.grade, resetPoints, resetPoints, todayDate];
+                    //测试数据
+                    // sqlDataArray = [uId, "等待测试","。。。载入中", resetPoints, resetPoints, todayDate];
 
                     tx.executeSql(sql, sqlDataArray);
 
@@ -862,6 +945,10 @@ var opWebsql = {
         });
     },
     inportDataFunction: function (userDataArray, callBack) {
+
+        //不存在创造表格
+        this.createTable(tbName);
+
         let todayDate = $("#timeFrequencys").text().substring(0, $("#timeFrequencys").text().indexOf("\t"));
         // today= new Date(todayDate).getDate();
         let sql = "SELECT * FROM " + tbName + " WHERE id=?";
@@ -874,13 +961,20 @@ var opWebsql = {
                     // console.log(results);
                     let resultRows = results.rows;
                     // console.log(resultRows.length);
+                    let userGrade;
+                    if("grade" in  userDataArray[i]){
+                        userGrade=userDataArray[i].grade;
+                    }else{
+                        userGrade="loadding";
+                    }
                     if (resultRows.length == 0) {
-                        sql = 'INSERT INTO ' + tbName + " VALUES (?,?,?,?,?,?);";
+                        sql = 'INSERT INTO ' + tbName + " VALUES (?,?,?,?,?,?,?);";
                         // console.log(sql);
-                        let sqlDataArray = [userDataArray[i].id, userDataArray[i].userNick,
-                            userDataArray[i].chatPoints, userDataArray[i].gamePoints,
-                            userDataArray[i].allPoints, userDataArray[i].date
+                        let sqlDataArray = [userDataArray[i].id, userDataArray[i].userNick, userGrade,
+                            roundFun(userDataArray[i].chatPoints, 2), roundFun(userDataArray[i].gamePoints, 2),
+                            roundFun(userDataArray[i].allPoints, 2), userDataArray[i].date
                         ];
+                        // console.log(sqlDataArray);
                         tx.executeSql(sql, sqlDataArray, function () {
                             if (i == userDataArray.length - 1) {
                                 // showTipBarrageFunction(userDataArray.length + "개의 데이터 가져오기 성공");
@@ -892,20 +986,25 @@ var opWebsql = {
                             }
                         });
                     } else if (resultRows.length == 1) {
+
+                        let addAllPoint = roundFun(resultRows[0].allPoints + userDataArray[i].allPoints, 2);
                         if (resultRows.date == todayDate && userDataArray[i].date == todayDate) {
+                            let addChatPoint = roundFun(resultRows[0].chatPoints + userDataArray[i].chatPoints, 2);
+                            let addGamePoints = roundFun(resultRows[0].gamePoints + userDataArray[i].gamePoints, 2);
                             // resultRows.chatPoints = resultRows.chatPoints + userDataArray[i].chatPoints;
                             // data.gamePoints = data.gamePoints + userData.gamePoints;
-                            sql = "UPDATE " + tbName +
-                                " SET chatPoints=chatPoints+" + userDataArray[i].chatPoints +
-                                ",gamePoints=gamePoints+" + userDataArray[i].gamePoints +
-                                ",allPoints=allPoints+" + userDataArray[i].allPoints +
-                                " WHERE id=?";
+                            // sql = "UPDATE " + tbName +
+                            //     " SET chatPoints=chatPoints+" + userDataArray[i].chatPoints + ",grade=" + userGrade +
+                            //     ",gamePoints=gamePoints+" + userDataArray[i].gamePoints +
+                            //     ",allPoints=allPoints+" + userDataArray[i].allPoints +
+                            //     " WHERE id=?";
+                            sql = "UPDATE " + tbName + " SET grade=?,chatPoints=?,gamePoints=?,allPoints=? WHERE id=?";
+                            sqlDataArray = [userGrade, addChatPoint, addGamePoints, addAllPoint, userDataArray[i].id];
                         } else {
-                            sql = "UPDATE " + tbName +
-                                " SET allPoints=allPoints+" + userDataArray[i].allPoints +
-                                " WHERE id=?";
+                            sql = "UPDATE " + tbName + " SET allPoints=? WHERE id=?";
+                            sqlDataArray = [addAllPoint, userDataArray[i].id];
                         }
-                        let sqlDataArray = [userDataArray[i].id]
+
                         // console.log(sql);
                         tx.executeSql(sql, sqlDataArray, function (tx, results) {
                             // console.log(results);
@@ -1004,9 +1103,13 @@ function todayChatPointsUp(sort, which) {
     // $("#myTable tbody").children().remove();
     for (d of sortObj) {
         i++;
-        $("#myTable tbody").append("<tr><th>" + i + "</th><th>" + d.id + "</th><th>" + d.userNick + "</th><th>" + d
-                .chatPoints + "</th><th>" + d.gamePoints + "</th><th>" + d.allPoints + "</th><th>" + d.date +
-            "</th></tr>");
+        // $("#myTable tbody").append("<tr><th>" + i + "</th><th>" + d.id + "</th><th>" + d.userNick + "</th><th>" + d
+        //         .chatPoints + "</th><th>" + d.gamePoints + "</th><th>" + d.allPoints + "</th><th>" + d.date +
+        //     "</th></tr>");
+        $("#myTable tbody").append("<tr><th>" + i +
+            "</th><th>" + d.userNick + "(" + d.id + ")</th><th>" + convertGrade(d.grade) + "</th><th>" + d.chatPoints +
+            "</th><th>" + d.gamePoints + "</th><th>" + d.allPoints +
+            "</th><th>" + d.date + "</th></tr>");
     }
 
 }
@@ -1163,9 +1266,9 @@ function clearTable() {
         if (willDelete) {
             if (localStorageType == "indexdb") {
                 // https://www.csdn.net/tags/MtTaMgysOTg1NDM3LWJsb2cO0O0O.html
-                opIndexDB.deleteTable();
+                opIndexDB.clearTable();
             } else if (localStorageType == "websql") {
-                opWebsql.deleteTable();
+                opWebsql.clearTable();
             }
         } else {
             swal({

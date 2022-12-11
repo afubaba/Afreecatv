@@ -201,17 +201,17 @@ var opIndexDB = {
                     let resultData = event.target.result;
                     // console.log(userData);
                     // console.log("increase:" + increase);
-                    let increase=userData.increase;
+                    let increase = userData.increase;
                     let increaseBit = userData.increaseBit;
                     if (resultData) {
                         // resultData.allPoints++;
-                        resultData.allPoints+=increase;
+                        resultData.allPoints += increase;
                         // console.log("update");
                         // data.userNick = data.userNick != userData.userNick ? data.userNick : userData.userNick;
                         //判断时期字符串是否相等
                         if (resultData.date == todayDate) {
                             // resultData.chatPoints++;
-                            resultData.chatPoints+=increase;
+                            resultData.chatPoints += increase;
                         } else {
                             let toDate = new Date(todayDate);
                             let resuDate = new Date(resultData.date);
@@ -222,11 +222,15 @@ var opIndexDB = {
                                 //判断日
                                 if (toDate.getDate() == resuDate.getDate()) {
                                     // resultData.chatPoints++;
-                                    resultData.chatPoints+=increase;
+                                    resultData.chatPoints += increase;
                                 } else {
                                     // 昵称是否相同
                                     if (resultData.userNick != userData.userNick) {
                                         resultData.userNick = userData.userNick;
+                                    }
+                                    //隔日等级同步
+                                    if (resultData.grade != userData.grade) {
+                                        resultData.grade = userData.grade;
                                     }
                                     resultData.chatPoints = increase;
                                     resultData.gamePoints = 0;
@@ -257,12 +261,21 @@ var opIndexDB = {
                         };
                     } else {
                         // console.log("insert");
-                        userData.chatPoints = roundFun(increase,increaseBit);
-                        userData.gamePoints = 0;
-                        userData.allPoints = roundFun(increase,increaseBit);
-                        userData.date = todayDate;
+                        // userData.chatPoints = roundFun(increase,increaseBit);
+                        // userData.gamePoints = 0;
+                        // userData.allPoints = roundFun(increase,increaseBit);
+                        // userData.date = todayDate;
+                        let addUserData = {
+                            "id": userData.id,
+                            "userNick": userData.userNick,
+                            "chatPoints": roundFun(increase, increaseBit),
+                            "gamePoints": 0,
+                            "grade": userData.grade,
+                            "allPoints": roundFun(increase, increaseBit),
+                            "date": todayDate
+                        };
                         // console.log(userData);
-                        var db_op_req = userDataStore.add(userData);
+                        var db_op_req = userDataStore.add(addUserData);
                         db_op_req.onsuccess = function () {
                             // console.log("存好了");
                         }
@@ -332,9 +345,11 @@ var opIndexDB = {
                         } else if ("gamePoints" in userData) {
                             resultData.gamePoints = resultData.gamePoints + userData.gamePoints;
                             resultData.allPoints = resultData.allPoints + userData.gamePoints;
-                        } else {}
+                        } else {
+                        }
                     }
-                    userDataStore.put(resultData).onsuccess = function (event) {}
+                    userDataStore.put(resultData).onsuccess = function (event) {
+                    }
                 }
             }
         }
@@ -493,10 +508,14 @@ var opIndexDB = {
                         $("#myTable tbody").children().detach();
                         for (d of list) {
                             i++;
+                            // $("#myTable tbody").append("<tr><th>" + i +
+                            //     "</th><th>" + d
+                            //         .id +
+                            //     "</th><th>" + d.userNick + "</th><th>" + convertGrade(d.grade)+ "</th><th>" + d.chatPoints +
+                            //     "</th><th>" + d.gamePoints + "</th><th>" + d.allPoints +
+                            //     "</th><th>" + d.date + "</th></tr>");
                             $("#myTable tbody").append("<tr><th>" + i +
-                                "</th><th>" + d
-                                    .id +
-                                "</th><th>" + d.userNick + "</th><th>" + d.chatPoints +
+                                "</th><th>" + d.userNick + "(" + d.id + ")</th><th>" + convertGrade(d.grade) + "</th><th>" + d.chatPoints +
                                 "</th><th>" + d.gamePoints + "</th><th>" + d.allPoints +
                                 "</th><th>" + d.date + "</th></tr>");
                         }
@@ -511,10 +530,14 @@ var opIndexDB = {
                         $("#myTable tbody").children().detach();
                         for (d of list) {
                             i++;
+                            // $("#myTable tbody").append("<tr><th>" + i +
+                            //     "</th><th>" + d
+                            //         .id +
+                            //     "</th><th>" + d.userNick + "</th><th>" + convertGrade(d.grade)+ "</th><th>" + d.chatPoints +
+                            //     "</th><th>" + d.gamePoints + "</th><th>" + d.allPoints +
+                            //     "</th><th>" + d.date + "</th></tr>");
                             $("#myTable tbody").append("<tr><th>" + i +
-                                "</th><th>" + d
-                                    .id +
-                                "</th><th>" + d.userNick + "</th><th>" + d.chatPoints +
+                                "</th><th>" + d.userNick + "(" + d.id + ")</th><th>" + convertGrade(d.grade) + "</th><th>" + d.chatPoints +
                                 "</th><th>" + d.gamePoints + "</th><th>" + d.allPoints +
                                 "</th><th>" + d.date + "</th></tr>");
                         }
@@ -590,10 +613,14 @@ var opIndexDB = {
                             // console.log(resArray[i]);
                             d = resArray[i];
                             if (d) {
-                                $("#myTable tbody").append("<tr><th>" + (i + 1) +
-                                    "</th><th>" + d
-                                        .id +
-                                    "</th><th>" + d.userNick + "</th><th>" + d.chatPoints +
+                                // $("#myTable tbody").append("<tr><th>" + (i + 1) +
+                                //     "</th><th>" + d
+                                //         .id +
+                                //     "</th><th>" + d.userNick + "</th><th>" + convertGrade(d.grade)+ "</th><th>" + d.chatPoints +
+                                //     "</th><th>" + d.gamePoints + "</th><th>" + d.allPoints +
+                                //     "</th><th>" + d.date + "</th></tr>");
+                                $("#myTable tbody").append("<tr><th>" + i +
+                                    "</th><th>" + d.userNick + "(" + d.id + ")</th><th>" + convertGrade(d.grade) + "</th><th>" + d.chatPoints +
                                     "</th><th>" + d.gamePoints + "</th><th>" + d.allPoints +
                                     "</th><th>" + d.date + "</th></tr>");
                             } else {
@@ -633,7 +660,7 @@ var opIndexDB = {
 
         if (allPageLength > 1) {
             // $("#pagination").show();
-            $("#pagination").css("visibility","visible");
+            $("#pagination").css("visibility", "visible");
             // console.log("allPageLength:", allPageLength);
             var nowPage = page;
             // console.log(limi[0]);
@@ -702,7 +729,7 @@ var opIndexDB = {
             }
         } else {
             // $("#pagination").hide();
-            $("#pagination").css("visibility","hidden");
+            $("#pagination").css("visibility", "hidden");
         }
     },
     serarchTodaySortRankDataByUserData: function (sortType, callback) {
@@ -934,6 +961,29 @@ var opIndexDB = {
             // console.log("updateData更新出错了");
         }
     },
+    clearTable: function () {
+
+        req = indexedDB.open(dbName);
+        req.onsuccess = function (events) {
+            // 获取数据库
+            db = events.target.result;
+            let trans = db.transaction([tbName], 'readwrite');
+            let dataStore = trans.objectStore(tbName);
+            dataStore.getAll().onsuccess = function (events) {
+                let result = events.target.result;
+                dataStore.clear().onsuccess = function (e) {
+                    // console.log(result);
+                    if (e.type == 'success') {
+                        // INDEXDB.closeDB()
+                        // this.closeDB();
+                        showTipBarrageFunction("indexdb:" + result.length + packageResult.opIndexDB.clearTable);
+                        db.close();
+                    }
+                }
+            }
+
+        }
+    },
     deleteTable: function () {
 
         req = indexedDB.open(dbName);
@@ -1003,15 +1053,23 @@ var opIndexDB = {
                     } else {
                         //是今天累计游戏点聊天点
                         if (data.date == userData.date) {
-                            data.chatPoints = data.chatPoints + userData.chatPoints;
-                            data.gamePoints = data.gamePoints + userData.gamePoints;
+                            data.chatPoints = roundFun(data.chatPoints + userData.chatPoints, 2);
+                            data.gamePoints = roundFun(data.gamePoints + userData.gamePoints, 2);
                         }
                         // else {
                         //     if (data.date == today && userData.date != today) {
                         //         // userData.date = today
                         //     }
                         // }
-                        data.allPoints = data.allPoints + userData.allPoints;
+                        data.allPoints = roundFun(data.allPoints + userData.allPoints, 2);
+
+                        let userGrade;
+                        if("grade" in  userData){
+                            userGrade=userData.grade;
+                        }else{
+                            userGrade="loadding";
+                        }
+                        data.grade = userGrade;
 
                         userDataStore.put(data).onsuccess = function (event) {
                             // console.log('更新', event.target.result);
@@ -1029,6 +1087,17 @@ var opIndexDB = {
     },
 
 }
+
+// 它会返回所有数据库名称
+// window.indexedDB.webkitGetDatabaseNames().onsuccess = function(sender,args)
+// {
+//     var r = sender.target.result;
+//     for(var i in r)
+//         indexedDB.deleteDatabase(r[i]);
+// };
+
+// indexedDB.deleteDatabase("databaseName");
+
 // if(localStorageType=="indexdb"){
 opIndexDB.createTable();
 
@@ -1055,8 +1124,8 @@ function getTodayMaxSortData(idDom, idt) {
                     // $("#todayChatPointsAce").val(JSON.stringify(data));
 
                     $("#todayChatPointsAce>th:eq(0)").text("용왕");
-                    $("#todayChatPointsAce>th:eq(1)").text(data.id);
-                    $("#todayChatPointsAce>th:eq(2)").text(data.userNick);
+                    $("#todayChatPointsAce>th:eq(1)").text(data.userNick + "{" + data.id + "}");
+                    $("#todayChatPointsAce>th:eq(2)").text(convertGrade(data.grade));
                     $("#todayChatPointsAce>th:eq(3)").text(data.chatPoints);
                     $("#todayChatPointsAce>th:eq(4)").text(data.gamePoints);
                     $("#todayChatPointsAce>th:eq(5)").text(data.allPoints);
