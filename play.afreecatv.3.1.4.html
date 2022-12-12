@@ -2000,7 +2000,7 @@
         <div class="modal alert alert-block" id="myModal" style="display: none;">
             <div class="modal-header"><a class="close" data-dismiss="modal">X</a>
                 <div class="alert alert-error"
-                     style="position: fixed;z-index: 10000;width: 30%;font-size:large;font-weight: bolder;">
+                     style="position: fixed;z-index: 10000;width: 40%;font-size:large;font-weight: bolder;">
                     <a class="close" data-dismiss="alert">X</a>
                     <!-- <strong>주의사항!</strong> 본 채팅 포인트 데이터는 본 유람기에만 저장되며, 사이트 데이터 데이터를 정리하면 정보를 잃게 됩니다 -->
                     <strong id="mattersNeedingAttention"></strong>
@@ -2028,16 +2028,28 @@
                         <th>
                             <button id="chatPoints" onclick="todayChatPointsSort('chatPoints')"></button>
                         </th>
+                        <!--                        <th id='myTable_chatTimes'></th>-->
+                        <th>
+                            <button id="chatTimes" onclick="todayChatPointsSort('chatTimes')"></button>
+                        </th>
+
                         <th>
                             <button id="gamePoints" onclick="todayChatPointsSort('gamePoints')"></button>
                         </th>
                         <th>
                             <button id="allPoints" onclick="todayChatPointsSort('allPoints')"></button>
                         </th>
+                        <!--                        <th id='myTable_allTimes'>总聊天次数</th>-->
+                        <th>
+                            <button id="allTimes" onclick="todayChatPointsSort('allTimes')"></button>
+                        </th>
+
                         <th id='myTable_date'></th>
                     </tr>
                     <tr id="todayChatPointsAce">
                         <th>조회 붐비는 중</th>
+                        <th>ace</th>
+                        <th>ace</th>
                         <th>ace</th>
                         <th>ace</th>
                         <th>ace</th>
@@ -2082,7 +2094,7 @@
 
                 <!-- ace:<input id="todayChatPointsAce" type="text"> -->
                 <span id="everyPage">페이지당 몇 개</span>:<input id="everyPageValue" type="number" min="1"/>
-                <span id="allPage">총 수량</span>:<input disabled id="allPageValue" type="number" min="0.001" value="0"/>
+                <span id="allPage">총 수량</span>:<input disabled id="allPageValue" type="number" value="0"/>
 
                 <!-- <br/> -->
                 <!-- 储存方式 -->
@@ -2098,36 +2110,37 @@
                     <input id="indexDB" checked name="storeWays" type="radio" value="indexdb"/>
                 </label>
                 <br/>
-                <label for="chatPointsMode" class="label">
-                    <span id="isChatPoints" title="1회 채팅 통계 1 포인트,만화 이모티콘,선물은 제외,데이터는 본 유람기에만 저장됩니다">채팅 포인트 통계</span>
-                    <!-- checked -->
-                    <input checked id="chatPointsMode" class="switch" type="checkbox">
-                </label>
-                <label for="accordingNumberWords" class="label">
+
+                <label for="accordingNumberWordsValue"  class="labelStyle">
                     <span id="isAccordingNumberWords"></span>
                     <!-- checked -->
-                    <input checked id="accordingNumberWords" class="switch" type="checkbox">
+                    <!--                    <input checked id="accordingNumberWords" class="switch" type="checkbox">-->
                     <input id="accordingNumberWordsValue" type="number" style="width: 30px;" max="15" min="1" placeholder="10"/>
                 </label>
 
+                <label for="chatPointsMode" class="label">
+                    <span id="isChatPoints"></span>
+                    <!-- checked -->
+                    <input checked id="chatPointsMode" class="switch" type="checkbox">
+                </label>
 
                 <label for="pictureIntetgralMode" class="label">
-                    <span id="isPictureIntetgral" title="1회  그림 통계 1 포인트,  선물은 제외,데이터는 본 유람기에만 저장됩니다">그림 포인트</span>
+                    <span id="isPictureIntetgral"></span>
                     <input checked id="pictureIntetgralMode" class="switch" type="checkbox">
                 </label>
-                <label for="chatPointsMaxChangeMode" class="label">
-                    <span id="isChatPointsMaxChange" title="채팅 통계의 1위 변경은 알림 메시지를 보냅니다.채팅 횟수가 5회보다 많고 1등이어야 발송">용왕 변경
-                                알림</span>
+                <label for="chatPointsMaxChangeMode" class="label ">
+                    <span id="isChatPointsMaxChange"></span>
                     <input id="chatPointsMaxChangeMode" class="switch" type="checkbox">
                 </label>
-
                 <br>
                 <li class="btn btn-warning alert-warning" id="exportDivButton" onclick="exportDivFunction();"></li>
+
                 <label for="resetTotalPointsEveryMonth" class="label">
                     <span id="isResetTotalPointsEveryMonth"></span>
                     <input id="resetTotalPointsEveryMonth" class="switch" type="checkbox">
                 </label>
-                <li class="btn btn-danger" id="clearTableButton" onclick="clearTable()">모든 정보 비우기</li>
+
+                <li class="btn btn-danger" id="clearTableButton" onclick="clearTable()"></li>
                 <!-- <hr> -->
                 <!-- <a href=" #" class="btn">关闭</a> -->
                 <!-- <a id="refresh" href="#" class="btn btn-primary">새로 고침</a> -->

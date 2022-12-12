@@ -71,7 +71,7 @@ var opSettingIndexDB = {
                         // console.log("-------over--------");
 
                         // id
-                        let setArr = ["chatPointsMaxChangeMode", "chatPointsMode", "chatSportMode","accordingNumberWords", "delayInputId", "isBarrage", "isHalfHourPrompt", "isResetTotalPointsEveryMonth", "isStart", "pictureIntetgralMode", "robotChatCommondCheckboxId"];
+                        let setArr = ["chatPointsMaxChangeMode", "chatPointsMode", "chatSportMode", "delayInputId", "isBarrage", "isHalfHourPrompt", "isResetTotalPointsEveryMonth", "isStart", "pictureIntetgralMode", "robotChatCommondCheckboxId"];
                         for (let i = 0; i < setArr.length; i++) {
                             if (setArr[i] in settData) {
                                 data[setArr[i]] = settData[setArr[i]];
@@ -90,14 +90,14 @@ var opSettingIndexDB = {
                         // console.log(data);
                         robotChatCommondCheckboxId.checked = data.robotChatCommondCheckboxId;
                         chatSportMode.checked = data.chatSportMode;
-                        accordingNumberWords.checked = data.accordingNumberWords;
+                        // accordingNumberWords.checked = data.accordingNumberWords;
 
                         pictureIntetgralMode.checked = data.pictureIntetgralMode;
                         chatPointsMode.checked = data.chatPointsMode;
 
                         chatPointsMaxChangeMode.checked = data.chatPointsMaxChangeMode;
 
-                        let domArray = [robotChatCommondCheckboxId, chatSportMode,accordingNumberWords, pictureIntetgralMode,
+                        let domArray = [robotChatCommondCheckboxId, chatSportMode, pictureIntetgralMode,
                             chatPointsMode, chatPointsMaxChangeMode
                         ];
                         getLabelStatus(domArray);
@@ -864,7 +864,7 @@ function convertGrade(grade){
 var chatSportMode = getDomById("chatSportMode");
 var robotChatCommondCheckboxId = getDomById("robotChatCommondCheckboxId");
 var chatPointsMode = getDomById("chatPointsMode");
-var accordingNumberWords = getDomById("accordingNumberWords");
+// var accordingNumberWords = getDomById("accordingNumberWords");
 
 var pictureIntetgralMode = getDomById("pictureIntetgralMode");
 
@@ -877,7 +877,7 @@ let $halfHourPrompt = $("#halfHourPrompt");
 var settData = {
     id: "robotConfiguration",
     chatSportMode: chatSportMode.checked,
-    accordingNumberWords:accordingNumberWords.checked,
+    // accordingNumberWords:accordingNumberWords.checked,
     chatPointsMode: chatPointsMode.checked,
     pictureIntetgralMode: pictureIntetgralMode.checked,
     chatPointsMaxChangeMode: chatPointsMaxChangeMode.checked,
@@ -888,7 +888,7 @@ var settData = {
     isHalfHourPrompt: $halfHourPrompt.prop("checked"),
     isResetTotalPointsEveryMonth: resetTotalPointsEveryMonth.checked
 };
-$("#resetTotalPointsEveryMonth,#timesPromptInput,#chrysanthemumCheckBox,#chatPointsMode,#pictureIntetgralMode,#chatPointsMaxChangeMode,#chatSportMode,#accordingNumberWords,#robotChatCommondCheckboxId")
+$("#resetTotalPointsEveryMonth,#timesPromptInput,#chrysanthemumCheckBox,#chatPointsMode,#pictureIntetgralMode,#chatPointsMaxChangeMode,#chatSportMode,#robotChatCommondCheckboxId")
     .change(function () {
         if (this.checked) {
             $(this).parent("label").addClass("label-success");
@@ -939,7 +939,7 @@ $("#resetTotalPointsEveryMonth,#pictureIntetgralMode,#halfHourPrompt,#chatPoints
             // }
             settData.chatSportMode = chatSportMode.checked;
 
-            settData.accordingNumberWords=accordingNumberWords.checked;
+            // settData.accordingNumberWords=accordingNumberWords.checked;
 
             pictureIntetgralMode = getDomById("pictureIntetgralMode");
             settData.pictureIntetgralMode = pictureIntetgralMode.checked;
@@ -1450,7 +1450,6 @@ function tipStatusFunction() {
         }
     }
 
-
 }
 
 $("#promptOfIsStart,#promptOfAuthorizationFailure").change(function () {
@@ -1496,14 +1495,13 @@ $accordingNumberWordsValue.change(() => {
     accordingNumberWordsValueLocalStorage=$accordingNumberWordsValue.val();
 });
 
-
-$("#accordingNumberWords").change(function () {
-
-    if($("#accordingNumberWords").prop("checked")){
-        // $accordingNumberWordsValue.show();
-        $accordingNumberWordsValue.css("visibility","visible");
-    }else{
-        // $accordingNumberWordsValue.hide();
-        $accordingNumberWordsValue.css("visibility","hidden");
-    }
-});
+// $("#accordingNumberWords").change(function () {
+//
+//     if($("#accordingNumberWords").prop("checked")){
+//         // $accordingNumberWordsValue.show();
+//         $accordingNumberWordsValue.css("visibility","visible");
+//     }else{
+//         // $accordingNumberWordsValue.hide();
+//         $accordingNumberWordsValue.css("visibility","hidden");
+//     }
+// });

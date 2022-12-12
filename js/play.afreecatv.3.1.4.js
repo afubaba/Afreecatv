@@ -4756,7 +4756,7 @@ function openUserList() {
     $(".list_participant").removeClass("off").addClass("on");
 }
 
-function calculateAddPoints(userText){
+function calculateAddPoints(userText) {
     // console.log(accordingNumberWordsValueLocalStorage);
     //增加的分数
     let increase;
@@ -4764,40 +4764,40 @@ function calculateAddPoints(userText){
     let increaseBit;
     // console.log(accordingNumberWords.checked);
     //按照字数
-    if (accordingNumberWords.checked) {
-        if (userText != null) {
-            userText = userText.replaceAll(" ", "");
-            //去除空格 判断null
-            if (userText.length <= 15) {
-                // increase = roundFun(userText.length/15, 2);
-                // increase = userText.length / 15;
-                increase = userText.length / accordingNumberWordsValueLocalStorage;
-            } else {
-                // increase = 2;
-                increase =15/accordingNumberWordsValueLocalStorage;
 
-            }
-            // console.log("userTextLength:" + userText.length);
+    if (userText != null) {
+        userText = userText.replaceAll(" ", "");
+        //去除空格 判断null
+        if (userText.length <= 15) {
+            // increase = roundFun(userText.length/15, 2);
+            // increase = userText.length / 15;
+            increase = userText.length / accordingNumberWordsValueLocalStorage;
         } else {
-            //表情等
-            increase = 0.25*30/accordingNumberWordsValueLocalStorage;
+            // increase = 2;
+            increase = 15 / accordingNumberWordsValueLocalStorage;
+
         }
-        increaseBit=2;
-    } else{
-        //按照条数
-        // if(userText!=null){
-        //     // 信息
-        //     increase = 1;
-        // }else{
-        //     //表情
-        //     increase = 0.5;
-        // }
-        increase = 1;
-        increaseBit=0;
+        // console.log("userTextLength:" + userText.length);
+    } else {
+        //表情等
+        increase = 0.25 * 30 / accordingNumberWordsValueLocalStorage;
     }
-    let calcAddData={
-        "increase":increase,
-        "increaseBit":increaseBit
+    increaseBit = 2;
+    // if (accordingNumberWords.checked) {} else{
+    //     //按照条数
+    //     // if(userText!=null){
+    //     //     // 信息
+    //     //     increase = 1;
+    //     // }else{
+    //     //     //表情
+    //     //     increase = 0.5;
+    //     // }
+    //     increase = 1;
+    //     increaseBit=0;
+    // }
+    let calcAddData = {
+        "increase": increase,
+        "increaseBit": increaseBit
     }
     // console.log(calcAddData);
     return calcAddData;

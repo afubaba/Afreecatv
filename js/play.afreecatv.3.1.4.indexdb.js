@@ -206,12 +206,26 @@ var opIndexDB = {
                     if (resultData) {
                         // resultData.allPoints++;
                         resultData.allPoints += increase;
+                        resultData.allTimes++;
+                        //测试数据
+                        // if ("allTimes" in resultData && !isNaN(resultData.allTimes)) {
+                        //     resultData.allTimes++;
+                        // } else {
+                        //     resultData.allTimes = 1;
+                        // }
                         // console.log("update");
                         // data.userNick = data.userNick != userData.userNick ? data.userNick : userData.userNick;
                         //判断时期字符串是否相等
                         if (resultData.date == todayDate) {
                             // resultData.chatPoints++;
                             resultData.chatPoints += increase;
+                            resultData.chatTimes++;
+                            //测试数据
+                            // if ("chatTimes" in resultData && !isNaN(resultData.chatTimes)) {
+                            //     resultData.chatTimes++;
+                            // } else {
+                            //     resultData.chatTimes = 1;
+                            // }
                         } else {
                             let toDate = new Date(todayDate);
                             let resuDate = new Date(resultData.date);
@@ -223,6 +237,7 @@ var opIndexDB = {
                                 if (toDate.getDate() == resuDate.getDate()) {
                                     // resultData.chatPoints++;
                                     resultData.chatPoints += increase;
+                                    resultData.chatTimes++;
                                 } else {
                                     // 昵称是否相同
                                     if (resultData.userNick != userData.userNick) {
@@ -232,7 +247,12 @@ var opIndexDB = {
                                     if (resultData.grade != userData.grade) {
                                         resultData.grade = userData.grade;
                                     }
+                                    //测试数据
+                                    // if (!"allTimes" in resultData|| isNaN(resultData.allTimes)) {
+                                    //     resultData.allTimes = 1;
+                                    // }
                                     resultData.chatPoints = increase;
+                                    resultData.chatTimes = 1;
                                     resultData.gamePoints = 0;
                                     // userData.userNick
                                     showTipBarrageFunction(userData.userNick + " " + (resuDate.getDate()) + packageResult.opIndexDB.insertData[0]);
@@ -243,9 +263,11 @@ var opIndexDB = {
                                 let resetTotalPointsEveryMonthChecked = $resetTotalPointsEveryMonth.prop("checked");
                                 let logString = userData.userNick + " " + (resuDate.getMonth() + 1);
                                 resultData.chatPoints = increase;
+                                resultData.chatTimes = 1;
                                 resultData.gamePoints = 0;
                                 if (resetTotalPointsEveryMonthChecked) {
                                     resultData.allPoints = increase;
+                                    resultData.allTimes = 1;
                                     showTipBarrageFunction(logString + packageResult.opIndexDB.insertData[1]);
                                 } else {
                                     showTipBarrageFunction(logString + packageResult.opIndexDB.insertData[2]);
@@ -268,10 +290,12 @@ var opIndexDB = {
                         let addUserData = {
                             "id": userData.id,
                             "userNick": userData.userNick,
-                            "chatPoints": roundFun(increase, increaseBit),
-                            "gamePoints": 0,
                             "grade": userData.grade,
+                            "chatPoints": roundFun(increase, increaseBit),
+                            "chatTimes": 1,
+                            "gamePoints": 0,
                             "allPoints": roundFun(increase, increaseBit),
+                            "allTimes": 1,
                             "date": todayDate
                         };
                         // console.log(userData);
@@ -390,7 +414,7 @@ var opIndexDB = {
                         return;
                     }
                     data = result.value;
-                    if (serachType != "allPoints") {
+                    if (serachType != "allPoints" && serachType != "allTimes") {
                         //今天的第一
                         if (today == new Date(data.date).getDate()) {
                             //删除制定列
@@ -516,8 +540,8 @@ var opIndexDB = {
                             //     "</th><th>" + d.date + "</th></tr>");
                             $("#myTable tbody").append("<tr><th>" + i +
                                 "</th><th>" + d.userNick + "(" + d.id + ")</th><th>" + convertGrade(d.grade) + "</th><th>" + d.chatPoints +
-                                "</th><th>" + d.gamePoints + "</th><th>" + d.allPoints +
-                                "</th><th>" + d.date + "</th></tr>");
+                                "</th><th>" + d.chatTimes + "</th><th>" + d.gamePoints + "</th><th>" + d.allPoints +
+                                "</th><th>" + d.allTimes + "</th><th>" + d.date + "</th></tr>");
                         }
                         return;
                     }
@@ -538,8 +562,10 @@ var opIndexDB = {
                             //     "</th><th>" + d.date + "</th></tr>");
                             $("#myTable tbody").append("<tr><th>" + i +
                                 "</th><th>" + d.userNick + "(" + d.id + ")</th><th>" + convertGrade(d.grade) + "</th><th>" + d.chatPoints +
-                                "</th><th>" + d.gamePoints + "</th><th>" + d.allPoints +
-                                "</th><th>" + d.date + "</th></tr>");
+                                "</th><th>" + d.chatTimes + "</th><th>" + d.gamePoints + "</th><th>" + d.allPoints +
+                                "</th><th>" + d.allTimes + "</th><th>" + d.date + "</th></tr>");
+
+
                         }
                     }
                 }
@@ -621,8 +647,8 @@ var opIndexDB = {
                                 //     "</th><th>" + d.date + "</th></tr>");
                                 $("#myTable tbody").append("<tr><th>" + (i + 1) +
                                     "</th><th>" + d.userNick + "(" + d.id + ")</th><th>" + convertGrade(d.grade) + "</th><th>" + d.chatPoints +
-                                    "</th><th>" + d.gamePoints + "</th><th>" + d.allPoints +
-                                    "</th><th>" + d.date + "</th></tr>");
+                                    "</th><th>" + d.chatTimes + "</th><th>" + d.gamePoints + "</th><th>" + d.allPoints +
+                                    "</th><th>" + d.allTimes + "</th><th>" + d.date + "</th></tr>");
                             } else {
                                 return;
                             }
@@ -632,7 +658,7 @@ var opIndexDB = {
                         return;
                     }
                     //判断是否是今天
-                    if (sortType != "chatPoints" && sortType != "gamePoints") {
+                    if (sortType != "chatPoints" && sortType != "gamePoints" && sortType != "chatTimes") {
                         resArray[resArray.length] = result.value;
                     } else {
                         if (new Date(result.value.date).getDate() == today) {
@@ -837,7 +863,7 @@ var opIndexDB = {
                     return;
                 }
                 data = result.value;
-                if (sortType != "allPoints") {
+                if (sortType != "allPoints" && sortType != "allTimes") {
                     //今天的第一
                     if (today == new Date(data.date).getDate()) {
                         //删除指定属性
@@ -1055,6 +1081,7 @@ var opIndexDB = {
                         if (data.date == userData.date) {
                             data.chatPoints = roundFun(data.chatPoints + userData.chatPoints, 2);
                             data.gamePoints = roundFun(data.gamePoints + userData.gamePoints, 2);
+                            data.chatTimes = data.chatTimes + userData.chatTimes;
                         }
                         // else {
                         //     if (data.date == today && userData.date != today) {
@@ -1062,14 +1089,18 @@ var opIndexDB = {
                         //     }
                         // }
                         data.allPoints = roundFun(data.allPoints + userData.allPoints, 2);
+                        data.allTimes = data.allTimes + userData.allTimes;
+                        //等级不需要导入
+                        // data.grade=userData.grade;
 
-                        let userGrade;
-                        if("grade" in  userData){
-                            userGrade=userData.grade;
-                        }else{
-                            userGrade="loadding";
-                        }
-                        data.grade = userGrade;
+                        // let userGrade;
+                        // //测试数据
+                        // if ("grade" in userData) {
+                        //     userGrade = userData.grade;
+                        // } else {
+                        //     userGrade = "loadding";
+                        // }
+                        // data.grade = userGrade;
 
                         userDataStore.put(data).onsuccess = function (event) {
                             // console.log('更新', event.target.result);
@@ -1127,9 +1158,11 @@ function getTodayMaxSortData(idDom, idt) {
                     $("#todayChatPointsAce>th:eq(1)").text(data.userNick + "{" + data.id + "}");
                     $("#todayChatPointsAce>th:eq(2)").text(convertGrade(data.grade));
                     $("#todayChatPointsAce>th:eq(3)").text(data.chatPoints);
-                    $("#todayChatPointsAce>th:eq(4)").text(data.gamePoints);
-                    $("#todayChatPointsAce>th:eq(5)").text(data.allPoints);
-                    $("#todayChatPointsAce>th:eq(6)").text(data.date);
+                    $("#todayChatPointsAce>th:eq(4)").text(data.chatTimes);
+                    $("#todayChatPointsAce>th:eq(5)").text(data.gamePoints);
+                    $("#todayChatPointsAce>th:eq(6)").text(data.allPoints);
+                    $("#todayChatPointsAce>th:eq(7)").text(data.allTimes);
+                    $("#todayChatPointsAce>th:eq(8)").text(data.date);
                     if (!ace) {
                         ace = data.userNick;
                     }
