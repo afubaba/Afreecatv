@@ -319,23 +319,25 @@ var opWebsql = {
                 $("#todayChatPointsAce>th:eq(8)").text(todayDate);
                 // console.log(data);
                 var chatPointsMaxChangeMode = getDomById("chatPointsMaxChangeMode");
-                if (!ace) {
-                    ace = data.userNick;
-                }
-                var maxChatPoint = data.maxChatPoint;
-
+                // if (!ace) {
+                //     ace.userId = data.id;
+                //     ace.userNick = data.userNick;
+                //     ace.maxChatPoint = data.maxChatPoint;
+                // }
                 //五次以上提醒
-                if (ace != data.userNick && maxChatPoint) {
+                if (ace.userNick != data.userNick|| ace.userId!=data.id) {
                     // console.log("龙王变更提醒");
-                    ace = data.userNick;
+                    ace.userId = data.id;
+                    ace.userNick = data.userNick;
+                    ace.chatRatio = data.maxChatPoint/data.chatTimes;
                     // 용왕이가 AA가 됐어요.
-                    let mess = "[" + ace + "]가 용왕이 됐어요.";
-                    let logString = packageResult.getTodayMaxSortData.TodayMaxSortDataInterval[0] + ace + packageResult.getTodayMaxSortData.TodayMaxSortDataInterval[1];
+                    let mess = "[" + ace.userNick + "]가 용왕이 됐어요.";
+                    let logString = packageResult.getTodayMaxSortData.TodayMaxSortDataInterval[0] + ace.userNick + packageResult.getTodayMaxSortData.TodayMaxSortDataInterval[1];
                     //不包含自身
                     var loginId = localStorage.getItem("loginId");
                     if (!data.id.includes(loginId) && chatPointsMaxChangeMode.checked) {
-                        logString = logString + packageResult.getTodayMaxSortData.TodayMaxSortDataInterval[2] + data.allPoints
-                        mess = mess + "오늘 채팅 횟수:" + data.allPoints;
+                        logString = logString + packageResult.getTodayMaxSortData.TodayMaxSortDataInterval[2] + data.allTimes;
+                        mess = mess + "오늘 채팅 횟수:" + data.allTimes;
                         sendMessageCustom(mess, 1, 5);
                     }
                     showTipBarrageFunction(logString);

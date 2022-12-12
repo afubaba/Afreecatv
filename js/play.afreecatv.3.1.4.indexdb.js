@@ -1163,25 +1163,28 @@ function getTodayMaxSortData(idDom, idt) {
                     $("#todayChatPointsAce>th:eq(6)").text(data.allPoints);
                     $("#todayChatPointsAce>th:eq(7)").text(data.allTimes);
                     $("#todayChatPointsAce>th:eq(8)").text(data.date);
-                    if (!ace) {
-                        ace = data.userNick;
-                    }
-                    if (ace != data.userNick) {
+                    var chatPointsMaxChangeMode = getDomById("chatPointsMaxChangeMode");
+                    // if (!ace) {
+                    //     ace.userId = data.id;
+                    //     ace.userNick = data.userNick;
+                    //     ace.maxChatPoint = data.chatPoints;
+                    // }
+                    //五次以上提醒
+                    if (ace.userNick != data.userNick|| ace.userId!=data.id) {
                         // console.log("龙王变更提醒");
-                        ace = data.userNick;
+                        ace.userId = data.id;
+                        ace.userNick = data.userNick;
+                        ace.chatRatio = data.chatPoints/data.chatTimes;
                         // 용왕이가 AA가 됐어요.
-                        let mess = "[" + ace + "]가 용왕이 됐어요.";
-                        let logString = packageResult.getTodayMaxSortData.TodayMaxSortDataInterval[0] + ace + packageResult.getTodayMaxSortData.TodayMaxSortDataInterval[1];
-                        if (chatPointsMaxChangeMode.checked) {
-                            //不包含自身
-                            let loginId = localStorage.getItem("loginId");
-                            if (!data.id.includes(loginId)) {
-                                logString = logString + packageResult.getTodayMaxSortData.TodayMaxSortDataInterval[2] + data.allPoints
-                                mess = mess + "오늘 채팅 횟수:" + data.allPoints;
-                                sendMessageCustom(mess, 1, 5);
-                            }
+                        let mess = "[" + ace.userNick + "]가 용왕이 됐어요.";
+                        let logString = packageResult.getTodayMaxSortData.TodayMaxSortDataInterval[0] + ace.userNick + packageResult.getTodayMaxSortData.TodayMaxSortDataInterval[1];
+                        //不包含自身
+                        var loginId = localStorage.getItem("loginId");
+                        if (!data.id.includes(loginId) && chatPointsMaxChangeMode.checked) {
+                            logString = logString + packageResult.getTodayMaxSortData.TodayMaxSortDataInterval[2] + data.allTimes;
+                            mess = mess + "오늘 채팅 횟수:" + data.allTimes;
+                            sendMessageCustom(mess, 1, 5);
                         }
-
                         showTipBarrageFunction(logString);
                     }
 

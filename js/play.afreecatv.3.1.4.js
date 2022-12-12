@@ -3054,15 +3054,10 @@ function retrievalButtonFunction() {
                                 }
                                 !isUpdate && getTodayMaxSortData(idDom, idt);
                                 // opIndexDB.getDB();
-                                var aceId = $("#todayChatPointsAce>th:eq(1)").text();
-                                var aceNick = $("#todayChatPointsAce>th:eq(2)").text();
-                                var aceChatPoints = $("#todayChatPointsAce>th:eq(3)").text();
-
-                                if (aceId == idt && nickName == aceNick) {
+                                if (ace.userId == idt && ace.userNick == nickName) {
                                     // var appendString ="<span style='background-image:url(" + aurelionSolImgURL +
                                     // 	");color:yellow;font-size:large'>[ACE]</span>"
-                                    aceChatPoints = parseInt(aceChatPoints);
-                                    imgSize = parseInt(aceChatPoints / 10);
+                                    imgSize = parseInt(ace.chatRatio * 4);
                                     if (imgSize < 3) {
                                         imgSize = 3;
                                     } else if (imgSize > 60) {
