@@ -275,9 +275,9 @@ var opIndexDB = {
                             }
                             resultData.date = todayDate;
                         }
-                        resultData.chatPoints = roundFun(resultData.chatPoints, increaseBit);
-                        resultData.gamePoints = roundFun(resultData.gamePoints, increaseBit);
-                        resultData.allPoints = roundFun(resultData.allPoints, increaseBit);
+                        // resultData.chatPoints = roundFun(resultData.chatPoints, increaseBit);
+                        // resultData.gamePoints = roundFun(resultData.gamePoints, increaseBit);
+                        // resultData.allPoints = roundFun(resultData.allPoints, increaseBit);
                         userDataStore.put(resultData).onsuccess = function (event) {
                             // console.log('更新', event.target.result);
                         };
@@ -291,10 +291,10 @@ var opIndexDB = {
                             "id": userData.id,
                             "userNick": userData.userNick,
                             "grade": userData.grade,
-                            "chatPoints": roundFun(increase, increaseBit),
+                            "chatPoints": increase,
                             "chatTimes": 1,
                             "gamePoints": 0,
-                            "allPoints": roundFun(increase, increaseBit),
+                            "allPoints": increase,
                             "allTimes": 1,
                             "date": todayDate
                         };
@@ -1079,8 +1079,8 @@ var opIndexDB = {
                     } else {
                         //是今天累计游戏点聊天点
                         if (data.date == userData.date) {
-                            data.chatPoints = roundFun(data.chatPoints + userData.chatPoints, 2);
-                            data.gamePoints = roundFun(data.gamePoints + userData.gamePoints, 2);
+                            data.chatPoints =data.chatPoints + userData.chatPoints;
+                            data.gamePoints = data.gamePoints + userData.gamePoints;
                             data.chatTimes = data.chatTimes + userData.chatTimes;
                         }
                         // else {
@@ -1088,7 +1088,7 @@ var opIndexDB = {
                         //         // userData.date = today
                         //     }
                         // }
-                        data.allPoints = roundFun(data.allPoints + userData.allPoints, 2);
+                        data.allPoints = data.allPoints + userData.allPoints;
                         data.allTimes = data.allTimes + userData.allTimes;
                         //等级不需要导入
                         // data.grade=userData.grade;

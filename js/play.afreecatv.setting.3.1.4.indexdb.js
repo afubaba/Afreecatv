@@ -786,7 +786,7 @@ var opSettingIndexDB = {
                             let addUserData = {
                                 id: searchData.idt,
                                 userNick: searchData.nickName,
-                                gamePoints: 0.5
+                                gamePoints: 5
                             }
                             if (localStorageType == "indexdb") {
                                 opIndexDB.addData(addUserData);
@@ -1473,27 +1473,27 @@ $("#promptOfIsStart,#promptOfAuthorizationFailure").change(function () {
 });
 
 
-var $accordingNumberWordsValue= $("#accordingNumberWordsValue");
-var accordingNumberWordsValueLocalStorage = localStorage.getItem("accordingNumberWordsValue");
-if (accordingNumberWordsValueLocalStorage == null || accordingNumberWordsValueLocalStorage == "undefined") {
-    localStorage.setItem("accordingNumberWordsValue", 10);
-    $accordingNumberWordsValue.val(10);
-    accordingNumberWordsValueLocalStorage=10;
-}else{
-    $accordingNumberWordsValue.val(accordingNumberWordsValueLocalStorage);
-}
-$accordingNumberWordsValue.change(() => {
-    if($accordingNumberWordsValue.val()<1){
-        $accordingNumberWordsValue.val(1);
-    }
-    if($accordingNumberWordsValue.val()>15){
-        $accordingNumberWordsValue.val(15);
-    }
-
-    // console.log("修改值:"+$accordingNumberWordsValue.val());
-    localStorage.setItem("accordingNumberWordsValue", $accordingNumberWordsValue.val());
-    accordingNumberWordsValueLocalStorage=$accordingNumberWordsValue.val();
-});
+// var $accordingNumberWordsValue= $("#accordingNumberWordsValue");
+// var accordingNumberWordsValueLocalStorage = localStorage.getItem("accordingNumberWordsValue");
+// if (accordingNumberWordsValueLocalStorage == null || accordingNumberWordsValueLocalStorage == "undefined") {
+//     localStorage.setItem("accordingNumberWordsValue", 10);
+//     $accordingNumberWordsValue.val(10);
+//     accordingNumberWordsValueLocalStorage=10;
+// }else{
+//     $accordingNumberWordsValue.val(accordingNumberWordsValueLocalStorage);
+// }
+// $accordingNumberWordsValue.change(() => {
+//     if($accordingNumberWordsValue.val()<1){
+//         $accordingNumberWordsValue.val(1);
+//     }
+//     if($accordingNumberWordsValue.val()>15){
+//         $accordingNumberWordsValue.val(15);
+//     }
+//
+//     // console.log("修改值:"+$accordingNumberWordsValue.val());
+//     localStorage.setItem("accordingNumberWordsValue", $accordingNumberWordsValue.val());
+//     accordingNumberWordsValueLocalStorage=$accordingNumberWordsValue.val();
+// });
 
 // $("#accordingNumberWords").change(function () {
 //

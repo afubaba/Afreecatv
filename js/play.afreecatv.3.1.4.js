@@ -4771,16 +4771,18 @@ function calculateAddPoints(userText) {
         if (userText.length <= 15) {
             // increase = roundFun(userText.length/15, 2);
             // increase = userText.length / 15;
-            increase = userText.length / accordingNumberWordsValueLocalStorage;
+            // increase = userText.length / accordingNumberWordsValueLocalStorage;
+            increase = userText.length ;
         } else {
             // increase = 2;
-            increase = 15 / accordingNumberWordsValueLocalStorage;
-
+            // increase = 15 / accordingNumberWordsValueLocalStorage;
+            increase = 15;
         }
         // console.log("userTextLength:" + userText.length);
     } else {
         //表情等
-        increase = 0.25 * 30 / accordingNumberWordsValueLocalStorage;
+        // increase = 0.25 * 30 / accordingNumberWordsValueLocalStorage;
+        increase = 0.25 * 30 ;
     }
     increaseBit = 2;
     // if (accordingNumberWords.checked) {} else{

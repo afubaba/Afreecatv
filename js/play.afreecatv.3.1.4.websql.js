@@ -294,7 +294,7 @@ var opWebsql = {
             // 	" where chatPoints>=5 and date='" + today + "'";
             // sql = "select id,userNick ,max(chatPoints) as maxChatPoint,allPoints  from " + tbName +
             // " where chatPoints>=? and date=?";
-            sql = "select id,userNick,gamePoints ,max(chatPoints) as maxChatPoint,allPoints  from " +
+            sql = "select id,userNick,grade,max(chatPoints) as maxChatPoint,chatTimes,gamePoints ,allPoints,allTimes  from " +
                 tbName +
                 " where date=?";
             sqlDataArray = [todayDate];
@@ -311,15 +311,14 @@ var opWebsql = {
                 $("#todayChatPointsAce>th:eq(0)").text("용왕");
                 $("#todayChatPointsAce>th:eq(1)").text(data.userNick + "{" + data.id + "}");
                 $("#todayChatPointsAce>th:eq(2)").text(convertGrade(data.grade));
-                $("#todayChatPointsAce>th:eq(3)").text(data.chatPoints);
+                $("#todayChatPointsAce>th:eq(3)").text(data.maxChatPoint);
                 $("#todayChatPointsAce>th:eq(4)").text(data.chatTimes);
                 $("#todayChatPointsAce>th:eq(5)").text(data.gamePoints);
                 $("#todayChatPointsAce>th:eq(6)").text(data.allPoints);
                 $("#todayChatPointsAce>th:eq(7)").text(data.allTimes);
-                $("#todayChatPointsAce>th:eq(8)").text(data.date);
+                $("#todayChatPointsAce>th:eq(8)").text(todayDate);
                 // console.log(data);
                 var chatPointsMaxChangeMode = getDomById("chatPointsMaxChangeMode");
-
                 if (!ace) {
                     ace = data.userNick;
                 }
@@ -400,6 +399,7 @@ var opWebsql = {
                 // 	.maxChatPoint +
                 // 	",총 채팅 횟수:" + data.allPoints;
                 data.resArrLength = data.count;
+                console.log(data);
                 callback(data);
 
             }, null);
@@ -531,15 +531,14 @@ var opWebsql = {
                 let increase = userData.increase;
                 let increaseBit = userData.increaseBit;
                 //重置的increase;
-                let resetPoints = roundFun(increase, increaseBit);
                 if (resultRows.length == 1) {
                     // console.log("update");
                     let resultData = resultRows[0];
-                    let addChatPoints = roundFun(resultData.chatPoints + increase, increaseBit);
+                    let addChatPoints = resultData.chatPoints + increase;
 
                     // let addGamePoints = roundFun(resultData.gamePoints + increase, increaseBit);
 
-                    let addAllPoints = roundFun(resultData.allPoints + increase, increaseBit);
+                    let addAllPoints =resultData.allPoints + increase, increaseBit;
                     // console.log(resultData);
                     // console.log(data);
                     // db.transaction(function(tx) {
@@ -583,7 +582,7 @@ var opWebsql = {
                             } else {
                                 //判断昵称是否不一致
                                 let userNickSqlString;
-                                sqlDataArray = [resetPoints, addAllPoints, todayDate, uId];
+                                sqlDataArray = [increase, addAllPoints, todayDate, uId];
                                 if (resultData.userNick == uNick) {
                                     userNickSqlString = "";
                                 } else {
@@ -614,7 +613,7 @@ var opWebsql = {
                             // let gradeSqlString;
 
                             if (resetTotalPointsEveryMonthChecked) {
-                                sqlDataArray = [resetPoints, resetPoints, todayDate, uId];
+                                sqlDataArray = [increase, increase, todayDate, uId];
                                 sql = "UPDATE " + tbNm + " SET chatPoints=?,chatTimes=1,gamePoints = 0,allPoints=?,allTimes=1,date=? WHERE id=?;";
 
                                 // if (resultData.grade == userData.grade) {
@@ -628,7 +627,7 @@ var opWebsql = {
                                 // sql = "UPDATE " + tbNm + " SET "+gradeSqlString+"chatPoints=?,gamePoints = 0,allPoints=?,date=? WHERE id=?;";
                                 showTipBarrageFunction(logString + packageResult.opIndexDB.insertData[1]);
                             } else {
-                                sqlDataArray = [resetPoints, addAllPoints, todayDate, uId];
+                                sqlDataArray = [increase, addAllPoints, todayDate, uId];
                                 sql = "UPDATE " + tbNm + " SET chatPoints=?,chatTimes=1,gamePoints = 0,allPoints=?,allTimes=allTimes+1,date=? WHERE id=?;";
 
                                 // if (resultData.grade == userData.grade) {
@@ -753,9 +752,9 @@ var opWebsql = {
                     // 	"','" + uNick + "',1,0,1,'" + todayDate + "');";
                     sql = 'INSERT INTO ' + tbNm + " VALUES (?,?,?,?,1,0,?,1,?);";
                     // console.log(sql);
-                    sqlDataArray = [uId, uNick, userData.grade, resetPoints, resetPoints, todayDate];
+                    sqlDataArray = [uId, uNick, userData.grade, increase, increase, todayDate];
                     //测试数据
-                    // sqlDataArray = [uId, "等待测试","。。。载入中", resetPoints, resetPoints, todayDate];
+                    // sqlDataArray = [uId, "等待测试","。。。载入中", increase, increase, todayDate];
 
                     tx.executeSql(sql, sqlDataArray);
 
@@ -977,8 +976,8 @@ var opWebsql = {
                         sql = 'INSERT INTO ' + tbName + " VALUES (?,?,?,?,?,?,?,?,?);";
                         // console.log(sql);
                         let sqlDataArray = [userDataArray[i].id, userDataArray[i].userNick, userDataArray[i].grade,
-                            roundFun(userDataArray[i].chatPoints, 2), userDataArray[i].chatTimes, roundFun(userDataArray[i].gamePoints, 2),
-                            roundFun(userDataArray[i].allPoints, 2), userDataArray[i].allTimes, userDataArray[i].date
+                            userDataArray[i].chatPoints, userDataArray[i].chatTimes, userDataArray[i].gamePoints,
+                            userDataArray[i].allPoints, userDataArray[i].allTimes, userDataArray[i].date
                         ];
                         // console.log(sqlDataArray);
                         tx.executeSql(sql, sqlDataArray, function () {
@@ -993,13 +992,13 @@ var opWebsql = {
                         });
                     } else if (resultRows.length == 1) {
 
-                        let addAllPoint = roundFun(resultRows[0].allPoints + userDataArray[i].allPoints, 2);
+                        let addAllPoint = resultRows[0].allPoints + userDataArray[i].allPoints;
                         let addAllTimes = resultRows[0].allTimes + userDataArray[i].allTimes;
                         //今天的积累
                         if (resultRows.date == userDataArray[i].date) {
-                            let addChatPoint = roundFun(resultRows[0].chatPoints + userDataArray[i].chatPoints, 2);
+                            let addChatPoint =resultRows[0].chatPoints + userDataArray[i].chatPoints;
                             let addChatTimes = resultRows[0].chatTimes + userDataArray[i].chatTimes;
-                            let addGamePoints = roundFun(resultRows[0].gamePoints + userDataArray[i].gamePoints, 2);
+                            let addGamePoints = resultRows[0].gamePoints + userDataArray[i].gamePoints;
 
                             // resultRows.chatPoints = resultRows.chatPoints + userDataArray[i].chatPoints;
                             // data.gamePoints = data.gamePoints + userData.gamePoints;
