@@ -3057,12 +3057,12 @@ function retrievalButtonFunction() {
                                 if (ace.userId == idt && ace.userNick == nickName) {
                                     // var appendString ="<span style='background-image:url(" + aurelionSolImgURL +
                                     // 	");color:yellow;font-size:large'>[ACE]</span>"
-                                    imgSize = parseInt(ace.chatRatio * 4);
-                                    if (imgSize < 3) {
-                                        imgSize = 3;
-                                    } else if (imgSize > 60) {
-                                        imgSize = 60;
-                                    }
+                                    imgSize = toDecimal(ace.chatRatio);
+                                    // if (imgSize < 3) {
+                                    //     imgSize = 3;
+                                    // } else if (imgSize > 60) {
+                                    //     imgSize = 60;
+                                    // }
                                     // console.log(imgSize);
                                     appendString = "<img style='width:" + imgSize + "px;height:" + imgSize +
                                         "px;' src ='" +
