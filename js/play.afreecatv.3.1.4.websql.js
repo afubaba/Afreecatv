@@ -840,8 +840,8 @@ var opWebsql = {
                         } else {
                         }
                     }
-                    console.log(sqlDataArray);
-                    console.log(sql);
+                    // console.log(sqlDataArray);
+                    // console.log(sql);
                     tx.executeSql(sql, sqlDataArray, function (tx, results) {
                     });
                 } else if (resultRows.length == 0) {
