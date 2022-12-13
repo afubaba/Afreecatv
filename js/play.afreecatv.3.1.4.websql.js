@@ -329,7 +329,7 @@ var opWebsql = {
                     // console.log("龙王变更提醒");
                     ace.userId = data.id;
                     ace.userNick = data.userNick;
-                    ace.chatRatio = data.maxChatPoint/15/5;
+                    ace.chatRatio = data.maxChatPoint;
                     // 용왕이가 AA가 됐어요.
                     let mess = "[" + ace.userNick + "]가 용왕이 됐어요.";
                     let logString = packageResult.getTodayMaxSortData.TodayMaxSortDataInterval[0] + ace.userNick + packageResult.getTodayMaxSortData.TodayMaxSortDataInterval[1];

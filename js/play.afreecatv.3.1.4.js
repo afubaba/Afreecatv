@@ -3057,7 +3057,7 @@ function retrievalButtonFunction() {
                                 if (ace.userId == idt && ace.userNick == nickName) {
                                     // var appendString ="<span style='background-image:url(" + aurelionSolImgURL +
                                     // 	");color:yellow;font-size:large'>[ACE]</span>"
-                                    imgSize = toDecimal(ace.chatRatio);
+                                    imgSize = toDecimal(ace.chatRatio / 15 / 5);
                                     // if (imgSize < 3) {
                                     //     imgSize = 3;
                                     // } else if (imgSize > 60) {
@@ -3066,7 +3066,7 @@ function retrievalButtonFunction() {
                                     // console.log(imgSize);
                                     appendString = "<img style='width:" + imgSize + "px;height:" + imgSize +
                                         "px;' src ='" +
-                                        aurelionSolImgURL + "' />"
+                                        aurelionSolImgURL + "' title='"+ace.chatRatio+"["+imgSize+"px]'/>"
                                     $(idDom).parent().append(appendString);
                                     // idDom.innerHTML=idDom.textContent=
                                     // idDom.innerHTML=idDom.innerHTML+"[ACE]";
