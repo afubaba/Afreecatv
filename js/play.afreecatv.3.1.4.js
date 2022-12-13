@@ -3588,7 +3588,7 @@ const object = new Set([
     }
     ],
     [
-        ["!총포인트", "!게임포인트", "!채팅포인트","!채팅통계","!채팅통계조회"], (data) => {
+        ["!총포인트", "!총횟수", "!게임포인트", "!채팅포인트", "!채팅횟수", "!채팅통계", "!채팅통계조회"], (data) => {
         opSettingIndexDB.searchCommandAuthoritySupport(data, function (callbackData) {
             let serachType = "all";
             let dataStr;
@@ -3597,12 +3597,19 @@ const object = new Set([
                     if (data.tex == "!채팅포인트") {
                         serachType = "chatPoints";
                         dataStr = "오늘 채팅 포인트:";
+                    }
+                    if (data.tex == "!채팅횟수") {
+                        serachType = "chatTimes";
+                        dataStr = "오늘 채팅 횟수:";
                     } else if (data.tex == "!게임포인트") {
                         serachType = "gamePoints";
                         dataStr = "오늘 게임 포인트:";
                     } else if (data.tex == "!총포인트") {
                         serachType = "allPoints";
-                        dataStr = "누적 총 포인트:";
+                        dataStr = "누적 총 채팅 포인트:";
+                    } else if (data.tex == "!총횟수") {
+                        serachType = "allTimes";
+                        dataStr = "누적 총 채팅 횟수:";
                     } else {
 
                     }
@@ -3627,18 +3634,24 @@ const object = new Set([
     }
     ],
     [
-        ["!용왕", "!ace", "!채팅ace", "!채팅포인트ace", "!게임ace", "!게임포인트ace", "!총ace", "!총포인트ace"], (data) => {
+        ["!용왕", "!ace","!포인트ace", "!채팅포인트ace", "!게임ace", "!게임포인트ace", "!총포인트ace","!총채팅포인트ace","!총횟수ace","!총채팅횟수ace"], (data) => {
         let dataStr;
         let serachType;
-        if (data.tex == "!ace" || data.tex == "!채팅ace" || data.tex == "!용왕" || data.tex == "!채팅포인트ace") {
+        if ( data.tex == "!포인트ace" || data.tex == "!채팅포인트ace"||data.tex == "!ace" || data.tex == "!용왕") {
             serachType = "chatPoints";
             dataStr = ":오늘 채팅 포인트:";
+        } else if (data.tex == "!횟수ace"||data.tex == "!채팅횟수ace") {
+            serachType = "chatTimes";
+            dataStr = ":오늘 게임 횟수:";
         } else if (data.tex == "!게임ace" || data.tex == "!게임포인트ace") {
             serachType = "gamePoints";
             dataStr = ":오늘 게임 포인트:";
-        } else if (data.tex == "!총ace" || data.tex == "!총포인트ace") {
+        } else if ( data.tex == "!총포인트ace"||data.tex == "!총채팅포인트ace") {
             serachType = "allPoints";
             dataStr = ":총 포인트:";
+        } else if (data.tex == "!총횟수ace"||data.tex == "!총채팅횟수ace") {
+            serachType = "allTimes";
+            dataStr = ":총 횟수:";
         }
         let dataString;
         function outputText(searchData) {

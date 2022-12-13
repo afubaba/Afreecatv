@@ -394,8 +394,8 @@ var opIndexDB = {
                 let dataString = "@" + searchUserData.userNick;
                 store.get(searchUserData.id).onsuccess = function (event) {
                     data = event.target.result;
-                    dataString = dataString + ":오늘 채팅:" + data.chatPoints + ",오늘 게임:" +
-                        data.gamePoints + ",누적 총:" + data.allPoints;
+                    dataString = dataString + ":채팅 횟수:" + data.chatTimes + ",채팅 포인트:" + data.chatPoints + ",게임 포인트:" +
+                        data.gamePoints + ",총 횟수:" + data.allTimes + ",총 포인트:" + data.allPoints;
                     // console.log(dataString);
                     sendMessageCustom(dataString, 1, 4);
                 }
