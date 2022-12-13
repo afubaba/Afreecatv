@@ -419,14 +419,13 @@ var opWebsql = {
             //console.log(sql);
             var data;
             sqlDataArray = [searchUserData.userId];
-            if (tex == "!채팅통계조회") {
+            if (tex == "!채팅통계" || tex == "!채팅통계조회") {
                 sql = "select * from " + tbName + " where id=?";
                 tx.executeSql(sql, sqlDataArray, function (tx, results) {
                     data = results.rows[0];
                     // queryReply(tex, searchUserData, data);
-
-                    dataString = dataString + ":오늘 채팅:" + data.chatPoints + ",오늘 게임:" +
-                        data.gamePoints + ",누적 총:" + data.allPoints;
+                    dataString = dataString + ":채팅 횟수:" + data.chatTimes + ",채팅 포인트:" + data.chatPoints + ",게임 포인트:" +
+                        data.gamePoints + ",총 횟수:" + data.allTimes + ",총 포인트:" + data.allPoints;
 
                     sendMessageCustom(dataString, 1, 4);
                 }, null);
@@ -439,7 +438,17 @@ var opWebsql = {
                     sql = "select id,userNick,allPoints,(select count(1) from " + tbName +
                         ") as 'count' from " + tbName + " order by allPoints desc";
 
-                    dataString = dataString + ":누적 총 포인트:";
+                    dataString = dataString + ":누적 총 채팅 포인트:";
+                }
+                if (tex == "!총횟수") {
+                    // sql = "SELECT s.allPoints,(select count(distinct(allPoints)) from " + tbName +
+                    // 	" where allPoints >= s.allPoints ) as 'Rank',(select count(1) from " + tbName +
+                    // 	" ) as 'count' FROM " + tbName + " as s where s.id=? order by allPoints desc ";
+
+                    sql = "select id,userNick,allTimes,(select count(1) from " + tbName +
+                        ") as 'count' from " + tbName + " order by allTimes desc";
+
+                    dataString = dataString + ":누적 총 채팅 횟수:";
                 } else if (tex == "!채팅포인트") {
                     dataString = dataString + ":오늘 채팅 포인트:";
                     // sql = "SELECT s.chatPoints,(select count(distinct(chatPoints)) from " + tbName +
@@ -449,6 +458,11 @@ var opWebsql = {
                         " where date=" + todayDate + ") as 'count' from " + tbName + " where date=" +
                         todayDate +
                         " order by chatPoints desc";
+                } else if (tex == "!채팅횟수") {
+                    dataString = dataString + ":오늘 채팅 횟수:";
+                    sql = "select id,userNick,chatTimes,(select count(1) from " + tbName +
+                        " where date=" + todayDate + ") as 'count' from " + tbName + " where date=" +
+                        todayDate +" order by chatTimes desc";
                 } else if (tex == "!게임포인트") {
                     dataString = dataString + ":오늘 게임 포인트:";
                     // sql = "SELECT s.gamePoints,(select count(distinct(gamePoints)) from " + tbName +
@@ -478,8 +492,14 @@ var opWebsql = {
                             if (tex == "!총포인트") {
                                 dataString = dataString + dataResult.allPoints + ",순위:" +
                                     (i + 1) + "/" + dataResult.count;
+                            }else if (tex == "!총횟수") {
+                                dataString = dataString + dataResult.allTimes + ",순위:" +
+                                    (i + 1) + "/" + dataResult.count;
                             } else if (tex == "!채팅포인트") {
                                 dataString = dataString + dataResult.chatPoints + ",순위:" +
+                                    (i + 1) + "/" + dataResult.count;
+                            } else if (tex == "!채팅횟수") {
+                                dataString = dataString + dataResult.chatTimes + ",순위:" +
                                     (i + 1) + "/" + dataResult.count;
                             } else if (tex == "!게임포인트") {
                                 dataString = dataString + dataResult.gamePoints + ",순위:" +
