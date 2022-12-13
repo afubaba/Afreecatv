@@ -8,7 +8,7 @@ var uNick;
 var tbNm;
 var data;
 var aurelionSolImgURL = "https://afubaba.github.io/Afreecatv/img/lol/AurelionSol.webp";
-var ace;
+var ace={};
 var sqlDataArray;
 var imgSize;
 var appendString;
