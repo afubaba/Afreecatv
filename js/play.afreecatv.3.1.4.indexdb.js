@@ -949,11 +949,14 @@ var opIndexDB = {
                         // console.log(makerResult)
                         if (typeof makerResult == "undefined") {
                             let addMakerData = {
-                                id: diceData.makerId,
-                                userNick: diceData.makerNick,
-                                chatPoints: 0,
-                                gamePoints: diceData.makerAdd,
-                                allPoints: diceData.makerAdd,
+                                "id": diceData.makerId,
+                                "userNick": diceData.makerNick,
+                                "grade":"BJ",
+                                "chatPoints": 0,
+                                "chatTimes": 0,
+                                "gamePoints": diceData.makerAdd,
+                                "allPoints": diceData.makerAdd,
+                                "allTimes":0,
                                 date: todayDate
                             }
                             optionsStore.add(addMakerData).onsuccess = function (event) {

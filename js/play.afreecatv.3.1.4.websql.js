@@ -882,8 +882,7 @@ var opWebsql = {
                             sqlDataArray = [diceData.makerId, diceData.makerNick,
                                 diceData.makerAdd, diceData.makerAdd, todayDate
                             ];
-                            sql = "INSERT INTO " + tbName +
-                                " (id,userNick,chatPoints,gamePoints,allPoints,date) VALUES (?,?, 0, ?,?,? )";
+                            sql = "INSERT INTO " + tbName + " (id,userNick,grade,chatPoints,chatTimes,gamePoints,allPointsa,allTimes,date) VALUES (?,?,'BJ', 0,0,?,?,0,? )";
                             tx.executeSql(sql, sqlDataArray, function (tx, results) {
                                 //查询插入后的数据
                                 sqlDataArray = [diceData.userId, diceData.makerId]

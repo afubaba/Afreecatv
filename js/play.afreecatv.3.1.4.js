@@ -3420,27 +3420,27 @@ function retrievalButtonFunction() {
                                                 switch (getRandom()) {
                                                     case 1:
                                                         diceString = diceString + dice1;
-                                                        dicePoints = dicePoints + 1;
+                                                        dicePoints = dicePoints + 5;
                                                         break;
                                                     case 2:
                                                         diceString = diceString + dice2;
-                                                        dicePoints = dicePoints + 2;
+                                                        dicePoints = dicePoints + 10;
                                                         break;
                                                     case 3:
                                                         diceString = diceString + dice3;
-                                                        dicePoints = dicePoints + 3;
+                                                        dicePoints = dicePoints + 15;
                                                         break;
                                                     case 4:
                                                         diceString = diceString + dice4;
-                                                        dicePoints = dicePoints + 4;
+                                                        dicePoints = dicePoints + 20;
                                                         break;
                                                     case 5:
                                                         diceString = diceString + dice5;
-                                                        dicePoints = dicePoints + 5;
+                                                        dicePoints = dicePoints + 25;
                                                         break;
                                                     case 6:
                                                         diceString = diceString + dice6;
-                                                        dicePoints = dicePoints + 6;
+                                                        dicePoints = dicePoints + 30;
                                                         break;
                                                 }
                                                 i++;
