@@ -1128,7 +1128,7 @@ var everyPage;
 var everyPageValue = $("#everyPageValue");
 //初始化
 var ep = localStorage.getItem("everyPageValue");
-if (ep == null || ep == "undefined") {
+if (ep == null || ep == "undefined"|| ep == "") {
     everyPage = 50;
     localStorage.setItem("everyPageValue", everyPage);
 
@@ -1144,7 +1144,13 @@ everyPageValue.val(everyPage);
 // });
 everyPageValue.change(() => {
     everyPage = $("#everyPageValue").val();
-    localStorage.setItem("everyPageValue", everyPage)
+    if(everyPage!=""){
+        localStorage.setItem("everyPageValue", everyPage);
+    }else{
+        everyPage = 50;
+        localStorage.setItem("everyPageValue", everyPage);
+        everyPageValue.val(50);
+    }
     // everyPageValue.val(everyPage);
     changePage(1);
 });
