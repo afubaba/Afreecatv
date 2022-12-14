@@ -22,9 +22,8 @@ if (!idbVersion || idbVersion == null) {
 
 var resArray;
 var version;
-var db;
+var loginId;
 
-var isUpdate = false;
 var opIndexDB = {
     aa: function () {
         console.log("test");
@@ -40,7 +39,7 @@ var opIndexDB = {
             // stopTodayMaxSortDataInterval()
             // version = idbVersion;
             // console.log(req);
-            console.log(db);
+            console.log(indexDataBase);
 
             // isUpdate = true;
             // // setTimeout(function(){
@@ -87,7 +86,7 @@ var opIndexDB = {
         // request.onblocked = function(event) {
         //     alert('请关闭其它打开应用的窗口');
         // }
-
+        req = indexedDB.open(dbName);
         return req;
     },
     createTable: function () {
@@ -100,27 +99,23 @@ var opIndexDB = {
         // 	alert("关闭其他窗口");
         // }
         req.onsuccess = function (e) {
-            db = req.result;
-            // console.log(db);
-            // console.log(db.version);
-            if (!db.objectStoreNames.contains(tbName)) {
+            indexDataBase = req.result;
+            if (!indexDataBase.objectStoreNames.contains(tbName)) {
                 //更新版本
                 // console.log("数据库不存在" + tbName + "进行更新");
                 version++;
                 localStorage.setItem("indexdb_version", version);
-                db.close();
+                indexDataBase.close();
                 isUpdate = true;
                 req = indexedDB.open(dbName, version);
                 req.onupgradeneeded = function (e) {
                     // console.log("create Tbale2创建成功");
                     showTipBarrageFunction(packageResult.opIndexDB.createTable);
-                    // console.log('onupgradeneeded');
-                    db = req.result;
+                    indexDataBase = req.result;
                     // var store = db.createObjectStore("student", {autoIncrement: true}); 使用自增键
                     // 创建表
-
-                    if (!db.objectStoreNames.contains(tbName)) {
-                        var store = db.createObjectStore(tbName, {
+                    if (!indexDataBase.objectStoreNames.contains(tbName)) {
+                        var store = indexDataBase.createObjectStore(tbName, {
                             keyPath: 'id'
                         });
                         // 设置id为主键
@@ -139,13 +134,8 @@ var opIndexDB = {
             // console.log("创建表格错误");
             req = indexedDB.open(dbName);
             req.onsuccess = function (even) {
-                db = req.result
-                // console.log(db);
-                // console.log(db.version);
-
+                indexDataBase = req.result;
                 localStorage.setItem("indexdb_version", db.version);
-
-                db.close();
             }
         }
 
@@ -175,146 +165,147 @@ var opIndexDB = {
             let todayDate = $("#timeFrequencys").text().substring(0, $("#timeFrequencys").text().indexOf("\t"));
             // req = this.createTable();
             // console.log("version:", version + ",localVersion" + localStorage.getItem("indexdb_version"));
-            req = indexedDB.open(dbName);
+
             // console.log(req);
             // console.log('insertData');
-            req.onsuccess = function (event) {
-                // console.log('onsuccess');
-                // 获取数据库
-                db = event.target.result;
-                // var transaction = db.transaction('option', 'readwrite');
-                // console.log(tbName);
-                var transaction = db.transaction([tbName], 'readwrite');
-                transaction.onsuccess = function (event) {
-                    // console.log('[Transaction] 好了!');
-                };
-                transaction.onerror = function (event) {
-                    // console.log('[Transaction] 失败!');
-                };
-                //读取表名
-                var userDataStore = transaction.objectStore(tbName);
-                //数据储存
+            // req = indexedDB.open(dbName);
+            // req.onsuccess = function (event) { }
+            // console.log('onsuccess');
+            // 获取数据库
+            // db = event.target.result;
+            // var transaction = db.transaction('option', 'readwrite');
+            // console.log(tbName);
+            var transaction = indexDataBase.transaction([tbName], 'readwrite');
+            transaction.onsuccess = function (event) {
+                // console.log('[Transaction] 好了!');
+            };
+            transaction.onerror = function (event) {
+                // console.log('[Transaction] 失败!');
+            };
+            //读取表名
+            var userDataStore = transaction.objectStore(tbName);
+            //数据储存
+            // console.log(userData);
+            userDataStore.get(userData.id).onsuccess = function (event) {
+                // console.log("id为" + id + "的配置是", event.target.result);
+                // seData(event.target.result);
+                let resultData = event.target.result;
                 // console.log(userData);
-                userDataStore.get(userData.id).onsuccess = function (event) {
-                    // console.log("id为" + id + "的配置是", event.target.result);
-                    // seData(event.target.result);
-                    let resultData = event.target.result;
-                    // console.log(userData);
-                    // console.log("increase:" + increase);
-                    let increase = userData.increase;
-                    let increaseBit = userData.increaseBit;
-                    if (resultData) {
-                        // resultData.allPoints++;
-                        resultData.allPoints += increase;
-                        resultData.allTimes++;
+                // console.log("increase:" + increase);
+                let increase = userData.increase;
+                let increaseBit = userData.increaseBit;
+                if (resultData) {
+                    // resultData.allPoints++;
+                    resultData.allPoints += increase;
+                    resultData.allTimes++;
+                    //测试数据
+                    // if ("allTimes" in resultData && !isNaN(resultData.allTimes)) {
+                    //     resultData.allTimes++;
+                    // } else {
+                    //     resultData.allTimes = 1;
+                    // }
+                    // console.log("update");
+                    // data.userNick = data.userNick != userData.userNick ? data.userNick : userData.userNick;
+                    //判断时期字符串是否相等
+                    if (resultData.date == todayDate) {
+                        // resultData.chatPoints++;
+                        resultData.chatPoints += increase;
+                        resultData.chatTimes++;
                         //测试数据
-                        // if ("allTimes" in resultData && !isNaN(resultData.allTimes)) {
-                        //     resultData.allTimes++;
+                        // if ("chatTimes" in resultData && !isNaN(resultData.chatTimes)) {
+                        //     resultData.chatTimes++;
                         // } else {
-                        //     resultData.allTimes = 1;
+                        //     resultData.chatTimes = 1;
                         // }
-                        // console.log("update");
-                        // data.userNick = data.userNick != userData.userNick ? data.userNick : userData.userNick;
-                        //判断时期字符串是否相等
-                        if (resultData.date == todayDate) {
-                            // resultData.chatPoints++;
-                            resultData.chatPoints += increase;
-                            resultData.chatTimes++;
-                            //测试数据
-                            // if ("chatTimes" in resultData && !isNaN(resultData.chatTimes)) {
-                            //     resultData.chatTimes++;
-                            // } else {
-                            //     resultData.chatTimes = 1;
-                            // }
-                        } else {
-                            let toDate = new Date(todayDate);
-                            let resuDate = new Date(resultData.date);
-                            // console.log("toMonth"+toDate.getMonth()+":"+"resuDate"+resuDate.getMonth());
-                            //判断月份
-                            if (toDate.getMonth() == resuDate.getMonth()) {
-                                // console.log("同一个月");
-                                //判断日
-                                if (toDate.getDate() == resuDate.getDate()) {
-                                    // resultData.chatPoints++;
-                                    resultData.chatPoints += increase;
-                                    resultData.chatTimes++;
-                                } else {
-                                    // 昵称是否相同
-                                    if (resultData.userNick != userData.userNick) {
-                                        resultData.userNick = userData.userNick;
-                                    }
-                                    //隔日等级同步
-                                    if (resultData.grade != userData.grade) {
-                                        resultData.grade = userData.grade;
-                                    }
-                                    //测试数据
-                                    // if (!"allTimes" in resultData|| isNaN(resultData.allTimes)) {
-                                    //     resultData.allTimes = 1;
-                                    // }
-                                    resultData.chatPoints = increase;
-                                    resultData.chatTimes = 1;
-                                    resultData.gamePoints = 0;
-                                    // userData.userNick
-                                    showTipBarrageFunction(userData.userNick + " " + (resuDate.getDate()) + packageResult.opIndexDB.insertData[0]);
-                                }
+                    } else {
+                        let toDate = new Date(todayDate);
+                        let resuDate = new Date(resultData.date);
+                        // console.log("toMonth"+toDate.getMonth()+":"+"resuDate"+resuDate.getMonth());
+                        //判断月份
+                        if (toDate.getMonth() == resuDate.getMonth()) {
+                            // console.log("同一个月");
+                            //判断日
+                            if (toDate.getDate() == resuDate.getDate()) {
+                                // resultData.chatPoints++;
+                                resultData.chatPoints += increase;
+                                resultData.chatTimes++;
                             } else {
-                                // console.log("不是一个月");
-                                let $resetTotalPointsEveryMonth = $("#resetTotalPointsEveryMonth");
-                                let resetTotalPointsEveryMonthChecked = $resetTotalPointsEveryMonth.prop("checked");
-                                let logString = userData.userNick + " " + (resuDate.getMonth() + 1);
+                                // 昵称是否相同
+                                if (resultData.userNick != userData.userNick) {
+                                    resultData.userNick = userData.userNick;
+                                }
+                                //隔日等级同步
+                                if (resultData.grade != userData.grade) {
+                                    resultData.grade = userData.grade;
+                                }
+                                //测试数据
+                                // if (!"allTimes" in resultData|| isNaN(resultData.allTimes)) {
+                                //     resultData.allTimes = 1;
+                                // }
                                 resultData.chatPoints = increase;
                                 resultData.chatTimes = 1;
                                 resultData.gamePoints = 0;
-                                if (resetTotalPointsEveryMonthChecked) {
-                                    resultData.allPoints = increase;
-                                    resultData.allTimes = 1;
-                                    showTipBarrageFunction(logString + packageResult.opIndexDB.insertData[1]);
-                                } else {
-                                    showTipBarrageFunction(logString + packageResult.opIndexDB.insertData[2]);
-                                }
+                                // userData.userNick
+                                showTipBarrageFunction(userData.userNick + " " + (resuDate.getDate()) + packageResult.opIndexDB.insertData[0]);
                             }
-                            resultData.date = todayDate;
+                        } else {
+                            // console.log("不是一个月");
+                            let $resetTotalPointsEveryMonth = $("#resetTotalPointsEveryMonth");
+                            let resetTotalPointsEveryMonthChecked = $resetTotalPointsEveryMonth.prop("checked");
+                            let logString = userData.userNick + " " + (resuDate.getMonth() + 1);
+                            resultData.chatPoints = increase;
+                            resultData.chatTimes = 1;
+                            resultData.gamePoints = 0;
+                            if (resetTotalPointsEveryMonthChecked) {
+                                resultData.allPoints = increase;
+                                resultData.allTimes = 1;
+                                showTipBarrageFunction(logString + packageResult.opIndexDB.insertData[1]);
+                            } else {
+                                showTipBarrageFunction(logString + packageResult.opIndexDB.insertData[2]);
+                            }
                         }
-                        // resultData.chatPoints = roundFun(resultData.chatPoints, increaseBit);
-                        // resultData.gamePoints = roundFun(resultData.gamePoints, increaseBit);
-                        // resultData.allPoints = roundFun(resultData.allPoints, increaseBit);
-                        userDataStore.put(resultData).onsuccess = function (event) {
-                            // console.log('更新', event.target.result);
-                        };
-                    } else {
-                        // console.log("insert");
-                        // userData.chatPoints = roundFun(increase,increaseBit);
-                        // userData.gamePoints = 0;
-                        // userData.allPoints = roundFun(increase,increaseBit);
-                        // userData.date = todayDate;
-                        let addUserData = {
-                            "id": userData.id,
-                            "userNick": userData.userNick,
-                            "grade": userData.grade,
-                            "chatPoints": increase,
-                            "chatTimes": 1,
-                            "gamePoints": 0,
-                            "allPoints": increase,
-                            "allTimes": 1,
-                            "date": todayDate
-                        };
-                        // console.log(userData);
-                        var db_op_req = userDataStore.add(addUserData);
-                        db_op_req.onsuccess = function () {
-                            // console.log("存好了");
-                        }
+                        resultData.date = todayDate;
                     }
-                    // return event.target.result;
-                };
-                // options.forEach(function(option) {
-                // 	//数据储存
-                // 	console.log(option);
-                // 	var db_op_req = optionsStore.add(option);
-                // 	db_op_req.onsuccess = function() {
-                // 		console.log("存好了");
-                // 	}
-                // });
-            }
+                    // resultData.chatPoints = roundFun(resultData.chatPoints, increaseBit);
+                    // resultData.gamePoints = roundFun(resultData.gamePoints, increaseBit);
+                    // resultData.allPoints = roundFun(resultData.allPoints, increaseBit);
+                    userDataStore.put(resultData).onsuccess = function (event) {
+                        // console.log('更新', event.target.result);
+                    };
+                } else {
+                    // console.log("insert");
+                    // userData.chatPoints = roundFun(increase,increaseBit);
+                    // userData.gamePoints = 0;
+                    // userData.allPoints = roundFun(increase,increaseBit);
+                    // userData.date = todayDate;
+                    let addUserData = {
+                        "id": userData.id,
+                        "userNick": userData.userNick,
+                        "grade": userData.grade,
+                        "chatPoints": increase,
+                        "chatTimes": 1,
+                        "gamePoints": 0,
+                        "allPoints": increase,
+                        "allTimes": 1,
+                        "date": todayDate
+                    };
+                    // console.log(userData);
+                    var db_op_req = userDataStore.add(addUserData);
+                    db_op_req.onsuccess = function () {
+                        // console.log("存好了");
+                    }
+                }
+                // return event.target.result;
+            };
+            // options.forEach(function(option) {
+            // 	//数据储存
+            // 	console.log(option);
+            // 	var db_op_req = optionsStore.add(option);
+            // 	db_op_req.onsuccess = function() {
+            // 		console.log("存好了");
+            // 	}
+            // });
+
             req.onerror = function () {
                 console.log("数据库出错");
 
@@ -343,7 +334,7 @@ var opIndexDB = {
             //     chatPoints: 1,
             //     gamePoints: 1
             // }
-            let transaction = db.transaction([tbName], 'readwrite');
+            let transaction = indexDataBase.transaction([tbName], 'readwrite');
             transaction.onsuccess = function (event) {
                 // console.log('[Transaction] 好了!');
             };
@@ -383,86 +374,86 @@ var opIndexDB = {
         today = new Date(todayDate).getDate();
 
         let searchUserData = userData;
-        req = indexedDB.open(dbName);
+        // req = indexedDB.open(dbName);
         resArray = new Array();
-        req.onsuccess = function (events) {
-            db = events.target.result;
-            var trans = db.transaction([tbName], IDBTransaction.READ);
-            var store = trans.objectStore(tbName);
-            // queryReply(tex, searchUserData, event.target.result);
-            if (serachType == "all") {
-                let dataString = "@" + searchUserData.userNick;
-                store.get(searchUserData.id).onsuccess = function (event) {
-                    data = event.target.result;
-                    dataString = dataString + ":채팅 횟수:" + data.chatTimes + ",채팅 포인트:" + data.chatPoints + ",게임 포인트:" +
-                        data.gamePoints + ",총 횟수:" + data.allTimes + ",총 포인트:" + data.allPoints;
-                    // console.log(dataString);
-                    sendMessageCustom(dataString, 1, 4);
-                }
-            } else {
-                let keyRange = IDBKeyRange.lowerBound("");
-                let cursorRequest = store.openCursor(keyRange);
-                cursorRequest.onsuccess = function (e) {
-                    let result = e.target.result;
-                    // console.log(result)
-                    if (!!result == false) {
-                        resArray.sort(function (a, b) {
-                            return Number(b[serachType]) - Number(a[serachType]);
-                        });
-                        callback(resArray);
-                        // console.log(dataString);
-                        return;
-                    }
-                    data = result.value;
-                    if (serachType != "allPoints" && serachType != "allTimes") {
-                        //今天的第一
-                        if (today == new Date(data.date).getDate()) {
-                            //删除制定列
-                            // Reflect.deleteProperty(data, "gamePoints");
-                            // Reflect.deleteProperty(data,"date");
-                            resArray[resArray.length] = result.value;
-                        }
-                    } else {
-                        resArray.push(result.value);
-                    }
-                    result.continue();
-                    // resArray.push(result.value);
-                };
+        // req.onsuccess = function (events) { }
+        //     db = events.target.result;
+        var trans = indexDataBase.transaction([tbName], IDBTransaction.READ);
+        var store = trans.objectStore(tbName);
+        // queryReply(tex, searchUserData, event.target.result);
+        if (serachType == "all") {
+            let dataString = "@" + searchUserData.userNick;
+            store.get(searchUserData.id).onsuccess = function (event) {
+                data = event.target.result;
+                dataString = dataString + ":채팅 횟수:" + data.chatTimes + ",채팅 포인트:" + data.chatPoints + ",게임 포인트:" +
+                    data.gamePoints + ",총 횟수:" + data.allTimes + ",총 포인트:" + data.allPoints;
+                // console.log(dataString);
+                sendMessageCustom(dataString, 1, 4);
             }
+        } else {
+            let keyRange = IDBKeyRange.lowerBound("");
+            let cursorRequest = store.openCursor(keyRange);
+            cursorRequest.onsuccess = function (e) {
+                let result = e.target.result;
+                // console.log(result)
+                if (!!result == false) {
+                    resArray.sort(function (a, b) {
+                        return Number(b[serachType]) - Number(a[serachType]);
+                    });
+                    callback(resArray);
+                    // console.log(dataString);
+                    return;
+                }
+                data = result.value;
+                if (serachType != "allPoints" && serachType != "allTimes") {
+                    //今天的第一
+                    if (today == new Date(data.date).getDate()) {
+                        //删除制定列
+                        // Reflect.deleteProperty(data, "gamePoints");
+                        // Reflect.deleteProperty(data,"date");
+                        resArray[resArray.length] = result.value;
+                    }
+                } else {
+                    resArray.push(result.value);
+                }
+                result.continue();
+                // resArray.push(result.value);
+            };
+
 
         }
     },
     searchData: function () {
-        req = indexedDB.open(dbName);
-        req.onsuccess = function (events) {
-            // 获取数据库
-            db = events.target.result;
-            let OBJECT_NAME = tbName;
-            let objectStore = db.transaction([OBJECT_NAME], 'readwrite').objectStore(OBJECT_NAME);
-            var page = 2;
-            var page_size = 5;
-            resArray = new Array();
-            let currentCursor = objectStore.openCursor().onsuccess = e => {
+        // req = indexedDB.open(dbName);
+        // req.onsuccess = function (events) { }
+        // 获取数据库
+        // db = events.target.result;
+        let OBJECT_NAME = tbName;
+        let objectStore = indexDataBase.transaction([OBJECT_NAME], 'readwrite').objectStore(OBJECT_NAME);
+        var page = 2;
+        var page_size = 5;
+        resArray = new Array();
+        let currentCursor = objectStore.openCursor().onsuccess = e => {
 
-                let cursor = e.target.result;
+            let cursor = e.target.result;
 
-                if (cursor) {
-                    if (page > 0) {
-                        // console.log(page * page_size);
-                        cursor.advance(10);
-                        return;
-                    }
-                    if (resArray.length <= page_size) {
-                        cursor.continue(); // 移到下一个位置
-                        resArray.push(cursor.value);
+            if (cursor) {
+                if (page > 0) {
+                    // console.log(page * page_size);
+                    cursor.advance(10);
+                    return;
+                }
+                if (resArray.length <= page_size) {
+                    cursor.continue(); // 移到下一个位置
+                    resArray.push(cursor.value);
 
-                    } else {
-                        // console.log("jieshu");
-                        // console.log(resArray);
-                        return;
-                    }
+                } else {
+                    // console.log("jieshu");
+                    // console.log(resArray);
+                    return;
                 }
             }
+
         }
         req.onerror = function (events) {
             // console.log("searchById查询出错了");
@@ -471,208 +462,207 @@ var opIndexDB = {
     searchData2: function (limi) {
         // https://blog.csdn.net/kimbing/article/details/106300340
         // https://developer.mozilla.org/zh-CN/docs/Web/API/IDBKeyRange
-        req = indexedDB.open(dbName);
-        req.onsuccess = function (events) {
-            // 获取数据库
-            db = events.target.result;
-            // console.log(db);
-            var indexedDBIndex = "zzz8226";
-            let OBJECT_NAME = tbName;
-            let upperBound = localStorage[indexedDBIndex]; // 取出主键值
-            let objectStore = db.transaction([OBJECT_NAME], 'readwrite').objectStore(OBJECT_NAME);
-            let currentCursor = objectStore.openCursor(IDBKeyRange.upperBound(upperBound, true),
-                "prev")
-                .onsuccess = e => {
-                let cursor = e.target.result;
-                if (cursor) {
-                    solve(cursor);
-                    cursor.continue(); // 移到下一个位置
-                }
-            }
-
-            function solve(cursor) {
-                // console.log(cursor);
+        // req = indexedDB.open(dbName);
+        // req.onsuccess = function (events) { }
+        // 获取数据库
+        // db = events.target.result;
+        // console.log(db);
+        var indexedDBIndex = "zzz8226";
+        let OBJECT_NAME = tbName;
+        let upperBound = localStorage[indexedDBIndex]; // 取出主键值
+        let objectStore = indexDataBase.transaction([OBJECT_NAME], 'readwrite').objectStore(OBJECT_NAME);
+        let currentCursor = objectStore.openCursor(IDBKeyRange.upperBound(upperBound, true),
+            "prev")
+            .onsuccess = e => {
+            let cursor = e.target.result;
+            if (cursor) {
+                solve(cursor);
+                cursor.continue(); // 移到下一个位置
             }
         }
+
+        function solve(cursor) {
+            // console.log(cursor);
+        }
+
     },
     searchDataLimit: function (pageIndex, sortName, sortType) {
         let todayDate = $("#timeFrequencys").text().substring(0, $("#timeFrequencys").text().indexOf("\t"));
         today = new Date(todayDate).getDate();
 
-        req = indexedDB.open(dbName);
-        req.onsuccess = function (events) {
-            // 获取数据库
-            db = events.target.result;
-            if (!sortName && !sortType) {
-                // console.log("1");
-                let OBJECT_NAME = tbName;
-                let objectStore = db.transaction([OBJECT_NAME], 'readwrite').objectStore(
-                    OBJECT_NAME);
+        // req = indexedDB.open(dbName);
+        // req.onsuccess = function (events) {
+        // }
+        // 获取数据库
+        // db = events.target.result;
+        if (!sortName && !sortType) {
+            // console.log("1");
+            let OBJECT_NAME = tbName;
+            let objectStore = indexDataBase.transaction([OBJECT_NAME], 'readwrite').objectStore(
+                OBJECT_NAME);
 
-                var page = pageIndex -
-                    1; // 0为第一页
-                var page_size = everyPage; // 一页10条数据
-                var list = []; // 存放10条数据的数组
-                var is_first = true;
-                // console.log(objectStore);
+            var page = pageIndex -
+                1; // 0为第一页
+            var page_size = everyPage; // 一页10条数据
+            var list = []; // 存放10条数据的数组
+            var is_first = true;
+            // console.log(objectStore);
 
-                // console.log("pageIndex:" + pageIndex);
-                var i = page * page_size;
-                objectStore.openCursor().onsuccess = function (event) {
-                    var cursor = event.target.result;
-                    // console.log(cursor);
-                    if (is_first && page > 0) { // 只需要移动一次就行了 如果是第一页 不需要移动
-                        cursor.advance(page * page_size) // 移动到第几条
-                        is_first = false
-                        return
-                    }
-                    // 数据到底
-                    if (cursor === null) {
-                        // console.log(list);
-                        $("#myTable tbody").children().detach();
-                        for (d of list) {
-                            i++;
-                            // $("#myTable tbody").append("<tr><th>" + i +
-                            //     "</th><th>" + d
-                            //         .id +
-                            //     "</th><th>" + d.userNick + "</th><th>" + convertGrade(d.grade)+ "</th><th>" + d.chatPoints +
-                            //     "</th><th>" + d.gamePoints + "</th><th>" + d.allPoints +
-                            //     "</th><th>" + d.date + "</th></tr>");
-                            $("#myTable tbody").append("<tr><th>" + i +
-                                "</th><th>" + d.userNick + "(" + d.id + ")</th><th>" + convertGrade(d.grade) + "</th><th>" + d.chatPoints +
-                                "</th><th>" + d.chatTimes + "</th><th>" + d.gamePoints + "</th><th>" + d.allPoints +
-                                "</th><th>" + d.allTimes + "</th><th>" + d.date + "</th></tr>");
-                        }
-                        return;
-                    }
-
-                    list.push(cursor.value)
-                    if (page_size > list.length && cursor) { // 数据还没到10条
-                        cursor.continue()
-                    } else {
-                        // console.log(list); // 拿到10条了
-                        $("#myTable tbody").children().detach();
-                        for (d of list) {
-                            i++;
-                            // $("#myTable tbody").append("<tr><th>" + i +
-                            //     "</th><th>" + d
-                            //         .id +
-                            //     "</th><th>" + d.userNick + "</th><th>" + convertGrade(d.grade)+ "</th><th>" + d.chatPoints +
-                            //     "</th><th>" + d.gamePoints + "</th><th>" + d.allPoints +
-                            //     "</th><th>" + d.date + "</th></tr>");
-                            $("#myTable tbody").append("<tr><th>" + i +
-                                "</th><th>" + d.userNick + "(" + d.id + ")</th><th>" + convertGrade(d.grade) + "</th><th>" + d.chatPoints +
-                                "</th><th>" + d.chatTimes + "</th><th>" + d.gamePoints + "</th><th>" + d.allPoints +
-                                "</th><th>" + d.allTimes + "</th><th>" + d.date + "</th></tr>");
-
-
-                        }
-                    }
+            // console.log("pageIndex:" + pageIndex);
+            var i = page * page_size;
+            objectStore.openCursor().onsuccess = function (event) {
+                var cursor = event.target.result;
+                // console.log(cursor);
+                if (is_first && page > 0) { // 只需要移动一次就行了 如果是第一页 不需要移动
+                    cursor.advance(page * page_size) // 移动到第几条
+                    is_first = false
+                    return
                 }
-                objectStore.getAll().onsuccess = function (events) {
-                    var result = events.target.result;
-                    opIndexDB.showEveryPageIndex(result.length, pageIndex);
+                // 数据到底
+                if (cursor === null) {
+                    // console.log(list);
+                    $("#myTable tbody").children().detach();
+                    for (d of list) {
+                        i++;
+                        // $("#myTable tbody").append("<tr><th>" + i +
+                        //     "</th><th>" + d
+                        //         .id +
+                        //     "</th><th>" + d.userNick + "</th><th>" + convertGrade(d.grade)+ "</th><th>" + d.chatPoints +
+                        //     "</th><th>" + d.gamePoints + "</th><th>" + d.allPoints +
+                        //     "</th><th>" + d.date + "</th></tr>");
+                        $("#myTable tbody").append("<tr><th>" + i +
+                            "</th><th>" + d.userNick + "(" + d.id + ")</th><th>" + convertGrade(d.grade) + "</th><th>" + d.chatPoints +
+                            "</th><th>" + d.chatTimes + "</th><th>" + d.gamePoints + "</th><th>" + d.allPoints +
+                            "</th><th>" + d.allTimes + "</th><th>" + d.date + "</th></tr>");
+                    }
+                    return;
                 }
 
-                // console.log("-----------getAll---------------");
+                list.push(cursor.value)
+                if (page_size > list.length && cursor) { // 数据还没到10条
+                    cursor.continue()
+                } else {
+                    // console.log(list); // 拿到10条了
+                    $("#myTable tbody").children().detach();
+                    for (d of list) {
+                        i++;
+                        // $("#myTable tbody").append("<tr><th>" + i +
+                        //     "</th><th>" + d
+                        //         .id +
+                        //     "</th><th>" + d.userNick + "</th><th>" + convertGrade(d.grade)+ "</th><th>" + d.chatPoints +
+                        //     "</th><th>" + d.gamePoints + "</th><th>" + d.allPoints +
+                        //     "</th><th>" + d.date + "</th></tr>");
+                        $("#myTable tbody").append("<tr><th>" + i +
+                            "</th><th>" + d.userNick + "(" + d.id + ")</th><th>" + convertGrade(d.grade) + "</th><th>" + d.chatPoints +
+                            "</th><th>" + d.chatTimes + "</th><th>" + d.gamePoints + "</th><th>" + d.allPoints +
+                            "</th><th>" + d.allTimes + "</th><th>" + d.date + "</th></tr>");
 
-                // console.log("-----------mozGetAll---------------");
-                // studentsStore.mozGetAll().onsuccess = function(events) {
-                // 	console.log(events.target.result);
-                // }
-            } else {
-                // console.log("2");
-                resArray = new Array();
-                var trans = db.transaction([tbName], IDBTransaction.READ);
-                var store = trans.objectStore(tbName);
-                // Get everything in the store;
-                var keyRange = IDBKeyRange.lowerBound("");
-                var cursorRequest = store.openCursor(keyRange);
-                cursorRequest.onsuccess = function (e) {
-                    var result = e.target.result;
-                    if (!!result == false) {
-                        resArray.sort(function (a, b) {
-                            // eval("return Number(b."+sortType+")-Number(a."+sortType+")");
-                            if (sortName == "up") {
-                                // return Number(eval("a." + sortType)) - Number(eval(
-                                //     "b." +
-                                //     sortType));
-                                return Number(a[sortType]) - Number(b[sortType]);
-                            } else if (sortName = "down") {
-                                // return Number(eval("b." + sortType)) - Number(eval(
-                                //     "a." +
-                                //     sortType));
-                                return Number(b[sortType]) - Number(a[sortType]);
-                            }
-                            // return Number(b.eval(sortType))-Number(a.eval(sortType));
 
-                            // if(sortType=="chatPoints"){
-                            // 	if(sortName="up"){
-                            // 		return Number(a.chatPoints)-Number(b.chatPoints);
-                            // 	}else if(sortName="down"){
-                            // 		return Number(b.chatPoints)-Number(a.chatPoints);
-                            // 	}
+                    }
+                }
+            }
+            objectStore.getAll().onsuccess = function (events) {
+                var result = events.target.result;
+                opIndexDB.showEveryPageIndex(result.length, pageIndex);
+            }
 
-                            // }else{
+            // console.log("-----------getAll---------------");
 
-                            // }
+            // console.log("-----------mozGetAll---------------");
+            // studentsStore.mozGetAll().onsuccess = function(events) {
+            // 	console.log(events.target.result);
+            // }
+        } else {
+            // console.log("2");
+            resArray = new Array();
+            var trans = indexDataBase.transaction([tbName], IDBTransaction.READ);
+            var store = trans.objectStore(tbName);
+            // Get everything in the store;
+            var keyRange = IDBKeyRange.lowerBound("");
+            var cursorRequest = store.openCursor(keyRange);
+            cursorRequest.onsuccess = function (e) {
+                var result = e.target.result;
+                if (!!result == false) {
+                    resArray.sort(function (a, b) {
+                        // eval("return Number(b."+sortType+")-Number(a."+sortType+")");
+                        if (sortName == "up") {
+                            // return Number(eval("a." + sortType)) - Number(eval(
+                            //     "b." +
+                            //     sortType));
+                            return Number(a[sortType]) - Number(b[sortType]);
+                        } else if (sortName = "down") {
+                            // return Number(eval("b." + sortType)) - Number(eval(
+                            //     "a." +
+                            //     sortType));
+                            return Number(b[sortType]) - Number(a[sortType]);
+                        }
+                        // return Number(b.eval(sortType))-Number(a.eval(sortType));
 
-                        });
-                        // console.log("收集完毕");
-                        //print res etc....
-                        // callback(resArray);
-                        // console.log(resArray);
-                        // // pageIndex =0
-                        // console.log(pageIndex);
-                        // console.log(everyPage);
+                        // if(sortType=="chatPoints"){
+                        // 	if(sortName="up"){
+                        // 		return Number(a.chatPoints)-Number(b.chatPoints);
+                        // 	}else if(sortName="down"){
+                        // 		return Number(b.chatPoints)-Number(a.chatPoints);
+                        // 	}
 
-                        // console.log("resArray:", resArray.length);
-                        // for(var i=0;i<resArray.length;i++){
+                        // }else{
 
                         // }
-                        // console.log("page", pageIndex);
-                        opIndexDB.showEveryPageIndex(resArray.length, pageIndex);
-                        $("#myTable tbody").children().detach();
-                        var d;
-                        for (var i = (pageIndex - 1) * everyPage; i < pageIndex *
-                        everyPage; i++) {
-                            // console.log(resArray[i]);
-                            d = resArray[i];
-                            if (d) {
-                                // $("#myTable tbody").append("<tr><th>" + (i + 1) +
-                                //     "</th><th>" + d
-                                //         .id +
-                                //     "</th><th>" + d.userNick + "</th><th>" + convertGrade(d.grade)+ "</th><th>" + d.chatPoints +
-                                //     "</th><th>" + d.gamePoints + "</th><th>" + d.allPoints +
-                                //     "</th><th>" + d.date + "</th></tr>");
-                                $("#myTable tbody").append("<tr><th>" + (i + 1) +
-                                    "</th><th>" + d.userNick + "(" + d.id + ")</th><th>" + convertGrade(d.grade) + "</th><th>" + d.chatPoints +
-                                    "</th><th>" + d.chatTimes + "</th><th>" + d.gamePoints + "</th><th>" + d.allPoints +
-                                    "</th><th>" + d.allTimes + "</th><th>" + d.date + "</th></tr>");
-                            } else {
-                                return;
-                            }
 
+                    });
+                    // console.log("收集完毕");
+                    //print res etc....
+                    // callback(resArray);
+                    // console.log(resArray);
+                    // // pageIndex =0
+                    // console.log(pageIndex);
+                    // console.log(everyPage);
+
+                    // console.log("resArray:", resArray.length);
+                    // for(var i=0;i<resArray.length;i++){
+
+                    // }
+                    // console.log("page", pageIndex);
+                    opIndexDB.showEveryPageIndex(resArray.length, pageIndex);
+                    $("#myTable tbody").children().detach();
+                    var d;
+                    for (var i = (pageIndex - 1) * everyPage; i < pageIndex *
+                    everyPage; i++) {
+                        // console.log(resArray[i]);
+                        d = resArray[i];
+                        if (d) {
+                            // $("#myTable tbody").append("<tr><th>" + (i + 1) +
+                            //     "</th><th>" + d
+                            //         .id +
+                            //     "</th><th>" + d.userNick + "</th><th>" + convertGrade(d.grade)+ "</th><th>" + d.chatPoints +
+                            //     "</th><th>" + d.gamePoints + "</th><th>" + d.allPoints +
+                            //     "</th><th>" + d.date + "</th></tr>");
+                            $("#myTable tbody").append("<tr><th>" + (i + 1) +
+                                "</th><th>" + d.userNick + "(" + d.id + ")</th><th>" + convertGrade(d.grade) + "</th><th>" + d.chatPoints +
+                                "</th><th>" + d.chatTimes + "</th><th>" + d.gamePoints + "</th><th>" + d.allPoints +
+                                "</th><th>" + d.allTimes + "</th><th>" + d.date + "</th></tr>");
+                        } else {
+                            return;
                         }
-                        // console.log("完毕");
-                        return;
+
                     }
-                    //判断是否是今天
-                    if (sortType != "chatPoints" && sortType != "gamePoints" && sortType != "chatTimes") {
+                    // console.log("完毕");
+                    return;
+                }
+                //判断是否是今天
+                if (sortType != "chatPoints" && sortType != "gamePoints" && sortType != "chatTimes") {
+                    resArray[resArray.length] = result.value;
+                } else {
+                    if (new Date(result.value.date).getDate() == today) {
                         resArray[resArray.length] = result.value;
-                    } else {
-                        if (new Date(result.value.date).getDate() == today) {
-                            resArray[resArray.length] = result.value;
-                        }
                     }
+                }
 
-                    // resArray.push(result.value);
-                    result.continue();
-                };
+                // resArray.push(result.value);
+                result.continue();
+            };
 
-            }
         }
-
     },
     showEveryPageIndex: function (allLength, page) {
         $("#allPageValue").val(allLength);
@@ -762,123 +752,120 @@ var opIndexDB = {
         // console.log("serarchTodayMaxSortData");
         let todayDate = $("#timeFrequencys").text().substring(0, $("#timeFrequencys").text().indexOf("\t"));
         today = new Date(todayDate).getDate();
-        req = indexedDB.open(dbName);
-        req.onsuccess = function (events) {
-            // 获取数据库
-            resArray = new Array();
-            db = events.target.result;
-            var trans = db.transaction([tbName], IDBTransaction.READ);
-            var store = trans.objectStore(tbName);
+        // req = indexedDB.open(dbName);
+        // req.onsuccess = function (events) {} db = events.target.result;
+        // 获取数据库
+        resArray = new Array();
 
-            // Get everything in the store;
-            var keyRange = IDBKeyRange.lowerBound("");
-            var cursorRequest = store.openCursor(keyRange);
-            cursorRequest.onsuccess = function (e) {
-                var result = e.target.result;
-                if (!!result == false) {
-                    resArray.sort(function (a, b) {
-                        // eval("return Number(b."+sortType+")-Number(a."+sortType+")");
-                        // return Number(eval("b." + sortType)) - Number(eval("a." +
-                        //     sortType));
-                        return Number(b[sortType]) - Number(a[sortType]);
-                    });
-                    callback(resArray, resArray.length);
-                    // console.log(resArray);
+        var trans = indexDataBase.transaction([tbName], IDBTransaction.READ);
+        var store = trans.objectStore(tbName);
 
-                    return;
-                }
-                data = result.value;
-                //今天的第一
-                if (today == new Date(data.date).getDate()) {
-                    // Reflect.deleteProperty(data, "gamePoints");
-                    // Reflect.deleteProperty(data,"date");
-                    resArray[resArray.length] = result.value;
-                }
-                // resArray.push(result.value);
-                result.continue();
-            };
+        // Get everything in the store;
+        var keyRange = IDBKeyRange.lowerBound("");
+        var cursorRequest = store.openCursor(keyRange);
+        cursorRequest.onsuccess = function (e) {
+            var result = e.target.result;
+            if (!!result == false) {
+                resArray.sort(function (a, b) {
+                    // eval("return Number(b."+sortType+")-Number(a."+sortType+")");
+                    // return Number(eval("b." + sortType)) - Number(eval("a." +
+                    //     sortType));
+                    return Number(b[sortType]) - Number(a[sortType]);
+                });
+                callback(resArray, resArray.length);
+                // console.log(resArray);
 
-        }
+                return;
+            }
+            data = result.value;
+            //今天的第一
+            if (today == new Date(data.date).getDate()) {
+                // Reflect.deleteProperty(data, "gamePoints");
+                // Reflect.deleteProperty(data,"date");
+                resArray[resArray.length] = result.value;
+            }
+            // resArray.push(result.value);
+            result.continue();
+        };
 
     },
     serarchTodayMaxSortData: function (sortType, sortName, callback) {
         // console.log("serarchTodayMaxSortData");
         let todayDate = $("#timeFrequencys").text().substring(0, $("#timeFrequencys").text().indexOf("\t"));
         today = new Date(todayDate).getDate();
-        req = indexedDB.open(dbName);
-        req.onsuccess = function (events) {
-            // 获取数据库
-            resArray = new Array();
-            db = events.target.result;
-            var trans = db.transaction([tbName], IDBTransaction.READ);
-            var store = trans.objectStore(tbName);
-            // Get everything in the store;
-            var keyRange = IDBKeyRange.lowerBound("");
-            var cursorRequest = store.openCursor(keyRange);
-            cursorRequest.onsuccess = function (e) {
-                var result = e.target.result;
-                if (!!result == false) {
-                    // resArray.sort(function (a, b) {
-                    //     // eval("return Number(b."+sortType+")-Number(a."+sortType+")");
-                    //     if (sortName == "up") {
-                    //         return Number(eval("a." + sortType)) - Number(eval("b." +
-                    //             sortType));
-                    //     } else if (sortName = "down") {
-                    //         return Number(eval("b." + sortType)) - Number(eval("a." +
-                    //             sortType));
-                    //     }
-                    //     // return Number(b.eval(sortType))-Number(a.eval(sortType));
-                    //
-                    //     // if(sortType=="chatPoints"){
-                    //     // 	if(sortName="up"){
-                    //     // 		return Number(a.chatPoints)-Number(b.chatPoints);
-                    //     // 	}else if(sortName="down"){
-                    //     // 		return Number(b.chatPoints)-Number(a.chatPoints);
-                    //     // 	}
-                    //
-                    //     // }else{
-                    //
-                    //     // }
-                    //
-                    // });
-                    // //print res etc....
-                    // resArray[0].resArrLength = resArray.length
-                    // callback(resArray[0]);
+        // req = indexedDB.open(dbName);
+        // req.onsuccess = function (events) {
+        // }db = events.target.result;
+        // 获取数据库
+        resArray = new Array();
 
-                    let max = resArray[0];
-                    if (sortName == "up") {
-                        // let mxPro = eval("max." + sortType);
-                        // let itPro = eval("item." + sortType);
-                        // resArray.forEach(item =>  mxPro = eval("item." + sortType) < eval("max." + sortType) ? eval("item." + sortType) : eval("max." + sortType));
-                        // resArray.forEach(item => max[sortType] = item[sortType] < max[sortType] ? item[sortType] : max[sortType]);
-                        resArray.forEach(item => max = item[sortType] < max[sortType] ? item : max);
-                    } else if (sortName = "down") {
-                        // resArray.forEach(item =>  mxPro = eval("item." + sortType) > eval("max." + sortType) ? eval("item." + sortType) : eval("max." + sortType));
-                        resArray.forEach(item => max = item[sortType] > max[sortType] ? item : max);
-                    }
-                    //print res etc....
-                    max.resArrLength = resArray.length;
-                    callback(max);
+        var trans = indexDataBase.transaction([tbName], IDBTransaction.READ);
+        var store = trans.objectStore(tbName);
+        // Get everything in the store;
+        var keyRange = IDBKeyRange.lowerBound("");
+        var cursorRequest = store.openCursor(keyRange);
+        cursorRequest.onsuccess = function (e) {
+            var result = e.target.result;
+            if (!!result == false) {
+                // resArray.sort(function (a, b) {
+                //     // eval("return Number(b."+sortType+")-Number(a."+sortType+")");
+                //     if (sortName == "up") {
+                //         return Number(eval("a." + sortType)) - Number(eval("b." +
+                //             sortType));
+                //     } else if (sortName = "down") {
+                //         return Number(eval("b." + sortType)) - Number(eval("a." +
+                //             sortType));
+                //     }
+                //     // return Number(b.eval(sortType))-Number(a.eval(sortType));
+                //
+                //     // if(sortType=="chatPoints"){
+                //     // 	if(sortName="up"){
+                //     // 		return Number(a.chatPoints)-Number(b.chatPoints);
+                //     // 	}else if(sortName="down"){
+                //     // 		return Number(b.chatPoints)-Number(a.chatPoints);
+                //     // 	}
+                //
+                //     // }else{
+                //
+                //     // }
+                //
+                // });
+                // //print res etc....
+                // resArray[0].resArrLength = resArray.length
+                // callback(resArray[0]);
 
-                    return;
+                let max = resArray[0];
+                if (sortName == "up") {
+                    // let mxPro = eval("max." + sortType);
+                    // let itPro = eval("item." + sortType);
+                    // resArray.forEach(item =>  mxPro = eval("item." + sortType) < eval("max." + sortType) ? eval("item." + sortType) : eval("max." + sortType));
+                    // resArray.forEach(item => max[sortType] = item[sortType] < max[sortType] ? item[sortType] : max[sortType]);
+                    resArray.forEach(item => max = item[sortType] < max[sortType] ? item : max);
+                } else if (sortName = "down") {
+                    // resArray.forEach(item =>  mxPro = eval("item." + sortType) > eval("max." + sortType) ? eval("item." + sortType) : eval("max." + sortType));
+                    resArray.forEach(item => max = item[sortType] > max[sortType] ? item : max);
                 }
-                data = result.value;
-                if (sortType != "allPoints" && sortType != "allTimes") {
-                    //今天的第一
-                    if (today == new Date(data.date).getDate()) {
-                        //删除指定属性
-                        // Reflect.deleteProperty(data, "gamePoints");
-                        // Reflect.deleteProperty(data,"date");
-                        resArray[resArray.length] = result.value;
-                    }
-                } else {
-                    resArray.push(result.value);
-                }
-                // resArray.push(result.value);
-                result.continue();
-            };
+                //print res etc....
+                max.resArrLength = resArray.length;
+                callback(max);
 
-        }
+                return;
+            }
+            data = result.value;
+            if (sortType != "allPoints" && sortType != "allTimes") {
+                //今天的第一
+                if (today == new Date(data.date).getDate()) {
+                    //删除指定属性
+                    // Reflect.deleteProperty(data, "gamePoints");
+                    // Reflect.deleteProperty(data,"date");
+                    resArray[resArray.length] = result.value;
+                }
+            } else {
+                resArray.push(result.value);
+            }
+            // resArray.push(result.value);
+            result.continue();
+        };
 
     },
     serarchData4: function () {
@@ -951,12 +938,12 @@ var opIndexDB = {
                             let addMakerData = {
                                 "id": diceData.makerId,
                                 "userNick": diceData.makerNick,
-                                "grade":"BJ",
+                                "grade": "BJ",
                                 "chatPoints": 0,
                                 "chatTimes": 0,
                                 "gamePoints": diceData.makerAdd,
                                 "allPoints": diceData.makerAdd,
-                                "allTimes":0,
+                                "allTimes": 0,
                                 date: todayDate
                             }
                             optionsStore.add(addMakerData).onsuccess = function (event) {
@@ -1041,85 +1028,83 @@ var opIndexDB = {
         // Salt.db.close();
     },
     exportDataFunction: function (callback) {
-        req = indexedDB.open(dbName);
-        req.onsuccess = function (events) {
-            // 获取数据库
-            db = events.target.result;
-            // Use the literal "readonly" instead of IDBTransaction.READ, which is deprecated:
-            let trans = db.transaction([tbName], "readonly");
-            let dataStore = trans.objectStore(tbName);
-            let dataArray = new Array();
-            dataStore.getAll().onsuccess = function (e) {
-                let result = e.target.result;
-                // dataArray.push(result);
-                callback(result);
-            }
+        // req = indexedDB.open(dbName);
+        // req.onsuccess = function (events) {}
+        //     // 获取数据库
+        //     db = events.target.result;
+        // Use the literal "readonly" instead of IDBTransaction.READ, which is deprecated:
+        let trans = indexDataBase.transaction([tbName], "readonly");
+        let dataStore = trans.objectStore(tbName);
+        let dataArray = new Array();
+        dataStore.getAll().onsuccess = function (e) {
+            let result = e.target.result;
+            // dataArray.push(result);
+            callback(result);
         }
+
     },
     inportDataFunction: function (userDataArray, callBack) {
         let todayDate = $("#timeFrequencys").text().substring(0, $("#timeFrequencys").text().indexOf("\t"));
         today = new Date(todayDate).getDate();
-        req = indexedDB.open(dbName);
-        req.onsuccess = function (events) {
-            // 获取数据库
-            db = events.target.result;
-            // Use the literal "readonly" instead of IDBTransaction.READ, which is deprecated:
-            var trans = db.transaction([tbName], "readwrite");
-            var userDataStore = trans.objectStore(tbName);
+        // req = indexedDB.open(dbName);
+        // req.onsuccess = function (events) {}
+        //     // 获取数据库
+        //     db = events.target.result;
+        // Use the literal "readonly" instead of IDBTransaction.READ, which is deprecated:
+        var trans = indexDataBase.transaction([tbName], "readwrite");
+        var userDataStore = trans.objectStore(tbName);
 
-            for (let i = 0; i < userDataArray.length; i++) {
-                let userData = userDataArray[i]
-                userDataStore.get(userData.id).onsuccess = function (event) {
-                    let data = event.target.result;
-                    if (!data) {
-                        userDataStore.add(userData).onsuccess = function () {
-                            if (i == userDataArray.length - 1) {
-                                // showTipBarrageFunction(userDataArray.length + "개의 데이터 가져오기 성공");
-                                showTipBarrageFunction("indexdb:" + userDataArray.length + packageResult.opIndexDB.inportDataFunction);
-                                callBack("over");
-                            }
-                        };
-                    } else {
-                        //是今天累计游戏点聊天点
-                        if (data.date == userData.date) {
-                            data.chatPoints =data.chatPoints + userData.chatPoints;
-                            data.gamePoints = data.gamePoints + userData.gamePoints;
-                            data.chatTimes = data.chatTimes + userData.chatTimes;
+        for (let i = 0; i < userDataArray.length; i++) {
+            let userData = userDataArray[i]
+            userDataStore.get(userData.id).onsuccess = function (event) {
+                let data = event.target.result;
+                if (!data) {
+                    userDataStore.add(userData).onsuccess = function () {
+                        if (i == userDataArray.length - 1) {
+                            // showTipBarrageFunction(userDataArray.length + "개의 데이터 가져오기 성공");
+                            showTipBarrageFunction("indexdb:" + userDataArray.length + packageResult.opIndexDB.inportDataFunction);
+                            callBack("over");
                         }
-                        // else {
-                        //     if (data.date == today && userData.date != today) {
-                        //         // userData.date = today
-                        //     }
-                        // }
-                        data.allPoints = data.allPoints + userData.allPoints;
-                        data.allTimes = data.allTimes + userData.allTimes;
-                        //等级不需要导入
-                        // data.grade=userData.grade;
-
-                        // let userGrade;
-                        // //测试数据
-                        // if ("grade" in userData) {
-                        //     userGrade = userData.grade;
-                        // } else {
-                        //     userGrade = "loadding";
-                        // }
-                        // data.grade = userGrade;
-
-                        userDataStore.put(data).onsuccess = function (event) {
-                            // console.log('更新', event.target.result);
-                            if (i == userDataArray.length - 1) {
-                                // showTipBarrageFunction(userDataArray.length + "개의 데이터 가져오기 성공");
-                                showTipBarrageFunction("indexdb:" + userDataArray.length + packageResult.opIndexDB.inportDataFunction);
-                                callBack("over");
-
-                            }
-                        };
+                    };
+                } else {
+                    //是今天累计游戏点聊天点
+                    if (data.date == userData.date) {
+                        data.chatPoints = data.chatPoints + userData.chatPoints;
+                        data.gamePoints = data.gamePoints + userData.gamePoints;
+                        data.chatTimes = data.chatTimes + userData.chatTimes;
                     }
+                    // else {
+                    //     if (data.date == today && userData.date != today) {
+                    //         // userData.date = today
+                    //     }
+                    // }
+                    data.allPoints = data.allPoints + userData.allPoints;
+                    data.allTimes = data.allTimes + userData.allTimes;
+                    //等级不需要导入
+                    // data.grade=userData.grade;
+
+                    // let userGrade;
+                    // //测试数据
+                    // if ("grade" in userData) {
+                    //     userGrade = userData.grade;
+                    // } else {
+                    //     userGrade = "loadding";
+                    // }
+                    // data.grade = userGrade;
+
+                    userDataStore.put(data).onsuccess = function (event) {
+                        // console.log('更新', event.target.result);
+                        if (i == userDataArray.length - 1) {
+                            // showTipBarrageFunction(userDataArray.length + "개의 데이터 가져오기 성공");
+                            showTipBarrageFunction("indexdb:" + userDataArray.length + packageResult.opIndexDB.inportDataFunction);
+                            callBack("over");
+
+                        }
+                    };
                 }
             }
         }
-    },
-
+    }
 }
 
 // 它会返回所有数据库名称
@@ -1173,7 +1158,7 @@ function getTodayMaxSortData(idDom, idt) {
                     //     ace.maxChatPoint = data.chatPoints;
                     // }
                     //五次以上提醒
-                    if (ace.userNick != data.userNick|| ace.userId!=data.id) {
+                    if (ace.userNick != data.userNick || ace.userId != data.id) {
                         // console.log("龙王变更提醒");
                         ace.userId = data.id;
                         ace.userNick = data.userNick;
