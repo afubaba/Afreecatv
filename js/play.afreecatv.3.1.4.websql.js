@@ -16,19 +16,29 @@ var today = new Date($("#timeFrequencys").text()).getDate();
 var showBarrageImgURL = "https://afubaba.github.io/Afreecatv/logo/400x400.jpeg";
 
 var opWebsql = {
-
     getDB: function () {
+        // console.log(db);
+        // if(!db){
         db = openDatabase(dbName, "", 'Test DB', 100 * 1024 * 1024, function (result) {
-            db = result;
+            // console.log("回调函数");
+            // db = result;
+            // console.log(result);
+            // console.log("回调函数");
         });
-        if (!db) {
-            // console.log("数据库创建失败！");
-            return;
-        } else {
-            // console.log("数据库创建成功！");
-        }
+        dataBase = db;
+        // }else{
+        //     console.log("不打开数据库!");
+        // }
+
+        // if (!db) {
+        //     // console.log("数据库创建失败！");
+        //     return;
+        // } else {
+        //     // console.log("数据库创建成功！");
+        // }
     },
     createTable: function (tbNm) {
+        console.log("create"+tbNm);
         this.getDB();
         db.transaction(function (tx) {
 
@@ -48,8 +58,7 @@ var opWebsql = {
         });
     },
     deleteTable: function () {
-        this.getDB();
-        db.transaction(function (tx) {
+        dataBase.transaction(function (tx) {
             // let searchSql = "delete from " + tbName;
             let deleteSql = "DROP TABLE IF EXISTS " + tbName;
             let dataArea = [];
@@ -67,8 +76,7 @@ var opWebsql = {
 
     },
     clearTable: function () {
-        this.getDB();
-        db.transaction(function (tx) {
+        dataBase.transaction(function (tx) {
             let searchSql = "delete from " + tbName;
             // var sql="DROP TABLE"+tbName;
 
@@ -89,8 +97,7 @@ var opWebsql = {
     },
     searchData: function (tbName, sortType, which, limi, pageIndex) {
         let todayDate = $("#timeFrequencys").text().substring(0, $("#timeFrequencys").text().indexOf("\t"));
-        this.getDB();
-        db.transaction(function (tx) {
+        dataBase.transaction(function (tx) {
             var sqlSortType;
             if (sortType == "up") {
                 // sql="SELECT * FROM " + tbName +" order by 3 desc LIMIT 1,10";
@@ -283,8 +290,7 @@ var opWebsql = {
     },
     getMaxData: function (idDom, userId) {
         let todayDate = $("#timeFrequencys").text().substring(0, $("#timeFrequencys").text().indexOf("\t"));
-        this.getDB();
-        db.transaction(function (tx) {
+        dataBase.transaction(function (tx) {
             // sql = "select id as 身份证,userNick as 昵称,max(chatPoints) as 今日最高分数,max(allPoints) as 总分数最高 from "+tbName;
             // sql = "select userNick as 닉네임,max(chatPoints) as 오늘 채팅 횟수,max(allPoints) as 총 채팅 횟수 from "+tbName;
             //console.log(sql);
@@ -325,7 +331,7 @@ var opWebsql = {
                 //     ace.maxChatPoint = data.maxChatPoint;
                 // }
                 //五次以上提醒
-                if (ace.userNick != data.userNick|| ace.userId!=data.id) {
+                if (ace.userNick != data.userNick || ace.userId != data.id) {
                     // console.log("龙王变更提醒");
                     ace.userId = data.id;
                     ace.userNick = data.userNick;
@@ -375,9 +381,8 @@ var opWebsql = {
 
     },
     searchMaxData: function (serachType, callback) {
-        this.getDB();
         let todayDate = $("#timeFrequencys").text().substring(0, $("#timeFrequencys").text().indexOf("\t"));
-        db.transaction(function (tx) {
+        dataBase.transaction(function (tx) {
             // sql = "select id as 身份证,userNick as 昵称,max(chatPoints) as 今日最高分数,max(allPoints) as 总分数最高 from "+tbName;
             // sql = "select userNick as 닉네임,max(chatPoints) as 오늘 채팅 횟수,max(allPoints) as 총 채팅 횟수 from "+tbName;
             //console.log(sql);
@@ -413,8 +418,7 @@ var opWebsql = {
         var searchUserData = userData;
         // searchUserData.id
         var dataString = "@" + searchUserData.userNick;
-        this.getDB();
-        db.transaction(function (tx) {
+        dataBase.transaction(function (tx) {
             // sql = "SELECT * FROM " + tbName + " WHERE id = ?;";
             //console.log(sql);
             var data;
@@ -462,7 +466,7 @@ var opWebsql = {
                     dataString = dataString + ":오늘 채팅 횟수:";
                     sql = "select id,userNick,chatTimes,(select count(1) from " + tbName +
                         " where date=" + todayDate + ") as 'count' from " + tbName + " where date=" +
-                        todayDate +" order by chatTimes desc";
+                        todayDate + " order by chatTimes desc";
                 } else if (tex == "!게임포인트") {
                     dataString = dataString + ":오늘 게임 포인트:";
                     // sql = "SELECT s.gamePoints,(select count(distinct(gamePoints)) from " + tbName +
@@ -492,7 +496,7 @@ var opWebsql = {
                             if (tex == "!총포인트") {
                                 dataString = dataString + dataResult.allPoints + ",순위:" +
                                     (i + 1) + "/" + dataResult.count;
-                            }else if (tex == "!총횟수") {
+                            } else if (tex == "!총횟수") {
                                 dataString = dataString + dataResult.allTimes + ",순위:" +
                                     (i + 1) + "/" + dataResult.count;
                             } else if (tex == "!채팅포인트") {
@@ -525,9 +529,7 @@ var opWebsql = {
         uId = userData.userId;
         uNick = userData.userNick;
         tbNm = userData.tbName;
-
-        this.getDB();
-        db.transaction(function (tx) {
+        dataBase.transaction(function (tx) {
 
             // var tbName = "chatPointsMode";
             // sql = 'CREATE TABLE IF NOT EXISTS ' + allTbName +
@@ -560,7 +562,7 @@ var opWebsql = {
 
                     // let addGamePoints = roundFun(resultData.gamePoints + increase, increaseBit);
 
-                    let addAllPoints =resultData.allPoints + increase, increaseBit;
+                    let addAllPoints = resultData.allPoints + increase, increaseBit;
                     // console.log(resultData);
                     // console.log(data);
                     // db.transaction(function(tx) {
@@ -838,8 +840,7 @@ var opWebsql = {
 
     },
     addData: function (userData) {
-        this.getDB();
-        db.transaction(function (tx) {
+        dataBase.transaction(function (tx) {
             sql = "SELECT * FROM " + tbNm + " WHERE id=?";
             sqlDataArray = [userData.id];
             tx.executeSql(sql, sqlDataArray, function (tx, results) {
@@ -871,7 +872,6 @@ var opWebsql = {
         });
     },
     updateData: function (diceData, callback) {
-        this.getDB();
         let todayDate = $("#timeFrequencys").text().substring(0, $("#timeFrequencys").text().indexOf("\t"));
         // today= new Date(todayDate).getDate();
 
@@ -888,7 +888,7 @@ var opWebsql = {
         // console.log(tbName)
         let sqlDataArray = [diceData.userId];
         // var callData = new Array();
-        db.transaction(function (tx) {
+        dataBase.transaction(function (tx) {
             var sql = "UPDATE " + tbName + " SET gamePoints=gamePoints+" + diceData.userAdd +
                 ",allPoints=allPoints+" + diceData.userAdd + " WHERE id=?";
             tx.executeSql(sql, sqlDataArray, function (tx, results) {
@@ -958,8 +958,7 @@ var opWebsql = {
         });
     },
     exportDataFunction: function (callback) {
-        this.getDB();
-        db.transaction(function (tx) {
+        dataBase.transaction(function (tx) {
             sql = "SELECT * FROM " + tbName;
             tx.executeSql(sql, [], function (tx, results) {
                 var data = results.rows;
@@ -975,8 +974,7 @@ var opWebsql = {
         let todayDate = $("#timeFrequencys").text().substring(0, $("#timeFrequencys").text().indexOf("\t"));
         // today= new Date(todayDate).getDate();
         let sql = "SELECT * FROM " + tbName + " WHERE id=?";
-        this.getDB();
-        db.transaction(function (tx) {
+        dataBase.transaction(function (tx) {
             for (let i = 0; i < userDataArray.length; i++) {
                 // console.log(i);
                 let sqlDataArray = [userDataArray[i].id];
@@ -1017,7 +1015,7 @@ var opWebsql = {
                         let addAllTimes = resultRows[0].allTimes + userDataArray[i].allTimes;
                         //今天的积累
                         if (resultRows.date == userDataArray[i].date) {
-                            let addChatPoint =resultRows[0].chatPoints + userDataArray[i].chatPoints;
+                            let addChatPoint = resultRows[0].chatPoints + userDataArray[i].chatPoints;
                             let addChatTimes = resultRows[0].chatTimes + userDataArray[i].chatTimes;
                             let addGamePoints = resultRows[0].gamePoints + userDataArray[i].gamePoints;
 
@@ -1148,7 +1146,7 @@ var everyPage;
 var everyPageValue = $("#everyPageValue");
 //初始化
 var ep = localStorage.getItem("everyPageValue");
-if (ep == null || ep == "undefined"|| ep == "") {
+if (ep == null || ep == "undefined" || ep == "") {
     everyPage = 50;
     localStorage.setItem("everyPageValue", everyPage);
 
@@ -1164,9 +1162,9 @@ everyPageValue.val(everyPage);
 // });
 everyPageValue.change(() => {
     everyPage = $("#everyPageValue").val();
-    if(everyPage!=""){
+    if (everyPage != "") {
         localStorage.setItem("everyPageValue", everyPage);
-    }else{
+    } else {
         everyPage = 50;
         localStorage.setItem("everyPageValue", everyPage);
         everyPageValue.val(50);
