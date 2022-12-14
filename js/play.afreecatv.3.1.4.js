@@ -1791,10 +1791,12 @@ function sendMessageFunction() {
     frequency = document.getElementById('inputFrequency').value;
 
     /*更正系统*/
-    if (allRepeatTimes == '' || frequency == '') {
+    if (allRepeatTimes == '' || isNaN(allRepeatTimes)) {
         document.getElementById('inputTimes').value = 1;
-        document.getElementById('inputFrequency').value = 1;
         allRepeatTimes = 1;
+    }
+    if (frequency == '' || isNaN(frequency)) {
+        document.getElementById('inputFrequency').value = 1;
         frequency = 1;
     }
     repeatTimes = 1;
@@ -3597,8 +3599,7 @@ const object = new Set([
                     if (data.tex == "!채팅포인트") {
                         serachType = "chatPoints";
                         dataStr = "오늘 채팅 포인트:";
-                    }
-                    if (data.tex == "!채팅횟수") {
+                    }else if (data.tex == "!채팅횟수") {
                         serachType = "chatTimes";
                         dataStr = "오늘 채팅 횟수:";
                     } else if (data.tex == "!게임포인트") {

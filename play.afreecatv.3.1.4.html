@@ -2093,8 +2093,8 @@
                 </div>
 
                 <!-- ace:<input id="todayChatPointsAce" type="text"> -->
-                <span id="everyPage">페이지당 몇 개</span>:<input id="everyPageValue" type="number" min="1"/>
-                <span id="allPage">총 수량</span>:<input disabled id="allPageValue" type="number" value="0"/>
+                <span id="everyPage"></span>:<input id="everyPageValue" type="number" step="1" min="1"/>
+                <span id="allPage"></span>:<input readonly id="allPageValue" style="border: none;" value="0"/>
 
                 <!-- <br/> -->
                 <!-- 储存方式 -->
@@ -2287,9 +2287,9 @@
                     <br>
                     <div class="collapse" id="batchInformationDivId">
                         <!-- 次数： -->
-                        <span id="timesId">次数</span>: <input id="inputTimes" placeholder="" type="number" min="1">
+                        <span id="timesId"></span>: <input id="inputTimes" placeholder="" step="1" min="1">
                         <!-- 间隔时间： -->
-                        <span id="frequencyId">间隔时间</span>: <input id="inputFrequency" placeholder="" type="number" min="0.001">
+                        <span id="frequencyId"></span>: <input id="inputFrequency" placeholder="" step="0.5" min="0.001">
                         <br>
                         <label for="timesPromptInput" class="label">
                             <span id="showNumberNotifications">횟수알림</span>
