@@ -38,7 +38,6 @@ var opWebsql = {
         // }
     },
     createTable: function (tbNm) {
-        console.log("create"+tbNm);
         this.getDB();
         db.transaction(function (tx) {
 
