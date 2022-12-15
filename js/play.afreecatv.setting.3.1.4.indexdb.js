@@ -818,6 +818,17 @@ var opSettingIndexDB = {
                 }
                 //写入临时日志
                 $("#authorizationLogPre").prepend($("#timeFrequencys").text() + "&emsp;" + logString + "</li>");
+
+                if (!isHoverAuthorizationLogPre) {
+                    if ($("#authorizationLogPre").scrollTop() != 0) {
+                        //直接滚动
+                        // $("#increaseLogPre").scrollTop(0);
+                        //带动画的滚动
+                        $("#authorizationLogPre").animate({
+                            scrollTop: 0
+                        }, 500);
+                    }
+                }
                 showTipBarrageFunction(logString);
                 callback(answerData);
             }

@@ -694,10 +694,26 @@ function environmentButtonFunction() {
     chrysanthemumCheckBox.checked = false;
 
 }
-
-
+var isHoverIncreaseLogPre;
+var isHoverAuthorizationLogPre;
 //环境部署
 function environmentFunction() {
+    $("#increaseLogPre").hover(
+        function () {
+            isHoverIncreaseLogPre = true;
+        },
+        function () {
+            isHoverIncreaseLogPre = false;
+        }
+    );
+    $("#authorizationLogPre").hover(
+        function () {
+            isHoverAuthorizationLogPre = true;
+        },
+        function () {
+            isHoverAuthorizationLogPre = false;
+        }
+    );
     $("#uploadFile").click(function () {
         // $("#uploadFile").val('');
         this.value = "";
@@ -2760,6 +2776,16 @@ function retrievalButtonFunction() {
                                 // console.log(uData);
                                 if (uData.id && uData.userNick) {
                                     $("#increaseLogPre").prepend("<li>" + $("#timeFrequencys").text()+"&emsp;[" + user_Nick + "] "+packageResult.retrievalButtonFunction.addImagePoints[0] +calcAddData.increase +packageResult.retrievalButtonFunction.addImagePoints[1] + "</li>");
+                                    if (!isHoverIncreaseLogPre) {
+                                        if ($("#increaseLogPre").scrollTop() != 0) {
+                                            //直接滚动
+                                            // $("#increaseLogPre").scrollTop(0);
+                                            //带动画的滚动
+                                            $("#increaseLogPre").animate({
+                                                scrollTop: 0
+                                            }, 500);
+                                        }
+                                    }
                                     if (localStorageType == "indexdb") {
                                         opIndexDB.insertData(uData, idDom);
                                     } else if (localStorageType == "websql") {
@@ -3042,6 +3068,18 @@ function retrievalButtonFunction() {
 
                             if (userData.id && userData.userNick) {
                                 $("#increaseLogPre").prepend("<li>"+$("#timeFrequencys").text() +"&emsp;[" + nickName + "] "+packageResult.retrievalButtonFunction.addChatPoints[0] +calcAddData.increase +packageResult.retrievalButtonFunction.addChatPoints[1]+"</li>");
+                                //鼠标不在日志上滚动
+                                if (!isHoverIncreaseLogPre) {
+                                    if ($("#increaseLogPre").scrollTop() != 0) {
+                                        //直接滚动
+                                        // $("#increaseLogPre").scrollTop(0);
+                                        //带动画的滚动
+                                        $("#increaseLogPre").animate({
+                                            scrollTop: 0
+                                        }, 500);
+                                    }
+                                }
+
                                 // createTable
                                 if (localStorageType == "indexdb") {
                                     opIndexDB.insertData(userData, idDom);
