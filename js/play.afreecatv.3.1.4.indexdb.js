@@ -1140,8 +1140,8 @@ function getTodayMaxSortData(idDom, idt) {
                     // console.log(data);
                     // console.log("今天的ace："+JSON.stringify(data));
                     // $("#todayChatPointsAce").val(JSON.stringify(data));
-
-                    $("#todayChatPointsAce>th:eq(0)").text("용왕");
+                    //时时更新图片尺寸
+                    $("#todayChatPointsAce>th:eq(0)").html(aceImage);
                     $("#todayChatPointsAce>th:eq(1)").text(data.userNick + "{" + data.id + "}");
                     $("#todayChatPointsAce>th:eq(2)").text(convertGrade(data.grade));
                     $("#todayChatPointsAce>th:eq(3)").text(data.chatPoints);

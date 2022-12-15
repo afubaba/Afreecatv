@@ -3067,9 +3067,9 @@ function retrievalButtonFunction() {
                                     //     imgSize = 60;
                                     // }
                                     // console.log(imgSize);
-                                    appendString = "<img style='width:" + imgSize + "px;height:" + imgSize +
-                                        "px;' src ='" +
-                                        aurelionSolImgURL + "' title='"+ace.chatRatio+"["+imgSize+"px]'/>"
+                                    appendString = "<img style='width:" + imgSize + "px;height:" + imgSize +"px;' src ='" +
+                                        aurelionSolImgURL + "' title='" + ace.chatRatio + "[" + imgSize + "px]'/>"
+                                    aceImage = "<img width='" + imgSize + "' height='" + imgSize +"' src ='" + aurelionSolImgURL + "' title='" + ace.chatRatio + "[" + imgSize + "px]'/>"
                                     $(idDom).parent().append(appendString);
                                     // idDom.innerHTML=idDom.textContent=
                                     // idDom.innerHTML=idDom.innerHTML+"[ACE]";
