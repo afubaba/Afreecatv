@@ -2064,7 +2064,7 @@
                 </table>
             </div>
             <div class="modal-footer">
-                <pre id="increaseLogPre" class="prettyprint increaseLogPre"></pre>
+
                 <div class="pagination pagination-centered myPagination" id="pagination">
                     <ul id="pageIndex" style="visibility: hidden;">
                         <li>
@@ -2099,9 +2099,11 @@
                         <span id="allPage"></span>:
                         <input readonly id="allPageValue" style="border: none;" value="0"/>
                     </label>
-                    increase log
-                    <li class="btn btn-danger" onclick="$('#increaseLogPre').text('');">clear</li>
                 </div>
+                <li class="btn btn-danger" style="position: absolute;right: 50px;"
+                    onclick="$('#increaseLogPre').text('');">clear
+                </li>
+                <pre id="increaseLogPre" class="prettyprint increaseLogPre"></pre>
                 <!--                position: absolute;left: 0;bottom: 0;-->
                 <div id="footMenuDiv" class="footMenuDiv">
                     <li class="btn btn-warning alert-warning" id="exportDivButton" onclick="exportDivFunction();"></li>
@@ -2158,11 +2160,10 @@
                     <!-- <hr> -->
                     <!-- <a href=" #" class="btn">关闭</a> -->
                     <!-- <a id="refresh" href="#" class="btn btn-primary">새로 고침</a> -->
-
-
                 </div>
             </div>
         </div>
+
 
         <!--        transparent-->
         <div id="commandAuthorityManagementModal"
@@ -2196,7 +2197,7 @@
                     </label>
                 </div>
             </div>
-            <div class="modal-footer" style="height:100%;">
+            <div class="modal-footer">
                 <label id="promptOfIsStartLabel" for="promptOfIsStart" class="label">
                     <span id="promptOfIsStartSpan"></span>
                     <input id="promptOfIsStart" class="switch" type="checkbox">
@@ -2210,8 +2211,10 @@
 
                 <!-- <li class="btn" onclick="writeStatus()">写入状态</li> -->
                 Authorization Log
-                <li class="btn btn-danger" onclick="$('#authorizationLogPre').text('');">clear</li>
-                <pre id="authorizationLogPre" class="prettyprint" style="height: 100px;overflow: scroll;"></pre>
+                <li class="btn btn-danger" style="position: relative;top: 35px;"
+                    onclick="$('#authorizationLogPre').text('');">clear
+                </li>
+                <pre id="authorizationLogPre" class="prettyprint authorizationLogPre"></pre>
             </div>
         </div>
         <div id="exportDiv" style="display: none;" class="modal alert alert-block exportDivSize">
