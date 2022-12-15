@@ -59,7 +59,7 @@ var dynamicLoading = {
         var head = document.getElementsByTagName('head')[0];
         var script = document.createElement('script');
         // script.async = "async";
-        // script.defer = "defer";
+        script.defer = "defer";
         script.src = path;
         script.type = 'text/javascript';
 
