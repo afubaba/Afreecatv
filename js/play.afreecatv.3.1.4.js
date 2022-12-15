@@ -3635,7 +3635,7 @@ const object = new Set([
     }
     ],
     [
-        ["!용왕", "!ace","!포인트ace", "!채팅포인트ace", "!게임ace", "!게임포인트ace", "!총포인트ace","!총채팅포인트ace","!총횟수ace","!총채팅횟수ace"], (data) => {
+        ["!용왕", "!ace","!포인트ace", "!채팅포인트ace", "!횟수ace","!채팅횟수ace", "!게임ace", "!게임포인트ace", "!총포인트ace","!총채팅포인트ace","!총횟수ace","!총채팅횟수ace"], (data) => {
         let dataStr;
         let serachType;
         if ( data.tex == "!포인트ace" || data.tex == "!채팅포인트ace"||data.tex == "!ace" || data.tex == "!용왕") {
