@@ -1186,7 +1186,7 @@ function getTodayMaxSortData(idDom, idt) {
             stopTodayMaxSortDataInterval();
         }
         // console.log("-----------------------------");
-    }, 5000);
+    }, 10000);
 
 }
 
