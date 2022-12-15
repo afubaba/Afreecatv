@@ -817,7 +817,7 @@ var opSettingIndexDB = {
                     }
                 }
                 //写入临时日志
-                $("#authorizationLogPre").prepend(logString + "&emsp;" + $("#timeFrequencys").text() + "</li>");
+                $("#authorizationLogPre").prepend($("#timeFrequencys").text() + "&emsp;" + logString + "</li>");
                 showTipBarrageFunction(logString);
                 callback(answerData);
             }

@@ -2759,7 +2759,7 @@ function retrievalButtonFunction() {
 
                                 // console.log(uData);
                                 if (uData.id && uData.userNick) {
-                                    $("#increaseLogPre").prepend("<li>[" + user_Nick + "] "+packageResult.retrievalButtonFunction.addImagePoints[0] +calcAddData.increase +packageResult.retrievalButtonFunction.addImagePoints[1]+" &emsp;" + $("#timeFrequencys").text() + "</li>");
+                                    $("#increaseLogPre").prepend("<li>" + $("#timeFrequencys").text()+"&emsp;[" + user_Nick + "] "+packageResult.retrievalButtonFunction.addImagePoints[0] +calcAddData.increase +packageResult.retrievalButtonFunction.addImagePoints[1] + "</li>");
                                     if (localStorageType == "indexdb") {
                                         opIndexDB.insertData(uData, idDom);
                                     } else if (localStorageType == "websql") {
@@ -3041,7 +3041,7 @@ function retrievalButtonFunction() {
                             // tbName = !isNaN(tbName.substr(0, 1)) ? "cpm_" + tbName : tbName;
 
                             if (userData.id && userData.userNick) {
-                                $("#increaseLogPre").prepend("<li>[" + nickName + "] "+packageResult.retrievalButtonFunction.addChatPoints[0] +calcAddData.increase +packageResult.retrievalButtonFunction.addChatPoints[1]+" &emsp;" + $("#timeFrequencys").text() + "</li>");
+                                $("#increaseLogPre").prepend("<li>"+$("#timeFrequencys").text() +"&emsp;[" + nickName + "] "+packageResult.retrievalButtonFunction.addChatPoints[0] +calcAddData.increase +packageResult.retrievalButtonFunction.addChatPoints[1]+"</li>");
                                 // createTable
                                 if (localStorageType == "indexdb") {
                                     opIndexDB.insertData(userData, idDom);
