@@ -192,7 +192,7 @@ var opWebsql = {
                     // $("#pageIndex").detach();
                     if (allPageLength > 1) {
                         // $("#pagination").show();
-                        $("#pagination").css("visibility", "visible");
+                        $("#pageIndex").css("visibility", "visible");
                         // console.log("allPageLength:", allPageLength);
                         // console.log(li);
                         // console.log(li.substring(0, li.indexOf(",")));
@@ -280,7 +280,7 @@ var opWebsql = {
                         }
                     } else {
                         // $("#pagination").hide();
-                        $("#pagination").css("visibility", "hidden");
+                        $("#pageIndex").css("visibility", "hidden");
                     }
 
                 });

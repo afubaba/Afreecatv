@@ -675,7 +675,7 @@ var opIndexDB = {
         $("#pageIndex a").css("visibility", "hidden");
         if (allPageLength > 1) {
             // $("#pagination").show();
-            $("#pagination").css("visibility", "visible");
+            $("#pageIndex").css("visibility", "visible");
             // console.log("allPageLength:", allPageLength);
             var nowPage = page;
             // console.log(limi[0]);
@@ -744,7 +744,7 @@ var opIndexDB = {
             }
         } else {
             // $("#pagination").hide();
-            $("#pagination").css("visibility", "hidden");
+            $("#pageIndex").css("visibility", "hidden");
         }
     },
     serarchTodaySortRankDataByUserData: function (sortType, callback) {

@@ -8,6 +8,16 @@
       "번째 메시지 보내기!"
     ]
   },
+  "retrievalButtonFunction": {
+    "addImagePoints": [
+      "사진 이모티콘으로 ",
+      "포인트 추가!"
+    ],
+    "addChatPoints": [
+      "채팅으로 ",
+      "포인트 추가!"
+    ]
+  },
   "barrage": {
     "showTipBarrageFunction1": "탄막을 열다",
     "showTipBarrageFunction2": "탄막을 닫다"
@@ -27,7 +37,11 @@
   },
   "opIndexDB": {
     "createTable": "indexDB 테이블 만들기 성공",
-    "insertData": ["일의 포인트가 리셋되었습니다!","월의 총 포인트가 리셋되었습니다!","월의 총 포인트는 이미 이달로 이월되었다"],
+    "insertData": [
+      "일의 포인트가 리셋되었습니다!",
+      "월의 총 포인트가 리셋되었습니다!",
+      "월의 총 포인트는 이미 이달로 이월되었다"
+    ],
     "addTable": "개 데이터 추가에 성공.",
     "updateTable": "개 데이터 업데이트 성공.",
     "deleteTable": "테이블 삭제 성공.",
@@ -105,7 +119,8 @@
   },
   "getTodayMaxSortData": {
     "TodayMaxSortDataInterval": [
-      "[","]가 용왕이 됐어요.",
+      "[",
+      "]가 용왕이 됐어요.",
       "오늘 채팅 횟수: "
     ]
   },

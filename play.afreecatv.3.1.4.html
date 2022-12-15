@@ -2064,9 +2064,9 @@
                 </table>
             </div>
             <div class="modal-footer">
+                <pre id="increaseLogPre" class="prettyprint increaseLogPre"></pre>
                 <div class="pagination pagination-centered myPagination" id="pagination">
-                    <pre id="increaseLogPre" class="prettyprint increaseLogPre"></pre>
-                    <ul id="pageIndex">
+                    <ul id="pageIndex" style="visibility: hidden;">
                         <li>
                             <!-- <a href='#' id="firstPage" onclick="changePage(1);">firstPage</a> -->
                             <a href='#' id="firstPage" onclick="changePage(1);" style="visibility: hidden;"><span
@@ -2280,7 +2280,7 @@
                     </button> -->
                     <!-- 内容： -->
                     <!-- <span id="textId" style="font-size: large; color: red;">内容</span>: -->
-<!--                    <textarea id="testInput" rows="2"></textarea>-->
+                    <!--                    <textarea id="testInput" rows="2"></textarea>-->
 
                     <textarea autocomplete="on" class="noScroll" cols="25" data-provide="typeahead" id="testInput"
                               rows="3" wrap="hard"></textarea>
@@ -2306,7 +2306,8 @@
                         <!-- 次数： -->
                         <span id="timesId"></span>: <input id="inputTimes" placeholder="" step="1" min="1">
                         <!-- 间隔时间： -->
-                        <span id="frequencyId"></span>: <input id="inputFrequency" placeholder="" step="0.5" min="0.001">
+                        <span id="frequencyId"></span>: <input id="inputFrequency" placeholder="" step="0.5"
+                                                               min="0.001">
                         <br>
                         <label for="timesPromptInput" class="label">
                             <span id="showNumberNotifications">횟수알림</span>
@@ -2379,7 +2380,8 @@
 
                         <span id="chatSpeedSpan"></span>
                         <!-- 延迟时间 -->
-                        <input disabled id="delayInputTextId" title="현재 정보 획득 지연 시간(1000 은 1 초)" type="number" min="0.001"> ms
+                        <input disabled id="delayInputTextId" title="현재 정보 획득 지연 시간(1000 은 1 초)" type="number"
+                               min="0.001"> ms
 
                         <!-- <select id="delayInputId" >
                             <option id="quick" value="quick">快速</option>
