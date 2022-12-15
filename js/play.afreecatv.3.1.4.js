@@ -3644,7 +3644,7 @@ const object = new Set([
             dataStr = ":오늘 채팅 포인트:";
         } else if (data.tex == "!횟수ace"||data.tex == "!채팅횟수ace") {
             serachType = "chatTimes";
-            dataStr = ":오늘 게임 횟수:";
+            dataStr = ":오늘 채팅 횟수:";
         } else if (data.tex == "!게임ace" || data.tex == "!게임포인트ace") {
             serachType = "gamePoints";
             dataStr = ":오늘 게임 포인트:";
