@@ -12,6 +12,7 @@ var ace={};
 var sqlDataArray;
 var imgSize;
 var appendString;
+var aceImage;
 var today = new Date($("#timeFrequencys").text()).getDate();
 var showBarrageImgURL = "https://afubaba.github.io/Afreecatv/logo/400x400.jpeg";
 
@@ -316,7 +317,9 @@ var opWebsql = {
                 // $("#todayChatPointsAce>th:eq(4)").text(data.gamePoints);
                 // $("#todayChatPointsAce>th:eq(5)").text(data.allPoints);
                 // $("#todayChatPointsAce>th:eq(6)").text(todayDate);
-                $("#todayChatPointsAce>th:eq(0)").text("용왕");
+
+                // $("#todayChatPointsAce>th:eq(0)").text("용왕");
+                $("#todayChatPointsAce>th:eq(0)").html(aceImage);
                 $("#todayChatPointsAce>th:eq(1)").text(data.userNick + "{" + data.id + "}");
                 $("#todayChatPointsAce>th:eq(2)").text(convertGrade(data.grade));
                 $("#todayChatPointsAce>th:eq(3)").text(data.maxChatPoint);
