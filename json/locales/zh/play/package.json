@@ -8,6 +8,16 @@
       "发送下一次"
     ]
   },
+  "retrievalButtonFunction": {
+    "addImagePoints": [
+      "使用图片表情增加了",
+      "点！"
+    ],
+    "addChatPoints": [
+      "通过聊天增加了",
+      "点！"
+    ]
+  },
   "barrage": {
     "showTipBarrageFunction1": "打开弹慕",
     "showTipBarrageFunction2": "关闭弹慕"
@@ -27,7 +37,11 @@
   },
   "opIndexDB": {
     "createTable": "indexDB 表创建成功",
-    "insertData": ["日的积分重置了！","月的总积分被重置!","月的总积分已经转到本月!"],
+    "insertData": [
+      "日的积分重置了！",
+      "月的总积分被重置!",
+      "月的总积分已经转到本月!"
+    ],
     "addTable": "个数据添加成功",
     "updateTable": "个数据更新成功",
     "deleteTable": "删除表成功",

@@ -71,7 +71,7 @@ var opSettingIndexDB = {
                         // console.log("-------over--------");
 
                         // id
-                        let setArr = ["chatPointsMaxChangeMode", "chatPointsMode", "chatSportMode", "delayInputId", "isBarrage", "isHalfHourPrompt", "isResetTotalPointsEveryMonth", "isStart", "pictureIntetgralMode", "robotChatCommondCheckboxId"];
+                        let setArr = ["chatPointsMaxChangeMode", "isSingleIncreaseMaxinum", "chatPointsMode", "chatSportMode", "delayInputId", "isBarrage", "isHalfHourPrompt", "isResetTotalPointsEveryMonth", "isStart", "pictureIntetgralMode", "robotChatCommondCheckboxId"];
                         for (let i = 0; i < setArr.length; i++) {
                             if (setArr[i] in settData) {
                                 data[setArr[i]] = settData[setArr[i]];
@@ -90,7 +90,14 @@ var opSettingIndexDB = {
                         // console.log(data);
                         robotChatCommondCheckboxId.checked = data.robotChatCommondCheckboxId;
                         chatSportMode.checked = data.chatSportMode;
-                        // accordingNumberWords.checked = data.accordingNumberWords;
+                        isSingleIncreaseMaxinum.checked = data.isSingleIncreaseMaxinum;
+                        if (data.isSingleIncreaseMaxinum) {
+                            $(isSingleIncreaseMaxinum).parent("label").addClass("label-success");
+                            $singleIncreaseMaxinumValue.css("visibility", "visible");
+                        } else {
+                            $(isSingleIncreaseMaxinum).parent("label").removeClass("label-success");
+                            $singleIncreaseMaxinumValue.css("visibility", "hidden");
+                        }
 
                         pictureIntetgralMode.checked = data.pictureIntetgralMode;
                         chatPointsMode.checked = data.chatPointsMode;
@@ -810,7 +817,7 @@ var opSettingIndexDB = {
                     }
                 }
                 //写入临时日志
-                $("#authorizationLogPre").append(logString + "&emsp;" + $("#timeFrequencys").text() + "</li>");
+                $("#authorizationLogPre").prepend(logString + "&emsp;" + $("#timeFrequencys").text() + "</li>");
                 showTipBarrageFunction(logString);
                 callback(answerData);
             }
@@ -818,41 +825,41 @@ var opSettingIndexDB = {
     }
 }
 
-function convertGrade(grade){
+function convertGrade(grade) {
     let dataGrade;
     switch (grade) {
         case 'bj':
             // dataGrade = '主播';
-            dataGrade =packageResult.searchCommandAuthoritySupport.answerData4[1];
+            dataGrade = packageResult.searchCommandAuthoritySupport.answerData4[1];
             break;
         case 'manager':
             // dataGrade = '管理员';
-            dataGrade =packageResult.searchCommandAuthoritySupport.answerData4[2];
+            dataGrade = packageResult.searchCommandAuthoritySupport.answerData4[2];
             break;
         case 'topfan':
             // dataGrade = '热血粉丝';
-            dataGrade =packageResult.searchCommandAuthoritySupport.answerData4[3];
+            dataGrade = packageResult.searchCommandAuthoritySupport.answerData4[3];
             break;
         case 'gudok':
             // dataGrade = '订阅者';
-            dataGrade =packageResult.searchCommandAuthoritySupport.answerData4[4];
+            dataGrade = packageResult.searchCommandAuthoritySupport.answerData4[4];
             break;
         case 'supporter':
-            dataGrade =packageResult.searchCommandAuthoritySupport.answerData4[5];
+            dataGrade = packageResult.searchCommandAuthoritySupport.answerData4[5];
             break;
         case 'fan':
             // dataGrade= '粉丝';
-            dataGrade =packageResult.searchCommandAuthoritySupport.answerData4[6];
+            dataGrade = packageResult.searchCommandAuthoritySupport.answerData4[6];
             break;
         case 'user':
             // dataGrade = '普通用户';
-            dataGrade =packageResult.searchCommandAuthoritySupport.answerData4[7];
+            dataGrade = packageResult.searchCommandAuthoritySupport.answerData4[7];
             break;
         // default:
         //     dataGrade = 'lodding';
         //     break;
         default:
-            dataGrade =  grade;
+            dataGrade = grade;
             break;
     }
     return dataGrade;
@@ -864,7 +871,7 @@ function convertGrade(grade){
 var chatSportMode = getDomById("chatSportMode");
 var robotChatCommondCheckboxId = getDomById("robotChatCommondCheckboxId");
 var chatPointsMode = getDomById("chatPointsMode");
-// var accordingNumberWords = getDomById("accordingNumberWords");
+var isSingleIncreaseMaxinum = getDomById("isSingleIncreaseMaxinum");
 
 var pictureIntetgralMode = getDomById("pictureIntetgralMode");
 
@@ -877,7 +884,7 @@ let $halfHourPrompt = $("#halfHourPrompt");
 var settData = {
     id: "robotConfiguration",
     chatSportMode: chatSportMode.checked,
-    // accordingNumberWords:accordingNumberWords.checked,
+    isSingleIncreaseMaxinum: isSingleIncreaseMaxinum.checked,
     chatPointsMode: chatPointsMode.checked,
     pictureIntetgralMode: pictureIntetgralMode.checked,
     chatPointsMaxChangeMode: chatPointsMaxChangeMode.checked,
@@ -888,7 +895,7 @@ var settData = {
     isHalfHourPrompt: $halfHourPrompt.prop("checked"),
     isResetTotalPointsEveryMonth: resetTotalPointsEveryMonth.checked
 };
-$("#resetTotalPointsEveryMonth,#timesPromptInput,#chrysanthemumCheckBox,#chatPointsMode,#pictureIntetgralMode,#chatPointsMaxChangeMode,#chatSportMode,#robotChatCommondCheckboxId")
+$("#isSingleIncreaseMaxinum,#resetTotalPointsEveryMonth,#timesPromptInput,#chrysanthemumCheckBox,#chatPointsMode,#pictureIntetgralMode,#chatPointsMaxChangeMode,#chatSportMode,#robotChatCommondCheckboxId")
     .change(function () {
         if (this.checked) {
             $(this).parent("label").addClass("label-success");
@@ -909,7 +916,7 @@ function getLabelStatus(domArray) {
 }
 
 //上传状态
-$("#resetTotalPointsEveryMonth,#pictureIntetgralMode,#halfHourPrompt,#chatPointsMaxChangeMode,#chatPointsMode,#chatSportMode,#accordingNumberWords,#robotChatCommondCheckboxId,#delayInputId")
+$("#isSingleIncreaseMaxinum,#resetTotalPointsEveryMonth,#pictureIntetgralMode,#halfHourPrompt,#chatPointsMaxChangeMode,#chatPointsMode,#chatSportMode,#accordingNumberWords,#robotChatCommondCheckboxId,#delayInputId")
     .change(
         function () {
             //每月重置积分选项
@@ -939,7 +946,7 @@ $("#resetTotalPointsEveryMonth,#pictureIntetgralMode,#halfHourPrompt,#chatPoints
             // }
             settData.chatSportMode = chatSportMode.checked;
 
-            // settData.accordingNumberWords=accordingNumberWords.checked;
+            settData.isSingleIncreaseMaxinum = isSingleIncreaseMaxinum.checked;
 
             pictureIntetgralMode = getDomById("pictureIntetgralMode");
             settData.pictureIntetgralMode = pictureIntetgralMode.checked;
@@ -1473,35 +1480,39 @@ $("#promptOfIsStart,#promptOfAuthorizationFailure").change(function () {
 });
 
 
-// var $accordingNumberWordsValue= $("#accordingNumberWordsValue");
-// var accordingNumberWordsValueLocalStorage = localStorage.getItem("accordingNumberWordsValue");
-// if (accordingNumberWordsValueLocalStorage == null || accordingNumberWordsValueLocalStorage == "undefined") {
-//     localStorage.setItem("accordingNumberWordsValue", 10);
-//     $accordingNumberWordsValue.val(10);
-//     accordingNumberWordsValueLocalStorage=10;
-// }else{
-//     $accordingNumberWordsValue.val(accordingNumberWordsValueLocalStorage);
-// }
-// $accordingNumberWordsValue.change(() => {
-//     if($accordingNumberWordsValue.val()<1){
-//         $accordingNumberWordsValue.val(1);
-//     }
-//     if($accordingNumberWordsValue.val()>15){
-//         $accordingNumberWordsValue.val(15);
-//     }
-//
-//     // console.log("修改值:"+$accordingNumberWordsValue.val());
-//     localStorage.setItem("accordingNumberWordsValue", $accordingNumberWordsValue.val());
-//     accordingNumberWordsValueLocalStorage=$accordingNumberWordsValue.val();
-// });
+var $singleIncreaseMaxinumValue = $("#singleIncreaseMaxinumValue");
+var singleIncreaseMaxinumValueLocalStorage = localStorage.getItem("singleIncreaseMaxinumValue");
+singleIncreaseMaxinumValueLocalStorage = parseInt(singleIncreaseMaxinumValueLocalStorage);
+if (singleIncreaseMaxinumValueLocalStorage == null || singleIncreaseMaxinumValueLocalStorage == "undefined") {
+    localStorage.setItem("singleIncreaseMaxinumValue", 10);
+    $singleIncreaseMaxinumValue.val(10);
+    singleIncreaseMaxinumValueLocalStorage = 10;
+} else {
+    $singleIncreaseMaxinumValue.val(singleIncreaseMaxinumValueLocalStorage);
+}
+$singleIncreaseMaxinumValue.change(() => {
 
-// $("#accordingNumberWords").change(function () {
-//
-//     if($("#accordingNumberWords").prop("checked")){
-//         // $accordingNumberWordsValue.show();
-//         $accordingNumberWordsValue.css("visibility","visible");
-//     }else{
-//         // $accordingNumberWordsValue.hide();
-//         $accordingNumberWordsValue.css("visibility","hidden");
-//     }
-// });
+    if ($singleIncreaseMaxinumValue.val() == "") {
+        $singleIncreaseMaxinumValue.val(15);
+    } else {
+        if ($singleIncreaseMaxinumValue.val() < 5) {
+            $singleIncreaseMaxinumValue.val(5);
+        }
+        if ($singleIncreaseMaxinumValue.val() > 30) {
+            $singleIncreaseMaxinumValue.val(30);
+        }
+    }
+    // console.log("修改值:"+$accordingNumberWordsValue.val());
+    localStorage.setItem("singleIncreaseMaxinumValue", $singleIncreaseMaxinumValue.val());
+    singleIncreaseMaxinumValueLocalStorage = $singleIncreaseMaxinumValue.val();
+});
+var $isSingleIncreaseMaxinum = $("#isSingleIncreaseMaxinum");
+$isSingleIncreaseMaxinum.change(function () {
+    if ($isSingleIncreaseMaxinum.prop("checked")) {
+        // $accordingNumberWordsValue.show();
+        $singleIncreaseMaxinumValue.css("visibility", "visible");
+    } else {
+        // $accordingNumberWordsValue.hide();
+        $singleIncreaseMaxinumValue.css("visibility", "hidden");
+    }
+});

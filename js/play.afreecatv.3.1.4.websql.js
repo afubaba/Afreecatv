@@ -167,19 +167,18 @@ var opWebsql = {
                         "</th><th>" + d.allTimes + "</th><th>" + d.date + "</th></tr>");
                     i++;
                 }
-                if (!which && !sortType || !limi) {
-                    //序号变成1
-                    $('#pageIndex').children('li').children('a').css('background', '');
-                    $('#pageIndex').children('li').children('a:eq(0)').css('background', 'red');
-                }
+                // if (!which && !sortType || !limi) {
+                //     //序号变成1
+                //     $('#pageIndex').children('li').children('a').css('background', '');
+                //     // $('#pageIndex').children('li').children('a:eq(0)').css('background', 'red');
+                // }
 
                 // console.log(data);
                 var searchCountSql = "SELECT count(1) as allCount from " + tbName + dateString;
                 // console.log(searchCountSql);
-                var allPageLength;
                 tx.executeSql(searchCountSql, sqlDataArray, function (tx, results) {
                     $("#allPageValue").val(results.rows[0].allCount);
-                    allPageLength = results.rows[0].allCount % everyPage == 0 ?
+                    let allPageLength = results.rows[0].allCount % everyPage == 0 ?
                         parseInt(results.rows[0].allCount / everyPage) : (parseInt(
                             results.rows[0].allCount / everyPage) + 1);
 
@@ -198,17 +197,20 @@ var opWebsql = {
                         // console.log(li);
                         // console.log(li.substring(0, li.indexOf(",")));
                         // var nowPage = parseInt(li.substring(0, li.indexOf(",")));
-                        var nowPage = pageIndex;
+                        let nowPage = pageIndex;
                         // console.log(limi[0]);
 
                         if (($("#pageIndex li").length - 2) > allPageLength) {
                             for (var i = allPageLength + 1; i <= ($("#pageIndex li")
                                 .length - 2); i++) {
-                                $("#pageIndex>li>a:eq(" + i + ")").hide();
+                                // $("#pageIndex>li>a:eq(" + i + ")").hide();
+                                $("#pageIndex>li>a:eq(" + i + ")").css("visibility", "hidden");
                             }
                         } else {
-                            $("#pageIndex>li>a:gt(0):lt(6)").show();
-                            $("#pageIndex>li>a").show();
+                            // $("#pageIndex>li>a:gt(0):lt(6)").show();
+                            // $("#pageIndex>li>a").show();
+                            $("#pageIndex>li>a:gt(0):lt(6)").css("visibility", "visible");
+                            $("#pageIndex>li>a").css("visibility", "visible");
                         }
 
                         // console.log(pageIndex);
@@ -225,31 +227,31 @@ var opWebsql = {
                             "</span>");
                         if (!nowPage) {
                             nowPage = 1;
-                            $("#firstPage,#lastPage").hide();
+                            $("#firstPage,#lastPage").css("visibility", "hidden");
                         }
                         // console.log("allPageLength:"+allPageLength,"nowPage:"+nowPage);
                         if (nowPage <= 3) {
                             nowPage = 3;
-                            $("#firstPage").hide();
+                            $("#firstPage").css("visibility", "hidden");
                             // console.log("隐藏first");
                         } else {
                             if ($("#pageIndex li:eq(1)").text() > 1) {
-                                $("#firstPage").show();
+                                $("#firstPage").css("visibility", "visible");
                             } else {
-                                $("#firstPage").hide();
+                                $("#firstPage").css("visibility", "hidden");
                             }
                             // console.log("显示first");
                         }
-                        var ma = allPageLength - nowPage;
+                        let ma = allPageLength - nowPage;
                         // console.log(ma);
                         if (ma <= 3) {
                             nowPage = allPageLength - 3;
-                            $("#lastPage").hide();
+                            $("#lastPage").css("visibility", "hidden");
                         } else {
-                            $("#lastPage").show();
+                            $("#lastPage").css("visibility", "visible");
                         }
-                        var j = 1;
-                        for (var i = 1; i <= allPageLength; i++) {
+                        let j = 1;
+                        for (let i = 1; i <= allPageLength; i++) {
                             if (i < nowPage && nowPage - i <= 2 || i >= nowPage &&
                                 i - nowPage <= 3) {
                                 // console.log("i:", i + "j:", j);
@@ -258,7 +260,8 @@ var opWebsql = {
                                 // 	return;
                                 // } else {
                                 //显示
-                                $("#pageIndex>li>a:eq(" + j + ")").show();
+                                // $("#pageIndex>li>a:eq(" + j + ")").show();
+                                $("#pageIndex>li>a:eq(" + j + ")").css("visibility", "visible");
 
                                 $("#pageIndex>li>a:eq(" + j + ")").html(
                                     "<span class='badge'>" + i + "</span>");
@@ -528,6 +531,7 @@ var opWebsql = {
         uId = userData.userId;
         uNick = userData.userNick;
         tbNm = userData.tbName;
+
         dataBase.transaction(function (tx) {
 
             // var tbName = "chatPointsMode";
@@ -1061,7 +1065,7 @@ opWebsql.createTable(tbName);
 var flushInterval;
 
 function getData() {
-    $("#myTableHead i").hide();
+    $("#myTableHead i").css("visibility", "hidden");
     $('#myModal').modal('toggle');
 
     if (typeof flushInterval != "undefined") {
@@ -1224,7 +1228,7 @@ function todayChatPointsSort(which) {
     srt = "down";
     var todayChatPointChilren = $("#" + which + ">i");
     if (todayChatPointChilren.length == 0) {
-        $("#myTableHead i").hide();
+        $("#myTableHead i").css("visibility", "hidden");
         todayChatPoints.append(
             "<i class='icon-arrow-up' style='display:none'/><i class='icon-arrow-down' style='display:block' />"
         );
@@ -1242,7 +1246,7 @@ function todayChatPointsSort(which) {
         // &&todayChatPointChilren[1].style.display=="none"
         if (todayChatPointChilren[0].style.display == "none" && todayChatPointChilren[1].style.display == "block") {
 
-            $("#myTableHead i").hide();
+            $("#myTableHead i").css("visibility", "hidden");
             todayChatPointChilren[0].style.display = "block";
             todayChatPointChilren[1].style.display = "none";
             // todayChatPointChilren[0].className = "icon-arrow-up";
@@ -1254,7 +1258,7 @@ function todayChatPointsSort(which) {
                 opWebsql.searchData(tbName, srt, which);
             }
         } else {
-            $("#myTableHead i").hide();
+            $("#myTableHead i").css("visibility", "hidden");
             todayChatPointChilren[0].style.display = "none";
             todayChatPointChilren[1].style.display = "block";
             // todayChatPointChilren[0].className = "icon-arrow-down";

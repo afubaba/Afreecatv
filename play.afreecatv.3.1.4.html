@@ -2010,6 +2010,7 @@
                     <span id="mattersNeedingAttentionNote2"></span>
                     <br>
                     <span id="mattersNeedingAttentionNote3"></span>
+
                 </div>
                 <h1 id="showData">Show Data</h1>
                 <!-- 채팅 포인트 데이터 -->
@@ -2061,14 +2062,14 @@
                     <tbody>
                     </tbody>
                 </table>
-
             </div>
             <div class="modal-footer">
-                <div class="pagination pagination-centered" id="pagination" style="visibility: hidden;">
+                <div class="pagination pagination-centered myPagination" id="pagination">
+                    <pre id="increaseLogPre" class="prettyprint increaseLogPre"></pre>
                     <ul id="pageIndex">
                         <li>
                             <!-- <a href='#' id="firstPage" onclick="changePage(1);">firstPage</a> -->
-                            <a href='#' id="firstPage" onclick="changePage(1);" style="display: none;"><span
+                            <a href='#' id="firstPage" onclick="changePage(1);" style="visibility: hidden;"><span
                                     class='badge'>1</span></a>
                         </li>
                         <!-- <li><a href="#" onclick="changePage(1)">first</li> -->
@@ -2085,65 +2086,81 @@
 
                         <li><a href='#' onclick="changePage(this.innerText);">6</a></li>
 
-                        <li><a href='#' id="lastPage" onclick="changePage(1);" style="display: none;">lastPage</a>
+                        <li><a href='#' id="lastPage" onclick="changePage(1);" style="visibility: hidden;">lastPage</a>
                         </li>
+
                     </ul>
-                    <br/>
+                    <label class="labelStyle" for="everyPageValue">
+                        <span id="everyPage"></span>:
+                        <input id="everyPageValue" type="number" step="1" min="1"/>
+                    </label>
 
+                    <label class="labelStyle" for="allPage">
+                        <span id="allPage"></span>:
+                        <input readonly id="allPageValue" style="border: none;" value="0"/>
+                    </label>
+                    increase log
+                    <li class="btn btn-danger" onclick="$('#increaseLogPre').text('');">clear</li>
                 </div>
+                <!--                position: absolute;left: 0;bottom: 0;-->
+                <div id="footMenuDiv" class="footMenuDiv">
+                    <li class="btn btn-warning alert-warning" id="exportDivButton" onclick="exportDivFunction();"></li>
 
-                <!-- ace:<input id="todayChatPointsAce" type="text"> -->
-                <span id="everyPage"></span>:<input id="everyPageValue" type="number" step="1" min="1"/>
-                <span id="allPage"></span>:<input readonly id="allPageValue" style="border: none;" value="0"/>
+                    <label for="resetTotalPointsEveryMonth" class="label">
+                        <span id="isResetTotalPointsEveryMonth"></span>
+                        <input id="resetTotalPointsEveryMonth" class="switch" type="checkbox">
+                    </label>
 
-                <!-- <br/> -->
-                <!-- 储存方式 -->
-                <span id="localStorageType">저장 방식</span>:
-                <label for="websql" class="label">
-                    <span id="websqlSpan">websql<i class='bi bi-database'></i><i class='bi bi-database-fill'></i></span>
-                    <input id="websql" name="storeWays" type="radio" value="websql"/>
-                </label>
+                    <li class="btn btn-danger" id="clearTableButton" onclick="clearTable()"></li>
 
-                <label for="indexDB" class="label">
+                    <!-- ace:<input id="todayChatPointsAce" type="text"> -->
+                    <!-- <br/> -->
+                    <!-- 储存方式 -->
+                    <span id="localStorageType"></span>:
+                    <label for="websql" class="label">
+                        <span id="websqlSpan">websql<i class='bi bi-database'></i><i
+                                class='bi bi-database-fill'></i></span>
+                        <input id="websql" name="storeWays" type="radio" value="websql"/>
+                    </label>
+
+                    <label for="indexDB" class="label">
                     <span id="indexDBSpan">indexdb<i class='bi bi-database'></i><i
                             class='bi bi-database-fill'></i></span>
-                    <input id="indexDB" checked name="storeWays" type="radio" value="indexdb"/>
-                </label>
-                <br/>
+                        <input id="indexDB" checked name="storeWays" type="radio" value="indexdb"/>
+                    </label>
+                    <br/>
 
-<!--                <label for="accordingNumberWordsValue"  class="labelStyle">-->
-<!--                    <span id="isAccordingNumberWords"></span>-->
-<!--                    &lt;!&ndash; checked &ndash;&gt;-->
-<!--                    &lt;!&ndash;                    <input checked id="accordingNumberWords" class="switch" type="checkbox">&ndash;&gt;-->
-<!--                    <input id="accordingNumberWordsValue" type="number" style="width: 30px;" max="15" min="1" placeholder="10"/>-->
-<!--                </label>-->
+                    <label for="singleIncreaseMaxinumValue" class="label">
+                        <span id="singleIncreaseMaxinumValueSpan"></span>
+                        <!-- checked -->
+                        <input checked id="isSingleIncreaseMaxinum" class="switch" type="checkbox">
+                        <input id="singleIncreaseMaxinumValue" type="number" style="width: 30px;" step="5" max="30"
+                               min="5"
+                               placeholder="10"/>
+                    </label>
 
-                <label for="chatPointsMode" class="label">
-                    <span id="isChatPoints"></span>
-                    <!-- checked -->
-                    <input checked id="chatPointsMode" class="switch" type="checkbox">
-                </label>
+                    <label for="chatPointsMode" class="label">
+                        <span id="isChatPoints"></span>
+                        <!-- checked -->
+                        <input checked id="chatPointsMode" class="switch" type="checkbox">
+                    </label>
+                    `
 
-                <label for="pictureIntetgralMode" class="label">
-                    <span id="isPictureIntetgral"></span>
-                    <input checked id="pictureIntetgralMode" class="switch" type="checkbox">
-                </label>
-                <label for="chatPointsMaxChangeMode" class="label ">
-                    <span id="isChatPointsMaxChange"></span>
-                    <input id="chatPointsMaxChangeMode" class="switch" type="checkbox">
-                </label>
-                <br>
-                <li class="btn btn-warning alert-warning" id="exportDivButton" onclick="exportDivFunction();"></li>
+                    <label for="pictureIntetgralMode" class="label">
+                        <span id="isPictureIntetgral"></span>
+                        <input checked id="pictureIntetgralMode" class="switch" type="checkbox">
+                    </label>
+                    <label for="chatPointsMaxChangeMode" class="label ">
+                        <span id="isChatPointsMaxChange"></span>
+                        <input id="chatPointsMaxChangeMode" class="switch" type="checkbox">
+                    </label>
 
-                <label for="resetTotalPointsEveryMonth" class="label">
-                    <span id="isResetTotalPointsEveryMonth"></span>
-                    <input id="resetTotalPointsEveryMonth" class="switch" type="checkbox">
-                </label>
+                    <!-- <hr> -->
+                    <!-- <a href=" #" class="btn">关闭</a> -->
+                    <!-- <a id="refresh" href="#" class="btn btn-primary">새로 고침</a> -->
 
-                <li class="btn btn-danger" id="clearTableButton" onclick="clearTable()"></li>
-                <!-- <hr> -->
-                <!-- <a href=" #" class="btn">关闭</a> -->
-                <!-- <a id="refresh" href="#" class="btn btn-primary">새로 고침</a> -->
+
+                </div>
             </div>
         </div>
 
@@ -2188,7 +2205,7 @@
                 <label id="promptOfAuthorizationFailureLabel" class="label"
                        for="promptOfAuthorizationFailure">
                     <span id="promptOfAuthorizationFailureSpan"></span>
-                    <input id="promptOfAuthorizationFailure" checked class="switch" type="checkbox"/>
+                    <input id="promptOfAuthorizationFailure" class="switch" type="checkbox"/>
                 </label>
 
                 <!-- <li class="btn" onclick="writeStatus()">写入状态</li> -->

@@ -666,14 +666,13 @@ var opIndexDB = {
     },
     showEveryPageIndex: function (allLength, page) {
         $("#allPageValue").val(allLength);
-        var allPageLength = allLength % everyPage == 0 ?
+        let allPageLength = allLength % everyPage == 0 ?
             parseInt(allLength / everyPage) : (parseInt(
                 allLength / everyPage) + 1);
 
         //清空下标
         // $("#pageIndex>li").empty();
-        $("#pageIndex a").hide();
-
+        $("#pageIndex a").css("visibility", "hidden");
         if (allPageLength > 1) {
             // $("#pagination").show();
             $("#pagination").css("visibility", "visible");
@@ -683,11 +682,11 @@ var opIndexDB = {
             if (($("#pageIndex li").length - 2) > allPageLength) {
                 for (var i = allPageLength + 1; i <= ($("#pageIndex li")
                     .length - 2); i++) {
-                    $("#pageIndex>li>a:eq(" + i + ")").hide();
+                    $("#pageIndex>li>a:eq(" + i + ")").css("visibility", "hidden");
                 }
             } else {
-                $("#pageIndex>li>a:gt(0):lt(6)").show();
-                $("#pageIndex>li>a").show();
+                $("#pageIndex>li>a:gt(0):lt(6)").css("visibility", "visible");
+                $("#pageIndex>li>a").css("visibility", "visible");
             }
             //最后一页
             allPageLength > 6 && $("#lastPage").attr("onclick",
@@ -698,19 +697,19 @@ var opIndexDB = {
             if (!nowPage) {
                 nowPage = 1;
                 // console.log("隐藏f ,l");
-                $("#firstPage,#lastPage").hide();
+                $("#firstPage,#lastPage").css("visibility", "hidden");
             }
             // console.log("allPageLength:"+allPageLength,"nowPage:"+nowPage);
 
             if (nowPage <= 3) {
                 nowPage = 3;
-                $("#firstPage").hide();
+                $("#firstPage").css("visibility", "hidden");
                 // console.log("隐藏first");
             } else {
                 if ($("#pageIndex li:eq(1)").text() > 1) {
-                    $("#firstPage").show();
+                    $("#firstPage").css("visibility", "visible");
                 } else {
-                    $("#firstPage").hide();
+                    $("#firstPage").css("visibility", "hidden");
                 }
                 // console.log("显示first");
             }
@@ -718,9 +717,9 @@ var opIndexDB = {
             // console.log(ma);
             if (ma <= 3) {
                 nowPage = allPageLength - 3;
-                $("#lastPage").hide();
+                $("#lastPage").css("visibility", "hidden");
             } else {
-                $("#lastPage").show();
+                $("#lastPage").css("visibility", "visible");
             }
 
             var j = 1;
@@ -729,7 +728,7 @@ var opIndexDB = {
                     i - nowPage <= 3) {
                     // console.log("i:", i + "j:", j);
                     //显示
-                    $("#pageIndex>li>a:eq(" + j + ")").show();
+                    $("#pageIndex>li>a:eq(" + j + ")").css("visibility", "visible");
 
                     $("#pageIndex>li>a:eq(" + j + ")").html(
                         "<span class='badge'>" + i + "</span>");

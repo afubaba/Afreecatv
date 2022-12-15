@@ -2759,6 +2759,7 @@ function retrievalButtonFunction() {
 
                                 // console.log(uData);
                                 if (uData.id && uData.userNick) {
+                                    $("#increaseLogPre").prepend("<li>[" + user_Nick + "] "+packageResult.retrievalButtonFunction.addImagePoints[0] +calcAddData.increase +packageResult.retrievalButtonFunction.addImagePoints[1]+" &emsp;" + $("#timeFrequencys").text() + "</li>");
                                     if (localStorageType == "indexdb") {
                                         opIndexDB.insertData(uData, idDom);
                                     } else if (localStorageType == "websql") {
@@ -3039,8 +3040,8 @@ function retrievalButtonFunction() {
                             // var tbName = $("#szBjId").val();
                             // tbName = !isNaN(tbName.substr(0, 1)) ? "cpm_" + tbName : tbName;
 
-
                             if (userData.id && userData.userNick) {
+                                $("#increaseLogPre").prepend("<li>[" + nickName + "] "+packageResult.retrievalButtonFunction.addChatPoints[0] +calcAddData.increase +packageResult.retrievalButtonFunction.addChatPoints[1]+" &emsp;" + $("#timeFrequencys").text() + "</li>");
                                 // createTable
                                 if (localStorageType == "indexdb") {
                                     opIndexDB.insertData(userData, idDom);
@@ -4766,33 +4767,38 @@ function openUserList() {
 }
 
 function calculateAddPoints(userText) {
-    // console.log(accordingNumberWordsValueLocalStorage);
+    // console.log(singleIncreaseMaxinumValueLocalStorage);
     //增加的分数
     let increase;
     //保留后几位
     let increaseBit;
     // console.log(accordingNumberWords.checked);
     //按照字数
-
+    // console.log($isSingleIncreaseMaxinum.prop("checked"));
     if (userText != null) {
         userText = userText.replaceAll(" ", "");
-        //去除空格 判断null
-        if (userText.length <= 15) {
-            // increase = roundFun(userText.length/15, 2);
-            // increase = userText.length / 15;
-            // increase = userText.length / accordingNumberWordsValueLocalStorage;
-            increase = userText.length ;
+        if ($isSingleIncreaseMaxinum.prop("checked")) {
+            //去除空格 判断null
+            if (userText.length <= singleIncreaseMaxinumValueLocalStorage) {
+                // increase = roundFun(userText.length/15, 2);
+                // increase = userText.length / 15;
+                // increase = userText.length / accordingNumberWordsValueLocalStorage;
+                increase = userText.length;
+            } else {
+                // increase = 2;
+                // increase = 15 / accordingNumberWordsValueLocalStorage;
+                increase = singleIncreaseMaxinumValueLocalStorage;
+            }
         } else {
-            // increase = 2;
-            // increase = 15 / accordingNumberWordsValueLocalStorage;
-            increase = 15;
+            increase = userText.length;
         }
         // console.log("userTextLength:" + userText.length);
     } else {
         //表情等
         // increase = 0.25 * 30 / accordingNumberWordsValueLocalStorage;
-        increase = 0.25 * 30 ;
+        increase = 0.25 * 30;
     }
+
     increaseBit = 2;
     // if (accordingNumberWords.checked) {} else{
     //     //按照条数
@@ -4811,5 +4817,6 @@ function calculateAddPoints(userText) {
         "increaseBit": increaseBit
     }
     // console.log(calcAddData);
+
     return calcAddData;
 }
