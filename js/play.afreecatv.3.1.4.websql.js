@@ -319,7 +319,11 @@ var opWebsql = {
                 // $("#todayChatPointsAce>th:eq(6)").text(todayDate);
 
                 // $("#todayChatPointsAce>th:eq(0)").text("용왕");
-                $("#todayChatPointsAce>th:eq(0)").html(aceImage);
+                if(aceImage){
+                    $("#todayChatPointsAce>th:eq(0)").html(aceImage);
+                }else{
+                    $("#todayChatPointsAce>th:eq(0)").text("용왕");
+                }
                 $("#todayChatPointsAce>th:eq(1)").text(data.userNick + "{" + data.id + "}");
                 $("#todayChatPointsAce>th:eq(2)").text(convertGrade(data.grade));
                 $("#todayChatPointsAce>th:eq(3)").text(data.maxChatPoint);
