@@ -1,4 +1,4 @@
-// console.log("本地common.js");
+// console.log("远程common.js");
 function httpRequest(url, callback) {
     var xhr = new XMLHttpRequest();
     xhr.open("GET", url, true);
