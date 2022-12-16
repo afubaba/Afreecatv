@@ -681,7 +681,7 @@ var opSettingIndexDB = {
             };
 
             let messageString;
-            let logString;
+            let logString = $("#timeFrequencys").text() + "&emsp;";
             userDataStore3.get(searchDataId).onsuccess = function (event) {
                 let data = event.target.result
                 if (!data) {
@@ -708,7 +708,7 @@ var opSettingIndexDB = {
                         // console.log(event.target.result);
                         //开关状态写入
                         messageString = "@" + searchData.nickName + ":₍" + searchData.tex + "₎ " + packageResult.searchCommandAuthoritySupport.answerData1;
-                        logString = "<li style='color: black'>" + messageString;
+                        logString = "<li style='color: black'>" + logString + messageString;
                         answerData.message = packageResult.searchCommandAuthoritySupport.answerData1;
                         callback(answerData);
                     }
@@ -722,13 +722,13 @@ var opSettingIndexDB = {
                     if (data.isStart) {
                         if (data.isLoginUserStart && loginId == searchData.idt && searchData.nickName == loginNick) {
                             messageString = "@" + searchData.nickName + ":₍" + searchData.tex + "₎ " + packageResult.searchCommandAuthoritySupport.answerData2;
-                            logString = "<li style='color: green'>" + messageString;
+                            logString = "<li style='color: green'>" + logString + messageString;
                             // answerData.message = "登录账户满足权限";
                             answerData.message = packageResult.searchCommandAuthoritySupport.answerData2;
                             answerData.isAuthority = true;
                         } else if (data[searchData.grade]) {
                             messageString = "@" + searchData.nickName + ":₍" + searchData.tex + "₎ " + packageResult.searchCommandAuthoritySupport.answerData3;
-                            logString = "<li style='color: green'>" + messageString;
+                            logString = "<li style='color: green'>" + logString + messageString;
                             //开关开启状态写入
                             // $("input[name='isStart" + searchData.objIndex + "']")[1].checked = true;
                             // answerData.message = "满足角色权限";
@@ -781,7 +781,7 @@ var opSettingIndexDB = {
                             // answerData.message = "@"+searchData.nickName+":("+searchData.tex+") 권한이 없습니다. 이 권한은 "+answerString+"가 필요합니다.";
                             // answerData.message = "@"+searchData.nickName+":("+searchData.tex+") 이 권한은 "+answerString+"가 필요합니다.";
                             messageString = "(" + searchData.tex + ") 이 권한은 " + answerString + "가 필요합니다.";
-                            logString = "<li style='color: red'>(" + searchData.tex + ") " + packageResult.searchCommandAuthoritySupport.answerData5[0]
+                            logString = "<li style='color: red'>" + logString + "(" + searchData.tex + ") " + packageResult.searchCommandAuthoritySupport.answerData5[0]
                                 + logStr + packageResult.searchCommandAuthoritySupport.answerData5[1];
                             answerData.message = messageString;
                             if ($("#promptOfAuthorizationFailure").prop("checked")) {
@@ -808,7 +808,7 @@ var opSettingIndexDB = {
 
                     } else {
                         messageString = "(" + searchData.tex + ")이 명령은 켜져 있지 않습니다.";
-                        logString = "<li style='color: orange'>(" + searchData.tex + ")" + packageResult.searchCommandAuthoritySupport.answerData6;
+                        logString = "<li style='color: orange'>"+logString+"(" + searchData.tex + ")" + packageResult.searchCommandAuthoritySupport.answerData6;
                         // answerData.message = "此命令没有开启";
                         answerData.message = messageString;
                         if ($("#promptOfIsStart").prop("checked")) {
@@ -817,7 +817,7 @@ var opSettingIndexDB = {
                     }
                 }
                 //写入临时日志
-                $("#authorizationLogPre").prepend($("#timeFrequencys").text() + "&emsp;" + logString + "</li>");
+                $("#authorizationLogPre").prepend(logString + "</li>");
 
                 if (!isHoverAuthorizationLogPre) {
                     if ($("#authorizationLogPre").scrollTop() != 0) {
