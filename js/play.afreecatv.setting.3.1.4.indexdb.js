@@ -788,13 +788,15 @@ var opSettingIndexDB = {
                                 sendMessageCustom(answerData.message, 1, 5);
                             }
                         }
-                        //授权成功增加1游戏积分
+                        //授权成功增加5游戏积分
                         if (answerData.isAuthority) {
                             let addUserData = {
                                 id: searchData.idt,
                                 userNick: searchData.nickName,
                                 gamePoints: 5
                             }
+                            //日志增加
+                            $("#increaseLogPre").prepend("<li>" + $("#timeFrequencys").text() + "&emsp;[" + searchData.nickName + "] " + packageResult.retrievalButtonFunction.byCommand + 5 + packageResult.retrievalButtonFunction.addGamePoints + "</li>");
                             if (localStorageType == "indexdb") {
                                 opIndexDB.addData(addUserData);
 

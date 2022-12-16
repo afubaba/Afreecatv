@@ -9,14 +9,13 @@
     ]
   },
   "retrievalButtonFunction": {
-    "addImagePoints": [
-      "使用图片表情增加了",
-      "点！"
-    ],
-    "addChatPoints": [
-      "通过聊天增加了",
-      "点！"
-    ]
+    "byImageEmoji": "使用图片表情增加了",
+    "byChat": "通过聊天增加了",
+    "byCommand": "通过使用命令增加了",
+    "addChatPoints": "聊天点！",
+    "addGamePoints": "游戏点！",
+    "winByDiceGame": "通过骰子游戏赢了",
+    "loseByDiceGame": "通过骰子游戏输了"
   },
   "barrage": {
     "showTipBarrageFunction1": "打开弹慕",

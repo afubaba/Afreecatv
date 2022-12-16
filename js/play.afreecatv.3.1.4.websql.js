@@ -290,7 +290,7 @@ var opWebsql = {
         });
 
     },
-    getMaxData: function (idDom, userId) {
+    getMaxData: function (callback) {
         let todayDate = $("#timeFrequencys").text().substring(0, $("#timeFrequencys").text().indexOf("\t"));
         dataBase.transaction(function (tx) {
             // sql = "select id as 身份证,userNick as 昵称,max(chatPoints) as 今日最高分数,max(allPoints) as 总分数最高 from "+tbName;
@@ -302,86 +302,14 @@ var opWebsql = {
             // 	" where chatPoints>=5 and date='" + today + "'";
             // sql = "select id,userNick ,max(chatPoints) as maxChatPoint,allPoints  from " + tbName +
             // " where chatPoints>=? and date=?";
-            sql = "select id,userNick,grade,max(chatPoints) as maxChatPoint,chatTimes,gamePoints ,allPoints,allTimes  from " +
+            sql = "select id,userNick,grade,max(chatPoints) as chatPoints,chatTimes,gamePoints ,allPoints,allTimes,date from " +
                 tbName +
                 " where date=?";
             sqlDataArray = [todayDate];
             tx.executeSql(sql, sqlDataArray, function (tx, results) {
                 // console.log(results.rowsAffected);
                 data = results.rows[0];
-                // $("#todayChatPointsAce>th:eq(0)").text("용왕");
-                // $("#todayChatPointsAce>th:eq(1)").text(data.id);
-                // $("#todayChatPointsAce>th:eq(2)").text(data.userNick);
-                // $("#todayChatPointsAce>th:eq(3)").text(data.maxChatPoint);
-                // $("#todayChatPointsAce>th:eq(4)").text(data.gamePoints);
-                // $("#todayChatPointsAce>th:eq(5)").text(data.allPoints);
-                // $("#todayChatPointsAce>th:eq(6)").text(todayDate);
-
-                // $("#todayChatPointsAce>th:eq(0)").text("용왕");
-                if(aceImage){
-                    $("#todayChatPointsAce>th:eq(0)").html(aceImage);
-                }else{
-                    $("#todayChatPointsAce>th:eq(0)").text("용왕");
-                }
-                $("#todayChatPointsAce>th:eq(1)").text(data.userNick + "{" + data.id + "}");
-                $("#todayChatPointsAce>th:eq(2)").text(convertGrade(data.grade));
-                $("#todayChatPointsAce>th:eq(3)").text(data.maxChatPoint);
-                $("#todayChatPointsAce>th:eq(4)").text(data.chatTimes);
-                $("#todayChatPointsAce>th:eq(5)").text(data.gamePoints);
-                $("#todayChatPointsAce>th:eq(6)").text(data.allPoints);
-                $("#todayChatPointsAce>th:eq(7)").text(data.allTimes);
-                $("#todayChatPointsAce>th:eq(8)").text(todayDate);
-                // console.log(data);
-                var chatPointsMaxChangeMode = getDomById("chatPointsMaxChangeMode");
-                // if (!ace) {
-                //     ace.userId = data.id;
-                //     ace.userNick = data.userNick;
-                //     ace.maxChatPoint = data.maxChatPoint;
-                // }
-                //五次以上提醒
-                if (ace.userNick != data.userNick || ace.userId != data.id) {
-                    // console.log("龙王变更提醒");
-                    ace.userId = data.id;
-                    ace.userNick = data.userNick;
-                    ace.chatRatio = data.maxChatPoint;
-                    // 용왕이가 AA가 됐어요.
-                    let mess = "[" + ace.userNick + "]가 용왕이 됐어요.";
-                    let logString = packageResult.getTodayMaxSortData.TodayMaxSortDataInterval[0] + ace.userNick + packageResult.getTodayMaxSortData.TodayMaxSortDataInterval[1];
-                    //不包含自身
-                    var loginId = localStorage.getItem("loginId");
-                    if (!data.id.includes(loginId) && chatPointsMaxChangeMode.checked) {
-                        logString = logString + packageResult.getTodayMaxSortData.TodayMaxSortDataInterval[2] + data.allTimes;
-                        mess = mess + "오늘 채팅 횟수:" + data.allTimes;
-                        sendMessageCustom(mess, 1, 5);
-                    }
-                    showTipBarrageFunction(logString);
-
-                    // "<h1>용왕가 변경되었습니다!</h1><hr><img class='showBarrageImg'  src='" +
-                    // sessionStorage.getItem(
-                    // 	"showBarrageImage") +
-                    // "'/>"
-                    // );
-
-                }
-                //标记ACE
-                // console.log("dataId:", data.id + "idDomUserId:", userId);
-                // if (data.id == userId && maxChatPoint) {
-                // 	// var appendString ="<span style='background-image:url(" + aurelionSolImgURL +
-                // 	// 	");color:yellow;font-size:large'>[ACE]</span>"
-                // 	imgSize = parseInt(maxChatPoint / 10);
-                // 	if (imgSize < 3) {
-                // 		imgSize = 3;
-                // 	} else if (imgSize > 60) {
-                // 		imgSize = 60;
-                // 	}
-                // 	// console.log(imgSize);
-                // 	appendString = "<img style='width:" + imgSize + "px;height:" + imgSize +
-                // 	"px;' src ='" +
-                // 	aurelionSolImgURL + "' />"
-                // 	$(idDom).parent().append(appendString);
-                // 	// idDom.innerHTML=idDom.textContent=
-                // 	// idDom.innerHTML=idDom.innerHTML+"[ACE]";
-                // }
+                callback(data);
 
             }, null);
 

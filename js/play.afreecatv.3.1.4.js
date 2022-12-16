@@ -2775,7 +2775,7 @@ function retrievalButtonFunction() {
 
                                 // console.log(uData);
                                 if (uData.id && uData.userNick) {
-                                    $("#increaseLogPre").prepend("<li>" + $("#timeFrequencys").text()+"&emsp;[" + user_Nick + "] "+packageResult.retrievalButtonFunction.addImagePoints[0] +calcAddData.increase +packageResult.retrievalButtonFunction.addImagePoints[1] + "</li>");
+                                    $("#increaseLogPre").prepend("<li>" + $("#timeFrequencys").text() + "&emsp;[" + user_Nick + "] " + packageResult.retrievalButtonFunction.byImageEmoji + calcAddData.increase + packageResult.retrievalButtonFunction.addChatPoints + "</li>");
                                     if (!isHoverIncreaseLogPre) {
                                         if ($("#increaseLogPre").scrollTop() != 0) {
                                             //直接滚动
@@ -3067,7 +3067,7 @@ function retrievalButtonFunction() {
                             // tbName = !isNaN(tbName.substr(0, 1)) ? "cpm_" + tbName : tbName;
 
                             if (userData.id && userData.userNick) {
-                                $("#increaseLogPre").prepend("<li>"+$("#timeFrequencys").text() +"&emsp;[" + nickName + "] "+packageResult.retrievalButtonFunction.addChatPoints[0] +calcAddData.increase +packageResult.retrievalButtonFunction.addChatPoints[1]+"</li>");
+                                $("#increaseLogPre").prepend("<li>" + $("#timeFrequencys").text() + "&emsp;[" + nickName + "] " + packageResult.retrievalButtonFunction.byChat + calcAddData.increase + packageResult.retrievalButtonFunction.addChatPoints + "</li>");
                                 //鼠标不在日志上滚动
                                 if (!isHoverIncreaseLogPre) {
                                     if ($("#increaseLogPre").scrollTop() != 0) {
@@ -3098,17 +3098,17 @@ function retrievalButtonFunction() {
                                 if (ace.userId == idt && ace.userNick == nickName) {
                                     // var appendString ="<span style='background-image:url(" + aurelionSolImgURL +
                                     // 	");color:yellow;font-size:large'>[ACE]</span>"
-                                    imgSize = toDecimal(ace.chatRatio / 15 / 5);
+
                                     // if (imgSize < 3) {
                                     //     imgSize = 3;
                                     // } else if (imgSize > 60) {
                                     //     imgSize = 60;
                                     // }
                                     // console.log(imgSize);
-                                    appendString = "<img style='width:" + imgSize + "px;height:" + imgSize +"px;' src ='" +
-                                        aurelionSolImgURL + "' title='" + ace.chatRatio + "[" + imgSize + "px]'/>"
-                                    aceImage = "<img width='" + imgSize + "' height='" + imgSize +"' src ='" + aurelionSolImgURL + "' title='" + ace.chatRatio + "[" + imgSize + "px]'/>"
+                                    appendString = "<img style='width:" + imgSize + "px;height:" + imgSize + "px;' src ='" +
+                                        aurelionSolImgURL + "' title='" + ace.chatRatio + "[" + imgSize + "px]'/>";
                                     $(idDom).parent().append(appendString);
+                                    // $("#todayChatPointsAce>th:eq(0)").html(appendString);
                                     // idDom.innerHTML=idDom.textContent=
                                     // idDom.innerHTML=idDom.innerHTML+"[ACE]";
                                 }
@@ -3557,12 +3557,26 @@ function retrievalButtonFunction() {
                                                 parameter1 = replaceSmall(parameter1);
                                                 parameter2 = replaceSmall(parameter2);
                                                 let mString = "";
+                                                let logString;
                                                 if (dicePointsResult2 > 0) {
+                                                    //通过骰子游戏  赢了 BJ 5游戏点
+                                                    if(pageLang=="ko"){
+                                                        logString = "[" + diceData.userNick + "] " + packageResult.retrievalButtonFunction.ByDiceGame + "[" + diceData.makerNick + "] " + dicePointsResult2 + packageResult.retrievalButtonFunction.wineGamePoints;
+                                                    }else{
+                                                        logString = "[" + diceData.userNick + "] " + packageResult.retrievalButtonFunction.winByDiceGame + "[" + diceData.makerNick + "] " + dicePointsResult2 + packageResult.retrievalButtonFunction.addGamePoints;
+                                                    }
                                                     dicePointsResult2 = "+" + dicePointsResult2;
                                                 }
                                                 if (dicePointsResult2 < 0) {
+                                                    if(pageLang=="ko"){
+                                                        logString ="[" + diceData.userNick + "] " + packageResult.retrievalButtonFunction.ByDiceGame + "[" + diceData.makerNick + "] " + dicePointsResult1 + packageResult.retrievalButtonFunction.loseGamePoints;
+                                                    }else{
+                                                        logString = "[" + diceData.userNick + "] " + packageResult.retrievalButtonFunction.loseByDiceGame + "[" + diceData.makerNick + "] " + dicePointsResult1 + packageResult.retrievalButtonFunction.addGamePoints;
+                                                    }
                                                     dicePointsResult1 = "+" + dicePointsResult1;
                                                 }
+                                                $("#increaseLogPre").prepend("<li>" + $("#timeFrequencys").text() + "&emsp;" + logString + "</li>");
+
                                                 if (dicePointsResult2 == 0) {
                                                     dicePointsResult1 = "";
                                                     dicePointsResult2 = "";

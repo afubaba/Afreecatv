@@ -9,14 +9,14 @@
     ]
   },
   "retrievalButtonFunction": {
-    "addImagePoints": [
-      "사진 이모티콘으로 ",
-      "포인트 추가!"
-    ],
-    "addChatPoints": [
-      "채팅으로 ",
-      "포인트 추가!"
-    ]
+    "byImageEmoji":"이미지 이모티콘으로 ",
+    "byChat": "채팅을 통해서 ",
+    "byCommand":"명령을 사용하여 ",
+    "addChatPoints": " 채팅 포인트 증가!",
+    "addGamePoints": " 게임 포인트 증가！",
+    "ByDiceGame":"주사위 게임으로 ",
+    "wineGamePoints":" 게임 포인트를 땄습니다.",
+    "loseGamePoints": " 게임 포인트를 잃었습니다."
   },
   "barrage": {
     "showTipBarrageFunction1": "탄막을 열다",

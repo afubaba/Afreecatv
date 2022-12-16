@@ -1130,6 +1130,59 @@ function stopTodayMaxSortDataInterval() {
     }
 }
 
+var chatPointsMaxChangeMode = getDomById("chatPointsMaxChangeMode");
+function  outputAce(data){
+    if (ace.chatRatio != data.chatPoints) {
+        ace.chatRatio = data.chatPoints;
+        imgSize = toDecimal(ace.chatRatio / 15 / 5);
+        if($("#aceImage").length==1){
+            // aceImage = "<img id='aceImage' width='" + imgSize + "' height='" + imgSize + "' src ='" + aurelionSolImgURL + "' title='" + ace.chatRatio + "[" + imgSize + "px]'/>"
+            let title =ace.chatRatio + "[" + imgSize + "px]";
+            $("#aceImage").width(imgSize).height(imgSize).attr("title",title);
+        }else if($("#aceImage").length==0){
+            aceImage = "<img id='aceImage' width='" + imgSize + "' height='" + imgSize + "' src ='" + aurelionSolImgURL + "' title='" + ace.chatRatio + "[" + imgSize + "px]'/>"
+            $("#todayChatPointsAce>th:eq(0)").html(aceImage);
+        }
+    }
+    //时时更新图片尺寸
+    // if (aceImage) {
+    //
+    // } else {
+    //     $("#todayChatPointsAce>th:eq(0)").text("용왕");
+    // }
+    $("#todayChatPointsAce>th:eq(2)").text(convertGrade(data.grade));
+    $("#todayChatPointsAce>th:eq(3)").text(data.chatPoints);
+    $("#todayChatPointsAce>th:eq(4)").text(data.chatTimes);
+    $("#todayChatPointsAce>th:eq(5)").text(data.gamePoints);
+    $("#todayChatPointsAce>th:eq(6)").text(data.allPoints);
+    $("#todayChatPointsAce>th:eq(7)").text(data.allTimes);
+    $("#todayChatPointsAce>th:eq(8)").text(data.date);
+    // if (!ace) {
+    //     ace.userId = data.id;
+    //     ace.userNick = data.userNick;
+    //     ace.maxChatPoint = data.chatPoints;
+    // }
+    //五次以上提醒
+    if (ace.userNick != data.userNick || ace.userId != data.id) {
+        $("#todayChatPointsAce>th:eq(1)").text(data.userNick + "{" + data.id + "}");
+        // console.log("龙王变更提醒");
+        ace.userId = data.id;
+        ace.userNick = data.userNick;
+        // 용왕이가 AA가 됐어요.
+        let mess = "[" + ace.userNick + "]가 용왕이 됐어요.";
+        let logString = packageResult.getTodayMaxSortData.TodayMaxSortDataInterval[0] + ace.userNick + packageResult.getTodayMaxSortData.TodayMaxSortDataInterval[1];
+        //不包含自身
+        var loginId = localStorage.getItem("loginId");
+        if (!data.id.includes(loginId) && chatPointsMaxChangeMode.checked) {
+            logString = logString + packageResult.getTodayMaxSortData.TodayMaxSortDataInterval[2] + data.allTimes;
+            mess = mess + "오늘 채팅 횟수:" + data.allTimes;
+            sendMessageCustom(mess, 1, 5);
+        }
+        showTipBarrageFunction(logString);
+    }
+
+}
+
 function getTodayMaxSortData(idDom, idt) {
     stopTodayMaxSortDataInterval();
     // console.log("-----------------------------");
@@ -1140,51 +1193,13 @@ function getTodayMaxSortData(idDom, idt) {
                     // console.log(data);
                     // console.log("今天的ace："+JSON.stringify(data));
                     // $("#todayChatPointsAce").val(JSON.stringify(data));
-                    //时时更新图片尺寸
-                    if(aceImage){
-                        $("#todayChatPointsAce>th:eq(0)").html(aceImage);
-                    }else{
-                        $("#todayChatPointsAce>th:eq(0)").text("용왕");
-                    }
-                    $("#todayChatPointsAce>th:eq(1)").text(data.userNick + "{" + data.id + "}");
-                    $("#todayChatPointsAce>th:eq(2)").text(convertGrade(data.grade));
-                    $("#todayChatPointsAce>th:eq(3)").text(data.chatPoints);
-                    $("#todayChatPointsAce>th:eq(4)").text(data.chatTimes);
-                    $("#todayChatPointsAce>th:eq(5)").text(data.gamePoints);
-                    $("#todayChatPointsAce>th:eq(6)").text(data.allPoints);
-                    $("#todayChatPointsAce>th:eq(7)").text(data.allTimes);
-                    $("#todayChatPointsAce>th:eq(8)").text(data.date);
-                    var chatPointsMaxChangeMode = getDomById("chatPointsMaxChangeMode");
-                    // if (!ace) {
-                    //     ace.userId = data.id;
-                    //     ace.userNick = data.userNick;
-                    //     ace.maxChatPoint = data.chatPoints;
-                    // }
-                    //五次以上提醒
-                    if (ace.userNick != data.userNick || ace.userId != data.id) {
-                        // console.log("龙王变更提醒");
-                        ace.userId = data.id;
-                        ace.userNick = data.userNick;
-                        ace.chatRatio = data.chatPoints;
-                        // 용왕이가 AA가 됐어요.
-                        let mess = "[" + ace.userNick + "]가 용왕이 됐어요.";
-                        let logString = packageResult.getTodayMaxSortData.TodayMaxSortDataInterval[0] + ace.userNick + packageResult.getTodayMaxSortData.TodayMaxSortDataInterval[1];
-                        //不包含自身
-                        var loginId = localStorage.getItem("loginId");
-                        if (!data.id.includes(loginId) && chatPointsMaxChangeMode.checked) {
-                            logString = logString + packageResult.getTodayMaxSortData.TodayMaxSortDataInterval[2] + data.allTimes;
-                            mess = mess + "오늘 채팅 횟수:" + data.allTimes;
-                            sendMessageCustom(mess, 1, 5);
-                        }
-                        showTipBarrageFunction(logString);
-                    }
-
+                    outputAce(data);
                 });
-
-
             }
         } else if (localStorageType == "websql") {
-            opWebsql.getMaxData();
+            opWebsql.getMaxData(function (data) {
+                outputAce(data);
+            });
             // console.log("查询websql最大值");
         } else {
             stopTodayMaxSortDataInterval();
