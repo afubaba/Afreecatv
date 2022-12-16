@@ -15,7 +15,6 @@ var appendString;
 var aceImage;
 var today = new Date($("#timeFrequencys").text()).getDate();
 var showBarrageImgURL = "https://afubaba.github.io/Afreecatv/logo/400x400.jpeg";
-
 var opWebsql = {
     getDB: function () {
         // console.log(db);
@@ -1072,7 +1071,7 @@ opWebsql.createTable(tbName);
 var flushInterval;
 
 function getData() {
-    $("#myTableHead i").css("visibility", "hidden");
+    $("#myTableHead i").hide();
     $('#myModal').modal('toggle');
 
     if (typeof flushInterval != "undefined") {
@@ -1230,14 +1229,13 @@ function todayChatPointsSort(which) {
         pgIndex = 1;
         whih = which;
     }
-
     var todayChatPoints = $("#" + which);
     srt = "down";
     var todayChatPointChilren = $("#" + which + ">i");
     if (todayChatPointChilren.length == 0) {
-        $("#myTableHead i").css("visibility", "hidden");
+        $("#myTableHead i").hide();
         todayChatPoints.append(
-            "<i class='icon-arrow-up' style='display:none'/><i class='icon-arrow-down' style='display:block' />"
+            "<i class='icon-arrow-up' style='display:none;float: right;'/><i class='icon-arrow-down' style='display:block;float: right;' />"
         );
         if (localStorageType == "indexdb") {
             opIndexDB.searchDataLimit(1, srt, whih);
@@ -1245,17 +1243,16 @@ function todayChatPointsSort(which) {
             opWebsql.searchData(tbName, srt, which);
         }
         // opWebsql.searchData(tbName, srt, which);
-
-
         // todayChatPointsUp("up", which);
     } else {
 
         // &&todayChatPointChilren[1].style.display=="none"
         if (todayChatPointChilren[0].style.display == "none" && todayChatPointChilren[1].style.display == "block") {
-
-            $("#myTableHead i").css("visibility", "hidden");
-            todayChatPointChilren[0].style.display = "block";
-            todayChatPointChilren[1].style.display = "none";
+            $("#myTableHead i").hide();
+            setTimeout(function () {
+                todayChatPointChilren[0].style.display = "block";
+                todayChatPointChilren[1].style.display = "none";
+            },250);
             // todayChatPointChilren[0].className = "icon-arrow-up";
             // todayChatPointsUp("up", which);
             srt = "up";
@@ -1265,13 +1262,14 @@ function todayChatPointsSort(which) {
                 opWebsql.searchData(tbName, srt, which);
             }
         } else {
-            $("#myTableHead i").css("visibility", "hidden");
-            todayChatPointChilren[0].style.display = "none";
-            todayChatPointChilren[1].style.display = "block";
+            $("#myTableHead i").hide();
+            setTimeout(function () {
+                todayChatPointChilren[0].style.display = "none";
+                todayChatPointChilren[1].style.display = "block";
+            },250);
             // todayChatPointChilren[0].className = "icon-arrow-down";
             // todayChatPointsUp("down", which);
             //
-
             if (localStorageType == "indexdb") {
                 opIndexDB.searchDataLimit(1, srt, whih);
             } else if (localStorageType == "websql") {
