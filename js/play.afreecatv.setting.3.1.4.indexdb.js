@@ -994,7 +994,8 @@ $('#commandAuthorityManagementModal,#exportDiv,#myModal').modal({
     keyboard: true,
     show: false
 });
-
+//修改数组按照长度顺序
+localArrayData.sort((a, b) => a.length - b.length);
 
 $(document).ready(function () {
     $("#myTabbaleLink>li:odd").css("backgroundColor", "#cef"); //奇数行

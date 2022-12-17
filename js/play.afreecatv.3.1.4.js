@@ -4966,8 +4966,6 @@ for (let ob of object) {
         "<button id='applyAllBtn' name='applyAllBtn' class='btn btn-danger applyAllBtn' onclick='applyAllBtnFunction(" +
         linkIndex + ")' data-loading-text='Applying' autocomplete='off'></button></div></div>");
 }
-//修改数组按照长度顺序
-localArrayData.sort((a, b) => a.length - b.length);
 
 var labelArray = ["loginUser", "bj", "manager", "hot", "subscription", "supporter", "fan", "normal"];
 for (let i = 0; i < labelArray.length; i++) {
