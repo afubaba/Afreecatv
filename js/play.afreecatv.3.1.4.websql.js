@@ -335,7 +335,6 @@ var opWebsql = {
                 // console.log(results);
                 // console.log(results.length);
                 data = results.rows[0];
-
                 // "닉네임:"
                 // var dataString = "@" + data.userNick + ",오늘 채팅 횟수:" + data
                 // 	.maxChatPoint +
@@ -368,7 +367,9 @@ var opWebsql = {
                     sendMessageCustom(dataString, 1, 4);
                 }, null);
             } else {
+                sqlDataArray=[todayDate,todayDate];
                 if (tex == "!총포인트") {
+                    sqlDataArray=[];
                     // sql = "SELECT s.allPoints,(select count(distinct(allPoints)) from " + tbName +
                     // 	" where allPoints >= s.allPoints ) as 'Rank',(select count(1) from " + tbName +
                     // 	" ) as 'count' FROM " + tbName + " as s where s.id=? order by allPoints desc ";
@@ -377,8 +378,7 @@ var opWebsql = {
                         ") as 'count' from " + tbName + " order by allPoints desc";
 
                     dataString = dataString + ":누적 총 채팅 포인트:";
-                }
-                if (tex == "!총횟수") {
+                }else if (tex == "!총횟수") {
                     // sql = "SELECT s.allPoints,(select count(distinct(allPoints)) from " + tbName +
                     // 	" where allPoints >= s.allPoints ) as 'Rank',(select count(1) from " + tbName +
                     // 	" ) as 'count' FROM " + tbName + " as s where s.id=? order by allPoints desc ";
@@ -392,15 +392,11 @@ var opWebsql = {
                     // sql = "SELECT s.chatPoints,(select count(distinct(chatPoints)) from " + tbName +
                     // 	" where chatPoints >= s.chatPoints and date="+todayDate+" ) as 'Rank',(select count(1) from " +
                     // 	tbName +" where date="+todayDate+" ) as 'count' FROM " + tbName + " as s where s.id=? and date="+todayDate+" order by chatPoints desc ";
-                    sql = "select id,userNick,chatPoints,(select count(1) from " + tbName +
-                        " where date=" + todayDate + ") as 'count' from " + tbName + " where date=" +
-                        todayDate +
-                        " order by chatPoints desc";
+                    sql = "select id,userNick,chatPoints,(select count(1) from " + tbName +" where date=?) as 'count' from " + tbName + " where date=? order by chatPoints desc";
                 } else if (tex == "!채팅횟수") {
                     dataString = dataString + ":오늘 채팅 횟수:";
                     sql = "select id,userNick,chatTimes,(select count(1) from " + tbName +
-                        " where date=" + todayDate + ") as 'count' from " + tbName + " where date=" +
-                        todayDate + " order by chatTimes desc";
+                        " where date=?) as 'count' from " + tbName + " where date=? order by chatTimes desc";
                 } else if (tex == "!게임포인트") {
                     dataString = dataString + ":오늘 게임 포인트:";
                     // sql = "SELECT s.gamePoints,(select count(distinct(gamePoints)) from " + tbName +
@@ -410,16 +406,13 @@ var opWebsql = {
                     // 	" where date= " + todayDate + ") as 'count' FROM " + tbName +
                     // 	" as s where s.id=? and date=" + todayDate + " order by gamePoints desc ";
                     sql = "select id,userNick,gamePoints,(select count(1) from " + tbName +
-                        " where date=" + todayDate + ") as 'count' from " + tbName + " where date=" +
-                        todayDate +
-                        " order by gamePoints desc";
+                        " where date=?) as 'count' from " + tbName + " where date=? order by gamePoints desc";
                 }
                 // https://zhuanlan.zhihu.com/p/196445603
                 // SELECT (SELECT COUNT(id) FROM skygkrtn AS tbl1 WHERE tbl1.id<=tbl2.id) as seq,tbl2.* FROM skygkrtn AS tbl2 ORDER BY 1 ;
                 // SELECT (SELECT COUNT(id) FROM ch1716 AS tbl1 WHERE tbl1.id<=tbl2.id) as seq,tbl2.* FROM ch1716 AS tbl2 ORDER BY 4 desc ;
-
                 // sqlDataArray
-                tx.executeSql(sql, [], function (tx, results) {
+                tx.executeSql(sql, sqlDataArray, function (tx, results) {
 
                     // index = resArray.map(userData => userData.id).indexOf(searchUserData.id);
                     var data = results.rows;
