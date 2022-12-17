@@ -125,6 +125,8 @@ function testStart() {
                     var paIndexdbURL = host + "js/play.afreecatv.3.1.4.indexdb.js";
                     dynamicLoading.js(paIndexdbURL);
 
+                    //导入导出数据
+                    loadDatabase(localStorageType);
                     //启动
                     // testStart();
 
@@ -160,11 +162,6 @@ function testStart() {
     lst[0].checked = true;
     //数据库图标状态
     dbIconStatus($storeWays, lst)
-    //导入导出数据
-    setTimeout(function () {
-        //导入导出数据
-        loadDatabase(localStorageType);
-    }, 5000);
 
     // console.log(localStorageType);
     $storeWays.change(function () {
@@ -1382,6 +1379,8 @@ function environmentFunction() {
             "<button id='applyAllBtn' name='applyAllBtn' class='btn btn-danger applyAllBtn' onclick='applyAllBtnFunction(" +
             linkIndex + ")' data-loading-text='Applying' autocomplete='off'></button></div></div>");
     }
+    //修改数组按照长度顺序
+    localArrayData.sort((a, b) => a.length - b.length);
 
     var labelArray = ["loginUser", "bj", "manager", "hot", "subscription", "supporter", "fan", "normal"];
     for (let i = 0; i < labelArray.length; i++) {
@@ -3192,7 +3191,9 @@ function retrievalButtonFunction() {
                                     // console.log(userData);
                                     opWebsql.insertData(userData, idDom);
                                 }
-                                !isUpdate && getTodayMaxSortData(idDom, idt);
+                                if (typeof getTodayMaxSortData === "function") {
+                                    !isUpdate && getTodayMaxSortData(idDom, idt);
+                                }
                                 // opIndexDB.getDB();
                                 if (ace.userId == idt && ace.userNick == nickName) {
                                     // var appendString ="<span style='background-image:url(" + aurelionSolImgURL +
