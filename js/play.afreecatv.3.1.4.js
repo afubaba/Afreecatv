@@ -125,10 +125,10 @@ function testStart() {
                     var paIndexdbURL = host + "js/play.afreecatv.3.1.4.indexdb.js";
                     dynamicLoading.js(paIndexdbURL);
 
-                    setTimeout(function(){
+                    setTimeout(function () {
                         //导入导出数据
                         loadDatabase(localStorageType);
-                    },5000);
+                    }, 5000);
                     //启动
                     // testStart();
 
@@ -4668,8 +4668,6 @@ const object = new Set([
         ["!방송시작시간", "!방송시간"], (data) => {
 
         opSettingIndexDB.searchCommandAuthoritySupport(data, function (callbackData) {
-            console.log(callbackData.message)
-
             if (callbackData.isAuthority) {
                 var detail_view = getSonButtonDom1('detail_view');
                 var detail_viewContent = detail_view.textContent;
