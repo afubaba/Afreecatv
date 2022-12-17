@@ -198,10 +198,10 @@ function loadDatabase(localStorageType) {
         opWebsql.exportDataFunction(function (dataArray) {
             // console.log(dataArray);
 
-            if(dataArray.length==0){
+            if (dataArray.length == 0) {
                 //删除表格
                 opWebsql.deleteTable();
-            }else{
+            } else {
                 opIndexDB.inportDataFunction(dataArray, function (i) {
                     //删除表格
                     opWebsql.deleteTable();
@@ -217,10 +217,10 @@ function loadDatabase(localStorageType) {
             // console.log(dataArray);
             //不存在创造表格
             // opWebsql.createTable(tbName);
-            if(dataArray.length==0){
+            if (dataArray.length == 0) {
                 //删除表格
                 // opIndexDB.deleteTable();
-            }else{
+            } else {
                 opWebsql.inportDataFunction(dataArray, function (i) {
                     //清除表格数据
                     opIndexDB.clearTable();
@@ -694,8 +694,10 @@ function environmentButtonFunction() {
     chrysanthemumCheckBox.checked = false;
 
 }
+
 var isHoverIncreaseLogPre;
 var isHoverAuthorizationLogPre;
+
 //环境部署
 function environmentFunction() {
     $("#increaseLogPre").hover(
@@ -1321,7 +1323,7 @@ function environmentFunction() {
 
     //监听启动或者暂停读取消息
     $("#retrievalButtonId,#stopRetrievalMessage").click(function () {
-        let seData={
+        let seData = {
             id: settData.id
         }
         if (this.getAttribute("id") == "retrievalButtonId") {
@@ -2162,7 +2164,7 @@ init();
 function barrage() {
     let $barrageButton = $('#barrageButtonId');
     let isBarrage = $barrageButton.attr('data-isBarrage');
-    let seData={
+    let seData = {
         id: settData.id
     }
     if (isBarrage == 'close') {
@@ -2764,12 +2766,12 @@ function retrievalButtonFunction() {
                                         user_Id = user_Id.replaceAll("(" + index + ")", "");
                                     }
                                 }
-                                let calcAddData=calculateAddPoints(tex);
+                                let calcAddData = calculateAddPoints(tex);
                                 uData = {
                                     "id": user_Id,
                                     "userNick": user_Nick,
-                                    "increase":calcAddData.increase,
-                                    "increaseBit":calcAddData.increaseBit,
+                                    "increase": calcAddData.increase,
+                                    "increaseBit": calcAddData.increaseBit,
                                     "grade": $idDom.attr("grade")
                                 }
 
@@ -3019,13 +3021,13 @@ function retrievalButtonFunction() {
 
                     //判断内容ID是否相同
                     if (idt != idt_last || tex != text_Last) {
-                        let calcAddData=calculateAddPoints(tex);
+                        let calcAddData = calculateAddPoints(tex);
                         userData = {
                             "id": idt,
                             "userNick": nickName,
-                            "increase":calcAddData.increase,
-                            "increaseBit":calcAddData.increaseBit,
-                            "grade":grade
+                            "increase": calcAddData.increase,
+                            "increaseBit": calcAddData.increaseBit,
+                            "grade": grade
                             // "text":tex
                         };
                         /* 	function httpRequest(url, callback) {
@@ -3560,17 +3562,17 @@ function retrievalButtonFunction() {
                                                 let logString;
                                                 if (dicePointsResult2 > 0) {
                                                     //通过骰子游戏  赢了 BJ 5游戏点
-                                                    if(pageLang=="ko"){
+                                                    if (pageLang == "ko") {
                                                         logString = "[" + diceData.userNick + "] " + packageResult.retrievalButtonFunction.ByDiceGame + "[" + diceData.makerNick + "] " + dicePointsResult2 + packageResult.retrievalButtonFunction.wineGamePoints;
-                                                    }else{
+                                                    } else {
                                                         logString = "[" + diceData.userNick + "] " + packageResult.retrievalButtonFunction.winByDiceGame + "[" + diceData.makerNick + "] " + dicePointsResult2 + packageResult.retrievalButtonFunction.addGamePoints;
                                                     }
                                                     dicePointsResult2 = "+" + dicePointsResult2;
                                                 }
                                                 if (dicePointsResult2 < 0) {
-                                                    if(pageLang=="ko"){
-                                                        logString ="[" + diceData.userNick + "] " + packageResult.retrievalButtonFunction.ByDiceGame + "[" + diceData.makerNick + "] " + dicePointsResult1 + packageResult.retrievalButtonFunction.loseGamePoints;
-                                                    }else{
+                                                    if (pageLang == "ko") {
+                                                        logString = "[" + diceData.userNick + "] " + packageResult.retrievalButtonFunction.ByDiceGame + "[" + diceData.makerNick + "] " + dicePointsResult1 + packageResult.retrievalButtonFunction.loseGamePoints;
+                                                    } else {
                                                         logString = "[" + diceData.userNick + "] " + packageResult.retrievalButtonFunction.loseByDiceGame + "[" + diceData.makerNick + "] " + dicePointsResult1 + packageResult.retrievalButtonFunction.addGamePoints;
                                                     }
                                                     dicePointsResult1 = "+" + dicePointsResult1;
@@ -3638,7 +3640,7 @@ const object = new Set([
     }
     ],
     [
-        ["!🎲","!주사위", "!주사위1/9"], (data) => {
+        ["!🎲", "!주사위", "!주사위1/9"], (data) => {
 
     }
     ],
@@ -3652,7 +3654,7 @@ const object = new Set([
                     if (data.tex == "!채팅포인트") {
                         serachType = "chatPoints";
                         dataStr = "오늘 채팅 포인트:";
-                    }else if (data.tex == "!채팅횟수") {
+                    } else if (data.tex == "!채팅횟수") {
                         serachType = "chatTimes";
                         dataStr = "오늘 채팅 횟수:";
                     } else if (data.tex == "!게임포인트") {
@@ -3688,29 +3690,30 @@ const object = new Set([
     }
     ],
     [
-        ["!용왕", "!ace","!포인트ace", "!채팅포인트ace", "!횟수ace","!채팅횟수ace", "!게임ace", "!게임포인트ace", "!총포인트ace","!총채팅포인트ace","!총횟수ace","!총채팅횟수ace"], (data) => {
+        ["!용왕", "!ace", "!포인트ace", "!채팅포인트ace", "!횟수ace", "!채팅횟수ace", "!게임ace", "!게임포인트ace", "!총포인트ace", "!총채팅포인트ace", "!총횟수ace", "!총채팅횟수ace"], (data) => {
         let dataStr;
         let serachType;
-        if ( data.tex == "!포인트ace" || data.tex == "!채팅포인트ace"||data.tex == "!ace" || data.tex == "!용왕") {
+        if (data.tex == "!포인트ace" || data.tex == "!채팅포인트ace" || data.tex == "!ace" || data.tex == "!용왕") {
             serachType = "chatPoints";
             dataStr = ":오늘 채팅 포인트:";
-        } else if (data.tex == "!횟수ace"||data.tex == "!채팅횟수ace") {
+        } else if (data.tex == "!횟수ace" || data.tex == "!채팅횟수ace") {
             serachType = "chatTimes";
             dataStr = ":오늘 채팅 횟수:";
         } else if (data.tex == "!게임ace" || data.tex == "!게임포인트ace") {
             serachType = "gamePoints";
             dataStr = ":오늘 게임 포인트:";
-        } else if ( data.tex == "!총포인트ace"||data.tex == "!총채팅포인트ace") {
+        } else if (data.tex == "!총포인트ace" || data.tex == "!총채팅포인트ace") {
             serachType = "allPoints";
             dataStr = ":총 포인트:";
-        } else if (data.tex == "!총횟수ace"||data.tex == "!총채팅횟수ace") {
+        } else if (data.tex == "!총횟수ace" || data.tex == "!총채팅횟수ace") {
             serachType = "allTimes";
             dataStr = ":총 횟수:";
         }
         let dataString;
+
         function outputText(searchData) {
             // dataString = "@" + searchData.userNick + dataStr + eval("searchData." + serachType) + ",순위:1/" + searchData.resArrLength;
-            dataString = "@" + searchData.userNick + dataStr + searchData[serachType]+ ",순위:1/" + searchData.resArrLength;
+            dataString = "@" + searchData.userNick + dataStr + searchData[serachType] + ",순위:1/" + searchData.resArrLength;
             // dataString="총 포인트:" + replaceSmall(data.allPoints);
             // console.log(dataString);
             sendMessageCustom(dataString, 1, 4);
@@ -4358,8 +4361,8 @@ const object = new Set([
                 //     "left=300,width=1000,height=1000,channelmode=yes,menubar=yes,scrollbars=0"
                 // );
                 // let features="left=300,fullscreen=0,width="+document.body.clientWidth+",height="+document.body.clientWidth+",status=0,menubar=no,scrollbars=0,titlebar=0,toolbar=0,resizable=0,location=0";
-                let features2="left=300,fullscreen=0,width=1000,height=1000,status=0,menubar=no,scrollbars=0,titlebar=0,toolbar=0,resizable=0,location=0";
-                winowName = window.open(LOLURL,makerId,features2);
+                let features2 = "left=300,fullscreen=0,width=1000,height=1000,status=0,menubar=no,scrollbars=0,titlebar=0,toolbar=0,resizable=0,location=0";
+                winowName = window.open(LOLURL, makerId, features2);
                 setTimeout(function () {
                     winowName.postMessage(data.tex, LOLURL);
                     //所有英雄event.data == "!랜덤영웅" || event.data == "!임의의영웅" || event.data == "!임의영웅"
@@ -4829,7 +4832,8 @@ function calculateAddPoints(userText) {
     // console.log($isSingleIncreaseMaxinum.prop("checked"));
     if (userText != null) {
         userText = userText.replaceAll(" ", "");
-        if ($isSingleIncreaseMaxinum.prop("checked")) {
+
+        if ($isSingleIncreaseMaxinum && $isSingleIncreaseMaxinum.prop("checked")) {
             //去除空格 判断null
             if (userText.length <= singleIncreaseMaxinumValueLocalStorage) {
                 // increase = roundFun(userText.length/15, 2);
@@ -4871,4 +4875,107 @@ function calculateAddPoints(userText) {
     // console.log(calcAddData);
 
     return calcAddData;
+}
+
+
+
+
+
+$("#myTabbaleLink").empty();
+$("#myTabbalePage").empty();
+var linkIndex = 0;
+//排除
+// let excludeArray=["!주사위1/9"];
+let excludeArray = [];
+for (let ob of object) {
+    var obArray = ob[0];
+    let obData = "";
+    for (let index = 0; index < obArray.length; index++) {
+        let obString = obArray[index];
+        obData = obData + obString + " ";
+
+        //obj数组
+        if (!excludeArray.includes(obString)) {
+            let arrayDataIndex = localArrayData.indexOf(obString);
+            if (arrayDataIndex == -1) {
+                localArrayData.unshift(obString);
+            }
+        }
+
+    }
+    linkIndex++;
+
+    // $("#myTabbaleLink").append("<li><div style='width: 300px;display: flex' onclick='changeMyTabbalePage(" + linkIndex + ")'><div style='width: 250px;font-size: 15px;' ><a href='#chapter" + linkIndex + "' data-toggle=\"tab\">" + obData + "</a></div><div style='flex: 1;' ><input id='isStart" + linkIndex + "' type='checkbox' class='switch' name='isStart' onchange='changeCommandAuthorityManagementCustomSelectFunction(" + linkIndex + ")'/></div></div></li></hr>");
+    $("#myTabbaleLink").append("<li><div class='displayFlexDiv' onclick='changeMyTabbalePage(" + linkIndex +
+        ")'><div class='spanDiv'><span onclick='loadCommandAuthorityManagementStatusFunction(" + linkIndex +
+        ")' href='#chapter" + linkIndex + "' data-toggle=\"tab\">" + obData +
+        "</span></div><div class='flexDiv'><input id='isStart" + linkIndex +
+        "' type='checkbox' class='switch' name='isStart' onchange='changeCommandAuthorityManagementCustomSelectFunction(" +
+        linkIndex + ")'/></div></div></li></hr>");
+    //查询状态
+
+    //默认状态
+    $("#myTabbalePage").append("<div class='tab-pane noScroll myTabbalePageDiv' id='chapter" + linkIndex +
+        "' > <p class='fontStyle myTabbalePageP'> " + obData + "</p>" +
+        "<div class='fontStyle myTabbaleSelectDiv' ><select onchange='changeCommandAuthorityManagementCustomSelectFunction(" +
+        linkIndex + ")' id='commandAuthorityManagementCustomSelect" + linkIndex + "'>" +
+        "<option name='loginUser' value='loginUser'>登录账户</option>\n" +
+        "<option name='bj' value='bj'>BJ</option>\n" +
+        "<option name='manager' value='manager'>管理员</option>\n" +
+        "<option name='hot' value='hot'>超级粉丝</option>\n" +
+        "<option name='subscription' value='subscription'>订阅者</option>\n" +
+        "<option name='supporter' value='supporter'>支持者</option>\n" +
+        "<option name='fan' value='fan'>粉丝</option>\n" +
+        "<option name='normal'  value='normal'>普通收看者</option>\n" +
+        "<option name='custom' value='custom'>多选</option></select>" +
+        "<br><div id='commandAuthorityManagementCustomCheckbox" + linkIndex + "'>" +
+        "<label class='label' for='loginUser" + linkIndex +
+        "'><span name='loginUser'>loginUser</span><input id='loginUser" + linkIndex +
+        "' type='checkbox' onchange='changeCommandAuthorityManagementCustomSelectFunction(" + linkIndex +
+        ")'/></label>" +
+        "<label class='label' for='bj" + linkIndex + "'><span name='bj'>bj</span><input id='bj" + linkIndex +
+        "' type='checkbox' onchange='changeCommandAuthorityManagementCustomSelectFunction(" + linkIndex +
+        ")'></label>" +
+        "<label class='label' for='manager" + linkIndex +
+        "'><span name='manager'>manager</span><input id='manager" + linkIndex +
+        "' type='checkbox' onchange='changeCommandAuthorityManagementCustomSelectFunction(" + linkIndex +
+        ")'/></label>" +
+        "<label class='label' for='hot" + linkIndex + "'><span name='hot'>hot</span><input id='hot" + linkIndex +
+        "' type='checkbox' onchange='changeCommandAuthorityManagementCustomSelectFunction(" + linkIndex +
+        ")'/></label>" +
+        "<label class='label' for='subscription" + linkIndex +
+        "'><span name='subscription'>subscription</span><input id='subscription" + linkIndex +
+        "' type='checkbox' onchange='changeCommandAuthorityManagementCustomSelectFunction(" + linkIndex +
+        ")'/></label>" +
+        "<label class='label' for='supporter" + linkIndex +
+        "'><span name='supporter'>supporter</span><input id='supporter" + linkIndex +
+        "' type='checkbox' onchange='changeCommandAuthorityManagementCustomSelectFunction(" + linkIndex +
+        ")'/></label>" +
+        "<label class='label' for='fan" + linkIndex + "'><span name='fan'>fan</span><input id='fan" + linkIndex +
+        "' type='checkbox' onchange='changeCommandAuthorityManagementCustomSelectFunction(" + linkIndex +
+        ")'/></label>" +
+        "<label class='label' for='normal" + linkIndex + "' ><span name='normal'>normal</span><input id='normal" +
+        linkIndex + "' type='checkbox' onchange='changeCommandAuthorityManagementCustomSelectFunction(" +
+        linkIndex + ")'/></label>" +
+        "<br><li id='chooseAll' name='chooseAll' class='btn btn-success' onclick='checkedToggle(\"all\"," +
+        linkIndex + ");'></li>" +
+        "<li id='chooseNone' name='chooseNone'  class='btn btn-info' onclick='checkedToggle(\"none\"," + linkIndex +
+        ");'></li>" +
+        "<li id='chooseContrary' name='chooseContrary'  class='btn btn-inverse' onclick='checkedToggle(\"contrary\"," +
+        linkIndex + ");'></li></div>" +
+        "<button id='applyAllBtn' name='applyAllBtn' class='btn btn-danger applyAllBtn' onclick='applyAllBtnFunction(" +
+        linkIndex + ")' data-loading-text='Applying' autocomplete='off'></button></div></div>");
+}
+//修改数组按照长度顺序
+localArrayData.sort((a, b) => a.length - b.length);
+
+var labelArray = ["loginUser", "bj", "manager", "hot", "subscription", "supporter", "fan", "normal"];
+for (let i = 0; i < labelArray.length; i++) {
+    $("#myTabbalePage input[id^='" + labelArray[i] + "']").click(function () {
+        if (this.checked) {
+            $(this).parent("label").addClass("label-warning");
+        } else {
+            $(this).parent("label").removeClass("label-warning");
+        }
+    });
 }
