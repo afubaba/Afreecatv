@@ -1495,13 +1495,14 @@ $("#promptOfIsStart,#promptOfAuthorizationFailure").change(function () {
 
 var $singleIncreaseMaxinumValue = $("#singleIncreaseMaxinumValue");
 var singleIncreaseMaxinumValueLocalStorage = localStorage.getItem("singleIncreaseMaxinumValue");
-singleIncreaseMaxinumValueLocalStorage = parseInt(singleIncreaseMaxinumValueLocalStorage);
+
 if (singleIncreaseMaxinumValueLocalStorage == null || singleIncreaseMaxinumValueLocalStorage == "undefined") {
     localStorage.setItem("singleIncreaseMaxinumValue", 10);
     $singleIncreaseMaxinumValue.val(10);
     singleIncreaseMaxinumValueLocalStorage = 10;
 } else {
     $singleIncreaseMaxinumValue.val(singleIncreaseMaxinumValueLocalStorage);
+	singleIncreaseMaxinumValueLocalStorage = parseInt(singleIncreaseMaxinumValueLocalStorage);
 }
 $singleIncreaseMaxinumValue.change(() => {
 

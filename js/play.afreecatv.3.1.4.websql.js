@@ -335,14 +335,12 @@ var opWebsql = {
                 // console.log(results);
                 // console.log(results.length);
                 data = results.rows[0];
-                // console.log(data);
 
                 // "닉네임:"
                 // var dataString = "@" + data.userNick + ",오늘 채팅 횟수:" + data
                 // 	.maxChatPoint +
                 // 	",총 채팅 횟수:" + data.allPoints;
                 data.resArrLength = data.count;
-                console.log(data);
                 callback(data);
 
             }, null);
