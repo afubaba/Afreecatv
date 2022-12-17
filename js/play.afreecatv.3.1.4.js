@@ -125,8 +125,10 @@ function testStart() {
                     var paIndexdbURL = host + "js/play.afreecatv.3.1.4.indexdb.js";
                     dynamicLoading.js(paIndexdbURL);
 
-                    //导入导出数据
-                    loadDatabase(localStorageType);
+                    setTimeout(function(){
+                        //导入导出数据
+                        loadDatabase(localStorageType);
+                    },5000);
                     //启动
                     // testStart();
 
