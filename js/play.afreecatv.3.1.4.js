@@ -3034,11 +3034,6 @@ function retrievalButtonFunction() {
                         break;
                 }
 
-                //版本校验
-                if (localStorageType == "indexdb") {
-                    opIndexDB.versionSynchronization();
-                }
-
                 //document.getElementById('chat_area').children[2].children[0].nextElementSibling.getAttribute('id');
                 if ('undefined' != chat_area.children[initIndex] && typeof $("#" + initIndex).attr(
                         "data-isread") ==
