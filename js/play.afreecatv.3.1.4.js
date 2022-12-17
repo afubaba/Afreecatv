@@ -1297,6 +1297,103 @@ function environmentFunction() {
     // 	items: 5
     // });
 
+    $("#myTabbaleLink").empty();
+    $("#myTabbalePage").empty();
+    var linkIndex = 0;
+//排除
+// let excludeArray=["!주사위1/9"];
+    let excludeArray = [];
+    for (let ob of object) {
+        var obArray = ob[0];
+        let obData = "";
+        for (let index = 0; index < obArray.length; index++) {
+            let obString = obArray[index];
+            obData = obData + obString + " ";
+
+            //obj数组
+            if (!excludeArray.includes(obString)) {
+                let arrayDataIndex = localArrayData.indexOf(obString);
+                if (arrayDataIndex == -1) {
+                    localArrayData.unshift(obString);
+                }
+            }
+
+        }
+        linkIndex++;
+
+        // $("#myTabbaleLink").append("<li><div style='width: 300px;display: flex' onclick='changeMyTabbalePage(" + linkIndex + ")'><div style='width: 250px;font-size: 15px;' ><a href='#chapter" + linkIndex + "' data-toggle=\"tab\">" + obData + "</a></div><div style='flex: 1;' ><input id='isStart" + linkIndex + "' type='checkbox' class='switch' name='isStart' onchange='changeCommandAuthorityManagementCustomSelectFunction(" + linkIndex + ")'/></div></div></li></hr>");
+        $("#myTabbaleLink").append("<li><div class='displayFlexDiv' onclick='changeMyTabbalePage(" + linkIndex +
+            ")'><div class='spanDiv'><span onclick='loadCommandAuthorityManagementStatusFunction(" + linkIndex +
+            ")' href='#chapter" + linkIndex + "' data-toggle=\"tab\">" + obData +
+            "</span></div><div class='flexDiv'><input id='isStart" + linkIndex +
+            "' type='checkbox' class='switch' name='isStart' onchange='changeCommandAuthorityManagementCustomSelectFunction(" +
+            linkIndex + ")'/></div></div></li></hr>");
+        //查询状态
+
+        //默认状态
+        $("#myTabbalePage").append("<div class='tab-pane noScroll myTabbalePageDiv' id='chapter" + linkIndex +
+            "' > <p class='fontStyle myTabbalePageP'> " + obData + "</p>" +
+            "<div class='fontStyle myTabbaleSelectDiv' ><select onchange='changeCommandAuthorityManagementCustomSelectFunction(" +
+            linkIndex + ")' id='commandAuthorityManagementCustomSelect" + linkIndex + "'>" +
+            "<option name='loginUser' value='loginUser'>登录账户</option>\n" +
+            "<option name='bj' value='bj'>BJ</option>\n" +
+            "<option name='manager' value='manager'>管理员</option>\n" +
+            "<option name='hot' value='hot'>超级粉丝</option>\n" +
+            "<option name='subscription' value='subscription'>订阅者</option>\n" +
+            "<option name='supporter' value='supporter'>支持者</option>\n" +
+            "<option name='fan' value='fan'>粉丝</option>\n" +
+            "<option name='normal'  value='normal'>普通收看者</option>\n" +
+            "<option name='custom' value='custom'>多选</option></select>" +
+            "<br><div id='commandAuthorityManagementCustomCheckbox" + linkIndex + "'>" +
+            "<label class='label' for='loginUser" + linkIndex +
+            "'><span name='loginUser'>loginUser</span><input id='loginUser" + linkIndex +
+            "' type='checkbox' onchange='changeCommandAuthorityManagementCustomSelectFunction(" + linkIndex +
+            ")'/></label>" +
+            "<label class='label' for='bj" + linkIndex + "'><span name='bj'>bj</span><input id='bj" + linkIndex +
+            "' type='checkbox' onchange='changeCommandAuthorityManagementCustomSelectFunction(" + linkIndex +
+            ")'></label>" +
+            "<label class='label' for='manager" + linkIndex +
+            "'><span name='manager'>manager</span><input id='manager" + linkIndex +
+            "' type='checkbox' onchange='changeCommandAuthorityManagementCustomSelectFunction(" + linkIndex +
+            ")'/></label>" +
+            "<label class='label' for='hot" + linkIndex + "'><span name='hot'>hot</span><input id='hot" + linkIndex +
+            "' type='checkbox' onchange='changeCommandAuthorityManagementCustomSelectFunction(" + linkIndex +
+            ")'/></label>" +
+            "<label class='label' for='subscription" + linkIndex +
+            "'><span name='subscription'>subscription</span><input id='subscription" + linkIndex +
+            "' type='checkbox' onchange='changeCommandAuthorityManagementCustomSelectFunction(" + linkIndex +
+            ")'/></label>" +
+            "<label class='label' for='supporter" + linkIndex +
+            "'><span name='supporter'>supporter</span><input id='supporter" + linkIndex +
+            "' type='checkbox' onchange='changeCommandAuthorityManagementCustomSelectFunction(" + linkIndex +
+            ")'/></label>" +
+            "<label class='label' for='fan" + linkIndex + "'><span name='fan'>fan</span><input id='fan" + linkIndex +
+            "' type='checkbox' onchange='changeCommandAuthorityManagementCustomSelectFunction(" + linkIndex +
+            ")'/></label>" +
+            "<label class='label' for='normal" + linkIndex + "' ><span name='normal'>normal</span><input id='normal" +
+            linkIndex + "' type='checkbox' onchange='changeCommandAuthorityManagementCustomSelectFunction(" +
+            linkIndex + ")'/></label>" +
+            "<br><li id='chooseAll' name='chooseAll' class='btn btn-success' onclick='checkedToggle(\"all\"," +
+            linkIndex + ");'></li>" +
+            "<li id='chooseNone' name='chooseNone'  class='btn btn-info' onclick='checkedToggle(\"none\"," + linkIndex +
+            ");'></li>" +
+            "<li id='chooseContrary' name='chooseContrary'  class='btn btn-inverse' onclick='checkedToggle(\"contrary\"," +
+            linkIndex + ");'></li></div>" +
+            "<button id='applyAllBtn' name='applyAllBtn' class='btn btn-danger applyAllBtn' onclick='applyAllBtnFunction(" +
+            linkIndex + ")' data-loading-text='Applying' autocomplete='off'></button></div></div>");
+    }
+
+    var labelArray = ["loginUser", "bj", "manager", "hot", "subscription", "supporter", "fan", "normal"];
+    for (let i = 0; i < labelArray.length; i++) {
+        $("#myTabbalePage input[id^='" + labelArray[i] + "']").click(function () {
+            if (this.checked) {
+                $(this).parent("label").addClass("label-warning");
+            } else {
+                $(this).parent("label").removeClass("label-warning");
+            }
+        });
+    }
+
 
     //文本框延迟速度dom
     var delayInputTextId = getDomById('delayInputTextId');
@@ -4881,99 +4978,3 @@ function calculateAddPoints(userText) {
 
 
 
-$("#myTabbaleLink").empty();
-$("#myTabbalePage").empty();
-var linkIndex = 0;
-//排除
-// let excludeArray=["!주사위1/9"];
-let excludeArray = [];
-for (let ob of object) {
-    var obArray = ob[0];
-    let obData = "";
-    for (let index = 0; index < obArray.length; index++) {
-        let obString = obArray[index];
-        obData = obData + obString + " ";
-
-        //obj数组
-        if (!excludeArray.includes(obString)) {
-            let arrayDataIndex = localArrayData.indexOf(obString);
-            if (arrayDataIndex == -1) {
-                localArrayData.unshift(obString);
-            }
-        }
-
-    }
-    linkIndex++;
-
-    // $("#myTabbaleLink").append("<li><div style='width: 300px;display: flex' onclick='changeMyTabbalePage(" + linkIndex + ")'><div style='width: 250px;font-size: 15px;' ><a href='#chapter" + linkIndex + "' data-toggle=\"tab\">" + obData + "</a></div><div style='flex: 1;' ><input id='isStart" + linkIndex + "' type='checkbox' class='switch' name='isStart' onchange='changeCommandAuthorityManagementCustomSelectFunction(" + linkIndex + ")'/></div></div></li></hr>");
-    $("#myTabbaleLink").append("<li><div class='displayFlexDiv' onclick='changeMyTabbalePage(" + linkIndex +
-        ")'><div class='spanDiv'><span onclick='loadCommandAuthorityManagementStatusFunction(" + linkIndex +
-        ")' href='#chapter" + linkIndex + "' data-toggle=\"tab\">" + obData +
-        "</span></div><div class='flexDiv'><input id='isStart" + linkIndex +
-        "' type='checkbox' class='switch' name='isStart' onchange='changeCommandAuthorityManagementCustomSelectFunction(" +
-        linkIndex + ")'/></div></div></li></hr>");
-    //查询状态
-
-    //默认状态
-    $("#myTabbalePage").append("<div class='tab-pane noScroll myTabbalePageDiv' id='chapter" + linkIndex +
-        "' > <p class='fontStyle myTabbalePageP'> " + obData + "</p>" +
-        "<div class='fontStyle myTabbaleSelectDiv' ><select onchange='changeCommandAuthorityManagementCustomSelectFunction(" +
-        linkIndex + ")' id='commandAuthorityManagementCustomSelect" + linkIndex + "'>" +
-        "<option name='loginUser' value='loginUser'>登录账户</option>\n" +
-        "<option name='bj' value='bj'>BJ</option>\n" +
-        "<option name='manager' value='manager'>管理员</option>\n" +
-        "<option name='hot' value='hot'>超级粉丝</option>\n" +
-        "<option name='subscription' value='subscription'>订阅者</option>\n" +
-        "<option name='supporter' value='supporter'>支持者</option>\n" +
-        "<option name='fan' value='fan'>粉丝</option>\n" +
-        "<option name='normal'  value='normal'>普通收看者</option>\n" +
-        "<option name='custom' value='custom'>多选</option></select>" +
-        "<br><div id='commandAuthorityManagementCustomCheckbox" + linkIndex + "'>" +
-        "<label class='label' for='loginUser" + linkIndex +
-        "'><span name='loginUser'>loginUser</span><input id='loginUser" + linkIndex +
-        "' type='checkbox' onchange='changeCommandAuthorityManagementCustomSelectFunction(" + linkIndex +
-        ")'/></label>" +
-        "<label class='label' for='bj" + linkIndex + "'><span name='bj'>bj</span><input id='bj" + linkIndex +
-        "' type='checkbox' onchange='changeCommandAuthorityManagementCustomSelectFunction(" + linkIndex +
-        ")'></label>" +
-        "<label class='label' for='manager" + linkIndex +
-        "'><span name='manager'>manager</span><input id='manager" + linkIndex +
-        "' type='checkbox' onchange='changeCommandAuthorityManagementCustomSelectFunction(" + linkIndex +
-        ")'/></label>" +
-        "<label class='label' for='hot" + linkIndex + "'><span name='hot'>hot</span><input id='hot" + linkIndex +
-        "' type='checkbox' onchange='changeCommandAuthorityManagementCustomSelectFunction(" + linkIndex +
-        ")'/></label>" +
-        "<label class='label' for='subscription" + linkIndex +
-        "'><span name='subscription'>subscription</span><input id='subscription" + linkIndex +
-        "' type='checkbox' onchange='changeCommandAuthorityManagementCustomSelectFunction(" + linkIndex +
-        ")'/></label>" +
-        "<label class='label' for='supporter" + linkIndex +
-        "'><span name='supporter'>supporter</span><input id='supporter" + linkIndex +
-        "' type='checkbox' onchange='changeCommandAuthorityManagementCustomSelectFunction(" + linkIndex +
-        ")'/></label>" +
-        "<label class='label' for='fan" + linkIndex + "'><span name='fan'>fan</span><input id='fan" + linkIndex +
-        "' type='checkbox' onchange='changeCommandAuthorityManagementCustomSelectFunction(" + linkIndex +
-        ")'/></label>" +
-        "<label class='label' for='normal" + linkIndex + "' ><span name='normal'>normal</span><input id='normal" +
-        linkIndex + "' type='checkbox' onchange='changeCommandAuthorityManagementCustomSelectFunction(" +
-        linkIndex + ")'/></label>" +
-        "<br><li id='chooseAll' name='chooseAll' class='btn btn-success' onclick='checkedToggle(\"all\"," +
-        linkIndex + ");'></li>" +
-        "<li id='chooseNone' name='chooseNone'  class='btn btn-info' onclick='checkedToggle(\"none\"," + linkIndex +
-        ");'></li>" +
-        "<li id='chooseContrary' name='chooseContrary'  class='btn btn-inverse' onclick='checkedToggle(\"contrary\"," +
-        linkIndex + ");'></li></div>" +
-        "<button id='applyAllBtn' name='applyAllBtn' class='btn btn-danger applyAllBtn' onclick='applyAllBtnFunction(" +
-        linkIndex + ")' data-loading-text='Applying' autocomplete='off'></button></div></div>");
-}
-
-var labelArray = ["loginUser", "bj", "manager", "hot", "subscription", "supporter", "fan", "normal"];
-for (let i = 0; i < labelArray.length; i++) {
-    $("#myTabbalePage input[id^='" + labelArray[i] + "']").click(function () {
-        if (this.checked) {
-            $(this).parent("label").addClass("label-warning");
-        } else {
-            $(this).parent("label").removeClass("label-warning");
-        }
-    });
-}
