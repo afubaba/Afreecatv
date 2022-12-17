@@ -4930,7 +4930,7 @@ function calculateAddPoints(userText) {
     if (userText != null) {
         userText = userText.replaceAll(" ", "");
 
-        if ($isSingleIncreaseMaxinum && $isSingleIncreaseMaxinum.prop("checked")) {
+        if (typeof $isSingleIncreaseMaxinum != "undefined" && $isSingleIncreaseMaxinum.prop("checked")) {
             //去除空格 判断null
             if (userText.length <= singleIncreaseMaxinumValueLocalStorage) {
                 // increase = roundFun(userText.length/15, 2);
