@@ -995,6 +995,7 @@ $('#commandAuthorityManagementModal,#exportDiv,#myModal').modal({
     show: false
 });
 
+
 $(document).ready(function () {
     $("#myTabbaleLink>li:odd").css("backgroundColor", "#cef"); //奇数行
     $("#myTabbaleLink>li:even").css("backgroundColor", "#ffc"); //偶数行(去掉第一行)【gt(0)：大于0】
@@ -1403,7 +1404,7 @@ if (singleIncreaseMaxinumValueLocalStorage == null || singleIncreaseMaxinumValue
     singleIncreaseMaxinumValueLocalStorage = 10;
 } else {
     $singleIncreaseMaxinumValue.val(singleIncreaseMaxinumValueLocalStorage);
-	singleIncreaseMaxinumValueLocalStorage = parseInt(singleIncreaseMaxinumValueLocalStorage);
+    singleIncreaseMaxinumValueLocalStorage = parseInt(singleIncreaseMaxinumValueLocalStorage);
 }
 $singleIncreaseMaxinumValue.change(() => {
 

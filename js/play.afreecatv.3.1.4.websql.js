@@ -2,19 +2,17 @@ var db;
 var msg;
 var dbName = 'chatPointsModeDB';
 var sql;
-
 var uId;
 var uNick;
 var tbNm;
 var data;
-var aurelionSolImgURL = "https://afubaba.github.io/Afreecatv/img/lol/AurelionSol.webp";
-var ace={};
-var sqlDataArray;
-var imgSize;
+var today = new Date($("#timeFrequencys").text()).getDate();
+var sqlDataArray = [];
+var ace = {};
 var appendString;
 var aceImage;
-var today = new Date($("#timeFrequencys").text()).getDate();
-var showBarrageImgURL = "https://afubaba.github.io/Afreecatv/logo/400x400.jpeg";
+var imgSize;
+
 var opWebsql = {
     getDB: function () {
         // console.log(db);
@@ -177,10 +175,11 @@ var opWebsql = {
                 var searchCountSql = "SELECT count(1) as allCount from " + tbName + dateString;
                 // console.log(searchCountSql);
                 tx.executeSql(searchCountSql, sqlDataArray, function (tx, results) {
-                    $("#allPageValue").val(results.rows[0].allCount);
-                    let allPageLength = results.rows[0].allCount % everyPage == 0 ?
-                        parseInt(results.rows[0].allCount / everyPage) : (parseInt(
-                            results.rows[0].allCount / everyPage) + 1);
+                    // 页数下标显示
+                    showEveryPageIndex(results.rows[0].allCount, pageIndex);
+                    // allPageLength = results.rows[0].allCount % everyPage == 0 ?
+                    //     parseInt(results.rows[0].allCount / everyPage) : (parseInt(
+                    //         results.rows[0].allCount / everyPage) + 1);
 
                     // if(results.rows[0].allCount%everyPage==0){
                     // 	allPageLength=parseInt(results.rows[0].allCount/everyPage);
@@ -190,98 +189,7 @@ var opWebsql = {
                     // console.log(allPageLength);
                     // $("#pageIndex").empty();
                     // $("#pageIndex").detach();
-                    if (allPageLength > 1) {
-                        // $("#pagination").show();
-                        $("#pageIndex").css("visibility", "visible");
-                        // console.log("allPageLength:", allPageLength);
-                        // console.log(li);
-                        // console.log(li.substring(0, li.indexOf(",")));
-                        // var nowPage = parseInt(li.substring(0, li.indexOf(",")));
-                        let nowPage = pageIndex;
-                        // console.log(limi[0]);
 
-                        if (($("#pageIndex li").length - 2) > allPageLength) {
-                            for (var i = allPageLength + 1; i <= ($("#pageIndex li")
-                                .length - 2); i++) {
-                                // $("#pageIndex>li>a:eq(" + i + ")").hide();
-                                $("#pageIndex>li>a:eq(" + i + ")").css("visibility", "hidden");
-                            }
-                        } else {
-                            // $("#pageIndex>li>a:gt(0):lt(6)").show();
-                            // $("#pageIndex>li>a").show();
-                            $("#pageIndex>li>a:gt(0):lt(6)").css("visibility", "visible");
-                            $("#pageIndex>li>a").css("visibility", "visible");
-                        }
-
-                        // console.log(pageIndex);
-                        // for (var i = 1; i < 10; i++) {
-                        // 	for (var j = 1; j <= j + 6; j++) {
-                        // 		console.log(j);
-                        // 	}
-                        // }
-                        //最后一页
-                        allPageLength > 6 && $("#lastPage").attr("onclick",
-                            "changePage(" +
-                            allPageLength +
-                            ")").html("<span class='badge'>" + allPageLength +
-                            "</span>");
-                        if (!nowPage) {
-                            nowPage = 1;
-                            $("#firstPage,#lastPage").css("visibility", "hidden");
-                        }
-                        // console.log("allPageLength:"+allPageLength,"nowPage:"+nowPage);
-                        if (nowPage <= 3) {
-                            nowPage = 3;
-                            $("#firstPage").css("visibility", "hidden");
-                            // console.log("隐藏first");
-                        } else {
-                            if ($("#pageIndex li:eq(1)").text() > 1) {
-                                $("#firstPage").css("visibility", "visible");
-                            } else {
-                                $("#firstPage").css("visibility", "hidden");
-                            }
-                            // console.log("显示first");
-                        }
-                        let ma = allPageLength - nowPage;
-                        // console.log(ma);
-                        if (ma <= 3) {
-                            nowPage = allPageLength - 3;
-                            $("#lastPage").css("visibility", "hidden");
-                        } else {
-                            $("#lastPage").css("visibility", "visible");
-                        }
-                        let j = 1;
-                        for (let i = 1; i <= allPageLength; i++) {
-                            if (i < nowPage && nowPage - i <= 2 || i >= nowPage &&
-                                i - nowPage <= 3) {
-                                // console.log("i:", i + "j:", j);
-                                // if ($("#pageIndex>li>a:eq(" + j + ")").html() ==
-                                // 	i) {
-                                // 	return;
-                                // } else {
-                                //显示
-                                // $("#pageIndex>li>a:eq(" + j + ")").show();
-                                $("#pageIndex>li>a:eq(" + j + ")").css("visibility", "visible");
-
-                                $("#pageIndex>li>a:eq(" + j + ")").html(
-                                    "<span class='badge'>" + i + "</span>");
-                                // $("#pageIndex>li>a:eq(" + j + ")")
-                                if (i == pageIndex) {
-                                    $("#pageIndex>li>a:eq(" + j + ")").html(
-                                        "<span class='badge badge-warning'>" +
-                                        i + "</span>");
-                                }
-
-                                // }
-
-                                j++;
-                            }
-
-                        }
-                    } else {
-                        // $("#pagination").hide();
-                        $("#pageIndex").css("visibility", "hidden");
-                    }
 
                 });
 
@@ -982,6 +890,103 @@ var opWebsql = {
     }
 }
 
+function showEveryPageIndex(allLength, pageIndex){
+    $("#allPageValue").val(allLength);
+    let allPageLength = allLength % everyPage == 0 ?
+        parseInt(allLength / everyPage) : (parseInt(
+            allLength / everyPage) + 1);
+
+    if (allPageLength > 1) {
+        // $("#pagination").show();
+        $("#pageIndex").children().css("visibility", "visible");
+        // console.log("allPageLength:", allPageLength);
+        // console.log(li);
+        // console.log(li.substring(0, li.indexOf(",")));
+        // var nowPage = parseInt(li.substring(0, li.indexOf(",")));
+        let nowPage = pageIndex;
+        // console.log(limi[0]);
+
+        if (($("#pageIndex li").length - 2) > allPageLength) {
+            for (var i = allPageLength + 1; i <= ($("#pageIndex li")
+                .length - 2); i++) {
+                // $("#pageIndex>li>a:eq(" + i + ")").hide();
+                $("#pageIndex>li:eq(" + i + ")").css("visibility", "hidden");
+            }
+        } else {
+            // $("#pageIndex>li>gt(0):lt(6)").show();
+            // $("#pageIndex>li").show();
+            $("#pageIndex>li:gt(0):lt(6)").css("visibility", "visible");
+            $("#pageIndex>li").css("visibility", "visible");
+        }
+
+        // console.log(pageIndex);
+        // for (var i = 1; i < 10; i++) {
+        // 	for (var j = 1; j <= j + 6; j++) {
+        // 		console.log(j);
+        // 	}
+        // }
+        //最后一页
+        allPageLength > 6 && $("#lastPage").attr("onclick",
+            "changePage(" +
+            allPageLength +
+            ")").html("<span class='badge'>" + allPageLength +
+            "</span>");
+        if (!nowPage) {
+            nowPage = 1;
+            $("#firstPage,#lastPage").parents("li").css("visibility", "hidden");
+        }
+        // console.log("allPageLength:"+allPageLength,"nowPage:"+nowPage);
+        if (nowPage <= 3) {
+            nowPage = 3;
+            $("#firstPage").parents("li").css("visibility", "hidden");
+            // console.log("隐藏first");
+        } else {
+            if ($("#pageIndex li:eq(1)").text() > 1) {
+                $("#firstPage").parents("li").css("visibility", "visible");
+            } else {
+                $("#firstPage").parents("li").css("visibility", "hidden");
+            }
+            // console.log("显示first");
+        }
+        let ma = allPageLength - nowPage;
+        // console.log(ma);
+        if (ma <= 3) {
+            nowPage = allPageLength - 3;
+            $("#lastPage").parents("li").css("visibility", "hidden");
+        } else {
+            $("#lastPage").parents("li").css("visibility", "visible");
+        }
+        let j = 1;
+        for (let i = 1; i <= allPageLength; i++) {
+            if (i < nowPage && nowPage - i <= 2 || i >= nowPage &&
+                i - nowPage <= 3) {
+                // console.log("i:", i + "j:", j);
+                // if ($("#pageIndex>li:eq(" + j + ")").html() ==
+                // 	i) {
+                // 	return;
+                // } else {
+                //显示
+                // $("#pageIndex>li:eq(" + j + ")").show();
+                $("#pageIndex>li:eq(" + j + ")").css("visibility", "visible");
+
+                $("#pageIndex>li>a:eq(" + j + ")").html(
+                    "<span class='badge'>" + i + "</span>");
+                // $("#pageIndex>li>a:eq(" + j + ")")
+                if (i == pageIndex) {
+                    $("#pageIndex>li>a:eq(" + j + ")").html(
+                        "<span class='badge badge-warning'>" +
+                        i + "</span>");
+                }
+                // }
+                j++;
+            }
+
+        }
+    } else {
+        // $("#pagination").hide();
+        $("#pageIndex").children().css("visibility", "hidden");
+    }
+}
 
 opWebsql.createTable(tbName);
 

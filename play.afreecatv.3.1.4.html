@@ -2066,11 +2066,22 @@
             <div class="modal-footer">
 
                 <div class="pagination pagination-centered myPagination" id="pagination">
+
+                    <label class="labelStyle" for="allPage">
+                        <span id="allPage"></span>:
+                        <input readonly id="allPageValue" style="border: none;" value="0"/>
+                    </label>
+                    <label class="labelStyle" for="everyPageValue">
+                        <span id="everyPage"></span>:
+                        <input id="everyPageValue" type="number" step="1" min="1"/>
+                    </label>
+
                     <ul id="pageIndex" style="visibility: hidden;">
                         <li>
                             <!-- <a href='#' id="firstPage" onclick="changePage(1);">firstPage</a> -->
-                            <a href='#' id="firstPage" onclick="changePage(1);" style="visibility: hidden;"><span
-                                    class='badge'>1</span></a>
+                            <a href='#' id="firstPage" onclick="changePage(1);">
+                                <span class='badge'>1</span>
+                            </a>
                         </li>
                         <!-- <li><a href="#" onclick="changePage(1)">first</li> -->
 
@@ -2086,19 +2097,11 @@
 
                         <li><a href='#' onclick="changePage(this.innerText);">6</a></li>
 
-                        <li><a href='#' id="lastPage" onclick="changePage(1);" style="visibility: hidden;">lastPage</a>
+                        <li><a href='#' id="lastPage" onclick="changePage(1);">lastPage</a>
                         </li>
 
                     </ul>
-                    <label class="labelStyle" for="everyPageValue">
-                        <span id="everyPage"></span>:
-                        <input id="everyPageValue" type="number" step="1" min="1"/>
-                    </label>
 
-                    <label class="labelStyle" for="allPage">
-                        <span id="allPage"></span>:
-                        <input readonly id="allPageValue" style="border: none;" value="0"/>
-                    </label>
                 </div>
                 <li class="btn btn-danger" style="position: absolute;right: 50px;"
                     onclick="$('#increaseLogPre').text('');">clear

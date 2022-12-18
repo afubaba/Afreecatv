@@ -563,7 +563,9 @@ var opIndexDB = {
             }
             objectStore.getAll().onsuccess = function (events) {
                 var result = events.target.result;
-                opIndexDB.showEveryPageIndex(result.length, pageIndex);
+                // opIndexDB.showEveryPageIndex(result.length, pageIndex);
+                // 页数下标显示
+                showEveryPageIndex(result.length, pageIndex);
             }
 
             // console.log("-----------getAll---------------");

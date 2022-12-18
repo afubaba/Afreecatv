@@ -33,6 +33,8 @@
 var localStorageType = "indexdb";
 var chatPointsMode;
 var host = "https://afubaba.github.io/Afreecatv/";
+var showBarrageImgURL = host+"logo/400x400.jpeg";
+var aurelionSolImgURL = host +"img/lol/AurelionSol.webp";
 var bgURL;
 var userData;
 
@@ -1510,7 +1512,7 @@ function showTipBarrageFunction(text) {
     } else {
         //加图片
         text = "<div class='alert alert-block disableSelection'><h1 class='alert-heading'>" + text + "</h1>" +
-            "<img class='showBarrageImg' src='https://afubaba.github.io/Afreecatv/logo/400x400.jpeg'/></div>";
+            "<img class='showBarrageImg' src='"+showBarrageImgURL+"'/></div>";
     }
 
     showLogArray.push(text);
@@ -1896,16 +1898,15 @@ var $stopBatchSend;
 
 function sendMessageFunction() {
     $sendMessage = $("#send_message");
-    $sendMessage.hide();
     //显示停止按钮
     $stopBatchSend = $("#stopBatchSend");
-    $stopBatchSend.show();
-    $("#testInput").attr("disabled", true);
-
     testInputValue = document.getElementById('testInput').value;
     allRepeatTimes = document.getElementById('inputTimes').value;
     frequency = document.getElementById('inputFrequency').value;
-
+    if(allRepeatTimes<=0||frequency<=0){
+        // alert("");
+        return;
+    }
     /*更正系统*/
     if (allRepeatTimes == '' || isNaN(allRepeatTimes)) {
         document.getElementById('inputTimes').value = 1;
@@ -1915,6 +1916,16 @@ function sendMessageFunction() {
         document.getElementById('inputFrequency').value = 1;
         frequency = 1;
     }
+    if(frequency>=1){
+        $sendMessage.hide();
+        $stopBatchSend.show();
+    }
+    $("#testInput").attr("disabled", true);
+    // if (!(/(^[1-9]\d*$)/.test(num))) {
+    //     return false;
+    // }else {
+    //
+    // }
     repeatTimes = 1;
 
     //判断当前发送消息是否重复
