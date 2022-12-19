@@ -2027,25 +2027,24 @@
                         <th id='myTable_grade'></th>
                         <!-- <i class="icon-chevron-up"/> -->
                         <th>
-                            <button id="chatPoints" onclick="todayChatPointsSort('chatPoints')"></button>
+                            <button id="myTable_chatPoints" onclick="todayChatPointsSort('chatPoints')"></button>
                         </th>
                         <!--                        <th id='myTable_chatTimes'></th>-->
                         <th>
-                            <button id="chatTimes" onclick="todayChatPointsSort('chatTimes')"></button>
+                            <button id="myTable_chatTimes" onclick="todayChatPointsSort('chatTimes')"></button>
                         </th>
 
                         <th>
-                            <button id="gamePoints" onclick="todayChatPointsSort('gamePoints')"></button>
+                            <button id="myTable_gamePoints" onclick="todayChatPointsSort('gamePoints')"></button>
                         </th>
                         <th>
-                            <button id="allPoints" onclick="todayChatPointsSort('allPoints')"></button>
+                            <button id="myTable_allPoints" onclick="todayChatPointsSort('allPoints')"></button>
                         </th>
                         <!--                        <th id='myTable_allTimes'>总聊天次数</th>-->
                         <th>
-                            <button id="allTimes" onclick="todayChatPointsSort('allTimes')"></button>
+                            <button id="myTable_allTimes" onclick="todayChatPointsSort('allTimes')"></button>
                         </th>
-
-                        <th id='myTable_date'></th>
+                        <th ><button id="myTable_date" onclick="todayChatPointsSort('date')"></button></th>
                     </tr>
                     <tr id="todayChatPointsAce">
                         <th>조회 붐비는 중</th>
@@ -2071,11 +2070,7 @@
                         <span id="allPage"></span>:
                         <input readonly id="allPageValue" style="border: none;" value="0"/>
                     </label>
-                    <label class="labelStyle" for="everyPageValue">
-                        <span id="everyPage"></span>:
-                        <input id="everyPageValue" type="number" step="1" min="1"/>
-                    </label>
-
+                   
                     <ul id="pageIndex" style="visibility: hidden;">
                         <li>
                             <!-- <a href='#' id="firstPage" onclick="changePage(1);">firstPage</a> -->
@@ -2099,8 +2094,12 @@
 
                         <li><a href='#' id="lastPage" onclick="changePage(1);">lastPage</a>
                         </li>
-
                     </ul>
+
+                    <label class="labelStyle" for="everyPageValue">
+                        <span id="everyPage"></span>:
+                        <input id="everyPageValue" type="number" step="1" min="1"/>
+                    </label>
 
                 </div>
                 <li class="btn btn-danger" style="position: absolute;right: 50px;"
@@ -2115,8 +2114,6 @@
                         <span id="isResetTotalPointsEveryMonth"></span>
                         <input id="resetTotalPointsEveryMonth" class="switch" type="checkbox">
                     </label>
-
-                    <li class="btn btn-danger" id="clearTableButton" onclick="clearTable()"></li>
 
                     <!-- ace:<input id="todayChatPointsAce" type="text"> -->
                     <!-- <br/> -->
@@ -2133,6 +2130,8 @@
                             class='bi bi-database-fill'></i></span>
                         <input id="indexDB" checked name="storeWays" type="radio" value="indexdb"/>
                     </label>
+
+                    <li class="btn btn-danger" id="clearTableButton" onclick="clearTable()"></li>
                     <br/>
 
                     <label for="singleIncreaseMaxinumValue" class="label">

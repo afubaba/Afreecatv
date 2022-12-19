@@ -320,10 +320,10 @@ function setDomTimeById(domTimeId) {
                         "Date"));
                     getDomById(domTimeId).innerHTML = nowTime;
                     //版本校验
-                    if (localStorageType == "indexdb") {
+                     // if (localStorageType == "indexdb") {   }
+                     if (typeof opIndexDB !== "undefined") {
                         opIndexDB.versionSynchronization();
                     }
-
                 }
             }
         xhr.send(null);

@@ -140,7 +140,6 @@ var opWebsql = {
             } else {
                 sql = "SELECT * FROM " + tbName + " LIMIT " + li;
             }
-
             // console.log(sql);
             // console.log("----------------");
             // console.log(sqlDataArray);
@@ -794,7 +793,7 @@ var opWebsql = {
         });
     },
     exportDataFunction: function (callback) {
-        dataBase.transaction(function (tx) {
+       dataBase.transaction(function (tx) {
             sql = "SELECT * FROM " + tbName;
             tx.executeSql(sql, [], function (tx, results) {
                 var data = results.rows;
@@ -895,8 +894,7 @@ function showEveryPageIndex(allLength, pageIndex){
     let allPageLength = allLength % everyPage == 0 ?
         parseInt(allLength / everyPage) : (parseInt(
             allLength / everyPage) + 1);
-
-    if (allPageLength > 1) {
+    if (allPageLength > 0) {
         // $("#pagination").show();
         $("#pageIndex").children().css("visibility", "visible");
         // console.log("allPageLength:", allPageLength);
@@ -985,6 +983,7 @@ function showEveryPageIndex(allLength, pageIndex){
     } else {
         // $("#pagination").hide();
         $("#pageIndex").children().css("visibility", "hidden");
+        // $("#firstPage").parents("li").css("visibility", "visible");
     }
 }
 
@@ -1153,9 +1152,15 @@ function todayChatPointsSort(which) {
         pgIndex = 1;
         whih = which;
     }
-    var todayChatPoints = $("#" + which);
+    var todayChatPoints ;
     srt = "down";
-    var todayChatPointChilren = $("#" + which + ">i");
+    var todayChatPointChilren;
+    // if(which!='date'){
+    //     todayChatPoints  = $("#" + which);
+    // }else{ }
+        todayChatPoints  = $("#myTable_"+which); 
+   
+    todayChatPointChilren =todayChatPoints.children("i");
     if (todayChatPointChilren.length == 0) {
         $("#myTableHead i").hide();
         todayChatPoints.append(

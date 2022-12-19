@@ -575,7 +575,6 @@ var opIndexDB = {
             // 	console.log(events.target.result);
             // }
         } else {
-            // console.log("2");
             resArray = new Array();
             var trans = indexDataBase.transaction([tbName], IDBTransaction.READ);
             var store = trans.objectStore(tbName);
@@ -591,12 +590,24 @@ var opIndexDB = {
                             // return Number(eval("a." + sortType)) - Number(eval(
                             //     "b." +
                             //     sortType));
-                            return Number(a[sortType]) - Number(b[sortType]);
+                            if(sortType!="date"){
+                                return Number(a[sortType]) - Number(b[sortType]);
+                            }else{
+                                // 按日期递增排序date :2022,time:10:00:00
+                                // arr.sort((a, b) => b.date.localeCompare(a.date) ||  b.time.localeCompare(a.time)); 
+                               
+                                return a.date.localeCompare(b.date);
+                            }
+                           
                         } else if (sortName = "down") {
                             // return Number(eval("b." + sortType)) - Number(eval(
                             //     "a." +
                             //     sortType));
-                            return Number(b[sortType]) - Number(a[sortType]);
+                            if(sortType!="date"){
+                                return Number(b[sortType]) - Number(a[sortType]);
+                            }else{
+                                return  b.date.localeCompare(a.date);
+                            }
                         }
                         // return Number(b.eval(sortType))-Number(a.eval(sortType));
 
@@ -613,9 +624,10 @@ var opIndexDB = {
 
                     });
                     // console.log("收集完毕");
+                    // console.log(resArray);
                     //print res etc....
                     // callback(resArray);
-                    // console.log(resArray);
+                   
                     // // pageIndex =0
                     // console.log(pageIndex);
                     // console.log(everyPage);
@@ -625,7 +637,10 @@ var opIndexDB = {
 
                     // }
                     // console.log("page", pageIndex);
-                    opIndexDB.showEveryPageIndex(resArray.length, pageIndex);
+                    // opIndexDB.showEveryPageIndex(resArray.length, pageIndex);
+                    // 页数下标显示
+                    showEveryPageIndex(resArray.length, pageIndex);
+
                     $("#myTable tbody").children().detach();
                     var d;
                     for (var i = (pageIndex - 1) * everyPage; i < pageIndex *
