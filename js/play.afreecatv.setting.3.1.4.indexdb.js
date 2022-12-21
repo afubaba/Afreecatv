@@ -1399,12 +1399,12 @@ var $singleIncreaseMaxinumValue = $("#singleIncreaseMaxinumValue");
 var singleIncreaseMaxinumValueLocalStorage = localStorage.getItem("singleIncreaseMaxinumValue");
 
 if (singleIncreaseMaxinumValueLocalStorage == null || singleIncreaseMaxinumValueLocalStorage == "undefined") {
-    localStorage.setItem("singleIncreaseMaxinumValue", 10);
-    $singleIncreaseMaxinumValue.val(10);
-    singleIncreaseMaxinumValueLocalStorage = 10;
+    localStorage.setItem("singleIncreaseMaxinumValue", 15);
+    $singleIncreaseMaxinumValue.val(15);
+    singleIncreaseMaxinumValueLocalStorage = 15;
 } else {
     $singleIncreaseMaxinumValue.val(singleIncreaseMaxinumValueLocalStorage);
-    singleIncreaseMaxinumValueLocalStorage = parseInt(singleIncreaseMaxinumValueLocalStorage);
+	singleIncreaseMaxinumValueLocalStorage = parseInt(singleIncreaseMaxinumValueLocalStorage);
 }
 $singleIncreaseMaxinumValue.change(() => {
 
