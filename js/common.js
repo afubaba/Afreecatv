@@ -621,3 +621,97 @@ var fomatFloat = function(value, n) {
     }
     return s;
 }
+
+// $.get()
+// $.getJson();
+//$.post();
+function ajaxGet(url, data, callback) {
+    $.ajax({
+        url: url,
+        type: 'get',
+        data: data,
+        success: function (result, statis) {
+            callback(result)
+        },
+        error: function (error, errorMessage) {
+
+        }
+    });
+}
+function ajaxPost(url, ajaxPostData, callback) {
+    $.ajax({
+        url: url,
+        type: 'post',
+        dataType: 'json',
+        data: ajaxPostData,
+        success: function (result, statis) {
+            callback(result);
+        },
+        error: function (error, errorMessage) {
+            // console.log(error);
+        }
+    });
+}
+function ajaxPostFormData(url, formData, callback) {
+    $.ajax({
+        url: "http://localhost:8888/chat_points/InportAllDataServlet",
+        type: 'post',
+        dataType: 'json',
+        processData: false,
+        data: formData,
+        success: function (result, statis) {
+            console.log(result)
+        },
+        error: function (error, errorMessage) {
+            // console.log(error)
+        }
+    });
+}
+
+
+
+function fetchGet(url) {
+    fetch(url).then((response) => {
+        if (response.ok) {
+            response.text().then(function (resolve) {
+            });
+        }
+    }, (error) => {
+    });
+}
+
+
+function fechGet(fgURL) {
+    fetch(fgURL).then((response) => {
+        if (response.ok) {
+            response.text().then(function (resolve) {
+                console.log(resolve);
+                // sendMessageToPlayAfreecatv(actionJson);
+            })
+        }
+    }, (error) => {
+        urlInit++;
+        if (urlInit >= url.length) {
+            urlInit = 0;
+        }
+        setTimeout(function () {
+            fechGet(url[urlInit])
+        }, 3000);
+
+    });
+}
+function fenchArray(url) {
+    if (Array.isArray(url)) {
+        var urlInit = 0;
+        fgURL = url[urlInit]
+        fechGet(fgURL);
+    } else {
+        fetch(url).then((response) => {
+            if (response.ok) {
+                response.text().then(function (resolve) {
+                });
+            }
+        }, (error) => {
+        });
+    }
+}
