@@ -66,6 +66,7 @@ var dynamicLoading = {
         head.appendChild(script);
     }
 };
+
 //转换指定字符串为韩国时间
 function getDateTimeFormate(date) {
     if (!date) {
@@ -320,8 +321,8 @@ function setDomTimeById(domTimeId) {
                         "Date"));
                     getDomById(domTimeId).innerHTML = nowTime;
                     //版本校验
-                     // if (localStorageType == "indexdb") {   }
-                     if (typeof opIndexDB !== "undefined") {
+                    // if (localStorageType == "indexdb") {   }
+                    if (typeof opIndexDB !== "undefined") {
                         opIndexDB.versionSynchronization();
                     }
                 }
@@ -567,6 +568,7 @@ function downloadTxtBolb(fileName, content) {
         document.body.removeChild(a);
     }
 }
+
 // eval()
 // function evil(fn) {
 //     var Fn = Function;  //一个变量指向Function，防止有些前端编译工具报错
@@ -583,7 +585,6 @@ function evil(fn) {
 }
 
 
-
 function getRandom(no) {
     randomNo = parseInt(Math.random() * (no) / 1 + 1);
     return randomNo;
@@ -594,29 +595,29 @@ function getRandom(no) {
 
 function toDecimal(x) {
     var val = Number(x)
-    if(!isNaN(parseFloat(val))) {
+    if (!isNaN(parseFloat(val))) {
         val = val.toFixed(1);//把 Number 四舍五入为指定小数位数的数字。
     }
-    return  val;
+    return val;
 }
 
 //保留小数点后面几位
 function roundFun(value, n) {
-    return Math.round(value*Math.pow(10,n))/Math.pow(10,n);
+    return Math.round(value * Math.pow(10, n)) / Math.pow(10, n);
 }
 
 // 四舍六入五考虑，五后非零就进一，五后为零看奇偶，五前为偶应舍去，五前为奇要进一。
 // toFixed()
 
 //保留n位小数并格式化输出（不足的部分补0）
-var fomatFloat = function(value, n) {
-    var f = Math.round(value*Math.pow(10,n))/Math.pow(10,n);
+var fomatFloat = function (value, n) {
+    var f = Math.round(value * Math.pow(10, n)) / Math.pow(10, n);
     var s = f.toString();
     var rs = s.indexOf('.');
     if (rs < 0) {
         s += '.';
     }
-    for(var i = s.length - s.indexOf('.'); i <= n; i++){
+    for (var i = s.length - s.indexOf('.'); i <= n; i++) {
         s += "0";
     }
     return s;
@@ -638,6 +639,7 @@ function ajaxGet(url, data, callback) {
         }
     });
 }
+
 function ajaxPost(url, ajaxPostData, callback) {
     $.ajax({
         url: url,
@@ -652,6 +654,7 @@ function ajaxPost(url, ajaxPostData, callback) {
         }
     });
 }
+
 function ajaxPostFormData(url, formData, callback) {
     $.ajax({
         url: "http://localhost:8888/chat_points/InportAllDataServlet",
@@ -667,7 +670,6 @@ function ajaxPostFormData(url, formData, callback) {
         }
     });
 }
-
 
 
 function fetchGet(url) {
@@ -700,6 +702,7 @@ function fechGet(fgURL) {
 
     });
 }
+
 function fenchArray(url) {
     if (Array.isArray(url)) {
         var urlInit = 0;
@@ -713,5 +716,62 @@ function fenchArray(url) {
             }
         }, (error) => {
         });
+    }
+}
+
+//聚焦函数
+function setContentEditableSelection(idDom) {
+    var el = getDomById(idDom);
+    var selection = window.getSelection();
+    var range = document.createRange();
+    selection.removeAllRanges();
+    range.selectNodeContents(el);
+    range.collapse(false);
+    selection.addRange(range);
+    el.focus();
+}
+
+//替换
+function replaceSmall(text) {
+    text = text.toString().replaceAll('0', '₀').replaceAll('1', '₁')
+        .replaceAll('2', '₂').replaceAll('3', '₃').replaceAll('4', '₄')
+        .replaceAll('5', '₅').replaceAll('6', '₆').replaceAll('7', '₇')
+        .replaceAll('8', '₈').replaceAll('9', '₉').replaceAll('+', '₊')
+        .replaceAll('-', '₋');
+    // .replaceAll(' ', '');
+    return text;
+}
+
+//获得随机颜色
+function getRandomColor() {
+    const rdColor = ['Red', 'Orange', 'Yellow', 'Green', 'Cyan', 'Blue', 'Purple'];
+    let cr = rdColor[parseInt(Math.random() * 10 % (rdColor.length))];
+    return cr;
+}
+
+//指定滚动条滚动到指定位置
+function scrollToLocation(parent, son) {
+    var mainContainer = $(parent),
+        scrollToContainer = mainContainer.find(son); //滚动到<div id="thisMainPanel">中类名为son-panel的最后一个div处
+    //scrollToContainer = mainContainer.find('.son-panel:eq(5)');//滚动到<div id="thisMainPanel">中类名为son-panel的第六个处
+    //非动画效果
+    //mainContainer.scrollTop(
+    //  scrollToContainer.offset().top - mainContainer.offset().top + mainContainer.scrollTop()
+    //);
+    //动画效果
+    mainContainer.animate({
+        scrollTop: scrollToContainer.offset().top - mainContainer.offset().top + mainContainer.scrollTop()
+    }, 2000); //2秒滑动到指定位置
+}
+
+//滚动条滚动到最上面
+function scrollToTop(domName) {
+    if ($(domName).scrollTop() != 0) {
+        //直接滚动
+        // $("#increaseLogPre").scrollTop(0);
+        //带动画的滚动
+        $(domName).animate({
+            scrollTop: 0
+        }, 500);
     }
 }

@@ -34,6 +34,14 @@ var opWebsql = {
         // } else {
         //     // console.log("数据库创建成功！");
         // }
+
+        // dataBase.transaction(function (tx) {
+        //  let  abc="select * from jjang05";
+        //  tx.executeSql(abc,[],function (tx, results) {
+        //     console.log(results);
+        //      console.log(results.rows);
+        //     });
+        // });
     },
     createTable: function (tbNm) {
         this.getDB();
@@ -64,7 +72,7 @@ var opWebsql = {
                 //清空表格
                 // $("#myTable tbody").children().detach();
                 // opWebsql.searchData(tbName);
-                showTipBarrageFunction("websql:" + packageResult.opIndexDB.deleteTable);
+                showTipBarrageFunction("Websql:" + packageResult.opIndexDB.deleteTable);
             }, function (tx, error) {
                 console.log('Error: ' + error.message);
                 // showTipBarrageFunction("删除失败");
@@ -83,7 +91,7 @@ var opWebsql = {
                 //清空表格
                 // $("#myTable tbody").children().detach();
                 // opWebsql.searchData(tbName);
-                showTipBarrageFunction("websql:" + results.rowsAffected + packageResult
+                showTipBarrageFunction("Websql:" + results.rowsAffected + packageResult
                     .opIndexDB.clearTable);
             }, function (tx, error) {
                 // console.log('Error: ' + error.message);
@@ -159,7 +167,7 @@ var opWebsql = {
                     //     "</th><th>" + d.gamePoints + "</th><th>" + d.allPoints +
                     //     "</th><th>" + d.date + "</th></tr>");
                     $("#myTable tbody").append("<tr><th>" + i +
-                        "</th><th>" + d.userNick + "(" + d.id + ")</th><th>" + convertGrade(d.grade) + "</th><th>" + d.chatPoints +
+                        "</th><th><a href='https://bj.afreecatv.com/" + d.id + "' target='_blank'>" + d.userNick + "(" + d.id + ")</a></th><th>" + convertGrade(d.grade) + "</th><th>" + d.chatPoints +
                         "</th><th>" + d.chatTimes + "</th><th>" + d.gamePoints + "</th><th>" + d.allPoints +
                         "</th><th>" + d.allTimes + "</th><th>" + d.date + "</th></tr>");
                     i++;
@@ -230,7 +238,7 @@ var opWebsql = {
             // sql = "select userNick as 닉네임,max(chatPoints) as 오늘 채팅 횟수,max(allPoints) as 총 채팅 횟수 from "+tbName;
             //console.log(sql);
             // id ,
-            if (serachType != "allPoints" && serachType != "allTimes"&&serachType != "date") {
+            if (serachType != "allPoints" && serachType != "allTimes" && serachType != "date") {
                 sqlDataArray = [todayDate];
                 sql = "select userNick ,max(" + serachType + ") as " + serachType + ",allPoints,count(1) as count  from " + tbName + " where date=?";
             } else {
@@ -274,9 +282,9 @@ var opWebsql = {
                     sendMessageCustom(dataString, 1, 4);
                 }, null);
             } else {
-                sqlDataArray=[todayDate,todayDate];
+                sqlDataArray = [todayDate, todayDate];
                 if (tex == "!총포인트") {
-                    sqlDataArray=[];
+                    sqlDataArray = [];
                     // sql = "SELECT s.allPoints,(select count(distinct(allPoints)) from " + tbName +
                     // 	" where allPoints >= s.allPoints ) as 'Rank',(select count(1) from " + tbName +
                     // 	" ) as 'count' FROM " + tbName + " as s where s.id=? order by allPoints desc ";
@@ -285,7 +293,7 @@ var opWebsql = {
                         ") as 'count' from " + tbName + " order by allPoints desc";
 
                     dataString = dataString + ":누적 총 채팅 포인트:";
-                }else if (tex == "!총횟수") {
+                } else if (tex == "!총횟수") {
                     // sql = "SELECT s.allPoints,(select count(distinct(allPoints)) from " + tbName +
                     // 	" where allPoints >= s.allPoints ) as 'Rank',(select count(1) from " + tbName +
                     // 	" ) as 'count' FROM " + tbName + " as s where s.id=? order by allPoints desc ";
@@ -299,7 +307,7 @@ var opWebsql = {
                     // sql = "SELECT s.chatPoints,(select count(distinct(chatPoints)) from " + tbName +
                     // 	" where chatPoints >= s.chatPoints and date="+todayDate+" ) as 'Rank',(select count(1) from " +
                     // 	tbName +" where date="+todayDate+" ) as 'count' FROM " + tbName + " as s where s.id=? and date="+todayDate+" order by chatPoints desc ";
-                    sql = "select id,userNick,chatPoints,(select count(1) from " + tbName +" where date=?) as 'count' from " + tbName + " where date=? order by chatPoints desc";
+                    sql = "select id,userNick,chatPoints,(select count(1) from " + tbName + " where date=?) as 'count' from " + tbName + " where date=? order by chatPoints desc";
                 } else if (tex == "!채팅횟수") {
                     dataString = dataString + ":오늘 채팅 횟수:";
                     sql = "select id,userNick,chatTimes,(select count(1) from " + tbName +
@@ -358,6 +366,7 @@ var opWebsql = {
 
     },
     insertData: function (userData, idDom) {
+
         let todayDate = $("#timeFrequencys").text().substring(0, $("#timeFrequencys").text().indexOf("\t"));
         // var allTbName = "chatPointsMode";
         uId = userData.id;
@@ -838,7 +847,7 @@ var opWebsql = {
                         tx.executeSql(sql, sqlDataArray, function () {
                             if (i == userDataArray.length - 1) {
                                 // showTipBarrageFunction(userDataArray.length + "개의 데이터 가져오기 성공");
-                                showTipBarrageFunction("websql:" + userDataArray
+                                showTipBarrageFunction("Websql:" + userDataArray
                                     .length + packageResult.opIndexDB
                                     .inportDataFunction);
                                 callBack("over");
@@ -853,7 +862,7 @@ var opWebsql = {
                         // console.log(resultRows);
                         // console.log(resultRows[0].date+"===="+userDataArray[i].date);
 
-                        if ( resultRows[0].date == userDataArray[i].date) {
+                        if (resultRows[0].date == userDataArray[i].date) {
                             let addChatPoint = resultRows[0].chatPoints + userDataArray[i].chatPoints;
                             let addChatTimes = resultRows[0].chatTimes + userDataArray[i].chatTimes;
                             let addGamePoints = resultRows[0].gamePoints + userDataArray[i].gamePoints;
@@ -867,13 +876,13 @@ var opWebsql = {
                             //     " WHERE id=?";
                             sql = "UPDATE " + tbName + " SET grade=?,chatPoints=?,chatTimes=?,gamePoints=?,allPoints=?,allTimes=? WHERE id=?";
                             sqlDataArray = [userDataArray[i].grade, addChatPoint, addChatTimes, addGamePoints, addAllPoint, addAllTimes, userDataArray[i].id];
-                        } else if(resultRows[0].date<userDataArray[i].date){
+                        } else if (resultRows[0].date < userDataArray[i].date) {
                             //在数组前面追加一个元素
                             // sqlDataArray.unshift();
                             sql = "UPDATE " + tbName + " SET grade=?,chatPoints=?,chatTimes=?,gamePoints=?,allPoints=?,allTimes=?,date=? WHERE id=?";
                             // 更新传来的新日期
-                            sqlDataArray = [userDataArray[i].grade,userDataArray[i].chatPoints,userDataArray[i].chatTimes,userDataArray[i].gamePoints,addAllPoint, addAllTimes,userDataArray[i].date, userDataArray[i].id];
-                        }else{
+                            sqlDataArray = [userDataArray[i].grade, userDataArray[i].chatPoints, userDataArray[i].chatTimes, userDataArray[i].gamePoints, addAllPoint, addAllTimes, userDataArray[i].date, userDataArray[i].id];
+                        } else {
 
                         }
 
@@ -883,7 +892,7 @@ var opWebsql = {
                             // console.log(results.rowsAffected);
                             if (i == userDataArray.length - 1) {
                                 // showTipBarrageFunction(userDataArray.length + "개의 데이터 가져오기 성공");
-                                showTipBarrageFunction("websql:" + userDataArray
+                                showTipBarrageFunction("Websql:" + userDataArray
                                     .length + packageResult.opIndexDB
                                     .inportDataFunction);
                                 callBack("over");
@@ -898,7 +907,7 @@ var opWebsql = {
     }
 }
 
-function showEveryPageIndex(allLength, pageIndex){
+function showEveryPageIndex(allLength, pageIndex) {
     $("#allPageValue").val(allLength);
     let allPageLength = allLength % everyPage == 0 ?
         parseInt(allLength / everyPage) : (parseInt(
@@ -1024,9 +1033,7 @@ function getData() {
                 clearInterval(flushInterval);
             }
         }
-    }, 5000);
-
-
+    }, 20000);
 }
 
 
@@ -1076,7 +1083,7 @@ function todayChatPointsUp(sort, which) {
         //         .chatPoints + "</th><th>" + d.gamePoints + "</th><th>" + d.allPoints + "</th><th>" + d.date +
         //     "</th></tr>");
         $("#myTable tbody").append("<tr><th>" + i +
-            "</th><th>" + d.userNick + "(" + d.id + ")</th><th>" + convertGrade(d.grade) + "</th><th>" + d.chatPoints +
+            "</th><th><a href='https://bj.afreecatv.com/" + d.id + "' target='_blank'>" + d.userNick + "(" + d.id + ")</a></th><th>" + convertGrade(d.grade) + "</th><th>" + d.chatPoints +
             "</th><th>" + d.chatTimes + "</th><th>" + d.gamePoints + "</th><th>" + d.allPoints +
             "</th><th>" + d.allTimes + "</th><th>" + d.date + "</th></tr>");
     }
@@ -1150,7 +1157,7 @@ function changePage(pageIndex) {
         opIndexDB.searchDataLimit(pageIndex, srt, whih);
     } else if (localStorageType == "websql") {
         opWebsql.searchData(tbName, srt, whih, limi, pageIndex);
-    } else if (localStorageType == "mysql"){
+    } else if (localStorageType == "mysql") {
         opMysql.searchData(tbName, srt, whih, limi, pageIndex);
     }
 
@@ -1164,16 +1171,19 @@ function todayChatPointsSort(which) {
     if (whih != which) {
         pgIndex = 1;
         whih = which;
+        //滚动条滚动到最上面
+        scrollToTop("#myTable");
+
     }
-    var todayChatPoints ;
+    var todayChatPoints;
     srt = "down";
     var todayChatPointChilren;
     // if(which!='date'){
     //     todayChatPoints  = $("#" + which);
     // }else{ }
-    todayChatPoints  = $("#myTable_"+which);
+    todayChatPoints = $("#myTable_" + which);
 
-    todayChatPointChilren =todayChatPoints.children("i");
+    todayChatPointChilren = todayChatPoints.children("i");
     if (todayChatPointChilren.length == 0) {
 
         $("#myTableHead i").hide();
@@ -1185,7 +1195,7 @@ function todayChatPointsSort(which) {
             opIndexDB.searchDataLimit(1, srt, whih);
         } else if (localStorageType == "websql") {
             opWebsql.searchData(tbName, srt, which);
-        }else if (localStorageType == "mysql"){
+        } else if (localStorageType == "mysql") {
             opMysql.searchData(tbName, srt, which, null, pgIndex);
         }
         // opWebsql.searchData(tbName, srt, which);
@@ -1200,7 +1210,7 @@ function todayChatPointsSort(which) {
             setTimeout(function () {
                 todayChatPointChilren[0].style.display = "block";
                 todayChatPointChilren[1].style.display = "none";
-            },250);
+            }, 250);
             // todayChatPointChilren[0].className = "icon-arrow-up";
             // todayChatPointsUp("up", which);
             srt = "up";
@@ -1209,7 +1219,7 @@ function todayChatPointsSort(which) {
                 opIndexDB.searchDataLimit(1, srt, whih);
             } else if (localStorageType == "websql") {
                 opWebsql.searchData(tbName, srt, which);
-            }else if (localStorageType == "mysql"){
+            } else if (localStorageType == "mysql") {
                 opMysql.searchData(tbName, srt, which, null, pgIndex);
             }
         } else {
@@ -1217,7 +1227,7 @@ function todayChatPointsSort(which) {
             setTimeout(function () {
                 todayChatPointChilren[0].style.display = "none";
                 todayChatPointChilren[1].style.display = "block";
-            },250);
+            }, 250);
             // todayChatPointChilren[0].className = "icon-arrow-down";
             // todayChatPointsUp("down", which);
             //
@@ -1225,7 +1235,7 @@ function todayChatPointsSort(which) {
                 opIndexDB.searchDataLimit(1, srt, whih);
             } else if (localStorageType == "websql") {
                 opWebsql.searchData(tbName, srt, which);
-            }else if (localStorageType == "mysql"){
+            } else if (localStorageType == "mysql") {
                 opMysql.searchData(tbName, srt, which, null, pgIndex);
             }
         }

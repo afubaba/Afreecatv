@@ -732,18 +732,6 @@ function stopFunction() {
     alert('stop ok');
 }
 
-//聚焦函数
-function setContentEditableSelection(idDom) {
-    var el = getDomById(idDom);
-    var selection = window.getSelection();
-    var range = document.createRange();
-    selection.removeAllRanges();
-    range.selectNodeContents(el);
-    range.collapse(false);
-    selection.addRange(range);
-    el.focus();
-}
-
 
 //手动点击恢复默认配置
 function environmentButtonFunction() {
@@ -2358,25 +2346,6 @@ function barrage() {
     // alert($barrageButton.attr('data-isBarrage'));
 }
 
-//替换
-function replaceSmall(text) {
-    text = text.toString().replaceAll('0', '₀').replaceAll('1', '₁')
-        .replaceAll('2', '₂').replaceAll('3', '₃').replaceAll('4', '₄')
-        .replaceAll('5', '₅').replaceAll('6', '₆').replaceAll('7', '₇')
-        .replaceAll('8', '₈').replaceAll('9', '₉').replaceAll('+', '₊')
-        .replaceAll('-', '₋');
-    // .replaceAll(' ', '');
-    return text;
-}
-
-
-//获得随机颜色
-function getRandomColor() {
-    const rdColor = ['Red', 'Orange', 'Yellow', 'Green', 'Cyan', 'Blue', 'Purple'];
-    let cr = rdColor[parseInt(Math.random() * 10 % (rdColor.length))];
-    return cr;
-}
-
 //全局字体颜色
 var commonFontColor;
 
@@ -2661,22 +2630,6 @@ window.addEventListener('message', (e) => {
     $("#btn_send").click();
 })
 
-//指定滚动条滚动到指定位置
-function scrollToLocation(parent, son) {
-    var mainContainer = $(parent),
-        scrollToContainer = mainContainer.find(son); //滚动到<div id="thisMainPanel">中类名为son-panel的最后一个div处
-    //scrollToContainer = mainContainer.find('.son-panel:eq(5)');//滚动到<div id="thisMainPanel">中类名为son-panel的第六个处
-    //非动画效果
-    //mainContainer.scrollTop(
-    //  scrollToContainer.offset().top - mainContainer.offset().top + mainContainer.scrollTop()
-    //);
-    //动画效果
-    mainContainer.animate({
-        scrollTop: scrollToContainer.offset().top - mainContainer.offset().top + mainContainer.scrollTop()
-    }, 2000); //2秒滑动到指定位置
-}
-
-
 function sendMessage(message) {
     //打开批量功能
     $('#batchInformationDivId').collapse("show");
@@ -2952,14 +2905,8 @@ function retrievalButtonFunction() {
                                 if (uData.id && uData.userNick) {
                                     $("#increaseLogPre").prepend("<li>" + $("#timeFrequencys").text() + "&emsp;[" + user_Nick + "] " + packageResult.retrievalButtonFunction.byImageEmoji + calcAddData.increase + packageResult.retrievalButtonFunction.addChatPoints + "</li>");
                                     if (!isHoverIncreaseLogPre) {
-                                        if ($("#increaseLogPre").scrollTop() != 0) {
-                                            //直接滚动
-                                            // $("#increaseLogPre").scrollTop(0);
-                                            //带动画的滚动
-                                            $("#increaseLogPre").animate({
-                                                scrollTop: 0
-                                            }, 500);
-                                        }
+                                        //滚动条滚动到最上面
+                                        scrollToTop("#increaseLogPre");
                                     }
                                     if (localStorageType == "indexdb") {
                                         opIndexDB.insertData(uData, idDom);
@@ -3584,6 +3531,7 @@ function retrievalButtonFunction() {
                                     objIndex: 2
                                 }
                                 opSettingIndexDB.searchCommandAuthoritySupport(objData, function (callbackData) {
+
                                     if (callbackData.isAuthority) {
                                         // tex.includes('!주사위') && tex.length ==4 && tex.length == 5 &&diceNo<9&& !isNaN(diceNo)
                                         //⚀⚁⚂⚃⚄⚅🎲🎲
@@ -3636,7 +3584,26 @@ function retrievalButtonFunction() {
                                         //         "dicePoints": dicePoints
                                         //     }
                                         // }
-
+                                        //倍率
+                                        let diceMultiplier;
+                                        let todayDate = $("#timeFrequencys").text().substring(0, $("#timeFrequencys").text().indexOf("\t"));
+                                        let todayDay = new Date(todayDate).getDay();
+                                        switch (todayDay) {
+                                            case 0:
+                                                diceMultiplier = getRandom(7);
+                                                break;
+                                            case 1:
+                                            case 2:
+                                            case 3:
+                                            case 4:
+                                            case 5:
+                                            case 6:
+                                                diceMultiplier = getRandom(todayDay);
+                                                break;
+                                            default:
+                                                diceMultiplier = 3.5
+                                                break;
+                                        }
 
                                         function randomDice(length, callback) {
                                             var diceString = "";
@@ -3644,30 +3611,33 @@ function retrievalButtonFunction() {
                                             var i = 0;
                                             var diceInterval = setInterval(function () {
                                                 // console.log(i);
+                                                //形式
+                                                // diceString = diceString + dice1;
+                                                // dicePoints = dicePoints + getRandom() * diceMultiplier;
                                                 switch (getRandom()) {
                                                     case 1:
                                                         diceString = diceString + dice1;
-                                                        dicePoints = dicePoints + 5;
+                                                        dicePoints = dicePoints + 1 * diceMultiplier;
                                                         break;
                                                     case 2:
                                                         diceString = diceString + dice2;
-                                                        dicePoints = dicePoints + 10;
+                                                        dicePoints = dicePoints + 2 * diceMultiplier;
                                                         break;
                                                     case 3:
                                                         diceString = diceString + dice3;
-                                                        dicePoints = dicePoints + 15;
+                                                        dicePoints = dicePoints + 3 * diceMultiplier;
                                                         break;
                                                     case 4:
                                                         diceString = diceString + dice4;
-                                                        dicePoints = dicePoints + 20;
+                                                        dicePoints = dicePoints + 4 * diceMultiplier;
                                                         break;
                                                     case 5:
                                                         diceString = diceString + dice5;
-                                                        dicePoints = dicePoints + 25;
+                                                        dicePoints = dicePoints + 5 * diceMultiplier;
                                                         break;
                                                     case 6:
                                                         diceString = diceString + dice6;
-                                                        dicePoints = dicePoints + 30;
+                                                        dicePoints = dicePoints + 6 * diceMultiplier;
                                                         break;
                                                 }
                                                 i++;
@@ -3743,6 +3713,7 @@ function retrievalButtonFunction() {
                                                 parameter1 = replaceSmall(parameter1);
                                                 parameter2 = replaceSmall(parameter2);
                                                 let mString = "";
+                                                // let diceMultiplierString=packageResult.retrievalButtonFunction.multiple;
                                                 let logString;
                                                 if (dicePointsResult2 > 0) {
                                                     //通过骰子游戏  赢了 BJ 5游戏点
@@ -3772,9 +3743,33 @@ function retrievalButtonFunction() {
                                                         .diceString + "," + dicePointsResult2 + "₍🎮։" +
                                                     parameter1 + "₎ " + makerNick + ":" +
                                                     diceResult1.diceString + "," + dicePointsResult1 + "₍🎮։" +
-                                                    parameter2 + "₎" + mString;
+                                                    parameter2 + "₎" + mString + "{오늘 배수:" + diceMultiplier + "}";
 
                                                 sendMessageCustom(messageString, 1, 2);
+
+                                                // if (dicePointsResult2 > 0) {
+                                                //     dicePointsResult2 = "+" + replaceSmall(dicePointsResult2);
+                                                //     var messageString = "@" + nickName + ":" + diceResult2
+                                                //             .diceString + "," + parameter1 + "₍" +
+                                                //         dicePointsResult2 + "₎ " + makerNick + ":" +
+                                                //         diceResult1.diceString + ", " + parameter2 + "₍" +
+                                                //         dicePointsResult1 + "₎";
+                                                //
+                                                //     sendMessageCustom(messageString, 1, 2);
+                                                // } else if (dicePointsResult2 == 0) {
+                                                //     sendMessageCustom("@" + nickName + ":" + diceResult2
+                                                //             .diceString + "," + parameter1 + " " +
+                                                //         makerNick + ":" + diceResult1
+                                                //             .diceString + "," + parameter2 + " 화패",
+                                                //         1, 2);
+                                                // } else {
+                                                //     sendMessageCustom("@" + nickName + ":" + diceResult2
+                                                //             .diceString + "," + parameter1 + "₍" +
+                                                //         replaceSmall(dicePointsResult2) + "₎ " + makerNick + ":" +
+                                                //         diceResult1
+                                                //             .diceString + ", " + parameter2 + "₍" +
+                                                //         dicePointsResult1 + "₎", 1, 2);
+                                                // }
                                             }
 
                                             if (localStorageType == "indexdb") {
@@ -3802,6 +3797,7 @@ function retrievalButtonFunction() {
                                         }
                                     }
                                 });
+
                             } else {
                                 doFunctionByData(tex);
                             }

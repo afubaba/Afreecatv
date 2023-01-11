@@ -531,7 +531,7 @@ var opIndexDB = {
                         //     "</th><th>" + d.gamePoints + "</th><th>" + d.allPoints +
                         //     "</th><th>" + d.date + "</th></tr>");
                         $("#myTable tbody").append("<tr><th>" + i +
-                            "</th><th>" + d.userNick + "(" + d.id + ")</th><th>" + convertGrade(d.grade) + "</th><th>" + d.chatPoints +
+                            "</th><th><a href='https://bj.afreecatv.com/"+d.id+"' target='_blank'>" + d.userNick + "(" + d.id + ")</a></th><th>" + convertGrade(d.grade) + "</th><th>" + d.chatPoints +
                             "</th><th>" + d.chatTimes + "</th><th>" + d.gamePoints + "</th><th>" + d.allPoints +
                             "</th><th>" + d.allTimes + "</th><th>" + d.date + "</th></tr>");
                     }
@@ -553,7 +553,7 @@ var opIndexDB = {
                         //     "</th><th>" + d.gamePoints + "</th><th>" + d.allPoints +
                         //     "</th><th>" + d.date + "</th></tr>");
                         $("#myTable tbody").append("<tr><th>" + i +
-                            "</th><th>" + d.userNick + "(" + d.id + ")</th><th>" + convertGrade(d.grade) + "</th><th>" + d.chatPoints +
+                            "</th><th><a href='https://bj.afreecatv.com/"+d.id+"' target='_blank'>" + d.userNick + "(" + d.id + ")</a></th><th>" + convertGrade(d.grade) + "</th><th>" + d.chatPoints +
                             "</th><th>" + d.chatTimes + "</th><th>" + d.gamePoints + "</th><th>" + d.allPoints +
                             "</th><th>" + d.allTimes + "</th><th>" + d.date + "</th></tr>");
 
@@ -594,7 +594,7 @@ var opIndexDB = {
                                 return Number(a[sortType]) - Number(b[sortType]);
                             } else {
                                 // 按日期递增排序date :2022,time:10:00:00
-                                // arr.sort((a, b) => b.date.localeCompare(a.date) ||  b.time.localeCompare(a.time));
+                                // arr.sort((a, b) => b.date.localeCompare(a.date) ||  b.time.localeCompare(a.time)); 
 
                                 return a.date.localeCompare(b.date);
                             }
@@ -655,7 +655,7 @@ var opIndexDB = {
                             //     "</th><th>" + d.gamePoints + "</th><th>" + d.allPoints +
                             //     "</th><th>" + d.date + "</th></tr>");
                             $("#myTable tbody").append("<tr><th>" + (i + 1) +
-                                "</th><th>" + d.userNick + "(" + d.id + ")</th><th>" + convertGrade(d.grade) + "</th><th>" + d.chatPoints +
+                                "</th><th><a href='https://bj.afreecatv.com/"+d.id+"' target='_blank'>" + d.userNick + "(" + d.id + ")</a></th><th>" + convertGrade(d.grade) + "</th><th>" + d.chatPoints +
                                 "</th><th>" + d.chatTimes + "</th><th>" + d.gamePoints + "</th><th>" + d.allPoints +
                                 "</th><th>" + d.allTimes + "</th><th>" + d.date + "</th></tr>");
                         } else {
@@ -1008,7 +1008,7 @@ var opIndexDB = {
                     if (e.type == 'success') {
                         // INDEXDB.closeDB()
                         // this.closeDB();
-                        showTipBarrageFunction("indexdb:" + result.length + packageResult.opIndexDB.clearTable);
+                        showTipBarrageFunction("IndexDB:" + result.length + packageResult.opIndexDB.clearTable);
                         db.close();
                     }
                 }
@@ -1031,7 +1031,7 @@ var opIndexDB = {
                     if (e.type == 'success') {
                         // INDEXDB.closeDB()
                         // this.closeDB();
-                        showTipBarrageFunction("indexdb:" + result.length + packageResult.opIndexDB.deleteTable);
+                        showTipBarrageFunction("IndexDB:" + result.length + packageResult.opIndexDB.deleteTable);
                         db.close();
                     }
                 }
@@ -1078,7 +1078,7 @@ var opIndexDB = {
                     userDataStore.add(userData).onsuccess = function () {
                         if (i == userDataArray.length - 1) {
                             // showTipBarrageFunction(userDataArray.length + "개의 데이터 가져오기 성공");
-                            showTipBarrageFunction("indexdb:" + userDataArray.length + packageResult.opIndexDB.inportDataFunction);
+                            showTipBarrageFunction("IndexDB:" + userDataArray.length + packageResult.opIndexDB.inportDataFunction);
                             callBack("over");
                         }
                     };
@@ -1088,13 +1088,13 @@ var opIndexDB = {
                         data.chatPoints = data.chatPoints + userData.chatPoints;
                         data.chatTimes = data.chatTimes + userData.chatTimes;
                         data.gamePoints = data.gamePoints + userData.gamePoints;
-                    }else if(data.date<userData.date){
+                    } else if (data.date < userData.date) {
                         data.chatPoints = data.chatPoints;
                         data.chatTimes = data.chatTimes;
                         data.gamePoints = data.gamePoints;
                         // 更新传来的新日期
-                        data.date=userData.date;
-                    }else{
+                        data.date = userData.date;
+                    } else {
 
                     }
                     data.allPoints = data.allPoints + userData.allPoints;
@@ -1115,7 +1115,7 @@ var opIndexDB = {
                         // console.log('更新', event.target.result);
                         if (i == userDataArray.length - 1) {
                             // showTipBarrageFunction(userDataArray.length + "개의 데이터 가져오기 성공");
-                            showTipBarrageFunction("indexdb:" + userDataArray.length + packageResult.opIndexDB.inportDataFunction);
+                            showTipBarrageFunction("IndexDB:" + userDataArray.length + packageResult.opIndexDB.inportDataFunction);
                             callBack("over");
 
                         }
@@ -1125,8 +1125,6 @@ var opIndexDB = {
         }
     }
 }
-
-
 
 
 // 它会返回所有数据库名称
@@ -1359,7 +1357,7 @@ function writeInportData(inportData, fileName) {
                                 } else if (localStorageType == "websql") {
                                     opWebsql.inportDataFunction(exportTextArray, function (i) {
                                     });
-                                }else if (localStorageType == "mysql") {
+                                } else if (localStorageType == "mysql") {
                                     opMysql.inportDataFunction(exportTextArray, function (i) {
                                     });
                                 }
@@ -1483,7 +1481,7 @@ function exportFunction(type) {
         opWebsql.exportDataFunction(function (dataStore) {
             chioseFunctionByType(dataStore, type);
         });
-    }else if (localStorageType == "mysql") {
+    } else if (localStorageType == "mysql") {
         opMysql.exportDataFunction(function (dataStore) {
             chioseFunctionByType(dataStore, type);
         });
