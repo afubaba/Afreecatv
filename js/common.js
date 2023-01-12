@@ -586,8 +586,7 @@ function evil(fn) {
 
 
 function getRandom(no) {
-    randomNo = parseInt(Math.random() * (no) / 1 + 1);
-    return randomNo;
+    return parseInt(Math.random() * (no) / 1 + 1);
 }
 
 

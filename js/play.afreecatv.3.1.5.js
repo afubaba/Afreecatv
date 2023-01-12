@@ -3541,12 +3541,7 @@ function retrievalButtonFunction() {
                                         var dice4 = "⚃";
                                         var dice5 = "⚄";
                                         var dice6 = "⚅";
-                                        var randomNo;
 
-                                        function getRandom() {
-                                            randomNo = parseInt(Math.random() * (6) / 1 + 1);
-                                            return randomNo;
-                                        }
 
                                         // function randomDice(length) {
                                         //     var diceString = "";
@@ -3604,7 +3599,11 @@ function retrievalButtonFunction() {
                                                 diceMultiplier = 3.5
                                                 break;
                                         }
-
+                                        // var randomNo;
+                                        // function getRandomDice() {
+                                        //     randomNo = parseInt(Math.random() * (6) / 1 + 1);
+                                        //     return randomNo;
+                                        // }
                                         function randomDice(length, callback) {
                                             var diceString = "";
                                             var dicePoints = 0;
@@ -3614,7 +3613,7 @@ function retrievalButtonFunction() {
                                                 //形式
                                                 // diceString = diceString + dice1;
                                                 // dicePoints = dicePoints + getRandom() * diceMultiplier;
-                                                switch (getRandom()) {
+                                                switch (getRandom(6)) {
                                                     case 1:
                                                         diceString = diceString + dice1;
                                                         dicePoints = dicePoints + 1 * diceMultiplier;
