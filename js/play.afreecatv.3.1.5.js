@@ -3742,7 +3742,7 @@ function retrievalButtonFunction() {
                                                         .diceString + "," + dicePointsResult2 + "₍🎮։" +
                                                     parameter1 + "₎ " + makerNick + ":" +
                                                     diceResult1.diceString + "," + dicePointsResult1 + "₍🎮։" +
-                                                    parameter2 + "₎" + mString + "{오늘 배수:" + diceMultiplier + "}";
+                                                    parameter2 + "₎" + mString + "{배수:" + diceMultiplier + "}";
 
                                                 sendMessageCustom(messageString, 1, 2);
 
