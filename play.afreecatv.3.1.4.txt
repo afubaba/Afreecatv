@@ -24,36 +24,36 @@
                 <div class="tabbable">
                     <ul class="nav nav-tabs">
                         <li class="active" id="face-people-controller"><a data-toggle="tab" href="#face-people">
-                            <!-- <h2>人物符号</h2> -->
-                            사람들이 기호
-                        </a></li>
+                                <!-- <h2>人物符号</h2> -->
+                                사람들이 기호
+                            </a></li>
                         <li id="object-controller"><a data-toggle="tab" href="#object">
-                            <!-- <h2>物件符号</h2> -->
-                            개체 기호
-                        </a></li>
+                                <!-- <h2>物件符号</h2> -->
+                                개체 기호
+                            </a></li>
                         <li id="nature-animal-controller"><a data-toggle="tab" href="#nature-animal">
-                            <!-- <h2>动物大自然</h2> -->
-                            동물 및 자연
-                        </a></li>
+                                <!-- <h2>动物大自然</h2> -->
+                                동물 및 자연
+                            </a></li>
                         <li id="travel-activity-controller"><a data-toggle="tab" href="#travel-activity">
-                            <!-- <h2>地点符号</h2> -->
-                            장소 기호
+                                <!-- <h2>地点符号</h2> -->
+                                장소 기호
                         <li id="symbol-controller"><a data-toggle="tab" href="#symbol">
-                            <!-- <h2>特殊符号</h2> -->
-                            특수 기호
-                        </a></li>
+                                <!-- <h2>特殊符号</h2> -->
+                                특수 기호
+                            </a></li>
                         <li id="other-controller"><a data-toggle="tab" href="#other">
-                            <!-- <h2>隐藏符号</h2> -->
-                            숨겨진 기호
-                        </a></li>
+                                <!-- <h2>隐藏符号</h2> -->
+                                숨겨진 기호
+                            </a></li>
                         <li id="activity-controller"><a data-toggle="tab" href="#activity">
-                            <!-- <h2>活动</h2> -->
-                            활동
-                        </a></li>
+                                <!-- <h2>活动</h2> -->
+                                활동
+                            </a></li>
                         <li id="flags-controller"><a data-toggle="tab" href="#flags">
-                            <!-- <h2>旗帜</h2> -->
-                            깃발
-                        </a></li>
+                                <!-- <h2>旗帜</h2> -->
+                                깃발
+                            </a></li>
                     </ul>
                     <div class="tab-content">
                         <div class="tab-pane active" id="face-people">
@@ -2000,7 +2000,7 @@
         <div class="modal alert alert-block" id="myModal" style="display: none;">
             <div class="modal-header"><a class="close" data-dismiss="modal">X</a>
                 <div class="alert alert-error"
-                     style="position: fixed;z-index: 10000;width: 40%;font-size:large;font-weight: bolder;">
+                    style="position: fixed;z-index: 10000;width: 40%;font-size:large;font-weight: bolder;">
                     <a class="close" data-dismiss="alert">X</a>
                     <!-- <strong>주의사항!</strong> 본 채팅 포인트 데이터는 본 유람기에만 저장되며, 사이트 데이터 데이터를 정리하면 정보를 잃게 됩니다 -->
                     <strong id="mattersNeedingAttention"></strong>
@@ -2020,44 +2020,43 @@
 
                 <table class="table table-striped">
                     <thead id="myTableHead">
-                    <tr>
-                        <th id='myTable_number'></th>
-                        <th id='myTable_user'></th>
-                        <!--                        <th id='myTable_nick'></th>-->
-                        <th id='myTable_grade'></th>
-                        <!-- <i class="icon-chevron-up"/> -->
-                        <th>
-                            <button id="chatPoints" onclick="todayChatPointsSort('chatPoints')"></button>
-                        </th>
-                        <!--                        <th id='myTable_chatTimes'></th>-->
-                        <th>
-                            <button id="chatTimes" onclick="todayChatPointsSort('chatTimes')"></button>
-                        </th>
+                        <tr>
+                            <th id='myTable_number'></th>
+                            <th id='myTable_user'></th>
+                            <!--                        <th id='myTable_nick'></th>-->
+                            <th id='myTable_grade'></th>
+                            <!-- <i class="icon-chevron-up"/> -->
+                            <th>
+                                <button id="myTable_chatPoints" onclick="todayChatPointsSort('chatPoints')"></button>
+                            </th>
+                            <!--                        <th id='myTable_chatTimes'></th>-->
+                            <th>
+                                <button id="myTable_chatTimes" onclick="todayChatPointsSort('chatTimes')"></button>
+                            </th>
 
-                        <th>
-                            <button id="gamePoints" onclick="todayChatPointsSort('gamePoints')"></button>
-                        </th>
-                        <th>
-                            <button id="allPoints" onclick="todayChatPointsSort('allPoints')"></button>
-                        </th>
-                        <!--                        <th id='myTable_allTimes'>总聊天次数</th>-->
-                        <th>
-                            <button id="allTimes" onclick="todayChatPointsSort('allTimes')"></button>
-                        </th>
-
-                        <th id='myTable_date'></th>
-                    </tr>
-                    <tr id="todayChatPointsAce">
-                        <th>조회 붐비는 중</th>
-                        <th>ace</th>
-                        <th>ace</th>
-                        <th>ace</th>
-                        <th>ace</th>
-                        <th>ace</th>
-                        <th>ace</th>
-                        <th>ace</th>
-                        <th>ace</th>
-                    </tr>
+                            <th>
+                                <button id="myTable_gamePoints" onclick="todayChatPointsSort('gamePoints')"></button>
+                            </th>
+                            <th>
+                                <button id="myTable_allPoints" onclick="todayChatPointsSort('allPoints')"></button>
+                            </th>
+                            <!--                        <th id='myTable_allTimes'>总聊天次数</th>-->
+                            <th>
+                                <button id="myTable_allTimes" onclick="todayChatPointsSort('allTimes')"></button>
+                            </th>
+                            <th><button id="myTable_date" onclick="todayChatPointsSort('date')"></button></th>
+                        </tr>
+                        <tr id="todayChatPointsAce">
+                            <th>조회 붐비는 중</th>
+                            <th>ace</th>
+                            <th>ace</th>
+                            <th>ace</th>
+                            <th>ace</th>
+                            <th>ace</th>
+                            <th>ace</th>
+                            <th>ace</th>
+                            <th>ace</th>
+                        </tr>
                     </thead>
                     <tbody>
                     </tbody>
@@ -2066,11 +2065,18 @@
             <div class="modal-footer">
 
                 <div class="pagination pagination-centered myPagination" id="pagination">
+
+                    <label class="labelStyle" for="allPage">
+                        <span id="allPage"></span>:
+                        <input readonly id="allPageValue" style="border: none;" value="0" />
+                    </label>
+
                     <ul id="pageIndex" style="visibility: hidden;">
                         <li>
                             <!-- <a href='#' id="firstPage" onclick="changePage(1);">firstPage</a> -->
-                            <a href='#' id="firstPage" onclick="changePage(1);" style="visibility: hidden;"><span
-                                    class='badge'>1</span></a>
+                            <a href='#' id="firstPage" onclick="changePage(1);">
+                                <span class='badge'>1</span>
+                            </a>
                         </li>
                         <!-- <li><a href="#" onclick="changePage(1)">first</li> -->
 
@@ -2086,34 +2092,29 @@
 
                         <li><a href='#' onclick="changePage(this.innerText);">6</a></li>
 
-                        <li><a href='#' id="lastPage" onclick="changePage(1);" style="visibility: hidden;">lastPage</a>
+                        <li><a href='#' id="lastPage" onclick="changePage(1);">lastPage</a>
                         </li>
-
                     </ul>
+
                     <label class="labelStyle" for="everyPageValue">
                         <span id="everyPage"></span>:
-                        <input id="everyPageValue" type="number" step="1" min="1"/>
+                        <input id="everyPageValue" type="number" step="1" min="1" />
                     </label>
 
-                    <label class="labelStyle" for="allPage">
-                        <span id="allPage"></span>:
-                        <input readonly id="allPageValue" style="border: none;" value="0"/>
-                    </label>
                 </div>
-                <li class="btn btn-danger" style="position: absolute;right: 50px;"
-                    onclick="$('#increaseLogPre').text('');">clear
-                </li>
-                <pre id="increaseLogPre" class="prettyprint increaseLogPre"></pre>
+
                 <!--                position: absolute;left: 0;bottom: 0;-->
                 <div id="footMenuDiv" class="footMenuDiv">
+                    <li class="btn btn-danger" style="position: absolute;right: 50px;"
+                        onclick="$('#increaseLogPre').text('');">clear
+                    </li>
+                    <pre id="increaseLogPre" class="prettyprint increaseLogPre"></pre>
                     <li class="btn btn-warning alert-warning" id="exportDivButton" onclick="exportDivFunction();"></li>
 
                     <label for="resetTotalPointsEveryMonth" class="label">
                         <span id="isResetTotalPointsEveryMonth"></span>
                         <input id="resetTotalPointsEveryMonth" class="switch" type="checkbox">
                     </label>
-
-                    <li class="btn btn-danger" id="clearTableButton" onclick="clearTable()"></li>
 
                     <!-- ace:<input id="todayChatPointsAce" type="text"> -->
                     <!-- <br/> -->
@@ -2122,23 +2123,24 @@
                     <label for="websql" class="label">
                         <span id="websqlSpan">websql<i class='bi bi-database'></i><i
                                 class='bi bi-database-fill'></i></span>
-                        <input id="websql" name="storeWays" type="radio" value="websql"/>
+                        <input id="websql" name="storeWays" type="radio" value="websql" />
                     </label>
 
                     <label for="indexDB" class="label">
-                    <span id="indexDBSpan">indexdb<i class='bi bi-database'></i><i
-                            class='bi bi-database-fill'></i></span>
-                        <input id="indexDB" checked name="storeWays" type="radio" value="indexdb"/>
+                        <span id="indexDBSpan">indexdb<i class='bi bi-database'></i><i
+                                class='bi bi-database-fill'></i></span>
+                        <input id="indexDB" checked name="storeWays" type="radio" value="indexdb" />
                     </label>
-                    <br/>
+
+                    <li class="btn btn-danger" id="clearTableButton" onclick="clearTable()"></li>
+                    <br />
 
                     <label for="singleIncreaseMaxinumValue" class="label">
                         <span id="singleIncreaseMaxinumValueSpan"></span>
                         <!-- checked -->
                         <input checked id="isSingleIncreaseMaxinum" class="switch" type="checkbox">
                         <input id="singleIncreaseMaxinumValue" type="number" style="width: 30px;" step="5" max="30"
-                               min="5"
-                               placeholder="10"/>
+                            min="5" placeholder="10" />
                     </label>
 
                     <label for="chatPointsMode" class="label">
@@ -2166,8 +2168,7 @@
 
 
         <!--        transparent-->
-        <div id="commandAuthorityManagementModal"
-             style="display: none;" class="modal alert alert-block">
+        <div id="commandAuthorityManagementModal" style="display: none;" class="modal alert alert-block">
             <div class="modal-header"><a class="close" data-dismiss="modal">X</a>
                 <h1 id="commandAuthorityManagementModalTitle" class='fontStyle'></h1>
             </div>
@@ -2181,7 +2182,7 @@
                     </ol>
                     <!--                        fixed absolute relative sticky-->
                     <div class="tab-content" style="position: fixed;margin-left: 300px;overflow-x: hidden;"
-                         id="myTabbalePage">
+                        id="myTabbalePage">
 
                     </div>
                 </div>
@@ -2203,10 +2204,9 @@
                     <input id="promptOfIsStart" class="switch" type="checkbox">
                 </label>
 
-                <label id="promptOfAuthorizationFailureLabel" class="label"
-                       for="promptOfAuthorizationFailure">
+                <label id="promptOfAuthorizationFailureLabel" class="label" for="promptOfAuthorizationFailure">
                     <span id="promptOfAuthorizationFailureSpan"></span>
-                    <input id="promptOfAuthorizationFailure" class="switch" type="checkbox"/>
+                    <input id="promptOfAuthorizationFailure" class="switch" type="checkbox" />
                 </label>
 
                 <!-- <li class="btn" onclick="writeStatus()">写入状态</li> -->
@@ -2286,7 +2286,7 @@
                     <!--                    <textarea id="testInput" rows="2"></textarea>-->
 
                     <textarea autocomplete="on" class="noScroll" cols="25" data-provide="typeahead" id="testInput"
-                              rows="3" wrap="hard"></textarea>
+                        rows="3" wrap="hard"></textarea>
 
                     <!-- <input id="testInput" type="text" style="width: 50%;height: 30px;" placeholder=""> -->
                     <!--        <div id="showLog" class="showLog">-->
@@ -2297,11 +2297,11 @@
                     <!--여 기 는 스스로 수정 할 수 있 습 니 다.항상 1 초 에 두 번,또는 2 초 간격 으로 세 번 사용 합 니 다. -->
                     <!--allRepeatTimes=2/allRepeatTimes 표시 횟수,2 는 최대 두 번 발송,frequency=0.01  f 는 간격 을 나타 낸다.예 를 들 어 1 은 1 초 간격 이다.  -->
                     <button class="btn btn-success" id="send_message" onclick="sendMessageFunction();"
-                            title="메시지 보 내기 즉시 실행" type="button">
+                        title="메시지 보 내기 즉시 실행" type="button">
                         <span id="sendId">寄出</span>
                     </button>
                     <button class="btn btn-inverse" id="stopBatchSend" onclick="stopBatchSendFunction();"
-                            title="발송 중인 정보나 대량 발송 정보 중지" type="button">
+                        title="발송 중인 정보나 대량 발송 정보 중지" type="button">
                         <span id="stopId">停止</span>
                     </button>
                     <br>
@@ -2310,19 +2310,19 @@
                         <span id="timesId"></span>: <input id="inputTimes" placeholder="" step="1" min="1">
                         <!-- 间隔时间： -->
                         <span id="frequencyId"></span>: <input id="inputFrequency" placeholder="" step="0.5"
-                                                               min="0.001">
+                            min="0.001">
                         <br>
                         <label for="timesPromptInput" class="label">
                             <span id="showNumberNotifications">횟수알림</span>
                             <input id="timesPromptInput" class="switch" name="timesPrompt"
-                                   title="알림 이 있 는 발송 총 횟수 시간 간격" type="checkbox">
+                                title="알림 이 있 는 발송 총 횟수 시간 간격" type="checkbox">
                         </label>
                         <!-- <br> -->
                         <label for="chrysanthemumCheckBox" class="label">
                             <span id="chrysanthemumText">국화 텍스트</span>
                             <input id="chrysanthemumCheckBox" class="switch" name="chrysanthemumCheckBox"
-                                   title="스텔스 잉크 는 당신 의 대 화 를 더욱 매력 적 으로 합 니 다，문자 만 지원 하고 이모 티 콘 은 지원 되 지 않 습 니 다."
-                                   type="checkbox">
+                                title="스텔스 잉크 는 당신 의 대 화 를 더욱 매력 적 으로 합 니 다，문자 만 지원 하고 이모 티 콘 은 지원 되 지 않 습 니 다."
+                                type="checkbox">
                         </label>
                         <!-- <input type="range" class="rotateDom" orient="vertical" min="0" max="100" /> -->
                     </div>
@@ -2332,12 +2332,12 @@
 
                     <!-- 环境快速部署 -->
                     <button id="environmentButtonId" onclick="environmentButtonFunction();"
-                            style="font-size: large; color: yellow;" title="빠 른 설정 환경">
+                        style="font-size: large; color: yellow;" title="빠 른 설정 환경">
                         <span id="environmentSpanId">기본설정</span>
                     </button>
 
                     <button class="btn btn-danger" data-target="#batchInformationDivId" data-toggle="collapse"
-                            id="batchSend" style="width: 40%;" title="대량 작업 관련">대량정보
+                        id="batchSend" style="width: 40%;" title="대량 작업 관련">대량정보
                     </button>
 
                 </div>
@@ -2365,26 +2365,26 @@
 
 
                         <span id="lastIndexSpan" style="font-size: unset;">
-							최신 위치:
-						</span>
+                            최신 위치:
+                        </span>
 
                         <input disabled id="lastIndex" title="last index" type="number" value="0">/
                         <!-- 현재 위치: --><input disabled id="nowIndex" title="현재 포인터" type="number" value="0">
 
-                        <br/>
+                        <br />
 
                         <div style="display: none">
                             <!--						延迟极限毫秒-->
                             상한선: <input id="upperLimit" title="가장 빠 른 정 보 를 얻 는 속 도 를 나타 낸다." type="number" min="0.001">
                             최대격차: <input id="informationSynchronization" title="최대 10 개 또는 5 개의 정보 동기 화 차 이 를 허용 합 니 다."
-                                         title="최대정보동기화격차수" type="number" min="0.001" value="5">
+                                title="최대정보동기화격차수" type="number" min="0.001" value="5">
 
                         </div>
 
                         <span id="chatSpeedSpan"></span>
                         <!-- 延迟时间 -->
                         <input disabled id="delayInputTextId" title="현재 정보 획득 지연 시간(1000 은 1 초)" type="number"
-                               min="0.001"> ms
+                            min="0.001"> ms
 
                         <!-- <select id="delayInputId" >
                             <option id="quick" value="quick">快速</option>
@@ -2393,7 +2393,7 @@
                         </select> -->
 
 
-                        <br/>
+                        <br />
                         <!-- </div> -->
                         <div class="collapse" id="robotDivId">
 
@@ -2415,8 +2415,7 @@
 
                             <label for="robotChatCommondCheckboxId" class="label">
                                 <span id="isRobotChatCommond">로봇 명령</span>
-                                <input id="robotChatCommondCheckboxId" class="switch" checked
-                                       type="checkbox">
+                                <input id="robotChatCommondCheckboxId" class="switch" checked type="checkbox">
                             </label>
                             <br>
                             <!-- <button></button> -->
@@ -2429,18 +2428,17 @@
                         <!-- 检索消息 -->
                         <div class="btn-group">
                             <button class="btn btn-inverse" id="retrievalButtonId" onclick="retrievalButtonFunction();"
-                                    title="즉시 정보 읽 기">检索m
+                                title="즉시 정보 읽 기">检索m
                             </button>
                             <button class="btn btn-info" id="stopRetrievalMessage"
-                                    onclick="stopRetrievalMessageFunction();" title="정보 읽 기 중지">정보읽기중지
+                                onclick="stopRetrievalMessageFunction();" title="정보 읽 기 중지">정보읽기중지
                             </button>
                         </div>
 
-                        <a href="https://afubaba.github.io/Afreecatv/RobotCommand.html"
-                           id="commandManualLink"
-                           target="_blank">명령 매뉴얼</a>
+                        <a href="https://afubaba.github.io/Afreecatv/RobotCommand.html" id="commandManualLink"
+                            target="_blank">명령 매뉴얼</a>
                         <button class="btn btn-danger" data-target="#robotDivId" data-toggle="collapse"
-                                id="robotSetting" title="로봇 설정 구성">로봇 설정
+                            id="robotSetting" title="로봇 설정 구성">로봇 설정
                         </button>
 
 
@@ -2450,16 +2448,16 @@
                 </div>
                 <div class="tab-pane" id="detailedConfiguration">
                     <button class="btn btn-danger" data-target="#timeDivId" data-toggle="collapse" id="timeButtonId"
-                            onclick="timeButtonFunction();" title="사용 시간 기능">시간관련
+                        onclick="timeButtonFunction();" title="사용 시간 기능">시간관련
                     </button>
                     <div class="collapse" id="timeDivId">
                         <!-- 手动发送时间计时器 -->
                         <button id="getTimeButton" onclick="getTimeFunction();" title="현재 시간 가 져 오기 및 발송 시간"
-                                type="button">
+                            type="button">
                             <span id="handTimeId">当前时间</span>
                         </button>
                         <div id="timeFrequencys"></div>
-                        <br/>
+                        <br />
                         <!-- 自动发送时间计时器 -->
 
                         <label id="halfHourPromptLabel" class="label" for="halfHourPrompt">
@@ -2475,8 +2473,8 @@
 
                     </div>
                     <button class="btn btn-danger" id="clearChatarea"
-                            onclick="$('#chat_area').empty();document.getElementById('nowIndex').value=1;"
-                            style="display:none;">채팅내용비우기
+                        onclick="$('#chat_area').empty();document.getElementById('nowIndex').value=1;"
+                        style="display:none;">채팅내용비우기
                     </button>
                     <!-- <button id="closePlayer" class="btn btn-danger" onclick="$('#afreecatv_player').remove()"
                         title="생방송 모듈 을 제거 하고 문자 채 팅 기능 만 사용 하여 데이터 절약"> 데이터 절약 모드(test)</button> -->

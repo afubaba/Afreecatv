@@ -967,7 +967,7 @@ function environmentFunction() {
     // 	" height:40%;margin-top:-5%;position: fixed;margin-left:-40%;width: 300px;word-break:break-word;display:none;";
     // getDom('mainFacebookFace').style = "overflow:scroll;height:100%";
     //设置默认宽度高度
-    $("#mainFaceDiv emoji").css("fontSize", "30px");
+    $("#mainFaceDiv emoji").css("fontSize", "2em");
 
     var initDataArray = ["#face-people", "#object", "#nature-animal", "#travel-activity", "#symbol", "#other",
         "#activity", "#flags"
@@ -988,7 +988,7 @@ function environmentFunction() {
             for (var i = 0; i < domSonImg.length; i++) {
                 // data - isInitialized
                 domSonImg[i].onclick = function () {
-                    this.style.backgroundColor = 'white';
+                    // this.style.backgroundColor = 'white';
                     this.setAttribute('title', this.textContent);
                     let altValue = this.textContent;
                     getDom('testInput').value += altValue;
@@ -1001,12 +1001,13 @@ function environmentFunction() {
                 }
                 domSonImg[i].onmouseover = function () {
                     this.style.backgroundColor = 'red';
-                    this.style.fontSize = "50px";
+                    // this.style.fontSize = "50px";
 
                 }
                 domSonImg[i].onmouseleave = function () {
-                    this.style.backgroundColor = 'white';
-                    this.style.fontSize = "30px";
+                    //     this.style.backgroundColor = 'white';
+                    this.style.backgroundColor = '';
+                    //     this.style.fontSize = "30px";
                 }
             }
             $(domId).attr("data-isInitialized", "");

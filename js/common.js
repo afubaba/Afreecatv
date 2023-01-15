@@ -774,3 +774,141 @@ function scrollToTop(domName) {
         }, 500);
     }
 }
+
+
+//分割一个数组
+/*
+function groupArray(array, subGroupLength) {
+    let index = 0;
+    let newArray = [];
+    while(index < array.length) {
+        newArray.push(array.slice(index, index += subGroupLength));
+    }
+    return newArray;
+}*/
+function split_array(arr, len) {//arr需要拆分的原数组，len小数组包含多少个元素
+    var a_len = arr.length;
+    var result = []; //结果数组
+    for (var i = 0; i < a_len; i += len) {
+        result.push(arr.slice(i, i + len)); //循环取原数组N个元素,每次取从上次取的下一个开始取。
+    }
+    return result; //结果是一个数组，里面的元素就是已拆分的小数组
+}
+
+
+// if(202%100>0){
+//     202/100+1;
+// }
+
+function avgGroup(arr, len) {
+    // var arr=[1,2,3,4,5,6,7];
+    var rstResult = new Array(len);
+    for (let j = 0; j < arr.length; j++) {
+        let index = j % rstResult.length;
+        if (Array.isArray(rstResult[index])) {
+            rstResult[index].push(arr[j]);
+        } else {
+            rstResult[index] = [arr[j]];
+        }
+    }
+    // console.log(rstResult);
+    return rstResult;
+}
+
+
+function split_array1(arr) {//arr需要拆分的原数组，len小数组包含多少个元素
+    var a_len = arr.length;
+    var len = 1;
+    var result = []; //结果数组
+    for (var i = 0; i < a_len; i += len) {
+        result.push(arr.slice(i, i + len)); //循环取原数组N个元素,每次取从上次取的下一个开始取。
+    }
+    return result; //结果是一个数组，里面的元素就是已拆分的小数组
+}
+
+
+// function split_array2(arr, len) {
+//     // 202个数据
+//     var arr=[1,2,3,412,5,344,5123123,412...]
+//     var myArray=new Array(100);
+//     var j=0;
+//     for(let i = 0; i < myArray.length; i ++){
+//         myArray[i]=arr[j];
+//         j++;
+//         if(j>=100){
+//             return;
+//         }
+//     }
+// }
+function abd() {
+    // 202个数据
+    var arr = [1, 2, 3, 4, 5];
+    var lth = 1;
+    var rstResult = new Array(lth);
+    for (let i = 0; i < rstResult.length; i++) {
+        rstResult[i] = [];
+    }
+    console.log(rstResult);
+    for (let j = 0; j < arr.length; j += lth) {
+        console.log(arr[j]);
+        var result = [];
+        for (let k = j; k < lth + j; k++) {
+            if (typeof arr[k] != "undefined") {
+                result.push(arr[k]);
+            } else {
+                break;
+            }
+        }
+        console.log(result);
+        for (let i = 0; i < result.length; i++) {
+            rstResult[i].push(result[i]);
+        }
+    }
+    console.log("-------------------");
+    console.log(rstResult);
+
+}
+
+function aaaa() {
+    // 形式1
+    var arr = [1, 2, 3, 4, 5, 6, 7];
+    var rstResult = new Array(3);
+    for (let k = 0; k < rstResult.length; k++) {
+        rstResult[k] = [];
+    }
+    for (let j = 0; j < arr.length; j++) {
+        // console.log(arr[j]);
+        for (let i = 0; i < rstResult.length; i++) {
+            if (j % (rstResult.length) == i) {
+                rstResult[i].push(arr[j]);
+                break;
+            }
+        }
+    }
+    console.log(rstResult);
+
+
+    // 形式2
+    var arr = [1, 2, 3, 4, 5, 6, 7];
+    var rstResult = new Array(3);
+    // for(let k=0; k<rstResult.length;k++){
+    //     rstResult[k]=[];
+    // }
+    for (let j = 0; j < arr.length; j++) {
+        for (let i = 0; i < rstResult.length; i++) {
+            if (j % (rstResult.length) == i) {
+                // 1.typeof rstResult[i]!="undefined"
+                //2.Array.isArray(rstResult[i])
+                //3.if(rstResult[i]){}
+                if (Array.isArray(rstResult[i])) {
+                    rstResult[i].push(arr[j]);
+                } else {
+                    rstResult[i] = [arr[j]];
+                }
+                break;
+            }
+        }
+    }
+    console.log(rstResult);
+}
+

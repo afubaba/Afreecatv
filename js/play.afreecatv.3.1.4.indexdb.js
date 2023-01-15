@@ -371,7 +371,7 @@ var opIndexDB = {
     },
     searchDataByUserId: function (serachType, callback) {
         let todayDate = $("#timeFrequencys").text().substring(0, $("#timeFrequencys").text().indexOf("\t"));
-        today = new Date(todayDate).getDate();
+        // today = new Date(todayDate).getDate();
 
         let searchUserData = userData;
         // req = indexedDB.open(dbName);
@@ -405,9 +405,12 @@ var opIndexDB = {
                     return;
                 }
                 data = result.value;
-                if (serachType != "allPoints" && serachType != "allTimes") {
+                // if (serachType != "allPoints" && serachType != "allTimes") {
+                if (serachType == "chatPoints" || serachType == "gamePoints" || serachType == "chatTimes") {
+
                     //今天的第一
-                    if (today == new Date(data.date).getDate()) {
+                    // if (today == new Date(data.date).getDate()) {
+                    if (data.date == todayDate) {
                         //删除制定列
                         // Reflect.deleteProperty(data, "gamePoints");
                         // Reflect.deleteProperty(data,"date");
@@ -488,7 +491,7 @@ var opIndexDB = {
     },
     searchDataLimit: function (pageIndex, sortName, sortType) {
         let todayDate = $("#timeFrequencys").text().substring(0, $("#timeFrequencys").text().indexOf("\t"));
-        today = new Date(todayDate).getDate();
+        // today = new Date(todayDate).getDate();
 
         // req = indexedDB.open(dbName);
         // req.onsuccess = function (events) {
@@ -590,23 +593,23 @@ var opIndexDB = {
                             // return Number(eval("a." + sortType)) - Number(eval(
                             //     "b." +
                             //     sortType));
-                            if(sortType!="date"){
+                            if (sortType != "date") {
                                 return Number(a[sortType]) - Number(b[sortType]);
-                            }else{
+                            } else {
                                 // 按日期递增排序date :2022,time:10:00:00
-                                // arr.sort((a, b) => b.date.localeCompare(a.date) ||  b.time.localeCompare(a.time)); 
-                               
+                                // arr.sort((a, b) => b.date.localeCompare(a.date) ||  b.time.localeCompare(a.time));
+
                                 return a.date.localeCompare(b.date);
                             }
-                           
+
                         } else if (sortName = "down") {
                             // return Number(eval("b." + sortType)) - Number(eval(
                             //     "a." +
                             //     sortType));
-                            if(sortType!="date"){
+                            if (sortType != "date") {
                                 return Number(b[sortType]) - Number(a[sortType]);
-                            }else{
-                                return  b.date.localeCompare(a.date);
+                            } else {
+                                return b.date.localeCompare(a.date);
                             }
                         }
                         // return Number(b.eval(sortType))-Number(a.eval(sortType));
@@ -627,7 +630,7 @@ var opIndexDB = {
                     // console.log(resArray);
                     //print res etc....
                     // callback(resArray);
-                   
+
                     // // pageIndex =0
                     // console.log(pageIndex);
                     // console.log(everyPage);
@@ -667,12 +670,16 @@ var opIndexDB = {
                     return;
                 }
                 //判断是否是今天
-                if (sortType != "chatPoints" && sortType != "gamePoints" && sortType != "chatTimes") {
+                // if (sortType != "chatPoints" && sortType != "gamePoints" && sortType != "chatTimes") {
+                if (sortType == "allTimes" || sortType == "allPoints" || sortType == "date") {
                     resArray[resArray.length] = result.value;
                 } else {
-                    if (new Date(result.value.date).getDate() == today) {
+                    if (result.value.date == todayDate) {
                         resArray[resArray.length] = result.value;
                     }
+                    // if (new Date(result.value.date).getDate() == today) {
+                    //     resArray[resArray.length] = result.value;
+                    // }
                 }
 
                 // resArray.push(result.value);
@@ -767,7 +774,7 @@ var opIndexDB = {
     serarchTodaySortRankDataByUserData: function (sortType, callback) {
         // console.log("serarchTodayMaxSortData");
         let todayDate = $("#timeFrequencys").text().substring(0, $("#timeFrequencys").text().indexOf("\t"));
-        today = new Date(todayDate).getDate();
+        // today = new Date(todayDate).getDate();
         // req = indexedDB.open(dbName);
         // req.onsuccess = function (events) {} db = events.target.result;
         // 获取数据库
@@ -795,7 +802,8 @@ var opIndexDB = {
             }
             data = result.value;
             //今天的第一
-            if (today == new Date(data.date).getDate()) {
+            // if (today == new Date(data.date).getDate()) {
+            if (data.date == todayDate) {
                 // Reflect.deleteProperty(data, "gamePoints");
                 // Reflect.deleteProperty(data,"date");
                 resArray[resArray.length] = result.value;
@@ -808,7 +816,7 @@ var opIndexDB = {
     serarchTodayMaxSortData: function (sortType, sortName, callback) {
         // console.log("serarchTodayMaxSortData");
         let todayDate = $("#timeFrequencys").text().substring(0, $("#timeFrequencys").text().indexOf("\t"));
-        today = new Date(todayDate).getDate();
+        // today = new Date(todayDate).getDate();
         // req = indexedDB.open(dbName);
         // req.onsuccess = function (events) {
         // }db = events.target.result;
@@ -868,9 +876,11 @@ var opIndexDB = {
                 return;
             }
             data = result.value;
-            if (sortType != "allPoints" && sortType != "allTimes") {
+            // if (sortType != "allPoints" && sortType != "allTimes") {
+            if (serachType == "chatPoints" || serachType == "gamePoints" || serachType == "chatTimes") {
                 //今天的第一
-                if (today == new Date(data.date).getDate()) {
+                // if (today == new Date(data.date).getDate()) {
+                if (data.date == todayDate) {
                     //删除指定属性
                     // Reflect.deleteProperty(data, "gamePoints");
                     // Reflect.deleteProperty(data,"date");
@@ -922,7 +932,7 @@ var opIndexDB = {
     updateData: function (diceData, callback) {
         // console.log(diceData);
         let todayDate = $("#timeFrequencys").text().substring(0, $("#timeFrequencys").text().indexOf("\t"));
-        today = new Date(todayDate).getDate();
+        // today = new Date(todayDate).getDate();
         req = indexedDB.open(dbName);
         req.onsuccess = function (events) {
             // 获取数据库
@@ -970,7 +980,8 @@ var opIndexDB = {
                         } else {
                             makerResult.allPoints = makerResult.allPoints + diceData.makerAdd;
                             //今天的直接加
-                            if (new Date(makerResult.date).getDate() == today) {
+                            // if (new Date(makerResult.date).getDate() == today) {
+                            if (makerResult.date == todayDate) {
                                 makerResult.gamePoints = makerResult.gamePoints + diceData.makerAdd;
                             } else {
                                 ////日期更新,重置聊天点，游戏点
@@ -1061,7 +1072,7 @@ var opIndexDB = {
     },
     inportDataFunction: function (userDataArray, callBack) {
         let todayDate = $("#timeFrequencys").text().substring(0, $("#timeFrequencys").text().indexOf("\t"));
-        today = new Date(todayDate).getDate();
+        // today = new Date(todayDate).getDate();
         // req = indexedDB.open(dbName);
         // req.onsuccess = function (events) {}
         //     // 获取数据库
@@ -1088,6 +1099,14 @@ var opIndexDB = {
                         data.chatPoints = data.chatPoints + userData.chatPoints;
                         data.gamePoints = data.gamePoints + userData.gamePoints;
                         data.chatTimes = data.chatTimes + userData.chatTimes;
+                    }else if (data.date < userData.date) {
+                        data.chatPoints = data.chatPoints;
+                        data.chatTimes = data.chatTimes;
+                        data.gamePoints = data.gamePoints;
+                        // 更新传来的新日期
+                        data.date = userData.date;
+                    } else {
+
                     }
                     // else {
                     //     if (data.date == today && userData.date != today) {
@@ -1148,15 +1167,16 @@ function stopTodayMaxSortDataInterval() {
 }
 
 var chatPointsMaxChangeMode = getDomById("chatPointsMaxChangeMode");
-function  outputAce(data){
+
+function outputAce(data) {
     if (ace.chatRatio != data.chatPoints) {
         ace.chatRatio = data.chatPoints;
         imgSize = toDecimal(ace.chatRatio / 15 / 5);
-        if($("#aceImage").length==1){
+        if ($("#aceImage").length == 1) {
             // aceImage = "<img id='aceImage' width='" + imgSize + "' height='" + imgSize + "' src ='" + aurelionSolImgURL + "' title='" + ace.chatRatio + "[" + imgSize + "px]'/>"
-            let title =ace.chatRatio + "[" + imgSize + "px]";
-            $("#aceImage").width(imgSize).height(imgSize).attr("title",title);
-        }else if($("#aceImage").length==0){
+            let title = ace.chatRatio + "[" + imgSize + "px]";
+            $("#aceImage").width(imgSize).height(imgSize).attr("title", title);
+        } else if ($("#aceImage").length == 0) {
             aceImage = "<img id='aceImage' width='" + imgSize + "' height='" + imgSize + "' src ='" + aurelionSolImgURL + "' title='" + ace.chatRatio + "[" + imgSize + "px]'/>"
             $("#todayChatPointsAce>th:eq(0)").html(aceImage);
         }
@@ -1330,14 +1350,18 @@ function writeInportData(inportData, fileName) {
                             dangerMode: true,
                         }).then((willDelete) => {
                             if (willDelete) {
-                                swal(langResult.swal2.swal1, {
-                                    icon: "success",
-                                });
+
                                 if (localStorageType == "indexdb") {
                                     opIndexDB.inportDataFunction(exportTextArray, function (i) {
+                                        swal(langResult.swal2.swal1, {
+                                            icon: "success",
+                                        });
                                     });
                                 } else if (localStorageType == "websql") {
                                     opWebsql.inportDataFunction(exportTextArray, function (i) {
+                                        swal(langResult.swal2.swal1, {
+                                            icon: "success",
+                                        });
                                     });
                                 }
                             } else {

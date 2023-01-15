@@ -1404,7 +1404,7 @@ if (singleIncreaseMaxinumValueLocalStorage == null || singleIncreaseMaxinumValue
     singleIncreaseMaxinumValueLocalStorage = 15;
 } else {
     $singleIncreaseMaxinumValue.val(singleIncreaseMaxinumValueLocalStorage);
-	singleIncreaseMaxinumValueLocalStorage = parseInt(singleIncreaseMaxinumValueLocalStorage);
+    singleIncreaseMaxinumValueLocalStorage = parseInt(singleIncreaseMaxinumValueLocalStorage);
 }
 $singleIncreaseMaxinumValue.change(() => {
 
