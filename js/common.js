@@ -127,9 +127,9 @@ function getDateTimeFormate(date) {
                 month++;
             }
             if (month > 12) {
+                month = 1;
                 fullYear++;
             }
-
 
         } else if (webLang == "ko") {
             addHour = 0;
@@ -203,6 +203,7 @@ function dateTimeFormate(date) {
                 month++;
             }
             if (month > 12) {
+                month = 1;
                 fullYear++;
             }
 
