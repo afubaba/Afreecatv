@@ -4662,8 +4662,7 @@ const object = new Set([
                             // console.log(flag);
                             sendMessageCustom(text, 1, 4);
                             setTimeout(function () {
-                                $("#userList .close")
-                                    .click();
+                                $("#list_viewer .close").click();
                             }, 1000);
                         }, 3000);
                     } else {
@@ -4674,8 +4673,7 @@ const object = new Set([
 
                             sendMessageCustom(text, 1, 4);
                             setTimeout(function () {
-                                $("#userList .close")
-                                    .click();
+                                $("#list_viewer .close").click();
                             }, 1000);
                         }
 
