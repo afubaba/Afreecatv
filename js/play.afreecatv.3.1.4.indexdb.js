@@ -877,7 +877,7 @@ var opIndexDB = {
             }
             data = result.value;
             // if (sortType != "allPoints" && sortType != "allTimes") {
-            if (serachType == "chatPoints" || serachType == "gamePoints" || serachType == "chatTimes") {
+            if (sortType == "chatPoints" || sortType == "gamePoints" || sortType == "chatTimes") {
                 //今天的第一
                 // if (today == new Date(data.date).getDate()) {
                 if (data.date == todayDate) {
@@ -922,7 +922,7 @@ var opIndexDB = {
                     cursor.continue();
                 } else {
                     //print res etc....
-                    console.llog("fisht");
+                    console.log("fisht");
                 }
             };
             // console.log(res);

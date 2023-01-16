@@ -276,6 +276,7 @@ var opWebsql = {
                     sendMessageCustom(dataString, 1, 4);
                 }, null);
             } else {
+                let searchType;
                 sqlDataArray=[todayDate,todayDate];
                 if (tex == "!총포인트") {
                     sqlDataArray=[];
