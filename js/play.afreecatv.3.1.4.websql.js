@@ -327,24 +327,8 @@ var opWebsql = {
                     var data = results.rows;
                     for (var i = 0; i < data.length; i++) {
                         var dataResult = data.item(i);
-                        if (dataResult.id == searchUserData.userId) {
-
-                            if (tex == "!총포인트") {
-                                dataString = dataString + dataResult.allPoints + ",순위:" +
-                                    (i + 1) + "/" + dataResult.count;
-                            } else if (tex == "!총횟수") {
-                                dataString = dataString + dataResult.allTimes + ",순위:" +
-                                    (i + 1) + "/" + dataResult.count;
-                            } else if (tex == "!채팅포인트") {
-                                dataString = dataString + dataResult.chatPoints + ",순위:" +
-                                    (i + 1) + "/" + dataResult.count;
-                            } else if (tex == "!채팅횟수") {
-                                dataString = dataString + dataResult.chatTimes + ",순위:" +
-                                    (i + 1) + "/" + dataResult.count;
-                            } else if (tex == "!게임포인트") {
-                                dataString = dataString + dataResult.gamePoints + ",순위:" +
-                                    (i + 1) + "/" + dataResult.count;
-                            }
+                        if (dataResult.id == searchUserData.id) {
+                            dataString = dataString + dataResult[searchType] + ",순위:" + (i + 1) + "/" + dataResult.count;
                             sendMessageCustom(dataString, 1, 4);
                             break;
                         }

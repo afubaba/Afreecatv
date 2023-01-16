@@ -47,22 +47,18 @@ var opMysql = {
 
             ajaxGet(mysqlHost + "SearchDataSortLimitServlet", sdblData, function (result) {
                 // console.log(result);
-                $("#myTable tbody").children().detach();
-                for (rs of result.listOutputUser) {
-                    $("#myTable tbody").append("<tr><th>" + index +
-                        "</th><th><a href='https://bj.afreecatv.com/" + rs.id + "' target='_blank'>" + rs.userNick + "(" + rs.id + ")</a></th><th>" + convertGrade(rs.grade) + "</th><th>" + rs.chatPoints +
-                        "</th><th>" + rs.chatTimes + "</th><th>" + rs.gamePoints + "</th><th>" + rs.allPoints +
-                        "</th><th>" + rs.allTimes + "</th><th>" + rs.date + "</th></tr>");
-                    index++;
-                }
-                showEveryPageIndex(result.quantity, pageIndex);
-                // for (rs of result) {
+                outputMyTable(index - 1, result.listOutputUser);
+                // $("#myTable tbody").children().detach();
+                // for (rs of result.listOutputUser) {
+                //     // ／  /|\  ━
+                //     let rsGamePoints = rs.gamePoints === 0 ? "━" : rs.gamePoints;
                 //     $("#myTable tbody").append("<tr><th>" + index +
-                //         "</th><th>" + rs.userNick + "(" + rs.id + ")</th><th>" + convertGrade(rs.grade) + "</th><th>" + rs.chatPoints +
-                //         "</th><th>" + rs.chatTimes + "</th><th>" + rs.gamePoints + "</th><th>" + rs.allPoints +
-                //         "</th><th>" + rs.allTimes + "</th><th>" + (rs.date.year - 100) + "/" + (rs.date.month + 1) + "/" + rs.date.date + "</th></tr>");
+                //         "</th><th><a href='https://bj.afreecatv.com/" + rs.id + "' target='_blank'>" + rs.userNick + "(" + rs.id + ")</a></th><th>" + convertGrade(rs.grade) + "</th><th>" + rs.chatPoints +
+                //         "</th><th>" + rs.chatTimes + "</th><th>" + rsGamePoints + "</th><th>" + rs.allPoints +
+                //         "</th><th>" + rs.allTimes + "</th><th>" + rs.date + "</th></tr>");
                 //     index++;
                 // }
+                showEveryPageIndex(result.quantity, pageIndex);
             });
 
         } else {
@@ -70,30 +66,21 @@ var opMysql = {
 
             ajaxGet(mysqlHost + "SearchDataLimitServlet", sdblData, function (result) {
                 // console.log(result);
-                $("#myTable tbody").children().detach();
 
-                for (rs of result.listOutputUser) {
-                    $("#myTable tbody").append("<tr><th>" + index +
-                        "</th><th><a href='https://bj.afreecatv.com/" + rs.id + "' target='_blank'>" + rs.userNick + "(" + rs.id + ")</a></th><th>" + convertGrade(rs.grade) + "</th><th>" + rs.chatPoints +
-                        "</th><th>" + rs.chatTimes + "</th><th>" + rs.gamePoints + "</th><th>" + rs.allPoints +
-                        "</th><th>" + rs.allTimes + "</th><th>" + rs.date + "</th></tr>");
-                    index++;
-                }
-                showEveryPageIndex(result.quantity, pageIndex);
-                // for (rs of result) {
+                outputMyTable(index - 1, result.listOutputUser);
+
+                // $("#myTable tbody").children().detach();
+                //
+                // for (rs of result.listOutputUser) {
+                //     // ／  /|\  ━
+                //     let rsGamePoints = rs.gamePoints === 0 ? "━ " : rs.gamePoints;
                 //     $("#myTable tbody").append("<tr><th>" + index +
-                //         "</th><th>" + rs.userNick + "(" + rs.id + ")</th><th>" + convertGrade(rs.grade) + "</th><th>" + rs.chatPoints +
-                //         "</th><th>" + rs.chatTimes + "</th><th>" + rs.gamePoints + "</th><th>" + rs.allPoints +
-                //         "</th><th>" + rs.allTimes + "</th><th>" + (rs.date.year - 100) + "/" + (rs.date.month + 1) + "/" + rs.date.date + "</th></tr>");
+                //         "</th><th><a href='https://bj.afreecatv.com/" + rs.id + "' target='_blank'>" + rs.userNick + "(" + rs.id + ")</a></th><th>" + convertGrade(rs.grade) + "</th><th>" + rs.chatPoints +
+                //         "</th><th>" + rs.chatTimes + "</th><th>" + rsGamePoints + "</th><th>" + rs.allPoints +
+                //         "</th><th>" + rs.allTimes + "</th><th>" + rs.date + "</th></tr>");
                 //     index++;
                 // }
-                // for (rs of result) {
-                //     $("#myTable tbody").append("<tr><th>" + i +
-                //         "</th><th>" + rs.userNick + "(" + rs.id + ")</th><th>" + convertGrade(rs.grade) + "</th><th>" + rs.chatPoints +
-                //         "</th><th>" + rs.chatTimes + "</th><th>" + rs.gamePoints + "</th><th>" + rs.allPoints +
-                //         "</th><th>" + rs.allTimes + "</th><th>" + (rs.date.year-100)+"/"+(rs.date.month+1)+"/"+date+ "</th></tr>");
-                //     i++;
-                // }
+                showEveryPageIndex(result.quantity, pageIndex);
             });
         }
 
@@ -110,59 +97,6 @@ var opMysql = {
         // });
 
         // console.log(everyPage * (pageIndex - 1) + "===" + everyPage);
-        //测试数据
-
-
-        return;
-
-        //今天
-        var dateString = "";
-        if (which == 'chatPoints' || which == 'chatTimes' || which == 3 || which == 'gamePoints') {
-            dateString = " where date= ?";
-            sqlDataArray = [todayDate];
-        } else {
-            sqlDataArray = [];
-        }
-        if (which) {
-            which = dateString + " order by " + which;
-        }
-        var li;
-        var i = 1;
-        if (!limi) {
-            // sql="SELECT * FROM " + tbName +which+" "+sqlSortType+" LIMIT 0,10";
-            li = "0," + everyPage;
-
-        } else {
-            // sql="SELECT * FROM " + tbName +which+" "+sqlSortType+" LIMIT "+limi[0]+","+limi[1];
-            li = limi[0] + "," + limi[1];
-            i = limi[0] + 1;
-            // console.log(i)
-        }
-
-        if (which && sortType) {
-            sql = "SELECT * FROM " + tbName + which + " " + sqlSortType + " LIMIT " + li;
-        } else {
-            sql = "SELECT * FROM " + tbName + " LIMIT " + li;
-        }
-
-        $("#myTable tbody").children().detach();
-
-        for (d of data) {
-            $("#myTable tbody").append("<tr><th>" + i +
-                "</th><th>" + d.userNick + "(" + d.id + ")</th><th>" + convertGrade(d.grade) + "</th><th>" + d.chatPoints +
-                "</th><th>" + d.chatTimes + "</th><th>" + d.gamePoints + "</th><th>" + d.allPoints +
-                "</th><th>" + d.allTimes + "</th><th>" + d.date + "</th></tr>");
-            i++;
-        }
-        // console.log(data);
-        var searchCountSql = "SELECT count(1) as allCount from " + tbName + dateString;
-        // console.log(searchCountSql);
-        tx.executeSql(searchCountSql, sqlDataArray, function (tx, results) {
-            // 页数下标显示
-            showEveryPageIndex(results.rows[0].allCount, pageIndex);
-
-        });
-
 
     },
     getMaxData: function (callback) {
@@ -188,34 +122,7 @@ var opMysql = {
         ajaxGet(mysqlHost + "SearchTodayMaxSortDataServlet", maxSortCondition, function (data) {
             callback(data);
         });
-        return;
-        dataBase.transaction(function (tx) {
-            // sql = "select id as 身份证,userNick as 昵称,max(chatPoints) as 今日最高分数,max(allPoints) as 总分数最高 from "+tbName;
-            // sql = "select userNick as 닉네임,max(chatPoints) as 오늘 채팅 횟수,max(allPoints) as 총 채팅 횟수 from "+tbName;
-            //console.log(sql);
-            // id ,
-            if (serachType != "allPoints" && serachType != "allTimes") {
-                sqlDataArray = [todayDate];
-                sql = "select userNick ,max(" + serachType + ") as " + serachType + ",allPoints,count(1) as count  from " + tbName + " where date=?";
-            } else {
-                sqlDataArray = [];
-                sql = "select userNick ,max(" + serachType + ") as " + serachType + ",allPoints,count(1) as count  from " + tbName;
-            }
-            tx.executeSql(sql, sqlDataArray, function (tx, results) {
-                // console.log(results.rowsAffected);
-                // console.log(results);
-                // console.log(results.length);
-                data = results.rows[0];
-                // "닉네임:"
-                // var dataString = "@" + data.userNick + ",오늘 채팅 횟수:" + data
-                // 	.maxChatPoint +
-                // 	",총 채팅 횟수:" + data.allPoints;
-                data.resArrLength = data.count;
-                callback(data);
 
-            }, null);
-
-        });
     },
     searchDataByUserId: function (searchData) {
         let todayDate = $("#timeFrequencys").text().substring(0, $("#timeFrequencys").text().indexOf("\t"));
@@ -238,18 +145,12 @@ var opMysql = {
         if (searchData.tex == "!채팅통계" || searchData.tex == "!채팅통계조회") {
             ajaxGet(mysqlHost + "SearchDataServlet", searchRankDataCondition, function (dataResult) {
                 // console.log("服务返回数据",dataResult);
-
                 dataString = dataString + ":채팅 횟수:" + dataResult.chatTimes + ",채팅 포인트:" + dataResult.chatPoints + ",게임 포인트:" +
                     dataResult.gamePoints + ",총 횟수:" + dataResult.allTimes + ",총 포인트:" + dataResult.allPoints;
-
                 // console.log(dataString);
                 //发送信息
                 sendMessageCustom(dataString, 1, 4);
             });
-            return;
-            sql = "select * from " + tbName + " where id=?";
-            // queryReply(tex, searchUserData, data);
-
         } else {
             let searchType = "";
             if (searchData.tex == "!총포인트") {
@@ -288,31 +189,6 @@ var opMysql = {
                 sendMessageCustom(dataString, 1, 4);
             });
 
-            return;
-            for (var i = 0; i < data.length; i++) {
-                var dataResult = data.item(i);
-                if (dataResult.id == searchUserData.userId) {
-
-                    if (searchData.tex == "!총포인트") {
-                        dataString = dataString + dataResult.allPoints + ",순위:" +
-                            (i + 1) + "/" + dataResult.count;
-                    } else if (searchData.tex == "!총횟수") {
-                        dataString = dataString + dataResult.allTimes + ",순위:" +
-                            (i + 1) + "/" + dataResult.count;
-                    } else if (searchData.tex == "!채팅포인트") {
-                        dataString = dataString + dataResult.chatPoints + ",순위:" +
-                            (i + 1) + "/" + dataResult.count;
-                    } else if (searchData.tex == "!채팅횟수") {
-                        dataString = dataString + dataResult.chatTimes + ",순위:" +
-                            (i + 1) + "/" + dataResult.count;
-                    } else if (searchData.tex == "!게임포인트") {
-                        dataString = dataString + dataResult.gamePoints + ",순위:" +
-                            (i + 1) + "/" + dataResult.count;
-                    }
-                    sendMessageCustom(dataString, 1, 4);
-                    break;
-                }
-            }
         }
     },
     insertData: function (userData) {
@@ -347,7 +223,7 @@ var opMysql = {
                 // $("#mysql").prop("checked",true);
                 localStorageType = "mysql";
                 //导入其他数据库
-                loadDatabase(localStorageType);
+                // loadDatabase(localStorageType);
                 $("#indexDB").parent().css("background-color", "");
             }
 
@@ -378,130 +254,15 @@ var opMysql = {
         ajaxGet(mysqlHost + "CustAddDataServlet", addDataCondition, function (data) {
             // console.log(data);
         });
-        return;
-        dataBase.transaction(function (tx) {
-            sql = "SELECT * FROM " + tbNm + " WHERE id=?";
-            sqlDataArray = [userData.id];
-            tx.executeSql(sql, sqlDataArray, function (tx, results) {
-                let resultRows = results.rows;
-                if (resultRows.length == 1) {
-                    let resultData = resultRows[0];
-                    sqlDataArray = [userData.id];
-                    if ("chatPoints" in userData && "gamePoints" in userData) {
-                        sqlDataArray = [resultData.chatPoints + userData.chatPoints, resultData.gamePoints + userData.gamePoints, resultData.allPoints + userData.chatPoints + userData.gamePoints, userData.id];
-                        sql = "UPDATE " + tbNm + " SET chatPoints=?,gamePoints=?,allPoints=? WHERE id=?";
-                    } else {
-                        if ("chatPoints" in userData) {
-                            sqlDataArray = [resultData.chatPoints + userData.chatPoints, resultData.allPoints + userData.chatPoints, userData.id];
-                            sql = "UPDATE " + tbNm + " SET chatPoints=?,allPoints=? WHERE id=?";
-                        } else if ("gamePoints" in userData) {
-                            sqlDataArray = [resultData.gamePoints + userData.gamePoints, resultData.allPoints + userData.gamePoints, userData.id];
-                            sql = "UPDATE " + tbNm + " SET gamePoints=?,allPoints=? WHERE id=?";
-                        } else {
-                        }
-                    }
-                    // console.log(sqlDataArray);
-                    // console.log(sql);
-                    tx.executeSql(sql, sqlDataArray, function (tx, results) {
-                    });
-                } else if (resultRows.length == 0) {
-
-                }
-            });
-        });
     },
     updateData: function (diceData, callback) {
         let todayDate = $("#timeFrequencys").text().substring(0, $("#timeFrequencys").text().indexOf("\t"));
         // today= new Date(todayDate).getDate();
-
         diceData.today = todayDate;
         diceData.tableName = tbName;
         ajaxGet(mysqlHost + "UpdateDiceDataServlet", diceData, function (data) {
 
             callback(data);
-        });
-
-        return;
-        // var tbName = "cpm_1004suna";
-        // var diceData = {
-        //     "userId": "space8100",
-        //     "userNick": "↙↙",
-        //     "userAdd": 2,
-        //     "makerId": "12354",
-        //     "makerNick": "두기_=",
-        //     "makerAdd": -2
-        // };
-        // console.log(diceData)
-        // console.log(tbName)
-        let sqlDataArray = [diceData.userId];
-        // var callData = new Array();
-        dataBase.transaction(function (tx) {
-            var sql = "UPDATE " + tbName + " SET gamePoints=gamePoints+" + diceData.userAdd +
-                ",allPoints=allPoints+" + diceData.userAdd + " WHERE id=?";
-            tx.executeSql(sql, sqlDataArray, function (tx, results) {
-                if (results.rowsAffected > 0) {
-                    //查询庄家是否存在
-                    sqlDataArray = [diceData.makerId];
-                    sql = "SELECT 1 FROM " + tbName + " WHERE id=?";
-                    tx.executeSql(sql, sqlDataArray, function (tx, results) {
-                        if (results.rows.length == 0) {
-                            // console.log("不存在");
-                            sqlDataArray = [diceData.makerId, diceData.makerNick,
-                                diceData.makerAdd, diceData.makerAdd, todayDate
-                            ];
-                            sql = "INSERT INTO " + tbName + " (id,userNick,grade,chatPoints,chatTimes,gamePoints,allPoints,allTimes,date) VALUES (?,?,'BJ', 0,0,?,?,0,? )";
-                            tx.executeSql(sql, sqlDataArray, function (tx, results) {
-                                //查询插入后的数据
-                                sqlDataArray = [diceData.userId, diceData.makerId]
-                                sql = "select * from " + tbName +
-                                    " WHERE id=? or id=?";
-                                // console.log(sql);
-                                tx.executeSql(sql, sqlDataArray, function (tx,
-                                                                           results) {
-
-                                    callback(results.rows);
-                                });
-                            });
-                        } else if (results.rows.length == 1) {
-                            // console.log("存在");
-                            //日期更新todayDate
-                            if (results.rows[0].date == todayDate) {
-                                // console.log("等于");
-                                sql = "UPDATE " + tbName + " SET gamePoints=gamePoints+" +
-                                    diceData.makerAdd + ",allPoints=allPoints+" + diceData
-                                        .makerAdd + " WHERE id=?";
-                            } else {
-                                // console.log("不等于");
-                                sqlDataArray = [todayDate, diceData.makerId];
-                                //日期更新,重置聊天点，游戏点
-                                sql = "UPDATE " + tbName + " SET chatPoints=0,gamePoints=gamePoints+" +
-                                    diceData.makerAdd + ",allPoints=allPoints+" + diceData
-                                        .makerAdd + ",date=? WHERE id=?";
-                            }
-                            // console.log(sql);
-                            // console.log(sqlDataArray);
-
-                            tx.executeSql(sql, sqlDataArray, function (tx, results) {
-                                //查询更新后的数据
-                                sqlDataArray = [diceData.userId, diceData
-                                    .makerId
-                                ]
-                                sql = "select * from " + tbName +
-                                    " WHERE id=? or id=?";
-                                // console.log(sql);
-                                tx.executeSql(sql, sqlDataArray, function (tx, results) {
-                                    callback(results.rows);
-                                });
-                            });
-                        }
-                    });
-
-
-                }
-
-
-            });
-
         });
     },
     exportDataFunction: function (callback) {
@@ -512,108 +273,115 @@ var opMysql = {
     },
     inportDataFunction: function (userDataArray, callBack) {
 
-        let ajaxPostData = {"tableName": tbName, "userList": JSON.stringify(userDataArray)};
-        ajaxPost(mysqlHost + "InportAllDataServlet", ajaxPostData, function (result) {
-            showTipBarrageFunction("Mysql:" + result + packageResult.opIndexDB
-                .inportDataFunction);
-            callBack(result);
-        });
+        // let ajaxPostData = {"tableName": tbName, "userList": JSON.stringify(userDataArray)};
+        // ajaxPost(mysqlHost + "InportAllDataServlet", ajaxPostData, function (result) {
+        //     showTipBarrageFunction("Mysql:" + result + packageResult.opIndexDB
+        //         .inportDataFunction);
+        //     callBack(result);
+        // });
+        //检测是否是数组if(Array.isArray(userDataArray)){}
+        let ajaxPostData = {"tableName": tbName};
+        // console.log(ajaxPostData);
+        //分组的大小10个一组 不应该依赖于delayInputTextId
+        let spliceArraLength;
+        if (userDataArray.length < 50) {
+            spliceArraLength = 5;
+        } else if (userDataArray.length < 500) {
+            spliceArraLength = 50;
+        } else if (userDataArray.length < 5000) {
+            spliceArraLength = 500;
+        } else if (userDataArray.length < 50000) {
+            spliceArraLength = 1000;
+        } else {
+            spliceArraLength = 2000;
+        }
+        //测试数据
+        // spliceArraLength = 5;
 
-        return;
-        // var  formData=new FormData();
-        // formData.append("tbName", tbName);
-        // formData.append("userList",JSON.stringify(userDataArray));
-        // ajaxPostFormData(mysqlHost+"InportAllDataServlet", formData,function(inportData){
-        //         console.log(inportData);
-        // })
+        // if(userDataArray.length/spliceArraLength<1){
+        //     spliceArraLength=userDataArray.length;
+        // }
+        if (userDataArray.length <= spliceArraLength) {
+            // console.log("直接上传");
+            ajaxPostData.userList = JSON.stringify(userDataArray);
+            ajaxPost(mysqlHost + "InportAllDataServlet", ajaxPostData, function (result) {
+                showTipBarrageFunction("Mysql:" + result + packageResult.opIndexDB
+                    .inportDataFunction);
+                //刷新显示
+                changePage(pgIndex);
+                callBack(result);
+            });
+        } else {
+            // console.log(userDataArray.length / spliceArraLength);
+            // if(userDataArray.length>10000){25
+            // }
+            // 限制提交不超过10次
+            // if(userDataArray.length/spliceArraLength>10){
+            //     spliceArraLength=parseInt(userDataArray.length/10);
+            // }
+            // console.log("分割数组");
+            // console.log(userDataArray.length);
+            // let conmmitArrayData = split_array(userDataArray, spliceArraLength);
+            let conmmitArrayData;
+            //限制链接数量
+            // conmmitArrayData = avgGroup(userDataArray, 50);
+            //限制每一组数量
+            conmmitArrayData = split_array(userDataArray, spliceArraLength);
+            let arraIndex = 0;
+            let resultLength = 0;
+            commitArray(arraIndex);
+            $("#importBarParent").show();
 
-        // JSON.stringify();
-        // ajaxGet(mysqlHost+"InportAllDataServlet", {tableName:tbName},function(data){
-        //   console.log(data);
-        // })
-        //不存在创造表格
-        this.createTable(tbName);
+            function commitArray(arraIndex) {
+                let jsonUserData = JSON.stringify(conmmitArrayData[arraIndex]);
+                ajaxPostData.userList = jsonUserData;
+                ajaxPost(mysqlHost + "InportAllDataServlet", ajaxPostData, function (result) {
+                    if (result > 0) {
+                        resultLength += result;
+                        // showTipBarrageFunction("Mysql:" + userDataArray.length + "/" + resultLength + packageResult.opIndexDB
+                        //     .inportDataFunction);
+                        $("#importBar").css("width", resultLength / userDataArray.length * 100 + "%");
+                        $("#importBarText").text("导入" + userDataArray.length + "/" + resultLength + "个数据完成!");
+                        $("#importBarSpan").text("导入" + conmmitArrayData.length + "/" + (arraIndex + 1) + "个数据完成!");
+                        // console.log("提交" + conmmitArrayData.length + "/" + (arraIndex + 1) + "个数据完成");
+                        arraIndex++;
+                        if (arraIndex >= conmmitArrayData.length) {
+                            showTipBarrageFunction("Mysql:" + resultLength + packageResult.opIndexDB.inportDataFunction);
+                            // console.log("提交完成!");
+                            //
+                            // $("#importBarText").text("导入完成!");
+                            // $("#importBarSpan").text("导入完成!");
+                            // setTimeout(function(){},500);
+                            $("#importBarParent").addClass("progress-success");
+                            setTimeout(function () {
+                                $("#importBar").css("width", "");
+                                $("#importBarParent").removeClass("progress-success").hide();
+                            }, 1500);
 
-        let todayDate = $("#timeFrequencys").text().substring(0, $("#timeFrequencys").text().indexOf("\t"));
-        // today= new Date(todayDate).getDate();
-        let sql = "SELECT * FROM " + tbName + " WHERE id=?";
-        dataBase.transaction(function (tx) {
-            for (let i = 0; i < userDataArray.length; i++) {
-                // console.log(i);
-                let sqlDataArray = [userDataArray[i].id];
-                tx.executeSql(sql, sqlDataArray, function (tx, results) {
-                    // console.log(results);
-                    let resultRows = results.rows;
-                    // console.log(resultRows.length);
+                            //刷新显示
+                            changePage(pgIndex);
 
-                    //测试数据
-                    // let userGrade;
-                    // if("grade" in  userDataArray[i]){
-                    //     userGrade=userDataArray[i].grade;
-                    // }else{
-                    //     userGrade="loadding";
-                    // }
-
-                    if (resultRows.length == 0) {
-                        sql = 'INSERT INTO ' + tbName + " VALUES (?,?,?,?,?,?,?,?,?);";
-                        // console.log(sql);
-                        let sqlDataArray = [userDataArray[i].id, userDataArray[i].userNick, userDataArray[i].grade,
-                            userDataArray[i].chatPoints, userDataArray[i].chatTimes, userDataArray[i].gamePoints,
-                            userDataArray[i].allPoints, userDataArray[i].allTimes, userDataArray[i].date
-                        ];
-                        // console.log(sqlDataArray);
-                        tx.executeSql(sql, sqlDataArray, function () {
-                            if (i == userDataArray.length - 1) {
-                                // showTipBarrageFunction(userDataArray.length + "개의 데이터 가져오기 성공");
-                                showTipBarrageFunction("websql:" + userDataArray
-                                    .length + packageResult.opIndexDB
-                                    .inportDataFunction);
-                                callBack("over");
-
-                            }
-                        });
-                    } else if (resultRows.length == 1) {
-
-                        let addAllPoint = resultRows[0].allPoints + userDataArray[i].allPoints;
-                        let addAllTimes = resultRows[0].allTimes + userDataArray[i].allTimes;
-                        //今天的积累
-                        if (resultRows.date == userDataArray[i].date) {
-                            let addChatPoint = resultRows[0].chatPoints + userDataArray[i].chatPoints;
-                            let addChatTimes = resultRows[0].chatTimes + userDataArray[i].chatTimes;
-                            let addGamePoints = resultRows[0].gamePoints + userDataArray[i].gamePoints;
-
-                            // resultRows.chatPoints = resultRows.chatPoints + userDataArray[i].chatPoints;
-                            // data.gamePoints = data.gamePoints + userData.gamePoints;
-                            // sql = "UPDATE " + tbName +
-                            //     " SET chatPoints=chatPoints+" + userDataArray[i].chatPoints + ",grade=" + userGrade +
-                            //     ",gamePoints=gamePoints+" + userDataArray[i].gamePoints +
-                            //     ",allPoints=allPoints+" + userDataArray[i].allPoints +
-                            //     " WHERE id=?";
-                            sql = "UPDATE " + tbName + " SET grade=?,chatPoints=?,chatTimes=?,gamePoints=?,allPoints=?,allTimes=? WHERE id=?";
-                            sqlDataArray = [userDataArray[i].grade, addChatPoint, addChatTimes, addGamePoints, addAllPoint, addAllTimes, userDataArray[i].id];
-                        } else {
-                            sql = "UPDATE " + tbName + " SET allPoints=?,allTimes=? WHERE id=?";
-                            sqlDataArray = [addAllPoint, addAllTimes, userDataArray[i].id];
+                            callBack(result);
+                            return;
                         }
+                        // setTimeout(function(){},250);
+                        commitArray(arraIndex);
 
-                        // console.log(sql);
-                        tx.executeSql(sql, sqlDataArray, function (tx, results) {
-                            // console.log(results);
-                            // console.log(results.rowsAffected);
-                            if (i == userDataArray.length - 1) {
-                                // showTipBarrageFunction(userDataArray.length + "개의 데이터 가져오기 성공");
-                                showTipBarrageFunction("websql:" + userDataArray
-                                    .length + packageResult.opIndexDB
-                                    .inportDataFunction);
-                                callBack("over");
-                            }
-                        });
                     } else {
+                        $("#importBarParent").addClass("progress-danger");
+                        setTimeout(function () {
+                            $("#importBar").css("width", "");
+                            $("#importBarParent").removeClass("progress-success").hide();
+                        }, 5000);
+                        // console.log("遇到错误");
+                        return;
                     }
-                });
 
+
+                });
             }
-        });
+        }
+
     }
 }
 opMysql.createTable();

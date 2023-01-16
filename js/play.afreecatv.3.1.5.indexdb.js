@@ -371,7 +371,7 @@ var opIndexDB = {
     },
     searchDataByUserId: function (serachType, callback) {
         let todayDate = $("#timeFrequencys").text().substring(0, $("#timeFrequencys").text().indexOf("\t"));
-        today = new Date(todayDate).getDate();
+        // today = new Date(todayDate).getDate();
 
         let searchUserData = userData;
         // req = indexedDB.open(dbName);
@@ -405,9 +405,12 @@ var opIndexDB = {
                     return;
                 }
                 data = result.value;
-                if (serachType != "allPoints" && serachType != "allTimes") {
+                // if (serachType != "allPoints" && serachType != "allTimes") {
+                if (serachType == "chatPoints" || serachType == "gamePoints" || serachType == "chatTimes") {
+
                     //今天的第一
-                    if (today == new Date(data.date).getDate()) {
+                    // if (today == new Date(data.date).getDate()) {
+                    if (data.date == todayDate) {
                         //删除制定列
                         // Reflect.deleteProperty(data, "gamePoints");
                         // Reflect.deleteProperty(data,"date");
@@ -488,7 +491,7 @@ var opIndexDB = {
     },
     searchDataLimit: function (pageIndex, sortName, sortType) {
         let todayDate = $("#timeFrequencys").text().substring(0, $("#timeFrequencys").text().indexOf("\t"));
-        today = new Date(todayDate).getDate();
+        // today = new Date(todayDate).getDate();
 
         // req = indexedDB.open(dbName);
         // req.onsuccess = function (events) {
@@ -521,20 +524,22 @@ var opIndexDB = {
                 // 数据到底
                 if (cursor === null) {
                     // console.log(list);
-                    $("#myTable tbody").children().detach();
-                    for (d of list) {
-                        i++;
-                        // $("#myTable tbody").append("<tr><th>" + i +
-                        //     "</th><th>" + d
-                        //         .id +
-                        //     "</th><th>" + d.userNick + "</th><th>" + convertGrade(d.grade)+ "</th><th>" + d.chatPoints +
-                        //     "</th><th>" + d.gamePoints + "</th><th>" + d.allPoints +
-                        //     "</th><th>" + d.date + "</th></tr>");
-                        $("#myTable tbody").append("<tr><th>" + i +
-                            "</th><th><a href='https://bj.afreecatv.com/"+d.id+"' target='_blank'>" + d.userNick + "(" + d.id + ")</a></th><th>" + convertGrade(d.grade) + "</th><th>" + d.chatPoints +
-                            "</th><th>" + d.chatTimes + "</th><th>" + d.gamePoints + "</th><th>" + d.allPoints +
-                            "</th><th>" + d.allTimes + "</th><th>" + d.date + "</th></tr>");
-                    }
+                    outputMyTable(i, list);
+                    // $("#myTable tbody").children().detach();
+                    // for (d of list) {
+                    //     i++;
+                    //     // $("#myTable tbody").append("<tr><th>" + i +
+                    //     //     "</th><th>" + d
+                    //     //         .id +
+                    //     //     "</th><th>" + d.userNick + "</th><th>" + convertGrade(d.grade)+ "</th><th>" + d.chatPoints +
+                    //     //     "</th><th>" + d.gamePoints + "</th><th>" + d.allPoints +
+                    //     //     "</th><th>" + d.date + "</th></tr>");
+                    //     let rsGamePoints = d.gamePoints === 0 ? "━ " : d.gamePoints;
+                    //     $("#myTable tbody").append("<tr><th>" + i +
+                    //         "</th><th><a href='https://bj.afreecatv.com/" + d.id + "' target='_blank'>" + d.userNick + "(" + d.id + ")</a></th><th>" + convertGrade(d.grade) + "</th><th>" + d.chatPoints +
+                    //         "</th><th>" + d.chatTimes + "</th><th>" + rsGamePoints + "</th><th>" + d.allPoints +
+                    //         "</th><th>" + d.allTimes + "</th><th>" + d.date + "</th></tr>");
+                    // }
                     return;
                 }
 
@@ -543,22 +548,23 @@ var opIndexDB = {
                     cursor.continue()
                 } else {
                     // console.log(list); // 拿到10条了
-                    $("#myTable tbody").children().detach();
-                    for (d of list) {
-                        i++;
-                        // $("#myTable tbody").append("<tr><th>" + i +
-                        //     "</th><th>" + d
-                        //         .id +
-                        //     "</th><th>" + d.userNick + "</th><th>" + convertGrade(d.grade)+ "</th><th>" + d.chatPoints +
-                        //     "</th><th>" + d.gamePoints + "</th><th>" + d.allPoints +
-                        //     "</th><th>" + d.date + "</th></tr>");
-                        $("#myTable tbody").append("<tr><th>" + i +
-                            "</th><th><a href='https://bj.afreecatv.com/"+d.id+"' target='_blank'>" + d.userNick + "(" + d.id + ")</a></th><th>" + convertGrade(d.grade) + "</th><th>" + d.chatPoints +
-                            "</th><th>" + d.chatTimes + "</th><th>" + d.gamePoints + "</th><th>" + d.allPoints +
-                            "</th><th>" + d.allTimes + "</th><th>" + d.date + "</th></tr>");
-
-
-                    }
+                    outputMyTable(i, list);
+                    // $("#myTable tbody").children().detach();
+                    // for (d of list) {
+                    //     i++;
+                    //     // $("#myTable tbody").append("<tr><th>" + i +
+                    //     //     "</th><th>" + d
+                    //     //         .id +
+                    //     //     "</th><th>" + d.userNick + "</th><th>" + convertGrade(d.grade)+ "</th><th>" + d.chatPoints +
+                    //     //     "</th><th>" + d.gamePoints + "</th><th>" + d.allPoints +
+                    //     //     "</th><th>" + d.date + "</th></tr>");
+                    //
+                    //     let rsGamePoints = d.gamePoints === 0 ? "━ " : d.gamePoints;
+                    //     $("#myTable tbody").append("<tr><th>" + i +
+                    //         "</th><th><a href='https://bj.afreecatv.com/" + d.id + "' target='_blank'>" + d.userNick + "(" + d.id + ")</a></th><th>" + convertGrade(d.grade) + "</th><th>" + d.chatPoints +
+                    //         "</th><th>" + d.chatTimes + "</th><th>" + rsGamePoints + "</th><th>" + d.allPoints +
+                    //         "</th><th>" + d.allTimes + "</th><th>" + d.date + "</th></tr>");
+                    // }
                 }
             }
             objectStore.getAll().onsuccess = function (events) {
@@ -575,7 +581,7 @@ var opIndexDB = {
             // 	console.log(events.target.result);
             // }
         } else {
-            resArray = new Array();
+            let resArray = new Array();
             var trans = indexDataBase.transaction([tbName], IDBTransaction.READ);
             var store = trans.objectStore(tbName);
             // Get everything in the store;
@@ -594,7 +600,7 @@ var opIndexDB = {
                                 return Number(a[sortType]) - Number(b[sortType]);
                             } else {
                                 // 按日期递增排序date :2022,time:10:00:00
-                                // arr.sort((a, b) => b.date.localeCompare(a.date) ||  b.time.localeCompare(a.time)); 
+                                // arr.sort((a, b) => b.date.localeCompare(a.date) ||  b.time.localeCompare(a.time));
 
                                 return a.date.localeCompare(b.date);
                             }
@@ -641,23 +647,30 @@ var opIndexDB = {
                     // 页数下标显示
                     showEveryPageIndex(resArray.length, pageIndex);
 
+                    // let startIndex = (pageIndex - 1) * everyPage;
+                    // let overIndex=pageIndex * everyPage;
+                    // i=overIndex-1;
+                    // outputMyTable(startIndex,resArray);
+
                     $("#myTable tbody").children().detach();
-                    var d;
+                    let data;
                     for (var i = (pageIndex - 1) * everyPage; i < pageIndex *
                     everyPage; i++) {
                         // console.log(resArray[i]);
-                        d = resArray[i];
-                        if (d) {
+                        data = resArray[i];
+                        if (data) {
                             // $("#myTable tbody").append("<tr><th>" + (i + 1) +
                             //     "</th><th>" + d
                             //         .id +
                             //     "</th><th>" + d.userNick + "</th><th>" + convertGrade(d.grade)+ "</th><th>" + d.chatPoints +
                             //     "</th><th>" + d.gamePoints + "</th><th>" + d.allPoints +
                             //     "</th><th>" + d.date + "</th></tr>");
-                            $("#myTable tbody").append("<tr><th>" + (i + 1) +
-                                "</th><th><a href='https://bj.afreecatv.com/"+d.id+"' target='_blank'>" + d.userNick + "(" + d.id + ")</a></th><th>" + convertGrade(d.grade) + "</th><th>" + d.chatPoints +
-                                "</th><th>" + d.chatTimes + "</th><th>" + d.gamePoints + "</th><th>" + d.allPoints +
-                                "</th><th>" + d.allTimes + "</th><th>" + d.date + "</th></tr>");
+                            // let rsGamePoints = d.gamePoints === 0 ? "━ " : d.gamePoints;
+                            // $("#myTable tbody").append("<tr><th>" + (i + 1) +
+                            //     "</th><th><a href='https://bj.afreecatv.com/" + d.id + "' target='_blank'>" + d.userNick + "(" + d.id + ")</a></th><th>" + convertGrade(d.grade) + "</th><th>" + d.chatPoints +
+                            //     "</th><th>" + d.chatTimes + "</th><th>" + rsGamePoints + "</th><th>" + d.allPoints +
+                            //     "</th><th>" + d.allTimes + "</th><th>" + d.date + "</th></tr>");
+                            outputMyTableTr(i + 1, data);
                         } else {
                             return;
                         }
@@ -667,14 +680,17 @@ var opIndexDB = {
                     return;
                 }
                 //判断是否是今天
-                if (sortType != "chatPoints" && sortType != "gamePoints" && sortType != "chatTimes") {
+                // if (sortType != "chatPoints" && sortType != "gamePoints" && sortType != "chatTimes") {
+                if (sortType == "allTimes" || sortType == "allPoints" || sortType == "date") {
                     resArray[resArray.length] = result.value;
                 } else {
-                    if (new Date(result.value.date).getDate() == today) {
+                    if (result.value.date == todayDate) {
                         resArray[resArray.length] = result.value;
                     }
+                    // if (new Date(result.value.date).getDate() == today) {
+                    //     resArray[resArray.length] = result.value;
+                    // }
                 }
-
                 // resArray.push(result.value);
                 result.continue();
             };
@@ -767,7 +783,6 @@ var opIndexDB = {
     serarchTodaySortRankDataByUserData: function (sortType, callback) {
         // console.log("serarchTodayMaxSortData");
         let todayDate = $("#timeFrequencys").text().substring(0, $("#timeFrequencys").text().indexOf("\t"));
-        today = new Date(todayDate).getDate();
         // req = indexedDB.open(dbName);
         // req.onsuccess = function (events) {} db = events.target.result;
         // 获取数据库
@@ -795,7 +810,8 @@ var opIndexDB = {
             }
             data = result.value;
             //今天的第一
-            if (today == new Date(data.date).getDate()) {
+            // if (today == new Date(data.date).getDate()) {
+            if (data.date == todayDate) {
                 // Reflect.deleteProperty(data, "gamePoints");
                 // Reflect.deleteProperty(data,"date");
                 resArray[resArray.length] = result.value;
@@ -808,7 +824,7 @@ var opIndexDB = {
     serarchTodayMaxSortData: function (sortType, sortName, callback) {
         // console.log("serarchTodayMaxSortData");
         let todayDate = $("#timeFrequencys").text().substring(0, $("#timeFrequencys").text().indexOf("\t"));
-        today = new Date(todayDate).getDate();
+        // today = new Date(todayDate).getDate();
         // req = indexedDB.open(dbName);
         // req.onsuccess = function (events) {
         // }db = events.target.result;
@@ -868,9 +884,11 @@ var opIndexDB = {
                 return;
             }
             data = result.value;
-            if (sortType != "allPoints" && sortType != "allTimes") {
+            // if (sortType != "allPoints" && sortType != "allTimes") {
+            if (serachType == "chatPoints" || serachType == "gamePoints" || serachType == "chatTimes") {
                 //今天的第一
-                if (today == new Date(data.date).getDate()) {
+                // if (today == new Date(data.date).getDate()) {
+                if (data.date == todayDate) {
                     //删除指定属性
                     // Reflect.deleteProperty(data, "gamePoints");
                     // Reflect.deleteProperty(data,"date");
@@ -912,7 +930,7 @@ var opIndexDB = {
                     cursor.continue();
                 } else {
                     //print res etc....
-                    console.llog("fisht");
+                    console.log("fisht");
                 }
             };
             // console.log(res);
@@ -922,7 +940,7 @@ var opIndexDB = {
     updateData: function (diceData, callback) {
         // console.log(diceData);
         let todayDate = $("#timeFrequencys").text().substring(0, $("#timeFrequencys").text().indexOf("\t"));
-        today = new Date(todayDate).getDate();
+        // today = new Date(todayDate).getDate();
         req = indexedDB.open(dbName);
         req.onsuccess = function (events) {
             // 获取数据库
@@ -970,7 +988,8 @@ var opIndexDB = {
                         } else {
                             makerResult.allPoints = makerResult.allPoints + diceData.makerAdd;
                             //今天的直接加
-                            if (new Date(makerResult.date).getDate() == today) {
+                            // if (new Date(makerResult.date).getDate() == today) {
+                            if (makerResult.date == todayDate) {
                                 makerResult.gamePoints = makerResult.gamePoints + diceData.makerAdd;
                             } else {
                                 ////日期更新,重置聊天点，游戏点
@@ -1059,7 +1078,7 @@ var opIndexDB = {
         }
 
     },
-    inportDataFunction: function (userDataArray, callBack) {
+    inportDataFunction: function (obejectArray, callBack) {
         let todayDate = $("#timeFrequencys").text().substring(0, $("#timeFrequencys").text().indexOf("\t"));
         today = new Date(todayDate).getDate();
         // req = indexedDB.open(dbName);
@@ -1069,57 +1088,137 @@ var opIndexDB = {
         // Use the literal "readonly" instead of IDBTransaction.READ, which is deprecated:
         var trans = indexDataBase.transaction([tbName], "readwrite");
         var userDataStore = trans.objectStore(tbName);
+        let spliceArraLength;
+        if (obejectArray.length < 50) {
+            spliceArraLength = 5;
+        } else if (obejectArray.length < 500) {
+            spliceArraLength = 50;
+        } else if (obejectArray.length < 5000) {
+            spliceArraLength = 500;
+        } else if (obejectArray.length < 50000) {
+            spliceArraLength = 1000;
+        } else {
+            spliceArraLength = 2000;
+        }
+        if (obejectArray.length < spliceArraLength) {
+            writeData(obejectArray, function (result) {
+                callBack(result);
+            });
+        } else {
+            let conmmitObjectArrayParent;
+            //限制链接数量
+            // conmmitObjectArray = avgGroup(obejectArray, 50);
+            //限制每一组数量
+            conmmitObjectArrayParent = split_array(obejectArray, spliceArraLength);
 
-        for (let i = 0; i < userDataArray.length; i++) {
-            let userData = userDataArray[i]
-            userDataStore.get(userData.id).onsuccess = function (event) {
-                let data = event.target.result;
-                if (!data) {
-                    userDataStore.add(userData).onsuccess = function () {
-                        if (i == userDataArray.length - 1) {
-                            // showTipBarrageFunction(userDataArray.length + "개의 데이터 가져오기 성공");
-                            showTipBarrageFunction("IndexDB:" + userDataArray.length + packageResult.opIndexDB.inportDataFunction);
-                            callBack("over");
+            let arraIndex = 0;
+            let resultLength = 0;
+            commitArray(arraIndex);
+            $("#importBarParent").show();
+
+            function commitArray(arraIndex) {
+                let conmmitObjectArraySon = conmmitObjectArrayParent[arraIndex];
+
+                //存入数据
+                writeData(conmmitObjectArraySon, function (result) {
+                    if (result > 0) {
+
+                        resultLength += result;
+
+                        $("#importBar").css("width", resultLength / obejectArray.length * 100 + "%");
+                        $("#importBarText").text("导入" + obejectArray.length + "/" + resultLength + "个数据完成!");
+                        $("#importBarSpan").text("导入" + conmmitObjectArrayParent.length + "/" + (arraIndex + 1) + "个数据包完成!");
+                        // console.log("提交" + conmmitObjectArrayParent.length + "/" + (arraIndex + 1) + "个数据包完成");
+
+                        arraIndex++;
+                        if (arraIndex >= conmmitObjectArrayParent.length) {
+
+                            showTipBarrageFunction("IndexDB:" + resultLength + packageResult.opIndexDB.inportDataFunction);
+
+                            $("#importBarText").text("导入完成!");
+                            $("#importBarSpan").text("导入完成!");
+                            // setTimeout(function(){},500);
+                            $("#importBarParent").addClass("progress-success");
+                            setTimeout(function () {
+                                $("#importBar").css("width", "");
+                                $("#importBarParent").removeClass("progress-success").hide();
+                            }, 1500);
+
+                            //刷新显示
+                            changePage(pgIndex);
+                            callBack(resultLength);
+                            return;
                         }
-                    };
-                } else {
-                    //是今天累计游戏点聊天点
-                    if (data.date == userData.date) {
-                        data.chatPoints = data.chatPoints + userData.chatPoints;
-                        data.chatTimes = data.chatTimes + userData.chatTimes;
-                        data.gamePoints = data.gamePoints + userData.gamePoints;
-                    } else if (data.date < userData.date) {
-                        data.chatPoints = data.chatPoints;
-                        data.chatTimes = data.chatTimes;
-                        data.gamePoints = data.gamePoints;
-                        // 更新传来的新日期
-                        data.date = userData.date;
+                        commitArray(arraIndex);
                     } else {
-
+                        $("#importBarParent").addClass("progress-danger");
+                        setTimeout(function () {
+                            $("#importBar").css("width", "");
+                            $("#importBarParent").removeClass("progress-success").hide();
+                        }, 5000);
+                        // console.log("error");
+                        return;
                     }
-                    data.allPoints = data.allPoints + userData.allPoints;
-                    data.allTimes = data.allTimes + userData.allTimes;
-                    //等级不需要导入
-                    // data.grade=userData.grade;
 
-                    // let userGrade;
-                    // //测试数据
-                    // if ("grade" in userData) {
-                    //     userGrade = userData.grade;
-                    // } else {
-                    //     userGrade = "loadding";
-                    // }
-                    // data.grade = userGrade;
+                });
+            }
+        }
 
-                    userDataStore.put(data).onsuccess = function (event) {
-                        // console.log('更新', event.target.result);
-                        if (i == userDataArray.length - 1) {
-                            // showTipBarrageFunction(userDataArray.length + "개의 데이터 가져오기 성공");
-                            showTipBarrageFunction("IndexDB:" + userDataArray.length + packageResult.opIndexDB.inportDataFunction);
-                            callBack("over");
+        function writeData(userDataArray, writeCallback) {
+            for (let i = 0; i < userDataArray.length; i++) {
+                let userData = userDataArray[i]
+                userDataStore.get(userData.id).onsuccess = function (event) {
+                    let data = event.target.result;
+                    if (!data) {
+                        userDataStore.add(userData).onsuccess = function () {
+                            if (i == userDataArray.length - 1) {
+                                // showTipBarrageFunction(userDataArray.length + "개의 데이터 가져오기 성공");
+                                //刷新显示
+                                // changePage(pgIndex);
+                                writeCallback(userDataArray.length);
+                            }
+                        };
+                    } else {
+                        //是今天累计游戏点聊天点
+                        if (data.date == userData.date) {
+                            data.chatPoints = data.chatPoints + userData.chatPoints;
+                            data.chatTimes = data.chatTimes + userData.chatTimes;
+                            data.gamePoints = data.gamePoints + userData.gamePoints;
+                        } else if (data.date < userData.date) {
+                            data.chatPoints = data.chatPoints;
+                            data.chatTimes = data.chatTimes;
+                            data.gamePoints = data.gamePoints;
+                            // 更新传来的新日期
+                            data.date = userData.date;
+                        } else {
 
                         }
-                    };
+                        data.allPoints = data.allPoints + userData.allPoints;
+                        data.allTimes = data.allTimes + userData.allTimes;
+                        //等级不需要导入
+                        // data.grade=userData.grade;
+
+                        // let userGrade;
+                        // //测试数据
+                        // if ("grade" in userData) {
+                        //     userGrade = userData.grade;
+                        // } else {
+                        //     userGrade = "loadding";
+                        // }
+                        // data.grade = userGrade;
+
+                        userDataStore.put(data).onsuccess = function (event) {
+                            // console.log('更新', event.target.result);
+                            if (i == userDataArray.length - 1) {
+                                // showTipBarrageFunction(userDataArray.length + "개의 데이터 가져오기 성공");
+                                // showTipBarrageFunction("IndexDB:" + userDataArray.length + packageResult.opIndexDB.inportDataFunction);
+                                //刷新显示
+                                // changePage(pgIndex);
+                                // callBack("over");
+                                writeCallback(userDataArray.length);
+                            }
+                        }
+                    }
                 }
             }
         }
@@ -1175,7 +1274,8 @@ function outputAce(data) {
     $("#todayChatPointsAce>th:eq(2)").text(convertGrade(data.grade));
     $("#todayChatPointsAce>th:eq(3)").text(data.chatPoints);
     $("#todayChatPointsAce>th:eq(4)").text(data.chatTimes);
-    $("#todayChatPointsAce>th:eq(5)").text(data.gamePoints);
+    let rsGamePoints = data.gamePoints === 0 ? "━ " : data.gamePoints;
+    $("#todayChatPointsAce>th:eq(5)").text(rsGamePoints);
     $("#todayChatPointsAce>th:eq(6)").text(data.allPoints);
     $("#todayChatPointsAce>th:eq(7)").text(data.allTimes);
     $("#todayChatPointsAce>th:eq(8)").text(data.date);
@@ -1348,17 +1448,24 @@ function writeInportData(inportData, fileName) {
                             dangerMode: true,
                         }).then((willDelete) => {
                             if (willDelete) {
-                                swal(langResult.swal2.swal1, {
-                                    icon: "success",
-                                });
+
                                 if (localStorageType == "indexdb") {
                                     opIndexDB.inportDataFunction(exportTextArray, function (i) {
+                                        swal(langResult.swal2.swal1, {
+                                            icon: "success",
+                                        });
                                     });
                                 } else if (localStorageType == "websql") {
                                     opWebsql.inportDataFunction(exportTextArray, function (i) {
+                                        swal(langResult.swal2.swal1, {
+                                            icon: "success",
+                                        });
                                     });
                                 } else if (localStorageType == "mysql") {
                                     opMysql.inportDataFunction(exportTextArray, function (i) {
+                                        swal(langResult.swal2.swal1, {
+                                            icon: "success",
+                                        });
                                     });
                                 }
                             } else {

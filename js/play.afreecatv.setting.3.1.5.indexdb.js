@@ -810,7 +810,7 @@ var opSettingIndexDB = {
 
                     } else {
                         messageString = "(" + searchData.tex + ")이 명령은 켜져 있지 않습니다.";
-                        logString = "<li style='color: orange'>"+logString+"(" + searchData.tex + ")" + packageResult.searchCommandAuthoritySupport.answerData6;
+                        logString = "<li style='color: orange'>" + logString + "(" + searchData.tex + ")" + packageResult.searchCommandAuthoritySupport.answerData6;
                         // answerData.message = "此命令没有开启";
                         answerData.message = messageString;
                         if ($("#promptOfIsStart").prop("checked")) {
@@ -820,16 +820,9 @@ var opSettingIndexDB = {
                 }
                 //写入临时日志
                 $("#authorizationLogPre").prepend(logString + "</li>");
-
                 if (!isHoverAuthorizationLogPre) {
-                    if ($("#authorizationLogPre").scrollTop() != 0) {
-                        //直接滚动
-                        // $("#increaseLogPre").scrollTop(0);
-                        //带动画的滚动
-                        $("#authorizationLogPre").animate({
-                            scrollTop: 0
-                        }, 500);
-                    }
+                    //滚动条滚动到最上面
+                    scrollToTop("#authorizationLogPre");
                 }
                 showTipBarrageFunction(logString);
                 callback(answerData);

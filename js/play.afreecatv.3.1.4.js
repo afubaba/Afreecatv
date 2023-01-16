@@ -47,7 +47,7 @@ getBackURLInterval = setInterval(function () {
     if (bgURL && bgURL != "https://res.afreecatv.com/images/afmain/img_thumb_profile.gif") {
         $('body', parent.document).css('background-Image', 'url(' + bgURL + ')').css('background-repeat',
             'no-repeat').css(
-                'background-size', '100%');
+            'background-size', '100%');
         clearInterval(getBackURLInterval);
     }
 }, 500);
@@ -871,7 +871,7 @@ function environmentFunction() {
         'px';
 
     getDomById('actionbox').style = "margin:0;padding:0;height:" + ($("body").height() - $("#myDiv").offset()
-        .top) +
+            .top) +
         "px;width:" + chat_area_width +
         "px;overflow:scroll;visibility:hidden";
 
@@ -1232,28 +1232,7 @@ function environmentFunction() {
     //播放画面背景
     $("#afreecatv_player,#livePlayer,#videoLayer").css("background", "none");
     // $(function() {});
-    localArrayData = [
-        "!총포인트", "!게임포인트", "!채팅포인트", "!채팅통계조회",
-        "!용왕", "!ace", "!탑", "!top", "!정글", "!jun", "!jungle", "!미드", "!mid", "!middle", "!바텀", "!ad",
-        "!adc", "!ap",
-        "!서포터", "!sup", "!support", "!임의", "!모든", "!any", "!all",
-        "!재부팅", "!reboot", "!reload", "!restart",
-        "!보내다", "!send", "!发送", "!보내기",
-        "!ultimatelength", "!극한길이", "!long", "!极限长度",
-        "!text:*",
-        // "!text:*,2x0.1",
-        "!멈추다", "!stop",
-        "!채팅속도", "!지연속도", "!속도",
-        "!별", "!즐겨찾기",
-        "!UP", "!up", "!좋아요", "!좋아",
-        "!보고시간", "!시간", "!time",
-        "!방송시작시간", "!방송시간",
-        "!용감해지다", "!웅기하다", "!가리다", "!막다", "!덮어쓰다",
-        "!문지기", "!슈퍼팬", "!문지기목록", "!문지기수", "!매니저", "!열혈팬", "!구독자", "!팬", "!일반참여자", "!아름답다", "!예쁘다", "!사랑", "!사랑해",
-        "!사랑해요", "!귀엽다", "!하얗다", "!화이트", "!카와이", "!감사", "!고마워요",
-        "!안녕", "!안녕히 계세요",
-        "!침착하다", "!hold on"
-    ];
+    localArrayData = [];
     // $(function() {});
     //长度修改
     $("#testInput").typeahead({
@@ -1621,7 +1600,7 @@ function showTipBarrageFunction(text) {
         let minDelay = 500;
         let maxDelay = 2000;
         let showLogDelay = delayInputTextId < minDelay || delayInputTextId > maxDelay ? delayInputTextId <
-            minDelay ?
+        minDelay ?
             minDelay : maxDelay : delayInputTextId;
         showLogSetTimeout(id);
 
@@ -1779,7 +1758,7 @@ function showBarrageFunction(text) {
         let minDelay = 500;
         let maxDelay = 2000;
         let showLogDelay = delayInputTextId < minDelay || delayInputTextId > maxDelay ? delayInputTextId <
-            minDelay ?
+        minDelay ?
             minDelay : maxDelay : delayInputTextId;
         showLogSetTimeout(id);
 
@@ -2416,7 +2395,7 @@ function test(text) {
         let minDelay = 500;
         let maxDelay = 2000;
         let showLogDelay = delayInputTextId < minDelay || delayInputTextId > maxDelay ? delayInputTextId <
-            minDelay ?
+        minDelay ?
             minDelay : maxDelay : delayInputTextId;
         showLogSetTimeout(id);
 
@@ -2773,121 +2752,414 @@ function retrievalButtonFunction() {
     var getMessageCount = 0;
     //显示
     messageInterval = setInterval(function () {
-        if ($("#chat_area dl").length > 0) {
-            var idt_last = window.sessionStorage.getItem('idt_last');
-            var text_Last = window.sessionStorage.getItem('text_Last');
+            if ($("#chat_area dl").length > 0) {
+                var idt_last = window.sessionStorage.getItem('idt_last');
+                var text_Last = window.sessionStorage.getItem('text_Last');
 
-            function getDom(dom) {
-                var dom = document.getElementById(dom);
-                return dom;
-            }
+                function getDom(dom) {
+                    var dom = document.getElementById(dom);
+                    return dom;
+                }
 
-            //清理控制台/当前执行次数
-            consoleCount++;
+                //清理控制台/当前执行次数
+                consoleCount++;
 
-            // if (consoleCount > 100) {
-            // 	console.clear();
-            // 	consoleCount = 0;
-            // }
+                // if (consoleCount > 100) {
+                // 	console.clear();
+                // 	consoleCount = 0;
+                // }
 
-            //chat_area聊天区域
-            var chat_area = getDom('chat_area');
+                //chat_area聊天区域
+                var chat_area = getDom('chat_area');
 
-            //纠正下标
-            var firstIndex = sessionStorage.getItem('firstIndex');
-            var firstIndexId;
-            if (firstIndex == null || firstIndex == 'undefined') {
-                //查找下标所在的chat_area下标1
-                firstIndexId = $("#chat_area dd").first().attr("id");
-                sessionStorage.setItem('firstIndex', firstIndexId);
-            }
-            firstIndex = sessionStorage.getItem('firstIndex');
-            var firstIndex2 = $("#chat_area dd").last().attr("id");
-            firstIndex2 > 0 && $("#lastIndex").val(firstIndex2);
-            var reduceIndex = firstIndex2 - firstIndex;
-            if (firstIndex < 0) {
-                sessionStorage.setItem('firstIndex', 1);
+                //纠正下标
+                var firstIndex = sessionStorage.getItem('firstIndex');
+                var firstIndexId;
+                if (firstIndex == null || firstIndex == 'undefined') {
+                    //查找下标所在的chat_area下标1
+                    firstIndexId = $("#chat_area dd").first().attr("id");
+                    sessionStorage.setItem('firstIndex', firstIndexId);
+                }
+                firstIndex = sessionStorage.getItem('firstIndex');
+                var firstIndex2 = $("#chat_area dd").last().attr("id");
+                firstIndex2 > 0 && $("#lastIndex").val(firstIndex2);
+                var reduceIndex = firstIndex2 - firstIndex;
+                if (firstIndex < 0) {
+                    sessionStorage.setItem('firstIndex', 1);
 
-                getDom('nowIndex').value = 1;
-            }
-            if (firstIndex2 < 0) {
-                sessionStorage.setItem('firstIndex', 1);
+                    getDom('nowIndex').value = 1;
+                }
+                if (firstIndex2 < 0) {
+                    sessionStorage.setItem('firstIndex', 1);
 
-                getDom('nowIndex').value = 1;
-            }
-            // console.log('firstIndex:' + firstIndex + ',firstIndex2:' + firstIndex2);
-            //如果有变化则做差,并且更新最新的下标
+                    getDom('nowIndex').value = 1;
+                }
+                // console.log('firstIndex:' + firstIndex + ',firstIndex2:' + firstIndex2);
+                //如果有变化则做差,并且更新最新的下标
 
 
-            // if (reduceIndex > 0 && initIndex - reduceIndex > 0) {
-            // 	// console.log('reduceIndex大于0')
-            // 	// console.log('做差前,reduceIndex:' + reduceIndex + ',initIndex:' + initIndex);
-            // 	initIndex = initIndex - reduceIndex;
-            // 	// console.log('做差后,reduceIndex:' + reduceIndex + ',initIndex:' + initIndex);
-            // 	getDom('nowIndex').value = initIndex;
-            // 	sessionStorage.setItem('firstIndex', firstIndex2);
-            // } else if (reduceIndex < 0) {
-            // 	firstIndexId = document.getElementById('chat_area').children[1].children[0].nextElementSibling
-            // 		.getAttribute('id');
-            // 	sessionStorage.setItem('firstIndex', firstIndexId);
-            // 	// console.log('reduceIndex小于0');
-            // } else {
-            // 	//错误时重置
-            // 	firstIndexId = document.getElementById('chat_area').children[1].children[0].nextElementSibling
-            // 		.getAttribute('id');
-            // 	sessionStorage.setItem('firstIndex', firstIndexId);
-            // 	// console.log('遇到错误,重置sessionStorage');
+                // if (reduceIndex > 0 && initIndex - reduceIndex > 0) {
+                // 	// console.log('reduceIndex大于0')
+                // 	// console.log('做差前,reduceIndex:' + reduceIndex + ',initIndex:' + initIndex);
+                // 	initIndex = initIndex - reduceIndex;
+                // 	// console.log('做差后,reduceIndex:' + reduceIndex + ',initIndex:' + initIndex);
+                // 	getDom('nowIndex').value = initIndex;
+                // 	sessionStorage.setItem('firstIndex', firstIndex2);
+                // } else if (reduceIndex < 0) {
+                // 	firstIndexId = document.getElementById('chat_area').children[1].children[0].nextElementSibling
+                // 		.getAttribute('id');
+                // 	sessionStorage.setItem('firstIndex', firstIndexId);
+                // 	// console.log('reduceIndex小于0');
+                // } else {
+                // 	//错误时重置
+                // 	firstIndexId = document.getElementById('chat_area').children[1].children[0].nextElementSibling
+                // 		.getAttribute('id');
+                // 	sessionStorage.setItem('firstIndex', firstIndexId);
+                // 	// console.log('遇到错误,重置sessionStorage');
 
-            // }
+                // }
 
-            if (initIndex <= firstIndex2 - 1) {
-                initIndex++;
-                getDom('nowIndex').value = initIndex;
-            }
-            //现在的下标
-            // var now_index = chat_area.children[initIndex].children[0].nextElementSibling.getAttribute('id');
+                if (initIndex <= firstIndex2 - 1) {
+                    initIndex++;
+                    getDom('nowIndex').value = initIndex;
+                }
+                //现在的下标
+                // var now_index = chat_area.children[initIndex].children[0].nextElementSibling.getAttribute('id');
 
-            // var $nowRead = $("#chat_area dd:eq(" + initIndex + ")");
-            // var now_index = $("#chat_area dd:eq(" + initIndex + ")").attr("id");
-            var now_index = initIndex
-            // var chat_area_Length = document.getElementById('chat_area').childNodes.length - 1;
-            var last_index = firstIndex2;
-            // var last_index = firstIndex2;
-            //限制消息同步정보 가 일치 하지 않 는 최대 수량,그리고 속 도 를 올 립 니 다.
+                // var $nowRead = $("#chat_area dd:eq(" + initIndex + ")");
+                // var now_index = $("#chat_area dd:eq(" + initIndex + ")").attr("id");
+                var now_index = initIndex
+                // var chat_area_Length = document.getElementById('chat_area').childNodes.length - 1;
+                var last_index = firstIndex2;
+                // var last_index = firstIndex2;
+                //限制消息同步정보 가 일치 하지 않 는 최대 수량,그리고 속 도 를 올 립 니 다.
 
-            delayInputId = getDom('delayInputId');
-            //自动提速2自动初始化
-            var upperLimit = getDom('upperLimit');
-            //比例
-            var limit = (last_index - now_index);
+                delayInputId = getDom('delayInputId');
+                //自动提速2自动初始化
+                var upperLimit = getDom('upperLimit');
+                //比例
+                var limit = (last_index - now_index);
 
-            //统计图片点
-            var chatPointsMode = getDomById("chatPointsMode");
-            if (chatPointsMode.checked) {
-                let dataNotRead = $("#chat_area dd[data-isread!='']");
-                if (dataNotRead.length - limit > 1 && chatPointsMode.checked) {
-                    for (let i = 0; i < dataNotRead.length; i++) {
-                        if (dataNotRead[i].getAttribute("id") == 0) {
-                            let $idDom = $(dataNotRead[i]).prev().children().last();
-                            let user_Id = $idDom.attr("user_id");
-                            let user_Nick = $idDom.attr("user_nick");
-                            if (user_Id && user_Id.includes("(") && user_Id.includes(")")) {
-                                for (let index = 1; index <= 3; index++) {
-                                    user_Id = user_Id.replaceAll("(" + index + ")", "");
+                //统计图片点
+                var chatPointsMode = getDomById("chatPointsMode");
+                if (chatPointsMode.checked) {
+                    let dataNotRead = $("#chat_area dd[data-isread!='']");
+                    if (dataNotRead.length - limit > 1 && chatPointsMode.checked) {
+                        for (let i = 0; i < dataNotRead.length; i++) {
+                            if (dataNotRead[i].getAttribute("id") == 0) {
+                                let $idDom = $(dataNotRead[i]).prev().children().last();
+                                let user_Id = $idDom.attr("user_id");
+                                let user_Nick = $idDom.attr("user_nick");
+                                if (user_Id && user_Id.includes("(") && user_Id.includes(")")) {
+                                    for (let index = 1; index <= 3; index++) {
+                                        user_Id = user_Id.replaceAll("(" + index + ")", "");
+                                    }
                                 }
-                            }
-                            let calcAddData = calculateAddPoints(tex);
-                            uData = {
-                                "id": user_Id,
-                                "userNick": user_Nick,
-                                "increase": calcAddData.increase,
-                                "increaseBit": calcAddData.increaseBit,
-                                "grade": $idDom.attr("grade")
-                            }
+                                let calcAddData = calculateAddPoints(tex);
+                                uData = {
+                                    "id": user_Id,
+                                    "userNick": user_Nick,
+                                    "increase": calcAddData.increase,
+                                    "increaseBit": calcAddData.increaseBit,
+                                    "grade": $idDom.attr("grade")
+                                }
 
-                            // console.log(uData);
-                            if (uData.id && uData.userNick) {
-                                $("#increaseLogPre").prepend("<li>" + $("#timeFrequencys").text() + "&emsp;[" + user_Nick + "] " + packageResult.retrievalButtonFunction.byImageEmoji + calcAddData.increase + packageResult.retrievalButtonFunction.addChatPoints + "</li>");
+                                // console.log(uData);
+                                if (uData.id && uData.userNick) {
+                                    $("#increaseLogPre").prepend("<li>" + $("#timeFrequencys").text() + "&emsp;[" + user_Nick + "] " + packageResult.retrievalButtonFunction.byImageEmoji + calcAddData.increase + packageResult.retrievalButtonFunction.addChatPoints + "</li>");
+                                    if (!isHoverIncreaseLogPre) {
+                                        if ($("#increaseLogPre").scrollTop() != 0) {
+                                            //直接滚动
+                                            // $("#increaseLogPre").scrollTop(0);
+                                            //带动画的滚动
+                                            $("#increaseLogPre").animate({
+                                                scrollTop: 0
+                                            }, 500);
+                                        }
+                                    }
+                                    if (localStorageType == "indexdb") {
+                                        opIndexDB.insertData(uData, idDom);
+                                    } else if (localStorageType == "websql") {
+
+                                        uData.tbName = tbName;
+                                        uData.userId = user_Id;
+                                        // userData.userData.id;
+                                        Reflect.deleteProperty(uData, "id");
+                                        // console.log(userData);
+                                        opWebsql.insertData(uData, null);
+                                        //查询
+                                    }
+
+                                }
+                                $idDom.css("backgroundColor", "yellow");
+                                $(dataNotRead[i]).attr("data-isRead", "");
+                            }
+                        }
+                    }
+
+                }
+
+                //超越界限纠正
+                // console.log(limit);
+                var disparity = $("#chat_area").children().length;
+                if (limit >= disparity) {
+                    initIndex = firstIndex2 - disparity;
+                    getDomById('nowIndex').value = initIndex;
+                    // console.log("差距纠正：" + initIndex);
+
+                }
+
+                switch (delayInputId.value) {
+                    case 'slowSpeed':
+                        // console.log("slowSpeed");
+                        if (limit >= informationSynchronization.value) {
+                            // console.log('距离超过5,加速起来');
+                            //提速2 设置上限/最快速度
+                            // if (delayInputFrequency / 2 >= upperLimit.value) {
+                            if (delayInputFrequency - limit >= upperLimit.value) {
+                                // delayInputFrequency = delayInputFrequency / 2
+                                delayInputFrequency = delayInputFrequency - limit;
+                                getDomById('delayInputTextId').value = delayInputFrequency;
+                                // getDomById('retrievalButtonId').click();
+                                retrievalButtonFunction();
+                            }
+                            //10秒后重置，如果继续刷新不重置
+                            // var restartRetrievalMessageIntervalUp;
+                            // if ('undefined' == typeof restartRetrievalMessageIntervalUp) {
+                            // 	// clearInterval(restartRetrievalMessageIntervalUp);
+                            // 	restartRetrievalMessageIntervalUp = setTimeout(function() {
+                            // 		//等待10秒
+                            // 		// getDomById('nowIndex').value-("#chat_area dd ").last().attr("id")>=informationSynchronization.value
+
+                            // 		if (delayInputFrequency / 2 >= upperLimit.value) {
+                            // 			console.log("5秒后距离依然大于5,提速中");
+                            // 			delayInputFrequency = delayInputFrequency / 2;
+                            // 			getDomById('delayInputTextId').value = delayInputFrequency;
+                            // 			getDomById('retrievalButtonId').click();
+                            // 		}
+                            // 	}, 5000);
+                            // 	console.log("restartRetrievalMessageIntervalUp已经存在，清除");
+                            // }
+
+
+                            //追1
+                        } else if (limit == 0) {
+
+                            // console.log("降低速度2倍");
+                            // delayInputFrequency = delayInputFrequency * 2
+                            // delayInputFrequency = parseInt(delayInputFrequency) + limit;
+                            getDomById('delayInputTextId').value = parseInt(delayInputFrequency) + parseInt(
+                                informationSynchronization.value);
+                            // getDomById('retrievalButtonId').click();
+                            retrievalButtonFunction();
+
+                            // console.log('距离不超过5,降速中');
+                            // if ('undefined' == typeof restartRetrievalMessageIntervalDown) {
+                            // 	restartRetrievalMessageIntervalDown = setTimeout(function() {
+                            // 		//等待10秒
+                            // 		console.log("若10秒后依然最新，降低速度2倍");
+                            // 		delayInputFrequency = delayInputFrequency * 2
+                            // 		getDomById('delayInputTextId').value = delayInputFrequency;
+                            // 		getDomById('retrievalButtonId').click();
+                            // 	}, 10000);
+                            // 	console.log("restartRetrievalMessageIntervalDown已经存在，清除");
+                            // }
+                            //10秒后重置，如果继续刷新不重置
+                        }
+                        break;
+                    case 'meiumSpeed':
+
+                        // console.log("meiumSpeed");
+                        //比例
+                        if (limit >= informationSynchronization.value) {
+                            // console.log('距离超过5,加速起来');
+                            //提速2 设置上限/最快速度
+                            if (delayInputFrequency / 2 >= upperLimit.value) {
+                                delayInputFrequency = delayInputFrequency / 2;
+                                //四舍五入
+                                getDomById('delayInputTextId').value = Math.round((delayInputFrequency) * 1000) /
+                                    1000;
+                                // getDomById('retrievalButtonId').click();
+                                retrievalButtonFunction();
+                            }
+                            //追1
+                        } else if (limit == 1) {
+                            // console.log("降低速度2倍");
+                            delayInputFrequency = delayInputFrequency * 2;
+                            getDomById('delayInputTextId').value = delayInputFrequency;
+                            // getDomById('retrievalButtonId').click();
+                            retrievalButtonFunction();
+                        }
+
+
+                        break;
+                    case 'quick':
+                        // console.log("quick");
+                        //比例
+                        if (limit >= informationSynchronization.value) {
+                            // console.log('距离超过5,加速起来');
+                            //提速2 设置上限/最快速度
+                            if (delayInputFrequency / 2 >= upperLimit.value) {
+                                delayInputFrequency = delayInputFrequency / 2;
+                                // delayInputFrequency--;
+                                // Math.round((delayInputFrequency) * 100) / 100 四舍五入
+                                getDomById('delayInputTextId').value = Math.round((delayInputFrequency) * 1000) /
+                                    1000;
+                                // getDomById('retrievalButtonId').click();
+                                retrievalButtonFunction();
+                            }
+                            //追1
+                        } else if (limit == 0) {
+                            // console.log("降低速度2倍");
+                            delayInputFrequency++;
+                            // delayInputFrequency=delayInputFrequency*2;
+                            // parseInt(delayInputFrequency)+=0.001
+                            //小数转换成整数
+                            // if(delayInputFrequency>=1){}
+                            delayInputFrequency = parseInt(delayInputFrequency);
+
+                            getDomById('delayInputTextId').value = delayInputFrequency;
+                            // getDomById('retrievalButtonId').click();
+                            retrievalButtonFunction();
+                        }
+                        break;
+                }
+
+                //document.getElementById('chat_area').children[2].children[0].nextElementSibling.getAttribute('id');
+                if ('undefined' != chat_area.children[initIndex] && typeof $("#" + initIndex).attr(
+                        "data-isread") ==
+                    "undefined") {
+                    // console.log(initIndex);
+
+                    // console.log(initIndex);
+                    var nickName = $("#" + initIndex).prev().children("a").attr('user_nick');
+                    //id
+                    var idt = $("#" + initIndex).prev().children("a").attr('user_id');
+                    if (idt && idt.includes("(") && idt.includes(")")) {
+                        for (let index = 1; index <= 3; index++) {
+                            idt = idt.replaceAll("(" + index + ")", "");
+                        }
+                    }
+
+                    var is_mobile = $("#" + initIndex).prev().children("a").attr('is_mobile');
+                    var grade = $("#" + initIndex).prev().children("a").attr('grade');
+                    //id所属dom a
+                    var $idLast = $("#" + initIndex).prev().children("a");
+                    // var nickName = $idLast.attr('user_nick');
+                    // //id
+                    // var idt = $idLast.attr('user_id');
+                    // var is_mobile = $idLast.attr('is_mobile');
+                    // var grade = $idLast.attr('grade');
+
+
+                    //内容
+                    // var tex = $("#chat_area dd")[initIndex].children[0].nextElementSibling.textContent;
+                    // var tex = $("#" + initIndex).html();
+                    // document.getElementById('demo').firstChild.nodeValue;
+
+                    var tex;
+                    try {
+                        tex = $("#" + initIndex).prop('firstChild').nodeValue;
+                    } catch (error) {
+                        tex = tex = $("#" + initIndex).html();
+                    }
+
+                    is_mobile = is_mobile == 'false' ? '🖥️' : '📱';
+
+                    // if (is_mobile == 'false') {
+                    // 	is_mobile = '🖥';
+                    // } else {
+
+                    // 	is_mobile = '📱';
+                    // }
+                    // if (grade == 'user') {
+                    //     grade = '사용자';
+                    // } else if (grade == 'manager') {
+                    //     grade = '관리원';
+                    // } else if (grade == 'bj') {
+                    //     grade = '앵커';
+                    // } else if (grade == 'fan') {
+                    //     grade = '팬';
+                    // } else if (grade == 'topfan') {
+                    //     grade = '고급팬';
+                    // } else if (grade == 'gudok') {
+                    //     grade = '구독자';
+                    // } else {
+                    //     grade = 'loadding';
+                    // }
+
+
+                    // console.log('['+grade+']'+nickName+'('+idt+')'+is_mobile+':'+tex+'(延迟:'+delayInputFrequency+'ms)');
+
+                    //聊天内容配色
+
+                    //ｉｄ和内容设置
+                    var idDom = $("#" + initIndex).prev().children("a")[0];
+                    // idDom.style.fontSize = 'large';
+                    idDom.style.backgroundColor = 'yellow';
+                    idDom.innerHTML = is_mobile + idDom.textContent;
+
+                    var texDom = $("#" + initIndex)[0];
+
+                    texDom.setAttribute("data-isRead", "");
+                    // texDom.style.border='2px black solid';
+                    // texDom.style.fontSize = 'large';
+                    // texDom.style.backgroundColor = 'white';
+                    commonFontColor = getRandomColor();
+                    texDom.style.color = commonFontColor;
+
+                    //判断内容ID是否相同
+                    if (idt != idt_last || tex != text_Last) {
+                        let calcAddData = calculateAddPoints(tex);
+                        userData = {
+                            "id": idt,
+                            "userNick": nickName,
+                            "increase": calcAddData.increase,
+                            "increaseBit": calcAddData.increaseBit,
+                            "grade": grade
+                            // "text":tex
+                        };
+                        /* 	function httpRequest(url, callback) {
+                                    var xhr = new XMLHttpRequest();
+                                    xhr.open("GET", url, true);
+                                    xhr.onreadystatechange = function() {
+                                        if (xhr.readyState == 4) {
+                                            callback(xhr.responseText);
+                                        }
+                                    }
+                                    xhr.send();
+                                } */
+                        //type目前能用的类型：
+                        // ZH_CN2EN 中文　»　英语
+                        // ZH_CN2JA 中文　»　日语
+                        // ZH_CN2KR 中文　»　韩语
+                        // AUTO 自动识别
+                        // httpRequest('https://fanyi.youdao.com/translate?&doctype=json&type=AUTO&i='+texDom, function(result){
+
+                        //     console.log(result);
+                        // });
+                        // $.ajax({
+                        //     'url':'https://fanyi.youdao.com/translate?&doctype=json&type=AUTO&i='+texDom,
+                        //     'type':'get',
+                        //     'contentType':'application/json',
+
+                        //     'success':function(result,statis){
+                        //         console.log(result);
+                        //         console.log(statis);
+                        //     },
+                        //     'error':function(error,errorMessage){
+                        //         console.log(error);
+                        //         console.log(errorMessage);
+                        //     }});
+                        var chatPointsMode = document.getElementById("chatPointsMode");
+                        if (chatPointsMode.checked) {
+                            // var tbName = "chatPointsMode";
+                            // var tbName = $("#szBjId").val();
+                            // tbName = !isNaN(tbName.substr(0, 1)) ? "cpm_" + tbName : tbName;
+
+                            if (userData.id && userData.userNick) {
+                                $("#increaseLogPre").prepend("<li>" + $("#timeFrequencys").text() + "&emsp;[" + nickName + "] " + packageResult.retrievalButtonFunction.byChat + calcAddData.increase + packageResult.retrievalButtonFunction.addChatPoints + "</li>");
+                                //鼠标不在日志上滚动
                                 if (!isHoverIncreaseLogPre) {
                                     if ($("#increaseLogPre").scrollTop() != 0) {
                                         //直接滚动
@@ -2898,849 +3170,556 @@ function retrievalButtonFunction() {
                                         }, 500);
                                     }
                                 }
+
+                                // createTable
                                 if (localStorageType == "indexdb") {
-                                    opIndexDB.insertData(uData, idDom);
+                                    opIndexDB.insertData(userData, idDom);
+
                                 } else if (localStorageType == "websql") {
 
-                                    uData.tbName = tbName;
-                                    uData.userId = user_Id;
+                                    userData.tbName = tbName;
+                                    userData.userId = idt;
                                     // userData.userData.id;
-                                    Reflect.deleteProperty(uData, "id");
+                                    Reflect.deleteProperty(userData, "id");
                                     // console.log(userData);
-                                    opWebsql.insertData(uData, null);
-                                    //查询
+                                    opWebsql.insertData(userData, idDom);
                                 }
-
-                            }
-                            $idDom.css("backgroundColor", "yellow");
-                            $(dataNotRead[i]).attr("data-isRead", "");
-                        }
-                    }
-                }
-
-            }
-
-            //超越界限纠正
-            // console.log(limit);
-            var disparity = $("#chat_area").children().length;
-            if (limit >= disparity) {
-                initIndex = firstIndex2 - disparity;
-                getDomById('nowIndex').value = initIndex;
-                // console.log("差距纠正：" + initIndex);
-
-            }
-
-            switch (delayInputId.value) {
-                case 'slowSpeed':
-                    // console.log("slowSpeed");
-                    if (limit >= informationSynchronization.value) {
-                        // console.log('距离超过5,加速起来');
-                        //提速2 设置上限/最快速度
-                        // if (delayInputFrequency / 2 >= upperLimit.value) {
-                        if (delayInputFrequency - limit >= upperLimit.value) {
-                            // delayInputFrequency = delayInputFrequency / 2
-                            delayInputFrequency = delayInputFrequency - limit;
-                            getDomById('delayInputTextId').value = delayInputFrequency;
-                            // getDomById('retrievalButtonId').click();
-                            retrievalButtonFunction();
-                        }
-                        //10秒后重置，如果继续刷新不重置
-                        // var restartRetrievalMessageIntervalUp;
-                        // if ('undefined' == typeof restartRetrievalMessageIntervalUp) {
-                        // 	// clearInterval(restartRetrievalMessageIntervalUp);
-                        // 	restartRetrievalMessageIntervalUp = setTimeout(function() {
-                        // 		//等待10秒
-                        // 		// getDomById('nowIndex').value-("#chat_area dd ").last().attr("id")>=informationSynchronization.value
-
-                        // 		if (delayInputFrequency / 2 >= upperLimit.value) {
-                        // 			console.log("5秒后距离依然大于5,提速中");
-                        // 			delayInputFrequency = delayInputFrequency / 2;
-                        // 			getDomById('delayInputTextId').value = delayInputFrequency;
-                        // 			getDomById('retrievalButtonId').click();
-                        // 		}
-                        // 	}, 5000);
-                        // 	console.log("restartRetrievalMessageIntervalUp已经存在，清除");
-                        // }
-
-
-                        //追1
-                    } else if (limit == 0) {
-
-                        // console.log("降低速度2倍");
-                        // delayInputFrequency = delayInputFrequency * 2
-                        // delayInputFrequency = parseInt(delayInputFrequency) + limit;
-                        getDomById('delayInputTextId').value = parseInt(delayInputFrequency) + parseInt(
-                            informationSynchronization.value);
-                        // getDomById('retrievalButtonId').click();
-                        retrievalButtonFunction();
-
-                        // console.log('距离不超过5,降速中');
-                        // if ('undefined' == typeof restartRetrievalMessageIntervalDown) {
-                        // 	restartRetrievalMessageIntervalDown = setTimeout(function() {
-                        // 		//等待10秒
-                        // 		console.log("若10秒后依然最新，降低速度2倍");
-                        // 		delayInputFrequency = delayInputFrequency * 2
-                        // 		getDomById('delayInputTextId').value = delayInputFrequency;
-                        // 		getDomById('retrievalButtonId').click();
-                        // 	}, 10000);
-                        // 	console.log("restartRetrievalMessageIntervalDown已经存在，清除");
-                        // }
-                        //10秒后重置，如果继续刷新不重置
-                    }
-                    break;
-                case 'meiumSpeed':
-
-                    // console.log("meiumSpeed");
-                    //比例
-                    if (limit >= informationSynchronization.value) {
-                        // console.log('距离超过5,加速起来');
-                        //提速2 设置上限/最快速度
-                        if (delayInputFrequency / 2 >= upperLimit.value) {
-                            delayInputFrequency = delayInputFrequency / 2;
-                            //四舍五入
-                            getDomById('delayInputTextId').value = Math.round((delayInputFrequency) * 1000) /
-                                1000;
-                            // getDomById('retrievalButtonId').click();
-                            retrievalButtonFunction();
-                        }
-                        //追1
-                    } else if (limit == 1) {
-                        // console.log("降低速度2倍");
-                        delayInputFrequency = delayInputFrequency * 2;
-                        getDomById('delayInputTextId').value = delayInputFrequency;
-                        // getDomById('retrievalButtonId').click();
-                        retrievalButtonFunction();
-                    }
-
-
-                    break;
-                case 'quick':
-                    // console.log("quick");
-                    //比例
-                    if (limit >= informationSynchronization.value) {
-                        // console.log('距离超过5,加速起来');
-                        //提速2 设置上限/最快速度
-                        if (delayInputFrequency / 2 >= upperLimit.value) {
-                            delayInputFrequency = delayInputFrequency / 2;
-                            // delayInputFrequency--;
-                            // Math.round((delayInputFrequency) * 100) / 100 四舍五入
-                            getDomById('delayInputTextId').value = Math.round((delayInputFrequency) * 1000) /
-                                1000;
-                            // getDomById('retrievalButtonId').click();
-                            retrievalButtonFunction();
-                        }
-                        //追1
-                    } else if (limit == 0) {
-                        // console.log("降低速度2倍");
-                        delayInputFrequency++;
-                        // delayInputFrequency=delayInputFrequency*2;
-                        // parseInt(delayInputFrequency)+=0.001
-                        //小数转换成整数
-                        // if(delayInputFrequency>=1){}
-                        delayInputFrequency = parseInt(delayInputFrequency);
-
-                        getDomById('delayInputTextId').value = delayInputFrequency;
-                        // getDomById('retrievalButtonId').click();
-                        retrievalButtonFunction();
-                    }
-                    break;
-            }
-
-            //document.getElementById('chat_area').children[2].children[0].nextElementSibling.getAttribute('id');
-            if ('undefined' != chat_area.children[initIndex] && typeof $("#" + initIndex).attr(
-                "data-isread") ==
-                "undefined") {
-                // console.log(initIndex);
-
-                // console.log(initIndex);
-                var nickName = $("#" + initIndex).prev().children("a").attr('user_nick');
-                //id
-                var idt = $("#" + initIndex).prev().children("a").attr('user_id');
-                if (idt && idt.includes("(") && idt.includes(")")) {
-                    for (let index = 1; index <= 3; index++) {
-                        idt = idt.replaceAll("(" + index + ")", "");
-                    }
-                }
-
-                var is_mobile = $("#" + initIndex).prev().children("a").attr('is_mobile');
-                var grade = $("#" + initIndex).prev().children("a").attr('grade');
-                //id所属dom a
-                var $idLast = $("#" + initIndex).prev().children("a");
-                // var nickName = $idLast.attr('user_nick');
-                // //id
-                // var idt = $idLast.attr('user_id');
-                // var is_mobile = $idLast.attr('is_mobile');
-                // var grade = $idLast.attr('grade');
-
-
-                //内容
-                // var tex = $("#chat_area dd")[initIndex].children[0].nextElementSibling.textContent;
-                // var tex = $("#" + initIndex).html();
-                // document.getElementById('demo').firstChild.nodeValue;
-
-                var tex;
-                try {
-                    tex = $("#" + initIndex).prop('firstChild').nodeValue;
-                } catch (error) {
-                    tex = tex = $("#" + initIndex).html();
-                }
-
-                is_mobile = is_mobile == 'false' ? '🖥️' : '📱';
-
-                // if (is_mobile == 'false') {
-                // 	is_mobile = '🖥';
-                // } else {
-
-                // 	is_mobile = '📱';
-                // }
-                // if (grade == 'user') {
-                //     grade = '사용자';
-                // } else if (grade == 'manager') {
-                //     grade = '관리원';
-                // } else if (grade == 'bj') {
-                //     grade = '앵커';
-                // } else if (grade == 'fan') {
-                //     grade = '팬';
-                // } else if (grade == 'topfan') {
-                //     grade = '고급팬';
-                // } else if (grade == 'gudok') {
-                //     grade = '구독자';
-                // } else {
-                //     grade = 'loadding';
-                // }
-
-
-                // console.log('['+grade+']'+nickName+'('+idt+')'+is_mobile+':'+tex+'(延迟:'+delayInputFrequency+'ms)');
-
-                //聊天内容配色
-
-                //ｉｄ和内容设置
-                var idDom = $("#" + initIndex).prev().children("a")[0];
-                // idDom.style.fontSize = 'large';
-                idDom.style.backgroundColor = 'yellow';
-                idDom.innerHTML = is_mobile + idDom.textContent;
-
-                var texDom = $("#" + initIndex)[0];
-
-                texDom.setAttribute("data-isRead", "");
-                // texDom.style.border='2px black solid';
-                // texDom.style.fontSize = 'large';
-                // texDom.style.backgroundColor = 'white';
-                commonFontColor = getRandomColor();
-                texDom.style.color = commonFontColor;
-
-                //判断内容ID是否相同
-                if (idt != idt_last || tex != text_Last) {
-                    let calcAddData = calculateAddPoints(tex);
-                    userData = {
-                        "id": idt,
-                        "userNick": nickName,
-                        "increase": calcAddData.increase,
-                        "increaseBit": calcAddData.increaseBit,
-                        "grade": grade
-                        // "text":tex
-                    };
-                    /* 	function httpRequest(url, callback) {
-                                var xhr = new XMLHttpRequest();
-                                xhr.open("GET", url, true);
-                                xhr.onreadystatechange = function() {
-                                    if (xhr.readyState == 4) {
-                                        callback(xhr.responseText);
-                                    }
+                                if (typeof getTodayMaxSortData === "function") {
+                                    !isUpdate && getTodayMaxSortData(idDom, idt);
                                 }
-                                xhr.send();
-                            } */
-                    //type目前能用的类型：
-                    // ZH_CN2EN 中文　»　英语
-                    // ZH_CN2JA 中文　»　日语
-                    // ZH_CN2KR 中文　»　韩语
-                    // AUTO 自动识别
-                    // httpRequest('https://fanyi.youdao.com/translate?&doctype=json&type=AUTO&i='+texDom, function(result){
+                                // opIndexDB.getDB();
+                                if (ace.userId == idt && ace.userNick == nickName) {
+                                    // var appendString ="<span style='background-image:url(" + aurelionSolImgURL +
+                                    // 	");color:yellow;font-size:large'>[ACE]</span>"
 
-                    //     console.log(result);
-                    // });
-                    // $.ajax({
-                    //     'url':'https://fanyi.youdao.com/translate?&doctype=json&type=AUTO&i='+texDom,
-                    //     'type':'get',
-                    //     'contentType':'application/json',
-
-                    //     'success':function(result,statis){
-                    //         console.log(result);
-                    //         console.log(statis);
-                    //     },
-                    //     'error':function(error,errorMessage){
-                    //         console.log(error);
-                    //         console.log(errorMessage);
-                    //     }});
-                    var chatPointsMode = document.getElementById("chatPointsMode");
-                    if (chatPointsMode.checked) {
-                        // var tbName = "chatPointsMode";
-                        // var tbName = $("#szBjId").val();
-                        // tbName = !isNaN(tbName.substr(0, 1)) ? "cpm_" + tbName : tbName;
-
-                        if (userData.id && userData.userNick) {
-                            $("#increaseLogPre").prepend("<li>" + $("#timeFrequencys").text() + "&emsp;[" + nickName + "] " + packageResult.retrievalButtonFunction.byChat + calcAddData.increase + packageResult.retrievalButtonFunction.addChatPoints + "</li>");
-                            //鼠标不在日志上滚动
-                            if (!isHoverIncreaseLogPre) {
-                                if ($("#increaseLogPre").scrollTop() != 0) {
-                                    //直接滚动
-                                    // $("#increaseLogPre").scrollTop(0);
-                                    //带动画的滚动
-                                    $("#increaseLogPre").animate({
-                                        scrollTop: 0
-                                    }, 500);
+                                    // if (imgSize < 3) {
+                                    //     imgSize = 3;
+                                    // } else if (imgSize > 60) {
+                                    //     imgSize = 60;
+                                    // }
+                                    // console.log(imgSize);
+                                    appendString = "<img style='width:" + imgSize + "px;height:" + imgSize + "px;' src ='" +
+                                        aurelionSolImgURL + "' title='" + ace.chatRatio + "[" + imgSize + "px]'/>";
+                                    $(idDom).parent().append(appendString);
+                                    // $("#todayChatPointsAce>th:eq(0)").html(appendString);
+                                    // idDom.innerHTML=idDom.textContent=
+                                    // idDom.innerHTML=idDom.innerHTML+"[ACE]";
                                 }
                             }
 
-                            // createTable
-                            if (localStorageType == "indexdb") {
-                                opIndexDB.insertData(userData, idDom);
 
-                            } else if (localStorageType == "websql") {
-
-                                userData.tbName = tbName;
-                                userData.userId = idt;
-                                // userData.userData.id;
-                                Reflect.deleteProperty(userData, "id");
-                                // console.log(userData);
-                                opWebsql.insertData(userData, idDom);
-                            }
-                            if (typeof getTodayMaxSortData === "function") {
-                                !isUpdate && getTodayMaxSortData(idDom, idt);
-                            }
-                            // opIndexDB.getDB();
-                            if (ace.userId == idt && ace.userNick == nickName) {
-                                // var appendString ="<span style='background-image:url(" + aurelionSolImgURL +
-                                // 	");color:yellow;font-size:large'>[ACE]</span>"
-
-                                // if (imgSize < 3) {
-                                //     imgSize = 3;
-                                // } else if (imgSize > 60) {
-                                //     imgSize = 60;
-                                // }
-                                // console.log(imgSize);
-                                appendString = "<img style='width:" + imgSize + "px;height:" + imgSize + "px;' src ='" +
-                                    aurelionSolImgURL + "' title='" + ace.chatRatio + "[" + imgSize + "px]'/>";
-                                $(idDom).parent().append(appendString);
-                                // $("#todayChatPointsAce>th:eq(0)").html(appendString);
-                                // idDom.innerHTML=idDom.textContent=
-                                // idDom.innerHTML=idDom.innerHTML+"[ACE]";
-                            }
-                        }
-
-
-                        // opWebsql.searchDataByUserId();
-                    } else {
-                        //停止定时获取最大值
-                        stopTodayMaxSortDataInterval();
-                    }
-                    var chatSportMode = document.getElementById("chatSportMode");
-                    //聊天内容特效
-                    if (chatSportMode.checked) {
-                        $(idDom).fadeOut().fadeIn(1000);
-                        $(texDom).hide().show(2000);
-                        setTimeout(function () {
-                            // $("#chat_area dl:lt(1)").hide();
-                            $(texDom).parent('dl').hide(3000);
-                        }, 2000);
-
-                        executeOncePlay();
-                        var fadeInterval;
-                        // if (typeof fadeInterval != 'undefined') {
-                        // 	clearTimeout(fadeInterval);
-                        // }
-
-                        $("#testInput").focus(function () {
-                            isFocus = true;
-                            flag = false;
-                            if ($("#chatting_area").css("backgroundImage") == "none") {
-                                bgURL = document.getElementsByClassName('bj_thumbnail').item(0)
-                                    .children[0]
-                                    .children[0]
-                                    .getAttribute('src');
-                                $("body,#chatting_area").css("backgroundImage", "url(" + bgURL + ")")
-                            }
-                        });
-                        $("#testInput").blur(function () {
-                            flag = true;
-                            isFocus = false;
-                        });
-                        // console.log(flag);
-                        if (flag) {
-                            flag = false;
-                            // ,#player_area
-                            $("#chatting_area").css("backgroundImage", "none").fadeTo(2000,
-                                0.3).fadeTo(1000, 0.6)
-                                .fadeTo(500, 1);
-                            $("#livePlayer").fadeTo(2000, 0.6).fadeTo(2000, 0.8).fadeTo(1000, 1);
-                            setTimeout(function () {
-                                //6秒后没有获取焦点，则进行下一次
-                                if (!isFocus) {
-                                    flag = true;
-                                }
-                            }, 6000);
-
-                            //
+                            // opWebsql.searchDataByUserId();
                         } else {
-                            // clearInterval(fadeInterval);
-
+                            //停止定时获取最大值
+                            stopTodayMaxSortDataInterval();
                         }
+                        var chatSportMode = document.getElementById("chatSportMode");
+                        //聊天内容特效
+                        if (chatSportMode.checked) {
+                            $(idDom).fadeOut().fadeIn(1000);
+                            $(texDom).hide().show(2000);
+                            setTimeout(function () {
+                                // $("#chat_area dl:lt(1)").hide();
+                                $(texDom).parent('dl').hide(3000);
+                            }, 2000);
+
+                            executeOncePlay();
+                            var fadeInterval;
+                            // if (typeof fadeInterval != 'undefined') {
+                            // 	clearTimeout(fadeInterval);
+                            // }
+
+                            $("#testInput").focus(function () {
+                                isFocus = true;
+                                flag = false;
+                                if ($("#chatting_area").css("backgroundImage") == "none") {
+                                    bgURL = document.getElementsByClassName('bj_thumbnail').item(0)
+                                        .children[0]
+                                        .children[0]
+                                        .getAttribute('src');
+                                    $("body,#chatting_area").css("backgroundImage", "url(" + bgURL + ")")
+                                }
+                            });
+                            $("#testInput").blur(function () {
+                                flag = true;
+                                isFocus = false;
+                            });
+                            // console.log(flag);
+                            if (flag) {
+                                flag = false;
+                                // ,#player_area
+                                $("#chatting_area").css("backgroundImage", "none").fadeTo(2000,
+                                    0.3).fadeTo(1000, 0.6)
+                                    .fadeTo(500, 1);
+                                $("#livePlayer").fadeTo(2000, 0.6).fadeTo(2000, 0.8).fadeTo(1000, 1);
+                                setTimeout(function () {
+                                    //6秒后没有获取焦点，则进行下一次
+                                    if (!isFocus) {
+                                        flag = true;
+                                    }
+                                }, 6000);
+
+                                //
+                            } else {
+                                // clearInterval(fadeInterval);
+
+                            }
 
 
-                        deg += 180;
-                        // $("#player_area").css("transform", "rotateY(-" + deg++ + "deg)").css("transition-duration", "5s").css(
-                        // 	"transition-timing-function", "ease-in");
-                        // $("#player_area").css("transform", "rotateX(-" + deg++ + "deg)").css("transition-duration", "5s").css(
-                        // 	"transition-timing-function", "ease-in");
+                            deg += 180;
+                            // $("#player_area").css("transform", "rotateY(-" + deg++ + "deg)").css("transition-duration", "5s").css(
+                            // 	"transition-timing-function", "ease-in");
+                            // $("#player_area").css("transform", "rotateX(-" + deg++ + "deg)").css("transition-duration", "5s").css(
+                            // 	"transition-timing-function", "ease-in");
 
 
-                        // $("#player_area").css("transform", "rotate3d(1,1,1," + deg +
-                        // 	"deg) scale(" + parseInt(Math.random() * 3 / 1) + "," + parseInt(Math.random() * 3 /
-                        // 		1) + ")").css("transition-duration",
-                        // 	"5s").css(
-                        // 	"transition-timing-function", "ease-in");
-                        // .fadeTo(1000, 0.1).fadeTo(1000, 0.2).fadeTo(1000, 0.3).fadeTo(1000, 0.4).fadeTo(1000, 0.5)
+                            // $("#player_area").css("transform", "rotate3d(1,1,1," + deg +
+                            // 	"deg) scale(" + parseInt(Math.random() * 3 / 1) + "," + parseInt(Math.random() * 3 /
+                            // 		1) + ")").css("transition-duration",
+                            // 	"5s").css(
+                            // 	"transition-timing-function", "ease-in");
+                            // .fadeTo(1000, 0.1).fadeTo(1000, 0.2).fadeTo(1000, 0.3).fadeTo(1000, 0.4).fadeTo(1000, 0.5)
 
-                        // $("#player_area").css("transform", "rotate3d(1,1,1," + parseInt(Math.random() * 360 / 1) +
-                        // 	"deg)").css("transition-duration",
-                        // 	"5s").css(
-                        // 	"transition-timing-function", "ease-in");
+                            // $("#player_area").css("transform", "rotate3d(1,1,1," + parseInt(Math.random() * 360 / 1) +
+                            // 	"deg)").css("transition-duration",
+                            // 	"5s").css(
+                            // 	"transition-timing-function", "ease-in");
 
 
-                        // setTimeout(function() {
+                            // setTimeout(function() {
 
-                        // }, 5000);
-                        // document.querySelector("#myVideo").play();
-                        playMyVideo();
-                        //监听播放器
-                        $("html").hover(function () {
+                            // }, 5000);
                             // document.querySelector("#myVideo").play();
                             playMyVideo();
-                        }, function () {
-                            // document.querySelector("#myVideo").pause();
-                            pauseMyVideo();
-                        });
-
-                    } else {
-                        $("html").off("mouseenter").unbind("mouseleave");
-
-                        if ($("#player_area").css("transform") != "none") {
-
-
-                            if ($("#chatting_area").css("backgroundImage") == "none") {
-                                bgURL = document.getElementsByClassName('bj_thumbnail').item(0).children[0]
-                                    .children[0]
-                                    .getAttribute('src');
-                                $("#chatting_area").css("backgroundImage", "url(" + bgURL + ")")
-                            }
-                        }
-                        $("#player_area").css("transform", "none");
-                        if (document.querySelector("#myVideo")) {
-                            document.querySelector("#myVideo").src = videoURL;
-                        }
-
-                        executeOnceRemove()
-
-                        // document.querySelector("#myVideo").pause();
-                        // document.querySelector("#myVideo").currentTime=0;
-                    }
-                    window.sessionStorage.setItem('idt_last', idt);
-                    window.sessionStorage.setItem('text_Last', tex);
-
-                    // const showMessageText= '[' + grade + ']' + nickName + '(' + idt + ')' + is_mobile + ':<br/><span style=font-size:large;>' + tex+'</span>';
-                    //记录消息
-                    // getDomById('showMessage').innerHTML =showMessageText;
-
-                    // const showMessageText1 = '[' + grade + ']' + nickName + '(' + idt + ')' + is_mobile + ':' + tex;
-
-                    // const showMessageText1=$("#" + initIndex).parent().prop("outerHTML");
-                    const showMessageText1 = $("#" + initIndex).parent().clone(true)[0].outerHTML;
-
-                    let isBarrage = $('#barrageButtonId').attr('data-isBarrage');
-
-                    if (isBarrage == 'close') {
-
-                    } else if (isBarrage == 'open') {
-                        // var dtClassName = $("#" + initIndex).prev()[0].className;
-                        // var imgSrc = $("#" + initIndex).prev().children("em").children("img").attr("src");
-
-                        // var texContent = $("#" + initIndex).text();
-
-                        // var dtString = "<dl ><dt class='" + dtClassName + "'><em><img src='" + imgSrc +
-                        // 	"'/></em>[" + grade + "]" + nickName + "(" + idt + "):</dt><dd >" + texContent +
-                        // 	"</dd></dl>"
-
-
-                        // var idDom = $("#" + initIndex).prev().children("a")[0];
-                        // showTipBarrageFunction(dtString);
-                        showBarrageFunction(showMessageText1);
-
-                        // var dtString = "<ul class='showLog'  >" + $("#" + initIndex).prev().prop("outerHTML") + " <li> " +
-                        // 	texContent +
-                        // 	"</li></ul>"
-
-
-                        // var dtString = "<dl class='showLog' style='line-height:100%'>"+$("#" + initIndex).parent().prop("innerHTML")+"</dl>"
-                        // var dtString = "<ul class='showLog'  ><h3>" + $("#" + initIndex).prev().prop("innerHTML") + "</h3> <li> " +
-                        // 	texContent +
-                        // 	"</li></ul>";
-                        // showTipBarrageFunction(dtString);
-
-                    }
-                    //正在读取得消息div ,接收弹幕结果
-
-                    // getDomById('chat_area').style.border = "2px " + commonFontColor + " ridge";
-                    // getDomById('showMessage').style.borderColor = commonFontColor;
-                    // getDomById('showMessage').innerHTML = showMessageText1;
-
-                    //正在读取得消息div ,接收弹幕结果
-                    // getDom('showMessage').innerHTML = showMessageText1;
-
-
-                    // getDom('showLog').innerHTML =showMessageText1;
-                    // $('#showMessage').fadeOut().fadeIn(1000);
-                    // .fadeToggle(1000)
-                    // $('#showMessage').css('background-color','white').fadeOut(1000).fadeIn(1000)
-                    // $('#showMessage').hide().show(1000);
-                    //记录消息拼接时间
-
-
-                    //统计10秒最大输出
-                    // var initTime=10;
-                    //最大次数
-                    // var maxTimes=initTime/delayInputFrequency/1000
-                    //当前次数
-                    // var nowTimes=0;
-                    //统计变化
-                    inputCount++;
-
-
-                    //检索m 内通用发送消息方法
-                    //内容
-                    var testInput;
-                    //次数
-                    var inputTimes;
-                    //间隔时间
-                    var inputFrequency;
-
-                    //打开关闭机器人聊天功能
-                    var robotChatCommondCheckboxId = document.getElementById("robotChatCommondCheckboxId");
-                    if (robotChatCommondCheckboxId.checked && tex && tex.length > 1 && tex[0] == "!") {
-                        var res;
-
-                        function doFunctionByData(tex) {
-                            //初始化data
-                            let objData = {
-                                tex: tex,
-                                idt: idt,
-                                nickName: nickName,
-                                grade: grade,
-                                objIndex: 0
-                            }
-
-                            for (let obj of object) {
-                                objData.objIndex++;
-
-                                if (obj[0].includes(tex)) {
-                                    obj[1](objData);
-                                    return;
-                                }
-                            }
-                        }
-
-                        //骰子数量控制
-                        var diceNoReg = /^!주사위[1-9]|!주사위|!🎲$/;
-                        if (tex.includes('!text:') && tex.includes("x")) {
-                            let objData = {
-                                tex: tex,
-                                idt: idt,
-                                nickName: nickName,
-                                grade: grade,
-                                objIndex: 1
-                            }
-                            opSettingIndexDB.searchCommandAuthoritySupport(objData, function (callbackData) {
-
-                                if (callbackData.isAuthority) {
-                                    // var aa = "!text:221321,55511x1";
-
-                                    //!멈추다 停止
-                                    //内容发送!text:😗😗,2x3  !text:😗,2x0.01  !text:/짱좋아//짱좋아/,3x2
-                                    // !text:/즐거워/,5x5 id 는 이것 을 포함 해야만 명령 을 실행 할 수 있 습 니 다.이 명령 은 관리자 의 채 팅 번역 기능 을 닫 아야 합 니 다.수 동 설정 도 같은 효과 입 니 다.
-                                    // !text:😗,2x1 명령 권한 이 열 렸 습 니 다.관리자 계 정 이나 앵 커 계 정 은 채 팅 번역 기능 을 닫 아야 합 니 다.
-
-                                    var testInput = getDomById('testInput');
-                                    var inputTimes = getDomById('inputTimes');
-                                    var inputFrequency = getDomById('inputFrequency');
-                                    //获取1-3的随机数字
-                                    // console.log(parseInt(Math.random()*NO/1));
-                                    var rdmNo = parseInt(Math.random() * 3 / 1 + 1);
-                                    var text = "";
-                                    var firstNo = "";
-                                    var lastNo = "";
-
-                                    function aa() {
-                                        //固定位置
-                                        text = tex.substring(6, tex.lastIndexOf(','));
-                                        firstNo = tex.substring(tex.lastIndexOf(',') + 1, tex
-                                            .lastIndexOf('x'));
-                                        lastNo = tex.substring(tex.lastIndexOf('x') + 1);
-                                        sendMessageCustom(text, firstNo, lastNo);
-                                    }
-
-                                    function bb() {
-                                        text = tex.substring(tex.indexOf(":") + 1);
-                                        // console.log("bb:", text);
-                                        sendMessage(text)
-                                    }
-
-                                    // var reg = /^!text:.+,[1-9][0-9]*x[1-9][0-9]?/;
-                                    //正数不包含0包含小数
-                                    // var regSon=/^((0.[1-9])|(0.[0-9]{1,4}[^0])|([1-9][0-9]*)+(.[0-9]{1,5})|([1-9][0-9]*))?$/
-                                    var reg =
-                                        /^!text:.+,((0.[1-9])|(0.[0-9]{1,4}[^0])|([1-9][0-9]*)+(.[0-9]{1,5})|([1-9][0-9]*))?x((0.[1-9])|(0.[0-9]{1,4}[^0])|([1-9][0-9]*)+(.[0-9]{1,5})|([1-9][0-9]*))?$/;
-                                    reg.test(tex) ? aa() : bb();
-
-                                }
+                            //监听播放器
+                            $("html").hover(function () {
+                                // document.querySelector("#myVideo").play();
+                                playMyVideo();
+                            }, function () {
+                                // document.querySelector("#myVideo").pause();
+                                pauseMyVideo();
                             });
-                        } else if (diceNoReg.test(tex)) {
 
-                            let objData = {
-                                tex: tex,
-                                idt: idt,
-                                nickName: nickName,
-                                grade: grade,
-                                objIndex: 2
+                        } else {
+                            $("html").off("mouseenter").unbind("mouseleave");
+
+                            if ($("#player_area").css("transform") != "none") {
+
+
+                                if ($("#chatting_area").css("backgroundImage") == "none") {
+                                    bgURL = document.getElementsByClassName('bj_thumbnail').item(0).children[0]
+                                        .children[0]
+                                        .getAttribute('src');
+                                    $("#chatting_area").css("backgroundImage", "url(" + bgURL + ")")
+                                }
                             }
-                            opSettingIndexDB.searchCommandAuthoritySupport(objData, function (callbackData) {
-                                if (callbackData.isAuthority) {
-                                    // tex.includes('!주사위') && tex.length ==4 && tex.length == 5 &&diceNo<9&& !isNaN(diceNo)
-                                    //⚀⚁⚂⚃⚄⚅🎲🎲
-                                    var dice1 = "⚀";
-                                    var dice2 = "⚁";
-                                    var dice3 = "⚂";
-                                    var dice4 = "⚃";
-                                    var dice5 = "⚄";
-                                    var dice6 = "⚅";
-                                    var randomNo;
+                            $("#player_area").css("transform", "none");
+                            if (document.querySelector("#myVideo")) {
+                                document.querySelector("#myVideo").src = videoURL;
+                            }
 
-                                    function getRandom() {
-                                        randomNo = parseInt(Math.random() * (6) / 1 + 1);
-                                        return randomNo;
+                            executeOnceRemove()
+
+                            // document.querySelector("#myVideo").pause();
+                            // document.querySelector("#myVideo").currentTime=0;
+                        }
+                        window.sessionStorage.setItem('idt_last', idt);
+                        window.sessionStorage.setItem('text_Last', tex);
+
+                        // const showMessageText= '[' + grade + ']' + nickName + '(' + idt + ')' + is_mobile + ':<br/><span style=font-size:large;>' + tex+'</span>';
+                        //记录消息
+                        // getDomById('showMessage').innerHTML =showMessageText;
+
+                        // const showMessageText1 = '[' + grade + ']' + nickName + '(' + idt + ')' + is_mobile + ':' + tex;
+
+                        // const showMessageText1=$("#" + initIndex).parent().prop("outerHTML");
+                        const showMessageText1 = $("#" + initIndex).parent().clone(true)[0].outerHTML;
+
+                        let isBarrage = $('#barrageButtonId').attr('data-isBarrage');
+
+                        if (isBarrage == 'close') {
+
+                        } else if (isBarrage == 'open') {
+                            // var dtClassName = $("#" + initIndex).prev()[0].className;
+                            // var imgSrc = $("#" + initIndex).prev().children("em").children("img").attr("src");
+
+                            // var texContent = $("#" + initIndex).text();
+
+                            // var dtString = "<dl ><dt class='" + dtClassName + "'><em><img src='" + imgSrc +
+                            // 	"'/></em>[" + grade + "]" + nickName + "(" + idt + "):</dt><dd >" + texContent +
+                            // 	"</dd></dl>"
+
+
+                            // var idDom = $("#" + initIndex).prev().children("a")[0];
+                            // showTipBarrageFunction(dtString);
+                            showBarrageFunction(showMessageText1);
+
+                            // var dtString = "<ul class='showLog'  >" + $("#" + initIndex).prev().prop("outerHTML") + " <li> " +
+                            // 	texContent +
+                            // 	"</li></ul>"
+
+
+                            // var dtString = "<dl class='showLog' style='line-height:100%'>"+$("#" + initIndex).parent().prop("innerHTML")+"</dl>"
+                            // var dtString = "<ul class='showLog'  ><h3>" + $("#" + initIndex).prev().prop("innerHTML") + "</h3> <li> " +
+                            // 	texContent +
+                            // 	"</li></ul>";
+                            // showTipBarrageFunction(dtString);
+
+                        }
+                        //正在读取得消息div ,接收弹幕结果
+
+                        // getDomById('chat_area').style.border = "2px " + commonFontColor + " ridge";
+                        // getDomById('showMessage').style.borderColor = commonFontColor;
+                        // getDomById('showMessage').innerHTML = showMessageText1;
+
+                        //正在读取得消息div ,接收弹幕结果
+                        // getDom('showMessage').innerHTML = showMessageText1;
+
+
+                        // getDom('showLog').innerHTML =showMessageText1;
+                        // $('#showMessage').fadeOut().fadeIn(1000);
+                        // .fadeToggle(1000)
+                        // $('#showMessage').css('background-color','white').fadeOut(1000).fadeIn(1000)
+                        // $('#showMessage').hide().show(1000);
+                        //记录消息拼接时间
+
+
+                        //统计10秒最大输出
+                        // var initTime=10;
+                        //最大次数
+                        // var maxTimes=initTime/delayInputFrequency/1000
+                        //当前次数
+                        // var nowTimes=0;
+                        //统计变化
+                        inputCount++;
+
+
+                        //检索m 内通用发送消息方法
+                        //内容
+                        var testInput;
+                        //次数
+                        var inputTimes;
+                        //间隔时间
+                        var inputFrequency;
+
+                        //打开关闭机器人聊天功能
+                        var robotChatCommondCheckboxId = document.getElementById("robotChatCommondCheckboxId");
+                        if (robotChatCommondCheckboxId.checked && tex && tex.length > 1 && tex[0] == "!") {
+                            var res;
+
+                            function doFunctionByData(tex) {
+                                //初始化data
+                                let objData = {
+                                    tex: tex,
+                                    idt: idt,
+                                    nickName: nickName,
+                                    grade: grade,
+                                    objIndex: 0
+                                }
+
+                                for (let obj of object) {
+                                    objData.objIndex++;
+
+                                    if (obj[0].includes(tex)) {
+                                        obj[1](objData);
+                                        return;
                                     }
+                                }
+                            }
 
-                                    // function randomDice(length) {
-                                    //     var diceString = "";
-                                    //     var dicePoints = 0;
-                                    //     for (let i = 0; i < length; i++) {
-                                    //         switch (getRandom()) {
-                                    //             case 1:
-                                    //                 diceString = diceString + dice1;
-                                    //                 dicePoints = dicePoints + 1;
-                                    //                 break;
-                                    //             case 2:
-                                    //                 diceString = diceString + dice2;
-                                    //                 dicePoints = dicePoints + 2;
-                                    //                 break;
-                                    //             case 3:
-                                    //                 diceString = diceString + dice3;
-                                    //                 dicePoints = dicePoints + 3;
-                                    //                 break;
-                                    //             case 4:
-                                    //                 diceString = diceString + dice4;
-                                    //                 dicePoints = dicePoints + 4;
-                                    //                 break;
-                                    //             case 5:
-                                    //                 diceString = diceString + dice5;
-                                    //                 dicePoints = dicePoints + 5;
-                                    //                 break;
-                                    //             case 6:
-                                    //                 diceString = diceString + dice6;
-                                    //                 dicePoints = dicePoints + 6;
-                                    //                 break;
-                                    //         }
-                                    //     }
-                                    //     return {
-                                    //         "diceString": diceString,
-                                    //         "dicePoints": dicePoints
-                                    //     }
-                                    // }
+                            //骰子数量控制
+                            var diceNoReg = /^!주사위[1-9]|!주사위|!🎲$/;
+                            if (tex.includes('!text:') && tex.includes("x")) {
+                                let objData = {
+                                    tex: tex,
+                                    idt: idt,
+                                    nickName: nickName,
+                                    grade: grade,
+                                    objIndex: 1
+                                }
+                                opSettingIndexDB.searchCommandAuthoritySupport(objData, function (callbackData) {
 
+                                    if (callbackData.isAuthority) {
+                                        // var aa = "!text:221321,55511x1";
 
-                                    function randomDice(length, callback) {
-                                        var diceString = "";
-                                        var dicePoints = 0;
-                                        var i = 0;
-                                        var diceInterval = setInterval(function () {
-                                            // console.log(i);
-                                            switch (getRandom()) {
-                                                case 1:
-                                                    diceString = diceString + dice1;
-                                                    dicePoints = dicePoints + 5;
-                                                    break;
-                                                case 2:
-                                                    diceString = diceString + dice2;
-                                                    dicePoints = dicePoints + 10;
-                                                    break;
-                                                case 3:
-                                                    diceString = diceString + dice3;
-                                                    dicePoints = dicePoints + 15;
-                                                    break;
-                                                case 4:
-                                                    diceString = diceString + dice4;
-                                                    dicePoints = dicePoints + 20;
-                                                    break;
-                                                case 5:
-                                                    diceString = diceString + dice5;
-                                                    dicePoints = dicePoints + 25;
-                                                    break;
-                                                case 6:
-                                                    diceString = diceString + dice6;
-                                                    dicePoints = dicePoints + 30;
-                                                    break;
-                                            }
-                                            i++;
-                                            if (i >= length) {
-                                                callback({
-                                                    "diceString": diceString,
-                                                    "dicePoints": dicePoints
-                                                });
-                                                clearInterval(diceInterval);
-                                            }
+                                        //!멈추다 停止
+                                        //内容发送!text:😗😗,2x3  !text:😗,2x0.01  !text:/짱좋아//짱좋아/,3x2
+                                        // !text:/즐거워/,5x5 id 는 이것 을 포함 해야만 명령 을 실행 할 수 있 습 니 다.이 명령 은 관리자 의 채 팅 번역 기능 을 닫 아야 합 니 다.수 동 설정 도 같은 효과 입 니 다.
+                                        // !text:😗,2x1 명령 권한 이 열 렸 습 니 다.관리자 계 정 이나 앵 커 계 정 은 채 팅 번역 기능 을 닫 아야 합 니 다.
 
-                                        }, 500);
-                                    }
+                                        var testInput = getDomById('testInput');
+                                        var inputTimes = getDomById('inputTimes');
+                                        var inputFrequency = getDomById('inputFrequency');
+                                        //获取1-3的随机数字
+                                        // console.log(parseInt(Math.random()*NO/1));
+                                        var rdmNo = parseInt(Math.random() * 3 / 1 + 1);
+                                        var text = "";
+                                        var firstNo = "";
+                                        var lastNo = "";
 
-                                    //庄家
-                                    var diceResult1;
-                                    //闲家
-                                    var diceResult2;
-                                    if (tex.length == 4 || tex.length == 3) {
-                                        randomDice(3, function (data) {
-                                            diceResult1 = data;
-                                            randomDice(3, function (data) {
-                                                diceResult2 = data;
-                                                inputData(diceResult1, diceResult2)
-                                            });
-                                        });
-                                    } else if (tex.length == 5) {
-                                        var diceNo = tex.substring(4, tex.length);
-                                        // console.log(diceNo)
-                                        randomDice(diceNo, function (data) {
-                                            diceResult1 = data;
-                                            randomDice(diceNo, function (data) {
-                                                diceResult2 = data;
-                                                inputData(diceResult1, diceResult2)
-                                            });
-                                        });
-                                    } else {
-                                    }
-
-                                    function inputData(diceResult1, diceResult2) {
-                                        let dicePointsResult1 = diceResult1.dicePoints - diceResult2
-                                            .dicePoints;
-                                        let dicePointsResult2 = diceResult2.dicePoints - diceResult1
-                                            .dicePoints;
-                                        //농가
-                                        //登录账户信息
-                                        // var makerId = localStorage.getItem("loginId");
-                                        // var makerNick = $(".userInfo .btn-login").text();
-
-                                        //bj账户信息
-                                        var makerId = $("#szBjId").val();
-                                        var makerNick = $(".text_information .nickname").text();
-                                        // console.log(userData)
-                                        let diceData = {
-                                            "userId": objData.idt,
-                                            "userNick": objData.nickName,
-                                            "userAdd": dicePointsResult2,
-                                            "makerId": makerId,
-                                            "makerNick": makerNick,
-                                            "makerAdd": dicePointsResult1
-                                        };
-
-                                        function outputData(data) {
-                                            // console.log(data);
-                                            let parameter1, parameter2;
-                                            if (data[0].id == objData.idt && data[0].userNick == objData.nickName) {
-                                                parameter1 = data[0].gamePoints;
-                                                parameter2 = data[1].gamePoints;
-                                            } else {
-                                                parameter1 = data[1].gamePoints;
-                                                parameter2 = data[0].gamePoints;
-                                            }
-                                            parameter1 = replaceSmall(parameter1);
-                                            parameter2 = replaceSmall(parameter2);
-                                            let mString = "";
-                                            let logString;
-                                            if (dicePointsResult2 > 0) {
-                                                //通过骰子游戏  赢了 BJ 5游戏点
-                                                if (pageLang == "ko") {
-                                                    logString = "[" + diceData.userNick + "] " + packageResult.retrievalButtonFunction.ByDiceGame + "[" + diceData.makerNick + "] " + dicePointsResult2 + packageResult.retrievalButtonFunction.wineGamePoints;
-                                                } else {
-                                                    logString = "[" + diceData.userNick + "] " + packageResult.retrievalButtonFunction.winByDiceGame + "[" + diceData.makerNick + "] " + dicePointsResult2 + packageResult.retrievalButtonFunction.addGamePoints;
-                                                }
-                                                dicePointsResult2 = "+" + dicePointsResult2;
-                                            }
-                                            if (dicePointsResult2 < 0) {
-                                                if (pageLang == "ko") {
-                                                    logString = "[" + diceData.userNick + "] " + packageResult.retrievalButtonFunction.ByDiceGame + "[" + diceData.makerNick + "] " + dicePointsResult1 + packageResult.retrievalButtonFunction.loseGamePoints;
-                                                } else {
-                                                    logString = "[" + diceData.userNick + "] " + packageResult.retrievalButtonFunction.loseByDiceGame + "[" + diceData.makerNick + "] " + dicePointsResult1 + packageResult.retrievalButtonFunction.addGamePoints;
-                                                }
-                                                dicePointsResult1 = "+" + dicePointsResult1;
-                                            }
-                                            $("#increaseLogPre").prepend("<li>" + $("#timeFrequencys").text() + "&emsp;" + logString + "</li>");
-
-                                            if (dicePointsResult2 == 0) {
-                                                dicePointsResult1 = "";
-                                                dicePointsResult2 = "";
-                                                mString = ",화패";
-                                            }
-                                            let messageString = "@" + nickName + ":" + diceResult2
-                                                .diceString + "," + dicePointsResult2 + "₍🎮։" +
-                                                parameter1 + "₎ " + makerNick + ":" +
-                                                diceResult1.diceString + "," + dicePointsResult1 + "₍🎮։" +
-                                                parameter2 + "₎" + mString;
-
-                                            sendMessageCustom(messageString, 1, 2);
+                                        function aa() {
+                                            //固定位置
+                                            text = tex.substring(6, tex.lastIndexOf(','));
+                                            firstNo = tex.substring(tex.lastIndexOf(',') + 1, tex
+                                                .lastIndexOf('x'));
+                                            lastNo = tex.substring(tex.lastIndexOf('x') + 1);
+                                            sendMessageCustom(text, firstNo, lastNo);
                                         }
 
-                                        if (localStorageType == "indexdb") {
-                                            opIndexDB.updateData(diceData, function (data) {
-                                                // console.log(data);
-                                                outputData(data);
+                                        function bb() {
+                                            text = tex.substring(tex.indexOf(":") + 1);
+                                            // console.log("bb:", text);
+                                            sendMessage(text)
+                                        }
+
+                                        // var reg = /^!text:.+,[1-9][0-9]*x[1-9][0-9]?/;
+                                        //正数不包含0包含小数
+                                        // var regSon=/^((0.[1-9])|(0.[0-9]{1,4}[^0])|([1-9][0-9]*)+(.[0-9]{1,5})|([1-9][0-9]*))?$/
+                                        var reg =
+                                            /^!text:.+,((0.[1-9])|(0.[0-9]{1,4}[^0])|([1-9][0-9]*)+(.[0-9]{1,5})|([1-9][0-9]*))?x((0.[1-9])|(0.[0-9]{1,4}[^0])|([1-9][0-9]*)+(.[0-9]{1,5})|([1-9][0-9]*))?$/;
+                                        reg.test(tex) ? aa() : bb();
+
+                                    }
+                                });
+                            } else if (diceNoReg.test(tex)) {
+
+                                let objData = {
+                                    tex: tex,
+                                    idt: idt,
+                                    nickName: nickName,
+                                    grade: grade,
+                                    objIndex: 2
+                                }
+                                opSettingIndexDB.searchCommandAuthoritySupport(objData, function (callbackData) {
+                                    if (callbackData.isAuthority) {
+                                        // tex.includes('!주사위') && tex.length ==4 && tex.length == 5 &&diceNo<9&& !isNaN(diceNo)
+                                        //⚀⚁⚂⚃⚄⚅🎲🎲
+                                        var dice1 = "⚀";
+                                        var dice2 = "⚁";
+                                        var dice3 = "⚂";
+                                        var dice4 = "⚃";
+                                        var dice5 = "⚄";
+                                        var dice6 = "⚅";
+                                        var randomNo;
+
+                                        function getRandom() {
+                                            randomNo = parseInt(Math.random() * (6) / 1 + 1);
+                                            return randomNo;
+                                        }
+
+                                        // function randomDice(length) {
+                                        //     var diceString = "";
+                                        //     var dicePoints = 0;
+                                        //     for (let i = 0; i < length; i++) {
+                                        //         switch (getRandom()) {
+                                        //             case 1:
+                                        //                 diceString = diceString + dice1;
+                                        //                 dicePoints = dicePoints + 1;
+                                        //                 break;
+                                        //             case 2:
+                                        //                 diceString = diceString + dice2;
+                                        //                 dicePoints = dicePoints + 2;
+                                        //                 break;
+                                        //             case 3:
+                                        //                 diceString = diceString + dice3;
+                                        //                 dicePoints = dicePoints + 3;
+                                        //                 break;
+                                        //             case 4:
+                                        //                 diceString = diceString + dice4;
+                                        //                 dicePoints = dicePoints + 4;
+                                        //                 break;
+                                        //             case 5:
+                                        //                 diceString = diceString + dice5;
+                                        //                 dicePoints = dicePoints + 5;
+                                        //                 break;
+                                        //             case 6:
+                                        //                 diceString = diceString + dice6;
+                                        //                 dicePoints = dicePoints + 6;
+                                        //                 break;
+                                        //         }
+                                        //     }
+                                        //     return {
+                                        //         "diceString": diceString,
+                                        //         "dicePoints": dicePoints
+                                        //     }
+                                        // }
+
+
+                                        function randomDice(length, callback) {
+                                            var diceString = "";
+                                            var dicePoints = 0;
+                                            var i = 0;
+                                            var diceInterval = setInterval(function () {
+                                                // console.log(i);
+                                                switch (getRandom()) {
+                                                    case 1:
+                                                        diceString = diceString + dice1;
+                                                        dicePoints = dicePoints + 5;
+                                                        break;
+                                                    case 2:
+                                                        diceString = diceString + dice2;
+                                                        dicePoints = dicePoints + 10;
+                                                        break;
+                                                    case 3:
+                                                        diceString = diceString + dice3;
+                                                        dicePoints = dicePoints + 15;
+                                                        break;
+                                                    case 4:
+                                                        diceString = diceString + dice4;
+                                                        dicePoints = dicePoints + 20;
+                                                        break;
+                                                    case 5:
+                                                        diceString = diceString + dice5;
+                                                        dicePoints = dicePoints + 25;
+                                                        break;
+                                                    case 6:
+                                                        diceString = diceString + dice6;
+                                                        dicePoints = dicePoints + 30;
+                                                        break;
+                                                }
+                                                i++;
+                                                if (i >= length) {
+                                                    callback({
+                                                        "diceString": diceString,
+                                                        "dicePoints": dicePoints
+                                                    });
+                                                    clearInterval(diceInterval);
+                                                }
+
+                                            }, 500);
+                                        }
+
+                                        //庄家
+                                        var diceResult1;
+                                        //闲家
+                                        var diceResult2;
+                                        if (tex.length == 4 || tex.length == 3) {
+                                            randomDice(3, function (data) {
+                                                diceResult1 = data;
+                                                randomDice(3, function (data) {
+                                                    diceResult2 = data;
+                                                    inputData(diceResult1, diceResult2)
+                                                });
                                             });
-                                        } else if (localStorageType == "websql") {
-                                            //修改data
-                                            // diceData.userId = userData.userId;
-                                            // console.log("websql")
-                                            opWebsql.updateData(diceData, function (data) {
-                                                // console.log(data);
-                                                outputData(data);
+                                        } else if (tex.length == 5) {
+                                            var diceNo = tex.substring(4, tex.length);
+                                            // console.log(diceNo)
+                                            randomDice(diceNo, function (data) {
+                                                diceResult1 = data;
+                                                randomDice(diceNo, function (data) {
+                                                    diceResult2 = data;
+                                                    inputData(diceResult1, diceResult2)
+                                                });
                                             });
                                         } else {
-                                            console.log("error command");
+                                        }
+
+                                        function inputData(diceResult1, diceResult2) {
+                                            let dicePointsResult1 = diceResult1.dicePoints - diceResult2
+                                                .dicePoints;
+                                            let dicePointsResult2 = diceResult2.dicePoints - diceResult1
+                                                .dicePoints;
+                                            //농가
+                                            //登录账户信息
+                                            // var makerId = localStorage.getItem("loginId");
+                                            // var makerNick = $(".userInfo .btn-login").text();
+
+                                            //bj账户信息
+                                            var makerId = $("#szBjId").val();
+                                            var makerNick = $(".text_information .nickname").text();
+                                            // console.log(userData)
+                                            let diceData = {
+                                                "userId": objData.idt,
+                                                "userNick": objData.nickName,
+                                                "userAdd": dicePointsResult2,
+                                                "makerId": makerId,
+                                                "makerNick": makerNick,
+                                                "makerAdd": dicePointsResult1
+                                            };
+
+                                            function outputData(data) {
+                                                // console.log(data);
+                                                let parameter1, parameter2;
+                                                if (data[0].id == objData.idt && data[0].userNick == objData.nickName) {
+                                                    parameter1 = data[0].gamePoints;
+                                                    parameter2 = data[1].gamePoints;
+                                                } else {
+                                                    parameter1 = data[1].gamePoints;
+                                                    parameter2 = data[0].gamePoints;
+                                                }
+                                                parameter1 = replaceSmall(parameter1);
+                                                parameter2 = replaceSmall(parameter2);
+                                                let mString = "";
+                                                let logString;
+                                                if (dicePointsResult2 > 0) {
+                                                    //通过骰子游戏  赢了 BJ 5游戏点
+                                                    if (pageLang == "ko") {
+                                                        logString = "[" + diceData.userNick + "] " + packageResult.retrievalButtonFunction.ByDiceGame + "[" + diceData.makerNick + "] " + dicePointsResult2 + packageResult.retrievalButtonFunction.wineGamePoints;
+                                                    } else {
+                                                        logString = "[" + diceData.userNick + "] " + packageResult.retrievalButtonFunction.winByDiceGame + "[" + diceData.makerNick + "] " + dicePointsResult2 + packageResult.retrievalButtonFunction.addGamePoints;
+                                                    }
+                                                    dicePointsResult2 = "+" + dicePointsResult2;
+                                                }
+                                                if (dicePointsResult2 < 0) {
+                                                    if (pageLang == "ko") {
+                                                        logString = "[" + diceData.userNick + "] " + packageResult.retrievalButtonFunction.ByDiceGame + "[" + diceData.makerNick + "] " + dicePointsResult1 + packageResult.retrievalButtonFunction.loseGamePoints;
+                                                    } else {
+                                                        logString = "[" + diceData.userNick + "] " + packageResult.retrievalButtonFunction.loseByDiceGame + "[" + diceData.makerNick + "] " + dicePointsResult1 + packageResult.retrievalButtonFunction.addGamePoints;
+                                                    }
+                                                    dicePointsResult1 = "+" + dicePointsResult1;
+                                                }
+                                                $("#increaseLogPre").prepend("<li>" + $("#timeFrequencys").text() + "&emsp;" + logString + "</li>");
+
+                                                if (dicePointsResult2 == 0) {
+                                                    dicePointsResult1 = "";
+                                                    dicePointsResult2 = "";
+                                                    mString = ",화패";
+                                                }
+                                                let messageString = "@" + nickName + ":" + diceResult2
+                                                        .diceString + "," + dicePointsResult2 + "₍🎮։" +
+                                                    parameter1 + "₎ " + makerNick + ":" +
+                                                    diceResult1.diceString + "," + dicePointsResult1 + "₍🎮։" +
+                                                    parameter2 + "₎" + mString;
+
+                                                sendMessageCustom(messageString, 1, 2);
+                                            }
+
+                                            if (localStorageType == "indexdb") {
+                                                opIndexDB.updateData(diceData, function (data) {
+                                                    // console.log(data);
+                                                    outputData(data);
+                                                });
+                                            } else if (localStorageType == "websql") {
+                                                //修改data
+                                                // diceData.userId = userData.userId;
+                                                // console.log("websql")
+                                                opWebsql.updateData(diceData, function (data) {
+                                                    // console.log(data);
+                                                    outputData(data);
+                                                });
+                                            } else {
+                                                console.log("error command");
+                                            }
                                         }
                                     }
-                                }
-                            });
-                        } else {
-                            doFunctionByData(tex);
+                                });
+                            } else {
+                                doFunctionByData(tex);
+                            }
                         }
                     }
+                    le = document.getElementsByTagName('dt').length;
                 }
-                le = document.getElementsByTagName('dt').length;
+            } else {
+                getMessageCount++;
+                //60秒终止
+                getMessageCount >= 300 && stopRetrievalMessageFunction();
+                // if(getMessageCount>=50){
+                // 	stopRetrievalMessageFunction();
+                // }
             }
-        } else {
-            getMessageCount++;
-            //60秒终止
-            getMessageCount >= 300 && stopRetrievalMessageFunction();
-            // if(getMessageCount>=50){
-            // 	stopRetrievalMessageFunction();
-            // }
-        }
-        //获取信息的延迟时间
-    },
+            //获取信息的延迟时间
+        },
         delayInputFrequency
     );
 }
@@ -3749,150 +3728,151 @@ const object = new Set([
     [
         ["!text:*", "!text:*,axb"], (data) => {
 
-        }
+    }
     ],
     [
         ["!🎲", "!주사위", "!주사위1/9"], (data) => {
 
-        }
+    }
     ],
     [
         ["!총포인트", "!총횟수", "!게임포인트", "!채팅포인트", "!채팅횟수", "!채팅통계", "!채팅통계조회"], (data) => {
-            opSettingIndexDB.searchCommandAuthoritySupport(data, function (callbackData) {
-                let serachType = "all";
-                let dataStr;
-                if (callbackData.isAuthority) {
-                    if (localStorageType == "indexdb") {
-                        if (data.tex == "!채팅포인트") {
-                            serachType = "chatPoints";
-                            dataStr = "오늘 채팅 포인트:";
-                        } else if (data.tex == "!채팅횟수") {
-                            serachType = "chatTimes";
-                            dataStr = "오늘 채팅 횟수:";
-                        } else if (data.tex == "!게임포인트") {
-                            serachType = "gamePoints";
-                            dataStr = "오늘 게임 포인트:";
-                        } else if (data.tex == "!총포인트") {
-                            serachType = "allPoints";
-                            dataStr = "누적 총 채팅 포인트:";
-                        } else if (data.tex == "!총횟수") {
-                            serachType = "allTimes";
-                            dataStr = "누적 총 채팅 횟수:";
-                        } else {
-
-                        }
-                        opIndexDB.searchDataByUserId(serachType, function (resArray) {
-                            let dataString = "@" + data.nickName + ":";
-                            //数组获取下标
-                            index = resArray.map(mapData => mapData.id).indexOf(data.idt);
-                            dataString = dataString + dataStr + resArray[index][serachType] + ",순위:" + (index + 1) + "/" + resArray.length;
-                            // console.log(dataString);
-                            sendMessageCustom(dataString, 1, 4);
-                        });
-
-                    } else if (localStorageType == "websql") {
-                        opWebsql.searchDataByUserId(data.tex);
+        opSettingIndexDB.searchCommandAuthoritySupport(data, function (callbackData) {
+            let serachType = "all";
+            let dataStr;
+            if (callbackData.isAuthority) {
+                if (localStorageType == "indexdb") {
+                    if (data.tex == "!채팅포인트") {
+                        serachType = "chatPoints";
+                        dataStr = "오늘 채팅 포인트:";
+                    } else if (data.tex == "!채팅횟수") {
+                        serachType = "chatTimes";
+                        dataStr = "오늘 채팅 횟수:";
+                    } else if (data.tex == "!게임포인트") {
+                        serachType = "gamePoints";
+                        dataStr = "오늘 게임 포인트:";
+                    } else if (data.tex == "!총포인트") {
+                        serachType = "allPoints";
+                        dataStr = "누적 총 채팅 포인트:";
+                    } else if (data.tex == "!총횟수") {
+                        serachType = "allTimes";
+                        dataStr = "누적 총 채팅 횟수:";
                     } else {
-                        console.log("error command");
-                    }
-                } else {
 
+                    }
+                    opIndexDB.searchDataByUserId(serachType, function (resArray) {
+                        let dataString = "@" + data.nickName + ":";
+                        //数组获取下标
+                        index = resArray.map(mapData => mapData.id).indexOf(data.idt);
+                        dataString = dataString + dataStr + resArray[index][serachType] + ",순위:" + (index + 1) + "/" + resArray.length;
+                        // console.log(dataString);
+                        sendMessageCustom(dataString, 1, 4);
+                    });
+
+                } else if (localStorageType == "websql") {
+                    opWebsql.searchDataByUserId(data.tex);
+                } else {
+                    console.log("error command");
                 }
-            });
-        }
+            } else {
+
+            }
+        });
+    }
     ],
+
     [
         ["!용왕", "!ace", "!포인트ace", "!채팅포인트ace", "!횟수ace", "!채팅횟수ace", "!게임ace", "!게임포인트ace", "!총포인트ace", "!총채팅포인트ace", "!총횟수ace", "!총채팅횟수ace"], (data) => {
-            let dataStr;
-            let serachType;
-            if (data.tex == "!포인트ace" || data.tex == "!채팅포인트ace" || data.tex == "!ace" || data.tex == "!용왕") {
-                serachType = "chatPoints";
-                dataStr = ":오늘 채팅 포인트:";
-            } else if (data.tex == "!횟수ace" || data.tex == "!채팅횟수ace") {
-                serachType = "chatTimes";
-                dataStr = ":오늘 채팅 횟수:";
-            } else if (data.tex == "!게임ace" || data.tex == "!게임포인트ace") {
-                serachType = "gamePoints";
-                dataStr = ":오늘 게임 포인트:";
-            } else if (data.tex == "!총포인트ace" || data.tex == "!총채팅포인트ace") {
-                serachType = "allPoints";
-                dataStr = ":총 포인트:";
-            } else if (data.tex == "!총횟수ace" || data.tex == "!총채팅횟수ace") {
-                serachType = "allTimes";
-                dataStr = ":총 횟수:";
-            }
-            let dataString;
-
-            function outputText(searchData) {
-                // dataString = "@" + searchData.userNick + dataStr + eval("searchData." + serachType) + ",순위:1/" + searchData.resArrLength;
-                dataString = "@" + searchData.userNick + dataStr + searchData[serachType] + ",순위:1/" + searchData.resArrLength;
-                // dataString="총 포인트:" + replaceSmall(data.allPoints);
-                // console.log(dataString);
-                sendMessageCustom(dataString, 1, 4);
-            }
-
-            opSettingIndexDB.searchCommandAuthoritySupport(data, function (callbackData) {
-                if (callbackData.isAuthority) {
-                    if (localStorageType == "indexdb") {
-                        // alert("Indexdb does not support query temporarily ace/용왕");
-                        opIndexDB.serarchTodayMaxSortData(serachType, "down", function (searchData) {
-                            outputText(searchData);
-                            // var dataString = "@" + data.userNick +
-                            // 	",오늘 채팅 횟수:" + data.chatPoints +
-                            // 	",총 채팅 횟수:" + data.allPoints;
-                            // let dataString = "@" + data.userNick +
-                            //     ",오늘 채팅" + data.chatPoints +
-                            //     "회,순위:1/" + dataLength + ",총 포인트:" + replaceSmall(data.allPoints);
-                            // sendMessageCustom(dataString, 1, 4);
-                        });
-
-                    } else if (localStorageType == "websql") {
-                        opWebsql.searchMaxData(serachType, function (searchData) {
-
-                            outputText(searchData);
-
-                            // let dataString = "@" + data.userNick + ",오늘 채팅" + data
-                            //         .maxChatPoint +
-                            //     "회," + data.count + "명 발언 1위.";
-
-                            // $("#testInput").val(dataString);
-                            // sendMessageCustom(dataString, 1, 4);
-                        });
-                    }
-
-                } else {
-
-                }
-            });
-
+        let dataStr;
+        let serachType;
+        if (data.tex == "!포인트ace" || data.tex == "!채팅포인트ace" || data.tex == "!ace" || data.tex == "!용왕") {
+            serachType = "chatPoints";
+            dataStr = ":오늘 채팅 포인트:";
+        } else if (data.tex == "!횟수ace" || data.tex == "!채팅횟수ace") {
+            serachType = "chatTimes";
+            dataStr = ":오늘 채팅 횟수:";
+        } else if (data.tex == "!게임ace" || data.tex == "!게임포인트ace") {
+            serachType = "gamePoints";
+            dataStr = ":오늘 게임 포인트:";
+        } else if (data.tex == "!총포인트ace" || data.tex == "!총채팅포인트ace") {
+            serachType = "allPoints";
+            dataStr = ":총 포인트:";
+        } else if (data.tex == "!총횟수ace" || data.tex == "!총채팅횟수ace") {
+            serachType = "allTimes";
+            dataStr = ":총 횟수:";
         }
+        let dataString;
+
+        function outputText(searchData) {
+            // dataString = "@" + searchData.userNick + dataStr + eval("searchData." + serachType) + ",순위:1/" + searchData.resArrLength;
+            dataString = "@" + searchData.userNick + dataStr + searchData[serachType] + ",순위:1/" + searchData.resArrLength;
+            // dataString="총 포인트:" + replaceSmall(data.allPoints);
+            // console.log(dataString);
+            sendMessageCustom(dataString, 1, 4);
+        }
+
+        opSettingIndexDB.searchCommandAuthoritySupport(data, function (callbackData) {
+            if (callbackData.isAuthority) {
+                if (localStorageType == "indexdb") {
+                    // alert("Indexdb does not support query temporarily ace/용왕");
+                    opIndexDB.serarchTodayMaxSortData(serachType, "down", function (searchData) {
+                        outputText(searchData);
+                        // var dataString = "@" + data.userNick +
+                        // 	",오늘 채팅 횟수:" + data.chatPoints +
+                        // 	",총 채팅 횟수:" + data.allPoints;
+                        // let dataString = "@" + data.userNick +
+                        //     ",오늘 채팅" + data.chatPoints +
+                        //     "회,순위:1/" + dataLength + ",총 포인트:" + replaceSmall(data.allPoints);
+                        // sendMessageCustom(dataString, 1, 4);
+                    });
+
+                } else if (localStorageType == "websql") {
+                    opWebsql.searchMaxData(serachType, function (searchData) {
+
+                        outputText(searchData);
+
+                        // let dataString = "@" + data.userNick + ",오늘 채팅" + data
+                        //         .maxChatPoint +
+                        //     "회," + data.count + "명 발언 1위.";
+
+                        // $("#testInput").val(dataString);
+                        // sendMessageCustom(dataString, 1, 4);
+                    });
+                }
+
+            } else {
+
+            }
+        });
+
+    }
     ],
     [
         ["!눈물", "!악어의눈물", "!😩", "!☹"], (data) => {
-            // {
-            //     "tex": "!☹",
-            //     "idt": "1057123764",
-            //     "nickName": "핑퐁로봇4호",
-            //     "grade": "user",
-            //     "objIndex": 3
-            // }
+        // {
+        //     "tex": "!☹",
+        //     "idt": "1057123764",
+        //     "nickName": "핑퐁로봇4호",
+        //     "grade": "user",
+        //     "objIndex": 3
+        // }
 
-            // let searchData={
-            //     id:"commandAuthorityStatus"+data.objIndex,
-            //     grade:data.grade
-            // }
-            opSettingIndexDB.searchCommandAuthoritySupport(data, function (callbackData) {
+        // let searchData={
+        //     id:"commandAuthorityStatus"+data.objIndex,
+        //     grade:data.grade
+        // }
+        opSettingIndexDB.searchCommandAuthoritySupport(data, function (callbackData) {
 
-                if (callbackData.isAuthority) {
-                    sendMessageCustom("💧🐊악어의 눈물", 1, 5);
-                }
-            });
-            // console.log(data);
+            if (callbackData.isAuthority) {
+                sendMessageCustom("💧🐊악어의 눈물", 1, 5);
+            }
+        });
+        // console.log(data);
 
-            // sendMessageCustom("💧🐊악어의 눈물", 1, 5);
-        }
+        // sendMessageCustom("💧🐊악어의 눈물", 1, 5);
+    }
     ],
-    [
+    /*[
         // ||tex == '!bj' || tex == '!BJ'||tex == '!앵커'
         // "!서포터",
         ["!추첨매니저", "!추첨열혈팬", "!추첨구독자", "!추첨서포터", "!추첨팬", "!추첨일반참여자", "!매니저", "!열혈팬", "!구독자", "!팬", "!일반참여자",
@@ -4337,296 +4317,293 @@ const object = new Set([
                 }
             });
         }
-    ],
+    ],*/
     [
         ["!아름답다", "!예쁘다", "!사랑", "!사랑해", "!사랑해요", "!귀엽다", "!하얗다", "!화이트",
             "!카와이", "!피카츄"
         ], (data) => {
-            opSettingIndexDB.searchCommandAuthoritySupport(data, function (callbackData) {
-                if (callbackData.isAuthority) {
-                    sendMessageCustom("'̀̀̀̀ͯ'", 1, 0.1);
-                } else {
+        opSettingIndexDB.searchCommandAuthoritySupport(data, function (callbackData) {
+            if (callbackData.isAuthority) {
+                sendMessageCustom("'̀̀̀̀ͯ'", 1, 0.1);
+            } else {
 
-                }
-            });
+            }
+        });
 
-        }
+    }
     ],
     [
         ["!감사", "!고마워요"], (data) => {
-            opSettingIndexDB.searchCommandAuthoritySupport(data, function (callbackData) {
-                if (callbackData.isAuthority) {
-                    sendMessageCustom("당신의 행위 예술에 감사 드립니다'̀̀̀̀ͯ'", 1,
-                        5
-                    );
-                } else {
+        opSettingIndexDB.searchCommandAuthoritySupport(data, function (callbackData) {
+            if (callbackData.isAuthority) {
+                sendMessageCustom("당신의 행위 예술에 감사 드립니다'̀̀̀̀ͯ'", 1,
+                    5
+                );
+            } else {
 
-                }
-            });
+            }
+        });
 
-        }
+    }
     ],
     [
         ["!안녕", "!안녕히 계세요"], (data) => {
-            sendMessageCustom("제때에 즐기다'̀̀̀̀ͯ'", 1, 4);
-        }
+        sendMessageCustom("제때에 즐기다'̀̀̀̀ͯ'", 1, 4);
+    }
     ],
     [
         ["!안녕", "!안녕히 계세요"], (data) => {
-            opSettingIndexDB.searchCommandAuthoritySupport(data, function (callbackData) {
-                if (callbackData.isAuthority) {
-                    sendMessageCustom("제때에 즐기다'̀̀̀̀ͯ'", 1, 4);
-                } else {
+        opSettingIndexDB.searchCommandAuthoritySupport(data, function (callbackData) {
+            if (callbackData.isAuthority) {
+                sendMessageCustom("제때에 즐기다'̀̀̀̀ͯ'", 1, 4);
+            } else {
 
-                }
-            });
+            }
+        });
 
-        }
+    }
     ],
     [
         ["!용감", "!용감하다", "!용감해지다", "!침착하다", "!hold on"], (data) => {
-            opSettingIndexDB.searchCommandAuthoritySupport(data, function (callbackData) {
-                if (callbackData.isAuthority) {
-                    sendMessageCustom(
-                        "'̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀ͯ'", 1, 8);
-                    ;
-                } else {
+        opSettingIndexDB.searchCommandAuthoritySupport(data, function (callbackData) {
+            if (callbackData.isAuthority) {
+                sendMessageCustom(
+                    "'̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀ͯ'", 1, 8);
+                ;
+            } else {
 
-                }
-            });
+            }
+        });
 
-        }
+    }
     ],
     [
         ["!웅기하다", "!웅기"], (data) => {
-            opSettingIndexDB.searchCommandAuthoritySupport(data, function (callbackData) {
-                if (callbackData.isAuthority) {
-                    message =
-                        "'̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀ͯ'";
-                    sendUltimateLengthMessage(message);
-                } else {
+        opSettingIndexDB.searchCommandAuthoritySupport(data, function (callbackData) {
+            if (callbackData.isAuthority) {
+                message =
+                    "'̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀̀ͯ'";
+                sendUltimateLengthMessage(message);
+            } else {
 
-                }
-            });
+            }
+        });
 
-        }
+    }
     ],
     [
         ["!가리다", "!막다", "!덮어쓰다"], (data) => {
-            opSettingIndexDB.searchCommandAuthoritySupport(data, function (callbackData) {
-                if (callbackData.isAuthority) {
-                    message =
-                        "'̴̵̶̷̸̡̢̧̨̛̖̗̘̙̠̣̤̥̦̩̰̱̲̳̹͇͈͉͓͔͕͖͙̜̝̞̟̪̫̬̭̮̯̺̻̼͍͎̀́̂̃̄̅̆̇̈̉̐̑̒̓̔̀́͂̓̈́͆͐͑͒͗̊̋̌̍̎̏̽̾̿͊͋͌̕͘̚͠ͅ͏͚͛ͪͫͬͭͮͯ͜͟͝͞''̴̵̶̷̸̡̢̧̨̛̖̗̘̙̠̣̤̥̦̩̰̱̲̳̹͇͈͉͓͔͕͖͙̜̝̞̟̪̫̬̭̮̯̺̻̼͍͎̀́̂̃̄̅̆̇̈̉̐̑̒̓̔̀́͂̓̈́͆͐͑͒͗̊̋̌̍̎̏̽̾̿͊͋͌̕͘̚͠ͅ͏͚͛ͪͫͬͭͮͯ͜͟͝͞''̴̵̶̷̸̡̢̧̨̛̖̗̘̙̠̣̤̥̦̩̰̱̲̳̹͇͈͉͓͔͕͖͙̜̝̞̟̪̫̬̭̮̯̺̻̼͍͎̀́̂̃̄̅̆̇̈̉̐̑̒̓̔̀́͂̓̈́͆͐͑͒͗̊̋̌̍̎̏̽̾̿͊͋͌̕͘̚͠ͅ͏͚͛ͪͫͬͭͮͯ͜͟͝͞''̴̵̶̷̸̡̢̧̨̛̖̗̘̙̠̣̤̥̦̩̰̱̲̳̹͇͈͉͓͔͕͖͙̜̝̞̟̪̫̬̭̮̯̺̻̼͍͎̀́̂̃̄̅̆̇̈̉̐̑̒̓̔̀́͂̓̈́͆͐͑͒͗̊̋̌̍̎̏̽̾̿͊͋͌̕͘̚͠ͅ͏͚͛ͪͫͬͭͮͯ͜͟͝͞''̴̵̶̷̸̡̢̧̨̛̖̗̘̙̠̣̤̥̦̩̰̱̲̳̹͇͈͉͓͔͕͖͙̜̝̞̟̪̫̬̭̮̯̺̻̼͍͎̀́̂̃̄̅̆̇̈̉̐̑̒̓̔̀́͂̓̈́͆͐͑͒͗̊̋̌̍̎̏̽̾̿͊͋͌̕͘̚͠ͅ͏͚͛ͪͫͬͭͮͯ͜͟͝͞''̴̵̶̷̸̡̢̧̨̛̖̗̘̙̠̣̤̥̦̩̰̱̲̳̹͇͈͉͓͔͕͖͙̜̝̞̟̪̫̬̭̮̯̺̻̼͍͎̀́̂̃̄̅̆̇̈̉̐̑̒̓̔̀́͂̓̈́͆͐͑͒͗̊̋̌̍̎̏̽̾̿͊͋͌̕͘̚͠ͅ͏͚͛ͪͫͬͭͮͯ͜͟͝͞''̴̵̶̷̸̡̢̧̨̛̖̗̘̙̠̣̤̥̦̩̰̱̲̳̹͇͈͉͓͔͕͖͙̜̝̞̟̪̫̬̭̮̯̺̻̼͍͎̀́̂̃̄̅̆̇̈̉̐̑̒̓̔̀́͂̓̈́͆͐͑͒͗̊̋̌̍̎̏̽̾̿͊͋͌̕͘̚͠ͅ͏͚͛ͪͫͬͭͮͯ͜͟͝͞''̴̵̶̷̸̡̢̧̨̛̖̗̘̙̠̣̤̥̦̩̰̱̲̳̹͇͈͉͓͔͕͖͙̜̝̞̟̪̫̬̭̮̯̺̻̼͍͎̀́̂̃̄̅̆̇̈̉̐̑̒̓̔̀́͂̓̈́͆͐͑͒͗̊̋̌̍̎̏̽̾̿͊͋͌̕͘̚͠ͅ͏͚͛ͪͫͬͭͮͯ͜͟͝͞''̴̵̶̷̸̡̢̧̨̛̖̗̘̙̠̣̤̥̦̩̰̱̲̳̹͇͈͉͓͔͕͖͙̜̝̞̟̪̫̬̭̮̯̺̻̼͍͎̀́̂̃̄̅̆̇̈̉̐̑̒̓̔̀́͂̓̈́͆͐͑͒͗̊̋̌̍̎̏̽̾̿͊͋͌̕͘̚͠ͅ͏͚͛ͪͫͬͭͮͯ͜͟͝͞''̴̵̶̷̸̡̢̧̨̛̖̗̘̙̠̣̤̥̦̩̰̱̲̳̹͇͈͉͓͔͕͖͙̜̝̞̟̪̫̬̭̮̯̺̻̼͍͎̀́̂̃̄̅̆̇̈̉̐̑̒̓̔̀́͂̓̈́͆͐͑͒͗̊̋̌̍̎̏̽̾̿͊͋͌̕͘̚͠ͅ͏͚͛ͪͫͬͭͮͯ͜͟͝͞''̴̵̶̷̸̡̢̧̨̛̖̗̘̙̠̣̤̥̦̩̰̱̲̳̹͇͈͉͓͔͕͖͙̜̝̞̟̪̫̬̭̮̯̺̻̼͍͎̀́̂̃̄̅̆̇̈̉̐̑̒̓̔̀́͂̓̈́͆͐͑͒͗̊̋̌̍̎̏̽̾̿͊͋͌̕͘̚͠ͅ͏͚͛ͪͫͬͭͮͯ͜͟͝͞''̴̵̶̷̸̡̢̧̨̛̖̗̘̙̠̣̤̥̦̩̰̱̲̳̹͇͈͉͓͔͕͖͙̜̝̞̟̪̫̬̭̮̯̺̻̼͍͎̀́̂̃̄̅̆̇̈̉̐̑̒̓̔̀́͂̓̈́͆͐͑͒͗̊̋̌̍̎̏̽̾̿͊͋͌̕͘̚͠ͅ͏͚͛ͪͫͬͭͮͯ͜͟͝͞''̴̵̶̷̸̡̢̧̨̛̖̗̘̙̠̣̤̥̦̩̰̱̲̳̹͇͈͉͓͔͕͖͙̜̝̞̟̪̫̬̭̮̯̺̻̼͍͎̀́̂̃̄̅̆̇̈̉̐̑̒̓̔̀́͂̓̈́͆͐͑͒͗̊̋̌̍̎̏̽̾̿͊͋͌̕͘̚͠ͅ͏͚͛ͪͫͬͭͮͯ͜͟͝͞''̴̵̶̷̸̡̢̧̨̛̖̗̘̙̠̣̤̥̦̩̰̱̲̳̹͇͈͉͓͔͕͖͙̜̝̞̟̪̫̬̭̮̯̺̻̼͍͎̀́̂̃̄̅̆̇̈̉̐̑̒̓̔̀́͂̓̈́͆͐͑͒͗̊̋̌̍̎̏̽̾̿͊͋͌̕͘̚͠ͅ͏͚͛ͪͫͬͭͮͯ͜͟͝͞''̴̵̶̷̸̡̢̧̨̛̖̗̘̙̠̣̤̥̦̩̰̱̲̳̹͇͈͉͓͔͕͖͙̜̝̞̟̪̫̬̭̮̯̺̻̼͍͎̀́̂̃̄̅̆̇̈̉̐̑̒̓̔̀́͂̓̈́͆͐͑͒͗̊̋̌̍̎̏̽̾̿͊͋͌̕͘̚͠ͅ͏͚͛ͪͫͬͭͮͯ͜͟͝͞''̴̵̶̷̸̡̢̧̨̛̖̗̘̙̠̣̤̥̦̩̰̱̲̳̹͇͈͉͓͔͕͖͙̜̝̞̟̪̫̬̭̮̯̺̻̼͍͎̀́̂̃̄̅̆̇̈̉̐̑̒̓̔̀́͂̓̈́͆͐͑͒͗̊̋̌̍̎̏̽̾̿͊͋͌̕͘̚͠ͅ͏͚͛ͪͫͬͭͮͯ͜͟͝͞''̴̵̶̷̸̡̢̧̨̛̖̗̘̙̠̣̤̥̦̩̰̱̲̳̹͇͈͉͓͔͕͖͙̜̝̞̟̪̫̬̭̮̯̺̻̼͍͎̀́̂̃̄̅̆̇̈̉̐̑̒̓̔̀́͂̓̈́͆͐͑͒͗̊̋̌̍̎̏̽̾̿͊͋͌̕͘̚͠ͅ͏͚͛ͪͫͬͭͮͯ͜͟͝͞''̴̵̶̷̸̡̢̧̨̛̖̗̘̙̠̣̤̥̦̩̰̱̲̳̹͇͈͉͓͔͕͖͙̜̝̞̟̪̫̬̭̮̯̺̻̼͍͎̀́̂̃̄̅̆̇̈̉̐̑̒̓̔̀́͂̓̈́͆͐͑͒͗̊̋̌̍̎̏̽̾̿͊͋͌̕͘̚͠ͅ͏͚͛ͪͫͬͭͮͯ͜͟͝͞''̴̵̶̷̸̡̢̧̨̛̖̗̘̙̠̣̤̥̦̩̰̱̲̳̹͇͈͉͓͔͕͖͙̜̝̞̟̪̫̬̭̮̯̺̻̼͍͎̀́̂̃̄̅̆̇̈̉̐̑̒̓̔̀́͂̓̈́͆͐͑͒͗̊̋̌̍̎̏̽̾̿͊͋͌̕͘̚͠ͅ͏͚͛ͪͫͬͭͮͯ͜͟͝͞'";
-                    // sendMessageCustom(message, 2, 32);
-                    sendUltimateLengthMessage(message);
-                } else {
+        opSettingIndexDB.searchCommandAuthoritySupport(data, function (callbackData) {
+            if (callbackData.isAuthority) {
+                message =
+                    "'̴̵̶̷̸̡̢̧̨̛̖̗̘̙̠̣̤̥̦̩̰̱̲̳̹͇͈͉͓͔͕͖͙̜̝̞̟̪̫̬̭̮̯̺̻̼͍͎̀́̂̃̄̅̆̇̈̉̐̑̒̓̔̀́͂̓̈́͆͐͑͒͗̊̋̌̍̎̏̽̾̿͊͋͌̕͘̚͠ͅ͏͚͛ͪͫͬͭͮͯ͜͟͝͞''̴̵̶̷̸̡̢̧̨̛̖̗̘̙̠̣̤̥̦̩̰̱̲̳̹͇͈͉͓͔͕͖͙̜̝̞̟̪̫̬̭̮̯̺̻̼͍͎̀́̂̃̄̅̆̇̈̉̐̑̒̓̔̀́͂̓̈́͆͐͑͒͗̊̋̌̍̎̏̽̾̿͊͋͌̕͘̚͠ͅ͏͚͛ͪͫͬͭͮͯ͜͟͝͞''̴̵̶̷̸̡̢̧̨̛̖̗̘̙̠̣̤̥̦̩̰̱̲̳̹͇͈͉͓͔͕͖͙̜̝̞̟̪̫̬̭̮̯̺̻̼͍͎̀́̂̃̄̅̆̇̈̉̐̑̒̓̔̀́͂̓̈́͆͐͑͒͗̊̋̌̍̎̏̽̾̿͊͋͌̕͘̚͠ͅ͏͚͛ͪͫͬͭͮͯ͜͟͝͞''̴̵̶̷̸̡̢̧̨̛̖̗̘̙̠̣̤̥̦̩̰̱̲̳̹͇͈͉͓͔͕͖͙̜̝̞̟̪̫̬̭̮̯̺̻̼͍͎̀́̂̃̄̅̆̇̈̉̐̑̒̓̔̀́͂̓̈́͆͐͑͒͗̊̋̌̍̎̏̽̾̿͊͋͌̕͘̚͠ͅ͏͚͛ͪͫͬͭͮͯ͜͟͝͞''̴̵̶̷̸̡̢̧̨̛̖̗̘̙̠̣̤̥̦̩̰̱̲̳̹͇͈͉͓͔͕͖͙̜̝̞̟̪̫̬̭̮̯̺̻̼͍͎̀́̂̃̄̅̆̇̈̉̐̑̒̓̔̀́͂̓̈́͆͐͑͒͗̊̋̌̍̎̏̽̾̿͊͋͌̕͘̚͠ͅ͏͚͛ͪͫͬͭͮͯ͜͟͝͞''̴̵̶̷̸̡̢̧̨̛̖̗̘̙̠̣̤̥̦̩̰̱̲̳̹͇͈͉͓͔͕͖͙̜̝̞̟̪̫̬̭̮̯̺̻̼͍͎̀́̂̃̄̅̆̇̈̉̐̑̒̓̔̀́͂̓̈́͆͐͑͒͗̊̋̌̍̎̏̽̾̿͊͋͌̕͘̚͠ͅ͏͚͛ͪͫͬͭͮͯ͜͟͝͞''̴̵̶̷̸̡̢̧̨̛̖̗̘̙̠̣̤̥̦̩̰̱̲̳̹͇͈͉͓͔͕͖͙̜̝̞̟̪̫̬̭̮̯̺̻̼͍͎̀́̂̃̄̅̆̇̈̉̐̑̒̓̔̀́͂̓̈́͆͐͑͒͗̊̋̌̍̎̏̽̾̿͊͋͌̕͘̚͠ͅ͏͚͛ͪͫͬͭͮͯ͜͟͝͞''̴̵̶̷̸̡̢̧̨̛̖̗̘̙̠̣̤̥̦̩̰̱̲̳̹͇͈͉͓͔͕͖͙̜̝̞̟̪̫̬̭̮̯̺̻̼͍͎̀́̂̃̄̅̆̇̈̉̐̑̒̓̔̀́͂̓̈́͆͐͑͒͗̊̋̌̍̎̏̽̾̿͊͋͌̕͘̚͠ͅ͏͚͛ͪͫͬͭͮͯ͜͟͝͞''̴̵̶̷̸̡̢̧̨̛̖̗̘̙̠̣̤̥̦̩̰̱̲̳̹͇͈͉͓͔͕͖͙̜̝̞̟̪̫̬̭̮̯̺̻̼͍͎̀́̂̃̄̅̆̇̈̉̐̑̒̓̔̀́͂̓̈́͆͐͑͒͗̊̋̌̍̎̏̽̾̿͊͋͌̕͘̚͠ͅ͏͚͛ͪͫͬͭͮͯ͜͟͝͞''̴̵̶̷̸̡̢̧̨̛̖̗̘̙̠̣̤̥̦̩̰̱̲̳̹͇͈͉͓͔͕͖͙̜̝̞̟̪̫̬̭̮̯̺̻̼͍͎̀́̂̃̄̅̆̇̈̉̐̑̒̓̔̀́͂̓̈́͆͐͑͒͗̊̋̌̍̎̏̽̾̿͊͋͌̕͘̚͠ͅ͏͚͛ͪͫͬͭͮͯ͜͟͝͞''̴̵̶̷̸̡̢̧̨̛̖̗̘̙̠̣̤̥̦̩̰̱̲̳̹͇͈͉͓͔͕͖͙̜̝̞̟̪̫̬̭̮̯̺̻̼͍͎̀́̂̃̄̅̆̇̈̉̐̑̒̓̔̀́͂̓̈́͆͐͑͒͗̊̋̌̍̎̏̽̾̿͊͋͌̕͘̚͠ͅ͏͚͛ͪͫͬͭͮͯ͜͟͝͞''̴̵̶̷̸̡̢̧̨̛̖̗̘̙̠̣̤̥̦̩̰̱̲̳̹͇͈͉͓͔͕͖͙̜̝̞̟̪̫̬̭̮̯̺̻̼͍͎̀́̂̃̄̅̆̇̈̉̐̑̒̓̔̀́͂̓̈́͆͐͑͒͗̊̋̌̍̎̏̽̾̿͊͋͌̕͘̚͠ͅ͏͚͛ͪͫͬͭͮͯ͜͟͝͞''̴̵̶̷̸̡̢̧̨̛̖̗̘̙̠̣̤̥̦̩̰̱̲̳̹͇͈͉͓͔͕͖͙̜̝̞̟̪̫̬̭̮̯̺̻̼͍͎̀́̂̃̄̅̆̇̈̉̐̑̒̓̔̀́͂̓̈́͆͐͑͒͗̊̋̌̍̎̏̽̾̿͊͋͌̕͘̚͠ͅ͏͚͛ͪͫͬͭͮͯ͜͟͝͞''̴̵̶̷̸̡̢̧̨̛̖̗̘̙̠̣̤̥̦̩̰̱̲̳̹͇͈͉͓͔͕͖͙̜̝̞̟̪̫̬̭̮̯̺̻̼͍͎̀́̂̃̄̅̆̇̈̉̐̑̒̓̔̀́͂̓̈́͆͐͑͒͗̊̋̌̍̎̏̽̾̿͊͋͌̕͘̚͠ͅ͏͚͛ͪͫͬͭͮͯ͜͟͝͞''̴̵̶̷̸̡̢̧̨̛̖̗̘̙̠̣̤̥̦̩̰̱̲̳̹͇͈͉͓͔͕͖͙̜̝̞̟̪̫̬̭̮̯̺̻̼͍͎̀́̂̃̄̅̆̇̈̉̐̑̒̓̔̀́͂̓̈́͆͐͑͒͗̊̋̌̍̎̏̽̾̿͊͋͌̕͘̚͠ͅ͏͚͛ͪͫͬͭͮͯ͜͟͝͞''̴̵̶̷̸̡̢̧̨̛̖̗̘̙̠̣̤̥̦̩̰̱̲̳̹͇͈͉͓͔͕͖͙̜̝̞̟̪̫̬̭̮̯̺̻̼͍͎̀́̂̃̄̅̆̇̈̉̐̑̒̓̔̀́͂̓̈́͆͐͑͒͗̊̋̌̍̎̏̽̾̿͊͋͌̕͘̚͠ͅ͏͚͛ͪͫͬͭͮͯ͜͟͝͞''̴̵̶̷̸̡̢̧̨̛̖̗̘̙̠̣̤̥̦̩̰̱̲̳̹͇͈͉͓͔͕͖͙̜̝̞̟̪̫̬̭̮̯̺̻̼͍͎̀́̂̃̄̅̆̇̈̉̐̑̒̓̔̀́͂̓̈́͆͐͑͒͗̊̋̌̍̎̏̽̾̿͊͋͌̕͘̚͠ͅ͏͚͛ͪͫͬͭͮͯ͜͟͝͞''̴̵̶̷̸̡̢̧̨̛̖̗̘̙̠̣̤̥̦̩̰̱̲̳̹͇͈͉͓͔͕͖͙̜̝̞̟̪̫̬̭̮̯̺̻̼͍͎̀́̂̃̄̅̆̇̈̉̐̑̒̓̔̀́͂̓̈́͆͐͑͒͗̊̋̌̍̎̏̽̾̿͊͋͌̕͘̚͠ͅ͏͚͛ͪͫͬͭͮͯ͜͟͝͞''̴̵̶̷̸̡̢̧̨̛̖̗̘̙̠̣̤̥̦̩̰̱̲̳̹͇͈͉͓͔͕͖͙̜̝̞̟̪̫̬̭̮̯̺̻̼͍͎̀́̂̃̄̅̆̇̈̉̐̑̒̓̔̀́͂̓̈́͆͐͑͒͗̊̋̌̍̎̏̽̾̿͊͋͌̕͘̚͠ͅ͏͚͛ͪͫͬͭͮͯ͜͟͝͞'";
+                // sendMessageCustom(message, 2, 32);
+                sendUltimateLengthMessage(message);
+            } else {
 
-                }
-            });
+            }
+        });
 
-        }
+    }
     ],
     [
         ["!극한길이", "!ultimatelength", "!long",
             "!极限长度", "!once", "!딱한번"
         ], (data) => {
-            opSettingIndexDB.searchCommandAuthoritySupport(data, function (callbackData) {
-                if (callbackData.isAuthority) {
-                    message =
-                        "'ͯ̑͒'̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩'";
-                    // sendMessageCustom(message, 2, 32);
-                    sendUltimateLengthMessage(message);
-                } else {
+        opSettingIndexDB.searchCommandAuthoritySupport(data, function (callbackData) {
+            if (callbackData.isAuthority) {
+                message =
+                    "'ͯ̑͒'̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̨̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩͚̭̤̩'";
+                // sendMessageCustom(message, 2, 32);
+                sendUltimateLengthMessage(message);
+            } else {
 
-                }
-            });
+            }
+        });
 
-        }
+    }
     ],
     [
         ["!reboot", "!재부팅", "!reload", "!restart"], (data) => {
-            opSettingIndexDB.searchCommandAuthoritySupport(data, function (callbackData) {
-                if (callbackData.isAuthority) {
-                    refreshPage(null, packageResult.refreshPage.text1);
-                } else {
+        opSettingIndexDB.searchCommandAuthoritySupport(data, function (callbackData) {
+            if (callbackData.isAuthority) {
+                refreshPage(null, packageResult.refreshPage.text1);
+            } else {
 
-                }
-            });
+            }
+        });
 
-        }
+    }
     ],
     [
         ["!탑", "!정글", "!미드", "!바텀", "!임의", "!모든", "!서포터", "!top", "!mid",
             "!jun", "!ad", "!adc", "!ap", "!sup", "!any", "!all"
         ], (data) => {
 
-            opSettingIndexDB.searchCommandAuthoritySupport(data, function (callbackData) {
+        opSettingIndexDB.searchCommandAuthoritySupport(data, function (callbackData) {
 
-                if (callbackData.isAuthority) {
-                    // const LOLURL = chrome.runtime.getURL("LOL.html");
-                    const LOLURL =
-                        "https://afubaba.github.io/Afreecatv/LOL.html";
-                    // winowName = window.open(LOLURL, "windowName");
-                    // winowName = window.open(
-                    //     "https://afubaba.github.io/Afreecatv/LOL.html",
-                    //     "_blank",
-                    //     "left=300,width=1000,height=1000,channelmode=yes,menubar=yes,scrollbars=0"
-                    // );
-                    // let features="left=300,fullscreen=0,width="+document.body.clientWidth+",height="+document.body.clientWidth+",status=0,menubar=no,scrollbars=0,titlebar=0,toolbar=0,resizable=0,location=0";
-                    let features2 = "left=300,fullscreen=0,width=1000,height=1000,status=0,menubar=no,scrollbars=0,titlebar=0,toolbar=0,resizable=0,location=0";
-                    winowName = window.open(LOLURL, makerId, features2);
-                    setTimeout(function () {
-                        winowName.postMessage(data.tex, LOLURL);
-                        //所有英雄event.data == "!랜덤영웅" || event.data == "!임의의영웅" || event.data == "!임의영웅"
+            if (callbackData.isAuthority) {
+                // const LOLURL = chrome.runtime.getURL("LOL.html");
+                const LOLURL =
+                    "https://afubaba.github.io/Afreecatv/LOL.html";
+                // winowName = window.open(LOLURL, "windowName");
+                // winowName = window.open(
+                //     "https://afubaba.github.io/Afreecatv/LOL.html",
+                //     "_blank",
+                //     "left=300,width=1000,height=1000,channelmode=yes,menubar=yes,scrollbars=0"
+                // );
+                // let features="left=300,fullscreen=0,width="+document.body.clientWidth+",height="+document.body.clientWidth+",status=0,menubar=no,scrollbars=0,titlebar=0,toolbar=0,resizable=0,location=0";
+                let features2 = "left=300,fullscreen=0,width=1000,height=1000,status=0,menubar=no,scrollbars=0,titlebar=0,toolbar=0,resizable=0,location=0";
+                winowName = window.open(LOLURL, makerId, features2);
+                setTimeout(function () {
+                    winowName.postMessage(data.tex, LOLURL);
+                    //所有英雄event.data == "!랜덤영웅" || event.data == "!임의의영웅" || event.data == "!임의영웅"
 
-                        // winowName.postMessage("!랜덤탑", LOLURL);
-                        // winowName.postMessage("!랜덤정글", LOLURL);
-                        // winowName.postMessage("!랜덤미드", LOLURL);
-                        // winowName.postMessage("!랜덤바텀", LOLURL);
-                        // winowName.postMessage("!랜덤서포터", LOLURL);
-                    }, 1000);
-                }
-            });
-        }
+                    // winowName.postMessage("!랜덤탑", LOLURL);
+                    // winowName.postMessage("!랜덤정글", LOLURL);
+                    // winowName.postMessage("!랜덤미드", LOLURL);
+                    // winowName.postMessage("!랜덤바텀", LOLURL);
+                    // winowName.postMessage("!랜덤서포터", LOLURL);
+                }, 1000);
+            }
+        });
+    }
     ],
     [
         ['!stop', '!멈추다'], (data) => {
-            //终止消息提示
-            // document.getElementById('stopButtonId').click();
-            opSettingIndexDB.searchCommandAuthoritySupport(data, function (callbackData) {
+        //终止消息提示
+        // document.getElementById('stopButtonId').click();
+        opSettingIndexDB.searchCommandAuthoritySupport(data, function (callbackData) {
 
-                if (callbackData.isAuthority) {
-                    stopBatchSendFunction();
-                    // alert('['+grade+']'+nickName+'('+idt+')'+is_mobile+':'+tex'你使用终止命令,终止了任何条件程序');
-                    // console.log(idt + ':你使用终止命令,终止了部分程序');
-                    //恢复默认
-                    // document.getElementById('environmentButtonId').click();
-                    environmentFunction();
-                    // console.log(idt + ':系统恢复默认配置');
-                }
-            });
+            if (callbackData.isAuthority) {
+                stopBatchSendFunction();
+                // alert('['+grade+']'+nickName+'('+idt+')'+is_mobile+':'+tex'你使用终止命令,终止了任何条件程序');
+                // console.log(idt + ':你使用终止命令,终止了部分程序');
+                //恢复默认
+                // document.getElementById('environmentButtonId').click();
+                environmentFunction();
+                // console.log(idt + ':系统恢复默认配置');
+            }
+        });
 
-        }
+    }
     ],
     [
         // 部署环境(仅限管理员(id包含10571237))
         ['!en', '!환경', '!환경배포', '!start', '!시작하다', '!시작'], (data) => {
-            if (idt.includes('10571237')) {
+        if (idt.includes('10571237')) {
 
-                // document.getElementById('environmentButtonId').click();
-                environmentFunction();
+            // document.getElementById('environmentButtonId').click();
+            environmentFunction();
 
-                getDomById('testInput').value = '@' + nickName +
-                    ':환경 배치 성공';
-                getDomById('send_message').click();
+            getDomById('testInput').value = '@' + nickName +
+                ':환경 배치 성공';
+            getDomById('send_message').click();
 
-                // console.log(idt + '部署环境成功');
+            // console.log(idt + '部署环境成功');
 
 
-            }
         }
+    }
     ],
     [
         //聊天热度延迟速度
         ['!채팅속도', '!지연속도', '!속도'], (data) => {
-            opSettingIndexDB.searchCommandAuthoritySupport(data, function (callbackData) {
+        opSettingIndexDB.searchCommandAuthoritySupport(data, function (callbackData) {
 
 
-                if (callbackData.isAuthority) {
-                    var delayInputTextId = getDomById('delayInputTextId').value;
-                    if (delayInputTextId >= 1000) {
-                        delayInputTextId = delayInputTextId / 1000 + 's';
-                    } else {
-                        delayInputTextId = delayInputTextId + 'ms';
-                    }
-                    var sendMs = '@' + data.nickName + ':관중:' + getDomById('nAllViewer')
-                        .innerHTML +
-                        ',채팅속도:' + delayInputTextId + '마다!';
-                    sendMessageCustom(sendMs, 1, 4);
+            if (callbackData.isAuthority) {
+                var delayInputTextId = getDomById('delayInputTextId').value;
+                if (delayInputTextId >= 1000) {
+                    delayInputTextId = delayInputTextId / 1000 + 's';
+                } else {
+                    delayInputTextId = delayInputTextId + 'ms';
                 }
-            });
+                var sendMs = '@' + data.nickName + ':관중:' + getDomById('nAllViewer')
+                        .innerHTML +
+                    ',채팅속도:' + delayInputTextId + '마다!';
+                sendMessageCustom(sendMs, 1, 4);
+            }
+        });
 
-            // sendMessage(sendMs);
+        // sendMessage(sendMs);
 
-            // getDomById('testInput').value =
-            // 	getDomById('send_message').click();
+        // getDomById('testInput').value =
+        // 	getDomById('send_message').click();
 
-        }
+    }
     ],
     [
         ["!문지기", "!슈퍼팬", "!문지기목록", "!문지기수"], (data) => {
-            opSettingIndexDB.searchCommandAuthoritySupport(data, function (callbackData) {
+        opSettingIndexDB.searchCommandAuthoritySupport(data, function (callbackData) {
 
-                if (callbackData.isAuthority) {
-                    //哪个组dom名称
-                    var groupName = '';
-                    openUserList();
-                    var count = 0;
-                    var readListInterval = setInterval(function () {
-                        //查看指定用户数量
-                        var text = "";
-                        var managerList = $(".list .manager .vlist li");
-                        var user_id;
-                        var user_nick;
-                        if (managerList.length > 0) {
-                            clearInterval(readListInterval);
-                            setTimeout(function () {
-                                //再次获取
-                                managerList = $(
-                                    ".list .manager .vlist li");
-                                if (data.tex == "!문지기수") {
-                                    text = "매니저 수:" + managerList.length;
-                                } else {
-                                    for (var i = 0; i < managerList
-                                        .length; i++) {
-                                        // user_id =managerList[i].children[0].getAttribute("user_id");
-                                        user_nick = managerList[i]
-                                            .children[0]
-                                            .getAttribute("user_nick");
-                                        //仅昵称
-                                        text = text + " " + (i + 1) +
-                                            '.' +
-                                            user_nick;
-                                        //昵称和Id
-                                        // text = text + (i + 1) + '.' + user_nick + '(' + user_id + ')';
+            if (callbackData.isAuthority) {
+                //哪个组dom名称
+                var groupName = '';
+                openUserList();
+                var count = 0;
+                var readListInterval = setInterval(function () {
+                    //查看指定用户数量
+                    var text = "";
+                    var managerList = $("#userList .effective_list .manager");
+                    var user_id;
+                    var user_nick;
+                    if (managerList.length > 0) {
+                        clearInterval(readListInterval);
+                        setTimeout(function () {
+                            //再次获取
+                            managerList = $("#userList .effective_list .manager");
+                            if (data.tex == "!문지기수") {
+                                text = "매니저 수:" + managerList.length;
+                            } else {
+                                for (var i = 0; i < managerList
+                                    .length; i++) {
+                                    // user_id =managerList[i].children[0].getAttribute("user_id");
+                                    user_nick = managerList[i]
+                                        .children[0]
+                                        .getAttribute("user_nick");
+                                    //仅昵称
+                                    text = text + " " + (i + 1) +
+                                        '.' +
+                                        user_nick;
+                                    //昵称和Id
+                                    // text = text + (i + 1) + '.' + user_nick + '(' + user_id + ')';
 
-                                    }
                                 }
-
-                                // console.log(text);
-                                // console.log(flag);
-                                sendMessageCustom(text, 1, 4);
-                                setTimeout(function () {
-                                    $("#list_viewer .close")
-                                        .click();
-                                }, 1000);
-                            }, 3000);
-                        } else {
-                            count++;
-                            if (count >= 10) {
-                                clearInterval(readListInterval);
-                                text = "@" + data.nickName + ":매니저 존재하지 않음";
-
-                                sendMessageCustom(text, 1, 4);
-                                setTimeout(function () {
-                                    $("#list_viewer .close")
-                                        .click();
-                                }, 1000);
                             }
 
+                            // console.log(text);
+                            // console.log(flag);
+                            sendMessageCustom(text, 1, 4);
+                            setTimeout(function () {
+                                $("#userList .close")
+                                    .click();
+                            }, 1000);
+                        }, 3000);
+                    } else {
+                        count++;
+                        if (count >= 10) {
+                            clearInterval(readListInterval);
+                            text = "@" + data.nickName + ":매니저 존재하지 않음";
 
+                            sendMessageCustom(text, 1, 4);
+                            setTimeout(function () {
+                                $("#userList .close")
+                                    .click();
+                            }, 1000);
                         }
 
 
-                    }, 1000);
-                    // document.getElementById('setbox_viewer').children.item(0).click();
+                    }
 
 
-                }
-            });
+                }, 1000);
+                // document.getElementById('setbox_viewer').children.item(0).click();
 
 
-        }
+            }
+        });
+    }
     ],
     // [
     //     [!open], (data) => {
@@ -4640,187 +4617,187 @@ const object = new Set([
         ['!보내다', '!send', '!发送', '!보내기',
             '!나'
         ], (data) => {
-            opSettingIndexDB.searchCommandAuthoritySupport(data, function (callbackData) {
+        opSettingIndexDB.searchCommandAuthoritySupport(data, function (callbackData) {
 
-                if (callbackData.isAuthority) {
-                    if (data.tex == '!나') {
-                        sendMessageCustom("나제일 길어요.", 1, 3);
-                    } else {
-                        sendMessageCustom($('#showMessage').text(), 1, 3);
-                    }
+            if (callbackData.isAuthority) {
+                if (data.tex == '!나') {
+                    sendMessageCustom("나제일 길어요.", 1, 3);
+                } else {
+                    sendMessageCustom($('#showMessage').text(), 1, 3);
                 }
-            });
+            }
+        });
 
 
-            // $('#write_area').html($('#showMessage').html());
-            // getDomById('btn_send').click();
+        // $('#write_area').html($('#showMessage').html());
+        // getDomById('btn_send').click();
 
-        }
+    }
     ],
     [
         ['!보고시간', '!시간', '!time'], (data) => {
-            // console.log('管理员(' + idt + '):' + '보고시간(报告时间)');
-            //获取1-3的随机数字
-            // console.log(parseInt(Math.random()*NO/1));
-            // var rdmNo = parseInt(Math.random() * 3 / 1 + 1);
-            // $("#detailedMenu").click();
-            // $('#timeButtonId').click();
-            // $('#timeDivId').collapse("show");
-            // timeButtonFunction();
-            opSettingIndexDB.searchCommandAuthoritySupport(data, function (callbackData) {
+        // console.log('管理员(' + idt + '):' + '보고시간(报告时间)');
+        //获取1-3的随机数字
+        // console.log(parseInt(Math.random()*NO/1));
+        // var rdmNo = parseInt(Math.random() * 3 / 1 + 1);
+        // $("#detailedMenu").click();
+        // $('#timeButtonId').click();
+        // $('#timeDivId').collapse("show");
+        // timeButtonFunction();
+        opSettingIndexDB.searchCommandAuthoritySupport(data, function (callbackData) {
 
-                if (callbackData.isAuthority) {
-                    setTimeout(function () {
-                        document.getElementById('handTimeId').click();
-                        $("#basicMenu").click();
-                    }, 5000);
+            if (callbackData.isAuthority) {
+                setTimeout(function () {
+                    document.getElementById('handTimeId').click();
+                    $("#basicMenu").click();
+                }, 5000);
 
-                }
-            });
+            }
+        });
 
-        }
+    }
     ],
     [
         // !보고시간现在手动的时间
         ["!방송시작시간", "!방송시간"], (data) => {
 
-            opSettingIndexDB.searchCommandAuthoritySupport(data, function (callbackData) {
-                if (callbackData.isAuthority) {
-                    var detail_view = getSonButtonDom1('detail_view');
-                    var detail_viewContent = detail_view.textContent;
-                    detail_viewContent = getDateTimeFormate(detail_viewContent);
+        opSettingIndexDB.searchCommandAuthoritySupport(data, function (callbackData) {
+            if (callbackData.isAuthority) {
+                var detail_view = getSonButtonDom1('detail_view');
+                var detail_viewContent = detail_view.textContent;
+                detail_viewContent = getDateTimeFormate(detail_viewContent);
 
-                    var $timeFrequencys = $("#timeFrequencys").text();
-                    var dateString;
-                    if (data.tex == "!방송시간") {
-                        dateString = "벌써 방송 ";
-                        var new_date = new Date($timeFrequencys); //新建一个日期对象，默认现在的时间
-                        var old_date = new Date(
-                            detail_viewContent); //设置过去的一个时间点，"yyyy-MM-dd HH:mm:ss"格式化日期
+                var $timeFrequencys = $("#timeFrequencys").text();
+                var dateString;
+                if (data.tex == "!방송시간") {
+                    dateString = "벌써 방송 ";
+                    var new_date = new Date($timeFrequencys); //新建一个日期对象，默认现在的时间
+                    var old_date = new Date(
+                        detail_viewContent); //设置过去的一个时间点，"yyyy-MM-dd HH:mm:ss"格式化日期
 
-                        var difftime = (new_date - old_date) /
-                            1000; //计算时间差,并把毫秒转换成秒
+                    var difftime = (new_date - old_date) /
+                        1000; //计算时间差,并把毫秒转换成秒
 
-                        var days = parseInt(difftime / 86400); // 天  24*60*60*1000
-                        var hours = parseInt(difftime / 3600) - 24 *
-                            days; // 小时 60*60 总小时数-过去的小时数=现在的小时数
-                        var minutes = parseInt(difftime % 3600 /
-                            60); // 分钟 -(day*24) 以60秒为一整份 取余 剩下秒数 秒数/60 就是分钟数
-                        var seconds = parseInt(difftime % 60); // 以60秒为一整份 取余 剩下秒数
+                    var days = parseInt(difftime / 86400); // 天  24*60*60*1000
+                    var hours = parseInt(difftime / 3600) - 24 *
+                        days; // 小时 60*60 总小时数-过去的小时数=现在的小时数
+                    var minutes = parseInt(difftime % 3600 /
+                        60); // 分钟 -(day*24) 以60秒为一整份 取余 剩下秒数 秒数/60 就是分钟数
+                    var seconds = parseInt(difftime % 60); // 以60秒为一整份 取余 剩下秒数
 
-                        if (days > 0) {
-                            dateString = dateString + days + "일 ";
-                        }
-                        if (hours > 0) {
-                            dateString = dateString + hours + "시간 ";
-                        }
-                        if (minutes > 0) {
-                            dateString = dateString + minutes + "분 ";
-                        }
-                        if (seconds > 0) {
-                            dateString = dateString + seconds + "초.";
-                        }
-                    } else {
-                        dateString = detail_viewContent;
+                    if (days > 0) {
+                        dateString = dateString + days + "일 ";
                     }
-                    // sendMessage(dateString);
-                    sendMessageCustom(dateString, 1, 4);
-
+                    if (hours > 0) {
+                        dateString = dateString + hours + "시간 ";
+                    }
+                    if (minutes > 0) {
+                        dateString = dateString + minutes + "분 ";
+                    }
+                    if (seconds > 0) {
+                        dateString = dateString + seconds + "초.";
+                    }
+                } else {
+                    dateString = detail_viewContent;
                 }
-            });
+                // sendMessage(dateString);
+                sendMessageCustom(dateString, 1, 4);
 
-        }
+            }
+        });
+
+    }
     ],
     [
         ['!별', '!즐겨찾기', '!UP', '!up', '!좋아요', '!좋아'], (data) => {
-            opSettingIndexDB.searchCommandAuthoritySupport(data, function (callbackData) {
+        opSettingIndexDB.searchCommandAuthoritySupport(data, function (callbackData) {
 
-                if (callbackData.isAuthority) {
-                    //收藏
-                    var bookmarkSonDom;
-                    //点赞
-                    var up_recommend;
-                    var text;
-                    switch (true) {
-                        case
-                            data.tex == '!별' || data.tex == '!즐겨찾기':
-                            bookmarkSonDom = getSonButtonDom('bookmark');
-                            let boomarkCnt = $(".boomark_cnt").children(".count")
-                                .text();
-                            if (bookmarkSonDom.className == '') {
-                                bookmarkSonDom.click();
-                                setTimeout(function () {
-                                    bookmarkSonDom = getSonButtonDom(
-                                        'bookmark');
-                                    if (bookmarkSonDom.className == 'on') {
-                                        // sendMessage('@' + nickName + ':즐겨찾기 추가 성공,' + boomarkCnt +
-                                        // 	'=>' + $(".boomark_cnt").children(".count").text());
-                                        // sendMessage('@' + nickName + ':즐겨찾기 추가 성공,' + boomarkCnt +
-                                        // 	'=>' + (parseInt(boomarkCnt) + 1));
+            if (callbackData.isAuthority) {
+                //收藏
+                var bookmarkSonDom;
+                //点赞
+                var up_recommend;
+                var text;
+                switch (true) {
+                    case
+                    data.tex == '!별' || data.tex == '!즐겨찾기':
+                        bookmarkSonDom = getSonButtonDom('bookmark');
+                        let boomarkCnt = $(".boomark_cnt").children(".count")
+                            .text();
+                        if (bookmarkSonDom.className == '') {
+                            bookmarkSonDom.click();
+                            setTimeout(function () {
+                                bookmarkSonDom = getSonButtonDom(
+                                    'bookmark');
+                                if (bookmarkSonDom.className == 'on') {
+                                    // sendMessage('@' + nickName + ':즐겨찾기 추가 성공,' + boomarkCnt +
+                                    // 	'=>' + $(".boomark_cnt").children(".count").text());
+                                    // sendMessage('@' + nickName + ':즐겨찾기 추가 성공,' + boomarkCnt +
+                                    // 	'=>' + (parseInt(boomarkCnt) + 1));
 
-                                        text = '@' + data.nickName +
-                                            ':즐겨찾기 추가 성공,' +
-                                            replaceSmall(
-                                                boomarkCnt) + '=>' +
-                                            replaceSmall(boomarkCnt +
-                                                1);
-                                        sendMessageCustom(text, 1, 0.1);
+                                    text = '@' + data.nickName +
+                                        ':즐겨찾기 추가 성공,' +
+                                        replaceSmall(
+                                            boomarkCnt) + '=>' +
+                                        replaceSmall(boomarkCnt +
+                                            1);
+                                    sendMessageCustom(text, 1, 0.1);
 
-                                    } else {
-                                        sendMessageCustom('@' + data.nickName +
-                                            ':즐겨찾기 추가 실수', 1,
-                                            0.1);
-                                    }
-                                }, 2500);
-                            } else {
-                                //收藏失败,您已经收藏
-                                sendMessageCustom('@' + data.nickName + ':이미 즐겨찾기', 1,
-                                    0.1);
-                            }
-                            break;
-                        case
-                            data.tex == '!UP' || data.tex == '!좋아요' || data.tex == '!좋아' || data.tex ==
-                            '!up':
-                            up_recommend = getSonButtonDom('up_recommend');
+                                } else {
+                                    sendMessageCustom('@' + data.nickName +
+                                        ':즐겨찾기 추가 실수', 1,
+                                        0.1);
+                                }
+                            }, 2500);
+                        } else {
+                            //收藏失败,您已经收藏
+                            sendMessageCustom('@' + data.nickName + ':이미 즐겨찾기', 1,
+                                0.1);
+                        }
+                        break;
+                    case
+                    data.tex == '!UP' || data.tex == '!좋아요' || data.tex == '!좋아' || data.tex ==
+                    '!up':
+                        up_recommend = getSonButtonDom('up_recommend');
 
-                            let upCount = $(".up_cnt").children(".count").text();
-                            if (up_recommend.className == 'on') {
-                                //点赞失败,您已经点赞
-                                sendMessageCustom('@' + data.nickName + ':이미 좋아요 표시됨', 1,
-                                    0.1);
+                        let upCount = $(".up_cnt").children(".count").text();
+                        if (up_recommend.className == 'on') {
+                            //点赞失败,您已经点赞
+                            sendMessageCustom('@' + data.nickName + ':이미 좋아요 표시됨', 1,
+                                0.1);
 
-                            } else if (up_recommend.className == '') {
-                                up_recommend.click();
-                                setTimeout(function () {
-                                    up_recommend = getSonButtonDom(
-                                        'up_recommend');
-                                    if (up_recommend.className == 'on') {
+                        } else if (up_recommend.className == '') {
+                            up_recommend.click();
+                            setTimeout(function () {
+                                up_recommend = getSonButtonDom(
+                                    'up_recommend');
+                                if (up_recommend.className == 'on') {
 
-                                        // console.log('点赞成功:' + up_recommend.className);
-                                        // sendMessage('@' + nickName + ':좋아요 성공,' + upCount + "=>" +
-                                        // 	$(".up_cnt").children(".count").text());
-                                        // sendMessage('@' + nickName + ':좋아요 성공,' + upCount + "=>" + (
-                                        // 	parseInt(upCount) + 1));
-                                        text = '@' + data.nickName + ':좋아요 성공,' +
-                                            replaceSmall(
-                                                upCount) +
-                                            "=>" + replaceSmall(upCount +
-                                                1);
-                                        sendMessageCustom(text, 1, 0.1);
-                                    } else {
-                                        // console.log('点赞失败');
-                                        sendMessageCustom('@' + data.nickName +
-                                            ':좋아요 실수', 1, 0.1);
-                                    }
-                                }, 2500);
-                            }
-                            break;
-                        default:
-                            break;
-                    }
+                                    // console.log('点赞成功:' + up_recommend.className);
+                                    // sendMessage('@' + nickName + ':좋아요 성공,' + upCount + "=>" +
+                                    // 	$(".up_cnt").children(".count").text());
+                                    // sendMessage('@' + nickName + ':좋아요 성공,' + upCount + "=>" + (
+                                    // 	parseInt(upCount) + 1));
+                                    text = '@' + data.nickName + ':좋아요 성공,' +
+                                        replaceSmall(
+                                            upCount) +
+                                        "=>" + replaceSmall(upCount +
+                                            1);
+                                    sendMessageCustom(text, 1, 0.1);
+                                } else {
+                                    // console.log('点赞失败');
+                                    sendMessageCustom('@' + data.nickName +
+                                        ':좋아요 실수', 1, 0.1);
+                                }
+                            }, 2500);
+                        }
+                        break;
+                    default:
+                        break;
                 }
-            });
-        }
+            }
+        });
+    }
     ],
 
     // [[],(data)=>{}]

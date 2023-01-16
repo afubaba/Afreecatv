@@ -167,23 +167,24 @@ function testStart() {
     lst.parent().addClass("label-success");
     lst[0].checked = true;
     //数据库图标状态
-    dbIconStatus($storeWays, lst)
-
+    dbIconStatus($storeWays, lst);
+    //导入导出数据
     // console.log(localStorageType);
     $storeWays.change(function () {
         localStorageType = this.value;
         localStorage.setItem("localStorageType", localStorageType);
         //状态特效 label-success  label-info
         lst = $("input[type=radio][name=storeWays][value=" + localStorageType + "]");
-        $storeWays.parent().removeClass("label-success");
+        //背景色清空
+        $storeWays.parent().removeClass("label-success").css("backgroundColor", "");
         lst.parent().addClass("label-success");
         //数据库图标状态
-        dbIconStatus($storeWays, lst)
+        dbIconStatus($storeWays, lst);
         //导入导出数据
         loadDatabase(localStorageType);
 
-        //查询数据
-        changePage(1);
+        //切换数据库刷新
+        // changePage(1);
         // opWebsql.getMaxData(tbName, idDom, idt);
 
         // if(localStorageType=="indexdb"){
@@ -192,7 +193,6 @@ function testStart() {
         // 	stopTodayMaxSortDataInterval();
         // }
     });
-
 }
 
 //数据导出导入
@@ -201,7 +201,6 @@ function loadDatabase(localStorageType) {
         //导入websql数据到Indexdb
         opWebsql.exportDataFunction(function (dataArray) {
             // console.log(dataArray);
-
             if (dataArray.length == 0) {
                 //删除表格
                 opWebsql.deleteTable();
@@ -211,7 +210,6 @@ function loadDatabase(localStorageType) {
                     opWebsql.deleteTable();
                     //清除表格数据
                     // opWebsql.clearTable();
-
                 });
             }
 
@@ -294,6 +292,7 @@ function loadDatabase(localStorageType) {
         });
     }
 }
+
 
 // function loadDatabase(localStorageType) {
 //     if (localStorageType == "indexdb") {
@@ -1282,28 +1281,7 @@ function environmentFunction() {
     //播放画面背景
     $("#afreecatv_player,#livePlayer,#videoLayer").css("background", "none");
     // $(function() {});
-    localArrayData = [
-        "!총포인트", "!게임포인트", "!채팅포인트", "!채팅통계조회",
-        "!용왕", "!ace", "!탑", "!top", "!정글", "!jun", "!jungle", "!미드", "!mid", "!middle", "!바텀", "!ad",
-        "!adc", "!ap",
-        "!서포터", "!sup", "!support", "!임의", "!모든", "!any", "!all",
-        "!재부팅", "!reboot", "!reload", "!restart",
-        "!보내다", "!send", "!发送", "!보내기",
-        "!ultimatelength", "!극한길이", "!long", "!极限长度",
-        "!text:*",
-        // "!text:*,2x0.1",
-        "!멈추다", "!stop",
-        "!채팅속도", "!지연속도", "!속도",
-        "!별", "!즐겨찾기",
-        "!UP", "!up", "!좋아요", "!좋아",
-        "!보고시간", "!시간", "!time",
-        "!방송시작시간", "!방송시간",
-        "!용감해지다", "!웅기하다", "!가리다", "!막다", "!덮어쓰다",
-        "!문지기", "!슈퍼팬", "!문지기목록", "!문지기수", "!매니저", "!열혈팬", "!구독자", "!팬", "!일반참여자", "!아름답다", "!예쁘다", "!사랑", "!사랑해",
-        "!사랑해요", "!귀엽다", "!하얗다", "!화이트", "!카와이", "!감사", "!고마워요",
-        "!안녕", "!안녕히 계세요",
-        "!침착하다", "!hold on"
-    ];
+    localArrayData = [];
     // $(function() {});
     //长度修改
     $("#testInput").typeahead({
@@ -3980,7 +3958,7 @@ const object = new Set([
         // sendMessageCustom("💧🐊악어의 눈물", 1, 5);
     }
     ],
-    [
+    /*[
         // ||tex == '!bj' || tex == '!BJ'||tex == '!앵커'
         // "!서포터",
         ["!추첨매니저", "!추첨열혈팬", "!추첨구독자", "!추첨서포터", "!추첨팬", "!추첨일반참여자", "!매니저", "!열혈팬", "!구독자", "!팬", "!일반참여자",
@@ -4425,7 +4403,7 @@ const object = new Set([
             }
         });
     }
-    ],
+    ],*/
     [
         ["!아름답다", "!예쁘다", "!사랑", "!사랑해", "!사랑해요", "!귀엽다", "!하얗다", "!화이트",
             "!카와이", "!피카츄"
@@ -4653,15 +4631,14 @@ const object = new Set([
                 var readListInterval = setInterval(function () {
                     //查看指定用户数量
                     var text = "";
-                    var managerList = $(".list .manager .vlist li");
+                    var managerList = $("#userList .effective_list .manager");
                     var user_id;
                     var user_nick;
                     if (managerList.length > 0) {
                         clearInterval(readListInterval);
                         setTimeout(function () {
                             //再次获取
-                            managerList = $(
-                                ".list .manager .vlist li");
+                            managerList = $("#userList .effective_list .manager");
                             if (data.tex == "!문지기수") {
                                 text = "매니저 수:" + managerList.length;
                             } else {
@@ -4685,7 +4662,7 @@ const object = new Set([
                             // console.log(flag);
                             sendMessageCustom(text, 1, 4);
                             setTimeout(function () {
-                                $("#list_viewer .close")
+                                $("#userList .close")
                                     .click();
                             }, 1000);
                         }, 3000);
@@ -4697,7 +4674,7 @@ const object = new Set([
 
                             sendMessageCustom(text, 1, 4);
                             setTimeout(function () {
-                                $("#list_viewer .close")
+                                $("#userList .close")
                                     .click();
                             }, 1000);
                         }
@@ -4716,13 +4693,13 @@ const object = new Set([
 
     }
     ],
-    // [
-    //     [!open], (data) => {
-    //     getDomById('inputFrequency').value = 6;
-    //     document.getElementById('setbox_viewer').children.item(0)
-    //         .click();
-    // }
-    // ],
+// [
+//     [!open], (data) => {
+//     getDomById('inputFrequency').value = 6;
+//     document.getElementById('setbox_viewer').children.item(0)
+//         .click();
+// }
+// ],
     [
         //发送按钮语言
         ['!보내다', '!send', '!发送', '!보내기',
@@ -4911,16 +4888,16 @@ const object = new Set([
     }
     ],
 
-    // [[],(data)=>{}]
+// [[],(data)=>{}]
 ]);
 
 
 function isStart() {
-    //渲染特效
-    // $('#retrievalButtonId').toggleClass()
+//渲染特效
+// $('#retrievalButtonId').toggleClass()
     $("#retrievalButtonId").toggleClass('btn-success btn-inverse');
     let showMessageDivClass = $('#showMessageDiv').attr('class');
-    // console.log(showMessageDivClass);
+// console.log(showMessageDivClass);
     if (showMessageDivClass.includes('in')) {
         retrievalButtonFunction();
         console.log('包含in,执行');
@@ -4953,7 +4930,7 @@ function isStart() {
 
 //刷新指定网页
 async function refreshPage(url, text) {
-    // document.write("새로 고침 대기!");새로 고침 대기!
+// document.write("새로 고침 대기!");새로 고침 대기!
     $("body").replaceWith("<div class='alert alert-block disableSelection backgroundImg'><h1>" + text +
         "</h1><hr></div>");
     $(".backgroundImg").css("background-image", 'url(' +
@@ -4970,7 +4947,7 @@ async function refreshPage(url, text) {
 function queryReply(tex, searchUserData, data) {
     var index = 0;
     var dataString = "@" + searchUserData.userNick;
-    // sendMessageCustom(dataString, 1, 4);
+// sendMessageCustom(dataString, 1, 4);
     if (tex == "!총포인트") {
 
         if (localStorageType == "indexdb") {
@@ -5011,7 +4988,7 @@ function queryReply(tex, searchUserData, data) {
             data.gamePoints + ",누적 총:" + data.allPoints;
         sendMessageCustom(dataString, 1, 4);
     }
-    // sendMessageCustom(dataString, 1, 4);
+// sendMessageCustom(dataString, 1, 4);
 }
 
 function openUserList() {
@@ -5020,14 +4997,14 @@ function openUserList() {
 }
 
 function calculateAddPoints(userText) {
-    // console.log(singleIncreaseMaxinumValueLocalStorage);
-    //增加的分数
+// console.log(singleIncreaseMaxinumValueLocalStorage);
+//增加的分数
     let increase;
-    //保留后几位
+//保留后几位
     let increaseBit;
-    // console.log(accordingNumberWords.checked);
-    //按照字数
-    // console.log($isSingleIncreaseMaxinum.prop("checked"));
+// console.log(accordingNumberWords.checked);
+//按照字数
+// console.log($isSingleIncreaseMaxinum.prop("checked"));
     if (userText != null) {
         userText = userText.replaceAll(" ", "");
 
@@ -5054,28 +5031,43 @@ function calculateAddPoints(userText) {
     }
 
     increaseBit = 2;
-    // if (accordingNumberWords.checked) {} else{
-    //     //按照条数
-    //     // if(userText!=null){
-    //     //     // 信息
-    //     //     increase = 1;
-    //     // }else{
-    //     //     //表情
-    //     //     increase = 0.5;
-    //     // }
-    //     increase = 1;
-    //     increaseBit=0;
-    // }
+// if (accordingNumberWords.checked) {} else{
+//     //按照条数
+//     // if(userText!=null){
+//     //     // 信息
+//     //     increase = 1;
+//     // }else{
+//     //     //表情
+//     //     increase = 0.5;
+//     // }
+//     increase = 1;
+//     increaseBit=0;
+// }
     let calcAddData = {
         "increase": increase,
         "increaseBit": increaseBit
     }
-    // console.log(calcAddData);
+// console.log(calcAddData);
 
     return calcAddData;
 }
 
+function outputMyTable(startIndex, outputArray) {
+    $("#myTable tbody").children().detach();
+// $("#myTable tbody").children().remove();
+// let index = 0;
+    for (outData of outputArray) {
+        startIndex++;
+        outputMyTableTr(startIndex, outData);
+    }
+}
 
-
+function outputMyTableTr(startIndex, data) {
+    let rsGamePoints = data.gamePoints === 0 ? "━ " : data.gamePoints;
+    $("#myTable tbody").append("<tr><th>" + startIndex +
+        "</th><th><a href='https://bj.afreecatv.com/" + data.id + "' target='_blank'>" + data.userNick + "(" + data.id + ")</a></th><th>" + convertGrade(data.grade) + "</th><th>" + data.chatPoints +
+        "</th><th>" + data.chatTimes + "</th><th>" + rsGamePoints + "</th><th>" + data.allPoints +
+        "</th><th>" + data.allTimes + "</th><th>" + data.date + "</th></tr>");
+}
 
 
