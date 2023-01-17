@@ -162,7 +162,7 @@ function testStart() {
     $storeWays.parent().removeClass("label-success");
     //状态特效
     var lst = $("input[type=radio][name=storeWays][value=" + localStorageType + "]");
-    if(lst[0]){
+    if (lst[0]) {
         lst.parent().addClass("label-success");
         lst[0].checked = true;
     }
@@ -2833,9 +2833,9 @@ function retrievalButtonFunction() {
                                     } else if (localStorageType == "websql") {
 
                                         uData.tbName = tbName;
-                                        uData.userId = user_Id;
+                                        // uData.userId = user_Id;
                                         // userData.userData.id;
-                                        Reflect.deleteProperty(uData, "id");
+                                        // Reflect.deleteProperty(uData, "id");
                                         // console.log(userData);
                                         opWebsql.insertData(uData, null);
                                         //查询
@@ -3127,11 +3127,10 @@ function retrievalButtonFunction() {
                                     opIndexDB.insertData(userData, idDom);
 
                                 } else if (localStorageType == "websql") {
-
                                     userData.tbName = tbName;
-                                    userData.userId = idt;
+                                    // userData.userId = idt;
                                     // userData.userData.id;
-                                    Reflect.deleteProperty(userData, "id");
+                                    // Reflect.deleteProperty(userData, "id");
                                     // console.log(userData);
                                     opWebsql.insertData(userData, idDom);
                                 }
