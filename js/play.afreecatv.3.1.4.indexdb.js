@@ -524,20 +524,22 @@ var opIndexDB = {
                 // 数据到底
                 if (cursor === null) {
                     // console.log(list);
-                    $("#myTable tbody").children().detach();
-                    for (d of list) {
-                        i++;
-                        // $("#myTable tbody").append("<tr><th>" + i +
-                        //     "</th><th>" + d
-                        //         .id +
-                        //     "</th><th>" + d.userNick + "</th><th>" + convertGrade(d.grade)+ "</th><th>" + d.chatPoints +
-                        //     "</th><th>" + d.gamePoints + "</th><th>" + d.allPoints +
-                        //     "</th><th>" + d.date + "</th></tr>");
-                        $("#myTable tbody").append("<tr><th>" + i +
-                            "</th><th>" + d.userNick + "(" + d.id + ")</th><th>" + convertGrade(d.grade) + "</th><th>" + d.chatPoints +
-                            "</th><th>" + d.chatTimes + "</th><th>" + d.gamePoints + "</th><th>" + d.allPoints +
-                            "</th><th>" + d.allTimes + "</th><th>" + d.date + "</th></tr>");
-                    }
+                    outputMyTable(i, list);
+                    // $("#myTable tbody").children().detach();
+                    // for (d of list) {
+                    //     i++;
+                    //     // $("#myTable tbody").append("<tr><th>" + i +
+                    //     //     "</th><th>" + d
+                    //     //         .id +
+                    //     //     "</th><th>" + d.userNick + "</th><th>" + convertGrade(d.grade)+ "</th><th>" + d.chatPoints +
+                    //     //     "</th><th>" + d.gamePoints + "</th><th>" + d.allPoints +
+                    //     //     "</th><th>" + d.date + "</th></tr>");
+                    //     let rsGamePoints = d.gamePoints === 0 ? "━ " : d.gamePoints;
+                    //     $("#myTable tbody").append("<tr><th>" + i +
+                    //         "</th><th><a href='https://bj.afreecatv.com/" + d.id + "' target='_blank'>" + d.userNick + "(" + d.id + ")</a></th><th>" + convertGrade(d.grade) + "</th><th>" + d.chatPoints +
+                    //         "</th><th>" + d.chatTimes + "</th><th>" + rsGamePoints + "</th><th>" + d.allPoints +
+                    //         "</th><th>" + d.allTimes + "</th><th>" + d.date + "</th></tr>");
+                    // }
                     return;
                 }
 
@@ -546,22 +548,23 @@ var opIndexDB = {
                     cursor.continue()
                 } else {
                     // console.log(list); // 拿到10条了
-                    $("#myTable tbody").children().detach();
-                    for (d of list) {
-                        i++;
-                        // $("#myTable tbody").append("<tr><th>" + i +
-                        //     "</th><th>" + d
-                        //         .id +
-                        //     "</th><th>" + d.userNick + "</th><th>" + convertGrade(d.grade)+ "</th><th>" + d.chatPoints +
-                        //     "</th><th>" + d.gamePoints + "</th><th>" + d.allPoints +
-                        //     "</th><th>" + d.date + "</th></tr>");
-                        $("#myTable tbody").append("<tr><th>" + i +
-                            "</th><th>" + d.userNick + "(" + d.id + ")</th><th>" + convertGrade(d.grade) + "</th><th>" + d.chatPoints +
-                            "</th><th>" + d.chatTimes + "</th><th>" + d.gamePoints + "</th><th>" + d.allPoints +
-                            "</th><th>" + d.allTimes + "</th><th>" + d.date + "</th></tr>");
-
-
-                    }
+                    outputMyTable(i, list);
+                    // $("#myTable tbody").children().detach();
+                    // for (d of list) {
+                    //     i++;
+                    //     // $("#myTable tbody").append("<tr><th>" + i +
+                    //     //     "</th><th>" + d
+                    //     //         .id +
+                    //     //     "</th><th>" + d.userNick + "</th><th>" + convertGrade(d.grade)+ "</th><th>" + d.chatPoints +
+                    //     //     "</th><th>" + d.gamePoints + "</th><th>" + d.allPoints +
+                    //     //     "</th><th>" + d.date + "</th></tr>");
+                    //
+                    //     let rsGamePoints = d.gamePoints === 0 ? "━ " : d.gamePoints;
+                    //     $("#myTable tbody").append("<tr><th>" + i +
+                    //         "</th><th><a href='https://bj.afreecatv.com/" + d.id + "' target='_blank'>" + d.userNick + "(" + d.id + ")</a></th><th>" + convertGrade(d.grade) + "</th><th>" + d.chatPoints +
+                    //         "</th><th>" + d.chatTimes + "</th><th>" + rsGamePoints + "</th><th>" + d.allPoints +
+                    //         "</th><th>" + d.allTimes + "</th><th>" + d.date + "</th></tr>");
+                    // }
                 }
             }
             objectStore.getAll().onsuccess = function (events) {
@@ -644,23 +647,30 @@ var opIndexDB = {
                     // 页数下标显示
                     showEveryPageIndex(resArray.length, pageIndex);
 
+                    // let startIndex = (pageIndex - 1) * everyPage;
+                    // let overIndex=pageIndex * everyPage;
+                    // i=overIndex-1;
+                    // outputMyTable(startIndex,resArray);
+
                     $("#myTable tbody").children().detach();
-                    var d;
+                    let data;
                     for (var i = (pageIndex - 1) * everyPage; i < pageIndex *
                     everyPage; i++) {
                         // console.log(resArray[i]);
-                        d = resArray[i];
-                        if (d) {
+                        data = resArray[i];
+                        if (data) {
                             // $("#myTable tbody").append("<tr><th>" + (i + 1) +
                             //     "</th><th>" + d
                             //         .id +
                             //     "</th><th>" + d.userNick + "</th><th>" + convertGrade(d.grade)+ "</th><th>" + d.chatPoints +
                             //     "</th><th>" + d.gamePoints + "</th><th>" + d.allPoints +
                             //     "</th><th>" + d.date + "</th></tr>");
-                            $("#myTable tbody").append("<tr><th>" + (i + 1) +
-                                "</th><th>" + d.userNick + "(" + d.id + ")</th><th>" + convertGrade(d.grade) + "</th><th>" + d.chatPoints +
-                                "</th><th>" + d.chatTimes + "</th><th>" + d.gamePoints + "</th><th>" + d.allPoints +
-                                "</th><th>" + d.allTimes + "</th><th>" + d.date + "</th></tr>");
+                            // let rsGamePoints = d.gamePoints === 0 ? "━ " : d.gamePoints;
+                            // $("#myTable tbody").append("<tr><th>" + (i + 1) +
+                            //     "</th><th><a href='https://bj.afreecatv.com/" + d.id + "' target='_blank'>" + d.userNick + "(" + d.id + ")</a></th><th>" + convertGrade(d.grade) + "</th><th>" + d.chatPoints +
+                            //     "</th><th>" + d.chatTimes + "</th><th>" + rsGamePoints + "</th><th>" + d.allPoints +
+                            //     "</th><th>" + d.allTimes + "</th><th>" + d.date + "</th></tr>");
+                            outputMyTableTr(i + 1, data);
                         } else {
                             return;
                         }
@@ -1266,6 +1276,7 @@ function outputAce(data) {
     $("#todayChatPointsAce>th:eq(3)").text(data.chatPoints);
     $("#todayChatPointsAce>th:eq(4)").text(data.chatTimes);
     let rsGamePoints = data.gamePoints === 0 ? "━ " : data.gamePoints;
+    $("#todayChatPointsAce>th:eq(5)").text(rsGamePoints);
     $("#todayChatPointsAce>th:eq(6)").text(data.allPoints);
     $("#todayChatPointsAce>th:eq(7)").text(data.allTimes);
     $("#todayChatPointsAce>th:eq(8)").text(data.date);

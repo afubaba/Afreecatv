@@ -1164,20 +1164,22 @@ function todayChatPointsUp(sort, which) {
     }
 
     // console.log(sortObj);
-    var i = 0;
-    // $("#myTable tbody").children().empty();
-    $("#myTable tbody").children().detach();
-    // $("#myTable tbody").children().remove();
-    for (d of sortObj) {
-        i++;
-        // $("#myTable tbody").append("<tr><th>" + i + "</th><th>" + d.id + "</th><th>" + d.userNick + "</th><th>" + d
-        //         .chatPoints + "</th><th>" + d.gamePoints + "</th><th>" + d.allPoints + "</th><th>" + d.date +
-        //     "</th></tr>");
-        $("#myTable tbody").append("<tr><th>" + i +
-            "</th><th>" + d.userNick + "(" + d.id + ")</th><th>" + convertGrade(d.grade) + "</th><th>" + d.chatPoints +
-            "</th><th>" + d.chatTimes + "</th><th>" + d.gamePoints + "</th><th>" + d.allPoints +
-            "</th><th>" + d.allTimes + "</th><th>" + d.date + "</th></tr>");
-    }
+    outputMyTable(0, sortObj);
+    // var i = 0;
+    // // $("#myTable tbody").children().empty();
+    // $("#myTable tbody").children().detach();
+    // // $("#myTable tbody").children().remove();
+    // for (d of sortObj) {
+    //     i++;
+    //     // $("#myTable tbody").append("<tr><th>" + i + "</th><th>" + d.id + "</th><th>" + d.userNick + "</th><th>" + d
+    //     //         .chatPoints + "</th><th>" + d.gamePoints + "</th><th>" + d.allPoints + "</th><th>" + d.date +
+    //     //     "</th></tr>");
+    //     let rsGamePoints = d.gamePoints === 0 ? "━ " : d.gamePoints;
+    //     $("#myTable tbody").append("<tr><th>" + i +
+    //         "</th><th><a href='https://bj.afreecatv.com/" + d.id + "' target='_blank'>" + d.userNick + "(" + d.id + ")</a></th><th>" + convertGrade(d.grade) + "</th><th>" + d.chatPoints +
+    //         "</th><th>" + d.chatTimes + "</th><th>" + rsGamePoints + "</th><th>" + d.allPoints +
+    //         "</th><th>" + d.allTimes + "</th><th>" + d.date + "</th></tr>");
+    // }
 
 }
 
