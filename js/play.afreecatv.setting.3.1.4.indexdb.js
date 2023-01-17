@@ -822,14 +822,8 @@ var opSettingIndexDB = {
                 $("#authorizationLogPre").prepend(logString + "</li>");
 
                 if (!isHoverAuthorizationLogPre) {
-                    if ($("#authorizationLogPre").scrollTop() != 0) {
-                        //直接滚动
-                        // $("#increaseLogPre").scrollTop(0);
-                        //带动画的滚动
-                        $("#authorizationLogPre").animate({
-                            scrollTop: 0
-                        }, 500);
-                    }
+                    //滚动条滚动到最上面
+                    scrollToTop("#authorizationLogPre");
                 }
                 showTipBarrageFunction(logString);
                 callback(answerData);

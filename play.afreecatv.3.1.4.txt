@@ -38,6 +38,7 @@
                         <li id="travel-activity-controller"><a data-toggle="tab" href="#travel-activity">
                                 <!-- <h2>地点符号</h2> -->
                                 장소 기호
+                        </a></li>
                         <li id="symbol-controller"><a data-toggle="tab" href="#symbol">
                                 <!-- <h2>特殊符号</h2> -->
                                 특수 기호
@@ -1996,7 +1997,13 @@
                 </div>
             </div>
         </div>
-
+        <div id="importBarParent" class="progress progress-striped active">
+            <div id="importBar" class="bar"
+                 style="width: 1%;">
+                <h1 id="importBarText"></h1>
+                <h2 id="importBarSpan"></h2>
+            </div>
+        </div>
         <div class="modal alert alert-block" id="myModal" style="display: none;">
             <div class="modal-header"><a class="close" data-dismiss="modal">X</a>
                 <div class="alert alert-error"

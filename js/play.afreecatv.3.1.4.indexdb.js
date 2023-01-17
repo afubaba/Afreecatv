@@ -1070,7 +1070,7 @@ var opIndexDB = {
         }
 
     },
-    inportDataFunction: function (userDataArray, callBack) {
+    inportDataFunction: function (obejectArray, callBack) {
         let todayDate = $("#timeFrequencys").text().substring(0, $("#timeFrequencys").text().indexOf("\t"));
         // today = new Date(todayDate).getDate();
         // req = indexedDB.open(dbName);
@@ -1080,62 +1080,137 @@ var opIndexDB = {
         // Use the literal "readonly" instead of IDBTransaction.READ, which is deprecated:
         var trans = indexDataBase.transaction([tbName], "readwrite");
         var userDataStore = trans.objectStore(tbName);
+        let spliceArraLength;
+        if (obejectArray.length < 50) {
+            spliceArraLength = 5;
+        } else if (obejectArray.length < 500) {
+            spliceArraLength = 50;
+        } else if (obejectArray.length < 5000) {
+            spliceArraLength = 500;
+        } else if (obejectArray.length < 50000) {
+            spliceArraLength = 1000;
+        } else {
+            spliceArraLength = 2000;
+        }
+        if (obejectArray.length < spliceArraLength) {
+            writeData(obejectArray, function (result) {
+                callBack(result);
+            });
+        } else {
+            let conmmitObjectArrayParent;
+            //限制链接数量
+            // conmmitObjectArray = avgGroup(obejectArray, 50);
+            //限制每一组数量
+            conmmitObjectArrayParent = split_array(obejectArray, spliceArraLength);
 
-        for (let i = 0; i < userDataArray.length; i++) {
-            let userData = userDataArray[i]
-            userDataStore.get(userData.id).onsuccess = function (event) {
-                let data = event.target.result;
-                if (!data) {
-                    userDataStore.add(userData).onsuccess = function () {
-                        if (i == userDataArray.length - 1) {
-                            // showTipBarrageFunction(userDataArray.length + "개의 데이터 가져오기 성공");
-                            showTipBarrageFunction("indexdb:" + userDataArray.length + packageResult.opIndexDB.inportDataFunction);
-                            callBack("over");
+            let arraIndex = 0;
+            let resultLength = 0;
+            commitArray(arraIndex);
+            $("#importBarParent").show();
+
+            function commitArray(arraIndex) {
+                let conmmitObjectArraySon = conmmitObjectArrayParent[arraIndex];
+
+                //存入数据
+                writeData(conmmitObjectArraySon, function (result) {
+                    if (result > 0) {
+
+                        resultLength += result;
+
+                        $("#importBar").css("width", resultLength / obejectArray.length * 100 + "%");
+                        $("#importBarText").text("导入" + obejectArray.length + "/" + resultLength + "个数据完成!");
+                        $("#importBarSpan").text("导入" + conmmitObjectArrayParent.length + "/" + (arraIndex + 1) + "个数据包完成!");
+                        // console.log("提交" + conmmitObjectArrayParent.length + "/" + (arraIndex + 1) + "个数据包完成");
+
+                        arraIndex++;
+                        if (arraIndex >= conmmitObjectArrayParent.length) {
+
+                            showTipBarrageFunction("IndexDB:" + resultLength + packageResult.opIndexDB.inportDataFunction);
+
+                            $("#importBarText").text("导入完成!");
+                            $("#importBarSpan").text("导入完成!");
+                            // setTimeout(function(){},500);
+                            $("#importBarParent").addClass("progress-success");
+                            setTimeout(function () {
+                                $("#importBar").css("width", "");
+                                $("#importBarParent").removeClass("progress-success").hide();
+                            }, 1500);
+
+                            //刷新显示
+                            changePage(pgIndex);
+                            callBack(resultLength);
+                            return;
                         }
-                    };
-                } else {
-                    //是今天累计游戏点聊天点
-                    if (data.date == userData.date) {
-                        data.chatPoints = data.chatPoints + userData.chatPoints;
-                        data.gamePoints = data.gamePoints + userData.gamePoints;
-                        data.chatTimes = data.chatTimes + userData.chatTimes;
-                    }else if (data.date < userData.date) {
-                        data.chatPoints = data.chatPoints;
-                        data.chatTimes = data.chatTimes;
-                        data.gamePoints = data.gamePoints;
-                        // 更新传来的新日期
-                        data.date = userData.date;
+                        commitArray(arraIndex);
                     } else {
-
+                        $("#importBarParent").addClass("progress-danger");
+                        setTimeout(function () {
+                            $("#importBar").css("width", "");
+                            $("#importBarParent").removeClass("progress-success").hide();
+                        }, 5000);
+                        // console.log("error");
+                        return;
                     }
-                    // else {
-                    //     if (data.date == today && userData.date != today) {
-                    //         // userData.date = today
-                    //     }
-                    // }
-                    data.allPoints = data.allPoints + userData.allPoints;
-                    data.allTimes = data.allTimes + userData.allTimes;
-                    //等级不需要导入
-                    // data.grade=userData.grade;
 
-                    // let userGrade;
-                    // //测试数据
-                    // if ("grade" in userData) {
-                    //     userGrade = userData.grade;
-                    // } else {
-                    //     userGrade = "loadding";
-                    // }
-                    // data.grade = userGrade;
+                });
+            }
+        }
 
-                    userDataStore.put(data).onsuccess = function (event) {
-                        // console.log('更新', event.target.result);
-                        if (i == userDataArray.length - 1) {
-                            // showTipBarrageFunction(userDataArray.length + "개의 데이터 가져오기 성공");
-                            showTipBarrageFunction("indexdb:" + userDataArray.length + packageResult.opIndexDB.inportDataFunction);
-                            callBack("over");
+        function writeData(userDataArray, writeCallback) {
+            for (let i = 0; i < userDataArray.length; i++) {
+                let userData = userDataArray[i]
+                userDataStore.get(userData.id).onsuccess = function (event) {
+                    let data = event.target.result;
+                    if (!data) {
+                        userDataStore.add(userData).onsuccess = function () {
+                            if (i == userDataArray.length - 1) {
+                                // showTipBarrageFunction(userDataArray.length + "개의 데이터 가져오기 성공");
+                                //刷新显示
+                                // changePage(pgIndex);
+                                writeCallback(userDataArray.length);
+                            }
+                        };
+                    } else {
+                        //是今天累计游戏点聊天点
+                        if (data.date == userData.date) {
+                            data.chatPoints = data.chatPoints + userData.chatPoints;
+                            data.chatTimes = data.chatTimes + userData.chatTimes;
+                            data.gamePoints = data.gamePoints + userData.gamePoints;
+                        } else if (data.date < userData.date) {
+                            data.chatPoints = data.chatPoints;
+                            data.chatTimes = data.chatTimes;
+                            data.gamePoints = data.gamePoints;
+                            // 更新传来的新日期
+                            data.date = userData.date;
+                        } else {
 
                         }
-                    };
+                        data.allPoints = data.allPoints + userData.allPoints;
+                        data.allTimes = data.allTimes + userData.allTimes;
+                        //等级不需要导入
+                        // data.grade=userData.grade;
+
+                        // let userGrade;
+                        // //测试数据
+                        // if ("grade" in userData) {
+                        //     userGrade = userData.grade;
+                        // } else {
+                        //     userGrade = "loadding";
+                        // }
+                        // data.grade = userGrade;
+
+                        userDataStore.put(data).onsuccess = function (event) {
+                            // console.log('更新', event.target.result);
+                            if (i == userDataArray.length - 1) {
+                                // showTipBarrageFunction(userDataArray.length + "개의 데이터 가져오기 성공");
+                                // showTipBarrageFunction("IndexDB:" + userDataArray.length + packageResult.opIndexDB.inportDataFunction);
+                                //刷新显示
+                                // changePage(pgIndex);
+                                // callBack("over");
+                                writeCallback(userDataArray.length);
+                            }
+                        }
+                    }
                 }
             }
         }
@@ -1190,7 +1265,7 @@ function outputAce(data) {
     $("#todayChatPointsAce>th:eq(2)").text(convertGrade(data.grade));
     $("#todayChatPointsAce>th:eq(3)").text(data.chatPoints);
     $("#todayChatPointsAce>th:eq(4)").text(data.chatTimes);
-    $("#todayChatPointsAce>th:eq(5)").text(data.gamePoints);
+    let rsGamePoints = data.gamePoints === 0 ? "━ " : data.gamePoints;
     $("#todayChatPointsAce>th:eq(6)").text(data.allPoints);
     $("#todayChatPointsAce>th:eq(7)").text(data.allTimes);
     $("#todayChatPointsAce>th:eq(8)").text(data.date);

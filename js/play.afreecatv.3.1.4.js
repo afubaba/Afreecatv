@@ -183,7 +183,7 @@ function testStart() {
         loadDatabase(localStorageType);
 
         //查询数据
-        changePage(1);
+        // changePage(1);
         // opWebsql.getMaxData(tbName, idDom, idt);
 
         // if(localStorageType=="indexdb"){
@@ -670,18 +670,6 @@ function stopFunction() {
         clearInterval(thisInterval);
     }
     alert('stop ok');
-}
-
-//聚焦函数
-function setContentEditableSelection(idDom) {
-    var el = getDomById(idDom);
-    var selection = window.getSelection();
-    var range = document.createRange();
-    selection.removeAllRanges();
-    range.selectNodeContents(el);
-    range.collapse(false);
-    selection.addRange(range);
-    el.focus();
 }
 
 
@@ -2277,24 +2265,6 @@ function barrage() {
     // alert($barrageButton.attr('data-isBarrage'));
 }
 
-//替换
-function replaceSmall(text) {
-    text = text.toString().replaceAll('0', '₀').replaceAll('1', '₁')
-        .replaceAll('2', '₂').replaceAll('3', '₃').replaceAll('4', '₄')
-        .replaceAll('5', '₅').replaceAll('6', '₆').replaceAll('7', '₇')
-        .replaceAll('8', '₈').replaceAll('9', '₉').replaceAll('+', '₊')
-        .replaceAll('-', '₋');
-    // .replaceAll(' ', '');
-    return text;
-}
-
-
-//获得随机颜色
-function getRandomColor() {
-    const rdColor = ['Red', 'Orange', 'Yellow', 'Green', 'Cyan', 'Blue', 'Purple'];
-    let cr = rdColor[parseInt(Math.random() * 10 % (rdColor.length))];
-    return cr;
-}
 
 //全局字体颜色
 var commonFontColor;
@@ -2580,21 +2550,6 @@ window.addEventListener('message', (e) => {
     $("#btn_send").click();
 })
 
-//指定滚动条滚动到指定位置
-function scrollToLocation(parent, son) {
-    var mainContainer = $(parent),
-        scrollToContainer = mainContainer.find(son); //滚动到<div id="thisMainPanel">中类名为son-panel的最后一个div处
-    //scrollToContainer = mainContainer.find('.son-panel:eq(5)');//滚动到<div id="thisMainPanel">中类名为son-panel的第六个处
-    //非动画效果
-    //mainContainer.scrollTop(
-    //  scrollToContainer.offset().top - mainContainer.offset().top + mainContainer.scrollTop()
-    //);
-    //动画效果
-    mainContainer.animate({
-        scrollTop: scrollToContainer.offset().top - mainContainer.offset().top + mainContainer.scrollTop()
-    }, 2000); //2秒滑动到指定位置
-}
-
 
 function sendMessage(message) {
     //打开批量功能
@@ -2870,14 +2825,8 @@ function retrievalButtonFunction() {
                                 if (uData.id && uData.userNick) {
                                     $("#increaseLogPre").prepend("<li>" + $("#timeFrequencys").text() + "&emsp;[" + user_Nick + "] " + packageResult.retrievalButtonFunction.byImageEmoji + calcAddData.increase + packageResult.retrievalButtonFunction.addChatPoints + "</li>");
                                     if (!isHoverIncreaseLogPre) {
-                                        if ($("#increaseLogPre").scrollTop() != 0) {
-                                            //直接滚动
-                                            // $("#increaseLogPre").scrollTop(0);
-                                            //带动画的滚动
-                                            $("#increaseLogPre").animate({
-                                                scrollTop: 0
-                                            }, 500);
-                                        }
+                                        //滚动条滚动到最上面
+                                        scrollToTop("#increaseLogPre");
                                     }
                                     if (localStorageType == "indexdb") {
                                         opIndexDB.insertData(uData, idDom);
@@ -4964,7 +4913,20 @@ function calculateAddPoints(userText) {
     return calcAddData;
 }
 
+function outputMyTable(startIndex, outputArray) {
+    $("#myTable tbody").children().detach();
+    // $("#myTable tbody").children().remove();
+    // let index = 0;
+    for (outData of outputArray) {
+        startIndex++;
+        outputMyTableTr(startIndex, outData);
+    }
+}
 
-
-
-
+function outputMyTableTr(startIndex, data) {
+    let rsGamePoints = data.gamePoints === 0 ? "━ " : data.gamePoints;
+    $("#myTable tbody").append("<tr><th>" + startIndex +
+        "</th><th><a href='https://bj.afreecatv.com/" + data.id + "' target='_blank'>" + data.userNick + "(" + data.id + ")</a></th><th>" + convertGrade(data.grade) + "</th><th>" + data.chatPoints +
+        "</th><th>" + data.chatTimes + "</th><th>" + rsGamePoints + "</th><th>" + data.allPoints +
+        "</th><th>" + data.allTimes + "</th><th>" + data.date + "</th></tr>");
+}
