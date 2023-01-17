@@ -162,8 +162,10 @@ function testStart() {
     $storeWays.parent().removeClass("label-success");
     //状态特效
     var lst = $("input[type=radio][name=storeWays][value=" + localStorageType + "]");
-    lst.parent().addClass("label-success");
-    lst[0].checked = true;
+    if(lst[0]){
+        lst.parent().addClass("label-success");
+        lst[0].checked = true;
+    }
     //数据库图标状态
     dbIconStatus($storeWays, lst)
 
