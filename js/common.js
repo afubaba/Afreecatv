@@ -776,7 +776,6 @@ function scrollToTop(domName) {
     }
 }
 
-
 //分割一个数组
 /*
 function groupArray(array, subGroupLength) {
@@ -788,9 +787,9 @@ function groupArray(array, subGroupLength) {
     return newArray;
 }*/
 function split_array(arr, len) {//arr需要拆分的原数组，len小数组包含多少个元素
-    var a_len = arr.length;
-    var result = []; //结果数组
-    for (var i = 0; i < a_len; i += len) {
+    let a_len = arr.length;
+    let result = []; //结果数组
+    for (let i = 0; i < a_len; i += len) {
         result.push(arr.slice(i, i + len)); //循环取原数组N个元素,每次取从上次取的下一个开始取。
     }
     return result; //结果是一个数组，里面的元素就是已拆分的小数组
@@ -803,7 +802,7 @@ function split_array(arr, len) {//arr需要拆分的原数组，len小数组包�
 
 function avgGroup(arr, len) {
     // var arr=[1,2,3,4,5,6,7];
-    var rstResult = new Array(len);
+    let rstResult = new Array(len);
     for (let j = 0; j < arr.length; j++) {
         let index = j % rstResult.length;
         if (Array.isArray(rstResult[index])) {
@@ -818,10 +817,10 @@ function avgGroup(arr, len) {
 
 
 function split_array1(arr) {//arr需要拆分的原数组，len小数组包含多少个元素
-    var a_len = arr.length;
-    var len = 1;
-    var result = []; //结果数组
-    for (var i = 0; i < a_len; i += len) {
+    let a_len = arr.length;
+    let len = 1;
+    let result = []; //结果数组
+    for (let i = 0; i < a_len; i += len) {
         result.push(arr.slice(i, i + len)); //循环取原数组N个元素,每次取从上次取的下一个开始取。
     }
     return result; //结果是一个数组，里面的元素就是已拆分的小数组
