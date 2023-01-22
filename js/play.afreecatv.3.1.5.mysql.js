@@ -283,18 +283,7 @@ var opMysql = {
         let ajaxPostData = {"tableName": tbName};
         // console.log(ajaxPostData);
         //分组的大小10个一组 不应该依赖于delayInputTextId
-        let spliceArraLength;
-        if (userDataArray.length < 50) {
-            spliceArraLength = 5;
-        } else if (userDataArray.length < 500) {
-            spliceArraLength = 50;
-        } else if (userDataArray.length < 5000) {
-            spliceArraLength = 500;
-        } else if (userDataArray.length < 50000) {
-            spliceArraLength = 1000;
-        } else {
-            spliceArraLength = 2000;
-        }
+        let spliceArraLength = numberOfGroups(userDataArray.length);
         //测试数据
         // spliceArraLength = 5;
 
@@ -340,44 +329,28 @@ var opMysql = {
                         resultLength += result;
                         // showTipBarrageFunction("Mysql:" + userDataArray.length + "/" + resultLength + packageResult.opIndexDB
                         //     .inportDataFunction);
-                        $("#importBar").css("width", resultLength / userDataArray.length * 100 + "%");
-                        $("#importBarText").text("导入" + userDataArray.length + "/" + resultLength + "个数据完成!");
-                        $("#importBarSpan").text("导入" + conmmitArrayData.length + "/" + (arraIndex + 1) + "个数据完成!");
+                        openInportPorgress(resultLength, userDataArray.length, conmmitArrayData.length, arraIndex);
+
                         // console.log("提交" + conmmitArrayData.length + "/" + (arraIndex + 1) + "个数据完成");
                         arraIndex++;
                         if (arraIndex >= conmmitArrayData.length) {
                             showTipBarrageFunction("Mysql:" + resultLength + packageResult.opIndexDB.inportDataFunction);
                             // console.log("提交完成!");
-                            //
-                            // $("#importBarText").text("导入完成!");
-                            // $("#importBarSpan").text("导入完成!");
-                            // setTimeout(function(){},500);
-                            $("#importBarParent").addClass("progress-success");
-                            setTimeout(function () {
-                                $("#importBar").css("width", "");
-                                $("#importBarParent").removeClass("progress-success").hide();
-                            }, 1500);
-
+                            closeInportPorgress("success");
                             //刷新显示
                             changePage(pgIndex);
-
                             callBack(result);
                             return;
                         }
-                        // setTimeout(function(){},250);
-                        commitArray(arraIndex);
-
-                    } else {
-                        $("#importBarParent").addClass("progress-danger");
+                        // $("#delayInputTextId").val()
                         setTimeout(function () {
-                            $("#importBar").css("width", "");
-                            $("#importBarParent").removeClass("progress-success").hide();
-                        }, 5000);
+                            commitArray(arraIndex);
+                        }, 100);
+                    } else {
+                        closeInportPorgress("danger");
                         // console.log("遇到错误");
                         return;
                     }
-
-
                 });
             }
         }

@@ -168,5 +168,10 @@
   "refreshPage": {
     "text1": "正在刷新!",
     "text2": "创建了一个新的indexdb表单。旧版本标签页面正在更新."
+  },
+  "openInportPorgress": {
+    "importBar": "导入",
+    "importBarText": "个数据完成!",
+    "importBarSpan": "个数据包完成!"
   }
 }

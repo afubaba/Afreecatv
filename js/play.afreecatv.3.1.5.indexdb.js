@@ -1080,37 +1080,31 @@ var opIndexDB = {
     },
     inportDataFunction: function (obejectArray, callBack) {
         let todayDate = $("#timeFrequencys").text().substring(0, $("#timeFrequencys").text().indexOf("\t"));
-        today = new Date(todayDate).getDate();
+        // today = new Date(todayDate).getDate();
         // req = indexedDB.open(dbName);
         // req.onsuccess = function (events) {}
         //     // 获取数据库
         //     db = events.target.result;
         // Use the literal "readonly" instead of IDBTransaction.READ, which is deprecated:
-        var trans = indexDataBase.transaction([tbName], "readwrite");
-        var userDataStore = trans.objectStore(tbName);
-        let spliceArraLength;
-        if (obejectArray.length < 50) {
-            spliceArraLength = 5;
-        } else if (obejectArray.length < 500) {
-            spliceArraLength = 50;
-        } else if (obejectArray.length < 5000) {
-            spliceArraLength = 500;
-        } else if (obejectArray.length < 50000) {
-            spliceArraLength = 1000;
-        } else {
-            spliceArraLength = 2000;
-        }
+
+        let spliceArraLength = numberOfGroups(obejectArray.length);
         if (obejectArray.length < spliceArraLength) {
             writeData(obejectArray, function (result) {
                 callBack(result);
             });
         } else {
+
+            // console.log("indexdb:更新数据开始!");
+            isUpdate = true;
+            //分割前数组
+            // console.log(obejectArray);
+            //分割后的数组
             let conmmitObjectArrayParent;
             //限制链接数量
             // conmmitObjectArray = avgGroup(obejectArray, 50);
             //限制每一组数量
             conmmitObjectArrayParent = split_array(obejectArray, spliceArraLength);
-
+            // console.log(conmmitObjectArrayParent);
             let arraIndex = 0;
             let resultLength = 0;
             commitArray(arraIndex);
@@ -1118,44 +1112,34 @@ var opIndexDB = {
 
             function commitArray(arraIndex) {
                 let conmmitObjectArraySon = conmmitObjectArrayParent[arraIndex];
-
                 //存入数据
                 writeData(conmmitObjectArraySon, function (result) {
                     if (result > 0) {
-
                         resultLength += result;
-
-                        $("#importBar").css("width", resultLength / obejectArray.length * 100 + "%");
-                        $("#importBarText").text("导入" + obejectArray.length + "/" + resultLength + "个数据完成!");
-                        $("#importBarSpan").text("导入" + conmmitObjectArrayParent.length + "/" + (arraIndex + 1) + "个数据包完成!");
+                        openInportPorgress(resultLength, obejectArray.length, conmmitObjectArrayParent.length, arraIndex);
                         // console.log("提交" + conmmitObjectArrayParent.length + "/" + (arraIndex + 1) + "个数据包完成");
 
                         arraIndex++;
                         if (arraIndex >= conmmitObjectArrayParent.length) {
 
                             showTipBarrageFunction("IndexDB:" + resultLength + packageResult.opIndexDB.inportDataFunction);
-
-                            $("#importBarText").text("导入完成!");
-                            $("#importBarSpan").text("导入完成!");
-                            // setTimeout(function(){},500);
-                            $("#importBarParent").addClass("progress-success");
-                            setTimeout(function () {
-                                $("#importBar").css("width", "");
-                                $("#importBarParent").removeClass("progress-success").hide();
-                            }, 1500);
-
+                            closeInportPorgress("success");
                             //刷新显示
                             changePage(pgIndex);
+                            // console.log("indexdb:更新数据结束!");
+                            isUpdate = false;
+
                             callBack(resultLength);
                             return;
                         }
-                        commitArray(arraIndex);
-                    } else {
-                        $("#importBarParent").addClass("progress-danger");
                         setTimeout(function () {
-                            $("#importBar").css("width", "");
-                            $("#importBarParent").removeClass("progress-success").hide();
-                        }, 5000);
+                            commitArray(arraIndex);
+                        }, 250);
+                        // setTimeout(function(){
+                        //     commitArray(arraIndex);
+                        // },$("#delayInputTextId").val());
+                    } else {
+                        closeInportPorgress("danger");
                         // console.log("error");
                         return;
                     }
@@ -1165,11 +1149,21 @@ var opIndexDB = {
         }
 
         function writeData(userDataArray, writeCallback) {
+            let trans = indexDataBase.transaction([tbName], "readwrite");
+            let userDataStore = trans.objectStore(tbName);
+
             for (let i = 0; i < userDataArray.length; i++) {
                 let userData = userDataArray[i]
                 userDataStore.get(userData.id).onsuccess = function (event) {
                     let data = event.target.result;
                     if (!data) {
+
+                        //测试代码
+                        // if (userData.chatPoints / userData.chatTimes > 15) {
+                        //         //修改前错误
+                        //         console.log("indexdb:插入前错误");
+                        //         console.log(userData);
+                        // }
                         userDataStore.add(userData).onsuccess = function () {
                             if (i == userDataArray.length - 1) {
                                 // showTipBarrageFunction(userDataArray.length + "개의 데이터 가져오기 성공");
@@ -1206,7 +1200,12 @@ var opIndexDB = {
                         //     userGrade = "loadding";
                         // }
                         // data.grade = userGrade;
-
+                        //测试代码
+                        // if (userData.chatPoints / userData.chatTimes > 15) {
+                        //         //修改前错误
+                        //         console.log("indexdb:更新前错误");
+                        //         console.log(userData);
+                        // }
                         userDataStore.put(data).onsuccess = function (event) {
                             // console.log('更新', event.target.result);
                             if (i == userDataArray.length - 1) {

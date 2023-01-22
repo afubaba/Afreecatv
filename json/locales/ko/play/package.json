@@ -172,5 +172,10 @@
   "refreshPage": {
     "text1": "새로 고침 중!",
     "text2": "새 indexdb 양식이 만들어졌습니다.이전 버전 탭 페이지가 업데이트 중입니다."
+  },
+  "openInportPorgress": {
+    "importBar": " 개 가져오기 완료",
+    "importBarText": "데이터 ",
+    "importBarSpan": "패킷 "
   }
 }

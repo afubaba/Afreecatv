@@ -2005,13 +2005,50 @@
                 <h2 id="importBarSpan"></h2>
             </div>
         </div>-->
-        <div id="importBarParent" class="progress progress-striped active">
-            <div id="importBar" class="bar"
+        <div class="progress progress-striped active" id="importBarParent">
+            <div class="bar" id="importBar"
                  style="width: 1%;">
                 <h1 id="importBarText"></h1>
                 <h2 id="importBarSpan"></h2>
             </div>
         </div>
+
+        <div class="lui-div">
+            <div>
+                <div id="websql-lui-all"></div>
+                <div class="lui-column-bg">
+                    <!-- margin:2cm 3cm 4cm 5cm-->
+                    <li class="btn websql-lui-btn" onclick="$('.lui-div').hide();">Websql
+                    </li>
+                    <div class="lui-inner" id="websql-lui-inner">
+                        <h1 id="websql-lui-commit"></h1>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div id="indexdb-lui-all"></div>
+                <div class="lui-column-bg">
+                    <li class="btn indexdb-lui-btn" onclick="$('.lui-div').hide();">
+                        IndexDB
+                    </li>
+                    <div class="lui-inner" id="indexdb-lui-inner">
+                        <h1 id="indexdb-lui-commit"></h1>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div id="mysql-lui-all"></div>
+                <div class="lui-column-bg">
+                    <li class="btn mysql-lui-btn" onclick="$('.lui-div').hide();">Mysql
+                    </li>
+                    <div class="lui-inner" id="mysql-lui-inner">
+                        <h1 id="mysql-lui-commit"></h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
         <div class="modal alert alert-block" id="myModal" style="display: none;">
             <div class="modal-header"><a class="close" data-dismiss="modal">X</a>
                 <div class="alert alert-error"
@@ -2085,7 +2122,7 @@
 
                     <label class="labelStyle" for="allPage">
                         <span id="allPage"></span>:
-                        <input readonly id="allPageValue" style="border: none;" value="0"/>
+                        <input id="allPageValue" readonly style="border: none;" value="0"/>
                     </label>
 
                     <ul id="pageIndex" style="visibility: hidden;">
@@ -2115,40 +2152,40 @@
                     </ul>
                     <label class="labelStyle" for="everyPageValue">
                         <span id="everyPage"></span>:
-                        <input id="everyPageValue" type="number" step="1" min="1"/>
+                        <input id="everyPageValue" min="1" step="1" type="number"/>
                     </label>
 
                 </div>
 
                 <!--                position: absolute;left: 0;bottom: 0;-->
-                <div id="footMenuDiv" class="footMenuDiv">
-                    <li class="btn btn-danger" style="position: absolute;right: 50px;"
-                        onclick="$('#increaseLogPre').text('');">clear
+                <div class="footMenuDiv" id="footMenuDiv">
+                    <li class="btn btn-danger" onclick="$('#increaseLogPre').text('');"
+                        style="position: absolute;right: 50px;">clear
                     </li>
-                    <pre id="increaseLogPre" class="prettyprint increaseLogPre"></pre>
+                    <pre class="prettyprint increaseLogPre" id="increaseLogPre"></pre>
                     <li class="btn btn-warning alert-warning" id="exportDivButton" onclick="exportDivFunction();"></li>
 
-                    <label for="resetTotalPointsEveryMonth" class="label">
+                    <label class="label" for="resetTotalPointsEveryMonth">
                         <span id="isResetTotalPointsEveryMonth"></span>
-                        <input id="resetTotalPointsEveryMonth" class="switch" type="checkbox">
+                        <input class="switch" id="resetTotalPointsEveryMonth" type="checkbox">
                     </label>
 
                     <!-- ace:<input id="todayChatPointsAce" type="text"> -->
                     <!-- <br/> -->
                     <!-- 储存方式 -->
                     <span id="localStorageType"></span>:
-                    <label for="websql" class="label">
+                    <label class="label" for="websql">
                         <span id="websqlSpan">Websql<i class='bi bi-database'></i><i
                                 class='bi bi-database-fill'></i></span>
                         <input id="websql" name="storeWays" type="radio" value="websql"/>
                     </label>
 
-                    <label for="indexDB" class="label">
+                    <label class="label" for="indexDB">
                         <span id="indexDBSpan">IndexDB<i class='bi bi-database'></i><i
                                 class='bi bi-database-fill'></i></span>
-                        <input id="indexDB" checked name="storeWays" type="radio" value="indexdb"/>
+                        <input checked id="indexDB" name="storeWays" type="radio" value="indexdb"/>
                     </label>
-                    <label for="mysql" class="label">
+                    <label class="label" for="mysql">
                         <span id="mysqlSpan">Mysql<i class='bi bi-database'></i><i
                                 class='bi bi-database-fill'></i></span>
                         <input id="mysql" name="storeWays" type="radio" value="mysql"/>
@@ -2156,28 +2193,28 @@
                     <li class="btn btn-danger" id="clearTableButton" onclick="clearTable()"></li>
                     <br/>
 
-                    <label for="singleIncreaseMaxinumValue" class="label">
+                    <label class="label" for="singleIncreaseMaxinumValue">
                         <span id="singleIncreaseMaxinumValueSpan"></span>
                         <!-- checked -->
-                        <input checked id="isSingleIncreaseMaxinum" class="switch" type="checkbox">
-                        <input id="singleIncreaseMaxinumValue" type="number" style="width: 30px;" step="5" max="30"
-                               min="5" placeholder="10"/>
+                        <input checked class="switch" id="isSingleIncreaseMaxinum" type="checkbox">
+                        <input id="singleIncreaseMaxinumValue" max="30" min="5" placeholder="10" step="5"
+                               style="width: 30px;" type="number"/>
                     </label>
 
-                    <label for="chatPointsMode" class="label">
+                    <label class="label" for="chatPointsMode">
                         <span id="isChatPoints"></span>
                         <!-- checked -->
-                        <input checked id="chatPointsMode" class="switch" type="checkbox">
+                        <input checked class="switch" id="chatPointsMode" type="checkbox">
                     </label>
                     `
 
-                    <label for="pictureIntetgralMode" class="label">
+                    <label class="label" for="pictureIntetgralMode">
                         <span id="isPictureIntetgral"></span>
-                        <input checked id="pictureIntetgralMode" class="switch" type="checkbox">
+                        <input checked class="switch" id="pictureIntetgralMode" type="checkbox">
                     </label>
-                    <label for="chatPointsMaxChangeMode" class="label ">
+                    <label class="label " for="chatPointsMaxChangeMode">
                         <span id="isChatPointsMaxChange"></span>
-                        <input id="chatPointsMaxChangeMode" class="switch" type="checkbox">
+                        <input class="switch" id="chatPointsMaxChangeMode" type="checkbox">
                     </label>
 
                     <!-- <hr> -->
@@ -2188,9 +2225,9 @@
         </div>
 
         <!--        transparent-->
-        <div id="commandAuthorityManagementModal" style="display: none;" class="modal alert alert-block">
+        <div class="modal alert alert-block" id="commandAuthorityManagementModal" style="display: none;">
             <div class="modal-header"><a class="close" data-dismiss="modal">X</a>
-                <h1 id="commandAuthorityManagementModalTitle" class='fontStyle'></h1>
+                <h1 class='fontStyle' id="commandAuthorityManagementModalTitle"></h1>
             </div>
             <div class="modal-body noScroll">
 
@@ -2201,46 +2238,46 @@
 
                     </ol>
                     <!--                        fixed absolute relative sticky-->
-                    <div class="tab-content" style="position: fixed;margin-left: 300px;overflow-x: hidden;"
-                         id="myTabbalePage">
+                    <div class="tab-content" id="myTabbalePage"
+                         style="position: fixed;margin-left: 300px;overflow-x: hidden;">
 
                     </div>
                 </div>
 
             </div>
-            <div id="openAllDiv" style="width: 300px;display:flex;" class="label">
+            <div class="label" id="openAllDiv" style="width: 300px;display:flex;">
                 <div style="width: 200px;font-size: 15px;">
                 </div>
                 <div style="flex: 1;display: inline-flex;">
-                    <label id="openAllLabel" for="openAll" style="font-size: 30px;padding-top:10px;" class="">
+                    <label class="" for="openAll" id="openAllLabel" style="font-size: 30px;padding-top:10px;">
                         <span id="openAllSpan"></span>
-                        <input id="openAll" class="switch1 switch1-anim" onchange="changeStatus()" type="checkbox">
+                        <input class="switch1 switch1-anim" id="openAll" onchange="changeStatus()" type="checkbox">
                     </label>
                 </div>
             </div>
             <div class="modal-footer">
-                <label id="promptOfIsStartLabel" for="promptOfIsStart" class="label">
+                <label class="label" for="promptOfIsStart" id="promptOfIsStartLabel">
                     <span id="promptOfIsStartSpan"></span>
-                    <input id="promptOfIsStart" class="switch" type="checkbox">
+                    <input class="switch" id="promptOfIsStart" type="checkbox">
                 </label>
 
-                <label id="promptOfAuthorizationFailureLabel" class="label" for="promptOfAuthorizationFailure">
+                <label class="label" for="promptOfAuthorizationFailure" id="promptOfAuthorizationFailureLabel">
                     <span id="promptOfAuthorizationFailureSpan"></span>
-                    <input id="promptOfAuthorizationFailure" class="switch" type="checkbox"/>
+                    <input class="switch" id="promptOfAuthorizationFailure" type="checkbox"/>
                 </label>
 
                 <!-- <li class="btn" onclick="writeStatus()">写入状态</li> -->
                 Authorization Log
-                <li class="btn btn-danger" style="position: relative;top: 35px;"
-                    onclick="$('#authorizationLogPre').text('');">clear
+                <li class="btn btn-danger" onclick="$('#authorizationLogPre').text('');"
+                    style="position: relative;top: 35px;">clear
                 </li>
-                <pre id="authorizationLogPre" class="prettyprint authorizationLogPre"></pre>
+                <pre class="prettyprint authorizationLogPre" id="authorizationLogPre"></pre>
             </div>
         </div>
-        <div id="exportDiv" style="display: none;" class="modal alert alert-block exportDivSize">
+        <div class="modal alert alert-block exportDivSize" id="exportDiv" style="display: none;">
             <div class="modal-header">
                 <a class="close" data-dismiss="modal">X</a>
-                <h1 id="exportDivH1" class='fontStyle'></h1>
+                <h1 class='fontStyle' id="exportDivH1"></h1>
             </div>
             <div class="modal-body noScroll">
                 <!--                <div id="exportText" class="prettyprint prettyprinted" style="width: 95%;height: 95%;" contentEditable="true"></div>-->
@@ -2269,15 +2306,15 @@
                 <li class="btn btn-success" id="exportToClipBoard" onclick="exportFunction('clipBoard');"></li>
 
                 <br>
-                <label id="uploadFileLabel" for="uploadFile" class="label">
-                    <span id="inportFromFileSpan" class="btn btn-danger"></span>
+                <label class="label" for="uploadFile" id="uploadFileLabel">
+                    <span class="btn btn-danger" id="inportFromFileSpan"></span>
                     <!--                    &nbsp;<i class="icon-folder-close icon-white"></i>-->
 
                     <!--                    <input id="uploadFile" style="display: none" multiple type="file" accept=".txt,.json">-->
                     <!--                    <input id="uploadFile" multiple type="file" accept=".txt,.json">-->
-                    <input id="uploadFile" style="display: none;" type="file" accept=".txt,.json">
+                    <input accept=".txt,.json" id="uploadFile" style="display: none;" type="file">
                 </label>
-                <li id="exportToFile" class="btn btn-primary" onclick="exportFunction('download');"></li>
+                <li class="btn btn-primary" id="exportToFile" onclick="exportFunction('download');"></li>
 
                 <br>
                 <li class="btn" id="clearPreText" onclick="$('#exportDivBody').html('');">clear</li>
@@ -2327,20 +2364,20 @@
                     <br>
                     <div class="collapse" id="batchInformationDivId">
                         <!-- 次数： -->
-                        <span id="timesId"></span>: <input id="inputTimes" placeholder="" step="1" min="1">
+                        <span id="timesId"></span>: <input id="inputTimes" min="1" placeholder="" step="1">
                         <!-- 间隔时间： -->
-                        <span id="frequencyId"></span>: <input id="inputFrequency" placeholder="" step="0.5"
-                                                               min="0.001">
+                        <span id="frequencyId"></span>: <input id="inputFrequency" min="0.001" placeholder=""
+                                                               step="0.5">
                         <br>
-                        <label for="timesPromptInput" class="label">
+                        <label class="label" for="timesPromptInput">
                             <span id="showNumberNotifications">횟수알림</span>
-                            <input id="timesPromptInput" class="switch" name="timesPrompt"
+                            <input class="switch" id="timesPromptInput" name="timesPrompt"
                                    title="알림 이 있 는 발송 총 횟수 시간 간격" type="checkbox">
                         </label>
                         <!-- <br> -->
-                        <label for="chrysanthemumCheckBox" class="label">
+                        <label class="label" for="chrysanthemumCheckBox">
                             <span id="chrysanthemumText">국화 텍스트</span>
-                            <input id="chrysanthemumCheckBox" class="switch" name="chrysanthemumCheckBox"
+                            <input class="switch" id="chrysanthemumCheckBox" name="chrysanthemumCheckBox"
                                    title="스텔스 잉크 는 당신 의 대 화 를 더욱 매력 적 으로 합 니 다，문자 만 지원 하고 이모 티 콘 은 지원 되 지 않 습 니 다."
                                    type="checkbox">
                         </label>
@@ -2395,16 +2432,17 @@
 
                         <div style="display: none">
                             <!--						延迟极限毫秒-->
-                            상한선: <input id="upperLimit" title="가장 빠 른 정 보 를 얻 는 속 도 를 나타 낸다." type="number" min="0.001">
-                            최대격차: <input id="informationSynchronization" title="최대 10 개 또는 5 개의 정보 동기 화 차 이 를 허용 합 니 다."
-                                         title="최대정보동기화격차수" type="number" min="0.001" value="5">
+                            상한선: <input id="upperLimit" min="0.001" title="가장 빠 른 정 보 를 얻 는 속 도 를 나타 낸다." type="number">
+                            최대격차: <input id="informationSynchronization" min="0.001"
+                                         title="최대정보동기화격차수" title="최대 10 개 또는 5 개의 정보 동기 화 차 이 를 허용 합 니 다."
+                                         type="number" value="5">
 
                         </div>
 
                         <span id="chatSpeedSpan"></span>
                         <!-- 延迟时间 -->
-                        <input disabled id="delayInputTextId" title="현재 정보 획득 지연 시간(1000 은 1 초)" type="number"
-                               min="0.001"> ms
+                        <input disabled id="delayInputTextId" min="0.001" title="현재 정보 획득 지연 시간(1000 은 1 초)"
+                               type="number"> ms
 
                         <!-- <select id="delayInputId" >
                             <option id="quick" value="quick">快速</option>
@@ -2417,7 +2455,7 @@
                         <!-- </div> -->
                         <div class="collapse" id="robotDivId">
 
-                            <label for="delayInputId" class="labelStyle">
+                            <label class="labelStyle" for="delayInputId">
                                 <span id="delayInputSpan" style="font-size: unset;"></span>:
                                 <select id="delayInputId">
                                     <option id="quick" value="quick"></option>
@@ -2428,14 +2466,14 @@
                             <button data-isBarrage="close" id="barrageButtonId" onclick="barrage();" title="탄창의탄막">탄창의탄막
                             </button>
                             <br>
-                            <label for="chatSportMode" class="label">
+                            <label class="label" for="chatSportMode">
                                 <span id="isSportChat">채팅운동모드</span>
-                                <input id="chatSportMode" class="switch" type="checkbox">
+                                <input class="switch" id="chatSportMode" type="checkbox">
                             </label>
 
-                            <label for="robotChatCommondCheckboxId" class="label">
+                            <label class="label" for="robotChatCommondCheckboxId">
                                 <span id="isRobotChatCommond">로봇 명령</span>
-                                <input id="robotChatCommondCheckboxId" class="switch" checked type="checkbox">
+                                <input checked class="switch" id="robotChatCommondCheckboxId" type="checkbox">
                             </label>
                             <br>
                             <!-- <button></button> -->
@@ -2480,9 +2518,9 @@
                         <br/>
                         <!-- 自动发送时间计时器 -->
 
-                        <label id="halfHourPromptLabel" class="label" for="halfHourPrompt">
+                        <label class="label" for="halfHourPrompt" id="halfHourPromptLabel">
                             <span id="halfHourPromptSpan" title="半小时报时"></span>
-                            <input id="halfHourPrompt" class="switch1 switch1-anim" onchange="" type="checkbox">
+                            <input class="switch1 switch1-anim" id="halfHourPrompt" onchange="" type="checkbox">
                         </label>
 
                         <!--                        <hr>-->

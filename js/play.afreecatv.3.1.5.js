@@ -40,6 +40,8 @@ var userData;
 
 var packageResult;
 var pageLang;
+var isUpdate = false;
+var lastStoreType;
 getBackURLInterval = setInterval(function () {
     //背景图地址
     bgURL = document.getElementsByClassName('bj_thumbnail').item(0).children[0].children[0].getAttribute('src');
@@ -2834,7 +2836,9 @@ function retrievalButtonFunction() {
                 // }
 
                 if (initIndex <= firstIndex2 - 1) {
-                    initIndex++;
+                    if (!isUpdate) {
+                        initIndex++;
+                    }
                     getDom('nowIndex').value = initIndex;
                 }
                 //现在的下标
@@ -5052,8 +5056,8 @@ function calculateAddPoints(userText) {
 
 function outputMyTable(startIndex, outputArray) {
     $("#myTable tbody").children().detach();
-// $("#myTable tbody").children().remove();
-// let index = 0;
+    // $("#myTable tbody").children().remove();
+    // let index = 0;
     for (outData of outputArray) {
         startIndex++;
         outputMyTableTr(startIndex, outData);
@@ -5062,10 +5066,121 @@ function outputMyTable(startIndex, outputArray) {
 
 function outputMyTableTr(startIndex, data) {
     let rsGamePoints = data.gamePoints === 0 ? "━ " : data.gamePoints;
-    $("#myTable tbody").append("<tr><th>" + startIndex +
+
+    let classString = '';
+    if (data.chatPoints / data.chatTimes > $("#singleIncreaseMaxinumValue").val()) {
+        classString = "background-color:red;";
+    }
+
+    $("#myTable tbody").append("<tr style='" + classString + "'><th>" + startIndex +
         "</th><th><a href='https://bj.afreecatv.com/" + data.id + "' target='_blank'>" + data.userNick + "(" + data.id + ")</a></th><th>" + convertGrade(data.grade) + "</th><th>" + data.chatPoints +
         "</th><th>" + data.chatTimes + "</th><th>" + rsGamePoints + "</th><th>" + data.allPoints +
         "</th><th>" + data.allTimes + "</th><th>" + data.date + "</th></tr>");
 }
 
+function numberOfGroups(userDataArrayLength) {
+    let spliceArraLength;
+    if (userDataArrayLength < 50) {
+        spliceArraLength = 5;
+    } else if (userDataArrayLength < 500) {
+        spliceArraLength = 50;
+    } else if (userDataArrayLength < 5000) {
+        spliceArraLength = 500;
+    } else if (userDataArrayLength < 50000) {
+        spliceArraLength = 1000;
+    } else {
+        spliceArraLength = 2000;
+    }
+    //测试数据
+    spliceArraLength = 50;
+    return spliceArraLength;
+}
 
+//标记是否自动隐藏了myModal
+var isMyModal = false;
+
+function openInportPorgress(resultLength, userDataArrayLength, conmmitArrayDataLength, arraIndex) {
+
+    //统计聊天隐藏
+    let $myModal = $("#myModal");
+    let isModalShow = $myModal.css("display");
+    if (isModalShow == "block") {
+        isMyModal = true;
+        $myModal.hide();
+    }
+    // 显示所有圆柱
+    $(".lui-div").show();
+    let storageRatio = resultLength / userDataArrayLength;
+    //选择的数据库
+    $("#" + localStorageType.toLowerCase() + "-lui-inner").css("height", storageRatio * 100 + "%").show();
+    //上一次选择的数据库 底部填充
+    $("#" + lastStoreType + "-lui-inner").height((1 - storageRatio) * 100 + "%").show();
+    /*console.log(storageRatio);*/
+    if (storageRatio != 1) {
+        $("#" + localStorageType + "-lui-all").text(userDataArrayLength);
+        $("#" + localStorageType + "-lui-commit").text(resultLength).show();
+
+        $("#" + lastStoreType + "-lui-all").text(userDataArrayLength - resultLength);
+        $("#" + lastStoreType + "-lui-commit").show().text(resultLength);
+    } else {
+        /* $("#" + localStorageType + "-lui-all").text("");*/
+        $("#" + localStorageType + "-lui-commit").text("").hide();
+
+        $("#" + lastStoreType + "-lui-all").text("0");
+        $("#" + lastStoreType + "-lui-commit").text("").hide();
+
+        //上一次选择的数据库 底部填充
+        /*$("#" + lastStoreType + "-lui-inner").hide();*/
+    }
+
+
+    $("#importBar").css("width", storageRatio * 100 + "%");
+    if (pageLang == "zh") {
+        // $("#importBarText").text(packageResult.openInportPorgress.importBar + userDataArrayLength + "/" + resultLength + packageResult.openInportPorgress.importBarText);
+        // $("#importBarSpan").text(packageResult.openInportPorgress.importBar + conmmitArrayDataLength + "/" + (arraIndex + 1) + packageResult.openInportPorgress.importBarSpan);
+
+        // $("#importBarSpan").text(packageResult.openInportPorgress.importBar + userDataArrayLength + "/" + resultLength + packageResult.openInportPorgress.importBarText);
+        $("#importBarText").text(packageResult.openInportPorgress.importBar + conmmitArrayDataLength + "/" + (arraIndex + 1) + packageResult.openInportPorgress.importBarSpan);
+
+
+    } else if (pageLang == "ko") {
+        // $("#importBarText").text(packageResult.openInportPorgress.importBarText + userDataArrayLength + "/" + resultLength + packageResult.openInportPorgress.importBar);
+        // $("#importBarSpan").text(packageResult.openInportPorgress.importBarSpan + conmmitArrayDataLength + "/" + (arraIndex + 1) + packageResult.openInportPorgress.importBar);
+
+
+        // $("#importBarSpan").text(packageResult.openInportPorgress.importBarText + userDataArrayLength + "/" + resultLength + packageResult.openInportPorgress.importBar);
+        $("#importBarText").text(packageResult.openInportPorgress.importBarSpan + conmmitArrayDataLength + "/" + (arraIndex + 1) + packageResult.openInportPorgress.importBar);
+    }
+}
+
+function closeInportPorgress(closeType) {
+    // $("#importBarText").text("导入完成!");
+    // $("#importBarSpan").text("导入完成!");
+    // setTimeout(function(){},500);
+    let className;
+    if (closeType = "success") {
+        className = "progress-success";
+    } else if (closeType = "danger") {
+        className = "progress-danger";
+    }
+    setTimeout(function () {
+        $("#importBarParent").addClass(className);
+    }, 500);
+    setTimeout(function () {
+        /*$("#" + localStorageType.toLowerCase() + "-lui-inner").css("height", "");*/
+        $("#importBarText").text("");
+        $("#importBarSpan").text("");
+
+        $("#importBar").css("width", "");
+        // $("#importBar").removeAttr("style");
+        $("#importBarParent").removeClass(className).hide();
+        //通过是否隐藏的标记决定是否再次显示
+        if (isMyModal) {
+            //统计聊天显示
+            $("#myModal").show();
+            isMyModal = false;
+        }
+        // 隐藏所有圆柱
+        $(".lui-div").hide();
+    }, 1500);
+}

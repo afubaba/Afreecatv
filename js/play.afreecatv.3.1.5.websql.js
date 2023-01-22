@@ -362,9 +362,8 @@ var opWebsql = {
 
         let todayDate = $("#timeFrequencys").text().substring(0, $("#timeFrequencys").text().indexOf("\t"));
         // var allTbName = "chatPointsMode";
-        uId = userData.id;
-        uNick = userData.userNick;
-        tbNm = userData.tbName;
+        /*uId = userData.id;*/
+        /*uNick = userData.userNick;*/
         // console.log(userData);
 
         dataBase.transaction(function (tx) {
@@ -375,14 +374,14 @@ var opWebsql = {
             // //console.log(sql);
             // tx.executeSql(sql);
 
-            // sql = 'INSERT INTO ' + tbNm +
+            // sql = 'INSERT INTO ' + userData.tbName +
             // 	"(id, userNick,chatPoints,gamePoints) VALUES ('?','?',0,0)";
             // //console.log(sql);
             // tx.executeSql(sql);
 
-            // sql = "SELECT chatPoints,allPoints,date FROM " + tbNm + " WHERE id='" + uId + "'";
-            sql = "SELECT * FROM " + tbNm + " WHERE id=?";
-            sqlDataArray = [uId];
+            // sql = "SELECT chatPoints,allPoints,date FROM " + userData.tbName + " WHERE id='" + userData.id + "'";
+            sql = "SELECT * FROM " + tbName + " WHERE id=?";
+            sqlDataArray = [userData.id];
             // console.log(sqlDataArray);
             // db.transaction(function(tx) {});
             tx.executeSql(sql, sqlDataArray, function (tx, results) {
@@ -404,7 +403,7 @@ var opWebsql = {
                     // console.log(resultData);
                     // console.log(data);
                     // db.transaction(function(tx) {
-                    // var sql="UPDATE " + tbNm + " SET fontColor='nice' ,  backColor='good'";
+                    // var sql="UPDATE " + userData.tbName + " SET fontColor='nice' ,  backColor='good'";
                     // console.log(data.chatPoints);
                     // console.log(typeof data.chatPoints);
                     //今天增加一点
@@ -422,13 +421,13 @@ var opWebsql = {
                     // }
                     //月份字符串
                     if (resultData.date == todayDate) {
-                        sqlDataArray = [addChatPoints, addAllPoints, uId];
-                        // sql = "UPDATE " + tbNm +
+                        sqlDataArray = [addChatPoints, addAllPoints, userData.id];
+                        // sql = "UPDATE " + userData.tbName +
                         //     " SET chatPoints=chatPoints+1,allPoints=allPoints+1,date=" +
                         //     today + " WHERE id=?";
-                        sql = "UPDATE " + tbNm + " SET chatPoints=?,chatTimes=chatTimes+1,allPoints=?,allTimes=allTimes+1 WHERE id=?";
+                        sql = "UPDATE " + userData.tbName + " SET chatPoints=?,chatTimes=chatTimes+1,allPoints=?,allTimes=allTimes+1 WHERE id=?";
                         //测试数据
-                        // sql = "UPDATE " + tbNm + " SET userNick='等待测试',grade='载入中。。。',chatPoints=?,allPoints=? WHERE id=?";
+                        // sql = "UPDATE " + userData.tbName + " SET userNick='等待测试',grade='载入中。。。',chatPoints=?,allPoints=? WHERE id=?";
                     } else {
                         let toDate = new Date(todayDate);
                         // toDate.setDate(1);
@@ -437,19 +436,19 @@ var opWebsql = {
                         if (toDate.getMonth() == resuDate.getMonth()) {
                             //判断日
                             if (toDate.getDate() == resuDate.getDate()) {
-                                sqlDataArray = [addChatPoints, addAllPoints, todayDate, uId];
+                                sqlDataArray = [addChatPoints, addAllPoints, todayDate, userData.id];
                                 //     " SET chatPoints=chatPoints+1,allPoints=allPoints+1,date=" +
                                 //     today + " WHERE id=?";
-                                sql = "UPDATE " + tbNm + " SET chatPoints=?,chatTimes=chatTimes+1,allPoints=?,allTimes=allTimes+1,date=? WHERE id=?";
+                                sql = "UPDATE " + userData.tbName + " SET chatPoints=?,chatTimes=chatTimes+1,allPoints=?,allTimes=allTimes+1,date=? WHERE id=?";
                             } else {
                                 //判断昵称是否不一致
                                 let userNickSqlString;
-                                sqlDataArray = [increase, addAllPoints, todayDate, uId];
-                                if (resultData.userNick == uNick) {
+                                sqlDataArray = [increase, addAllPoints, todayDate, userData.id];
+                                if (resultData.userNick == userData.userNick) {
                                     userNickSqlString = "";
                                 } else {
                                     userNickSqlString = "userNick=?,"
-                                    sqlDataArray.unshift(uNick);
+                                    sqlDataArray.unshift(userData.userNick);
                                 }
                                 //判断等级是否不一致
                                 let gradeSqlString;
@@ -459,24 +458,24 @@ var opWebsql = {
                                     gradeSqlString = "grade=?,"
                                     sqlDataArray.unshift(userData.grade);
                                 }
-                                sql = "UPDATE " + tbNm + " SET " + gradeSqlString + userNickSqlString + "chatPoints=?,chatTimes=1,gamePoints=0,allPoints=?,allTimes=allTimes+1,date=? WHERE id=?;";
+                                sql = "UPDATE " + userData.tbName + " SET " + gradeSqlString + userNickSqlString + "chatPoints=?,chatTimes=1,gamePoints=0,allPoints=?,allTimes=allTimes+1,date=? WHERE id=?;";
                                 // console.log(sql);
                                 // console.log(sqlDataArray);
-                                showTipBarrageFunction(uNick + " " + (resuDate.getDate()) + packageResult.opIndexDB.insertData[0]);
+                                showTipBarrageFunction(userData.userNick + " " + (resuDate.getDate()) + packageResult.opIndexDB.insertData[0]);
                                 // console.log("今日积分清零");
-                                // sql = "UPDATE " + tbNm + " SET chatPoints=1,date=? WHERE id='" + uId + "';";
+                                // sql = "UPDATE " + userData.tbName + " SET chatPoints=1,date=? WHERE id='" + userData.id + "';";
                             }
                         } else {
                             // console.log("不是同一个月");
                             let $resetTotalPointsEveryMonth = $("#resetTotalPointsEveryMonth");
                             let resetTotalPointsEveryMonthChecked = $resetTotalPointsEveryMonth.prop("checked");
-                            let logString = uNick + " " + (resuDate.getMonth() + 1);
+                            let logString = userData.userNick + " " + (resuDate.getMonth() + 1);
 
                             // let gradeSqlString;
 
                             if (resetTotalPointsEveryMonthChecked) {
-                                sqlDataArray = [increase, increase, todayDate, uId];
-                                sql = "UPDATE " + tbNm + " SET chatPoints=?,chatTimes=1,gamePoints = 0,allPoints=?,allTimes=1,date=? WHERE id=?;";
+                                sqlDataArray = [increase, increase, todayDate, userData.id];
+                                sql = "UPDATE " + userData.tbName + " SET chatPoints=?,chatTimes=1,gamePoints = 0,allPoints=?,allTimes=1,date=? WHERE id=?;";
 
                                 // if (resultData.grade == userData.grade) {
                                 //     gradeSqlString="";
@@ -486,11 +485,11 @@ var opWebsql = {
                                 //     //测试数据
                                 //     // sqlDataArray.unshift("等待测试");
                                 // }
-                                // sql = "UPDATE " + tbNm + " SET "+gradeSqlString+"chatPoints=?,gamePoints = 0,allPoints=?,date=? WHERE id=?;";
+                                // sql = "UPDATE " + userData.tbName + " SET "+gradeSqlString+"chatPoints=?,gamePoints = 0,allPoints=?,date=? WHERE id=?;";
                                 showTipBarrageFunction(logString + packageResult.opIndexDB.insertData[1]);
                             } else {
-                                sqlDataArray = [increase, addAllPoints, todayDate, uId];
-                                sql = "UPDATE " + tbNm + " SET chatPoints=?,chatTimes=1,gamePoints = 0,allPoints=?,allTimes=allTimes+1,date=? WHERE id=?;";
+                                sqlDataArray = [increase, addAllPoints, todayDate, userData.id];
+                                sql = "UPDATE " + userData.tbName + " SET chatPoints=?,chatTimes=1,gamePoints = 0,allPoints=?,allTimes=allTimes+1,date=? WHERE id=?;";
 
                                 // if (resultData.grade == userData.grade) {
                                 //     gradeSqlString="";
@@ -500,7 +499,7 @@ var opWebsql = {
                                 //     //测试数据
                                 //     // sqlDataArray.unshift("等待测试");
                                 // }
-                                // sql = "UPDATE " + tbNm + " SET "+gradeSqlString+"chatPoints=?,gamePoints = 0,allPoints=?,date=? WHERE id=?;";
+                                // sql = "UPDATE " + userData.tbName + " SET "+gradeSqlString+"chatPoints=?,gamePoints = 0,allPoints=?,date=? WHERE id=?;";
                                 showTipBarrageFunction(logString + packageResult.opIndexDB.insertData[2]);
                             }
 
@@ -509,14 +508,18 @@ var opWebsql = {
                     }
                     tx.executeSql(sql, sqlDataArray, function (tx, results) {
                         // console.log(results);
-                        // console.log(results.rowsAffected);
+                        /*console.log("修改成功");
+                        console.log(results.rowsAffected);*/
+                    }, function (tx, errorCallback) {
+                        // console.log("修改错误");
+                        // console.log(errorCallback);
                     });
 
                     // if (today == new Date(resultData.date).getDate()) {
-                    // sql = "UPDATE " + tbNm + " SET chatPoints=" +
-                    // 	upChatPoints + ",userNick='" + uNick + "',allPoints=" +
+                    // sql = "UPDATE " + userData.tbName + " SET chatPoints=" +
+                    // 	upChatPoints + ",userNick='" + userData.userNick + "',allPoints=" +
                     // 	upAllPoints +
-                    // 	" WHERE id='" + uId + "';";
+                    // 	" WHERE id='" + userData.id + "';";
 
 
                     // sql = "select id as 身份证,userNick as 昵称,max(chatPoints) as 今日最高分数,max(allPoints) as 总分数最高 from "+tbName;
@@ -576,7 +579,7 @@ var opWebsql = {
                     // 	}
                     //标记ACE
                     // console.log("dataId:", data.id + "idDomUserId:", userId);
-                    // if (data.id == uId && maxChatPoint) {
+                    // if (data.id == userData.id && maxChatPoint) {
 
                     // 	// var appendString ="<span style='background-image:url(" + aurelionSolImgURL +
                     // 	// 	");color:yellow;font-size:large'>[ACE]</span>"
@@ -607,18 +610,25 @@ var opWebsql = {
                     // });
                 } else if (resultRows.length == 0) {
                     // console.log("insert");
-                    // sql = 'INSERT INTO ' + tbNm +
-                    // 	"(id, userNick,chatPoints,gamePoints,allPoints) VALUES ('" + uId +
-                    // 	"','" + uNick + "',1,1,2,'" + todayDate + "');";
-                    // sql = 'INSERT INTO ' + tbNm + " VALUES ('" + uId +
-                    // 	"','" + uNick + "',1,0,1,'" + todayDate + "');";
-                    sql = 'INSERT INTO ' + tbNm + " VALUES (?,?,?,?,1,0,?,1,?);";
+                    // sql = 'INSERT INTO ' + userData.tbName +
+                    // 	"(id, userNick,chatPoints,gamePoints,allPoints) VALUES ('" + userData.id +
+                    // 	"','" + userData.userNick + "',1,1,2,'" + todayDate + "');";
+                    // sql = 'INSERT INTO ' + userData.tbName + " VALUES ('" + userData.id +
+                    // 	"','" + userData.userNick + "',1,0,1,'" + todayDate + "');";
+                    sql = 'INSERT INTO ' + userData.tbName + " VALUES (?,?,?,?,1,0,?,1,?);";
                     // console.log(sql);
-                    sqlDataArray = [uId, uNick, userData.grade, increase, increase, todayDate];
+                    sqlDataArray = [userData.id, userData.userNick, userData.grade, increase, increase, todayDate];
                     //测试数据
-                    // sqlDataArray = [uId, "等待测试","。。。载入中", increase, increase, todayDate];
+                    // sqlDataArray = [userData.id, "等待测试","。。。载入中", increase, increase, todayDate];
 
-                    tx.executeSql(sql, sqlDataArray);
+                    tx.executeSql(sql, sqlDataArray, function (tx, results) {
+                        // console.log(results);
+                        /*  console.log("新增成功");
+                          console.log(results.rowsAffected);*/
+                    }, function (tx, errorCallback) {
+                        // console.log("新增错误");
+                        // console.log(errorCallback);
+                    });
 
                 }
                 // console.log(data.chatPoints);
@@ -628,7 +638,7 @@ var opWebsql = {
             }, null);
 
 
-            // sql = "SELECT chatPoints FROM " + allTbName + " WHERE id='" + uId + "'";
+            // sql = "SELECT chatPoints FROM " + allTbName + " WHERE id='" + userData.id + "'";
             // //console.log(sql);
             // tx.executeSql(sql, [], function(tx, results) {
             // 	console.log(results);
@@ -639,8 +649,8 @@ var opWebsql = {
             // 	if (resultRows.length == 0) {
 
             // 		sql = 'INSERT INTO ' + allTbName +
-            // 			"(id, userNick,chatPoints,gamePoints) VALUES ('" + uId +
-            // 			"','" + uNick + "',1,1);";
+            // 			"(id, userNick,chatPoints,gamePoints) VALUES ('" + userData.id +
+            // 			"','" + userData.userNick + "',1,1);";
             // 		//console.log(sql);
             // 		tx.executeSql(sql);
 
@@ -656,8 +666,8 @@ var opWebsql = {
             // 		console.log("upChatPoints", upChatPoints);
 
             // 		var sql = "UPDATE " + allTbName + " SET chatPoints=" +
-            // 			upChatPoints + ",userNick='" + uNick +
-            // 			"' WHERE id='" + uId + "';";
+            // 			upChatPoints + ",userNick='" + userData.userNick +
+            // 			"' WHERE id='" + userData.id + "';";
 
             // 		console.log(sql)
 
@@ -799,200 +809,200 @@ var opWebsql = {
         dataBase.transaction(function (tx) {
             sql = "SELECT * FROM " + tbName;
             tx.executeSql(sql, [], function (tx, results) {
-                var data = results.rows;
+                let data = results.rows;
                 callback(Object.values(data));
             });
         });
     },
     inportDataFunction: function (obejectArray, callBack) {
-
         //不存在创造表格
         this.createTable(tbName);
-
         let todayDate = $("#timeFrequencys").text().substring(0, $("#timeFrequencys").text().indexOf("\t"));
         // today= new Date(todayDate).getDate();
+        let spliceArraLength = numberOfGroups(obejectArray.length);
+        if (obejectArray.length < spliceArraLength) {
+            writeData(obejectArray, function (result) {
+                callBack(result);
+            });
+        } else {
+            // console.log("websql:更新数据开始!");
+            isUpdate = true;
+            //分割前数组
+            // console.log(obejectArray);
+            //分割后的数组
+            let conmmitObjectArrayParent;
+            //限制链接数量
+            // conmmitObjectArray = avgGroup(obejectArray, 50);
+            //限制每一组数量
+            conmmitObjectArrayParent = split_array(obejectArray, spliceArraLength);
+            // console.log(conmmitObjectArrayParent);
+            let arraIndex = 0;
+            let resultLength = 0;
+            commitArray(arraIndex);
+            $("#importBarParent").show();
 
-        dataBase.transaction(function (tx) {
-            let spliceArraLength;
-            if (obejectArray.length < 50) {
-                spliceArraLength = 5;
-            } else if (obejectArray.length < 500) {
-                spliceArraLength = 50;
-            } else if (obejectArray.length < 5000) {
-                spliceArraLength = 500;
-            } else if (obejectArray.length < 50000) {
-                spliceArraLength = 1000;
-            } else {
-                spliceArraLength = 2000;
-            }
+            function commitArray(arraIndex) {
+                let conmmitObjectArraySon = conmmitObjectArrayParent[arraIndex];
+                //存入数据
+                writeData(conmmitObjectArraySon, function (result) {
+                    if (result > 0) {
+                        resultLength += result;
+                        openInportPorgress(resultLength, obejectArray.length, conmmitObjectArrayParent.length, arraIndex);
+                        // console.log("提交" + conmmitObjectArrayParent.length + "/" + (arraIndex + 1) + "个数据完成");
+                        arraIndex++;
+                        if (arraIndex >= conmmitObjectArrayParent.length) {
+                            showTipBarrageFunction("Websql:" + resultLength + packageResult.opIndexDB.inportDataFunction);
+                            closeInportPorgress("success");
+                            //刷新显示
+                            changePage(pgIndex);
+                            // console.log("websql:更新数据结束!");
+                            isUpdate = false;
 
-            if (obejectArray.length < spliceArraLength) {
-                writeData(obejectArray, function (result) {
-                    callBack(result);
-                });
-            } else {
-                //分割后的数组
-                let conmmitObjectArrayParent;
-                //限制链接数量
-                // conmmitObjectArray = avgGroup(obejectArray, 50);
-                //限制每一组数量
-                conmmitObjectArrayParent = split_array(obejectArray, spliceArraLength);
-
-                // console.log(conmmitObjectArrayParent);
-
-                let arraIndex = 0;
-                let resultLength = 0;
-                commitArray(arraIndex);
-
-                $("#importBarParent").show();
-
-                function commitArray(arraIndex) {
-                    let conmmitObjectArraySon = conmmitObjectArrayParent[arraIndex];
-
-                    //存入数据
-                    writeData(conmmitObjectArraySon, function (result) {
-                        if (result > 0) {
-                            resultLength += result;
-
-                            $("#importBar").css("width", resultLength / obejectArray.length * 100 + "%");
-                            $("#importBarText").text("导入" + obejectArray.length + "/" + resultLength + "个数据完成!");
-                            $("#importBarSpan").text("导入" + conmmitObjectArrayParent.length + "/" + (arraIndex + 1) + "个数据完成!");
-                            // console.log("提交" + conmmitObjectArrayParent.length + "/" + (arraIndex + 1) + "个数据完成");
-
-                            arraIndex++;
-                            if (arraIndex >= conmmitObjectArrayParent.length) {
-
-                                showTipBarrageFunction("Websql:" + resultLength + packageResult.opIndexDB.inportDataFunction);
-
-                                $("#importBarText").text("导入完成!");
-                                $("#importBarSpan").text("导入完成!");
-                                // setTimeout(function(){},500);
-                                $("#importBarParent").addClass("progress-success");
-                                setTimeout(function () {
-                                    $("#importBar").css("width", "");
-                                    $("#importBarParent").removeClass("progress-success").hide();
-                                }, 1500);
-
-                                //刷新显示
-                                changePage(pgIndex);
-                                callBack(resultLength);
-                                return;
-                            }
-                            commitArray(arraIndex);
-                        } else {
-                            $("#importBarParent").addClass("progress-danger");
-                            setTimeout(function () {
-                                $("#importBar").css("width", "");
-                                $("#importBarParent").removeClass("progress-success").hide();
-                            }, 5000);
-
-                            // console.log("error");
+                            callBack(resultLength);
                             return;
                         }
 
-                    });
-                }
+                        setTimeout(function () {
+                            commitArray(arraIndex);
+                        }, 250);
 
+                        // setTimeout(function () {
+                        //     commitArray(arraIndex);
+                        // }, $("#delayInputTextId").val());
+                    } else {
+                        closeInportPorgress("danger");
+                        // console.log("error");
+                        return;
+                    }
+
+                });
             }
+        }
 
-            function writeData(userDataArray, writeCallback) {
+        function writeData(userDataArray, writeCallback) {
+            // void executeSql(sqlStatement, arguments, callback, errorCallback);
+            dataBase.transaction(function (tx) {
+                // console.log(tx);
                 let sql = "SELECT * FROM " + tbName + " WHERE id=?";
                 for (let i = 0; i < userDataArray.length; i++) {
                     let sqlDataArray = [userDataArray[i].id];
-                    tx.executeSql(sql, sqlDataArray, function (tx, results) {
-                        // console.log(results);
-                        let resultRows = results.rows;
-                        // console.log(resultRows.length);
+                    tx.executeSql(
+                        sql
+                        , sqlDataArray
+                        , function (tx, results) {
+                            // console.log(results);
+                            let resultRows = results.rows;
+                            // console.log(resultRows.length);
 
-                        //测试数据
-                        // let userGrade;
-                        // if("grade" in  userDataArray[i]){
-                        //     userGrade=userDataArray[i].grade;
-                        // }else{
-                        //     userGrade="loadding";
-                        // }
+                            //测试数据
+                            // let userGrade;
+                            // if("grade" in  userDataArray[i]){
+                            //     userGrade=userDataArray[i].grade;
+                            // }else{
+                            //     userGrade="loadding";
+                            // }
 
-                        if (resultRows.length == 0) {
-                            sql = 'INSERT INTO ' + tbName + " VALUES (?,?,?,?,?,?,?,?,?);";
-
-                            let sqlDataArray = [userDataArray[i].id, userDataArray[i].userNick, userDataArray[i].grade,
-                                userDataArray[i].chatPoints, userDataArray[i].chatTimes, userDataArray[i].gamePoints,
-                                userDataArray[i].allPoints, userDataArray[i].allTimes, userDataArray[i].date
-                            ];
-                            // console.log(sql);
-                            // console.log(sqlDataArray);
-                            // console.log(sqlDataArray);
-                            tx.executeSql(sql, sqlDataArray, function () {
-                                if (i == userDataArray.length - 1) {
-                                    // showTipBarrageFunction(userDataArray.length + "개의 데이터 가져오기 성공");
-                                    //刷新显示
-                                    // changePage(pgIndex);
-                                    // console.log(userDataArray.length);
-                                    writeCallback(userDataArray.length);
-
-                                }
-                            });
-                        } else if (resultRows.length == 1) {
-
-                            let addAllPoint = resultRows[0].allPoints + userDataArray[i].allPoints;
-                            let addAllTimes = resultRows[0].allTimes + userDataArray[i].allTimes;
-                            //今天的积累
-                            // console.log(resultRows);
-                            // console.log(resultRows[0].date+"===="+userDataArray[i].date);
-                            // console.log(resultRows[0].date + "----" + userDataArray[i].date);
-                            if (resultRows[0].date == userDataArray[i].date) {
-                                let addChatPoint = resultRows[0].chatPoints + userDataArray[i].chatPoints;
-                                let addChatTimes = resultRows[0].chatTimes + userDataArray[i].chatTimes;
-                                let addGamePoints = resultRows[0].gamePoints + userDataArray[i].gamePoints;
-
-                                // resultRows.chatPoints = resultRows.chatPoints + userDataArray[i].chatPoints;
-                                // data.gamePoints = data.gamePoints + userData.gamePoints;
-                                // sql = "UPDATE " + tbName +
-                                //     " SET chatPoints=chatPoints+" + userDataArray[i].chatPoints + ",grade=" + userGrade +
-                                //     ",gamePoints=gamePoints+" + userDataArray[i].gamePoints +
-                                //     ",allPoints=allPoints+" + userDataArray[i].allPoints +
-                                //     " WHERE id=?";
-
-                                // sql = "UPDATE " + tbName + " SET grade=?,chatPoints=?,chatTimes=?,gamePoints=?,allPoints=?,allTimes=? WHERE id=?";
-                                // sqlDataArray = [userDataArray[i].grade, addChatPoint, addChatTimes, addGamePoints, addAllPoint, addAllTimes, userDataArray[i].id];
-                                sql = "UPDATE " + tbName + " SET chatPoints=?,chatTimes=?,gamePoints=?,allPoints=?,allTimes=? WHERE id=?";
-                                sqlDataArray = [addChatPoint, addChatTimes, addGamePoints, addAllPoint, addAllTimes, userDataArray[i].id];
-
-                            } else if (resultRows[0].date < userDataArray[i].date) {
-                                //在数组前面追加一个元素
-                                // sqlDataArray.unshift();
-                                // sql = "UPDATE " + tbName + " SET grade=?,chatPoints=?,chatTimes=?,gamePoints=?,allPoints=?,allTimes=?,date=? WHERE id=?";
-                                // // 更新传来的新日期
-                                // sqlDataArray = [userDataArray[i].grade, userDataArray[i].chatPoints, userDataArray[i].chatTimes, userDataArray[i].gamePoints, addAllPoint, addAllTimes, userDataArray[i].date, userDataArray[i].id];
+                            if (resultRows.length == 0) {
+                                sql = 'INSERT INTO ' + tbName + " VALUES (?,?,?,?,?,?,?,?,?);";
+                                let sqlDataArray = [userDataArray[i].id, userDataArray[i].userNick, userDataArray[i].grade,
+                                    userDataArray[i].chatPoints, userDataArray[i].chatTimes, userDataArray[i].gamePoints,
+                                    userDataArray[i].allPoints, userDataArray[i].allTimes, userDataArray[i].date
+                                ];
+                                //测试代码
+                                // if (userDataArray[i].chatPoints / userDataArray[i].chatTimes > 15) {
+                                //         //插入前错误
+                                //         console.log("websql:插入前错误");
+                                //         console.log(sqlDataArray);
+                                // }
                                 // console.log(sql);
-                                sql = "UPDATE " + tbName + " SET chatPoints=?,chatTimes=?,gamePoints=?,allPoints=?,allTimes=?,date=? WHERE id=?";
-                                // 更新传来的新日期
-                                sqlDataArray = [userDataArray[i].chatPoints, userDataArray[i].chatTimes, userDataArray[i].gamePoints, addAllPoint, addAllTimes, userDataArray[i].date, userDataArray[i].id];
+                                // console.log(sqlDataArray);
+                                // console.log(sqlDataArray);
+                                tx.executeSql(sql, sqlDataArray, function () {
+                                    if (i == userDataArray.length - 1) {
+                                        // showTipBarrageFunction(userDataArray.length + "개의 데이터 가져오기 성공");
+                                        //刷新显示
+                                        // changePage(pgIndex);
+                                        // console.log(userDataArray.length);
+                                        writeCallback(userDataArray.length);
 
-                            } else if (resultRows[0].date > userDataArray[i].date) {
-                                sql = "UPDATE " + tbName + " SET allPoints=?,allTimes=? WHERE id=?";
-                                sqlDataArray = [addAllPoint, addAllTimes, userDataArray[i].id];
-                            } else {
-                                console.log("error");
-                            }
-                            tx.executeSql(sql, sqlDataArray, function (tx, results) {
+                                    }
+                                }, function (tx, errorCallback) {
+                                    // console.log("插入错误");
+                                    // console.log(errorCallback);
+                                });
+                            } else if (resultRows.length == 1) {
 
-                                if (i == userDataArray.length - 1) {
-                                    // showTipBarrageFunction(userDataArray.length + "개의 데이터 가져오기 성공");
+                                let addAllPoint = resultRows[0].allPoints + userDataArray[i].allPoints;
+                                let addAllTimes = resultRows[0].allTimes + userDataArray[i].allTimes;
+                                //今天的积累
+                                // console.log(resultRows);
+                                // console.log(resultRows[0].date+"===="+userDataArray[i].date);
+                                // console.log(resultRows[0].date + "----" + userDataArray[i].date);
+                                if (resultRows[0].date == userDataArray[i].date) {
+                                    let addChatPoint = resultRows[0].chatPoints + userDataArray[i].chatPoints;
+                                    let addChatTimes = resultRows[0].chatTimes + userDataArray[i].chatTimes;
+                                    let addGamePoints = resultRows[0].gamePoints + userDataArray[i].gamePoints;
 
-                                    //刷新显示
-                                    // changePage(pgIndex);
-                                    writeCallback(userDataArray.length);
+                                    // resultRows.chatPoints = resultRows.chatPoints + userDataArray[i].chatPoints;
+                                    // data.gamePoints = data.gamePoints + userData.gamePoints;
+                                    // sql = "UPDATE " + tbName +
+                                    //     " SET chatPoints=chatPoints+" + userDataArray[i].chatPoints + ",grade=" + userGrade +
+                                    //     ",gamePoints=gamePoints+" + userDataArray[i].gamePoints +
+                                    //     ",allPoints=allPoints+" + userDataArray[i].allPoints +
+                                    //     " WHERE id=?";
+
+                                    // sql = "UPDATE " + tbName + " SET grade=?,chatPoints=?,chatTimes=?,gamePoints=?,allPoints=?,allTimes=? WHERE id=?";
+                                    // sqlDataArray = [userDataArray[i].grade, addChatPoint, addChatTimes, addGamePoints, addAllPoint, addAllTimes, userDataArray[i].id];
+                                    sql = "UPDATE " + tbName + " SET chatPoints=?,chatTimes=?,gamePoints=?,allPoints=?,allTimes=? WHERE id=?";
+                                    sqlDataArray = [addChatPoint, addChatTimes, addGamePoints, addAllPoint, addAllTimes, userDataArray[i].id];
+
+                                } else if (resultRows[0].date < userDataArray[i].date) {
+                                    //在数组前面追加一个元素
+                                    // sqlDataArray.unshift();
+                                    // sql = "UPDATE " + tbName + " SET grade=?,chatPoints=?,chatTimes=?,gamePoints=?,allPoints=?,allTimes=?,date=? WHERE id=?";
+                                    // // 更新传来的新日期
+                                    // sqlDataArray = [userDataArray[i].grade, userDataArray[i].chatPoints, userDataArray[i].chatTimes, userDataArray[i].gamePoints, addAllPoint, addAllTimes, userDataArray[i].date, userDataArray[i].id];
+                                    // console.log(sql);
+                                    sql = "UPDATE " + tbName + " SET chatPoints=?,chatTimes=?,gamePoints=?,allPoints=?,allTimes=?,date=? WHERE id=?";
+                                    // 更新传来的新日期
+                                    sqlDataArray = [userDataArray[i].chatPoints, userDataArray[i].chatTimes, userDataArray[i].gamePoints, addAllPoint, addAllTimes, userDataArray[i].date, userDataArray[i].id];
+
+                                } else if (resultRows[0].date > userDataArray[i].date) {
+                                    sql = "UPDATE " + tbName + " SET allPoints=?,allTimes=? WHERE id=?";
+                                    sqlDataArray = [addAllPoint, addAllTimes, userDataArray[i].id];
+                                } else {
+                                    // console.log("error");
                                 }
-                            });
-                        } else {
-                        }
-                    });
 
+                                //测试代码
+                                // if (userDataArray[i].chatPoints / userDataArray[i].chatTimes > 15) {
+                                //         //修改前错误
+                                //         console.log("websql:修改前错误");
+                                //         console.log(sqlDataArray);
+                                // }
+
+                                tx.executeSql(sql, sqlDataArray, function (tx, results) {
+
+                                    if (i == userDataArray.length - 1) {
+                                        // showTipBarrageFunction(userDataArray.length + "개의 데이터 가져오기 성공");
+
+                                        //刷新显示
+                                        // changePage(pgIndex);
+                                        writeCallback(userDataArray.length);
+                                    }
+                                }, function (tx, errorCallback) {
+                                    // console.log("更新错误");
+                                    // console.log(errorCallback);
+                                });
+                            } else {
+                            }
+                        }, function (tx, errorCallback) {
+                            // console.log("查找错误");
+                            // console.log(errorCallback);
+                        });
                 }
-            }
-
-        });
+            });
+        }
     }
 }
 
