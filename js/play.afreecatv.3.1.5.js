@@ -173,6 +173,8 @@ function testStart() {
     //导入导出数据
     // console.log(localStorageType);
     $storeWays.change(function () {
+        //储存上一次数据库类型
+        lastStoreType = localStorageType;
         localStorageType = this.value;
         localStorage.setItem("localStorageType", localStorageType);
         //状态特效 label-success  label-info
