@@ -299,6 +299,9 @@ var opMysql = {
                 //刷新显示
                 changePage(pgIndex);
                 callBack(result);
+            }, function () {
+                closeInportPorgress("danger");
+                return;
             });
         } else {
             // console.log(userDataArray.length / spliceArraLength);
@@ -351,6 +354,9 @@ var opMysql = {
                         // console.log("遇到错误");
                         return;
                     }
+                }, function () {
+                    closeInportPorgress("danger");
+                    return;
                 });
             }
         }

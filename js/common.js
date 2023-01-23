@@ -640,7 +640,7 @@ function ajaxGet(url, data, callback) {
     });
 }
 
-function ajaxPost(url, ajaxPostData, callback) {
+function ajaxPost(url, ajaxPostData, callback, errorCallback) {
     $.ajax({
         url: url,
         type: 'post',
@@ -651,9 +651,11 @@ function ajaxPost(url, ajaxPostData, callback) {
         },
         error: function (error, errorMessage) {
             // console.log(error);
+            errorCallback();
         }
     });
 }
+
 
 function ajaxPostFormData(url, formData, callback) {
     $.ajax({
