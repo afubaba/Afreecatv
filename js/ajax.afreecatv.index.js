@@ -182,7 +182,7 @@ function openWindow(link) {
 						//执行点击子窗口初始化
 						setTimeout(function() {
 							$('#startButtonId', myWindowName.document).click();
-						}, 10000);
+						}, 5000);
 					},
 					error: function(error, errorMessage) {
 						console.log(error);
