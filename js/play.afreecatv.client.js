@@ -106,7 +106,7 @@ sessionStorage.setItem("videoURL",domain +"video/background.mp4");
 var videoURL  ;
 
 
-htmlLang="ko";
+//htmlLang="ko";
 
 if (htmlLang == "ko") {
 	pageLang = sessionStorage.setItem("pageLang", htmlLang);
