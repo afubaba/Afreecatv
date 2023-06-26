@@ -25,9 +25,9 @@ $("head").append("<script src='" + commonURL + "'/>");
 // );
 
 
-const cssURL = domain+"css/afreecatv.client.css";
+const cssURL = domain + "css/index.client.css";
 
-$('head').append("<link rel=stylesheet type=text/css href= '"+cssURL+"'/>");
+$('head').append("<link rel=stylesheet type=text/css href= '" + cssURL + "'/>");
 //dynamicLoading.css(cssURL);
 
 // function createLinkDom() {
@@ -89,7 +89,7 @@ const executeOnce = once(function() {
 });
 
 const executePlay = once(function() {
-	const videoURL = domain+"video/background.mp4";
+	const videoURL = domain + "video/background.mp4";
 	// muted
 	// autoplay=''
 	$("body").before(
@@ -98,7 +98,7 @@ const executePlay = once(function() {
 		bgURL + "'    loop=''><source src='" +
 		videoURL + "' type='video/mp4'>"
 	);
-	$("#myVideo").bind('contextmenu', function () {
+	$("#myVideo").bind('contextmenu', function() {
 		return false;
 	})
 	playMyVideo();
@@ -120,20 +120,22 @@ const executePlay = once(function() {
 		});
 });
 var myVideo;
-function playMyVideo(){
-	myVideo=document.querySelector("#myVideo");
+
+function playMyVideo() {
+	myVideo = document.querySelector("#myVideo");
 
 	//重新播放 myVideo.load();
 	let playPromise = myVideo.play()
 	if (playPromise !== undefined) {
 		playPromise.then(() => {
 			myVideo.play()
-		}).catch(()=> {
+		}).catch(() => {
 
 		})
 	}
 }
-function pauseMyVideo(){
+
+function pauseMyVideo() {
 	myVideo.pause();
 }
 $("html").dblclick(function() {
