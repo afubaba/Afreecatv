@@ -1,0 +1,1126 @@
+@charset "utf-8";
+
+/*body {background: #000000;background: -moz-linear-gradient(top, #000000 0%, #ffffff 100%);background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #000000), color-stop(100%, #ffffff));background: -webkit-linear-gradient(top, #000000 0%, #ffffff 100%);background: -o-linear-gradient(top, #000000 0%, #ffffff 100%);background: -ms-linear-gradient(top, #000000 0%, #ffffff 100%);background: linear-gradient(to bottom, #000000 0%, #ffffff 100%);filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#000000', endColorstr='#ffffff', GradientType=0);}*/
+* {
+	padding: 0;
+	margin: 0;
+}
+
+.backgroundImg {
+	width: 100%;
+	height: 100%;
+	background-size: 100%;
+	background-repeat: no-repeat;
+	background-image: url("https://afubaba.github.io/Afreecatv/img/bg.webp");
+}
+
+#myDiv {
+	margin: 0;
+	height: 25%;
+	padding: 0;
+	bottom: 0;
+	word-break: break-word;
+	position: fixed;
+	visibility: visible;
+	margin-top: -15%;
+	/*overflow: scroll;*/
+}
+
+#myDiv #basicConfiguration span:hover,
+#myDiv #robotConfiguration span:hover,
+#myDiv #detailedConfiguration span:hover {
+	color: yellow;
+	text-shadow: 2px 2px 8px red;
+	font-size: larger;
+	font-weight: bolder;
+}
+
+#timeFrequencys:hover {
+	color: yellow;
+	text-shadow: 2px 2px 8px red;
+	font-size: 2.5em;
+	font-weight: bolder;
+}
+
+h1 {
+	width: 100%;
+	text-align: center;
+	color: yellow;
+}
+
+#myTableHead tr,
+#myTable th,
+#testInput,
+#myDiv,
+/* #myDiv div, */
+#basicConfiguration button,
+#showMessageDiv,
+#showMessage,
+#delayInputTextId,
+#nowIndex,
+#lastIndex {
+	font-size: calc(var(--text-default) + var(--text-size) * 2);
+}
+
+
+#myTable {
+	padding: 0;
+	margin: 0;
+	/* margin:0 auto; */
+	/* border: 2px blue solid;*/
+	display: block;
+	/*内联对象需加
+    /* width:31em; */
+	/* width:50%; */
+
+	/* word-break: keep-all; */
+	/* 不换⾏ */
+	/* white-space: nowrap; */
+	/* 不换⾏ */
+
+
+	/* overflow:hidden;/* 内容超出宽度时隐藏超出部分的内容 */
+	/* text-overflow:ellipsis; */
+	/* 当对象内⽂本溢出时显⽰省略标记(...) ；需与overflow:hidden;⼀起使⽤。 */
+}
+
+/*.modal-body {*/
+/*    padding: 0 ;*/
+/*    height: 450px;*/
+/*    max-height: 450px !important;*/
+/*    !*max-height: 300px !important;*!*/
+/*    !*max-height: 20% !important;*!*/
+/*}*/
+/*#myModal{*/
+/*    !* position: fixed; *!*/
+/*    !* left: 0; *!*/
+/*    !* border: 2px red solid; *!*/
+/*    !* width: 100%; *!*/
+/*    height: 85%;*/
+/*}*/
+/*,#exportDiv*/
+
+#commandAuthorityManagementModal,
+#exportDiv {
+	top: 8% !important;
+	width: 35%;
+	height: 85%;
+	max-height: 85% !important;
+}
+
+
+#importBarParent {
+	text-align: center;
+	display: none;
+	width: 100%;
+	height: 30%;
+	/*height: 100%;*/
+	/*top:0;*/
+	position: fixed;
+	left: 0;
+	bottom: 0;
+	/*bottom: 35%;*/
+	z-index: 1061;
+	margin: 0;
+	padding: 0;
+}
+
+#importBarText {
+	position: absolute;
+	bottom: 35%;
+	right: 0;
+}
+
+#importBarSpan {
+	font-size: 2em;
+}
+
+.lui-div {
+	position: fixed;
+	left: 0;
+	top: 0;
+	height: 65%;
+	width: 100%;
+	visibility: hidden;
+	z-index: 1070;
+
+	/*默认显示和隐藏*/
+	display: none;
+}
+
+/*:nth-child();*/
+/*:only-child*/
+
+.lui-div>div:nth-child(n) {
+	/* background-color: #e4e4e4;*/
+	text-shadow: 2px 2px 8px red;
+	position: absolute;
+	top: 0;
+	width: 20%;
+	text-align: center;
+	height: 100%;
+	visibility: visible;
+}
+
+.lui-div>div:nth-child(1) {
+	left: 10%;
+}
+
+.lui-div>div:nth-child(2) {
+	left: 40%;
+}
+
+.lui-div>div:nth-child(3) {
+	right: 10%;
+}
+
+
+div[id$="-lui-all"] {
+	position: absolute;
+	width: 100%;
+	heigth: 100%;
+	z-index: 1070;
+	color: red;
+	font-size: 3em;
+	font-weight: bold;
+	line-height: 30px;
+}
+
+li[class$="-lui-btn"] {
+	width: 90%;
+	position: absolute;
+	top: 45%;
+	left: 0;
+	z-index: 1071;
+}
+
+div[id$="-lui-commit"] {
+	color: red;
+	position: absolute;
+	z-index: 1070;
+}
+
+
+.lui-column-bg:before {
+	position: absolute;
+	content: '';
+	display: block;
+	height: 3em;
+	width: 100%;
+	border-radius: 50%;
+	/*top: -10.5px;*/
+	top: 0;
+	z-index: 1061;
+	background-color: rgb(101 221 197);
+	border: 5px black solid;
+}
+
+.lui-column-bg {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	/* margin: 100px auto;*/
+	background-color: transparent;
+	background-color: rgba(0, 199, 159, 0.2);
+}
+
+.lui-column-bg:after {
+	position: absolute;
+	content: '';
+	display: block;
+	height: 3em;
+	width: 100%;
+	border-radius: 50%;
+	/*bottom: -10px;*/
+	/* bottom: 0;*/
+	top: 0;
+	background-color: rgb(0, 255, 204);
+}
+
+/*
+.lui-inner::before {
+    position: absolute;
+    content: '';
+    display: block;
+    height: 3em;
+    width: 100%;
+    !*background-color: rgb(0, 199, 159);*!
+    background-color: greenyellow;
+    border-radius: 50%;
+   !* top: -5px*!;
+    z-index: 1070;
+    border: 2px red solid;
+}
+*/
+
+
+.lui-inner {
+	position: absolute;
+	z-index: 1062;
+	bottom: -15px;
+	width: 100%;
+	height: 3em;
+	/*background-image: linear-gradient(to top, rgb(0, 255, 204), rgb(0, 199, 159));*/
+	background-image: linear-gradient(to top, yellow, rgb(0, 199, 159));
+	text-align: center;
+
+	content: '';
+	border-radius: 12%;
+}
+
+.lui-inner:after {
+	border: 5px black solid;
+	position: absolute;
+	content: '';
+	display: block;
+	height: 3em;
+	width: 100%;
+	border-radius: 50%;
+	/*background-color: #e4e4e4;*/
+	background-color: rgb(101 221 197);
+	bottom: -10px;
+}
+
+#myModal {
+	/*position: absolute;*/
+	/*position: static;*/
+	/*position: relative;*/
+	/*position: sticky;*/
+	/*margin: 0 auto;*/
+	/*marin:0;*/
+	/*padding: 0;*/
+	top: 8% !important;
+	/*top:0 !important;*/
+	/*bottom:10% !important;*/
+	left: 45%;
+	width: 45%;
+	height: 90%;
+	max-height: 90% !important;
+}
+
+.modal-body {
+	padding: 0;
+	height: 450px;
+	max-height: 450px !important;
+	/* resize: both; */
+	resize: vertical;
+	overflow: auto;
+}
+
+#myModal .modal-body {
+	margin: 0;
+	padding: 0;
+	height: 60%;
+	max-height: 60% !important;
+}
+
+#exportDiv .modal-body {
+	padding: 0;
+	height: 600px;
+	max-height: 600px !important;
+}
+
+.modal-footer {
+	margin: 0;
+	padding: 0;
+	background: none;
+	background-color: transparent !important;
+}
+
+.increaseLogPre {
+	/*float: right;*/
+	margin: 0;
+	padding: 0;
+	color: blue;
+	font-weight: bolder;
+	background-color: white;
+	text-align: center;
+	width: 100%;
+	height: 80px;
+	overflow: scroll;
+}
+
+.authorizationLogPre {
+	text-align: left;
+	height: 100px;
+	overflow: scroll;
+}
+
+.myPagination {
+	margin: 0 !important;
+	padding: 0 !important;
+	/*border:2px red solid;*/
+}
+
+.footMenuDiv {
+	overflow: scroll;
+	width: 100%;
+	height: 150px;
+}
+
+/*禁止选择*/
+.prohibitSelection {
+	/* 禁止 DIV 中的文本被鼠标选中 */
+	-moz-user-select: none;
+	/* 禁止 DIV 中的文本被鼠标选中 */
+	-ms-user-select: none;
+	/* 禁止 DIV 中的文本被鼠标选中 */
+	user-select: none;
+	-webkit-user-select: none;
+}
+
+/*.exportDivSize{*/
+/*    !*position: relative !important;*!*/
+/*    z-index: 10000 !important;*/
+/*}*/
+/*.modal-header{*/
+/*    background-color: red;*/
+/*    position: sticky !important;*/
+/*    z-index: 10001 !important;*/
+/*}*/
+
+#myTable table {
+	/* padding: 0 auto;
+    border-collapse: collapse; */
+}
+
+#myTable tbody {
+
+	/* overflow: hidden;
+    text-overflow: ellipsis; */
+}
+
+
+/*选择部分高亮::selection*/
+#myTable tbody tr:hover th,
+#myTable tbody tr:hover th a {
+	/*font-size: 2rem;*/
+	/*font-size: larger;*/
+	font-weight: bolder;
+	/*color: blue;*/
+	color: yellow;
+	/*background-color: #999;*/
+	background-color: #e4e4e4;
+	text-shadow: 2px 2px 8px red;
+}
+
+
+#myTableHead {
+	margin: 0px;
+	background-color: white;
+	position: sticky;
+	/*position:absolute;*/
+	/*position:fixed;*/
+	/*position:relative;*/
+
+	top: 0;
+	left: 0;
+}
+
+#todayChatPointsAce {
+	/*background-color: wh;*/
+	color: red;
+	/*position: fixed;*/
+	/* height: 200px; */
+}
+
+/* 不换行 */
+.noWrap {
+	word-break: keep-all;
+	/* 不换⾏ */
+	white-space: nowrap;
+	/* 不换⾏ */
+
+}
+
+/*table {*/
+/*	　table-layout: fixed;*/
+/*}*/
+/*!*固定布局的算法。在这种算法中，表格和列的宽度取决于col对象的宽度总和，假如没有指定，则会取决于第一行每个单元格的宽度。 　　　　　　　　　　　　　　　　　 假如表格没有指定宽度( width )属性，则表格被呈递的默认宽度为 100% （注意：此样式是关键）*!*/
+/*td {*/
+/*    　　white-space: nowrap;*/
+/*    !*设置内容抵达容器边界会不会转到下一行*!*/
+/*    　　overflow: hidden;*/
+/*    !*不显示超过对象尺寸的内容（这个绝对不能少）,也就是说设置td里面的数据无论有多少，都不会换行*!*/
+/*    　text-overflow: ellipsis;*/
+/*    !*将被隐藏的那部分用省略号代替。*!*/
+/*}*/
+
+#myTable tr th:nth-child(-n+1) {
+	/*background-color: red;*/
+	white-space: nowrap;
+	/* 不换⾏ */
+	overflow: hidden;
+	/*不显示超过对象尺寸的内容（这个绝对不能少）,也就是说设置td里面的数据无论有多少，都不会换行*/
+	text-overflow: ellipsis;
+}
+
+#myTable tr th:nth-child(n+3) {
+	/*background-color: green;*/
+	white-space: nowrap;
+	/* 不换⾏ */
+	overflow: hidden;
+	/*不显示超过对象尺寸的内容（这个绝对不能少）,也就是说设置td里面的数据无论有多少，都不会换行*/
+	text-overflow: ellipsis;
+}
+
+#myTable tr th:nth-child(2) {
+	/*word-break: keep-all;*/
+	/* word-break: break-all; */
+
+	/* white-space: nowrap; */
+	white-space: pre;
+	overflow: hidden;
+	/*    !*不显示超过对象尺寸的内容（这个绝对不能少）,也就是说设置td里面的数据无论有多少，都不会换行*!*/
+	text-overflow: ellipsis;
+	/*将被隐藏的那部分用省略号代替*/
+}
+
+/*#myTable tr th {*/
+
+/*    !*word-break: keep-all;*!*/
+/*    !* 不换⾏ *!*/
+/*    white-space: nowrap;*/
+/*    !* 不换⾏ *!*/
+/*    overflow: hidden;*/
+/*    !*不显示超过对象尺寸的内容（这个绝对不能少）,也就是说设置td里面的数据无论有多少，都不会换行*!*/
+/*    text-overflow: ellipsis;*/
+/*    !*将被隐藏的那部分用省略号代替。*!*/
+/*}*/
+
+
+/*父标签*/
+/*.startButtonId,*/
+.startParentWindow {
+	/*position:relative;*/
+	/*水平居中*/
+	/*margin: 0 auto;*/
+	/*偏移*/
+	/*top: 45%;*/
+	width: 100%;
+	height: 500px;
+	font-size: 50px;
+	background-color: red;
+}
+
+.startButtonId {
+	/* display: none; */
+	width: 100%;
+	height: 500px;
+	font-size: 50px;
+	background-color: white;
+}
+
+:root {
+	--text-default: 20px;
+}
+
+#stopBatchSend {
+	width: 80px;
+	display: none;
+}
+
+#send_message {
+	/* background: white; */
+	/* color: red; */
+	/* font-size: large; */
+}
+
+
+.showLog {
+	position: fixed;
+	width: max-content;
+	font-size: 2rem;
+	z-index: 999;
+	font-weight: bolder;
+	/* text-shadow: h-shadow v-shadow blur color; */
+	text-shadow: 2px 2px 8px red;
+	/* 禁止 DIV 中的文本被鼠标选中 */
+	-moz-user-select: none;
+	/* 禁止 DIV 中的文本被鼠标选中 */
+	-ms-user-select: none;
+	/* 禁止 DIV 中的文本被鼠标选中 */
+	user-select: none;
+	-webkit-user-select: none;
+	line-height: 100%;
+	/* 禁止点击事件 */
+	/* cursor: not-allowed; */
+	cursor: no-drop;
+	pointer-events: none;
+}
+
+.disableSelection {
+	/* 禁止 DIV 中的文本被鼠标选中 */
+	user-select: none;
+	-webkit-user-select: none;
+	line-height: 100%;
+	/* 禁止点击事件 */
+	/* cursor: not-allowed; */
+	cursor: no-drop;
+	pointer-events: none;
+}
+
+.showLog dl img {
+	width: 2rem;
+	height: 2rem;
+}
+
+.showLog dt {
+	font-size: 2em;
+}
+
+.showLog dd {
+	font-size: 2rem;
+}
+
+.showBarrageImg {
+	height: 100%;
+	width: 100%;
+}
+
+/*.showBarrageImg {
+	height: 300px;
+	width: 300px;
+}*/
+
+/* .showLog dl{
+	width: 500px;
+	height: 500px;
+	border: 2px red solid;
+	background-image: url(https://res.afreecatv.com/images/chat/ic_chat_v3.png) 9999em 9999em no-repeat;
+} */
+
+/* .showLog .user_m em.pc {
+    background-position: 0 -211px;
+} */
+/* .showLog dl dt em.pc {
+	background-position: 0 -211px;
+	border: 2px red solid;
+	width: 24px;
+	height: 24px;
+	line-height: 0 !important;
+	display: inline-block;
+	vertical-align: middle;
+	background: url(https://res.afreecatv.com/images/chat/ic_chat_v3.png) 9999em 9999em no-repeat;
+
+	position: fixed;
+	 left: 0;
+	top: 0;
+} */
+
+
+#timeFrequencys {
+	/* color: red; */
+	font-size: 2em;
+}
+
+#stopButtonId,
+#environmentButtonId {
+	color: red;
+}
+
+#batchSend {
+	width: 40%;
+}
+
+
+#upperLimit,
+#inputFrequency,
+#inputTimes,
+#informationSynchronization {
+	width: 60px;
+}
+
+
+#everyPageValue {
+	width: 3rem;
+}
+
+#upperLimit {
+	color: darkred;
+}
+
+/*#basicConfiguration{
+	overflow: scroll;
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	height: 80%;
+}
+*/
+#basicConfiguration,
+#robotConfiguration,
+#detailedConfiguration {
+	margin: 0;
+	padding: 0;
+	height: 80%;
+	/*border: 2px red solid;*/
+	overflow: scroll;
+	position: absolute;
+	width: 100%;
+	bottom: 0;
+	/* border: 2px red solid;overflow-y: scroll;position: absolute;bottom: 0;/* top:0 */
+	/* display: none; */
+
+}
+
+/* 隐藏滚动条 */
+.noScroll::-webkit-scrollbar {
+	width: 0 !important;
+	/* IE 10+ */
+	-ms-overflow-style: none;
+	/* Firefox */
+	overflow: -moz-scrollbars-none;
+}
+
+
+#robotInformationDiv {
+	font-size: 0.9rem;
+	width: 100%;
+	/*height: 50%;*/
+	height: 100%;
+	overflow: scroll;
+	position: absolute;
+	bottom: 0;
+}
+
+
+#showMessage {
+	margin: 0px;
+	padding: 0px;
+
+	/* position: relative;
+    top: 0; */
+	/* 禁止点击事件
+    /* cursor: not-allowed; */
+	cursor: no-drop;
+	pointer-events: none;
+	-webkit-user-select: none;
+	/* 禁止 DIV 中的文本被鼠标选中 */
+	-moz-user-select: none;
+	/* 禁止 DIV 中的文本被鼠标选中 */
+	-ms-user-select: none;
+	/* 禁止 DIV 中的文本被鼠标选中 */
+	user-select: none;
+	/* 禁止 DIV 中的文本被鼠标选中 */
+	/* border: 2px black solid; */
+	width: 95%;
+	word-break: break-word;
+	height: 3rem;
+	color: blue;
+	border: 2px red ridge;
+	/* background-color: white; */
+	/* text-shadow: h-shadow v-shadow blur color;
+     */
+	text-shadow: 5px 5px 8px white;
+	overflow-y: auto;
+}
+
+#showMessage dt,
+dd {
+	font-size: calc(var(--text-default) + var(--text-size) * 2);
+}
+
+/* 旋转标签 */
+.rotateDom {
+	z-index: 200;
+	transform: rotate(-90deg);
+	-ms-transform: rotate(-90deg);
+	/* IE 9 */
+	-moz-transform: rotate(-90deg);
+	/* Firefox */
+	-webkit-transform: rotate(-90deg);
+	/* Safari and Chrome */
+	-o-transform: rotate(-90deg);
+	/* Opera */
+}
+
+
+#testInput {
+	width: 60%;
+	color: blue;
+	resize: none;
+	font-weight: bolder;
+	/* height: 100%; */
+	/* border: 2px red solid; */
+	/* font-size: 20px;*/
+	/* background: none; */
+	/* text-shadow: 2px 2px  white; */
+
+	/* line-height: 100%; */
+}
+
+/* 整个元素透明 */
+.transparent {
+	filter: alpha(opacity=50);
+	/* 标准的css透明度，在大部分的标准浏览器Firefox, Safari, and Opera都有效 */
+	opacity: 0.5;
+	/* 兼容IE解决方案 */
+	-moz-opacity: 0.5;
+	/* 老的Mozilla browsers如NetscapeNavigator.几乎没有可以不需要 */
+	-khtml-opacity: 0.5;
+	/* //兼容老的Safari (1.x) 版本,很少可以不用    */
+}
+
+.fontStyle {
+	background-color: white;
+	color: blue;
+}
+
+
+.transparent2 {
+	filter: alpha(opacity=10);
+	/* 标准的css透明度，在大部分的标准浏览器Firefox, Safari, and Opera都有效 */
+	opacity: 0.1;
+	/* 兼容IE解决方案 */
+	-moz-opacity: 0.1;
+	/* 老的Mozilla browsers如NetscapeNavigator.几乎没有可以不需要 */
+	-khtml-opacity: 0.1;
+	/* //兼容老的Safari (1.x) 版本,很少可以不用    */
+}
+
+.transparent3 {
+	filter: alpha(opacity=0);
+	/* 标准的css透明度，在大部分的标准浏览器Firefox, Safari, and Opera都有效 */
+	opacity: 0;
+	/* 兼容IE解决方案 */
+	-moz-opacity: 0;
+	/* 老的Mozilla browsers如NetscapeNavigator.几乎没有可以不需要 */
+	-khtml-opacity: 0;
+	/* //兼容老的Safari (1.x) 版本,很少可以不用    */
+}
+
+/*ul {*/
+/*    list-style: none;*/
+/*    list-style-type: none;*/
+/*    counter-reset: sectioncounter;*/
+/*}*/
+/*ul li:before {*/
+/*	content: counter(sectioncounter) "、";*/
+/*	counter-increment: sectioncounter;*/
+/*	font-weight: bold;*/
+/*	color: #fa9914;*/
+/*	font-family: HelveticaNeue-Bold, HelveticaNeue;*/
+/*}*/
+/*li {*/
+/*	margin-bottom: 12px;*/
+/*}*/
+#myTabbaleLink {
+	counter-reset: div;
+	/*创建计数器*/
+}
+
+/*#myTabbaleLink li{*/
+/*    min-height:40px;*/
+
+/*}*/
+
+/*#myTabbaleLink a:hover{*/
+/*font-size: larger;*/
+/*font-weight:bolder;*/
+/*    color: blue;*/
+/*    background-color: white;*/
+/*}*/
+
+/*#myTabbaleLink li div span*/
+
+
+/*myTabbaleLink li div:hover*/
+
+#myTabbaleLink li div:hover {
+	color: blue;
+	background-color: white;
+	/*background-color:#e4e4e4;*/
+	/*min-height: 40px;*/
+}
+
+#myTabbaleLink li div:hover>span {
+	font-size: larger;
+	font-weight: bolder;
+}
+
+#myTabbaleLink div div:first-child::before {
+	content: counter(div) ".";
+	counter-increment: div;
+	/*递增计数器*/
+	font-size: 20px;
+	color: blue;
+	/*color: rgba(0, 0, 0, .8);*/
+}
+
+.showBarrageText {
+	font-size: 2rem;
+}
+
+.showBarrage {
+	vertical-align: middle;
+	display: table-cell;
+	background: white;
+	background-image: url('chrome-extension://__MSG_@@extension_id__/img/2.jpeg');
+	background-repeat: no-repeat;
+	/* backgroundPosition: center; */
+	/* background-size: cover; */
+	background-size: 100%;
+	/* -webkit-transition: all 3s;-moz-transition: all 3s;-ms-transition: all 3s;-o-transition: all 3s; */
+	transition-duration: 5s;
+	-moz-transition-duration: 5s;
+	/* Firefox 4 */
+	-webkit-transition-duration: 5s;
+	/* Safari 和 Chrome */
+	-o-transition-duration: 5s;
+	/* Opera */
+	transition-timing-function: linear;
+	-moz-transition-timing-function: linear;
+	/* Firefox 4 */
+	-webkit-transition-timing-function: linear;
+	/* Safari 和 Chrome */
+	-o-transition-timing-function: linear;
+	/* Opera */
+}
+
+#allPageValue,
+#delayInputTextId,
+#nowIndex,
+#lastIndex {
+	background: none;
+	border: none;
+	color: darkred;
+	width: 60px;
+}
+
+.noBorder {
+	background: none;
+	border: none;
+	color: darkred;
+	width: 60px;
+}
+
+#delayInputId {
+	width: 90px;
+	/* background: none; */
+	border: none;
+}
+
+#timeButtonId {
+	width: 100%;
+}
+
+/* ,#robotSetting */
+/*#retrievalButtonId,*/
+/*#barrageButtonId {*/
+/*    color: red;*/
+/*}*/
+
+#stopRetrievalMessage {
+	display: none;
+}
+
+.fullscreenvideo {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	/* bottom: 0; */
+	min-width: 100%;
+	min-height: 100%;
+	width: auto;
+	height: auto;
+	z-index: -100;
+	-webkit-transform: translateX(-50%) translateY(-50%);
+	transform: translateX(-50%) translateY(-50%);
+	-webkit-transition: 1s opacity;
+	transition: 1s opacity;
+}
+
+.videocontainer {
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+	z-index: -100;
+}
+
+.videocontainer:before {
+	content: "";
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	display: block;
+	z-index: -1;
+	top: 0;
+	left: 0;
+	background: rgba(25, 29, 34, .65);
+}
+
+
+.odometer {
+	font-size: 40px;
+}
+
+.labelStyle {
+	display: inline !important;
+}
+
+.iconButton {
+	width: 15px;
+}
+
+.iconButton:hover {
+	width: 30px;
+}
+
+.iconButton:hover>i {
+	font-size: 30px;
+}
+
+label:hover>span,
+#barrageButtonId:hover {
+	color: yellow;
+	text-shadow: 2px 2px 8px red;
+	font-size: larger;
+	font-weight: bolder;
+}
+
+#myTabbalePage label:hover span {
+	color: yellow;
+	text-shadow: 2px 2px 8px red;
+	background-color: white;
+	font-size: larger;
+	font-weight: bolder;
+}
+
+/* Switch开关样式 */
+/* 必须是input为 checkbox class 添加 switch 才能实现以下效果 */
+input[type='checkbox'].switch {
+	outline: none;
+	appearance: none;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	position: relative;
+	width: 40px;
+	height: 20px;
+	background: #ccc;
+	border-radius: 10px;
+	transition: border-color .3s, background-color .3s;
+}
+
+input[type='checkbox'].switch::after {
+	content: '';
+	display: inline-block;
+	width: 1rem;
+	height: 1rem;
+	border-radius: 50%;
+	background: #fff;
+	box-shadow: 0, 0, 2px, #999;
+	transition: .4s;
+	top: 2px;
+	position: absolute;
+	left: 2px;
+}
+
+input[type='checkbox'].switch:checked {
+	background: rgb(19, 206, 102);
+}
+
+/* 当input[type=checkbox]被选中时：伪元素显示下面样式 位置发生变化 */
+input[type='checkbox'].switch:checked::after {
+	content: '';
+	position: absolute;
+	left: 55%;
+	top: 2px;
+}
+
+
+.switch1 {
+	width: 57px !important;
+	height: 28px;
+	position: relative;
+	border: 1px solid #dfdfdf;
+	background-color: #fdfdfd;
+	box-shadow: #dfdfdf 0 0 0 0 inset;
+	border-radius: 20px;
+	background-clip: content-box;
+	display: inline-block;
+	-webkit-appearance: none;
+	user-select: none;
+	outline: none;
+
+}
+
+.switch1:before {
+	content: '';
+	width: 26px;
+	height: 26px;
+	position: absolute;
+
+	top: 0;
+	left: 0;
+	border-radius: 20px;
+	background-color: #fff;
+	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+}
+
+.switch1:checked {
+	border-color: #64bd63;
+	box-shadow: #64bd63 0 0 0 16px inset;
+	background-color: #64bd63;
+}
+
+.switch1:checked:before {
+	left: 30px;
+}
+
+.switch1.switch1-anim {
+	transition: border cubic-bezier(0, 0, 0, 1) 0.4s, box-shadow cubic-bezier(0, 0, 0, 1) 0.4s;
+}
+
+.switch1.switch1-anim:before {
+	transition: left 0.3s;
+}
+
+.switch1.switch1-anim:checked {
+	box-shadow: #64bd63 0 0 0 16px inset;
+	background-color: #64bd63;
+	transition: border ease 0.4s, box-shadow ease 0.4s, background-color ease 1.2s;
+}
+
+.switch1.switch1-anim:checked:before {
+	transition: left 0.3s;
+}
+
+.displayFlexDiv {
+	width: 300px;
+	display: flex;
+}
+
+.spanDiv {
+	width: 250px;
+	font-size: 15px;
+}
+
+flexDiv {
+	flex: 1;
+}
+
+.myTabbalePageDiv {
+	height: 400px;
+}
+
+.myTabbalePageP {
+	/*border: 2px red solid;*/
+	overflow: scroll;
+	font-size: 30px;
+	// width: 280px;
+	width: 100px;
+	height: 230px;
+	line-height: 30px;
+}
+
+.myTabbaleSelectDiv {
+	width: 100%;
+	position: absolute;
+	bottom: 0;
+}
+
+.myTabbaleSelectDivCheckbox {
+	font-size: 15px;
+}
