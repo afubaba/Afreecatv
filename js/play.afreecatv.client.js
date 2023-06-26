@@ -101,8 +101,8 @@ var htmlLang = $("html").attr("lang");
 var pageLink="play.afreecatv.zh_CN_client.html"; 
 
 
-sessionStorage.setItem("randomURL",localHost +"LOL.html");
-sessionStorage.setItem("videoURL",localHost +"video/background.mp4");
+sessionStorage.setItem("randomURL",domain +"LOL.html");
+sessionStorage.setItem("videoURL",domain +"video/background.mp4");
 var videoURL  ;
 
 
@@ -114,7 +114,7 @@ if (htmlLang == "ko") {
 	pageLink="play.afreecatv_ko_KR.client.html"
 }
 
-const htmlURL = localHost + pageLink;
+const htmlURL = domain + pageLink;
 $.get(htmlURL, function(result) {
 
 	let broadcast_information = document.getElementsByClassName("broadcast_information")[0];
@@ -187,7 +187,7 @@ function testStart() {
 
 		//extensionId = sessionStorage.getItem("extensionId");
 		//extensionIdLink = "chrome-extension://" + extensionId + "/";
-		extensionIdLink = "http://localhost:8888/"
+
 		// dynamicLoading.css(extensionIdLink + "libs/google/code-prettify/1.0.5/prettify.min.css");
 		// // bootstrap-icons
 		// dynamicLoading.css(extensionIdLink + "libs/bootstrap-icons/1.10.2/bootstrap-icons.css");
@@ -203,10 +203,10 @@ function testStart() {
 		// dynamicLoading.js("https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js");
 
 
-		const indexdbURL = localHost + "js/play.afreecatv.client.indexdb.js";
-		const mysqlURL = localHost + "js/play.afreecatv.client.mysql.js";
-		const websqlURL = localHost + "js/play.afreecatv.client.websql.js";
-		const settingURL = localHost + "js/play.afreecatv.client.setting.indexdb.js"
+		const indexdbURL = domain + "js/play.afreecatv.client.indexdb.js";
+		const mysqlURL = domain + "js/play.afreecatv.client.mysql.js";
+		const websqlURL = domain + "js/play.afreecatv.client.websql.js";
+		const settingURL = domain + "js/play.afreecatv.client.setting.indexdb.js"
 		sessionStorage.setItem("paSettingIndexdbURL", settingURL);
 		sessionStorage.setItem("paMysqlURL", mysqlURL);
 		sessionStorage.setItem("paWebsqlURL", websqlURL);
@@ -218,7 +218,7 @@ function testStart() {
 		pageLang = sessionStorage.getItem("pageLang");
 		//主动设置为韩语
 		//pageLang="zh";
-		$.getJSON(localHost + "json/locales/" + pageLang + "/play/package.json", function(result) {
+		$.getJSON(domain + "json/locales/" + pageLang + "/play/package.json", function(result) {
 			packageResult = result;
 			var paSettingIndexdbURL = sessionStorage.getItem("paSettingIndexdbURL");
 			dynamicLoading.js(paSettingIndexdbURL);
@@ -734,8 +734,8 @@ var isHoverAuthorizationLogPre;
 //环境部署
 function environmentFunction() {
 
-	aurelionSolImgURL = localHost + "img/lol/AurelionSol.png";
-	showBarrageImgURL = localHost + "img/2.jpeg";
+	aurelionSolImgURL = domain + "img/lol/AurelionSol.png";
+	showBarrageImgURL = domain + "img/2.jpeg";
 
 	// window.addEventListener('load', () => {});
 
