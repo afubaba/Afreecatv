@@ -101,6 +101,7 @@ var htmlLang = $("html").attr("lang");
 var pageLink="play.afreecatv.zh_CN_client.html"; 
 
 
+sessionStorage.setItem("randomURL",localHost +"LOL.html");
 sessionStorage.setItem("videoURL",localHost +"video/background.mp4");
 var videoURL  ;
 
