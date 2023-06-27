@@ -1486,7 +1486,7 @@ function environmentFunction() {
 		//$("#commandAuthorityManagementModal").width();
 		
 		if ($("#commandAuthorityManagementModal").width() >= 200) {
-			console.log("resize调整");
+		
 			$("#commandAuthorityManagementModal>.modal-body").height($("#commandAuthorityManagementModal")
 			.height() * 0.5);
 			//	$("#myTabbalePage").height($("#commandAuthorityManagementModal").height()*0.6);
