@@ -999,23 +999,7 @@ function environmentFunction() {
 		"#webplayer_contents").width())) / 2;
 	getDomById('mainFaceDiv').style = "position:fixed;right:" + mainFaceDivRight +
 		"px;bottom:0;width: 700px;;word-break:break-word;display:none;";
-	window.onresize = function() {
-		getDomById('actionbox').style.height = ($("body").height() - $("#myDiv").offset().top) + "px";
-		getDomById('chat_area').style.bottom = $("body").height() - $("#actionbox").offset().top + "px";
-		mainFaceDivRight = $("#chat_area").width() + $("#emoticonArea").width() + ($("body").width() - ($(
-			"#webplayer_contents").width())) / 2;
-		getDomById('mainFaceDiv').style.right = mainFaceDivRight + "px;";
 
-		//设置命令行的选项宽度
-		//getDomByClassName('myTabbalePageP').setAttribute('width',);
-		//$(".spanDiv").width($("#commandAuthorityManagementModal").width()/4)
-		//$("#myTabbaleLink").width($("#commandAuthorityManagementModal").width()/2)
-		$("#myTabbaleLink,.spanDiv,.displayFlexDiv").width($("#commandAuthorityManagementModal").width() * 0.5);
-
-		$("#myTabbalePage").css("margin-left", $("#myTabbaleLink").width());
-		$(".myTabbalePageP").css("left", "0").css("width", $("#commandAuthorityManagementModal").width() - $(
-			"#myTabbaleLink").width());
-	}
 
 	$("#face-people").parent().css("height", "20em");
 	$("#face-people,#object,#nature-animal,#travel-activity,#symbol,#other,#activity,#flags").css("overflow", "scroll");
@@ -1375,7 +1359,7 @@ function environmentFunction() {
 		//查询状态
 
 		//默认状态
-		if (pageLang == "ko") {
+		if (pageLang == "ko" || pageLang == "ko_KR") {
 			$("#myTabbalePage").append("<div class='tab-pane noScroll myTabbalePageDiv' id='chapter" + linkIndex +
 				"' > <p class='fontStyle myTabbalePageP'> " + obData + "</p>" +
 				"<div class='fontStyle myTabbaleSelectDiv' ><select onchange='changeCommandAuthorityManagementCustomSelectFunction(" +
@@ -1432,7 +1416,7 @@ function environmentFunction() {
 				"<button id='applyAllBtn' name='applyAllBtn' class='btn btn-danger applyAllBtn' onclick='applyAllBtnFunction(" +
 				linkIndex +
 				")' data-loading-text='Applying' autocomplete='off' title='모든 명령에 라이센스 적용'>모든 명령에 라이센스 적용</button></div></div>"
-				);
+			);
 
 		} else {
 			$("#myTabbalePage").append("<div class='tab-pane noScroll myTabbalePageDiv' id='chapter" + linkIndex +
@@ -1491,7 +1475,7 @@ function environmentFunction() {
 				"<button id='applyAllBtn' name='applyAllBtn' class='btn btn-danger applyAllBtn' onclick='applyAllBtnFunction(" +
 				linkIndex +
 				")' data-loading-text='Applying' autocomplete='off' title='应用授权到全部命令'>应用授权到全部命令</button></div></div>"
-				);
+			);
 
 		}
 
@@ -1562,7 +1546,28 @@ function environmentFunction() {
 	//默认开启聊天
 	// getDomById('retrievalButtonId').click();
 
+	setTimeout(function() {
+		//window.addEventListener('resize', function() {});
 
+		window.onresize = function() {
+
+			getDomById('actionbox').style.height = ($("body").height() - $("#myDiv").offset().top) + "px";
+			getDomById('chat_area').style.bottom = $("body").height() - $("#actionbox").offset().top + "px";
+			mainFaceDivRight = $("#chat_area").width() + $("#emoticonArea").width() + ($("body").width() - (
+				$("#webplayer_contents").width())) / 2;
+			getDomById('mainFaceDiv').style.right = mainFaceDivRight + "px;";
+
+			//设置命令行的选项宽度
+			//getDomByClassName('myTabbalePageP').setAttribute('width',);
+			//$(".spanDiv").width($("#commandAuthorityManagementModal").width()/4)
+			//$("#myTabbaleLink").width($("#commandAuthorityManagementModal").width()/2)
+			$("#myTabbaleLink,.spanDiv,.displayFlexDiv").width($("#commandAuthorityManagementModal")
+				.width() * 0.5);
+			$("#myTabbalePage").css("margin-left", $("#myTabbaleLink").width());
+			$(".myTabbalePageP").css("left", "0").css("width", $("#commandAuthorityManagementModal")
+				.width() - $("#myTabbaleLink").width());
+		}
+	}, 5000);
 }
 
 function changeSpeed() {
@@ -2961,6 +2966,7 @@ var tbName = $("#szBjId").val();
 tbName = !isNaN(tbName.substr(0, 1)) ? "cpm_" + tbName : tbName;
 
 
+
 var message;
 var delayInputFrequency;
 
@@ -4187,7 +4193,7 @@ const object = new Set([
 		}
 	],
 	[
-		["!눈물", "!악어의눈물", "!😩", "!☹"], (data) => {
+		["!눈물", "!악어의눈물", "!😩", "!☹", "!위로"], (data) => {
 			// {
 			//     "tex": "!☹",
 			//     "idt": "1057123764",
@@ -4204,6 +4210,26 @@ const object = new Set([
 
 				if (callbackData.isAuthority) {
 					sendMessageCustom("💧🐊악어의 눈물", 1, 5);
+					// let arrs = [
+					// 	"위층의 학우들은 단념하지 마라.",
+
+					// 	"생활 속의 뜻대로 되지 않는 일은 십중팔구이다.",
+
+					// 	"살다 보면 이런저런 좌절을 겪는다.",
+
+					// 	"도박은 사람을 해치고, 월드컵에서 멀리 떨어진다.",
+
+					// 	"생활에는 벗어날 수 없는 곤경이 없다",
+
+					// 	"이런 굴곡은 미래의 더 빛나는 너만을 이룰 뿐이다"
+					// ]
+					// let comfortIntervalIndex=0;
+					// comfortInterval = setInterval(function() {
+					// 	arrs[comfortIntervalIndex]
+
+					// }, 5000);
+
+
 				}
 			});
 			// console.log(data);
