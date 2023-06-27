@@ -30,17 +30,18 @@ getBackURLInterval = setInterval(function() {
 			'background-size': 'cover'
 		}
 		changeBackFunction('transparent');
-		
+
 		//欢迎页
 		let bodyClientWidth = document.body.clientWidth;
 		let bodyClientHeight = document.body.clientHeight;
 		showBarrageFunction(
-		    "<div class='alert alert-block disableSelection showBarrage'style='background-image:url(" + backSrc +
-		    ");height:" +
-		    bodyClientHeight + "px;'><h1 style='font-size:300px;'>" + "按时享受" +
-		    "</h1> </div>"
+			"<div class='alert alert-block disableSelection showBarrage'style='background-image:url(" +
+			backSrc +
+			");height:" +
+			bodyClientHeight + "px;'><h1 style='font-size:300px;'>" + "按时享受" +
+			"</h1> </div>"
 		);
-		
+
 		//背景图地址
 		//背景图
 		// setTimeout(function() {
@@ -97,21 +98,21 @@ var lastStoreType;
 
 pageLang = sessionStorage.setItem("pageLang", "zh");
 var htmlLang = $("html").attr("lang");
- //中文控制
-var pageLink="play.afreecatv.zh_CN_client.html"; 
+//中文控制
+var pageLink = "play.afreecatv.zh_CN_client.html";
 
 
-sessionStorage.setItem("randomURL",domain +"LOL.html");
-sessionStorage.setItem("videoURL",domain +"video/background.mp4");
-var videoURL  ;
+sessionStorage.setItem("randomURL", domain + "LOL.html");
+sessionStorage.setItem("videoURL", domain + "video/background.mp4");
+var videoURL;
 
 
 //htmlLang="ko";
 
-if (htmlLang == "ko") {
+if (htmlLang == "ko" || htmlLang == "ko_KR") {
 	pageLang = sessionStorage.setItem("pageLang", htmlLang);
 	//韩文控制
-	pageLink="play.afreecatv_ko_KR.client.html"
+	pageLink = "play.afreecatv_ko_KR.client.html"
 }
 
 const htmlURL = domain + pageLink;
@@ -120,18 +121,18 @@ $.get(htmlURL, function(result) {
 	let broadcast_information = document.getElementsByClassName("broadcast_information")[0];
 	broadcast_information.innerHTML = result + broadcast_information.innerHTML;
 	//$('.broadcast_information').html(result+$('.broadcast_information').html());
-	setTimeout(function(){
-		
-			
-			
-			//执行点击子窗口初始化
-			document.querySelector("#startButtonId").click();
-			
-		
-			//<a
-			
-	},1000);
-	
+	setTimeout(function() {
+
+
+
+		//执行点击子窗口初始化
+		document.querySelector("#startButtonId").click();
+
+
+		//<a
+
+	}, 1000);
+
 });
 
 
@@ -1374,7 +1375,7 @@ function environmentFunction() {
 		//查询状态
 
 		//默认状态
-		if(pageLang=="ko"){
+		if (pageLang == "ko") {
 			$("#myTabbalePage").append("<div class='tab-pane noScroll myTabbalePageDiv' id='chapter" + linkIndex +
 				"' > <p class='fontStyle myTabbalePageP'> " + obData + "</p>" +
 				"<div class='fontStyle myTabbaleSelectDiv' ><select onchange='changeCommandAuthorityManagementCustomSelectFunction(" +
@@ -1430,9 +1431,10 @@ function environmentFunction() {
 				linkIndex + ");' tiltle='반대 선택'>반대 선택</li></div>" +
 				"<button id='applyAllBtn' name='applyAllBtn' class='btn btn-danger applyAllBtn' onclick='applyAllBtnFunction(" +
 				linkIndex +
-				")' data-loading-text='Applying' autocomplete='off' title='모든 명령에 라이센스 적용'>모든 명령에 라이센스 적용</button></div></div>");
-			
-		}else{
+				")' data-loading-text='Applying' autocomplete='off' title='모든 명령에 라이센스 적용'>모든 명령에 라이센스 적용</button></div></div>"
+				);
+
+		} else {
 			$("#myTabbalePage").append("<div class='tab-pane noScroll myTabbalePageDiv' id='chapter" + linkIndex +
 				"' > <p class='fontStyle myTabbalePageP'> " + obData + "</p>" +
 				"<div class='fontStyle myTabbaleSelectDiv' ><select onchange='changeCommandAuthorityManagementCustomSelectFunction(" +
@@ -1488,10 +1490,11 @@ function environmentFunction() {
 				linkIndex + ");' tiltle='反选'>反选</li></div>" +
 				"<button id='applyAllBtn' name='applyAllBtn' class='btn btn-danger applyAllBtn' onclick='applyAllBtnFunction(" +
 				linkIndex +
-				")' data-loading-text='Applying' autocomplete='off' title='应用授权到全部命令'>应用授权到全部命令</button></div></div>");
-			
+				")' data-loading-text='Applying' autocomplete='off' title='应用授权到全部命令'>应用授权到全部命令</button></div></div>"
+				);
+
 		}
-		
+
 	}
 	//修改数组按照长度顺序
 	localArrayData.sort((a, b) => a.length - b.length);
@@ -1789,169 +1792,169 @@ function showTipBarrageFunction(text) {
 // //发送一个提示
 
 function showBarrageFunction(text) {
-    //弹幕数组
-    var showLogArray = [];
-    // $('body').hide(1000).show(2000);
-    // $('#chat_area').fadeOut($('#delayInputTextId').val()*2).fadeIn($('#delayInputTextId').val());
-    showLogArray.push(text);
-    createShowLogs();
-    //只能清理弹幕
-    if ($('.showLog').length > 198) {
-        console.log('清理屏幕弹幕');
-        $('#webplayer').prevAll('div').remove();
-        // for (var i=0;i<$('#webplayer').prevAll('div').length;i++){
-        //     if ($('#webplayer').prevAll('div')[i].offsetLeft<=$('body').clientWidth/2){
-        //         $('#webplayer').prevAll('div')[i].remove();
-        //     }
-        //
-        // }
-        // for (var i=0;i<$('#webplayer').prevAll('div').length;i++){
-        //     if ($('#webplayer').prevAll('div')[i].offsetLeft<=($('#webplayer').prevAll('div')[i].length+20)){
-        //         $('#webplayer').prevAll('div')[i].remove();
-        //     }
-        //
-        // }
-    }
+	//弹幕数组
+	var showLogArray = [];
+	// $('body').hide(1000).show(2000);
+	// $('#chat_area').fadeOut($('#delayInputTextId').val()*2).fadeIn($('#delayInputTextId').val());
+	showLogArray.push(text);
+	createShowLogs();
+	//只能清理弹幕
+	if ($('.showLog').length > 198) {
+		console.log('清理屏幕弹幕');
+		$('#webplayer').prevAll('div').remove();
+		// for (var i=0;i<$('#webplayer').prevAll('div').length;i++){
+		//     if ($('#webplayer').prevAll('div')[i].offsetLeft<=$('body').clientWidth/2){
+		//         $('#webplayer').prevAll('div')[i].remove();
+		//     }
+		//
+		// }
+		// for (var i=0;i<$('#webplayer').prevAll('div').length;i++){
+		//     if ($('#webplayer').prevAll('div')[i].offsetLeft<=($('#webplayer').prevAll('div')[i].length+20)){
+		//         $('#webplayer').prevAll('div')[i].remove();
+		//     }
+		//
+		// }
+	}
 
-    //创建dom
-    function createShowLogs() {
-        let webplayer = getDomById('webplayer');
-        let chatBoxHeight = $('#chatbox').height();
-        let htmlWidth = $('html').width();
-        //每个dom应该的高度
-        let topHeight = chatBoxHeight / 2 / showLogArray.length;
-        // parseInt(Math.random() * 1000 / 1 + 1);
-        //body的高度
-        var bodyHeight = $('body').height();
-        //根据数量布局
-        for (let i = 0; i < showLogArray.length; i++) {
-            let randomNo;
+	//创建dom
+	function createShowLogs() {
+		let webplayer = getDomById('webplayer');
+		let chatBoxHeight = $('#chatbox').height();
+		let htmlWidth = $('html').width();
+		//每个dom应该的高度
+		let topHeight = chatBoxHeight / 2 / showLogArray.length;
+		// parseInt(Math.random() * 1000 / 1 + 1);
+		//body的高度
+		var bodyHeight = $('body').height();
+		//根据数量布局
+		for (let i = 0; i < showLogArray.length; i++) {
+			let randomNo;
 
-            function getRandNo() {
-                randomNo = parseInt(Math.random() * bodyHeight / 1 + 1);
-                if (document.getElementById('showLog' + randomNo) != null) {
-                    // console.log('重复的id：showLog'+randomNo+'正在重新创建');
-                    getRandNo();
-                    // $('#showLog' + randomNo).remove();
-                }
-                // console.log('不存在的id：showLog'+randomNo+'进入下一步');
-                return randomNo;
-            }
+			function getRandNo() {
+				randomNo = parseInt(Math.random() * bodyHeight / 1 + 1);
+				if (document.getElementById('showLog' + randomNo) != null) {
+					// console.log('重复的id：showLog'+randomNo+'正在重新创建');
+					getRandNo();
+					// $('#showLog' + randomNo).remove();
+				}
+				// console.log('不存在的id：showLog'+randomNo+'进入下一步');
+				return randomNo;
+			}
 
-            //获得一个不重复的id
-            randomNo = getRandNo();
-            //清除重复的
-            createSingleShowLog('showLog' + randomNo, showLogArray[i]);
-            // $('#showLog' + (i + 1)).offset({top: topHeight * (i + 1),left:htmlWidth});
-            $('#showLog' + randomNo).offset({
-                // top: randomNo,
-                left: htmlWidth
-            });
-            runShowLog('#showLog' + randomNo);
-            // domArrary.push();
-
-
-            // showLogArray.remove('11');
-            // showLogArray.remove(showLogArray[i]);
-
-            // showLogArray. shift();
-        }
-        // runShowLog('#showLog1');
-        //创建单个dom
-        function createSingleShowLog(id, text) {
-            let showLogDivDom = document.createElement('div');
-
-            //showLogDivDom.style.color = $('#background_color').val()
-            showLogDivDom.style.color = getRandomColor();
-            // showLogDivDom.style.fontSize="300px";
-            showLogDivDom.id = id;
-            showLogDivDom.className = 'showLog';
-            showLogDivDom.innerHTML = text;
-            // showLogDivDom.style.backgroundColor='white';
-            document.body.insertBefore(showLogDivDom, webplayer);
-        }
-
-    }
+			//获得一个不重复的id
+			randomNo = getRandNo();
+			//清除重复的
+			createSingleShowLog('showLog' + randomNo, showLogArray[i]);
+			// $('#showLog' + (i + 1)).offset({top: topHeight * (i + 1),left:htmlWidth});
+			$('#showLog' + randomNo).offset({
+				// top: randomNo,
+				left: htmlWidth
+			});
+			runShowLog('#showLog' + randomNo);
+			// domArrary.push();
 
 
-    //运行dom
-    function runShowLog(id) {
-        let i = $('html').width();
-        // if ('undefined' != typeof showLogTimeout) {
-        //     clearTimeout(showLogTimeout);
-        // }    //隐藏所有
+			// showLogArray.remove('11');
+			// showLogArray.remove(showLogArray[i]);
+
+			// showLogArray. shift();
+		}
+		// runShowLog('#showLog1');
+		//创建单个dom
+		function createSingleShowLog(id, text) {
+			let showLogDivDom = document.createElement('div');
+
+			//showLogDivDom.style.color = $('#background_color').val()
+			showLogDivDom.style.color = getRandomColor();
+			// showLogDivDom.style.fontSize="300px";
+			showLogDivDom.id = id;
+			showLogDivDom.className = 'showLog';
+			showLogDivDom.innerHTML = text;
+			// showLogDivDom.style.backgroundColor='white';
+			document.body.insertBefore(showLogDivDom, webplayer);
+		}
+
+	}
 
 
-        //  var $chatboxLegt=$('#chatbox').offset().left;
-        // var $domIdWidth= $(id).width();
-        let delayInputTextId = $('#delayInputTextId').val();
-        //弹幕速度时间范围delayInputTextId >= 1000 ? 1000 : delayInputTextId;
-        let minDelay = 500;
-        let maxDelay = 2000;
-        let showLogDelay = delayInputTextId < minDelay || delayInputTextId > maxDelay ? delayInputTextId < minDelay ?
-            minDelay : maxDelay : delayInputTextId;
-        showLogSetTimeout(id);
-        var deg = 0;
-
-        function showLogSetTimeout(id) {
-
-            var showLogTimeout = setTimeout(function () {
-                //突出显示
-                i -= 800;
-                deg = deg + 90;
-                // .css("transition-duration", "5s")
-                // $("body").css("transform", "rotateX(" + deg + "deg)").css(
-                // 	"transition-timing-function", "ease-in");
-                // $("body").css("transform", "rotateY(" + deg + "deg)").css(
-                // 	"transition-timing-function", "ease-in");
+	//运行dom
+	function runShowLog(id) {
+		let i = $('html').width();
+		// if ('undefined' != typeof showLogTimeout) {
+		//     clearTimeout(showLogTimeout);
+		// }    //隐藏所有
 
 
-                // $(id).css("transform", "rotateX(-" + deg + "deg)").css("transition-duration", "5s").css(
-                // 	"transition-timing-function", "ease-in");
-                $(id).css("transform", "rotateY(-" + deg + "deg)").css("transition-duration", "5s").css(
-                    "transition-timing-function", "ease-in");
+		//  var $chatboxLegt=$('#chatbox').offset().left;
+		// var $domIdWidth= $(id).width();
+		let delayInputTextId = $('#delayInputTextId').val();
+		//弹幕速度时间范围delayInputTextId >= 1000 ? 1000 : delayInputTextId;
+		let minDelay = 500;
+		let maxDelay = 2000;
+		let showLogDelay = delayInputTextId < minDelay || delayInputTextId > maxDelay ? delayInputTextId < minDelay ?
+			minDelay : maxDelay : delayInputTextId;
+		showLogSetTimeout(id);
+		var deg = 0;
 
-                // $(id).css("transform", "rotate3d(1,2,1,-"+deg+"deg)").css("transition-duration", "5s").css(
-                // 					"transition-timing-function", "ease-in");
+		function showLogSetTimeout(id) {
 
-                // $(id).css("transform", "scale3d(1,1,2)").css("transition-duration", "5s").css(
-                // 					"transition-timing-function", "ease-in");
-
-                $(id).offset({
-                    left: i
-                });
-                //10秒后自动隐藏
-                // setTimeout(function () {
-                //     $(id).remove();
-                // }, 10000);
-                if (i > -$(id).width()) {
-                    showLogSetTimeout(id);
-                    // console.log("1结束");
-                }
-
-                //删除已经显示的
-                // deleteShowLog(id);
-            }, showLogDelay);
-        }
-    }
+			var showLogTimeout = setTimeout(function() {
+				//突出显示
+				i -= 800;
+				deg = deg + 90;
+				// .css("transition-duration", "5s")
+				// $("body").css("transform", "rotateX(" + deg + "deg)").css(
+				// 	"transition-timing-function", "ease-in");
+				// $("body").css("transform", "rotateY(" + deg + "deg)").css(
+				// 	"transition-timing-function", "ease-in");
 
 
-    // 销毁dom
-    function deleteShowLog(id) {
-        // console.log(id);
-        $(id).remove();
-        $('body:first-child').remove();
-        // $(id).empty();
-        console.log(showLogArray.length);
-        // if(showLogArray.length>1){
-        if ('undefined' != typeof showLogTimeout) {
-            clearTimeout(showLogTimeout);
-        }
-        showLogArray.shift();
-        // }
+				// $(id).css("transform", "rotateX(-" + deg + "deg)").css("transition-duration", "5s").css(
+				// 	"transition-timing-function", "ease-in");
+				$(id).css("transform", "rotateY(-" + deg + "deg)").css("transition-duration", "5s").css(
+					"transition-timing-function", "ease-in");
 
-        console.log(showLogArray)
-    }
+				// $(id).css("transform", "rotate3d(1,2,1,-"+deg+"deg)").css("transition-duration", "5s").css(
+				// 					"transition-timing-function", "ease-in");
+
+				// $(id).css("transform", "scale3d(1,1,2)").css("transition-duration", "5s").css(
+				// 					"transition-timing-function", "ease-in");
+
+				$(id).offset({
+					left: i
+				});
+				//10秒后自动隐藏
+				// setTimeout(function () {
+				//     $(id).remove();
+				// }, 10000);
+				if (i > -$(id).width()) {
+					showLogSetTimeout(id);
+					// console.log("1结束");
+				}
+
+				//删除已经显示的
+				// deleteShowLog(id);
+			}, showLogDelay);
+		}
+	}
+
+
+	// 销毁dom
+	function deleteShowLog(id) {
+		// console.log(id);
+		$(id).remove();
+		$('body:first-child').remove();
+		// $(id).empty();
+		console.log(showLogArray.length);
+		// if(showLogArray.length>1){
+		if ('undefined' != typeof showLogTimeout) {
+			clearTimeout(showLogTimeout);
+		}
+		showLogArray.shift();
+		// }
+
+		console.log(showLogArray)
+	}
 
 
 };
