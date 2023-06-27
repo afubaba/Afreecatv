@@ -1546,28 +1546,39 @@ function environmentFunction() {
 	//默认开启聊天
 	// getDomById('retrievalButtonId').click();
 
-	setTimeout(function() {
-		//window.addEventListener('resize', function() {});
 
-		window.onresize = function() {
+	//window.addEventListener('resize', function() {});
 
-			getDomById('actionbox').style.height = ($("body").height() - $("#myDiv").offset().top) + "px";
-			getDomById('chat_area').style.bottom = $("body").height() - $("#actionbox").offset().top + "px";
-			mainFaceDivRight = $("#chat_area").width() + $("#emoticonArea").width() + ($("body").width() - (
-				$("#webplayer_contents").width())) / 2;
-			getDomById('mainFaceDiv').style.right = mainFaceDivRight + "px;";
+	window.onresize = function() {
 
-			//设置命令行的选项宽度
-			//getDomByClassName('myTabbalePageP').setAttribute('width',);
-			//$(".spanDiv").width($("#commandAuthorityManagementModal").width()/4)
-			//$("#myTabbaleLink").width($("#commandAuthorityManagementModal").width()/2)
+		getDomById('actionbox').style.height = ($("body").height() - $("#myDiv").offset().top) + "px";
+		getDomById('chat_area').style.bottom = $("body").height() - $("#actionbox").offset().top + "px";
+		mainFaceDivRight = $("#chat_area").width() + $("#emoticonArea").width() + ($("body").width() - (
+			$("#webplayer_contents").width())) / 2;
+		getDomById('mainFaceDiv').style.right = mainFaceDivRight + "px;";
+
+		//设置命令行的选项宽度
+		//getDomByClassName('myTabbalePageP').setAttribute('width',);
+		//$(".spanDiv").width($("#commandAuthorityManagementModal").width()/4)
+		//$("#myTabbaleLink").width($("#commandAuthorityManagementModal").width()/2)
+		
+		//$("#commandAuthorityManagementModal").width();
+		
+		if ($("#commandAuthorityManagementModal").width() >= 200) {
+			console.log("resize调整");
+			$("#commandAuthorityManagementModal>.modal-body").height($("#commandAuthorityManagementModal")
+			.height() * 0.5);
+			//	$("#myTabbalePage").height($("#commandAuthorityManagementModal").height()*0.6);
+		
 			$("#myTabbaleLink,.spanDiv,.displayFlexDiv").width($("#commandAuthorityManagementModal")
 				.width() * 0.5);
 			$("#myTabbalePage").css("margin-left", $("#myTabbaleLink").width());
 			$(".myTabbalePageP").css("left", "0").css("width", $("#commandAuthorityManagementModal")
-				.width() - $("#myTabbaleLink").width());
+				.width() - $(
+					"#myTabbaleLink").width());
 		}
-	}, 5000);
+	}
+
 }
 
 function changeSpeed() {
