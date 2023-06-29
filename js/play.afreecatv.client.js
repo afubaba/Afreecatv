@@ -784,17 +784,16 @@ function mainFaceFunction() {
 
 //手动点击恢复默认配置
 function environmentButtonFunction() {
-
     //初始化数据
     getDomById('inputTimes').value = 1;
+    handInputTimes=1; //主动设置输入的值
     getDomById('inputFrequency').value = 0.1;
+    handInputFrequency=0.1;//主动设置输入的值
     // $("input[name='timesPrompt']");
     var timesPrompt = getDomByName("timesPrompt")[0];
     timesPrompt.checked = false;
     var chrysanthemumCheckBox = getDomById("chrysanthemumCheckBox");
     chrysanthemumCheckBox.checked = false;
-
-
 }
 
 var isHoverIncreaseLogPre;
