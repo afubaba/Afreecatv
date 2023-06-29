@@ -44,8 +44,6 @@ var isUpdate = false;
 var lastStoreType;
 
 
-
-
 var $sendMessage;
 var $stopBatchSend;
 //内容
@@ -77,6 +75,7 @@ let User = class {
         this.nick = nick;
         this.grade = grade;
     }
+
     // constructor(length) {
     //     // 在这里，它调用了父类的构造函数，并将 lengths 提供给 Polygon 的"width"和"height"
     //     super(length, length);
@@ -3296,7 +3295,7 @@ function retrievalButtonFunction() {
 
                     //判断内容ID是否相同
                     if (idt != idt_last || tex != text_Last) {
-                        us=null;
+                        us = null;
                         us = new User(idt, nickName, grade);
                         let calcAddData = calculateAddPoints(tex);
                         userData = {
@@ -3588,8 +3587,6 @@ function retrievalButtonFunction() {
                         inputCount++;
 
 
-
-
                         //打开关闭机器人聊天功能
                         var robotChatCommondCheckboxId = document.getElementById("robotChatCommondCheckboxId");
                         if (robotChatCommondCheckboxId.checked && tex && tex.length > 1 && tex[0] == "!") {
@@ -3635,9 +3632,9 @@ function retrievalButtonFunction() {
                                         // !text:/즐거워/,5x5 id 는 이것 을 포함 해야만 명령 을 실행 할 수 있 습 니 다.이 명령 은 관리자 의 채 팅 번역 기능 을 닫 아야 합 니 다.수 동 설정 도 같은 효과 입 니 다.
                                         // !text:😗,2x1 명령 권한 이 열 렸 습 니 다.관리자 계 정 이나 앵 커 계 정 은 채 팅 번역 기능 을 닫 아야 합 니 다.
 
-                                         testInput = getDomById('testInput');
-                                         inputTimes = getDomById('inputTimes');
-                                         inputFrequency = getDomById('inputFrequency');
+                                        testInput = getDomById('testInput');
+                                        inputTimes = getDomById('inputTimes');
+                                        inputFrequency = getDomById('inputFrequency');
                                         //获取1-3的随机数字
                                         // console.log(parseInt(Math.random()*NO/1));
                                         var rdmNo = parseInt(Math.random() * 3 / 1 + 1);
@@ -4135,7 +4132,7 @@ const object = new Set([
     }
     ],
     [
-        ["!눈물", "!악어의눈물", "!😩", "!☹"], (data) => {
+        ["!눈물", "!악어의눈물", "!😩", "!☹", "!위로"], (data) => {
         opSettingIndexDB.searchCommandAuthoritySupport(data, function (callbackData) {
             if (callbackData.isAuthority) {
                 //鳄鱼的眼泪
