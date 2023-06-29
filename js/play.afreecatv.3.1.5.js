@@ -2136,7 +2136,6 @@ function sendMessageFunction(messageArray) {
         document.getElementById('inputTimes').value = messageArray.length;
         allRepeatTimes = messageArray.length; //设置
     }
-    console.log(us.toString());
 
     //次数显示到myDiv
     inputTimes = document.getElementById('inputTimes');
