@@ -3521,8 +3521,8 @@ function retrievalButtonFunction() {
                 //屏蔽连续相同的内容对比
                 //判断内容ID是否相同
                 if (idt != idt_last || tex != text_Last) {
-                    us=null;
-                    us = new User(idt, nickName, grade);
+                    // us=null;
+                    // us = new User(idt, nickName, grade);
                     //us.toString();
                     let calcAddData = calculateAddPoints(tex);
                     userData = {

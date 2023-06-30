@@ -3295,8 +3295,8 @@ function retrievalButtonFunction() {
 
                     //判断内容ID是否相同
                     if (idt != idt_last || tex != text_Last) {
-                        us = null;
-                        us = new User(idt, nickName, grade);
+                        // us = null;
+                        // us = new User(idt, nickName, grade);
                         let calcAddData = calculateAddPoints(tex);
                         userData = {
                             "id": idt,
