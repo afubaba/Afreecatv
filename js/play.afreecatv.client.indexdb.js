@@ -220,49 +220,55 @@ var opIndexDB = {
                     } else {
                         let toDate = new Date(todayDate);
                         let resuDate = new Date(resultData.date);
-                        // console.log("toMonth"+toDate.getMonth()+":"+"resuDate"+resuDate.getMonth());
-                        //判断月份
-                        if (toDate.getMonth() == resuDate.getMonth()) {
-                            // console.log("同一个月");
-                            //判断日
-                            if (toDate.getDate() == resuDate.getDate()) {
-                                // resultData.chatPoints++;
-                                resultData.chatPoints += increase;
-                                resultData.chatTimes++;
+                        //1.判断对象是否未定义
+                        if (resultData.date) {
+                            // console.log("toMonth"+toDate.getMonth()+":"+"resuDate"+resuDate.getMonth());
+                            //判断月份
+                            if (toDate.getMonth() == resuDate.getMonth()) {
+                                // console.log("同一个月");
+                                //判断日
+                                if (toDate.getDate() == resuDate.getDate()) {
+                                    // resultData.chatPoints++;
+                                    resultData.chatPoints += increase;
+                                    resultData.chatTimes++;
+                                } else {
+                                    // 昵称是否相同
+                                    if (resultData.userNick != userData.userNick) {
+                                        resultData.userNick = userData.userNick;
+                                    }
+                                    //隔日等级同步
+                                    if (resultData.grade != userData.grade) {
+                                        resultData.grade = userData.grade;
+                                    }
+                                    //测试数据
+                                    // if (!"allTimes" in resultData|| isNaN(resultData.allTimes)) {
+                                    //     resultData.allTimes = 1;
+                                    // }
+                                    resultData.chatPoints = increase;
+                                    resultData.chatTimes = 1;
+                                    resultData.gamePoints = 0;
+                                    // userData.userNick
+                                    showTipBarrageFunction(userData.userNick + " " + (resuDate.getDate()) + packageResult.opIndexDB.insertData[0]);
+                                }
                             } else {
-                                // 昵称是否相同
-                                if (resultData.userNick != userData.userNick) {
-                                    resultData.userNick = userData.userNick;
-                                }
-                                //隔日等级同步
-                                if (resultData.grade != userData.grade) {
-                                    resultData.grade = userData.grade;
-                                }
-                                //测试数据
-                                // if (!"allTimes" in resultData|| isNaN(resultData.allTimes)) {
-                                //     resultData.allTimes = 1;
-                                // }
+                                // console.log("不是一个月");
+                                let $resetTotalPointsEveryMonth = $("#resetTotalPointsEveryMonth");
+                                let resetTotalPointsEveryMonthChecked = $resetTotalPointsEveryMonth.prop("checked");
+                                let logString = userData.userNick + " " + (resuDate.getMonth() + 1);
                                 resultData.chatPoints = increase;
                                 resultData.chatTimes = 1;
                                 resultData.gamePoints = 0;
-                                // userData.userNick
-                                showTipBarrageFunction(userData.userNick + " " + (resuDate.getDate()) + packageResult.opIndexDB.insertData[0]);
+                                if (resetTotalPointsEveryMonthChecked) {
+                                    resultData.allPoints = increase;
+                                    resultData.allTimes = 1;
+                                    showTipBarrageFunction(logString + packageResult.opIndexDB.insertData[1]);
+                                } else {
+                                    showTipBarrageFunction(logString + packageResult.opIndexDB.insertData[2]);
+                                }
                             }
                         } else {
-                            // console.log("不是一个月");
-                            let $resetTotalPointsEveryMonth = $("#resetTotalPointsEveryMonth");
-                            let resetTotalPointsEveryMonthChecked = $resetTotalPointsEveryMonth.prop("checked");
-                            let logString = userData.userNick + " " + (resuDate.getMonth() + 1);
-                            resultData.chatPoints = increase;
-                            resultData.chatTimes = 1;
-                            resultData.gamePoints = 0;
-                            if (resetTotalPointsEveryMonthChecked) {
-                                resultData.allPoints = increase;
-                                resultData.allTimes = 1;
-                                showTipBarrageFunction(logString + packageResult.opIndexDB.insertData[1]);
-                            } else {
-                                showTipBarrageFunction(logString + packageResult.opIndexDB.insertData[2]);
-                            }
+                            resultData.chatPoints += increase;
+                            resultData.chatTimes++;
                         }
                         resultData.date = todayDate;
                     }

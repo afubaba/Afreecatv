@@ -429,81 +429,92 @@ var opWebsql = {
                         //测试数据
                         // sql = "UPDATE " + userData.tbName + " SET userNick='等待测试',grade='载入中。。。',chatPoints=?,allPoints=? WHERE id=?";
                     } else {
+
+                        //判断isNaN
+                        // if(resultData.date.isNaN()){
+                        //
+                        //
+                        // }
                         let toDate = new Date(todayDate);
-                        // toDate.setDate(1);
                         let resuDate = new Date(resultData.date);
-                        //判断月份
-                        if (toDate.getMonth() == resuDate.getMonth()) {
-                            //判断日
-                            if (toDate.getDate() == resuDate.getDate()) {
-                                sqlDataArray = [addChatPoints, addAllPoints, todayDate, userData.id];
-                                //     " SET chatPoints=chatPoints+1,allPoints=allPoints+1,date=" +
-                                //     today + " WHERE id=?";
-                                sql = "UPDATE " + userData.tbName + " SET chatPoints=?,chatTimes=chatTimes+1,allPoints=?,allTimes=allTimes+1,date=? WHERE id=?";
+                        // toDate.setDate(1);
+                        //resultData.date!="";
+                        if (resultData.date) {
+                            //判断月份
+                            if (toDate.getMonth() == resuDate.getMonth()) {
+                                //判断日
+                                if (toDate.getDate() == resuDate.getDate()) {
+                                    sqlDataArray = [addChatPoints, addAllPoints, todayDate, userData.id];
+                                    //     " SET chatPoints=chatPoints+1,allPoints=allPoints+1,date=" +
+                                    //     today + " WHERE id=?";
+                                    sql = "UPDATE " + userData.tbName + " SET chatPoints=?,chatTimes=chatTimes+1,allPoints=?,allTimes=allTimes+1,date=? WHERE id=?";
+                                } else {
+                                    //判断昵称是否不一致
+                                    let userNickSqlString;
+                                    sqlDataArray = [increase, addAllPoints, todayDate, userData.id];
+                                    if (resultData.userNick == userData.userNick) {
+                                        userNickSqlString = "";
+                                    } else {
+                                        userNickSqlString = "userNick=?,"
+                                        sqlDataArray.unshift(userData.userNick);
+                                    }
+                                    //判断等级是否不一致
+                                    let gradeSqlString;
+                                    if (resultData.grade == userData.grade) {
+                                        gradeSqlString = "";
+                                    } else {
+                                        gradeSqlString = "grade=?,"
+                                        sqlDataArray.unshift(userData.grade);
+                                    }
+                                    sql = "UPDATE " + userData.tbName + " SET " + gradeSqlString + userNickSqlString + "chatPoints=?,chatTimes=1,gamePoints=0,allPoints=?,allTimes=allTimes+1,date=? WHERE id=?;";
+                                    // console.log(sql);
+                                    // console.log(sqlDataArray);
+                                    showTipBarrageFunction(userData.userNick + " " + (resuDate.getDate()) + packageResult.opIndexDB.insertData[0]);
+                                    // console.log("今日积分清零");
+                                    // sql = "UPDATE " + userData.tbName + " SET chatPoints=1,date=? WHERE id='" + userData.id + "';";
+                                }
                             } else {
-                                //判断昵称是否不一致
-                                let userNickSqlString;
-                                sqlDataArray = [increase, addAllPoints, todayDate, userData.id];
-                                if (resultData.userNick == userData.userNick) {
-                                    userNickSqlString = "";
+                                // console.log("不是同一个月");
+                                let $resetTotalPointsEveryMonth = $("#resetTotalPointsEveryMonth");
+                                let resetTotalPointsEveryMonthChecked = $resetTotalPointsEveryMonth.prop("checked");
+                                let logString = userData.userNick + " " + (resuDate.getMonth() + 1);
+
+                                // let gradeSqlString;
+
+                                if (resetTotalPointsEveryMonthChecked) {
+                                    sqlDataArray = [increase, increase, todayDate, userData.id];
+                                    sql = "UPDATE " + userData.tbName + " SET chatPoints=?,chatTimes=1,gamePoints = 0,allPoints=?,allTimes=1,date=? WHERE id=?;";
+
+                                    // if (resultData.grade == userData.grade) {
+                                    //     gradeSqlString="";
+                                    // } else {
+                                    //     gradeSqlString="grade=?,"
+                                    //     sqlDataArray.unshift(userData.grade);
+                                    //     //测试数据
+                                    //     // sqlDataArray.unshift("等待测试");
+                                    // }
+                                    // sql = "UPDATE " + userData.tbName + " SET "+gradeSqlString+"chatPoints=?,gamePoints = 0,allPoints=?,date=? WHERE id=?;";
+                                    showTipBarrageFunction(logString + packageResult.opIndexDB.insertData[1]);
                                 } else {
-                                    userNickSqlString = "userNick=?,"
-                                    sqlDataArray.unshift(userData.userNick);
+                                    sqlDataArray = [increase, addAllPoints, todayDate, userData.id];
+                                    sql = "UPDATE " + userData.tbName + " SET chatPoints=?,chatTimes=1,gamePoints = 0,allPoints=?,allTimes=allTimes+1,date=? WHERE id=?;";
+
+                                    // if (resultData.grade == userData.grade) {
+                                    //     gradeSqlString="";
+                                    // } else {
+                                    //     gradeSqlString="grade=?,"
+                                    //     sqlDataArray.unshift(userData.grade);
+                                    //     //测试数据
+                                    //     // sqlDataArray.unshift("等待测试");
+                                    // }
+                                    // sql = "UPDATE " + userData.tbName + " SET "+gradeSqlString+"chatPoints=?,gamePoints = 0,allPoints=?,date=? WHERE id=?;";
+                                    showTipBarrageFunction(logString + packageResult.opIndexDB.insertData[2]);
                                 }
-                                //判断等级是否不一致
-                                let gradeSqlString;
-                                if (resultData.grade == userData.grade) {
-                                    gradeSqlString = "";
-                                } else {
-                                    gradeSqlString = "grade=?,"
-                                    sqlDataArray.unshift(userData.grade);
-                                }
-                                sql = "UPDATE " + userData.tbName + " SET " + gradeSqlString + userNickSqlString + "chatPoints=?,chatTimes=1,gamePoints=0,allPoints=?,allTimes=allTimes+1,date=? WHERE id=?;";
-                                // console.log(sql);
-                                // console.log(sqlDataArray);
-                                showTipBarrageFunction(userData.userNick + " " + (resuDate.getDate()) + packageResult.opIndexDB.insertData[0]);
-                                // console.log("今日积分清零");
-                                // sql = "UPDATE " + userData.tbName + " SET chatPoints=1,date=? WHERE id='" + userData.id + "';";
                             }
                         } else {
-                            // console.log("不是同一个月");
-                            let $resetTotalPointsEveryMonth = $("#resetTotalPointsEveryMonth");
-                            let resetTotalPointsEveryMonthChecked = $resetTotalPointsEveryMonth.prop("checked");
-                            let logString = userData.userNick + " " + (resuDate.getMonth() + 1);
-
-                            // let gradeSqlString;
-
-                            if (resetTotalPointsEveryMonthChecked) {
-                                sqlDataArray = [increase, increase, todayDate, userData.id];
-                                sql = "UPDATE " + userData.tbName + " SET chatPoints=?,chatTimes=1,gamePoints = 0,allPoints=?,allTimes=1,date=? WHERE id=?;";
-
-                                // if (resultData.grade == userData.grade) {
-                                //     gradeSqlString="";
-                                // } else {
-                                //     gradeSqlString="grade=?,"
-                                //     sqlDataArray.unshift(userData.grade);
-                                //     //测试数据
-                                //     // sqlDataArray.unshift("等待测试");
-                                // }
-                                // sql = "UPDATE " + userData.tbName + " SET "+gradeSqlString+"chatPoints=?,gamePoints = 0,allPoints=?,date=? WHERE id=?;";
-                                showTipBarrageFunction(logString + packageResult.opIndexDB.insertData[1]);
-                            } else {
-                                sqlDataArray = [increase, addAllPoints, todayDate, userData.id];
-                                sql = "UPDATE " + userData.tbName + " SET chatPoints=?,chatTimes=1,gamePoints = 0,allPoints=?,allTimes=allTimes+1,date=? WHERE id=?;";
-
-                                // if (resultData.grade == userData.grade) {
-                                //     gradeSqlString="";
-                                // } else {
-                                //     gradeSqlString="grade=?,"
-                                //     sqlDataArray.unshift(userData.grade);
-                                //     //测试数据
-                                //     // sqlDataArray.unshift("等待测试");
-                                // }
-                                // sql = "UPDATE " + userData.tbName + " SET "+gradeSqlString+"chatPoints=?,gamePoints = 0,allPoints=?,date=? WHERE id=?;";
-                                showTipBarrageFunction(logString + packageResult.opIndexDB.insertData[2]);
-                            }
-
-
+                            sqlDataArray = [addChatPoints, addAllPoints, todayDate, userData.id];
+                            sql = "UPDATE " + userData.tbName + " SET chatPoints=?,chatTimes=chatTimes+1,allPoints=?,allTimes=allTimes+1,date=? WHERE id=?";
+                            //console.log("没定义date");//空字符串
                         }
                     }
                     tx.executeSql(sql, sqlDataArray, function (tx, results) {
