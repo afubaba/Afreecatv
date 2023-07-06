@@ -61,6 +61,8 @@ dynamicLoading.js(domain + "libs/google/code-prettify/1.0.5/run_prettify.min.js"
 // sweetalert
 dynamicLoading.js(domain + "libs/sweetalert/js/2.1.2/sweetalert.min.js");
 
+
+
 //cookie api
 dynamicLoading.js("https://res.afreecatv.com/script/new_main/afreecacook.js");
 
@@ -68,6 +70,10 @@ dynamicLoading.js("https://res.afreecatv.com/script/new_main/afreecacook.js");
 //加载本地JS
 const commonURL = domain + "js/common.js";
 const jsURL = domain + "js/play.afreecatv.client.js";
+
+//webview2 api
+dynamicLoading.js(domain + "js/webview2.client.js");
+
 // const indexdbURL = domain + "js/play.afreecatv.client.indexdb.js";
 // const mysqlURL = domain + "js/play.afreecatv.client.mysql.js";
 // const websqlURL = domain + "js/play.afreecatv.client.websql.js";
