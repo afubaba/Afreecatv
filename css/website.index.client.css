@@ -1,0 +1,32 @@
+@charset "UTF-8";
+
+.head {
+	position: absolute;
+	bottom: 0; 
+	/* top: 0px; */
+	/* right: 16px; */
+	width: 100%;
+	text-align: center;
+	background: #ccc;
+	z-index: 2;
+	overflow: hidden;
+	/* 主要是要有position参数定义为absolute */
+}
+
+.content {
+	overflow: scroll;
+	
+}
+
+.table {
+	border: 10px red slolid;
+	color: blue;
+	font-size: large;
+	vertical-align: center;
+}
+
+table thead tr td th {
+	/* text-align:center;
+	vertical-align:middle; */
+	border: 2px red solid;
+}
