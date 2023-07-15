@@ -2404,9 +2404,10 @@ x5-video-player-typ="h5">
 
 					<!--여 기 는 스스로 수정 할 수 있 습 니 다.항상 1 초 에 두 번,또는 2 초 간격 으로 세 번 사용 합 니 다. -->
 					<!--allRepeatTimes=2/allRepeatTimes 표시 횟수,2 는 최대 두 번 발송,frequency=0.01  f 는 간격 을 나타 낸다.예 를 들 어 1 은 1 초 간격 이다.  -->
-					<button class="btn btn-success" id="send_message" onclick="sendMessageFunction($('#testInput').val());"
+					<button class="btn btn-success" id="send_message" onclick="sendMessageFunction();"
 						title="메시지 보 내기 즉시 실행" type="button">
-						<span id="sendId">发送</span>
+						<!-- <span id="sendId"></span> -->
+						发送
 					</button>
 					<button class="btn btn-inverse" id="stopBatchSend" onclick="stopBatchSendFunction();"
 						title="발송 중인 정보나 대량 발송 정보 중지" type="button">
