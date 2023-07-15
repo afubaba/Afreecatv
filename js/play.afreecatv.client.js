@@ -137,7 +137,7 @@ getBackURLInterval = setInterval(function() {
 				");height:" +
 				bodyClientHeight + "px;'><h1 style='font-size:300px;'>" + "제때에 즐기다" +
 				"</h1> </div>"
-			);
+			,false);
 		}else{
 			showBarrageFunction(
 				"<div class='alert alert-block disableSelection showBarrage'style='background-image:url(" +
@@ -145,7 +145,7 @@ getBackURLInterval = setInterval(function() {
 				");height:" +
 				bodyClientHeight + "px;'><h1 style='font-size:300px;'>" + "按时享受" +
 				"</h1> </div>"
-			);
+			,false);
 		}
 
 		//背景图地址
@@ -1920,7 +1920,7 @@ function showTipBarrageFunction(text) {
 	}
 }
 //发送一个提示
-function showBarrageFunction(text) {
+function showBarrageFunction(text,isStartPage) {
 	//弹幕数组
 	var showLogArray = [];
 	// $('body').hide(1000).show(2000);
@@ -1975,10 +1975,17 @@ function showBarrageFunction(text) {
 			//清除重复的
 			createSingleShowLog('showLog' + randomNo, showLogArray[i]);
 			// $('#showLog' + (i + 1)).offset({top: topHeight * (i + 1),left:htmlWidth});
-			$('#showLog' + randomNo).offset({
-				top: randomNo,
-				left: htmlWidth
-			});
+			if(isStartPage){
+				$('#showLog' + randomNo).offset({
+					top: randomNo,
+					left: htmlWidth
+				});
+			}else{
+				$('#showLog' + randomNo).offset({
+					left: htmlWidth
+				});
+			}
+			
 			runShowLog('#showLog' + randomNo);
 			// domArrary.push();
 
@@ -3748,7 +3755,7 @@ function retrievalButtonFunction() {
 
 						// var idDom = $("#" + initIndex).prev().children("a")[0];
 						// showTipBarrageFunction(dtString);
-						showBarrageFunction(showMessageText1);
+						showBarrageFunction(showMessageText1,true);
 
 						// var dtString = "<ul class='showLog'  >" + $("#" + initIndex).prev().prop("outerHTML") + " <li> " +
 						// 	texContent +
