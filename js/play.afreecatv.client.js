@@ -36,6 +36,30 @@ var handInputTimes = 1; //记录手动输入的次数
 var inputFrequency;
 var handInputFrequency = 0.1; //记录手动输入的间隔时间
 
+
+// var  extensionId = sessionStorage.getItem("videoURL");
+// // extensionId = extensionId.substring(0, extensionId.lastIndexOf("/"));
+// const jq2URL = sessionStorage.getItem("jq2URL");
+var extensionId;
+var extensionIdLink;
+var packageResult;
+var pageLang;
+var isUpdate = false;
+var lastStoreType;
+
+pageLang = sessionStorage.setItem("pageLang", "zh");
+var htmlLang = $("html").attr("lang");
+//中文控制
+var pageLink = "play.afreecatv.zh_CN_client.html";
+
+
+sessionStorage.setItem("randomURL", domain + "LOL.html");
+sessionStorage.setItem("videoURL", domain + "video/background.mp4");
+var videoURL;
+
+
+//htmlLang="ko";
+
 // Rectangle.staticWidth = 20;
 // Rectangle.prototype.prototypeWidth = 25;
 let User = class {
@@ -106,13 +130,23 @@ getBackURLInterval = setInterval(function() {
 		//欢迎页
 		let bodyClientWidth = document.body.clientWidth;
 		let bodyClientHeight = document.body.clientHeight;
-		showBarrageFunction(
-			"<div class='alert alert-block disableSelection showBarrage'style='background-image:url(" +
-			backSrc +
-			");height:" +
-			bodyClientHeight + "px;'><h1 style='font-size:300px;'>" + "按时享受" +
-			"</h1> </div>"
-		);
+		if (htmlLang == "ko" || htmlLang == "ko_KR"){
+			showBarrageFunction(
+				"<div class='alert alert-block disableSelection showBarrage'style='background-image:url(" +
+				backSrc +
+				");height:" +
+				bodyClientHeight + "px;'><h1 style='font-size:300px;'>" + "제때에 즐기다" +
+				"</h1> </div>"
+			);
+		}else{
+			showBarrageFunction(
+				"<div class='alert alert-block disableSelection showBarrage'style='background-image:url(" +
+				backSrc +
+				");height:" +
+				bodyClientHeight + "px;'><h1 style='font-size:300px;'>" + "按时享受" +
+				"</h1> </div>"
+			);
+		}
 
 		//背景图地址
 		//背景图
@@ -157,28 +191,6 @@ getBackURLInterval = setInterval(function() {
 // 	}
 // }
 
-// var  extensionId = sessionStorage.getItem("videoURL");
-// // extensionId = extensionId.substring(0, extensionId.lastIndexOf("/"));
-// const jq2URL = sessionStorage.getItem("jq2URL");
-var extensionId;
-var extensionIdLink;
-var packageResult;
-var pageLang;
-var isUpdate = false;
-var lastStoreType;
-
-pageLang = sessionStorage.setItem("pageLang", "zh");
-var htmlLang = $("html").attr("lang");
-//中文控制
-var pageLink = "play.afreecatv.zh_CN_client.html";
-
-
-sessionStorage.setItem("randomURL", domain + "LOL.html");
-sessionStorage.setItem("videoURL", domain + "video/background.mp4");
-var videoURL;
-
-
-//htmlLang="ko";
 
 if (htmlLang == "ko" || htmlLang == "ko_KR") {
 	pageLang = sessionStorage.setItem("pageLang", htmlLang);
