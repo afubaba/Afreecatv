@@ -1919,9 +1919,7 @@ function showTipBarrageFunction(text) {
 		// console.log(showLogArray)
 	}
 }
-
-// //发送一个提示
-
+//发送一个提示
 function showBarrageFunction(text) {
 	//弹幕数组
 	var showLogArray = [];
@@ -1978,7 +1976,7 @@ function showBarrageFunction(text) {
 			createSingleShowLog('showLog' + randomNo, showLogArray[i]);
 			// $('#showLog' + (i + 1)).offset({top: topHeight * (i + 1),left:htmlWidth});
 			$('#showLog' + randomNo).offset({
-				// top: randomNo,
+				top: randomNo,
 				left: htmlWidth
 			});
 			runShowLog('#showLog' + randomNo);
@@ -2032,7 +2030,7 @@ function showBarrageFunction(text) {
 			var showLogTimeout = setTimeout(function() {
 				//突出显示
 				i -= 800;
-				deg = deg + 90;
+				deg = deg + 10;
 				// .css("transition-duration", "5s")
 				// $("body").css("transform", "rotateX(" + deg + "deg)").css(
 				// 	"transition-timing-function", "ease-in");
