@@ -29,6 +29,23 @@ var dynamicLoading = {
 		head.appendChild(script);
 	}
 };
+
+function setIcon(newSrc) {
+	// 处理事件的逻辑
+	//console.log('目标 <img> 的 src 属性发生变化:', newSrc);
+	var imgSrc = new URL(newSrc, window.location.href).href;
+	//imgSrc = "https:" + imgSrc;
+	//发送图标 消息
+	let headImgObj;
+	// var imgSrc = $("section.bj_box .thum img").attr("src");
+	// imgSrc = "https:" + imgSrc;
+	// console.log(imgSrc);
+	headImgObj = {
+		headImgUrl: imgSrc
+	}
+	window.chrome.webview.postMessage(JSON.stringify(headImgObj));
+
+}
 dynamicLoading.js(domain + "libs/jquery/1.7.2/jquery.min.js", function() {
 
 	dynamicLoading.css(domain + "css/common.css");
@@ -48,6 +65,8 @@ dynamicLoading.js(domain + "libs/jquery/1.7.2/jquery.min.js", function() {
 			var targetImg = $('.bj_box img');
 			// 获取初始的 src 属性值
 			var initialSrc = targetImg.attr('src');
+			// 初次设置图片
+			setIcon(initialSrc);
 			// 创建一个 MutationObserver 实例
 			var observer = new MutationObserver(function(mutationsList) {
 				mutationsList.forEach(function(mutation) {
@@ -55,19 +74,8 @@ dynamicLoading.js(domain + "libs/jquery/1.7.2/jquery.min.js", function() {
 					if (mutation.type === 'attributes' && mutation.attributeName === 'src') {
 						// 获取新的 src 属性值
 						var newSrc = targetImg.attr('src');
-						// 处理事件的逻辑
-						//console.log('目标 <img> 的 src 属性发生变化:', newSrc);
-						var imgSrc = new URL(newSrc, window.location.href).href;
-						//imgSrc = "https:" + imgSrc;
-						//发送图标 消息
-						let headImgObj;
-						// var imgSrc = $("section.bj_box .thum img").attr("src");
-						// imgSrc = "https:" + imgSrc;
-						// console.log(imgSrc);
-						headImgObj = {
-							headImgUrl: imgSrc
-						}
-						window.chrome.webview.postMessage(JSON.stringify(headImgObj));
+
+
 					}
 				});
 			});
