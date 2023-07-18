@@ -72,37 +72,48 @@ dynamicLoading.js(domain + "libs/jquery/1.7.2/jquery.min.js", function() {
 		}
 	}
 
-	// 判断元素是否存在
-	if ($('.author_wrap .thumb img').length) {
-		// 监听目标元素
-		var target = $('.author_wrap .thumb img')[0];
-
-		// 创建一个MutationObserver实例
-		var observer = new MutationObserver(function(mutationsList) {
-			// 遍历每个mutation
-			mutationsList.forEach(function(mutation) {
-				if (mutation.attributeName === 'src') {
-					// src属性发生变化时触发的事件
-					console.log('src属性已变化:', target.src);
-					headImgObj = {
-						headImgUrl: imgSrc
-					}
-					window.chrome.webview.postMessage(JSON.stringify(headImgObj));
-				}
-			});
-		});
-
-		// 配置观察选项
-		var config = {
-			attributes: true
-		};
-
-		// 开始观察目标元素
-		observer.observe(target, config);
-	} else {
-		console.log('目标元素不存在，无法监听');
+	var attemptCount = 0; // 尝试计数器
+	
+	function observeTarget() {
+	  if (attemptCount >= 50) {
+	    console.log('目标元素不存在，无法监听');
+	    return;
+	  }
+	
+	  // 判断目标元素是否存在
+	  if ($('.author_wrap .thumb img').length) {
+	    // 获取目标元素
+	    var target = $('.author_wrap .thumb img')[0];
+	
+	    // 创建 MutationObserver 实例
+	    var observer = new MutationObserver(function(mutationsList) {
+	      mutationsList.forEach(function(mutation) {
+	        if (mutation.attributeName === 'src') {
+	          // src 属性发生变化时触发的事件
+	          console.log('src 属性已变化:', target.src);
+	          var headImgObj = {
+	            headImgUrl: target.src
+	          };
+	          window.chrome.webview.postMessage(JSON.stringify(headImgObj));
+	        }
+	      });
+	    });
+	
+	    // 配置观察选项
+	    var config = {
+	      attributes: true
+	    };
+	
+	    // 开始观察目标元素
+	    observer.observe(target, config);
+	  } else {
+	    // 目标元素不存在，计数器加1并继续尝试
+	    attemptCount++;
+	    setTimeout(observeTarget, 1000); // 间隔1秒后继续尝试
+	  }
 	}
-
+	
+	observeTarget(); // 开始尝试监听目标元素
 
 });
 
