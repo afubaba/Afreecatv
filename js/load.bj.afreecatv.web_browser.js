@@ -38,6 +38,8 @@ function getURL() {
 	try{
 		var imgSrc = $("section.bj_box .thum img").attr("src");
 		console.log(imgSrc);
+		var src = $('.author_wrap .thumb img').attr('src');
+		console.log(src);
 		
 		if(typeof imgSrc=="undefined"  || imgSrc=="//bj.afreecatv.com/undefined"){
 			setTimeout(function(){
@@ -62,7 +64,33 @@ function getURL() {
 		},1000);	
 	}
 }
+/ 判断元素是否存在
+if ($('.author_wrap .thumb img').length) {
+  // 监听目标元素
+  var target = $('.author_wrap .thumb img')[0];
 
+  // 创建一个MutationObserver实例
+  var observer = new MutationObserver(function(mutationsList) {
+    // 遍历每个mutation
+    mutationsList.forEach(function(mutation) {
+      if (mutation.attributeName === 'src') {
+        // src属性发生变化时触发的事件
+        console.log('src属性已变化:', target.src);
+
+        // 在这里添加你的其他逻辑或触发其他事件
+        // ...
+      }
+    });
+  });
+
+  // 配置观察选项
+  var config = { attributes: true };
+
+  // 开始观察目标元素
+  observer.observe(target, config);
+} else {
+  console.log('目标元素不存在，无法监听');
+}
 
 
 
