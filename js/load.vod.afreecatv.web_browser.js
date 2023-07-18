@@ -30,6 +30,17 @@ var dynamicLoading = {
 };
 dynamicLoading.css(domain + "css/common.css");
 
+
+function setIcon(newSrc) {
+
+	//发送图标 消息
+	let headImgObj;
+	headImgObj = {
+		headImgUrl: newSrc
+	}
+	window.chrome.webview.postMessage(JSON.stringify(headImgObj));
+
+}
 dynamicLoading.js(domain + "libs/jquery/1.7.2/jquery.min.js", function() {
 	dynamicLoading.css(domain + "libs/bootstrap/2.3.2/css/bootstrap.min.css");
 	dynamicLoading.js(domain + "libs/bootstrap/2.3.2/js/bootstrap.min.js", function() {
@@ -86,18 +97,18 @@ dynamicLoading.js(domain + "libs/jquery/1.7.2/jquery.min.js", function() {
 		// 判断目标元素是否存在
 		if ($('.author_wrap .thumb img').length) {
 			// 获取目标元素
-			var target = $('.author_wrap .thumb img')[0];
-
+			var targetImg = $('.author_wrap .thumb img');
+			
+			// 获取初始的 src 属性值
+			var initialSrc = targetImg.attr('src');
+			setIcon(initialSrc);
 			// 创建 MutationObserver 实例
 			var observer = new MutationObserver(function(mutationsList) {
 				mutationsList.forEach(function(mutation) {
 					if (mutation.attributeName === 'src') {
 						// src 属性发生变化时触发的事件
-						console.log('src 属性已变化:', target.src);
-						var headImgObj = {
-							headImgUrl: target.src
-						};
-						window.chrome.webview.postMessage(JSON.stringify(headImgObj));
+						console.log('src 属性已变化:', initialSrc);
+						setIcon(initialSrc);
 					}
 				});
 			});
