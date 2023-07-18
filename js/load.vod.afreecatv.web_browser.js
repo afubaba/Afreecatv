@@ -32,13 +32,14 @@ dynamicLoading.css(domain + "css/common.css");
 
 dynamicLoading.js(domain + "libs/jquery/1.7.2/jquery.min.js", function() {
 	dynamicLoading.css(domain + "libs/bootstrap/2.3.2/css/bootstrap.min.css");
-	dynamicLoading.js(domain + "libs/bootstrap/2.3.2/js/bootstrap.min.js",function(){
-		
+	dynamicLoading.js(domain + "libs/bootstrap/2.3.2/js/bootstrap.min.js", function() {
+
 	});
 	//console.log($.fn.jquery);
 	getURL();
 	let headImgObj;
 	var initCount = 0;
+
 	function getURL() {
 		try {
 			var imgSrc = $('.broadcast_information .bj_thumbnail img').attr('src');
@@ -75,46 +76,46 @@ dynamicLoading.js(domain + "libs/jquery/1.7.2/jquery.min.js", function() {
 	}
 
 	var attemptCount = 0; // 尝试计数器
-	
+
 	function observeTarget() {
-	  if (attemptCount >= 50) {
-	    console.log('目标元素不存在，无法监听');
-	    return;
-	  }
-	
-	  // 判断目标元素是否存在
-	  if ($('.author_wrap .thumb img').length) {
-	    // 获取目标元素
-	    var target = $('.author_wrap .thumb img')[0];
-	
-	    // 创建 MutationObserver 实例
-	    var observer = new MutationObserver(function(mutationsList) {
-	      mutationsList.forEach(function(mutation) {
-	        if (mutation.attributeName === 'src') {
-	          // src 属性发生变化时触发的事件
-	          console.log('src 属性已变化:', target.src);
-	          var headImgObj = {
-	            headImgUrl: target.src
-	          };
-	          window.chrome.webview.postMessage(JSON.stringify(headImgObj));
-	        }
-	      });
-	    });
-	
-	    // 配置观察选项
-	    var config = {
-	      attributes: true
-	    };
-	
-	    // 开始观察目标元素
-	    observer.observe(target, config);
-	  } else {
-	    // 目标元素不存在，计数器加1并继续尝试
-	    attemptCount++;
-	    setTimeout(observeTarget, 1000); // 间隔1秒后继续尝试
-	  }
+		if (attemptCount >= 50) {
+			console.log('目标元素不存在，无法监听');
+			return;
+		}
+
+		// 判断目标元素是否存在
+		if ($('.author_wrap .thumb img').length) {
+			// 获取目标元素
+			var target = $('.author_wrap .thumb img')[0];
+
+			// 创建 MutationObserver 实例
+			var observer = new MutationObserver(function(mutationsList) {
+				mutationsList.forEach(function(mutation) {
+					if (mutation.attributeName === 'src') {
+						// src 属性发生变化时触发的事件
+						console.log('src 属性已变化:', target.src);
+						var headImgObj = {
+							headImgUrl: target.src
+						};
+						window.chrome.webview.postMessage(JSON.stringify(headImgObj));
+					}
+				});
+			});
+
+			// 配置观察选项
+			var config = {
+				attributes: true
+			};
+
+			// 开始观察目标元素
+			observer.observe(target, config);
+		} else {
+			// 目标元素不存在，计数器加1并继续尝试
+			attemptCount++;
+			setTimeout(observeTarget, 1000); // 间隔1秒后继续尝试
+		}
 	}
-	
+
 	observeTarget(); // 开始尝试监听目标元素
 
 });
