@@ -1,5 +1,5 @@
 console.log("load.vod.afreecatv.web_browser.js");
-const domain = "https://afubaba.github.io/Afreecatv/"
+var domain = "https://afubaba.github.io/Afreecatv/"
 var dynamicLoading = {
 	css: function(path) {
 		if (!path || path.length === 0) {
