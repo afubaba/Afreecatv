@@ -75,7 +75,8 @@ dynamicLoading.js(domain + "libs/jquery/1.7.2/jquery.min.js", function() {
 						// 获取新的 src 属性值
 						var newSrc = targetImg.attr('src');
 
-
+						// 初次设置图片
+						setIcon(newSrc);
 					}
 				});
 			});
