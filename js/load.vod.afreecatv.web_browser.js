@@ -36,9 +36,7 @@ getURL();
 
 function getURL() {
 	try{
-		var imgSrc = $("section.bj_box .thum img").attr("src");
-		console.log(imgSrc);
-		
+		var imgSrc = $('.broadcast_information .bj_thumbnail img').attr('src');
 		if(typeof imgSrc=="undefined"  || imgSrc=="//bj.afreecatv.com/undefined"){
 			setTimeout(function(){
 				getURL();
