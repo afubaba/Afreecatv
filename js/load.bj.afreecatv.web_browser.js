@@ -33,17 +33,21 @@ dynamicLoading.css(domain + "libs/bootstrap/2.3.2/css/bootstrap.min.css");
 //dynamicLoading.js(domain + "libs/bootstrap/2.3.2/js/bootstrap.min.js");
 //console.log($.fn.jquery);
 getURL();
+var initCount = 0;
 
 function getURL() {
-	try{
+	try {
 		var imgSrc = $("section.bj_box .thum img").attr("src");
-		
+
 		var src = $('.author_wrap .thumb img').attr('src');
-		if(typeof imgSrc=="undefined"  || imgSrc=="//bj.afreecatv.com/undefined"){
-			setTimeout(function(){
-				getURL();
-			},1000);
-		}else{
+		if (typeof imgSrc == "undefined" || imgSrc == "//bj.afreecatv.com/undefined") {
+			setTimeout(function() {
+				initCount++;
+				if (initCount < 50) {
+					getURL();
+				}
+			}, 1000);
+		} else {
 			imgSrc = new URL(imgSrc, window.location.href).href;
 			//imgSrc = "https:" + imgSrc;
 			//发送图标 消息
@@ -56,10 +60,13 @@ function getURL() {
 			}
 			window.chrome.webview.postMessage(JSON.stringify(headImgObj));
 		}
-	}catch(e){
-		setTimeout(function(){
-			getURL();
-		},1000);	
+	} catch (e) {
+		setTimeout(function() {
+			initCount++;
+			if (initCount < 50) {
+				getURL();
+			}
+		}, 1000);
 	}
 }
 

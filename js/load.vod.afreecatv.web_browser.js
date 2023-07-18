@@ -34,13 +34,17 @@ dynamicLoading.js(domain + "libs/bootstrap/2.3.2/js/bootstrap.min.js");
 //console.log($.fn.jquery);
 getURL();
 let headImgObj;
-
+var initCount = 0;
 function getURL() {
 	try {
 		var imgSrc = $('.broadcast_information .bj_thumbnail img').attr('src');
 		if (typeof imgSrc == "undefined" || imgSrc == "https://stimg.afreecatv.com/undefined") {
 			setTimeout(function() {
-				getURL();
+				initCount++;
+				if (initCount < 50) {
+					getURL();
+				}
+
 			}, 1000);
 		} else {
 			//转换地址
@@ -57,7 +61,11 @@ function getURL() {
 		}
 	} catch (e) {
 		setTimeout(function() {
-			getURL();
+			initCount++;
+			if (initCount < 50) {
+				getURL();
+			}
+
 		}, 1000);
 	}
 }
