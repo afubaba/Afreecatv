@@ -22,55 +22,59 @@ var dynamicLoading = {
 		// script.defer = "defer";
 		script.src = path;
 		script.type = 'text/javascript';
-
+		script.onload=function(){
+			
+			callback();
+		}
 		head.appendChild(script);
 	}
 };
-dynamicLoading.css(domain + "css/common.css");
-
-dynamicLoading.js(domain + "libs/jquery/1.7.2/jquery.min.js");
-dynamicLoading.css(domain + "libs/bootstrap/2.3.2/css/bootstrap.min.css");
-//dynamicLoading.js(domain + "libs/bootstrap/2.3.2/js/bootstrap.min.js");
-//console.log($.fn.jquery);
-getURL();
-var initCount = 0;
-
-function getURL() {
-	try {
-		var imgSrc = $("section.bj_box .thum img").attr("src");
-
-		var src = $('.author_wrap .thumb img').attr('src');
-		if (typeof imgSrc == "undefined" || imgSrc == "//bj.afreecatv.com/undefined") {
+dynamicLoading.js(domain + "libs/jquery/1.7.2/jquery.min.js",function(){
+	
+	dynamicLoading.css(domain + "css/common.css");
+	dynamicLoading.css(domain + "libs/bootstrap/2.3.2/css/bootstrap.min.css");
+	//dynamicLoading.js(domain + "libs/bootstrap/2.3.2/js/bootstrap.min.js");
+	//console.log($.fn.jquery);
+	getURL();
+	var initCount = 0;
+	
+	function getURL() {
+		try {
+			var imgSrc = $("section.bj_box .thum img").attr("src");
+	
+			var src = $('.author_wrap .thumb img').attr('src');
+			if (typeof imgSrc == "undefined" || imgSrc == "//bj.afreecatv.com/undefined") {
+				setTimeout(function() {
+					initCount++;
+					if (initCount < 50) {
+						getURL();
+					}
+				}, 1000);
+			} else {
+				imgSrc = new URL(imgSrc, window.location.href).href;
+				//imgSrc = "https:" + imgSrc;
+				//发送图标 消息
+				let headImgObj;
+				// var imgSrc = $("section.bj_box .thum img").attr("src");
+				// imgSrc = "https:" + imgSrc;
+				// console.log(imgSrc);
+				headImgObj = {
+					headImgUrl: imgSrc
+				}
+				window.chrome.webview.postMessage(JSON.stringify(headImgObj));
+			}
+		} catch (e) {
 			setTimeout(function() {
 				initCount++;
 				if (initCount < 50) {
 					getURL();
 				}
 			}, 1000);
-		} else {
-			imgSrc = new URL(imgSrc, window.location.href).href;
-			//imgSrc = "https:" + imgSrc;
-			//发送图标 消息
-			let headImgObj;
-			// var imgSrc = $("section.bj_box .thum img").attr("src");
-			// imgSrc = "https:" + imgSrc;
-			// console.log(imgSrc);
-			headImgObj = {
-				headImgUrl: imgSrc
-			}
-			window.chrome.webview.postMessage(JSON.stringify(headImgObj));
 		}
-	} catch (e) {
-		setTimeout(function() {
-			initCount++;
-			if (initCount < 50) {
-				getURL();
-			}
-		}, 1000);
 	}
-}
-
-
-
-
-//dynamicLoading.js(domain + "js/bj.afreecatv.client.js");
+	
+	
+	
+	
+	//dynamicLoading.js(domain + "js/bj.afreecatv.client.js");
+});
