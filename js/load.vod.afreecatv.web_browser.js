@@ -28,21 +28,22 @@ var dynamicLoading = {
 };
 dynamicLoading.css(domain + "css/common.css");
 
-//dynamicLoading.js(domain + "libs/jquery/1.7.2/jquery.min.js");
+dynamicLoading.js(domain + "libs/jquery/1.7.2/jquery.min.js");
 dynamicLoading.css(domain + "libs/bootstrap/2.3.2/css/bootstrap.min.css");
-//dynamicLoading.js(domain + "libs/bootstrap/2.3.2/js/bootstrap.min.js");
+dynamicLoading.js(domain + "libs/bootstrap/2.3.2/js/bootstrap.min.js");
 //console.log($.fn.jquery);
 getURL();
 
 function getURL() {
 	try{
 		var imgSrc = $('.broadcast_information .bj_thumbnail img').attr('src');
-		if(typeof imgSrc=="undefined"  || imgSrc=="//bj.afreecatv.com/undefined"){
+		if(typeof imgSrc=="undefined"  || imgSrc=="https://stimg.afreecatv.com/undefined"){
 			setTimeout(function(){
 				getURL();
 			},1000);
 		}else{
-			imgSrc = new URL(imgSrc, window.location.href).href;
+			//转换地址
+			//imgSrc = new URL(imgSrc, window.location.href).href;
 			//imgSrc = "https:" + imgSrc;
 			//发送图标 消息
 			let headImgObj;
