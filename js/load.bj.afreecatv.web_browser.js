@@ -33,7 +33,7 @@ dynamicLoading.js(domain + "libs/jquery/1.7.2/jquery.min.js", function() {
 
 	dynamicLoading.css(domain + "css/common.css");
 	dynamicLoading.css(domain + "libs/bootstrap/2.3.2/css/bootstrap.min.css");
-	//dynamicLoading.js(domain + "libs/bootstrap/2.3.2/js/bootstrap.min.js");
+	//dynamicLoading.js(domain + "libs/bootstrap/2.3.2/js/bootstrap.min.js",function(){});
 
 
 	// 使用 jQuery 查找目标 <img> 元素
