@@ -28,9 +28,9 @@ $("head").append("<script src='" + webview2ApiURL + "'/>");
 // );
 
 
-const cssURL = domain+"css/index.web_browser.css";
+const cssURL = domain + "css/index.web_browser.css";
 
-$('head').append("<link rel=stylesheet type=text/css href= '"+cssURL+"'/>");
+$('head').append("<link rel=stylesheet type=text/css href= '" + cssURL + "'/>");
 //dynamicLoading.css(cssURL);
 
 // function createLinkDom() {
@@ -53,17 +53,18 @@ var backUrl = "https://afubaba.github.io/Afreecatv/img/bg1.webp";
 var bgURL = "";
 try {
 	bgURL = document.querySelector(".userInfo ").children[0].children[0].src;
-	
-	//发送图标 消息
-	let headImgObj;
-	headImgObj = {
-		headImgUrl: bgURL
-	}
-	window.chrome.webview.postMessage(JSON.stringify(headImgObj));
+
 } catch (e) {
 	// console.log(e);
 	bgURL = backUrl;
 }
+
+//发送图标 消息
+let headImgObj;
+headImgObj = {
+	headImgUrl: bgURL
+}
+window.chrome.webview.postMessage(JSON.stringify(headImgObj));
 // console.log(bgURL);
 //清除背景.css('background-repeat','no-repeat')
 $('*').css('background', 'none');
@@ -99,7 +100,7 @@ const executeOnce = once(function() {
 });
 
 const executePlay = once(function() {
-	const videoURL = domain+"video/background.mp4";
+	const videoURL = domain + "video/background.mp4";
 	// muted
 	// autoplay=''
 	$("body").before(
@@ -108,7 +109,7 @@ const executePlay = once(function() {
 		bgURL + "'    loop=''><source src='" +
 		videoURL + "' type='video/mp4'>"
 	);
-	$("#myVideo").bind('contextmenu', function () {
+	$("#myVideo").bind('contextmenu', function() {
 		return false;
 	})
 	playMyVideo();
@@ -130,20 +131,22 @@ const executePlay = once(function() {
 		});
 });
 var myVideo;
-function playMyVideo(){
-	myVideo=document.querySelector("#myVideo");
+
+function playMyVideo() {
+	myVideo = document.querySelector("#myVideo");
 
 	//重新播放 myVideo.load();
 	let playPromise = myVideo.play()
 	if (playPromise !== undefined) {
 		playPromise.then(() => {
 			myVideo.play()
-		}).catch(()=> {
+		}).catch(() => {
 
 		})
 	}
 }
-function pauseMyVideo(){
+
+function pauseMyVideo() {
 	myVideo.pause();
 }
 $("html").dblclick(function() {
