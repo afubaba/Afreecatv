@@ -1,4 +1,4 @@
-console.log("load.vod.afreecatv.web_browser.js");
+//console.log("load.vod.afreecatv.web_browser.js");
 var domain = "https://afubaba.github.io/Afreecatv/"
 var dynamicLoading = {
 	css: function(path) {
@@ -90,7 +90,7 @@ dynamicLoading.js(domain + "libs/jquery/1.7.2/jquery.min.js", function() {
 
 	function observeTarget() {
 		if (attemptCount >= 50) {
-			console.log('目标元素不存在，无法监听');
+			//console.log('目标元素不存在，无法监听');
 			return;
 		}
 
@@ -107,7 +107,7 @@ dynamicLoading.js(domain + "libs/jquery/1.7.2/jquery.min.js", function() {
 				mutationsList.forEach(function(mutation) {
 					if (mutation.attributeName === 'src') {
 						// src 属性发生变化时触发的事件
-						console.log('src 属性已变化:', initialSrc);
+						//console.log('src 属性已变化:', initialSrc);
 						setIcon(initialSrc);
 					}
 				});

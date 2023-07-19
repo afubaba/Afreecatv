@@ -56,7 +56,7 @@ dynamicLoading.js(domain + "libs/jquery/1.7.2/jquery.min.js", function() {
 	var attemptCount = 0; // 尝试计数器
 	function observeTarget() {
 		if (attemptCount >= 50) {
-			console.log('目标元素不存在，无法监听');
+			//console.log('目标元素不存在，无法监听');
 			return;
 		}
 		// 判断目标元素是否存在
