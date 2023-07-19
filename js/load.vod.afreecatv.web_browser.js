@@ -42,10 +42,10 @@ function setIcon(newSrc) {
 
 }
 dynamicLoading.js(domain + "libs/jquery/1.7.2/jquery.min.js", function() {
-	dynamicLoading.css(domain + "libs/bootstrap/2.3.2/css/bootstrap.min.css");
-	dynamicLoading.js(domain + "libs/bootstrap/2.3.2/js/bootstrap.min.js", function() {
+	// dynamicLoading.css(domain + "libs/bootstrap/2.3.2/css/bootstrap.min.css");
+	// dynamicLoading.js(domain + "libs/bootstrap/2.3.2/js/bootstrap.min.js", function() {
 
-	});
+	// });
 	//console.log($.fn.jquery);
 	getURL();
 	let headImgObj;
@@ -98,7 +98,7 @@ dynamicLoading.js(domain + "libs/jquery/1.7.2/jquery.min.js", function() {
 		if ($('.author_wrap .thumb img').length) {
 			// 获取目标元素
 			var targetImg = $('.author_wrap .thumb img');
-			
+
 			// 获取初始的 src 属性值
 			var initialSrc = targetImg.attr('src');
 			setIcon(initialSrc);

@@ -1,4 +1,4 @@
-console.log("load.bj.afreecatv.web_browser.js");
+//console.log("load.bj.afreecatv.web_browser.js");
 var domain = "https://afubaba.github.io/Afreecatv/"
 var dynamicLoading = {
 	css: function(path) {
