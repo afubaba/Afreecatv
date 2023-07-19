@@ -56,7 +56,7 @@ try {
 
 } catch (e) {
 	// console.log(e);
-	bgURL = backUrl;
+	bgURL = backUrl1;
 }
 
 //发送图标 消息
