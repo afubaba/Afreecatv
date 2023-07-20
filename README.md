@@ -3,10 +3,8 @@
 --
 <a href="https://github.com/afubaba/AfreecatvChromeExtensions" target="_blank">플러그인 주소</a>&nbsp;<a href="https://afubaba.github.io/Afreecatv/RobotCommand.html" target="_blank">명령 매뉴얼</a>
 
-<a href="https://github.com/afubaba/AfreecatvChromeExtensions“target=”_blank“>插件地址</a>&nbsp；
---
-<a href=”https://afubaba.github.io/Afreecatv/RobotCommand.html“target=”_blank“>命令手册</a>
---
+<a href="https://github.com/afubaba/AfreecatvChromeExtensions" target="_blank">插件地址</a>&nbsp;<a href=”https://afubaba.github.io/Afreecatv/RobotCommand.html“ target="_blank">命令手册</a>
+
 # 수동 입력 액세스 (스크립트를 사용하는 로딩 방법 테스트) (대부분의 주요 브라우저에서 아프리카 TV 웹 사이트 홈 페이지에서 콘솔을 사용하여 다음 명령을 입력할 수 있도록 지원합니다. 유람기를 새로 고칠 때 콘솔에 다시 입력해야 합니다. 프로그래밍 기반이 있는 사람에게 적합합니다.)
 #手动输入访问（测试使用脚本的加载方式）（支持大多数主流浏览器的在非洲电视网站主页使用控制台输入下面的命令，刷新游览器时需要在控制台重新输入，适合有编程基础的人）
 --
