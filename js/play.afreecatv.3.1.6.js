@@ -278,7 +278,7 @@ function testStart() {
 //数据导出导入
 function loadDatabase(localStorageType) {
 	if (localStorageType == "indexdb") {
-		
+
 		//导入Mysql数据到Indexdb
 		opMysql.exportDataFunction(function(mysqlExDt) {
 			opIndexDB.inportDataFunction(mysqlExDt, function(i) {
@@ -290,7 +290,7 @@ function loadDatabase(localStorageType) {
 			});
 		});
 
-	}  else if (localStorageType == "mysql") {
+	} else if (localStorageType == "mysql") {
 		//导入Indexdb数据到Mysql
 		opIndexDB.exportDataFunction(function(indexdbExDt) {
 			// console.log(dataArray.length);
@@ -309,7 +309,7 @@ function loadDatabase(localStorageType) {
 				});
 			}
 		});
-	
+
 	}
 }
 
@@ -3947,7 +3947,7 @@ const object = new Set([
 							sendMessageCustom(dataString, 1, 4);
 						});
 
-					}else if (localStorageType == "mysql") {
+					} else if (localStorageType == "mysql") {
 						opMysql.searchDataByUserId(data);
 					} else {
 						console.log("error command");
@@ -4007,7 +4007,7 @@ const object = new Set([
 							// sendMessageCustom(dataString, 1, 4);
 						});
 
-					}  else if (localStorageType == "mysql") {
+					} else if (localStorageType == "mysql") {
 						opMysql.searchMaxData(serachType, function(searchData) {
 							// console.log(eval( "(" + searchData + ")"));
 							outputText(searchData);

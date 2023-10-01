@@ -1,6 +1,22 @@
 var req;
 var dbName = 'chatPointsModeDB';
 var idbVersion;
+
+var db;
+var msg;
+var dbName = 'chatPointsModeDB';
+var sql;
+var uId;
+var uNick;
+var tbNm;
+var data;
+var today = new Date($("#timeFrequencys").text()).getDate();
+var sqlDataArray = [];
+var ace = {};
+var appendString;
+var aceImage;
+var imgSize;
+
 //初始化
 
 // req = indexedDB.open(dbName);
