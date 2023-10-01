@@ -201,7 +201,7 @@ function testStart() {
 					dynamicLoading.js(paSettingIndexdbURL);
 					//websql.js
 					// var paWebsqlURL = host + "js/play.afreecatv.3.1.6.websql.js";
-					dynamicLoading.js(paWebsqlURL);
+					//dynamicLoading.js(paWebsqlURL);
 					var paIndexdbURL = host + "js/play.afreecatv.3.1.6.indexdb.js";
 					dynamicLoading.js(paIndexdbURL);
 					var paMysqlURL = host + "js/play.afreecatv.3.1.6.mysql.js";
