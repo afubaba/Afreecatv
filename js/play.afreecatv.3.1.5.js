@@ -2820,28 +2820,52 @@ function getSonButtonDom(dom) {
 	return dom;
 }
 
+//发送Unicode代码1次
 function sendUltimateLengthMessage(message) {
+	//第一次立刻发送
 	sendNowFunction(message);
 	// sendMessage(message);
 
-	// getDomById('testInput').value = message;
-	// getDomById('inputTimes').value = 2;
-	// getDomById('inputFrequency').value = 30;
-	// getDomById('send_message').click();
-	showTipBarrageFunction(packageResult.sendUltimateLengthMessage.showTipBarrageFunction1);
-
-	setTimeout(function() {
-		sendNowFunction(message);
-		showTipBarrageFunction(packageResult.sendUltimateLengthMessage.showTipBarrageFunction2);
-		setTimeout(function() {
-			showTipBarrageFunction(packageResult.sendUltimateLengthMessage.showTipBarrageFunction3);
-			setTimeout(function() {
-				refreshPage(null, packageResult.refreshPage.text1);
-			}, 5000);
-		}, 5000);
-
-	}, 32000);
+	//五秒后
+	// setTimeout(function() {
+	// 	//发送五秒后刷新的提示
+	// 	showTipBarrageFunction(packageResult.sendUltimateLengthMessage.showTipBarrageFunction3);
+	// 	//五秒后刷新
+	// 	setTimeout(function() {
+	// 		refreshPage(null, packageResult.refreshPage.text1);
+	// 	}, 5000);
+	// }, 5000);
 }
+
+
+//发送Unicode代码2次
+// function sendUltimateLengthMessage(message) {
+// 	sendNowFunction(message);
+// 	// sendMessage(message);
+
+// 	// getDomById('testInput').value = message;
+// 	// getDomById('inputTimes').value = 2;
+// 	// getDomById('inputFrequency').value = 30;
+// 	// getDomById('send_message').click();
+// 	showTipBarrageFunction(packageResult.sendUltimateLengthMessage.showTipBarrageFunction1);
+
+// 	setTimeout(function() {
+// 		//立刻发送
+// 		sendNowFunction(message);
+// 		showTipBarrageFunction(packageResult.sendUltimateLengthMessage.showTipBarrageFunction2);
+
+// 		//五秒后
+// 		setTimeout(function() {
+// 			//发送五秒后刷新的提示
+// 			showTipBarrageFunction(packageResult.sendUltimateLengthMessage.showTipBarrageFunction3);
+// 			//五秒后刷新
+// 			setTimeout(function() {
+// 				refreshPage(null, packageResult.refreshPage.text1);
+// 			}, 5000);
+// 		}, 5000);
+
+// 	}, 32000);
+// }
 
 
 var tbName = $("#szBjId").val();
