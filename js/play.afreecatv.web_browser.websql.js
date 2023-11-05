@@ -1115,7 +1115,8 @@ function showEveryPageIndex(allLength, pageIndex) {
     }
 }
 
-opWebsql.createTable(tbName);
+//启动时候创建websql
+//opWebsql.createTable(tbName);
 
 // var tbName = $("#szBjId").val();
 // tbName = !isNaN(tbName.substr(0, 1)) ? "cpm_" + tbName : tbName;

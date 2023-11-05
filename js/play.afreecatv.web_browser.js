@@ -309,8 +309,6 @@ function testStart() {
 		sessionStorage.setItem("paIndexdbURL", indexdbURL);
 
 
-
-
 		pageLang = sessionStorage.getItem("pageLang");
 		//主动设置为韩语
 		//pageLang="zh";
@@ -395,22 +393,7 @@ function testStart() {
 //数据导出导入
 function loadDatabase(localStorageType) {
 	if (localStorageType == "indexdb") {
-		//导入websql数据到Indexdb
-		opWebsql.exportDataFunction(function(dataArray) {
-			// console.log(dataArray);
-			if (dataArray.length == 0) {
-				//删除表格
-				opWebsql.deleteTable();
-			} else {
-				opIndexDB.inportDataFunction(dataArray, function(i) {
-					//删除表格
-					opWebsql.deleteTable();
-					//清除表格数据
-					// opWebsql.clearTable();
-				});
-			}
-
-		});
+		
 		//导入Mysql数据到Indexdb
 		opMysql.exportDataFunction(function(mysqlExDt) {
 			opIndexDB.inportDataFunction(mysqlExDt, function(i) {
@@ -422,35 +405,7 @@ function loadDatabase(localStorageType) {
 			});
 		});
 
-	} else if (localStorageType == "websql") {
-		opIndexDB.exportDataFunction(function(indexdbExDt) {
-			// console.log(dataArray.length);
-			//不存在创造表格
-			// opWebsql.createTable(tbName);
-			// console.log("从indexdb导入"+indexdbExDt.length+"个数据到websql");
-			if (indexdbExDt.length == 0) {
-				//删除表格
-				// opIndexDB.deleteTable();
-			} else {
-				opWebsql.inportDataFunction(indexdbExDt, function(i) {
-					//清除表格数据
-					opIndexDB.clearTable();
-					//删除表格
-					// opIndexDB.deleteTable();
-				});
-			}
-		});
-		//导入Mysql数据到websql
-		opMysql.exportDataFunction(function(mysqlExDt) {
-			// console.log("从mysql导入"+mysqlExDt.length+"个数据到websql");
-			opWebsql.inportDataFunction(mysqlExDt, function(i) {
-				//删除表格
-				// opMysql.deleteTable();
-				//清除表格数据
-				opMysql.clearTable();
-			});
-		});
-	} else if (localStorageType == "mysql") {
+	}  else if (localStorageType == "mysql") {
 		//导入Indexdb数据到Mysql
 		opIndexDB.exportDataFunction(function(indexdbExDt) {
 			// console.log(dataArray.length);
@@ -469,24 +424,7 @@ function loadDatabase(localStorageType) {
 				});
 			}
 		});
-		//导入Websql数据到Mysql
-		opWebsql.exportDataFunction(function(websqlExDt) {
-			// console.log(dataArray);
-			// console.log("从websql导入"+websqlExDt.length+"个数据到mysql");
-			if (websqlExDt.length == 0) {
-				//删除表格
-				opWebsql.deleteTable();
-			} else {
-				opMysql.inportDataFunction(websqlExDt, function(i) {
-					//删除表格
-					// opWebsql.deleteTable();
-					//清除表格数据
-					opWebsql.clearTable();
-
-				});
-			}
-
-		});
+	
 	}
 }
 
@@ -3150,53 +3088,28 @@ function getSonButtonDom(dom) {
 	return dom;
 }
 
-//发送Unicode代码1次
 function sendUltimateLengthMessage(message) {
-    //第一次立刻发送
-    sendNowFunction(message);
-    // sendMessage(message);
+	sendNowFunction(message);
+	// sendMessage(message);
 
-    //五秒后
-    // setTimeout(function() {
-    // 	//发送五秒后刷新的提示
-    // 	showTipBarrageFunction(packageResult.sendUltimateLengthMessage.showTipBarrageFunction3);
-    // 	//五秒后刷新
-    // 	setTimeout(function() {
-    // 		refreshPage(null, packageResult.refreshPage.text1);
-    // 	}, 5000);
-    // }, 5000);
+	// getDomById('testInput').value = message;
+	// getDomById('inputTimes').value = 2;
+	// getDomById('inputFrequency').value = 30;
+	// getDomById('send_message').click();
+	showTipBarrageFunction(packageResult.sendUltimateLengthMessage.showTipBarrageFunction1);
+
+	setTimeout(function() {
+		sendNowFunction(message);
+		showTipBarrageFunction(packageResult.sendUltimateLengthMessage.showTipBarrageFunction2);
+		setTimeout(function() {
+			showTipBarrageFunction(packageResult.sendUltimateLengthMessage.showTipBarrageFunction3);
+			setTimeout(function() {
+				refreshPage(null, packageResult.refreshPage.text1);
+			}, 5000);
+		}, 5000);
+
+	}, 32000);
 }
-
-
-//发送Unicode代码2次
-// function sendUltimateLengthMessage(message) {
-// 	sendNowFunction(message);
-// 	// sendMessage(message);
-
-// 	// getDomById('testInput').value = message;
-// 	// getDomById('inputTimes').value = 2;
-// 	// getDomById('inputFrequency').value = 30;
-// 	// getDomById('send_message').click();
-// 	showTipBarrageFunction(packageResult.sendUltimateLengthMessage.showTipBarrageFunction1);
-
-// 	setTimeout(function() {
-// 		//立刻发送
-// 		sendNowFunction(message);
-// 		showTipBarrageFunction(packageResult.sendUltimateLengthMessage.showTipBarrageFunction2);
-
-// 		//五秒后
-// 		setTimeout(function() {
-// 			//发送五秒后刷新的提示
-// 			showTipBarrageFunction(packageResult.sendUltimateLengthMessage.showTipBarrageFunction3);
-// 			//五秒后刷新
-// 			setTimeout(function() {
-// 				refreshPage(null, packageResult.refreshPage.text1);
-// 			}, 5000);
-// 		}, 5000);
-
-// 	}, 32000);
-// }
-
 
 var tbName = $("#szBjId").val();
 tbName = !isNaN(tbName.substr(0, 1)) ? "cpm_" + tbName : tbName;
@@ -3418,18 +3331,6 @@ function retrievalButtonFunction() {
 								}
 								if (localStorageType == "indexdb") {
 									opIndexDB.insertData(uData, idDom);
-								} else if (localStorageType == "websql") {
-									// uData.tex="11111";
-									uData.tbName = tbName;
-									// uData.id = user_Id;
-
-									//删除属性
-									// Reflect.deleteProperty(uData, "id");
-									// console.log(userData);
-									opWebsql.insertData(uData, null);
-
-
-									//查询
 								} else if (localStorageType == "mysql") {
 									//上传MYSQL
 									opMysql.insertData(uData);
@@ -3657,15 +3558,6 @@ function retrievalButtonFunction() {
 							// createTable
 							if (localStorageType == "indexdb") {
 								opIndexDB.insertData(userData, idDom);
-							} else if (localStorageType == "websql") {
-								userData.tbName = tbName;
-								// userData.id = idt;
-								//删除属性
-								// Reflect.deleteProperty(userData, "id");
-								// console.log(userData);
-								opWebsql.insertData(userData, idDom);
-
-								//查询
 							} else if (localStorageType == "mysql") {
 								//上传MYSQL
 								opMysql.insertData(userData);
@@ -4242,14 +4134,6 @@ function retrievalButtonFunction() {
 												// console.log(data);
 												outputData(data);
 											});
-										} else if (localStorageType == "websql") {
-											//修改data
-											// diceData.userId = userData.userId;
-											// console.log("websql")
-											opWebsql.updateData(diceData, function(data) {
-												// console.log(data);
-												outputData(data);
-											});
 										} else if (localStorageType == "mysql") {
 
 											opMysql.updateData(diceData, function(data) {
@@ -4330,9 +4214,7 @@ const object = new Set([
 							sendMessageCustom(dataString, 1, 4);
 						});
 
-					} else if (localStorageType == "websql") {
-						opWebsql.searchDataByUserId(data.tex);
-					} else if (localStorageType == "mysql") {
+					}else if (localStorageType == "mysql") {
 						opMysql.searchDataByUserId(data);
 					} else {
 						console.log("error command");
@@ -4392,18 +4274,6 @@ const object = new Set([
 							// sendMessageCustom(dataString, 1, 4);
 						});
 
-					} else if (localStorageType == "websql") {
-						opWebsql.searchMaxData(serachType, function(searchData) {
-
-							outputText(searchData);
-
-							// let dataString = "@" + data.userNick + ",오늘 채팅" + data
-							//         .maxChatPoint +
-							//     "회," + data.count + "명 발언 1위.";
-
-							// $("#testInput").val(dataString);
-							// sendMessageCustom(dataString, 1, 4);
-						});
 					} else if (localStorageType == "mysql") {
 						opMysql.searchMaxData(serachType, function(searchData) {
 							// console.log(eval( "(" + searchData + ")"));
