@@ -18,7 +18,7 @@ var dynamicLoading = {
         }
         var head = document.getElementsByTagName('head')[0];
         var script = document.createElement('script');
-        // script.async = "async";
+        script.async = "async";
         // script.defer = "defer";
         script.src = path;
         script.type = 'text/javascript';
@@ -37,8 +37,8 @@ const commonURL = domain + "js/common.js";
 dynamicLoading.js(commonURL);
 //加载首页js
 //延迟加载
-setTimeout(function(){
+setTimeout(function () {
     dynamicLoading.js(domain + "js/index.douyu.web_browser.js");
-},1000);
+}, 1000);
 
 
