@@ -36,5 +36,9 @@ const commonURL = domain + "js/common.js";
 // $("head").append("<script src='" + commonURL + "'/>");
 dynamicLoading.js(commonURL);
 //加载首页js
-dynamicLoading.js(domain + "js/index.douyu.web_browser.js");
+//延迟加载
+setTimeout(function(){
+    dynamicLoading.js(domain + "js/index.douyu.web_browser.js");
+},1000);
+
 

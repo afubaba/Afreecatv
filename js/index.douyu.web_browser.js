@@ -28,7 +28,7 @@ console.log("index.douyu.web_browser.js");
 const cssURL = domain + "css/index.web_browser.css";
 
 $('head').append("<link rel=stylesheet type=text/css href= '" + cssURL + "'/>");
-//dynamicLoading.css(cssURL);
+dynamicLoading.css(cssURL);
 
 // function createLinkDom() {
 // 	let backDom ;
