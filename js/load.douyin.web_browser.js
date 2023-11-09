@@ -35,8 +35,8 @@ dynamicLoading.css(domain + "libs/bootstrap/2.3.2/css/bootstrap.min.css");
 dynamicLoading.js(domain + "libs/bootstrap/2.3.2/js/bootstrap.min.js");
 //加载通用js
 const commonURL = domain + "js/common.js";
-$("head").append("<script src='" + commonURL + "'/>");
+// $("head").append("<script src='" + commonURL + "'/>");
+dynamicLoading.js(commonURL);
 //加载首页js
 dynamicLoading.js(domain + "js/index.douyu.web_browser.js");
-;
 
