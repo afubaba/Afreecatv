@@ -1,9 +1,7 @@
 console.log("load.douyin.web_browser.js");
-
-
-const domain = "https://afubaba.github.io/Afreecatv/"
+const domain = "https://afubaba.github.io/Afreecatv/";
 var dynamicLoading = {
-    css: function(path) {
+    css: function (path) {
         if (!path || path.length === 0) {
             throw new Error('argument "path" is required !');
         }
@@ -14,7 +12,7 @@ var dynamicLoading = {
         link.type = 'text/css';
         head.appendChild(link);
     },
-    js: function(path, callback) {
+    js: function (path, callback) {
         if (!path || path.length === 0) {
             throw new Error('argument "path" is required !');
         }

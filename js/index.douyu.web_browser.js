@@ -1,8 +1,8 @@
 console.log("index.douyu.web_browser.js");
 
-const domain = "https://afubaba.github.io/Afreecatv/"
-const commonURL = domain + "js/common.js";
-$("head").append("<script src='" + commonURL + "'/>");
+// const domain = "https://afubaba.github.io/Afreecatv/"
+// const commonURL = domain + "js/common.js";
+// $("head").append("<script src='" + commonURL + "'/>");
 
 //webview2 api
 // const webview2ApiURL = domain + "js/webview2.web_browser.js";
