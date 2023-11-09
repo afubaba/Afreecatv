@@ -3,11 +3,11 @@
 const domain = "https://afubaba.github.io/Afreecatv/"
 
 const commonURL = domain + "js/common.js";
-$("head").append("<script src='" + commonURL + "'/>");
+$("head").append("<script src='" + commonURL + "' async='async'/>");
 
 //webview2 api
 const webview2ApiURL = domain + "js/webview2.web_browser.js";
-$("head").append("<script src='" + webview2ApiURL + "'/>");
+$("head").append("<script src='" + webview2ApiURL + "' async='async'/>");
 
 
 
