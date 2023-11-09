@@ -45,6 +45,8 @@ dynamicLoading.css(cssURL);
 //背景图地址
 var backUrl1 = "https://profile.img.afreecatv.com/LOGO/10/1057123999/1057123999.jpg";
 var backUrl = "https://afubaba.github.io/Afreecatv/img/bg1.webp";
+backUrl1 = "https://afubaba.github.io/Afreecatv/img/pan/710X718.webp";
+
 // console.log(chrome.*);
 // const bgURL=chrome.extension.getURL("img/bg.png");
 var bgURL = "";
