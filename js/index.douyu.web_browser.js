@@ -43,7 +43,7 @@ dynamicLoading.css(cssURL);
 // if (location.href=="https://afreecatv.com/") {
 // console.log("进入了主页");
 //背景图地址
-const backUrl1 = "https://profile.img.afreecatv.com/LOGO/10/1057123999/1057123999.jpg";
+var backUrl1 = "https://profile.img.afreecatv.com/LOGO/10/1057123999/1057123999.jpg";
 const backUrl = "https://afubaba.github.io/Afreecatv/img/bg1.webp";
 backUrl1 = "https://afubaba.github.io/Afreecatv/img/pan/710X718.webp";
 
