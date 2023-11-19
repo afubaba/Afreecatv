@@ -44,12 +44,12 @@ dynamicLoading.css(cssURL);
 // console.log("进入了主页");
 //背景图地址
 var backUrl1 = "https://profile.img.afreecatv.com/LOGO/10/1057123999/1057123999.jpg";
-const backUrl = "https://afubaba.github.io/Afreecatv/img/bg1.webp";
+var backUrl = "https://afubaba.github.io/Afreecatv/img/bg1.webp";
 backUrl1 = "https://afubaba.github.io/Afreecatv/img/pan/710X718.webp";
 
 // console.log(chrome.*);
 // const bgURL=chrome.extension.getURL("img/bg.png");
-let bgURL = "";
+var bgURL = "";
 try {
     bgURL = document.querySelector(".userInfo ").children[0].children[0].src;
 
@@ -59,7 +59,8 @@ try {
 }
 
 //发送图标 消息
-const headImgObj = {
+let headImgObj;
+headImgObj = {
     headImgUrl: bgURL
 }
 window.chrome.webview.postMessage(JSON.stringify(headImgObj));
@@ -70,14 +71,14 @@ $('*').css('background', 'none');
 // 	'100%').css("background-repeat","no-repeat")
 
 $('body').css({
-    'background': `url(${bgURL})`,
+    'background': 'url(' + bgURL + ')',
     'background-size': '200% 200%',  // 放大背景图片
     'background-repeat': 'no-repeat',
     'background-position': 'center'
 });
 
 // $('body').css({
-//     'background': `url(${bgURL})`,
+//     'background': 'url(' + bgURL + ')',
 //     'background-size': 'cover',
 //     'height': '100%',
 //     'width': '100%',
@@ -85,14 +86,14 @@ $('body').css({
 //     'background-position': 'center'
 // });
 //开始清除播放
-// document.getElementById("myVideo").pause();
+// document.querySelector("#myVideo").pause();
 
 // 双击事件
 
 //只执行一次
-const once = (fn) => {
+function once(fn) {
     let done = false;
-    return (...args) => {
+    return function (...args) {
         if (!done) {
             done = true;
             fn.call({}, ...args);
@@ -100,60 +101,69 @@ const once = (fn) => {
     };
 }
 
-const executeOnce = once(() => {
+const executeOnce = once(function () {
     $("a").css("color", "white");
-    $(".btn-more").children().click(() => {
-        setTimeout(() => {
+    $(".btn-more").children().click(function () {
+        setTimeout(function () {
             $("a").css("color", "white");
         }, 1000);
     });
 });
 
-const executePlay = once(() => {
+const executePlay = once(function () {
     // const videoURL = domain + "video/background.mp4";
     const videoURL = domain + "video/DJSONA4.mp4";
     // muted
     // autoplay=''
     $("body").before(
         // https://afubaba.github.io/Afreecatv
-        `<video id="myVideo" width="100%" height="100%"  class="fullscreenvideo"  playsinline="" poster="${bgURL}"    loop=""><source src="${videoURL}" type="video/mp4">`
+        "<video id=myVideo width=100% height=100%  class='fullscreenvideo'  playsinline='' poster='" +
+        bgURL + "'    loop=''><source src='" +
+        videoURL + "' type='video/mp4'>"
     );
-    $("#myVideo").addEventListener("contextmenu", () => {
+    $("#myVideo").bind('contextmenu', function () {
         return false;
     })
     playMyVideo();
     //监听播放器
-    $("html").hover(async () => {
-            // setInterval(() => {
+    $("html").hover(function () {
+            // setInterval(function() {
             // $("body").css("backgroundImage", "none").css("transform", "none")
 
             // }, 1000);
-            // document.getElementById("myVideo").play();
-            await playMyVideo();
+            // document.querySelector("#myVideo").play();
+            playMyVideo();
             $("body").fadeTo(1000, 0.1).fadeTo(1000, 0.2).fadeTo(1000, 0.3).fadeTo(1000, 0.4).fadeTo(1000,
                 0.5).fadeTo(1000, 0.6).fadeTo(1000, 0.7).fadeTo(1000, 0.8).fadeTo(1000, 0.9).fadeTo(
                 1000, 1);
             ;
 
         },
-        () => {
+        function () {
             pauseMyVideo();
         });
 });
-let myVideo;
+var myVideo;
 
-const playMyVideo = async () => {
-    myVideo = document.getElementById("myVideo");
+function playMyVideo() {
+    myVideo = document.querySelector("#myVideo");
 
     //重新播放 myVideo.load();
-    await myVideo.play()
+    let playPromise = myVideo.play()
+    if (playPromise !== undefined) {
+        playPromise.then(() => {
+            myVideo.play()
+        }).catch(() => {
+
+        })
+    }
 }
 
-const pauseMyVideo = () => {
+function pauseMyVideo() {
     myVideo.pause();
 }
 
-$("html").dblclick(() => {
+$("html").dblclick(function () {
     // $("body").toggle();
     // $("body").css("transform", "rotate3d(1,0,1,-" + 90 + "deg)").css("transition-duration", "5s").css(
     // 	"transition-timing-function", "ease-in");
