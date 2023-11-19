@@ -82,23 +82,24 @@ $('body').css('background', 'url(' + bgURL + ')').css('background-size', 'cover'
 //只执行一次
 function once(fn) {
     let done = false;
-    return function(...args) {
+    return function (...args) {
         if (!done) {
             done = true;
             fn.call({}, ...args);
         }
     };
 }
-const executeOnce = once(function() {
+
+const executeOnce = once(function () {
     $("a").css("color", "white");
-    $(".btn-more").children().click(function() {
-        setTimeout(function() {
+    $(".btn-more").children().click(function () {
+        setTimeout(function () {
             $("a").css("color", "white");
         }, 1000);
     });
 });
 
-const executePlay = once(function() {
+const executePlay = once(function () {
     // const videoURL = domain + "video/background.mp4";
     const videoURL = domain + "video/DJSONA4.mp4";
     // muted
@@ -109,12 +110,12 @@ const executePlay = once(function() {
         bgURL + "'    loop=''><source src='" +
         videoURL + "' type='video/mp4'>"
     );
-    $("#myVideo").bind('contextmenu', function() {
+    $("#myVideo").bind('contextmenu', function () {
         return false;
     })
     playMyVideo();
     //监听播放器
-    $("html").hover(function() {
+    $("html").hover(function () {
             // setInterval(function() {
             // $("body").css("backgroundImage", "none").css("transform", "none")
 
@@ -123,10 +124,11 @@ const executePlay = once(function() {
             playMyVideo();
             $("body").fadeTo(1000, 0.1).fadeTo(1000, 0.2).fadeTo(1000, 0.3).fadeTo(1000, 0.4).fadeTo(1000,
                 0.5).fadeTo(1000, 0.6).fadeTo(1000, 0.7).fadeTo(1000, 0.8).fadeTo(1000, 0.9).fadeTo(
-                1000, 1);;
+                1000, 1);
+            ;
 
         },
-        function() {
+        function () {
             pauseMyVideo();
         });
 });
@@ -149,7 +151,8 @@ function playMyVideo() {
 function pauseMyVideo() {
     myVideo.pause();
 }
-$("html").dblclick(function() {
+
+$("html").dblclick(function () {
     // $("body").toggle();
     // $("body").css("transform", "rotate3d(1,0,1,-" + 90 + "deg)").css("transition-duration", "5s").css(
     // 	"transition-timing-function", "ease-in");
@@ -218,11 +221,10 @@ $("html").dblclick(function() {
 // dynamicLoading.js("https://afubaba.github.io/Afreecatv/js/afreecatv.index.js");
 
 
-
 function httpRequest(url, callback) {
     var xhr = new XMLHttpRequest();
     xhr.open("GET", url, true);
-    xhr.onreadystatechange = function() {
+    xhr.onreadystatechange = function () {
         if (xhr.readyState == 4) {
             callback(xhr.responseText);
         }
