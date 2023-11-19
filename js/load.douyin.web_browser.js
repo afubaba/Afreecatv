@@ -22,11 +22,11 @@ var dynamicLoading = {
         // script.defer = "defer";
         script.src = path;
         script.type = 'text/javascript';
-
         head.appendChild(script);
     }
 };
 dynamicLoading.css(domain + "css/common.css");
+dynamicLoading.css(domain + "css/index.douyu.web_browser.css");
 //const jqueryURL = domain + "libs/jquery/1.7.2/jquery.min.js";
 dynamicLoading.js(domain + "libs/jquery/1.7.2/jquery.min.js");
 dynamicLoading.css(domain + "libs/bootstrap/2.3.2/css/bootstrap.min.css");

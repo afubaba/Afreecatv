@@ -10,7 +10,6 @@ const webview2ApiURL = domain + "js/webview2.web_browser.js";
 $("head").append("<script src='" + webview2ApiURL + "' async='async'/>");
 
 
-
 // createLinkDom();
 // $("body").before(
 
@@ -52,17 +51,17 @@ var backUrl = "https://afubaba.github.io/Afreecatv/img/bg1.webp";
 // const bgURL=chrome.extension.getURL("img/bg.png");
 var bgURL = "";
 try {
-	bgURL = document.querySelector(".userInfo ").children[0].children[0].src;
+    bgURL = document.querySelector(".userInfo ").children[0].children[0].src;
 
 } catch (e) {
-	// console.log(e);
-	bgURL = backUrl1;
+    // console.log(e);
+    bgURL = backUrl1;
 }
 
 //发送图标 消息
 let headImgObj;
 headImgObj = {
-	headImgUrl: bgURL
+    headImgUrl: bgURL
 }
 window.chrome.webview.postMessage(JSON.stringify(headImgObj));
 // console.log(bgURL);
@@ -72,8 +71,8 @@ $('*').css('background', 'none');
 // 	'100%').css("background-repeat","no-repeat")
 
 $('body').css('background', 'url(' + bgURL + ')').css('background-size', 'cover').css('height', '100%').css(
-	'width',
-	'100%').css("backgroundRepeat", "no-repeat").css("backgroundPosition", "center");
+    'width',
+    '100%').css("backgroundRepeat", "no-repeat").css("backgroundPosition", "center");
 
 //开始清除播放
 // document.querySelector("#myVideo").pause();
@@ -82,88 +81,91 @@ $('body').css('background', 'url(' + bgURL + ')').css('background-size', 'cover'
 
 //只执行一次
 function once(fn) {
-	let done = false;
-	return function(...args) {
-		if (!done) {
-			done = true;
-			fn.call({}, ...args);
-		}
-	};
+    let done = false;
+    return function (...args) {
+        if (!done) {
+            done = true;
+            fn.call({}, ...args);
+        }
+    };
 }
-const executeOnce = once(function() {
-	$("a").css("color", "white");
-	$(".btn-more").children().click(function() {
-		setTimeout(function() {
-			$("a").css("color", "white");
-		}, 1000);
-	});
+
+const executeOnce = once(function () {
+    $("a").css("color", "white");
+    $(".btn-more").children().click(function () {
+        setTimeout(function () {
+            $("a").css("color", "white");
+        }, 1000);
+    });
 });
 
-const executePlay = once(function() {
-	const videoURL = domain + "video/background.mp4";
-	// muted
-	// autoplay=''
-	$("body").before(
-		// https://afubaba.github.io/Afreecatv
-		"<video id=myVideo width=100% height=100%  class='fullscreenvideo'  playsinline='' poster='" +
-		bgURL + "'    loop=''><source src='" +
-		videoURL + "' type='video/mp4'>"
-	);
-	$("#myVideo").bind('contextmenu', function() {
-		return false;
-	})
-	playMyVideo();
-	//监听播放器
-	$("html").hover(function() {
-			// setInterval(function() {
-			// $("body").css("backgroundImage", "none").css("transform", "none")
+const executePlay = once(function () {
+    const videoURL = domain + "video/background.mp4";
+    // muted
+    // autoplay=''
+    $("body").before(
+        // https://afubaba.github.io/Afreecatv
+        "<video id=myVideo width=100% height=100%  class='fullscreenvideo'  playsinline='' poster='" +
+        bgURL + "'    loop=''><source src='" +
+        videoURL + "' type='video/mp4'>"
+    );
+    $("#myVideo").bind('contextmenu', function () {
+        return false;
+    })
+    playMyVideo();
+    //监听播放器
+    $("html").hover(function () {
+            // setInterval(function() {
+            // $("body").css("backgroundImage", "none").css("transform", "none")
 
-			// }, 1000);
-			// document.querySelector("#myVideo").play();
-			playMyVideo();
-			$("body").fadeTo(1000, 0.1).fadeTo(1000, 0.2).fadeTo(1000, 0.3).fadeTo(1000, 0.4).fadeTo(1000,
-				0.5).fadeTo(1000, 0.6).fadeTo(1000, 0.7).fadeTo(1000, 0.8).fadeTo(1000, 0.9).fadeTo(
-				1000, 1);;
+            // }, 1000);
+            // document.querySelector("#myVideo").play();
+            playMyVideo();
+            $("body").fadeTo(1000, 0.1).fadeTo(1000, 0.2).fadeTo(1000, 0.3).fadeTo(1000, 0.4).fadeTo(1000,
+                0.5).fadeTo(1000, 0.6).fadeTo(1000, 0.7).fadeTo(1000, 0.8).fadeTo(1000, 0.9).fadeTo(
+                1000, 1);
+            ;
 
-		},
-		function() {
-			pauseMyVideo();
-		});
+        },
+        function () {
+            pauseMyVideo();
+        });
 });
 var myVideo;
 
 function playMyVideo() {
-	myVideo = document.querySelector("#myVideo");
+    myVideo = document.querySelector("#myVideo");
 
-	//重新播放 myVideo.load();
-	let playPromise = myVideo.play()
-	if (playPromise !== undefined) {
-		playPromise.then(() => {
-			myVideo.play()
-		}).catch(() => {
+    //重新播放 myVideo.load();
+    let playPromise = myVideo.play()
+    if (playPromise !== undefined) {
+        playPromise.then(() => {
+            myVideo.play()
+        }).catch(() => {
 
-		})
-	}
+        })
+    }
 }
 
 function pauseMyVideo() {
-	myVideo.pause();
+    myVideo.pause();
 }
-$("html").dblclick(function() {
-	// $("body").toggle();
-	// $("body").css("transform", "rotate3d(1,0,1,-" + 90 + "deg)").css("transition-duration", "5s").css(
-	// 	"transition-timing-function", "ease-in");
-	//显示隐藏
-	if ($("body").css("transform") == "none") {
-		$("body").css("transform", "scale3d(1,0,2)").css("transition-duration", "3s").css(
-			"transition-timing-function", "ease-in");
 
-	} else {
-		$("body").css("backgroundImage", "none").css("transform", "none");
+$("html").dblclick(function () {
+    // $("body").toggle();
+    // $("body").css("transform", "rotate3d(1,0,1,-" + 90 + "deg)").css("transition-duration", "5s").css(
+    // 	"transition-timing-function", "ease-in");
+    //显示隐藏
+    if ($("body").css("transform") == "none") {
+        $("body").css("transform", "scale3d(1,0,2)").css("transition-duration", "3s").css(
+            "transition-timing-function", "ease-in");
 
-		executeOnce();
-	}
-	executePlay();
+    } else {
+        $("body").css("backgroundImage", "none").css("transform", "none");
+
+        executeOnce();
+    }
+    executePlay();
 });
 
 //背景图
@@ -218,7 +220,6 @@ $("html").dblclick(function() {
 // dynamicLoading.js("https://afubaba.github.io/Afreecatv/js/afreecatv.index.js");
 
 
-
 // chrome.app.window.create('blank.html', {
 // 	id: 'default'
 // });
@@ -259,14 +260,14 @@ $("html").dblclick(function() {
 
 
 function httpRequest(url, callback) {
-	var xhr = new XMLHttpRequest();
-	xhr.open("GET", url, true);
-	xhr.onreadystatechange = function() {
-		if (xhr.readyState == 4) {
-			callback(xhr.responseText);
-		}
-	}
-	xhr.send();
+    var xhr = new XMLHttpRequest();
+    xhr.open("GET", url, true);
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState == 4) {
+            callback(xhr.responseText);
+        }
+    }
+    xhr.send();
 }
 
 // document.getElementById('myFile').onchange = function(){
