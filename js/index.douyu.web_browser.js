@@ -71,9 +71,12 @@ $('*').css('background', 'none');
 // 	'100%').css("background-repeat","no-repeat")
 
 $('body').css('background', 'url(' + bgURL + ')')
-    .css('background-size', 'contain')
+    .css('background-size', 'cover')
+    // .css('height', '100%')
+    // .css('width', '100%')
     .css("backgroundRepeat", "no-repeat")
-    .css("backgroundPosition", "center");
+    // .css("backgroundPosition", "center");
+
 //开始清除播放
 // document.querySelector("#myVideo").pause();
 
@@ -104,26 +107,33 @@ const executePlay = once(function () {
     const videoURL = domain + "video/DJSONA4.mp4";
     // muted
     // autoplay=''
-    $("body").before(// https://afubaba.github.io/Afreecatv
-        "<video id=myVideo width=100% height=100%  class='fullscreenvideo'  playsinline='' poster='" + bgURL + "'    loop=''><source src='" + videoURL + "' type='video/mp4'>");
+    $("body").before(
+        // https://afubaba.github.io/Afreecatv
+        "<video id=myVideo width=100% height=100%  class='fullscreenvideo'  playsinline='' poster='" +
+        bgURL + "'    loop=''><source src='" +
+        videoURL + "' type='video/mp4'>"
+    );
     $("#myVideo").bind('contextmenu', function () {
         return false;
     })
     playMyVideo();
     //监听播放器
     $("html").hover(function () {
-        // setInterval(function() {
-        // $("body").css("backgroundImage", "none").css("transform", "none")
+            // setInterval(function() {
+            // $("body").css("backgroundImage", "none").css("transform", "none")
 
-        // }, 1000);
-        // document.querySelector("#myVideo").play();
-        playMyVideo();
-        $("body").fadeTo(1000, 0.1).fadeTo(1000, 0.2).fadeTo(1000, 0.3).fadeTo(1000, 0.4).fadeTo(1000, 0.5).fadeTo(1000, 0.6).fadeTo(1000, 0.7).fadeTo(1000, 0.8).fadeTo(1000, 0.9).fadeTo(1000, 1);
-        ;
+            // }, 1000);
+            // document.querySelector("#myVideo").play();
+            playMyVideo();
+            $("body").fadeTo(1000, 0.1).fadeTo(1000, 0.2).fadeTo(1000, 0.3).fadeTo(1000, 0.4).fadeTo(1000,
+                0.5).fadeTo(1000, 0.6).fadeTo(1000, 0.7).fadeTo(1000, 0.8).fadeTo(1000, 0.9).fadeTo(
+                1000, 1);
+            ;
 
-    }, function () {
-        pauseMyVideo();
-    });
+        },
+        function () {
+            pauseMyVideo();
+        });
 });
 var myVideo;
 
@@ -151,7 +161,8 @@ $("html").dblclick(function () {
     // 	"transition-timing-function", "ease-in");
     //显示隐藏
     if ($("body").css("transform") == "none") {
-        $("body").css("transform", "scale3d(1,0,2)").css("transition-duration", "3s").css("transition-timing-function", "ease-in");
+        $("body").css("transform", "scale3d(1,0,2)").css("transition-duration", "3s").css(
+            "transition-timing-function", "ease-in");
 
     } else {
         $("body").css("backgroundImage", "none").css("transform", "none");
