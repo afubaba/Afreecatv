@@ -70,9 +70,12 @@ $('*').css('background', 'none');
 // $('body').css('background', 'url(' + bgURL + ')').css('background-size', '100%').css('height', '100%').css('width',
 // 	'100%').css("background-repeat","no-repeat")
 
-$('body').css('background', 'url(' + bgURL + ')').css('background-size', 'cover').css('height', '100%').css(
-    'width',
-    '100%').css("backgroundRepeat", "no-repeat").css("backgroundPosition", "center");
+$('body').css('background', 'url(' + bgURL + ')')
+    .css('background-size', 'cover')
+    // .css('height', '100%')
+    // .css('width', '100%')
+    .css("backgroundRepeat", "no-repeat")
+    .css("backgroundPosition", "center");
 
 //开始清除播放
 // document.querySelector("#myVideo").pause();
